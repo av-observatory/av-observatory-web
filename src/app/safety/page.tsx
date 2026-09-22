@@ -1,6 +1,6 @@
 import { promises as fs } from "fs";
 import path from "path";
-import { SgoMonthlyDataset, WaymoS2StateSummary, ReconciliationCheck, WaymoCaExposureRate } from "@/lib/safety";
+import { SgoMonthlyDataset, WaymoS2StateSummary, ReconciliationCheck, WaymoCaExposureRate, isCompleteSgoMonth } from "@/lib/safety";
 import { ChartCard } from "@/components/ChartCard";
 import { StatTile } from "@/components/StatTile";
 import { SafetyExplorer } from "@/components/SafetyExplorer";
@@ -20,13 +20,16 @@ export default async function SafetyPage() {
   const exposureRate = await loadJson<WaymoCaExposureRate>("waymo_ca_exposure_rate.json");
 
   const incidentsByState: Record<string, number> = {};
-  for (const r of sgo.monthly_by_state) incidentsByState[r.state] = (incidentsByState[r.state] ?? 0) + r.incident_count;
+  for (const r of sgo.monthly_by_state) {
+    if (!isCompleteSgoMonth(r.year, r.month)) continue;
+    incidentsByState[r.state] = (incidentsByState[r.state] ?? 0) + r.incident_count;
+  }
 
   return (
     <div className="max-w-6xl px-8 py-6">
       <p className="eyebrow mb-3">United States · Safety</p>
       <h1 className="text-4xl font-semibold tracking-tight max-w-3xl">A national view of autonomous-vehicle safety reporting</h1>
-      <p className="mt-2 text-sm text-neutral-600 max-w-3xl">NHTSA SGO incident reports, state geography, reporting entities, and exposure-normalized case studies.</p>
+      <p className="mt-2 text-sm text-neutral-600 max-w-3xl">NHTSA SGO incident reports, state geography, reporting entities, and exposure-normalized case studies. August 2026 is currently incomplete and excluded from trend and map totals.</p>
 
       <div className="mt-5 grid sm:grid-cols-3 gap-2.5">
         <StatTile label="Incident reports" value={sgo.row_count.toLocaleString()} caption="NHTSA SGO records in the Observatory" />

@@ -1,3 +1,5 @@
+export const SGO_COMPLETE_THROUGH = { year: 2026, month: 7 } as const;
+
 export interface SgoMonthlyDataset {
   dataset: string;
   source: string;
@@ -94,4 +96,22 @@ export function topStatesByIncidentCount(d: SgoMonthlyDataset, n = 10) {
     .map(([state, count]) => ({ state, count }))
     .sort((a, b) => b.count - a.count)
     .slice(0, n);
+}
+
+
+export function isCompleteSgoMonth(year: number, month: number): boolean {
+  return year < SGO_COMPLETE_THROUGH.year ||
+    (year === SGO_COMPLETE_THROUGH.year && month <= SGO_COMPLETE_THROUGH.month);
+}
+
+export function completeSgoNationalRows(d: SgoMonthlyDataset) {
+  return d.monthly_national_total.filter(r => isCompleteSgoMonth(r.year, r.month));
+}
+
+export function completeSgoStateRows(d: SgoMonthlyDataset) {
+  return d.monthly_by_state.filter(r => isCompleteSgoMonth(r.year, r.month));
+}
+
+export function completeSgoEntityRows(d: SgoMonthlyDataset) {
+  return d.monthly_by_entity.filter(r => isCompleteSgoMonth(r.year, r.month));
 }

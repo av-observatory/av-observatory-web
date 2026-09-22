@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
-import { SgoMonthlyDataset } from "@/lib/safety";
+import { SgoMonthlyDataset, isCompleteSgoMonth, SGO_COMPLETE_THROUGH } from "@/lib/safety";
 import { monthLabel } from "@/lib/activity";
 import { SERIES, AXIS_PROPS, GRID_PROPS, TOOLTIP_PROPS } from "@/lib/chartTheme";
 
@@ -16,10 +16,10 @@ export function SafetyExplorer({ data }: { data: SgoMonthlyDataset }) {
   const rows = useMemo(() => {
     const source =
       scope === "national"
-        ? data.monthly_national_total.map(r => ({ year: r.year, month: r.month, count: r.incident_count }))
+        ? data.monthly_national_total.filter(r => isCompleteSgoMonth(r.year,r.month)).map(r => ({ year: r.year, month: r.month, count: r.incident_count }))
         : scope === "state"
-          ? data.monthly_by_state.filter(r => r.state === state).map(r => ({ year: r.year, month: r.month, count: r.incident_count }))
-          : data.monthly_by_entity.filter(r => r.reporting_entity === operator).map(r => ({ year: r.year, month: r.month, count: r.incident_count }));
+          ? data.monthly_by_state.filter(r => r.state === state && isCompleteSgoMonth(r.year,r.month)).map(r => ({ year: r.year, month: r.month, count: r.incident_count }))
+          : data.monthly_by_entity.filter(r => r.reporting_entity === operator && isCompleteSgoMonth(r.year,r.month)).map(r => ({ year: r.year, month: r.month, count: r.incident_count }));
 
     return [...source]
       .sort((a,b) => a.year - b.year || a.month - b.month)
@@ -53,6 +53,7 @@ export function SafetyExplorer({ data }: { data: SgoMonthlyDataset }) {
           <div className="text-xs text-neutral-500">reports in selected series</div>
         </div>
       </div>
+      <div className="text-xs text-neutral-500 mb-2">Complete through {monthLabel(SGO_COMPLETE_THROUGH.year, SGO_COMPLETE_THROUGH.month)}; Aug 2026 is excluded because the SGO extract is incomplete.</div>
       <ResponsiveContainer width="100%" height={350}>
         <LineChart data={rows} margin={{top:8,right:18,bottom:8,left:4}}>
           <CartesianGrid {...GRID_PROPS} />

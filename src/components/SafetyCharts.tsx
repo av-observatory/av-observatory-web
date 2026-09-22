@@ -11,7 +11,7 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-import { topEntitiesByIncidentCount, topStatesByIncidentCount, SgoMonthlyDataset, WaymoS2StateSummary, WaymoCaExposureRate } from "@/lib/safety";
+import { topEntitiesByIncidentCount, topStatesByIncidentCount, SgoMonthlyDataset, WaymoS2StateSummary, WaymoCaExposureRate, isCompleteSgoMonth } from "@/lib/safety";
 import { monthLabel } from "@/lib/activity";
 import { SERIES, AXIS_PROPS, GRID_PROPS, TOOLTIP_PROPS } from "@/lib/chartTheme";
 
@@ -48,7 +48,7 @@ export function TopStatesChart({ data }: { data: SgoMonthlyDataset }) {
 }
 
 export function NationalTrendChart({ data }: { data: SgoMonthlyDataset }) {
-  const rows = data.monthly_national_total.map((r) => ({
+  const rows = data.monthly_national_total.filter(r => isCompleteSgoMonth(r.year,r.month)).map((r) => ({
     label: monthLabel(r.year, r.month),
     count: r.incident_count,
   }));
