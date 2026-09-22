@@ -21,22 +21,21 @@ export default async function DeploymentPage() {
   const registry = await loadJson<StatePermitRegistry>("state_permit_registry.json");
 
   return (
-    <div className="max-w-6xl px-8 py-8">
+    <div className="max-w-6xl px-8 py-6">
       <p className="eyebrow mb-3">United States · Deployment</p>
       <h1 className="text-4xl font-semibold tracking-tight">
         Autonomous Vehicle Deployment Explorer
       </h1>
-      <p className="mt-3 text-neutral-600 max-w-3xl">
+      <p className="mt-2 text-sm text-neutral-600 max-w-3xl">
         Company-level permits, testing registries, deployment authority, and documented operation across U.S. states.
       </p>
 
-      <section className="mt-8">
+      <section className="mt-5">
         <ManufacturerSearch manufacturers={registry.manufacturers} stateStatuses={registry.states_status_notes} />
       </section>
 
-      <section className="mt-12">
-        <div className="eyebrow">State regulatory coverage</div>
-        <h2 className="text-2xl font-semibold tracking-tight mt-1">States where holder rosters are not public</h2>
+      <section className="mt-7">
+        <h2 className="text-xl font-semibold tracking-tight">State regulatory coverage</h2>
         <div className="mt-4 overflow-x-auto viz-card">
           <table className="w-full text-sm">
             <thead className="text-left text-neutral-500">
@@ -56,16 +55,16 @@ export default async function DeploymentPage() {
         </div>
       </section>
 
-      <section className="mt-12">
+      <section className="mt-7">
         <h2 className="text-xl font-semibold tracking-tight">Massachusetts (detail)</h2>
         <p className="mt-1 text-neutral-600">{ma.coverage}</p>
         <p className="mt-3 text-sm text-neutral-500 bg-neutral-50 border border-neutral-200 rounded-lg p-3">
           {ma.important_caveat}
         </p>
 
-        <div className="mt-6 space-y-4">
+        <div className="mt-4 space-y-3">
           {ma.companies.map((c) => (
-            <div key={c.company} className="bg-white border border-neutral-200 rounded-lg p-5">
+            <div key={c.company} className="bg-white border border-neutral-200 rounded-lg p-4">
               <div className="flex items-baseline justify-between">
                 <h3 className="font-semibold">{c.company}</h3>
                 <span
