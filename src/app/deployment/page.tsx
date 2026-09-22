@@ -19,6 +19,7 @@ const STATUS_LABELS: Record<string, string> = {
 export default async function DeploymentPage() {
   const ma = await loadJson<MaAdtRegistry>("ma_adt_testing_registry.json");
   const registry = await loadJson<StatePermitRegistry>("state_permit_registry.json");
+  const odd = await loadJson<{ locations: { company:string; state:string; market:string; lat:number; lon:number; status:string; mode:string; geometry_basis:string; source_url:string; note?:string }[] }>("operational_domains.json");
 
   return (
     <div className="max-w-6xl px-8 py-6">
@@ -31,7 +32,7 @@ export default async function DeploymentPage() {
       </p>
 
       <section className="mt-5">
-        <ManufacturerSearch manufacturers={registry.manufacturers} stateStatuses={registry.states_status_notes} />
+        <ManufacturerSearch manufacturers={registry.manufacturers} stateStatuses={registry.states_status_notes} operationalLocations={odd.locations} />
       </section>
 
       <section className="mt-7">

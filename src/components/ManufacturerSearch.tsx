@@ -37,7 +37,24 @@ function driverMode(p: RegistryPermit) {
   return "unspecified";
 }
 
-export function ManufacturerSearch({ manufacturers, stateStatuses = [] }: { manufacturers: RegistryManufacturer[]; stateStatuses?: RegistryStateStatus[] }) {
+type OperationalLocation = {
+  company: string; state: string; market: string; lat: number; lon: number;
+  status: string; mode: string; geometry_basis: string; source_url: string; note?: string;
+};
+
+function canonicalCompany(s: string) {
+  return s.toUpperCase().replace(/[^A-Z0-9]+/g, " ").replace(/\b(INC|LLC|CORP|CORPORATION)\b/g, "").replace(/\s+/g, " ").trim();
+}
+
+export function ManufacturerSearch({
+  manufacturers,
+  stateStatuses = [],
+  operationalLocations = [],
+}: {
+  manufacturers: RegistryManufacturer[];
+  stateStatuses?: RegistryStateStatus[];
+  operationalLocations?: OperationalLocation[];
+}) {
   const [company, setCompany] = useState("ALL");
   const [state, setState] = useState("ALL");
   const [type, setType] = useState("all");
@@ -85,6 +102,23 @@ export function ManufacturerSearch({ manufacturers, stateStatuses = [] }: { manu
   const mapStates = Array.from(new Set(rows.map(({p}) => p.state).filter(realState)));
   const useNationalCategoryMap = company === "ALL" && state === "ALL" && type === "all" && driver === "all" && evidence === "authorizations";
   const selectedStatus = state !== "ALL" ? statusByState[state] : undefined;
+  const operationalMarkers = useMemo(() => operationalLocations.filter(loc => {
+    if (state !== "ALL" && loc.state !== state) return false;
+    if (company !== "ALL") {
+      const selected = manufacturers.find(m => m.manufacturer_key === company);
+      if (!selected) return false;
+      if (canonicalCompany(loc.company) !== canonicalCompany(selected.display_name) &&
+          !canonicalCompany(selected.display_name).startsWith(canonicalCompany(loc.company))) return false;
+    }
+    return true;
+  }).map(loc => ({
+    name: loc.market,
+    coordinates: [loc.lon, loc.lat] as [number, number],
+    company: loc.company,
+    status: loc.status,
+    mode: loc.mode,
+  })), [operationalLocations, state, company, manufacturers]);
+
   const companyCount = new Set(rows.map(({m}) => m.manufacturer_key)).size;
   const permitCount = rows.filter(({p}) => p.source_category !== "operational_evidence").length;
   const evidenceCount = rows.filter(({p}) => p.source_category === "operational_evidence").length;
@@ -130,12 +164,13 @@ export function ManufacturerSearch({ manufacturers, stateStatuses = [] }: { manu
               operational: { label: "Documented operation; no public holder roster ingested", color: "#9fd3c7" },
               unclear: { label: "Regulatory status under review", color: "#d8d6cf" },
             }}
+            markers={operationalMarkers}
             onStateClick={(abbr) => abbr && setState(abbr)}
           />
         ) : (
-          <UsStateMap highlightAbbrevs={mapStates} highlightLabel="Matches filters" onStateClick={(abbr) => abbr && setState(abbr)} />
+          <UsStateMap highlightAbbrevs={mapStates} highlightLabel="Matches filters" markers={operationalMarkers} onStateClick={(abbr) => abbr && setState(abbr)} />
         )}
-        <p className="text-xs text-neutral-500 mt-2">Click a state to filter. Default national view distinguishes public holder rosters, non-public permit regimes, and documented operation.</p>
+        <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs text-neutral-500"><span>● Orange points = currently documented operating markets</span><span>Click a state to filter.</span></div>
         {selectedStatus && (
           <div className="mt-3 border-t border-neutral-200 pt-3 text-sm">
             <div className="font-medium">{selectedStatus.state} · {selectedStatus.agency ?? "State regulatory status"}</div>

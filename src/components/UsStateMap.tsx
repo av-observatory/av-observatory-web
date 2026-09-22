@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ComposableMap, Geographies, Geography } from "react-simple-maps";
+import { ComposableMap, Geographies, Geography, Marker } from "react-simple-maps";
 
 const GEO_URL = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
 
@@ -21,6 +21,14 @@ const STATE_ABBREV_BY_NAME: Record<string, string> = {
 
 const SEQUENTIAL_RAMP = ["#cde2fb", "#9ec5f4", "#6da7ec", "#3987e5", "#256abf", "#184f95", "#0d366b"];
 
+export interface MapMarker {
+  name: string;
+  coordinates: [number, number];
+  company?: string;
+  status?: string;
+  mode?: string;
+}
+
 export interface MapCategory {
   label: string;
   color: string;
@@ -33,6 +41,7 @@ export function UsStateMap({
   highlightLabel = "Present",
   categoryByAbbrev,
   categories,
+  markers = [],
   onStateClick,
 }: {
   valueByAbbrev?: Record<string, number>;
@@ -40,6 +49,7 @@ export function UsStateMap({
   highlightLabel?: string;
   categoryByAbbrev?: Record<string, string>;
   categories?: Record<string, MapCategory>;
+  markers?: MapMarker[];
   onStateClick?: (abbrev: string, name: string) => void;
 }) {
   const [hovered, setHovered] = useState<{ name: string; abbrev: string; value: number | null; x: number; y: number } | null>(null);
@@ -100,6 +110,12 @@ export function UsStateMap({
             })
           }
         </Geographies>
+        {markers.map((m, i) => (
+          <Marker key={`${m.name}-${m.company ?? ""}-${i}`} coordinates={m.coordinates}>
+            <circle r={5.5} fill="#eb6834" stroke="#ffffff" strokeWidth={1.5} />
+            <title>{[m.company, m.name, m.status].filter(Boolean).join(" · ")}</title>
+          </Marker>
+        ))}
       </ComposableMap>
 
       {isCategoryMode && categories && (
