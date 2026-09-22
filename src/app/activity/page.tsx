@@ -2,7 +2,8 @@ import { promises as fs } from "fs";
 import path from "path";
 import { ActivityMonthlyDataset } from "@/lib/activity";
 import { ChartCard } from "@/components/ChartCard";
-import { TripsChart, VmtChart, VmtPeriodChart, NonPassengerShareChart, WaitingHoursChart, TripsByProgramChart } from "@/components/ActivityCharts";
+import { ActivityExplorer } from "@/components/ActivityExplorer";
+import { VmtPeriodChart, NonPassengerShareChart, TripsByProgramChart } from "@/components/ActivityCharts";
 
 async function loadDataset(): Promise<ActivityMonthlyDataset> {
   const file = path.join(process.cwd(), "public", "data", "cpuc_activity_monthly.json");
@@ -14,75 +15,40 @@ export default async function ActivityPage() {
   const dataset = await loadDataset();
 
   return (
-    <div className="max-w-4xl px-8 py-8">
-      <p className="text-sm uppercase tracking-wide text-neutral-500 mb-3">Activity</p>
-      <h1 className="text-3xl font-semibold tracking-tight max-w-2xl">
-        California AV Activity Monitor
-      </h1>
-      <p className="mt-4 text-neutral-600 max-w-2xl">
-        Monthly passenger trips and vehicle miles traveled reported to the
-        California Public Utilities Commission under the AV Passenger Service
-        program. Figures are operator-reported and reflect the periods CPUC
-        has released to date.
+    <div className="max-w-6xl px-8 py-8">
+      <p className="eyebrow mb-3">Activity · State data</p>
+      <h1 className="text-4xl font-semibold tracking-tight max-w-3xl">How AV fleets are being used</h1>
+      <p className="mt-4 text-lg text-neutral-600 max-w-3xl leading-relaxed">
+        Operational activity data are much less standardized nationally than safety reporting. The Observatory treats detailed
+        state datasets as comparable case studies and will add additional states as defensible public measures become available.
       </p>
 
-      <div className="mt-12">
-        <ChartCard
-          title="Trips by program: Driverless Deployment vs. Drivered/Pilot"
-          subtitle="CPUC distinguishes a fully driverless Deployment program from a Drivered/Pilot program (safety driver present, closer to a testing configuration). Pre-2023 filings didn't distinguish programs in the files ingested so far."
-          source="CPUC AV Program deployment reports"
-        >
-          <TripsByProgramChart rows={dataset.data} />
-        </ChartCard>
-
-        <ChartCard
-          title="Passenger trips over time"
-          subtitle="Total AV passenger trips reported per month, all operators."
-          source="CPUC AV Program deployment reports"
-        >
-          <TripsChart rows={dataset.data} />
-        </ChartCard>
-
-        <ChartCard
-          title="AV vehicle miles traveled over time"
-          subtitle="Total VMT across all CPUC-defined reporting periods, all operators."
-          source="CPUC AV Program deployment reports"
-        >
-          <VmtChart rows={dataset.data} />
-        </ChartCard>
-
-        <ChartCard
-          title="VMT by CPUC reporting period"
-          subtitle="Period 3 = occupied, passenger aboard. Period 2 = en route to pickup after accepting a trip. Period 1 = idle/positioning, not carrying or en route to a passenger. Definitions per CPUC's own Trip-Level Data Dictionary."
-          source="CPUC AV Deployment Data Template and Dictionary; CPUC AV Program deployment reports"
-        >
-          <VmtPeriodChart rows={dataset.data} />
-        </ChartCard>
-
-        <ChartCard
-          title="Non-passenger VMT share"
-          subtitle="Share of total VMT driven without a passenger aboard (Period 1 + Period 2, as a percent of total VMT)."
-          source="CPUC AV Deployment Data Template and Dictionary; CPUC AV Program deployment reports"
-        >
-          <NonPassengerShareChart rows={dataset.data} />
-        </ChartCard>
-
-        <ChartCard
-          title="Total reported waiting hours"
-          subtitle="Fleet-level waiting hours per month, as reported to CPUC. Not a per-trip average -- CPUC's TotalWaiting field reflects vehicle-hours waiting across the active fleet, not time tied to individual completed trips, so dividing by trip count would overstate typical rider wait time substantially."
-          source="CPUC AV Program deployment reports"
-        >
-          <WaitingHoursChart rows={dataset.data} />
-        </ChartCard>
+      <div className="mt-8 p-4 border-l-4 border-[#2a78d6] bg-white text-sm text-neutral-600 max-w-3xl">
+        <strong className="text-neutral-900">Current deep dive: California passenger service.</strong>{" "}
+        CPUC reporting provides monthly trips, vehicle miles, waiting hours, and operating-period detail. These figures should not be read as national totals.
       </div>
 
-      {dataset.data.length === 0 && (
-        <p className="text-sm text-neutral-500 mt-4">
-          This dataset is currently empty on this deploy. Run the{" "}
-          <code className="bg-neutral-100 px-1 rounded">CPUC ingest + publish</code>{" "}
-          GitHub Action to populate it from raw CPUC archives in R2.
-        </p>
-      )}
+      <section className="mt-12">
+        <div className="eyebrow">Interactive case study</div>
+        <h2 className="text-2xl font-semibold tracking-tight mt-1">California AV passenger-service activity</h2>
+        <p className="mt-2 text-sm text-neutral-600 max-w-3xl">Filter by reported operator, program, and measure to inspect how the California market changed over time.</p>
+        <div className="viz-card p-5 mt-5"><ActivityExplorer rows={dataset.data} /></div>
+      </section>
+
+      <section className="mt-12 grid lg:grid-cols-2 gap-5">
+        <ChartCard title="Trips by operating program" subtitle="Shows how reported passenger activity shifted between driverless deployment and drivered/pilot programs." source="CPUC AV Program deployment reports">
+          <TripsByProgramChart rows={dataset.data} />
+        </ChartCard>
+        <ChartCard title="Share of VMT without a passenger" subtitle="Period 1 + Period 2 as a share of total VMT. A measure of fleet circulation and repositioning." source="CPUC AV Program deployment reports">
+          <NonPassengerShareChart rows={dataset.data} />
+        </ChartCard>
+      </section>
+
+      <section className="mt-4">
+        <ChartCard title="Where the miles occur in the trip cycle" subtitle="Occupied, en route to pickup, and idle/positioning VMT under CPUC's reporting definitions." source="CPUC AV Deployment Data Template and Dictionary">
+          <VmtPeriodChart rows={dataset.data} />
+        </ChartCard>
+      </section>
     </div>
   );
 }

@@ -88,3 +88,21 @@ body {
 }
 table th, table td { padding: 0.6rem 0.8rem; vertical-align: top; }
 select:focus, input:focus { outline: 2px solid rgba(42,120,214,.25); outline-offset: 1px; border-color: var(--series-1); }
+
+.filter-label {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 650;
+  color: var(--text-secondary);
+}
+.filter-select {
+  display: block;
+  width: 100%;
+  margin-top: 0.35rem;
+  background: #fff;
+  border: 1px solid var(--axis-line);
+  border-radius: 7px;
+  padding: 0.55rem 0.7rem;
+  font-size: 0.86rem;
+  color: var(--text-primary);
+}

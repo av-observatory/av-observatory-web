@@ -55,14 +55,22 @@ export default async function OverviewPage() {
 
   return (
     <div className="px-8 py-8">
-      <h1 className="text-3xl font-semibold tracking-tight text-[#0b1d33]">AV Observatory</h1>
-      <p className="mt-1 text-neutral-600 max-w-2xl">
-        Independent evidence on autonomous vehicle deployment, activity, and
-        safety in the United States, built from public agency and operator
-        reporting.
+      <p className="eyebrow mb-3">United States</p>
+      <h1 className="text-4xl font-semibold tracking-tight text-[#0b1d33] max-w-3xl">The U.S. Autonomous Vehicle Observatory</h1>
+      <p className="mt-3 text-lg text-neutral-600 max-w-3xl leading-relaxed">
+        Independent, longitudinal evidence on where autonomous vehicles are
+        operating, how deployment is changing, and what their impacts look
+        like across the United States.
+      </p>
+      <p className="mt-3 text-sm text-neutral-500 max-w-3xl">
+        National sources provide the backbone; state and local datasets add
+        depth where public reporting is stronger. California is currently the
+        deepest activity case study, not the boundary of the Observatory.
       </p>
 
-      <div className="mt-6 flex flex-wrap gap-4">
+      <div className="mt-10">
+        <div className="eyebrow mb-3">National indicators</div>
+        <div className="flex flex-wrap gap-4">
         <StatTile
           label="California AV Passenger Trips (CPUC)"
           value={trips.total.toLocaleString()}
@@ -89,9 +97,18 @@ export default async function OverviewPage() {
               : "All-time, national"
           }
         />
+        </div>
       </div>
 
-      <div className="mt-6 grid lg:grid-cols-3 gap-4">
+      <div className="mt-10 flex items-end justify-between gap-6">
+        <div>
+          <div className="eyebrow">National footprint</div>
+          <h2 className="text-2xl font-semibold tracking-tight mt-1">Where AV activity is visible in public data</h2>
+          <p className="mt-2 text-sm text-neutral-600 max-w-2xl">The map reflects published operator mileage, while the Deployment Explorer adds permits, testing registries, and other state-level authorization records.</p>
+        </div>
+      </div>
+
+      <div className="mt-4 grid lg:grid-cols-3 gap-4">
         <div className="lg:col-span-2">
           <Panel
             title="Waymo Reported Operational Miles by State"
@@ -102,8 +119,8 @@ export default async function OverviewPage() {
           </Panel>
         </div>
         <Panel
-          title="California AV Passenger Trips Over Time"
-          subtitle="Monthly, all CPUC-reporting operators. Multi-state trip series not yet available -- CPUC is California-only."
+          title="California deep dive: passenger trips"
+          subtitle="California currently provides the country's richest recurring public passenger-service dataset. This is a state deep dive within the national Observatory, not a national trip total."
           source="CPUC AV Program deployment reports"
         >
           <TripsChart rows={cpuc.data} />
@@ -119,8 +136,8 @@ export default async function OverviewPage() {
         </Panel>
 
         <Panel
-          title="Data Availability by State"
-          subtitle="Which sources have state-level coverage in this Observatory today."
+          title="National data coverage"
+          subtitle="Which public sources currently provide state-level observations in the Observatory. Absence here means a data gap, not necessarily an absence of AV activity."
         >
           <table className="w-full text-xs">
             <thead>

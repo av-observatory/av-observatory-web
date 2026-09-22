@@ -4,10 +4,10 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const NAV_ITEMS = [
-  { href: "/", label: "Overview" },
-  { href: "/activity", label: "Activity" },
-  { href: "/safety", label: "Safety" },
+  { href: "/", label: "U.S. Overview" },
   { href: "/deployment", label: "Deployment" },
+  { href: "/safety", label: "Safety" },
+  { href: "/activity", label: "Activity Data" },
   { href: "/downloads", label: "Downloads" },
   { href: "/about", label: "About" },
 ];
@@ -46,7 +46,7 @@ export function Sidebar() {
         })}
       </nav>
       <div className="px-5 py-5 text-xs text-white/45 border-t border-white/10 leading-relaxed">
-        Independent evidence on autonomous vehicles and their impacts.
+        Independent national evidence on autonomous vehicles and their impacts.
       </div>
     </aside>
   );
