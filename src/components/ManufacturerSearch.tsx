@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { RegistryManufacturer, RegistryPermit } from "@/lib/registry";
+import { RegistryManufacturer, RegistryPermit, RegistryStateStatus } from "@/lib/registry";
 import { UsStateMap } from "@/components/UsStateMap";
 
 const TYPE_LABELS: Record<string, string> = {
@@ -37,7 +37,7 @@ function driverMode(p: RegistryPermit) {
   return "unspecified";
 }
 
-export function ManufacturerSearch({ manufacturers }: { manufacturers: RegistryManufacturer[] }) {
+export function ManufacturerSearch({ manufacturers, stateStatuses = [] }: { manufacturers: RegistryManufacturer[]; stateStatuses?: RegistryStateStatus[] }) {
   const [company, setCompany] = useState("ALL");
   const [state, setState] = useState("ALL");
   const [type, setType] = useState("all");
@@ -45,7 +45,32 @@ export function ManufacturerSearch({ manufacturers }: { manufacturers: RegistryM
   const [evidence, setEvidence] = useState<"authorizations" | "all">("authorizations");
   const [includeHistorical, setIncludeHistorical] = useState(false);
 
-  const states = useMemo(() => Array.from(new Set(manufacturers.flatMap(m => m.permits.map(p => p.state).filter(realState)))).sort(), [manufacturers]);
+  const states = useMemo(() => Array.from(new Set([
+    ...manufacturers.flatMap(m => m.permits.map(p => p.state).filter(realState)),
+    ...stateStatuses.map(s => s.state),
+  ])).sort(), [manufacturers, stateStatuses]);
+
+  const statusByState = useMemo(() => Object.fromEntries(stateStatuses.map(s => [s.state, s])), [stateStatuses]);
+
+  const nationalCategories = useMemo(() => {
+    const out: Record<string, string> = {};
+    const operational = new Set<string>();
+    const roster = new Set<string>();
+    for (const m of manufacturers) {
+      for (const p of m.permits) {
+        if (!realState(p.state)) continue;
+        if (p.source_category === "operational_evidence") operational.add(p.state);
+        else roster.add(p.state);
+      }
+    }
+    for (const s of operational) out[s] = "operational";
+    for (const s of roster) out[s] = "public_roster";
+    for (const s of stateStatuses) {
+      if (s.status === "permit_required_not_public") out[s.state] = "permit_regime";
+      else if (!out[s.state] && s.status === "unclear") out[s.state] = "unclear";
+    }
+    return out;
+  }, [manufacturers, stateStatuses]);
 
   const rows = useMemo(() => manufacturers.flatMap(m => m.permits.map(p => ({ m, p }))).filter(({m,p}) => {
     if (!includeHistorical && m.company_status === "historical") return false;
@@ -58,6 +83,8 @@ export function ManufacturerSearch({ manufacturers }: { manufacturers: RegistryM
   }), [manufacturers, company, state, type, driver, evidence, includeHistorical]);
 
   const mapStates = Array.from(new Set(rows.map(({p}) => p.state).filter(realState)));
+  const useNationalCategoryMap = company === "ALL" && state === "ALL" && type === "all" && driver === "all" && evidence === "authorizations";
+  const selectedStatus = state !== "ALL" ? statusByState[state] : undefined;
   const companyCount = new Set(rows.map(({m}) => m.manufacturer_key)).size;
   const permitCount = rows.filter(({p}) => p.source_category !== "operational_evidence").length;
   const evidenceCount = rows.filter(({p}) => p.source_category === "operational_evidence").length;
@@ -94,8 +121,27 @@ export function ManufacturerSearch({ manufacturers }: { manufacturers: RegistryM
           <div><div className="eyebrow">Geographic footprint</div><h3 className="text-xl font-semibold mt-1">Where the selected AV activity is documented</h3></div>
           <div className="text-right text-xs text-neutral-500">{mapStates.length} states</div>
         </div>
-        <UsStateMap highlightAbbrevs={mapStates} highlightLabel="Matches filters" onStateClick={(abbr) => abbr && setState(abbr)} />
-        <p className="text-xs text-neutral-500 mt-2">Click a state to filter. Default view shows authorization/registry records; operational evidence can be added separately.</p>
+        {useNationalCategoryMap ? (
+          <UsStateMap
+            categoryByAbbrev={nationalCategories}
+            categories={{
+              public_roster: { label: "Public company-level permit / registry roster", color: "#1f5fae" },
+              permit_regime: { label: "Permit / authorization required; holder roster not public", color: "#6da7ec" },
+              operational: { label: "Documented operation; no public holder roster ingested", color: "#9fd3c7" },
+              unclear: { label: "Regulatory status under review", color: "#d8d6cf" },
+            }}
+            onStateClick={(abbr) => abbr && setState(abbr)}
+          />
+        ) : (
+          <UsStateMap highlightAbbrevs={mapStates} highlightLabel="Matches filters" onStateClick={(abbr) => abbr && setState(abbr)} />
+        )}
+        <p className="text-xs text-neutral-500 mt-2">Click a state to filter. Default national view distinguishes public holder rosters, non-public permit regimes, and documented operation.</p>
+        {selectedStatus && (
+          <div className="mt-3 border-t border-neutral-200 pt-3 text-sm">
+            <div className="font-medium">{selectedStatus.state} · {selectedStatus.agency ?? "State regulatory status"}</div>
+            <div className="text-neutral-600 mt-1">{selectedStatus.note}</div>
+          </div>
+        )}
       </div>
       <div className="grid grid-cols-2 lg:grid-cols-1 gap-3">
         <Kpi value={companyCount} label="companies" />

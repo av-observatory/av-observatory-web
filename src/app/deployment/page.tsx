@@ -21,64 +21,38 @@ export default async function DeploymentPage() {
   const registry = await loadJson<StatePermitRegistry>("state_permit_registry.json");
 
   return (
-    <div className="max-w-5xl px-8 py-8">
-      <p className="text-sm uppercase tracking-wide text-neutral-500 mb-3">Deployment</p>
-      <h1 className="text-3xl font-semibold tracking-tight">
+    <div className="max-w-6xl px-8 py-8">
+      <p className="eyebrow mb-3">United States · Deployment</p>
+      <h1 className="text-4xl font-semibold tracking-tight">
         Autonomous Vehicle Deployment Explorer
       </h1>
-      <p className="mt-4 text-neutral-600 max-w-2xl">
-        Explore where AV developers are authorized to test or deploy, how those
-        authorizations differ by driver status, and where separate public
-        records document real-world operation. The Observatory keeps
-        authorization, operational evidence, and historical activity distinct.
+      <p className="mt-3 text-neutral-600 max-w-3xl">
+        Company-level permits, testing registries, deployment authority, and documented operation across U.S. states.
       </p>
 
-      <section className="mt-10">
-        <h2 className="text-xl font-semibold tracking-tight">Explore the deployment landscape</h2>
-        <p className="mt-1 text-neutral-600">
-          Use the controls to compare companies, states, testing versus deployment, and drivered versus driverless programs. The map and underlying records update together.
-        </p>
-        <div className="mt-4 grid md:grid-cols-3 gap-3 text-sm">
-          <div className="viz-card p-4"><strong>Authorization</strong><p className="text-neutral-500 mt-1">A permit, registration, certification, or program roster published by an agency.</p></div>
-          <div className="viz-card p-4"><strong>Operational evidence</strong><p className="text-neutral-500 mt-1">A separate public record showing activity, such as an SGO incident or published mileage. It is not a permit.</p></div>
-          <div className="viz-card p-4"><strong>Historical</strong><p className="text-neutral-500 mt-1">Past activity remains in the longitudinal record even when a company or program is no longer current.</p></div>
-        </div>
-        <div className="mt-6">
-          <ManufacturerSearch manufacturers={registry.manufacturers} />
-        </div>
+      <section className="mt-8">
+        <ManufacturerSearch manufacturers={registry.manufacturers} stateStatuses={registry.states_status_notes} />
       </section>
 
       <section className="mt-12">
-        <h2 className="text-xl font-semibold tracking-tight">
-          States without a public company-level roster
-        </h2>
-        <p className="mt-1 text-neutral-600">
-          &quot;No public roster&quot; does not mean no permits exist -- some of these
-          states have a confirmed, real permit requirement that simply isn&apos;t
-          published as a company list.
-        </p>
-        <div className="mt-6 grid sm:grid-cols-2 gap-4">
-          {registry.states_status_notes.map((s) => (
-            <div key={s.state} className="bg-white border border-neutral-200 rounded-lg p-4">
-              <div className="flex items-center justify-between">
-                <span className="font-semibold">{s.state}</span>
-                <span className="text-xs px-2 py-0.5 rounded-full bg-neutral-100 text-neutral-600">
-                  {STATUS_LABELS[s.status] ?? s.status}
-                </span>
-              </div>
-              {s.agency && <div className="mt-1 text-xs text-neutral-500">{s.agency}</div>}
-              <p className="mt-2 text-sm text-neutral-600">{s.note}</p>
-              {s.sources.length > 0 && (
-                <div className="mt-2 flex flex-wrap gap-3 text-xs">
-                  {s.sources.map((src) => (
-                    <a key={src} href={src} target="_blank" rel="noreferrer" className="text-[#0b1d33] underline">
-                      source
-                    </a>
-                  ))}
-                </div>
-              )}
-            </div>
-          ))}
+        <div className="eyebrow">State regulatory coverage</div>
+        <h2 className="text-2xl font-semibold tracking-tight mt-1">States where holder rosters are not public</h2>
+        <div className="mt-4 overflow-x-auto viz-card">
+          <table className="w-full text-sm">
+            <thead className="text-left text-neutral-500">
+              <tr><th>State</th><th>Status</th><th>Agency</th><th>What we know</th></tr>
+            </thead>
+            <tbody>
+              {registry.states_status_notes.map((s) => (
+                <tr key={s.state} className="border-t border-neutral-100">
+                  <td className="font-semibold">{s.state}</td>
+                  <td>{STATUS_LABELS[s.status] ?? s.status}</td>
+                  <td>{s.agency ?? "—"}</td>
+                  <td className="text-neutral-600">{s.note}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </section>
 

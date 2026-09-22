@@ -19,38 +19,58 @@ const STATE_ABBREV_BY_NAME: Record<string, string> = {
   "District of Columbia": "DC",
 };
 
-// Sequential blue ramp, light -> dark (dataviz skill reference palette).
 const SEQUENTIAL_RAMP = ["#cde2fb", "#9ec5f4", "#6da7ec", "#3987e5", "#256abf", "#184f95", "#0d366b"];
+
+export interface MapCategory {
+  label: string;
+  color: string;
+  detail?: string;
+}
 
 export function UsStateMap({
   valueByAbbrev,
   highlightAbbrevs,
   highlightLabel = "Present",
+  categoryByAbbrev,
+  categories,
   onStateClick,
 }: {
   valueByAbbrev?: Record<string, number>;
-  /** When provided, switches to binary highlight mode: states in this list
-   * get one accent color, everything else is neutral. Takes precedence
-   * over valueByAbbrev's magnitude coloring. */
   highlightAbbrevs?: string[];
   highlightLabel?: string;
+  categoryByAbbrev?: Record<string, string>;
+  categories?: Record<string, MapCategory>;
   onStateClick?: (abbrev: string, name: string) => void;
 }) {
-  const [hovered, setHovered] = useState<{ name: string; value: number | null; x: number; y: number } | null>(null);
+  const [hovered, setHovered] = useState<{ name: string; abbrev: string; value: number | null; x: number; y: number } | null>(null);
   const values = valueByAbbrev ? Object.values(valueByAbbrev) : [];
   const max = values.length ? Math.max(...values) : 0;
   const highlightSet = new Set(highlightAbbrevs ?? []);
   const isHighlightMode = highlightAbbrevs !== undefined;
+  const isCategoryMode = categoryByAbbrev !== undefined && categories !== undefined;
 
   function colorFor(abbrev: string): string {
-    if (isHighlightMode) {
-      return highlightSet.has(abbrev) ? "#2a78d6" : "#eeede9";
+    if (isCategoryMode) {
+      const key = categoryByAbbrev?.[abbrev];
+      return key && categories?.[key] ? categories[key].color : "#eeede9";
     }
+    if (isHighlightMode) return highlightSet.has(abbrev) ? "#2a78d6" : "#eeede9";
     const v = valueByAbbrev?.[abbrev];
     if (v === undefined || max === 0) return "#eeede9";
-    const intensity = Math.sqrt(v / max); // sqrt scale so mid-range states stay visible
+    const intensity = Math.sqrt(v / max);
     const step = Math.min(SEQUENTIAL_RAMP.length - 1, Math.round(intensity * (SEQUENTIAL_RAMP.length - 1)));
     return SEQUENTIAL_RAMP[step];
+  }
+
+  function hoverText() {
+    if (!hovered) return "";
+    if (isCategoryMode) {
+      const key = categoryByAbbrev?.[hovered.abbrev];
+      const cat = key ? categories?.[key] : undefined;
+      return cat ? `${hovered.name}: ${cat.label}` : `${hovered.name}: no classified record yet`;
+    }
+    if (isHighlightMode) return `${hovered.name}: ${highlightSet.has(hovered.abbrev) ? highlightLabel : "No data"}`;
+    return `${hovered.name}: ${hovered.value !== null ? Math.round(hovered.value).toLocaleString() : "No public operational data yet"}`;
   }
 
   return (
@@ -70,12 +90,8 @@ export function UsStateMap({
                   fill={isHovered ? "#0b1d33" : colorFor(abbrev)}
                   stroke="#ffffff"
                   strokeWidth={0.75}
-                  onMouseEnter={(evt) => {
-                    setHovered({ name, value: value ?? null, x: evt.clientX, y: evt.clientY });
-                  }}
-                  onMouseMove={(evt) => {
-                    setHovered((h) => (h ? { ...h, x: evt.clientX, y: evt.clientY } : h));
-                  }}
+                  onMouseEnter={(evt) => setHovered({ name, abbrev, value: value ?? null, x: evt.clientX, y: evt.clientY })}
+                  onMouseMove={(evt) => setHovered((h) => (h ? { ...h, x: evt.clientX, y: evt.clientY } : h))}
                   onMouseLeave={() => setHovered(null)}
                   onClick={() => onStateClick?.(abbrev, name)}
                   style={{ outline: "none", cursor: onStateClick ? "pointer" : "default" }}
@@ -85,14 +101,21 @@ export function UsStateMap({
           }
         </Geographies>
       </ComposableMap>
+
+      {isCategoryMode && categories && (
+        <div className="flex flex-wrap gap-x-5 gap-y-2 mt-2 text-xs text-neutral-600">
+          {Object.entries(categories).map(([key, cat]) => (
+            <div key={key} className="flex items-center gap-2">
+              <span className="inline-block w-3 h-3 rounded-sm" style={{ background: cat.color }} />
+              <span>{cat.label}</span>
+            </div>
+          ))}
+        </div>
+      )}
+
       {hovered && (
-        <div
-          className="fixed z-10 pointer-events-none bg-neutral-900 text-white text-xs rounded px-2 py-1"
-          style={{ left: hovered.x + 12, top: hovered.y + 12 }}
-        >
-          {isHighlightMode
-            ? `${hovered.name}: ${highlightSet.has(STATE_ABBREV_BY_NAME[hovered.name] ?? "") ? highlightLabel : "No data"}`
-            : `${hovered.name}: ${hovered.value !== null ? Math.round(hovered.value).toLocaleString() : "No public operational data yet"}`}
+        <div className="fixed z-10 pointer-events-none bg-neutral-900 text-white text-xs rounded px-2 py-1" style={{ left: hovered.x + 12, top: hovered.y + 12 }}>
+          {hoverText()}
         </div>
       )}
     </div>
