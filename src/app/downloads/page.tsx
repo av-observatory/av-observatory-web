@@ -19,6 +19,8 @@ const DOWNLOADS = [
   },
 ];
 
+const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 export default function DownloadsPage() {
   return (
     <div className="px-8 py-8 max-w-3xl">
@@ -35,10 +37,10 @@ export default function DownloadsPage() {
             <h2 className="font-semibold">{d.title}</h2>
             <p className="mt-1 text-sm text-neutral-600">{d.description}</p>
             <div className="mt-3 flex gap-4 text-sm">
-              <a href={`/data/${d.file}`} download className="text-[#0b1d33] font-medium underline">
+              <a href={`${BASE_PATH}/data/${d.file}`} download className="text-[#0b1d33] font-medium underline">
                 Download CSV
               </a>
-              <a href={`/data/${d.json}`} download className="text-[#0b1d33] font-medium underline">
+              <a href={`${BASE_PATH}/data/${d.json}`} download className="text-[#0b1d33] font-medium underline">
                 Download JSON
               </a>
             </div>
