@@ -1,0 +1,340 @@
+{
+  "title": "Waymo California exposure-normalized incident rate",
+  "purpose": "Same-operator, same-state rate: Waymo's SGO incident reports filed for California, per million miles of Waymo's own CPUC-reported California VMT, by month.",
+  "methodology_note": "Both numerator and denominator are Waymo-specific and California-specific -- a materially better-grounded exposure rate than cross-operator or cross-geography comparisons elsewhere on this site. Still approximate: SGO report month is the FILING month, not necessarily the incident month; CPUC's ingested months have real gaps (only months with data are included here, which understates true VMT for any period spanning a gap); 'incident' is a broad SGO reporting category, not strictly at-fault crashes.",
+  "months_included": 47,
+  "total_waymo_ca_vmt": 141492805.9,
+  "total_waymo_ca_sgo_incidents": 730,
+  "overall_incidents_per_million_miles": 5.159,
+  "monthly": [
+    {
+      "year": 2022,
+      "month": 3,
+      "waymo_ca_vmt": 307010.1,
+      "waymo_ca_sgo_incidents": 2,
+      "incidents_per_million_miles": 6.514
+    },
+    {
+      "year": 2022,
+      "month": 4,
+      "waymo_ca_vmt": 279127.6,
+      "waymo_ca_sgo_incidents": 2,
+      "incidents_per_million_miles": 7.165
+    },
+    {
+      "year": 2022,
+      "month": 5,
+      "waymo_ca_vmt": 274687.1,
+      "waymo_ca_sgo_incidents": 3,
+      "incidents_per_million_miles": 10.922
+    },
+    {
+      "year": 2022,
+      "month": 6,
+      "waymo_ca_vmt": 259308.5,
+      "waymo_ca_sgo_incidents": 2,
+      "incidents_per_million_miles": 7.713
+    },
+    {
+      "year": 2022,
+      "month": 7,
+      "waymo_ca_vmt": 262268.1,
+      "waymo_ca_sgo_incidents": 5,
+      "incidents_per_million_miles": 19.064
+    },
+    {
+      "year": 2022,
+      "month": 8,
+      "waymo_ca_vmt": 189022.6,
+      "waymo_ca_sgo_incidents": 4,
+      "incidents_per_million_miles": 21.161
+    },
+    {
+      "year": 2022,
+      "month": 9,
+      "waymo_ca_vmt": 142380.9,
+      "waymo_ca_sgo_incidents": 3,
+      "incidents_per_million_miles": 21.07
+    },
+    {
+      "year": 2022,
+      "month": 10,
+      "waymo_ca_vmt": 137791.9,
+      "waymo_ca_sgo_incidents": 1,
+      "incidents_per_million_miles": 7.257
+    },
+    {
+      "year": 2022,
+      "month": 11,
+      "waymo_ca_vmt": 130534.8,
+      "waymo_ca_sgo_incidents": 2,
+      "incidents_per_million_miles": 15.322
+    },
+    {
+      "year": 2022,
+      "month": 12,
+      "waymo_ca_vmt": 137883.9,
+      "waymo_ca_sgo_incidents": 3,
+      "incidents_per_million_miles": 21.757
+    },
+    {
+      "year": 2023,
+      "month": 1,
+      "waymo_ca_vmt": 109151.1,
+      "waymo_ca_sgo_incidents": 2,
+      "incidents_per_million_miles": 18.323
+    },
+    {
+      "year": 2023,
+      "month": 2,
+      "waymo_ca_vmt": 90781.6,
+      "waymo_ca_sgo_incidents": 3,
+      "incidents_per_million_miles": 33.046
+    },
+    {
+      "year": 2023,
+      "month": 3,
+      "waymo_ca_vmt": 73795.4,
+      "waymo_ca_sgo_incidents": 5,
+      "incidents_per_million_miles": 67.755
+    },
+    {
+      "year": 2023,
+      "month": 4,
+      "waymo_ca_vmt": 101468.3,
+      "waymo_ca_sgo_incidents": 4,
+      "incidents_per_million_miles": 39.421
+    },
+    {
+      "year": 2023,
+      "month": 5,
+      "waymo_ca_vmt": 122294.1,
+      "waymo_ca_sgo_incidents": 2,
+      "incidents_per_million_miles": 16.354
+    },
+    {
+      "year": 2023,
+      "month": 8,
+      "waymo_ca_vmt": 101313.5,
+      "waymo_ca_sgo_incidents": 9,
+      "incidents_per_million_miles": 88.833
+    },
+    {
+      "year": 2023,
+      "month": 9,
+      "waymo_ca_vmt": 246832.1,
+      "waymo_ca_sgo_incidents": 5,
+      "incidents_per_million_miles": 20.257
+    },
+    {
+      "year": 2023,
+      "month": 10,
+      "waymo_ca_vmt": 323473.0,
+      "waymo_ca_sgo_incidents": 6,
+      "incidents_per_million_miles": 18.549
+    },
+    {
+      "year": 2023,
+      "month": 11,
+      "waymo_ca_vmt": 340180.2,
+      "waymo_ca_sgo_incidents": 3,
+      "incidents_per_million_miles": 8.819
+    },
+    {
+      "year": 2023,
+      "month": 12,
+      "waymo_ca_vmt": 408560.5,
+      "waymo_ca_sgo_incidents": 6,
+      "incidents_per_million_miles": 14.686
+    },
+    {
+      "year": 2024,
+      "month": 1,
+      "waymo_ca_vmt": 426807.6,
+      "waymo_ca_sgo_incidents": 3,
+      "incidents_per_million_miles": 7.029
+    },
+    {
+      "year": 2024,
+      "month": 2,
+      "waymo_ca_vmt": 411307.4,
+      "waymo_ca_sgo_incidents": 3,
+      "incidents_per_million_miles": 7.294
+    },
+    {
+      "year": 2024,
+      "month": 6,
+      "waymo_ca_vmt": 1117399.5,
+      "waymo_ca_sgo_incidents": 15,
+      "incidents_per_million_miles": 13.424
+    },
+    {
+      "year": 2024,
+      "month": 7,
+      "waymo_ca_vmt": 1439465.0,
+      "waymo_ca_sgo_incidents": 14,
+      "incidents_per_million_miles": 9.726
+    },
+    {
+      "year": 2024,
+      "month": 8,
+      "waymo_ca_vmt": 1828841.3,
+      "waymo_ca_sgo_incidents": 20,
+      "incidents_per_million_miles": 10.936
+    },
+    {
+      "year": 2024,
+      "month": 9,
+      "waymo_ca_vmt": 2065732.0,
+      "waymo_ca_sgo_incidents": 27,
+      "incidents_per_million_miles": 13.07
+    },
+    {
+      "year": 2024,
+      "month": 10,
+      "waymo_ca_vmt": 2565470.1,
+      "waymo_ca_sgo_incidents": 24,
+      "incidents_per_million_miles": 9.355
+    },
+    {
+      "year": 2024,
+      "month": 11,
+      "waymo_ca_vmt": 3068577.4,
+      "waymo_ca_sgo_incidents": 34,
+      "incidents_per_million_miles": 11.08
+    },
+    {
+      "year": 2024,
+      "month": 12,
+      "waymo_ca_vmt": 3325573.2,
+      "waymo_ca_sgo_incidents": 36,
+      "incidents_per_million_miles": 10.825
+    },
+    {
+      "year": 2025,
+      "month": 1,
+      "waymo_ca_vmt": 3481697.9,
+      "waymo_ca_sgo_incidents": 28,
+      "incidents_per_million_miles": 8.042
+    },
+    {
+      "year": 2025,
+      "month": 2,
+      "waymo_ca_vmt": 3485921.7,
+      "waymo_ca_sgo_incidents": 26,
+      "incidents_per_million_miles": 7.459
+    },
+    {
+      "year": 2025,
+      "month": 3,
+      "waymo_ca_vmt": 4265981.5,
+      "waymo_ca_sgo_incidents": 42,
+      "incidents_per_million_miles": 9.845
+    },
+    {
+      "year": 2025,
+      "month": 4,
+      "waymo_ca_vmt": 4784485.3,
+      "waymo_ca_sgo_incidents": 44,
+      "incidents_per_million_miles": 9.196
+    },
+    {
+      "year": 2025,
+      "month": 5,
+      "waymo_ca_vmt": 5336125.6,
+      "waymo_ca_sgo_incidents": 46,
+      "incidents_per_million_miles": 8.62
+    },
+    {
+      "year": 2025,
+      "month": 6,
+      "waymo_ca_vmt": 3567131.7,
+      "waymo_ca_sgo_incidents": 19,
+      "incidents_per_million_miles": 5.326
+    },
+    {
+      "year": 2025,
+      "month": 7,
+      "waymo_ca_vmt": 4875510.0,
+      "waymo_ca_sgo_incidents": 20,
+      "incidents_per_million_miles": 4.102
+    },
+    {
+      "year": 2025,
+      "month": 8,
+      "waymo_ca_vmt": 5571862.8,
+      "waymo_ca_sgo_incidents": 15,
+      "incidents_per_million_miles": 2.692
+    },
+    {
+      "year": 2025,
+      "month": 9,
+      "waymo_ca_vmt": 6567950.6,
+      "waymo_ca_sgo_incidents": 17,
+      "incidents_per_million_miles": 2.588
+    },
+    {
+      "year": 2025,
+      "month": 10,
+      "waymo_ca_vmt": 7902019.3,
+      "waymo_ca_sgo_incidents": 20,
+      "incidents_per_million_miles": 2.531
+    },
+    {
+      "year": 2025,
+      "month": 11,
+      "waymo_ca_vmt": 8414102.0,
+      "waymo_ca_sgo_incidents": 28,
+      "incidents_per_million_miles": 3.328
+    },
+    {
+      "year": 2025,
+      "month": 12,
+      "waymo_ca_vmt": 8420126.8,
+      "waymo_ca_sgo_incidents": 23,
+      "incidents_per_million_miles": 2.732
+    },
+    {
+      "year": 2026,
+      "month": 1,
+      "waymo_ca_vmt": 9092739.3,
+      "waymo_ca_sgo_incidents": 22,
+      "incidents_per_million_miles": 2.42
+    },
+    {
+      "year": 2026,
+      "month": 2,
+      "waymo_ca_vmt": 8191719.6,
+      "waymo_ca_sgo_incidents": 23,
+      "incidents_per_million_miles": 2.808
+    },
+    {
+      "year": 2026,
+      "month": 3,
+      "waymo_ca_vmt": 9105108.3,
+      "waymo_ca_sgo_incidents": 33,
+      "incidents_per_million_miles": 3.624
+    },
+    {
+      "year": 2026,
+      "month": 4,
+      "waymo_ca_vmt": 9414525.1,
+      "waymo_ca_sgo_incidents": 21,
+      "incidents_per_million_miles": 2.231
+    },
+    {
+      "year": 2026,
+      "month": 5,
+      "waymo_ca_vmt": 9704968.3,
+      "waymo_ca_sgo_incidents": 31,
+      "incidents_per_million_miles": 3.194
+    },
+    {
+      "year": 2026,
+      "month": 6,
+      "waymo_ca_vmt": 9023791.3,
+      "waymo_ca_sgo_incidents": 24,
+      "incidents_per_million_miles": 2.66
+    }
+  ]
+}

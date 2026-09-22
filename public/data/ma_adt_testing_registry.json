@@ -1,0 +1,212 @@
+{
+  "dataset": "Massachusetts ADS Testing Company Registry",
+  "source": "MassDOT, Safe Testing of Automated Driving Systems on Public Ways in Massachusetts",
+  "source_list_url": "https://www.mass.gov/lists/automated-driving-systems-in-massachusetts-documents-and-reports",
+  "coverage": "Massachusetts -- companies ever approved to test ADS on public ways under this program",
+  "important_caveat": "MassDOT's testing reports are narrative/PR documents, not structured data -- they contain no mileage, disengagement, or incident counts extractable into a metric. This registry is therefore a document/company roster (who tested, when, how many reports filed), not an activity dataset. 'status_basis' reflects only whether a report has been filed recently, per MassDOT's own public list as of the date this was captured -- it is not an independent confirmation of whether a company is still operating or testing in Massachusetts.",
+  "captured_at": "2026-09-22",
+  "companies": [
+    {
+      "company": "Motional",
+      "testing_report_count": 17,
+      "earliest_period_start": "2019-01-01",
+      "latest_period_end": "2024-06-30",
+      "latest_approval_date": "2024-02-01",
+      "documents": [
+        {
+          "title": "Motional's H1 2024 Semi-Annual Report",
+          "doc_type": "testing_report",
+          "url": "https://www.mass.gov/doc/motionals-h1-2024-semi-annual-report/download"
+        },
+        {
+          "title": "Motional's H2 2023 Semi-Annual Report",
+          "doc_type": "testing_report",
+          "url": "https://www.mass.gov/doc/motionals-h2-2023-semi-annual-report/download"
+        },
+        {
+          "title": "Motional's H1 2023 Semi-Annual Report",
+          "doc_type": "testing_report",
+          "url": "https://www.mass.gov/doc/motionals-h1-2023-semi-annual-report/download"
+        },
+        {
+          "title": "Motional's 2H 2022 Semi-Annual Report",
+          "doc_type": "testing_report",
+          "url": "https://www.mass.gov/doc/motionals-2h-2022-semi-annual-report/download"
+        },
+        {
+          "title": "Motional's 2022 H1 Semi-Annual Report",
+          "doc_type": "testing_report",
+          "url": "https://www.mass.gov/doc/motionals-2022-h1-semi-annual-report/download"
+        },
+        {
+          "title": "Motional's 2021 Q4 Quarterly Report",
+          "doc_type": "testing_report",
+          "url": "https://www.mass.gov/doc/motionals-2021-q4-quarterly-report/download"
+        },
+        {
+          "title": "Motional - 3rd Quarter report 2021",
+          "doc_type": "testing_report",
+          "url": "https://www.mass.gov/doc/motional-3rd-quarter-report-2021/download"
+        },
+        {
+          "title": "Motional - 2nd Quarter report 2021",
+          "doc_type": "testing_report",
+          "url": "https://www.mass.gov/doc/motional-2nd-quarter-report-2021/download"
+        },
+        {
+          "title": "Motional - 1st Quarter report 2021",
+          "doc_type": "testing_report",
+          "url": "https://www.mass.gov/doc/motional-1st-quarter-report-2021/download"
+        },
+        {
+          "title": "Motional - 4th Quarter report 2020",
+          "doc_type": "testing_report",
+          "url": "https://www.mass.gov/doc/motional-4th-quarter-report-2020-0/download"
+        },
+        {
+          "title": "Motional - 3rd Quarter report 2020",
+          "doc_type": "testing_report",
+          "url": "https://www.mass.gov/doc/motional-3rd-quarter-report-2020/download"
+        },
+        {
+          "title": "Motional (formerly Hyundai-Aptiv) Testing Report - 2nd Quarter 2020",
+          "doc_type": "testing_report",
+          "url": "https://www.mass.gov/doc/motional-formerly-hyundai-aptiv-testing-report-2nd-quarter-2020/download"
+        },
+        {
+          "title": "Motional (formerly Hyundai-Aptiv) Testing Report - 1st quarter 2020",
+          "doc_type": "testing_report",
+          "url": "https://www.mass.gov/doc/motional-formerly-hyundai-aptiv-testing-report-1st-quarter-2020/download"
+        },
+        {
+          "title": "Motional (formerly Aptiv) Testing Report - 4th quarter 2019",
+          "doc_type": "testing_report",
+          "url": "https://www.mass.gov/doc/motional-formerly-aptiv-testing-report-4th-quarter-2019/download"
+        },
+        {
+          "title": "Motional (formerly Aptiv) Testing Report - 3rd quarter 2019",
+          "doc_type": "testing_report",
+          "url": "https://www.mass.gov/doc/motional-formerly-aptiv-testing-report-3rd-quarter-2019/download"
+        },
+        {
+          "title": "Motional (formerly nuTonomy) Testing Report - 2nd quarter 2019",
+          "doc_type": "testing_report",
+          "url": "https://www.mass.gov/doc/motional-formerly-nutonomy-testing-report-2nd-quarter-2019/download"
+        },
+        {
+          "title": "Motional (formerly nuTonomy) Testing Report - 1st quarter 2019",
+          "doc_type": "testing_report",
+          "url": "https://www.mass.gov/doc/motional-formerly-nutonomy-testing-report-1st-quarter-2019/download"
+        },
+        {
+          "title": "Motional (formerly Aptiv) application",
+          "doc_type": "application",
+          "url": "https://www.mass.gov/doc/motional-formerly-aptiv-application/download"
+        },
+        {
+          "title": "Motional (formerly Aptiv) First Responder Plan",
+          "doc_type": "first_responder_plan",
+          "url": "https://www.mass.gov/doc/motional-formerly-aptiv-first-responder-plan/download"
+        },
+        {
+          "title": "Motional Application 2023",
+          "doc_type": "application",
+          "url": "https://www.mass.gov/doc/motional-application-2023/download"
+        },
+        {
+          "title": "Motional First Responder Plan 2024",
+          "doc_type": "first_responder_plan",
+          "url": "https://www.mass.gov/doc/motional-first-responder-plan-2024/download"
+        },
+        {
+          "title": "MOA on Testing - Motional 2024",
+          "doc_type": "moa",
+          "url": "https://www.mass.gov/doc/moa-on-testing-motional-2024/download"
+        },
+        {
+          "title": "Motional approval letter - April 2021",
+          "doc_type": "approval_letter",
+          "url": "https://www.mass.gov/doc/motional-approval-letter-april-2021/download"
+        },
+        {
+          "title": "Motional approval letter - February 2024",
+          "doc_type": "approval_letter",
+          "url": "https://www.mass.gov/doc/motional-approval-letter-february-2024/download"
+        }
+      ],
+      "status_basis": "no_report_in_18mo",
+      "months_since_last_report": 26.8
+    },
+    {
+      "company": "Optimus Ride",
+      "testing_report_count": 9,
+      "earliest_period_start": "2019-01-01",
+      "latest_period_end": "2021-09-30",
+      "latest_approval_date": "2021-05-01",
+      "documents": [
+        {
+          "title": "Optimus Ride Testing Report - 3rd quarter 2021",
+          "doc_type": "testing_report",
+          "url": "https://www.mass.gov/doc/optimus-ride-testing-report-3rd-quarter-2021/download"
+        },
+        {
+          "title": "Optimus Ride Progress Report - 4th quarter 2020 to 2nd quarter 2021",
+          "doc_type": "testing_report",
+          "url": "https://www.mass.gov/doc/optimus-ride-progress-report-4th-quarter-2020-to-2nd-quarter-2021/download"
+        },
+        {
+          "title": "Optimus Ride Testing Report - 3rd quarter 2020",
+          "doc_type": "testing_report",
+          "url": "https://www.mass.gov/doc/optimus-ride-testing-report-3rd-quarter-2020/download"
+        },
+        {
+          "title": "Optimus Ride Testing Report - 2nd quarter 2020",
+          "doc_type": "testing_report",
+          "url": "https://www.mass.gov/doc/optimus-ride-testing-report-2nd-quarter-2020/download"
+        },
+        {
+          "title": "Optimus Ride Testing Report - 1st quarter 2020",
+          "doc_type": "testing_report",
+          "url": "https://www.mass.gov/doc/optimus-ride-testing-report-1st-quarter-2020/download"
+        },
+        {
+          "title": "Optimus Ride Testing Report - 4th quarter 2019",
+          "doc_type": "testing_report",
+          "url": "https://www.mass.gov/doc/optimus-ride-testing-report-4th-quarter-2019/download"
+        },
+        {
+          "title": "Optimus Ride Testing Report - 3rd quarter 2019",
+          "doc_type": "testing_report",
+          "url": "https://www.mass.gov/doc/optimus-ride-testing-report-3rd-quarter-2019/download"
+        },
+        {
+          "title": "Optimus Ride Testing Report - 2nd quarter 2019",
+          "doc_type": "testing_report",
+          "url": "https://www.mass.gov/doc/optimus-ride-testing-report-2nd-quarter-2019/download"
+        },
+        {
+          "title": "Optimus Ride Testing Report - 1st quarter 2019",
+          "doc_type": "testing_report",
+          "url": "https://www.mass.gov/doc/optimus-ride-testing-report-1st-quarter-2019/download"
+        },
+        {
+          "title": "Optimus Ride Chrysler Pacifica Platform: First Responders Interaction Report",
+          "doc_type": "other",
+          "url": "https://www.mass.gov/doc/optimus-ride-chrysler-pacifica-platform-first-responders-interaction-report/download"
+        },
+        {
+          "title": "Optimus Ride application",
+          "doc_type": "application",
+          "url": "https://www.mass.gov/doc/optimus-ride-application/download"
+        },
+        {
+          "title": "Optimus Ride approval letter - May 2021",
+          "doc_type": "approval_letter",
+          "url": "https://www.mass.gov/doc/optimus-ride-approval-letter-may-2021/download"
+        }
+      ],
+      "status_basis": "no_report_in_18mo",
+      "months_since_last_report": 59.8
+    }
+  ]
+}

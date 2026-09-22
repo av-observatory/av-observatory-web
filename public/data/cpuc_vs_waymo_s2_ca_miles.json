@@ -1,0 +1,26 @@
+{
+  "title": "Reconciliation check: California Waymo mileage, CPUC vs. Waymo's own S2 benchmark",
+  "purpose": "Both figures below independently describe 'how many miles has Waymo driven in California,' reported through two different channels. This is published as a transparency check, not a claim that the numbers should match -- see caveats.",
+  "cpuc_side": {
+    "source": "CPUC AV Program deployment reports, Waymo Driverless Deployment, California",
+    "months_covered": 32,
+    "month_range": [
+      "2023-08",
+      "2026-06"
+    ],
+    "note": "Sum of VMT Period 1+2+3 across all CPUC-reported months currently ingested for Waymo's Driverless Deployment program. Known gaps exist (see Activity page) -- this is NOT a complete monthly series, so it understates true cumulative VMT over the same period.",
+    "total_vmt": 138875300.0
+  },
+  "waymo_s2_side": {
+    "source": "Waymo self-published S2-cell safety benchmark data, California, latest vintage",
+    "vintage_end": "202603",
+    "note": "Cumulative 'RO miles' (revenue/operations miles) for California as of this vintage's reporting window. Scope (e.g. whether Pilot-program or non-passenger miles are included) is not documented in the source file.",
+    "total_miles": 118893629.0
+  },
+  "caveats": [
+    "Different accounting windows: CPUC is a sum of specific reported months (with gaps); Waymo S2 is a cumulative total through a vintage's end date.",
+    "Different scope: CPUC's figure is Driverless Deployment program VMT only; Waymo S2's 'RO miles' scope is not documented and may be broader (e.g. include Pilot/drivered miles).",
+    "Different VMT definitions: CPUC's VMT Period 1/2/3 categories are CPUC's own reporting-template definitions, not independently confirmed against Waymo S2's 'RO miles' definition in the sources ingested so far.",
+    "A large gap between these numbers is expected given the above, not evidence of a data error in either source."
+  ]
+}
