@@ -2,8 +2,9 @@ import { promises as fs } from "fs";
 import path from "path";
 import { ActivityMonthlyDataset } from "@/lib/activity";
 import { SgoMonthlyDataset, WaymoS2StateSummary } from "@/lib/safety";
+import { StatePermitRegistry } from "@/lib/registry";
+import Link from "next/link";
 import {
-  cpucTripsStat,
   sgoIncidentsStat,
   waymoTotalMiles,
   entitiesReportingStat,
@@ -25,21 +26,25 @@ const STATE_NAME_TO_ABBREV: Record<string, string> = {
 };
 
 export default async function OverviewPage() {
-  const [cpuc, sgo, waymoS2] = await Promise.all([
+  const [cpuc, sgo, waymoS2, registry] = await Promise.all([
     loadJson<ActivityMonthlyDataset>("cpuc_activity_monthly.json"),
     loadJson<SgoMonthlyDataset>("sgo_incidents_monthly.json"),
     loadJson<WaymoS2StateSummary>("waymo_s2_state_summary.json"),
+    loadJson<StatePermitRegistry>("state_permit_registry.json"),
   ]);
-
-  const trips = cpucTripsStat(cpuc);
   const incidents = sgoIncidentsStat(sgo);
   const totalWaymoMiles = waymoTotalMiles(waymoS2);
   const entities = entitiesReportingStat(sgo);
 
   const milesByAbbrev: Record<string, number> = {};
-  for (const s of waymoS2.state_summary) {
-    milesByAbbrev[STATE_NAME_TO_ABBREV[s.state] ?? s.state] = s.waymo_ro_miles;
+  for (const s of waymoS2.state_summary) milesByAbbrev[STATE_NAME_TO_ABBREV[s.state] ?? s.state] = s.waymo_ro_miles;
+
+  const authorizationByState: Record<string, number> = {};
+  for (const p of registry.all_permits) {
+    if (p.state === "US" || p.source_category === "operational_evidence") continue;
+    authorizationByState[p.state] = (authorizationByState[p.state] ?? 0) + 1;
   }
+  const authorizationStates = Object.keys(authorizationByState).length;
 
   const dataAvailability: { state: string; cpuc: boolean; sgo: boolean; waymoS2: boolean }[] = (() => {
     const states = new Set<string>(["CA", ...sgo.states_represented, ...Object.keys(milesByAbbrev)]);
@@ -71,32 +76,10 @@ export default async function OverviewPage() {
       <div className="mt-10">
         <div className="eyebrow mb-3">National indicators</div>
         <div className="flex flex-wrap gap-4">
-        <StatTile
-          label="California AV Passenger Trips (CPUC)"
-          value={trips.total.toLocaleString()}
-          pctChange={trips.pctChange}
-          caption="Observed to date, CPUC-reported operators only"
-        />
-        <StatTile
-          label="Waymo Reported Miles (All States)"
-          value={`${(totalWaymoMiles / 1_000_000).toFixed(1)}M`}
-          caption={`Cumulative through vintage ${waymoS2.vintage_end}, Waymo-published data`}
-        />
-        <StatTile
-          label="Reported Incidents (NHTSA SGO, National)"
-          value={incidents.total.toLocaleString()}
-          pctChange={incidents.pctChange}
-          caption="All ADS operators, all states"
-        />
-        <StatTile
-          label="ADS Operators Reporting (NHTSA SGO)"
-          value={entities.total.toString()}
-          caption={
-            entities.newThisYear !== null
-              ? `${entities.newThisYear} new in ${entities.latestYear} vs ${entities.latestYear - 1}`
-              : "All-time, national"
-          }
-        />
+        <StatTile label="States in national incident data" value={sgo.states_represented.length.toString()} caption="States represented in NHTSA SGO incident reports" />
+        <StatTile label="ADS reporting entities" value={entities.total.toString()} caption="Entities represented in the national SGO dataset" />
+        <StatTile label="Reported incidents" value={incidents.total.toLocaleString()} pctChange={incidents.pctChange} caption="NHTSA SGO, all represented operators and states" />
+        <StatTile label="States with authorization records" value={authorizationStates.toString()} caption="States with company-level permit / registry records currently ingested" />
         </div>
       </div>
 
@@ -104,19 +87,26 @@ export default async function OverviewPage() {
         <div>
           <div className="eyebrow">National footprint</div>
           <h2 className="text-2xl font-semibold tracking-tight mt-1">Where AV activity is visible in public data</h2>
-          <p className="mt-2 text-sm text-neutral-600 max-w-2xl">The map reflects published operator mileage, while the Deployment Explorer adds permits, testing registries, and other state-level authorization records.</p>
+          <p className="mt-2 text-sm text-neutral-600 max-w-2xl">The map shows where the Observatory currently has company-level testing or deployment authorization records. It is a map of documented public records, not a claim that unshaded states have no AV activity.</p>
         </div>
+      </div>
+
+      <div className="mt-10">
+        <div className="eyebrow">Operator-published exposure</div>
+        <h2 className="text-2xl font-semibold tracking-tight mt-1">Where detailed mileage data exist</h2>
+        <p className="mt-2 text-sm text-neutral-600 max-w-2xl">National comparability is still limited. Waymo publishes geographically detailed mileage that lets the Observatory examine exposure beyond permit status.</p>
       </div>
 
       <div className="mt-4 grid lg:grid-cols-3 gap-4">
         <div className="lg:col-span-2">
           <Panel
-            title="Waymo Reported Operational Miles by State"
-            subtitle="Only states with published Waymo S2-cell benchmark data are shaded; other states have no public operational-miles data in this Observatory yet."
-            source="Waymo self-published safety benchmark data"
+            title="Testing and deployment records by state"
+            subtitle="Number of company-level authorization or registry records currently ingested for each state."
+            source="State DMV, DOT, PUC, and related public registries"
           >
-            <UsStateMap valueByAbbrev={milesByAbbrev} />
+            <UsStateMap valueByAbbrev={authorizationByState} />
           </Panel>
+          <div className="mt-3 text-sm"><Link href="/deployment" className="underline font-medium text-[#0b1d33]">Open the national Deployment Explorer →</Link></div>
         </div>
         <Panel
           title="California deep dive: passenger trips"
