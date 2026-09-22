@@ -1,9 +1,13 @@
 import { promises as fs } from "fs";
 import path from "path";
 import { ActivityMonthlyDataset } from "@/lib/activity";
-import { ChartCard } from "@/components/ChartCard";
 import { ActivityExplorer } from "@/components/ActivityExplorer";
-import { VmtPeriodChart, NonPassengerShareChart, TripsByProgramChart } from "@/components/ActivityCharts";
+import {
+  WaymoCompositeStats,
+  WaymoWaitingTime,
+  WaymoVmtUtilization,
+  WaymoParkingEstimate,
+} from "@/components/ActivityEfficiency";
 
 async function loadDataset(): Promise<ActivityMonthlyDataset> {
   const file = path.join(process.cwd(), "public", "data", "cpuc_activity_monthly.json");
@@ -16,29 +20,43 @@ export default async function ActivityPage() {
 
   return (
     <div className="max-w-6xl px-8 py-6">
-      <p className="eyebrow mb-3">Activity · State data</p>
-      <h1 className="text-4xl font-semibold tracking-tight max-w-3xl">How AV fleets are being used</h1>
-      <p className="mt-2 text-sm text-neutral-600 max-w-3xl">California passenger-service activity from CPUC reporting: trips, VMT, waiting time, and trip-cycle mileage.</p>
+      <p className="eyebrow mb-3">Activity · California</p>
+      <h1 className="text-4xl font-semibold tracking-tight max-w-3xl">Trips, waiting time, VMT, and fleet utilization</h1>
+      <p className="mt-2 text-sm text-neutral-600 max-w-3xl">
+        CPUC passenger-service reporting, with derived operating indicators calculated from the reported monthly fields.
+      </p>
 
-      <section className="mt-6">
-        <h2 className="text-xl font-semibold tracking-tight">California passenger-service activity</h2>
-        <div className="viz-card p-4 mt-2"><ActivityExplorer rows={dataset.data} /></div>
+      <section className="mt-5">
+        <WaymoCompositeStats rows={dataset.data} />
       </section>
 
-      <section className="mt-5 grid lg:grid-cols-2 gap-3">
-        <ChartCard title="Trips by operating program" subtitle="Shows how reported passenger activity shifted between driverless deployment and drivered/pilot programs." source="CPUC AV Program deployment reports">
-          <TripsByProgramChart rows={dataset.data} />
-        </ChartCard>
-        <ChartCard title="Share of VMT without a passenger" subtitle="Period 1 + Period 2 as a share of total VMT. A measure of fleet circulation and repositioning." source="CPUC AV Program deployment reports">
-          <NonPassengerShareChart rows={dataset.data} />
-        </ChartCard>
+      <section className="mt-7">
+        <div className="flex items-baseline justify-between gap-3 mb-2">
+          <h2 className="text-xl font-semibold tracking-tight">Passenger activity</h2>
+          <span className="text-sm text-neutral-500">Company · program · measure</span>
+        </div>
+        <div className="viz-card p-4"><ActivityExplorer rows={dataset.data} /></div>
       </section>
 
-      <section className="mt-1">
-        <ChartCard title="Where the miles occur in the trip cycle" subtitle="Occupied, en route to pickup, and idle/positioning VMT under CPUC's reporting definitions." source="CPUC AV Deployment Data Template and Dictionary">
-          <VmtPeriodChart rows={dataset.data} />
-        </ChartCard>
+      <section className="mt-7">
+        <h2 className="text-xl font-semibold tracking-tight mb-2">Waiting time</h2>
+        <WaymoWaitingTime rows={dataset.data} />
       </section>
+
+      <section className="mt-7">
+        <h2 className="text-xl font-semibold tracking-tight mb-2">VMT and utilization</h2>
+        <WaymoVmtUtilization rows={dataset.data} />
+      </section>
+
+      <section className="mt-7">
+        <h2 className="text-xl font-semibold tracking-tight mb-2">Estimated stationary time</h2>
+        <WaymoParkingEstimate rows={dataset.data} />
+      </section>
+
+      <div className="mt-5 text-xs text-neutral-500 max-w-4xl leading-relaxed">
+        CPUC periods: P1 = unassigned after a trip and before accepting the next trip; P2 = en route to pickup after accepting a trip; P3 = passenger aboard.
+        Non-passenger VMT is P1 + P2. Estimated stationary P1 time uses a 14 mph assumed average moving speed and is not directly reported by CPUC.
+      </div>
     </div>
   );
 }

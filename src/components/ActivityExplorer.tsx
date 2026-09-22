@@ -16,9 +16,8 @@ const PROGRAMS: Record<string,string> = {
 };
 const METRICS = {
   trips: {label:"Passenger trips", key:"total_trips" as const, unit:"trips"},
-  vmt: {label:"Vehicle miles traveled", key:"total_vmt_all_periods" as const, unit:"miles"},
   passengerMiles: {label:"Passenger miles", key:"total_passenger_miles_traveled" as const, unit:"passenger-miles"},
-  waiting: {label:"Fleet waiting hours", key:"total_waiting_hours" as const, unit:"hours"},
+  passengers: {label:"Passengers carried", key:"total_passengers_carried" as const, unit:"passengers"},
 };
 
 export function ActivityExplorer({ rows }: { rows: ActivityMonthlyRow[] }) {
