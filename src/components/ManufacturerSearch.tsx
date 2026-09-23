@@ -46,6 +46,39 @@ function canonicalCompany(s: string) {
   return s.toUpperCase().replace(/[^A-Z0-9]+/g, " ").replace(/\b(INC|LLC|CORP|CORPORATION)\b/g, "").replace(/\s+/g, " ").trim();
 }
 
+const COMPANY_DOMAINS: Record<string, string> = {
+  "WAYMO": "waymo.com",
+  "ZOOX": "zoox.com",
+  "MOTIONAL": "motional.com",
+  "OPTIMUS RIDE": "optimusride.com",
+  "AURORA": "aurora.tech",
+  "AURORA INNOVATION": "aurora.tech",
+  "KODIAK ROBOTICS": "kodiak.ai",
+  "KODIAK": "kodiak.ai",
+  "MAY MOBILITY": "maymobility.com",
+  "NURO": "nuro.ai",
+  "WERIDE": "weride.ai",
+  "WE RIDE": "weride.ai",
+  "AVRIDE": "avride.ai",
+  "BEEP": "ridebeep.com",
+  "GATIK": "gatik.ai",
+  "PLUSAI": "plus.ai",
+  "PLUS AI": "plus.ai",
+  "TORC": "torc.ai",
+  "TORC ROBOTICS": "torc.ai",
+  "MOIA": "moia.io",
+  "MOIA AMERICA": "moia.io",
+  "MOBILEYE": "mobileye.com",
+  "TESLA": "tesla.com",
+  "AUTOX": "autox.ai",
+  "PONY AI": "pony.ai",
+};
+
+function companyLogoUrl(name: string) {
+  const domain = COMPANY_DOMAINS[canonicalCompany(name)];
+  return domain ? `https://www.google.com/s2/favicons?domain=${domain}&sz=64` : null;
+}
+
 export function ManufacturerSearch({
   manufacturers,
   stateStatuses = [],
@@ -161,7 +194,7 @@ export function ManufacturerSearch({
       </label>
     </div>
 
-    <div className="grid lg:grid-cols-[1.45fr_.55fr] gap-5 mt-5">
+    <div className="mt-5">
       <div className="viz-card p-5">
         <div className="flex items-start justify-between gap-4 mb-2">
           <div>
@@ -170,7 +203,7 @@ export function ManufacturerSearch({
               {evidence === "authorizations" ? "States with matching permit / registry records" : "Where the selected AV activity is documented"}
             </h3>
           </div>
-          <div className="text-right text-xs text-neutral-500">{mapStates.length} states</div>
+          <div className="text-right text-xs text-neutral-500">{companyCount} matching compan{companyCount === 1 ? "y" : "ies"}</div>
         </div>
         {useNationalCategoryMap ? (
           <UsStateMap
@@ -192,12 +225,24 @@ export function ManufacturerSearch({
           <span>{evidence === "authorizations" ? "Permit / registry records are state-level unless a source publishes a more specific ODD." : "Click a state to filter."}</span>
         </div>
         {matchingCompanies.length > 0 && (
-          <div className="mt-3 border-t border-neutral-200 pt-3">
-            <div className="text-xs font-semibold uppercase tracking-wide text-neutral-500 mb-2">
+          <div className="mt-4 border-t border-neutral-200 pt-4">
+            <div className="text-xs font-semibold uppercase tracking-wide text-neutral-500 mb-3">
               Companies matching these filters
             </div>
-            <div className="flex flex-wrap gap-1.5">
-              {matchingCompanies.map(name => <span key={name} className="badge">{name}</span>)}
+            <div className="flex flex-wrap gap-2">
+              {matchingCompanies.map(name => {
+                const logo = companyLogoUrl(name);
+                return (
+                  <div key={name} className="inline-flex items-center gap-2 rounded-lg border border-neutral-200 bg-white px-3 py-2">
+                    {logo ? <img src={logo} alt="" className="h-7 w-7 rounded object-contain bg-white" /> : (
+                      <span className="h-7 w-7 rounded bg-neutral-100 inline-flex items-center justify-center text-xs font-semibold text-neutral-500">
+                        {name.slice(0,1)}
+                      </span>
+                    )}
+                    <span className="text-sm font-medium text-neutral-800">{name}</span>
+                  </div>
+                );
+              })}
             </div>
           </div>
         )}
@@ -207,12 +252,6 @@ export function ManufacturerSearch({
             <div className="text-neutral-600 mt-1">{selectedStatus.note}</div>
           </div>
         )}
-      </div>
-      <div className="grid grid-cols-2 lg:grid-cols-1 gap-3">
-        <Kpi value={companyCount} label="companies" />
-        <Kpi value={mapStates.length} label="states" />
-        <Kpi value={permitCount} label="authorization / registry records" />
-        <Kpi value={evidenceCount} label="operational-evidence records" />
       </div>
     </div>
 
