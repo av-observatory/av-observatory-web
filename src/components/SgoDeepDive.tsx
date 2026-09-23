@@ -57,6 +57,7 @@ function oddLabel(raw:string) {
 function vehicleLabel(make:string,model:string) {
   const normalizedMake = ({JAGUAR:"Jaguar",JLR:"Jaguar",HYUNDAI:"Hyundai",TESLA:"Tesla",TOYOTA:"Toyota",ZOOX:"Zoox",ZEEKR:"Zeekr"} as Record<string,string>)[make.trim()] ?? make.trim();
   const normalizedModel = /^i[- ]?pace$/i.test(model.trim()) ? "I-PACE" : model.trim();
+  if (normalizedMake.toLowerCase() === normalizedModel.toLowerCase()) return normalizedMake;
   return [normalizedMake,normalizedModel].filter(Boolean).join(" ") || "Unknown";
 }
 function ym(r:SgoIncidentRow){return `${r.report_year}-${String(r.report_month).padStart(2,"0")}`;}
