@@ -309,6 +309,28 @@ export function OddExplorer({
     !polygonMarketKeys.has(`${canonicalCompany(p.company).toLowerCase()}|${canonicalMarket(p.market)}|${p.state}`)
   ), [points, polygonMarketKeys]);
 
+  const marketFacets = useMemo(() => {
+    const map = new Map<string, { market:string; state:string; polygons:OddPolygon[]; points:OddPoint[]; companies:Set<string> }>();
+    const ensure = (marketName:string, stateName:string) => {
+      const key = `${canonicalMarket(marketName)}|${stateName}`;
+      if (!map.has(key)) map.set(key, { market:marketName, state:stateName, polygons:[], points:[], companies:new Set<string>() });
+      return map.get(key)!;
+    };
+    for (const p of polygons) {
+      const facet = ensure(p.market, p.state);
+      facet.polygons.push(p);
+      facet.companies.add(canonicalCompany(p.company));
+    }
+    for (const p of visiblePoints) {
+      const facet = ensure(p.market, p.state);
+      facet.points.push(p);
+      facet.companies.add(canonicalCompany(p.company));
+    }
+    return Array.from(map.values()).sort((a,b) =>
+      a.state.localeCompare(b.state) || a.market.localeCompare(b.market)
+    );
+  }, [polygons, visiblePoints]);
+
   const coverageRows = useMemo(() => companies.map(name => {
     const polygonCount = latestPerMarket.filter(p => canonicalCompany(p.company) === name).length + currentRouteGeometries.filter(p => canonicalCompany(p.company) === name).length;
     const currentMarketCount = locations.filter(d => canonicalCompany(d.company) === name && (d.evidence_status ?? "current") === "current").length;
@@ -380,30 +402,56 @@ export function OddExplorer({
       </div>
     </div>
 
-    <div className="grid lg:grid-cols-[1.55fr_.45fr] gap-3 mt-3">
-      <div className="viz-card p-4">
-        <div className="flex items-baseline justify-between gap-4 mb-2">
-          <div>
-            <h2 className="text-xl font-semibold">ODD and service-area boundaries</h2>
-            <div className="text-sm text-neutral-500">{evidence==="current" ? "Current testing/deployment geography, with exact boundaries only where sourced." : evidence==="announced" ? "Future activity mentioned by a source; not counted as current operation." : "Historical geometry archive."}</div>
-          </div>
-          <span className="text-sm text-neutral-500">{polygons.length} geometries</span>
+    <div className="mt-3">
+      <div className="flex items-baseline justify-between gap-4 mb-2">
+        <div>
+          <h2 className="text-xl font-semibold">ODD and service-area markets</h2>
+          <div className="text-sm text-neutral-500">{evidence==="current" ? "Each card is a separate current market / corridor. Exact boundaries are shown only where sourced; otherwise the market remains a point." : evidence==="announced" ? "Future markets mentioned by a source; not counted as current operation." : "Historical market snapshots."}</div>
         </div>
-        <OddMap polygons={polygons} points={visiblePoints} onPolygonClick={setSelected} />
+        <span className="text-sm text-neutral-500">{marketFacets.length} markets</span>
       </div>
 
-      <div className="grid gap-3 content-start">
-        <div className="viz-card p-4"><div className="text-3xl font-semibold tabular-nums">{new Set([...polygons.map(d=>canonicalCompany(d.company)), ...visiblePoints.map(d=>canonicalCompany(d.company))]).size}</div><div className="text-sm text-neutral-500">companies in current market layer</div></div>
-        <div className="viz-card p-4"><div className="text-3xl font-semibold tabular-nums">{new Set([...polygons.map(d=>d.state), ...visiblePoints.map(d=>d.state)]).size}</div><div className="text-sm text-neutral-500">states</div></div>
-        <div className="viz-card p-4"><div className="text-3xl font-semibold tabular-nums">{polygons.length}</div><div className="text-sm text-neutral-500">sourced boundaries / corridors</div></div>
-        {selected && <div className="viz-card p-4">
-          <div className="text-xs uppercase tracking-wide text-neutral-500">Selected boundary</div>
-          <div className="font-semibold mt-1">{selected.company} · {selected.market}</div>
-          <div className="text-sm text-neutral-600 mt-1">{selected.phase} · {selected.event_date ?? "date unknown"}</div>
-          <div className="text-xs text-neutral-500 mt-2 break-all">{selected.geometry_ref}</div>
-          {selected.source_url && <a className="text-sm underline inline-block mt-2" href={selected.source_url} target="_blank" rel="noreferrer">source</a>}
-        </div>}
+      {marketFacets.length === 0 ? (
+        <div className="viz-card p-5 text-sm text-neutral-500">No geography matches these filters.</div>
+      ) : (
+        <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-3">
+          {marketFacets.map((facet) => (
+            <div key={`${canonicalMarket(facet.market)}-${facet.state}`} className="viz-card overflow-hidden">
+              <div className="p-4 pb-3">
+                <div className="flex items-start justify-between gap-3">
+                  <div>
+                    <h3 className="font-semibold text-lg">{facet.market}</h3>
+                    <div className="text-sm text-neutral-500">{facet.state}</div>
+                  </div>
+                  <div className="text-xs text-neutral-400 text-right">
+                    {facet.polygons.length > 0 ? `${facet.polygons.length} sourced geometr${facet.polygons.length===1?"y":"ies"}` : "point evidence"}
+                  </div>
+                </div>
+                <div className="mt-2 flex flex-wrap gap-1.5">
+                  {Array.from(facet.companies).sort().map(name => <span key={name} className="badge">{name}</span>)}
+                </div>
+              </div>
+              <div className="px-3 pb-3">
+                <OddMap polygons={facet.polygons} points={facet.points} onPolygonClick={setSelected} compact hideLegend />
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      <div className="mt-3 flex flex-wrap gap-x-5 gap-y-1 text-xs text-neutral-600">
+        <span><span className="inline-block w-3 h-3 align-middle mr-1 rounded-sm bg-[#2a78d6]/25 border border-[#184f95]" />Deployment/service boundary</span>
+        <span><span className="inline-block w-3 h-3 align-middle mr-1 rounded-sm bg-[#eda100]/25 border border-[#a86f00]" />Testing boundary</span>
+        <span><span className="inline-block w-3 h-1 align-middle mr-1 bg-[#184f95]" />Road-following corridor</span>
+        <span><span className="inline-block w-2.5 h-2.5 align-middle mr-1 rounded-full bg-[#eb6834]" />Current market without sourced polygon</span>
       </div>
+
+      {selected && <div className="viz-card p-4 mt-3">
+        <div className="text-xs uppercase tracking-wide text-neutral-500">Selected boundary</div>
+        <div className="font-semibold mt-1">{selected.company} · {selected.market}</div>
+        <div className="text-sm text-neutral-600 mt-1">{selected.phase} · {selected.event_date ?? "date unknown"}</div>
+        {selected.source_url && <a className="text-sm underline inline-block mt-2" href={selected.source_url} target="_blank" rel="noreferrer">source</a>}
+      </div>}
     </div>
 
     <div className="viz-card mt-3 overflow-hidden">
