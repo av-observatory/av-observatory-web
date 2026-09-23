@@ -14,16 +14,40 @@ type Feature = {
 };
 type FeatureCollection = { type: "FeatureCollection"; features: Feature[] };
 
-function reverseRings(geometry: any) {
+function signedRingArea(ring: number[][]) {
+  let area = 0;
+  for (let i = 0; i < ring.length - 1; i++) {
+    const [x1, y1] = ring[i];
+    const [x2, y2] = ring[i + 1];
+    area += x1 * y2 - x2 * y1;
+  }
+  return area / 2;
+}
+
+function normalizeRing(ring: number[][], exterior: boolean) {
+  const area = signedRingArea(ring);
+  // react-simple-maps / d3-geo expects exterior rings clockwise in lon/lat
+  // (negative planar signed area) and holes counter-clockwise. AV Map source
+  // geometries contain mixed winding, so normalize each ring independently.
+  const shouldReverse = exterior ? area > 0 : area < 0;
+  return shouldReverse ? [...ring].reverse() : ring;
+}
+
+function normalizeWinding(geometry: any) {
   if (!geometry || !geometry.type || !geometry.coordinates) return geometry;
   if (geometry.type === "Polygon") {
-    return { ...geometry, coordinates: geometry.coordinates.map((ring: number[][]) => [...ring].reverse()) };
+    return {
+      ...geometry,
+      coordinates: geometry.coordinates.map((ring: number[][], i: number) =>
+        normalizeRing(ring, i === 0)
+      ),
+    };
   }
   if (geometry.type === "MultiPolygon") {
     return {
       ...geometry,
       coordinates: geometry.coordinates.map((poly: number[][][]) =>
-        poly.map((ring: number[][]) => [...ring].reverse())
+        poly.map((ring: number[][], i: number) => normalizeRing(ring, i === 0))
       ),
     };
   }
@@ -110,10 +134,9 @@ export function OddMap({
     type: "FeatureCollection",
     features: polygons.map(p => ({
       ...p.feature,
-      // d3-geo/react-simple-maps uses the opposite spherical ring winding from
-      // RFC 7946 GeoJSON. Reverse rings so a city service area is not rendered
-      // as "the entire world except the city".
-      geometry: reverseRings(p.feature.geometry),
+      // Normalize mixed source winding so no service area is interpreted as
+      // the complement of its intended polygon.
+      geometry: normalizeWinding(p.feature.geometry),
       properties: {
         ...(p.feature.properties ?? {}),
         __company: p.company,
