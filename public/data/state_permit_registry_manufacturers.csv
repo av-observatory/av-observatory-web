@@ -1,0 +1,80 @@
+manufacturer_key,display_name,company_status,status_note,states,state_count,permit_count
+WAYMO,WAYMO LLC,current_or_unknown,,"[""AZ"",""CA"",""CO"",""DC"",""FL"",""GA"",""NV"",""PA"",""TN"",""TX"",""US"",""WA""]",12,24
+MAY MOBILITY,MAY MOBILITY,current_or_unknown,,"[""AZ"",""CA"",""FL"",""GA"",""IN"",""MI"",""MN"",""TX"",""US""]",9,11
+ARGO AI,Argo AI,historical,NHTSA lists Argo AI among removed VSSAs (no longer active).,"[""CA"",""DC"",""FL"",""PA"",""TX"",""US""]",6,6
+BEEP,Beep,current_or_unknown,,"[""AZ"",""CA"",""DC"",""FL"",""MS"",""WY""]",6,6
+ZOOX,ZOOX INC.,current_or_unknown,,"[""CA"",""FL"",""NV"",""TX"",""US"",""WA""]",6,11
+AURORA,"AURORA OPERATIONS, INC.",current_or_unknown,,"[""AZ"",""CA"",""NM"",""TX"",""US""]",5,5
+FORD MOTOR COMPANY,Ford Motor Company,current_or_unknown,,"[""CA"",""DC"",""FL"",""PA"",""TX""]",5,5
+KODIAK,KODIAK AI,current_or_unknown,,"[""CA"",""OK"",""TX"",""US""]",4,4
+MOTIONAL,Motional,current_or_unknown,,"[""MA"",""NV"",""PA"",""US""]",4,4
+NURO,"NURO, INC.",current_or_unknown,,"[""AZ"",""CA"",""TX"",""US""]",4,8
+STACK,Stack,current_or_unknown,,"[""AZ"",""NM"",""PA"",""US""]",4,4
+TORC,Torc,current_or_unknown,,"[""AZ"",""NM"",""TX"",""US""]",4,4
+TOYOTA MOTOR ENGINEERING & MANUFACTURING,Toyota Motor Engineering & Manufacturing,current_or_unknown,,"[""AZ"",""IN"",""MI"",""TX""]",4,4
+TRANSDEV ALTERNATIVE SERVICES,Transdev Alternative Services,current_or_unknown,,"[""AZ"",""CA"",""GA"",""TX""]",4,4
+CRUISE,Cruise,current_or_unknown,,"[""AZ"",""CA"",""TX""]",3,4
+EASYMILE,EasyMile,current_or_unknown,,"[""CO"",""MN"",""US""]",3,3
+GATIK,GATIK AI INC.,current_or_unknown,,"[""AR"",""AZ"",""CA""]",3,3
+GENERAL MOTORS,"General Motors, LLC",current_or_unknown,,"[""AZ"",""CA"",""TX""]",3,3
+HYUNDAI MOTOR AMERICA,Hyundai Motor America,current_or_unknown,,"[""CA"",""NV"",""OH""]",3,3
+NVIDIA,NVIDIA CORPORATION,current_or_unknown,,"[""CA"",""US"",""WA""]",3,4
+PLUS,"PLUSAI, INC.",current_or_unknown,,"[""CA"",""TX"",""US""]",3,3
+PONYAI,PONY.AI,current_or_unknown,,"[""AZ"",""CA"",""US""]",3,4
+WERIDE,WeRide AI,current_or_unknown,,"[""CA"",""NV"",""US""]",3,7
+APPLE,Apple,current_or_unknown,,"[""CA"",""US""]",2,2
+DAIMLER TRUCKS NORTH AMERICA,"Daimler Trucks North America, LLC",current_or_unknown,,"[""NM"",""TX""]",2,2
+MERCEDES-BENZ,MERCEDES-BENZ RESEARCH & DEVELOPMENT NORTH AMERICA,current_or_unknown,,"[""CA"",""US""]",2,3
+NAVISTAR,"Navistar, Inc.",current_or_unknown,,"[""AZ"",""PA""]",2,2
+NAVYA,Navya,current_or_unknown,,"[""FL"",""US""]",2,2
+PACCAR INCORPORATED,PACCAR Incorporated,current_or_unknown,,"[""OK"",""TX""]",2,2
+ROBOTIC RESEARCH,Robotic Research,current_or_unknown,,"[""GA"",""WY""]",2,2
+TESLA,Tesla,current_or_unknown,,"[""AZ"",""TX""]",2,2
+TUSIMPLE,TuSimple,current_or_unknown,,"[""AZ"",""US""]",2,2
+VINFAST AUTO,"VinFast Auto, LLC",current_or_unknown,,"[""CA"",""WA""]",2,2
+WAABI,Waabi,current_or_unknown,,"[""AZ"",""US""]",2,2
+AIMOTIVE,AIMOTIVE INC.,current_or_unknown,,"[""CA""]",1,1
+AMBARELLA,Ambarella,current_or_unknown,,"[""NV""]",1,1
+APOLLO AUTONOMOUS DRIVING USA,Apollo Autonomous Driving USA,current_or_unknown,,"[""CA""]",1,1
+AUDI OF AMERICA,AUDI OF AMERICA,current_or_unknown,,"[""CA""]",1,1
+AUTOMO USA,AutoMo USA LLC,current_or_unknown,,"[""CA""]",1,2
+AUTONOMOUS A2Z,Autonomous a2z,current_or_unknown,,"[""US""]",1,1
+AUTOX,AutoX,current_or_unknown,,"[""US""]",1,1
+AUTOX TECHNOLOGIES,AutoX Technologies Inc,current_or_unknown,,"[""CA""]",1,1
+AVRIDE,Avride Inc.,current_or_unknown,,"[""TX""]",1,1
+CHRYSLER (FCA US LLC),"Chrysler (FCA US, LLC)",current_or_unknown,,"[""MI""]",1,1
+FIRST TRANSIT,First Transit,current_or_unknown,,"[""MN""]",1,1
+FORD,Ford,current_or_unknown,,"[""US""]",1,1
+GHOST AUTONOMY,Ghost Autonomy Inc.,current_or_unknown,,"[""CA""]",1,1
+GM,GM,current_or_unknown,,"[""US""]",1,1
+HELMAI,HELM.AI INC.,current_or_unknown,,"[""CA""]",1,1
+IKE,Ike,current_or_unknown,,"[""US""]",1,1
+IMAGRY,IMAGRY INC.,current_or_unknown,,"[""CA""]",1,1
+KIA AMERICA,"Kia America, Inc.",current_or_unknown,,"[""MI""]",1,1
+LOCAL MOTORS,Local Motors,current_or_unknown,,"[""US""]",1,1
+LOCAL MOTORS INDUSTRIES,Local Motors Industries,current_or_unknown,,"[""WY""]",1,1
+LOCOMATION,Locomation,current_or_unknown,,"[""US""]",1,1
+LUCID USA,"Lucid USA, Inc.",current_or_unknown,,"[""RI""]",1,1
+LYFT,Lyft,current_or_unknown,,"[""US""]",1,1
+MARS AUTO,Mars Auto,current_or_unknown,,"[""US""]",1,1
+MERCEDES-BENZ USA,"Mercedes-Benz USA, LLC",current_or_unknown,,"[""CA""]",1,1
+MOBILEYE VISION TECHNOLOGIES,Mobileye Vision Technologies,current_or_unknown,,"[""TX""]",1,1
+MOIA AMERICA,MOIA America,current_or_unknown,,"[""CA""]",1,2
+NIKOLA,Nikola,current_or_unknown,,"[""AZ""]",1,1
+NISSAN,NISSAN,current_or_unknown,,"[""CA""]",1,1
+OHMIO,OHMIO INC.,current_or_unknown,,"[""CA""]",1,2
+OPTIMUS RIDE,Optimus Ride,current_or_unknown,,"[""MA""]",1,1
+OXBOTICA,Oxbotica,current_or_unknown,,"[""FL""]",1,1
+QUALCOMM TECHNOLOGIES,"QUALCOMM TECHNOLOGIES, INC.",current_or_unknown,,"[""CA""]",1,1
+ROBERT BOSCH,"Robert Bosch, LLC",current_or_unknown,,"[""CA""]",1,1
+ROBOMART,Robomart,current_or_unknown,,"[""US""]",1,1
+STARSKY ROBOTICS,Starsky Robotics,current_or_unknown,,"[""US""]",1,1
+TELENAV,"TELENAV, INC.",current_or_unknown,,"[""CA""]",1,1
+TENSOR,TENSOR AUTO INC.,current_or_unknown,,"[""CA""]",1,3
+TESLA ROBOTAXI,TESLA ROBOTAXI LLC,current_or_unknown,,"[""CA""]",1,1
+UBER,Uber,current_or_unknown,,"[""US""]",1,1
+VOLKSWAGEN,Volkswagen,current_or_unknown,,"[""US""]",1,1
+VOLKSWAGEN GROUP OF AMERICA,"Volkswagen Group of America, Inc.",current_or_unknown,,"[""TX""]",1,1
+VOLVO CAR USA,"Volvo Car USA, LLC",current_or_unknown,,"[""FL""]",1,1
+VUERON TECHNOLOGY USA,"VUERON TECHNOLOGY USA, INC.",current_or_unknown,,"[""CA""]",1,1
+WOVEN BY TOYOTA,WOVEN BY TOYOTA,current_or_unknown,,"[""CA""]",1,1

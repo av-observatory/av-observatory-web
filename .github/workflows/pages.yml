@@ -42,6 +42,9 @@ jobs:
       - name: Validate latest-version SGO reports
         run: python3 scripts/validate-sgo-snapshot.py
 
+      - name: Validate CSV companions
+        run: python3 scripts/export-data-csv.py --check
+
       - name: Build static site
         env:
           NEXT_PUBLIC_POLICY_R2_URL: ${{ vars.POLICY_R2_PUBLIC_URL }}

@@ -1,4 +1,4 @@
-import { readdirSync, statSync } from "node:fs";
+import { readdirSync } from "node:fs";
 import { join } from "node:path";
 
 const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
@@ -34,22 +34,34 @@ function descriptionFor(name: string) {
   if (name === "state_permit_registry.json" || name === "ma_adt_testing_registry.json") return "Agency permit and testing registry snapshot.";
   return "Derived research dataset used by the Observatory.";
 }
-const files = readdirSync(DATA_DIR).filter(name => FORMATS.has(name.split(".").pop() ?? ""))
-  .map(name => ({ name, group: groupFor(name), size: statSync(join(DATA_DIR, name)).size }));
+const files = readdirSync(DATA_DIR).filter(name => FORMATS.has(name.split(".").pop() ?? ""));
+const csvFiles = files.filter(name => name.endsWith(".csv"));
+const datasets = files.filter(name => !name.endsWith(".csv") || name === "sgo_incidents.csv" || name === "sgo_incidents_all_versions.csv");
+function companionCsv(name: string) {
+  if (name.endsWith(".csv")) return [];
+  const stem = name.replace(/\.(json|geojson)$/, "");
+  return csvFiles.filter(file => file === `${stem}.csv` || file.startsWith(`${stem}_`));
+}
 
 export default function DownloadsPage() {
   return <main className="max-w-5xl px-8 py-8">
     <p className="eyebrow">Data / Downloads</p>
     <h1 className="text-4xl font-semibold tracking-tight text-[#0b1d33] mt-2">Data Catalog</h1>
-    <p className="mt-3 max-w-3xl text-neutral-600 leading-relaxed">Download every machine readable dataset used by this site. Files are available directly from this deployed revision; the R2 archive stores immutable, checked snapshots. Review the linked tracker for sourcing and interpretation before reuse.</p>
+    <p className="mt-3 max-w-3xl text-neutral-600 leading-relaxed">Choose JSON for the complete structured record, CSV for analysis in a spreadsheet, or GeoJSON for maps. Related CSV tables keep bill stages, company developments, and other repeating records together by ID. Each deployed file also has a verified R2 backup.</p>
     <p className="mt-2 text-sm text-neutral-600">{files.length} files · JSON, CSV, and GeoJSON</p>
     {GROUPS.map(group => <section key={group.key} className="mt-8">
       <h2 className="text-2xl font-semibold text-[#0b1d33]">{group.name}</h2>
       <p className="mt-1 text-sm text-neutral-600">{group.description}</p>
       <div className="mt-4 grid gap-3">
-        {files.filter(file => file.group === group.key).map(file => <article key={file.name} className="bg-white border border-[#dce5ec] rounded-lg px-5 py-4 sm:flex sm:items-center sm:justify-between gap-6">
-          <div className="min-w-0"><h3 className="font-semibold text-[#152b45]">{labelFor(file.name)}</h3><p className="text-sm text-neutral-600 mt-1">{descriptionFor(file.name)}</p><p className="text-xs text-neutral-500 mt-1 break-all">{file.name}</p></div>
-          <a href={`${BASE_PATH}/data/${file.name}`} download className="inline-block mt-3 sm:mt-0 shrink-0 text-sm font-semibold text-[#184f95] underline underline-offset-2">Download {file.name.split(".").pop()?.toUpperCase()} ↗</a>
+        {datasets.filter(name => groupFor(name) === group.key).map(name => <article key={name} className="bg-white border border-[#dce5ec] rounded-lg px-5 py-4">
+          <h3 className="font-semibold text-[#152b45]">{labelFor(name)}</h3><p className="text-sm text-neutral-600 mt-1">{descriptionFor(name)}</p>
+          <div className="mt-3 flex flex-wrap items-center gap-4 text-sm">
+            <a href={`${BASE_PATH}/data/${name}`} download className="font-semibold text-[#184f95] underline underline-offset-2">Download {name.split(".").pop()?.toUpperCase()} ↗</a>
+            {companionCsv(name).length === 1 && <a href={`${BASE_PATH}/data/${companionCsv(name)[0]}`} download className="font-semibold text-[#184f95] underline underline-offset-2">Download CSV ↗</a>}
+          </div>
+          {companionCsv(name).length > 1 && <details className="mt-3 text-sm"><summary className="cursor-pointer font-semibold text-[#184f95]">CSV Tables ({companionCsv(name).length})</summary>
+            <ul className="mt-2 grid gap-2 sm:grid-cols-2">{companionCsv(name).map(csv => <li key={csv}><a href={`${BASE_PATH}/data/${csv}`} download className="text-[#184f95] underline underline-offset-2 break-all">{csv} ↗</a></li>)}</ul>
+          </details>}
         </article>)}
       </div>
     </section>)}

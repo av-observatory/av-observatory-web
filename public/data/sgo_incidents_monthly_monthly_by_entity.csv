@@ -1,0 +1,386 @@
+year,month,reporting_entity,incident_count
+2021,5,Transdev Alternative Services,1
+2021,7,Cruise LLC,1
+2021,7,May Mobility,1
+2021,7,Toyota Motor Engineering & Manufacturing,1
+2021,8,Argo AI,2
+2021,8,May Mobility,2
+2021,8,Toyota Motor Engineering & Manufacturing,1
+2021,8,Transdev Alternative Services,5
+2021,8,Waymo LLC,3
+2021,8,WeRide Corp,1
+2021,8,"Zoox, Inc.",3
+2021,9,Apple Inc.,1
+2021,9,Argo AI,1
+2021,9,"Beep, Inc.",1
+2021,9,Local Motors Industries,1
+2021,9,Robotic Research,1
+2021,9,Transdev Alternative Services,8
+2021,9,Waymo LLC,5
+2021,9,"Zoox, Inc.",1
+2021,10,Cruise LLC,1
+2021,10,Easymile Inc.,2
+2021,10,Transdev Alternative Services,4
+2021,10,Waymo LLC,5
+2021,10,"Zoox, Inc.",2
+2021,11,Argo AI,1
+2021,11,Cruise LLC,1
+2021,11,Ford Motor Company,1
+2021,11,Pony.ai,1
+2021,11,Transdev Alternative Services,4
+2021,11,Waymo LLC,4
+2021,11,WeRide Corp,1
+2021,12,Cruise LLC,4
+2021,12,"General Motors, LLC",4
+2021,12,Hyundai Motor America,1
+2021,12,Transdev Alternative Services,2
+2021,12,Waymo LLC,2
+2021,12,"Zoox, Inc.",1
+2022,1,Waymo LLC,4
+2022,1,"Zoox, Inc.",1
+2022,2,"General Motors, LLC",1
+2022,2,Waymo LLC,6
+2022,2,"Zoox, Inc.",1
+2022,3,Argo AI,1
+2022,3,Ford Motor Company,1
+2022,3,Waymo LLC,3
+2022,4,Argo AI,1
+2022,4,Cruise LLC,5
+2022,4,Ford Motor Company,1
+2022,4,"General Motors, LLC",5
+2022,4,Pony.ai,1
+2022,4,TuSimple,1
+2022,4,Waymo LLC,3
+2022,4,"Zoox, Inc.",2
+2022,5,Argo AI,1
+2022,5,"Beep, Inc.",1
+2022,5,Cruise LLC,2
+2022,5,Ford Motor Company,1
+2022,5,"General Motors, LLC",1
+2022,5,May Mobility,1
+2022,5,Motional,1
+2022,5,"Navistar, Inc.",1
+2022,5,Pony.ai,1
+2022,5,Transdev Alternative Services,2
+2022,5,Waymo LLC,3
+2022,6,Apple Inc.,1
+2022,6,Argo AI,2
+2022,6,Cruise LLC,1
+2022,6,Ford Motor Company,2
+2022,6,"Navistar, Inc.",1
+2022,6,Pony.ai,1
+2022,6,Transdev Alternative Services,2
+2022,6,Waymo LLC,2
+2022,7,Cruise LLC,4
+2022,7,"Daimler Trucks North America, LLC",1
+2022,7,"General Motors, LLC",4
+2022,7,Toyota Motor Engineering & Manufacturing,1
+2022,7,Transdev Alternative Services,6
+2022,7,Waymo LLC,6
+2022,7,"Zoox, Inc.",1
+2022,8,Argo AI,2
+2022,8,Cruise LLC,2
+2022,8,Easymile Inc.,1
+2022,8,First Transit,1
+2022,8,Ford Motor Company,2
+2022,8,"General Motors, LLC",2
+2022,8,Kodiak Robotics,1
+2022,8,May Mobility,1
+2022,8,PACCAR Incorporated,1
+2022,8,"TORC Robotics, Inc.",1
+2022,8,Transdev Alternative Services,7
+2022,8,Waymo LLC,9
+2022,8,"Zoox, Inc.",1
+2022,9,Argo AI,1
+2022,9,Ford Motor Company,1
+2022,9,May Mobility,1
+2022,9,Toyota Motor Engineering & Manufacturing,1
+2022,9,Transdev Alternative Services,4
+2022,9,Waymo LLC,4
+2022,10,Argo AI,2
+2022,10,Ford Motor Company,2
+2022,10,Toyota Motor Engineering & Manufacturing,1
+2022,10,Transdev Alternative Services,1
+2022,10,Waymo LLC,1
+2022,11,"Aurora Operations, Inc.",1
+2022,11,Transdev Alternative Services,2
+2022,11,Waymo LLC,3
+2022,11,"Zoox, Inc.",2
+2022,12,"Beep, Inc.",1
+2022,12,Cruise LLC,2
+2022,12,"General Motors, LLC",2
+2022,12,"Mercedes-Benz USA, LLC",1
+2022,12,NVIDIA CORP,1
+2022,12,Transdev Alternative Services,4
+2022,12,Waymo LLC,4
+2022,12,"Zoox, Inc.",4
+2023,1,Motional,1
+2023,1,Robotic Research,1
+2023,1,Transdev Alternative Services,1
+2023,1,Waymo LLC,4
+2023,1,WeRide Corp,1
+2023,2,Cruise LLC,2
+2023,2,"General Motors, LLC",2
+2023,2,Kodiak Robotics,1
+2023,2,Motional,1
+2023,2,PACCAR Incorporated,1
+2023,2,Transdev Alternative Services,1
+2023,2,Waymo LLC,3
+2023,2,"Zoox, Inc.",1
+2023,3,Cruise LLC,5
+2023,3,"General Motors, LLC",5
+2023,3,"Mercedes-Benz USA, LLC",2
+2023,3,Transdev Alternative Services,7
+2023,3,Waymo LLC,8
+2023,4,"Aurora Operations, Inc.",1
+2023,4,Cruise LLC,5
+2023,4,"General Motors, LLC",5
+2023,4,May Mobility,1
+2023,4,PACCAR Incorporated,1
+2023,4,Transdev Alternative Services,2
+2023,4,Waymo LLC,6
+2023,4,"Zoox, Inc.",1
+2023,5,Cruise LLC,5
+2023,5,"General Motors, LLC",5
+2023,5,Transdev Alternative Services,3
+2023,5,Waymo LLC,6
+2023,5,WeRide Corp,1
+2023,6,Cruise LLC,5
+2023,6,"General Motors, LLC",6
+2023,6,Pony.ai,1
+2023,6,Transdev Alternative Services,1
+2023,6,Waymo LLC,6
+2023,6,WeRide Corp,1
+2023,6,"Zoox, Inc.",2
+2023,7,Cruise LLC,7
+2023,7,"General Motors, LLC",7
+2023,7,Hyundai Motor America,1
+2023,7,May Mobility,1
+2023,7,Transdev Alternative Services,3
+2023,7,Waymo LLC,6
+2023,8,"Aurora Operations, Inc.",1
+2023,8,"Beep, Inc.",2
+2023,8,Cruise LLC,15
+2023,8,"General Motors, LLC",13
+2023,8,Ghost Autonomy Inc.,1
+2023,8,May Mobility,1
+2023,8,Waymo LLC,12
+2023,8,WeRide Corp,1
+2023,9,Cruise LLC,9
+2023,9,"General Motors, LLC",9
+2023,9,"Mercedes-Benz USA, LLC",1
+2023,9,Transdev Alternative Services,1
+2023,9,Waymo LLC,8
+2023,9,"Zoox, Inc.",1
+2023,10,Apollo Autonomous Driving USA,1
+2023,10,Cruise LLC,8
+2023,10,"General Motors, LLC",8
+2023,10,Kodiak Robotics,1
+2023,10,May Mobility,1
+2023,10,PACCAR Incorporated,1
+2023,10,Pony.ai,1
+2023,10,Transdev Alternative Services,1
+2023,10,Waymo LLC,8
+2023,10,WeRide Corp,1
+2023,10,"Zoox, Inc.",2
+2023,11,"Beep, Inc.",1
+2023,11,Transdev Alternative Services,3
+2023,11,Waymo LLC,6
+2023,12,"Aurora Operations, Inc.",1
+2023,12,"Daimler Trucks North America, LLC",1
+2023,12,PACCAR Incorporated,1
+2023,12,"TORC Robotics, Inc.",1
+2023,12,Transdev Alternative Services,1
+2023,12,Waymo LLC,12
+2024,1,Ghost Autonomy Inc.,1
+2024,1,Nuro,2
+2024,1,Transdev Alternative Services,1
+2024,1,Waymo LLC,7
+2024,1,WeRide Corp,1
+2024,1,"Zoox, Inc.",3
+2024,2,"Aurora Operations, Inc.",1
+2024,2,May Mobility,1
+2024,2,Transdev Alternative Services,1
+2024,2,"Volkswagen Group of America, Inc.",1
+2024,2,Waymo LLC,7
+2024,2,"Zoox, Inc.",3
+2024,3,Hyundai Motor America,1
+2024,3,Nuro,1
+2024,3,PACCAR Incorporated,1
+2024,3,Transdev Alternative Services,2
+2024,3,"Volkswagen Group of America, Inc.",1
+2024,3,Waymo LLC,19
+2024,3,"Zoox, Inc.",2
+2024,4,"Aurora Operations, Inc.",1
+2024,4,May Mobility,1
+2024,4,PACCAR Incorporated,1
+2024,4,Transdev Alternative Services,1
+2024,4,Waymo LLC,9
+2024,4,"Zoox, Inc.",1
+2024,5,"Aurora Operations, Inc.",1
+2024,5,May Mobility,1
+2024,5,Nuro,1
+2024,5,PACCAR Incorporated,1
+2024,5,Transdev Alternative Services,1
+2024,5,"Volkswagen Group of America, Inc.",1
+2024,5,Waymo LLC,16
+2024,6,"Aurora Operations, Inc.",2
+2024,6,"Beep, Inc.",1
+2024,6,Oxbotica,1
+2024,6,PACCAR Incorporated,2
+2024,6,Pony.ai,1
+2024,6,Transdev Alternative Services,1
+2024,6,"Volkswagen Group of America, Inc.",1
+2024,6,Waymo LLC,21
+2024,6,WeRide Corp,1
+2024,7,"Aurora Operations, Inc.",1
+2024,7,May Mobility,2
+2024,7,PACCAR Incorporated,1
+2024,7,"VinFast Auto, LLC",1
+2024,7,"Volkswagen Group of America, Inc.",1
+2024,7,Waymo LLC,18
+2024,7,WeRide Corp,1
+2024,7,"Zoox, Inc.",3
+2024,8,Motional,1
+2024,8,Transdev Alternative Services,1
+2024,8,Waymo LLC,30
+2024,9,"Aurora Operations, Inc.",4
+2024,9,Hyundai Motor America,1
+2024,9,May Mobility,1
+2024,9,PACCAR Incorporated,3
+2024,9,Transdev Alternative Services,4
+2024,9,"VinFast Auto, LLC",1
+2024,9,Waymo LLC,31
+2024,10,"Beep, Inc.",1
+2024,10,Kodiak Robotics,1
+2024,10,May Mobility,1
+2024,10,PACCAR Incorporated,1
+2024,10,"VinFast Auto, LLC",1
+2024,10,Waymo LLC,37
+2024,10,"Zoox, Inc.",3
+2024,11,"Aurora Operations, Inc.",1
+2024,11,Cruise LLC,1
+2024,11,"General Motors, LLC",1
+2024,11,Mobileye Vision Technologies,5
+2024,11,PACCAR Incorporated,2
+2024,11,Transdev Alternative Services,1
+2024,11,Waymo LLC,43
+2024,12,Avride Inc.,1
+2024,12,Nuro,1
+2024,12,Transdev Alternative Services,3
+2024,12,Waymo LLC,54
+2024,12,WeRide Corp,1
+2024,12,"Zoox, Inc.",2
+2025,1,Hyundai Motor America,1
+2025,1,May Mobility,2
+2025,1,Motional,1
+2025,1,Transdev Alternative Services,3
+2025,1,Waymo LLC,43
+2025,1,"Zoox, Inc.",3
+2025,2,"Aurora Operations, Inc.",1
+2025,2,AutoX Technologies Inc,1
+2025,2,Hyundai Motor America,4
+2025,2,Kodiak Robotics,1
+2025,2,Motional,4
+2025,2,PACCAR Incorporated,2
+2025,2,Transdev Alternative Services,1
+2025,2,Waymo LLC,40
+2025,2,"Zoox, Inc.",2
+2025,3,Avride Inc.,1
+2025,3,Kodiak Robotics,1
+2025,3,"Mercedes-Benz USA, LLC",1
+2025,3,NVIDIA CORP,1
+2025,3,PACCAR Incorporated,1
+2025,3,Waymo LLC,50
+2025,3,"Zoox, Inc.",3
+2025,4,May Mobility,3
+2025,4,Waymo LLC,61
+2025,4,"Zoox, Inc.",2
+2025,5,"Aurora Operations, Inc.",1
+2025,5,PACCAR Incorporated,1
+2025,5,Waymo LLC,61
+2025,5,"Zoox, Inc.",5
+2025,6,Avride Inc.,1
+2025,6,"Beep, Inc.",1
+2025,6,Motional,1
+2025,6,Nuro,1
+2025,6,Oxbotica,1
+2025,6,Waymo LLC,37
+2025,6,"Zoox, Inc.",1
+2025,7,May Mobility,2
+2025,7,Nuro,1
+2025,7,Waymo LLC,31
+2025,7,"Zoox, Inc.",3
+2025,8,May Mobility,1
+2025,8,Nuro,1
+2025,8,"Ohmio, Inc.",1
+2025,8,Waymo LLC,23
+2025,8,"Zoox, Inc.",1
+2025,9,"Aurora Operations, Inc.",1
+2025,9,Avride Inc.,1
+2025,9,"Beep, Inc.",1
+2025,9,Motional,1
+2025,9,Stack AV,1
+2025,9,Waymo LLC,25
+2025,9,"Zoox, Inc.",2
+2025,10,"Aurora Operations, Inc.",1
+2025,10,Avride Inc.,1
+2025,10,Motional,2
+2025,10,Waymo LLC,32
+2025,10,"Zoox, Inc.",3
+2025,11,"Aurora Operations, Inc.",1
+2025,11,Avride Inc.,4
+2025,11,"Beep, Inc.",1
+2025,11,May Mobility,3
+2025,11,Motional,1
+2025,11,Waymo LLC,42
+2025,11,"Zoox, Inc.",2
+2025,12,Avride Inc.,7
+2025,12,May Mobility,3
+2025,12,Waymo LLC,39
+2025,12,"Zoox, Inc.",2
+2026,1,Avride Inc.,4
+2026,1,"Beep, Inc.",1
+2026,1,Nuro,1
+2026,1,Waymo LLC,33
+2026,1,"Zoox, Inc.",1
+2026,2,"Aurora Operations, Inc.",1
+2026,2,Avride Inc.,7
+2026,2,Motional,2
+2026,2,Waymo LLC,36
+2026,2,"Zoox, Inc.",3
+2026,3,Avride Inc.,7
+2026,3,May Mobility,1
+2026,3,Waymo LLC,44
+2026,3,"Zoox, Inc.",4
+2026,4,Avride Inc.,9
+2026,4,May Mobility,1
+2026,4,Motional,1
+2026,4,"Tesla, Inc.",2
+2026,4,Waymo LLC,41
+2026,4,WeRide Corp,1
+2026,4,"Zoox, Inc.",4
+2026,5,"Aurora Operations, Inc.",1
+2026,5,Avride Inc.,5
+2026,5,May Mobility,2
+2026,5,Motional,1
+2026,5,PlusAI Inc,1
+2026,5,Stack AV,1
+2026,5,"Tesla, Inc.",1
+2026,5,Waymo LLC,58
+2026,5,"Zoox, Inc.",2
+2026,6,Avride Inc.,7
+2026,6,Motional,1
+2026,6,"Tesla, Inc.",3
+2026,6,Waymo LLC,46
+2026,6,"Zoox, Inc.",3
+2026,7,Avride Inc.,4
+2026,7,Gatik AI Inc.,1
+2026,7,Motional,1
+2026,7,Nuro,2
+2026,7,"Tesla, Inc.",2
+2026,7,Waymo LLC,39
+2026,8,"Aurora Operations, Inc.",1
+2026,8,MOIA America LLC,1
+2026,8,May Mobility,2
+2026,8,"Tesla, Inc.",1
