@@ -246,11 +246,12 @@ export function OddMap({
       }
 
       for (const p of points) {
+        const testing = p.phase === "testing";
         const marker = L.circleMarker([p.lat, p.lon], {
-          radius: 5,
+          radius: 6,
           color: "#ffffff",
           weight: 1.5,
-          fillColor: "#eb6834",
+          fillColor: testing ? "#a86f00" : "#184f95",
           fillOpacity: 1,
         });
         marker.bindPopup(
@@ -322,7 +323,8 @@ export function OddMap({
         <span><span className="inline-block w-3 h-3 align-middle mr-1 rounded-sm bg-[#eda100]/25 border border-[#a86f00]" />Testing boundary</span>
         <span><span className="inline-block w-3 h-1 align-middle mr-1 bg-[#184f95]" />Road-following corridor (only when sourced)</span>
         {s2Features.length > 0 && <span><span className="inline-block w-3 h-3 align-middle mr-1 rounded-sm bg-[#438ad8]" />Waymo VMT by S2 cell</span>}
-        <span><span className="inline-block w-2.5 h-2.5 align-middle mr-1 rounded-full bg-[#eb6834]" />Market without sourced polygon</span>
+        <span><span className="inline-block w-2.5 h-2.5 align-middle mr-1 rounded-full bg-[#184f95]" />Deployment market point</span>
+        <span><span className="inline-block w-2.5 h-2.5 align-middle mr-1 rounded-full bg-[#a86f00]" />Testing market point</span>
       </div>}
     </div>
   );
