@@ -105,6 +105,14 @@ export function OddExplorer({
   );
   const [company,setCompany]=useState("ALL");
   const [state,setState]=useState("ALL");
+  const [market,setMarket]=useState("ALL");
+  const markets = useMemo(() => Array.from(new Set(
+    [...locations, ...history]
+      .filter(d => company === "ALL" || canonicalCompany(d.company) === company)
+      .filter(d => state === "ALL" || d.state === state)
+      .map(d => d.market)
+      .filter(Boolean)
+  )).sort(), [locations, history, company, state]);
   const [phase,setPhase]=useState("deployment");
   const [evidence,setEvidence]=useState<"current"|"announced"|"historical">("current");
   const [vintage,setVintage]=useState<"current"|"history">("current");
@@ -185,9 +193,10 @@ export function OddExplorer({
     return base.filter(p =>
       (company==="ALL" || canonicalCompany(p.company)===company) &&
       (state==="ALL" || p.state===state) &&
+      (market==="ALL" || canonicalMarket(p.market)===canonicalMarket(market)) &&
       (phase==="ALL" || p.phase===phase)
     );
-  }, [allPolygons, latestPerMarket, currentRouteGeometries, currentMarketKeys, company, state, phase, evidence, vintage]);
+  }, [allPolygons, latestPerMarket, currentRouteGeometries, currentMarketKeys, company, state, market, phase, evidence, vintage]);
 
   const historicalPoints = useMemo<OddPoint[]>(() => history.flatMap(e => {
     const raw = String(e.geometry_ref ?? "");
@@ -209,6 +218,7 @@ export function OddExplorer({
     d.lat !== null && d.lon !== null && Number.isFinite(d.lat) && Number.isFinite(d.lon) &&
     (company==="ALL"||canonicalCompany(d.company)===company) &&
     (state==="ALL"||d.state===state) &&
+    (market==="ALL"||canonicalMarket(d.market)===canonicalMarket(market)) &&
     (phase==="ALL"||(d.activity_type ?? d.phase)===phase) &&
     ((d.evidence_status ?? "current")===evidence)
   ).map(d=>({
@@ -220,18 +230,29 @@ export function OddExplorer({
     phase:d.phase,
     status:d.status,
     mode:d.mode,
-  })),[locations,company,state,phase,evidence]);
+  })),[locations,company,state,market,phase,evidence]);
 
   const points = useMemo(() => {
     if (evidence === "historical" || vintage === "history") {
       return historicalPoints.filter(d =>
         (company==="ALL"||canonicalCompany(d.company)===company) &&
         (state==="ALL"||d.state===state) &&
+        (market==="ALL"||canonicalMarket(d.market)===canonicalMarket(market)) &&
         (phase==="ALL"||d.phase===phase)
       );
     }
     return currentPoints;
-  }, [vintage, evidence, historicalPoints, currentPoints, company, state, phase]);
+  }, [vintage, evidence, historicalPoints, currentPoints, company, state, market, phase]);
+
+  const polygonMarketKeys = useMemo(() => new Set(
+    polygons
+      .filter(p => p.geometry_type !== "LineString" && p.geometry_type !== "MultiLineString")
+      .map(p => `${canonicalCompany(p.company).toLowerCase()}|${canonicalMarket(p.market)}|${p.state}`)
+  ), [polygons]);
+
+  const visiblePoints = useMemo(() => points.filter(p =>
+    !polygonMarketKeys.has(`${canonicalCompany(p.company).toLowerCase()}|${canonicalMarket(p.market)}|${p.state}`)
+  ), [points, polygonMarketKeys]);
 
   const coverageRows = useMemo(() => companies.map(name => {
     const polygonCount = latestPerMarket.filter(p => canonicalCompany(p.company) === name).length + currentRouteGeometries.filter(p => canonicalCompany(p.company) === name).length;
@@ -248,13 +269,14 @@ export function OddExplorer({
   const evidenceRows = useMemo(() => locations.filter(d =>
     (company==="ALL" || canonicalCompany(d.company)===company) &&
     (state==="ALL" || d.state===state) &&
+    (market==="ALL" || canonicalMarket(d.market)===canonicalMarket(market)) &&
     (phase==="ALL" || (d.activity_type ?? d.phase)===phase) &&
     ((d.evidence_status ?? "current")===evidence)
-  ), [locations, company, state, phase, evidence]);
+  ), [locations, company, state, market, phase, evidence]);
 
   return <div>
     <div className="viz-card p-4">
-      <div className="grid md:grid-cols-5 gap-3">
+      <div className="grid md:grid-cols-3 xl:grid-cols-6 gap-3">
         <label className="filter-label">Company
           <select className="filter-select" value={company} onChange={e=>setCompany(e.target.value)}>
             <option value="ALL">All companies</option>
@@ -265,6 +287,12 @@ export function OddExplorer({
           <select className="filter-select" value={state} onChange={e=>setState(e.target.value)}>
             <option value="ALL">All states</option>
             {states.map(x=><option key={x}>{x}</option>)}
+          </select>
+        </label>
+        <label className="filter-label">Market / corridor
+          <select className="filter-select" value={market} onChange={e=>setMarket(e.target.value)}>
+            <option value="ALL">All markets</option>
+            {markets.map(x=><option key={x}>{x}</option>)}
           </select>
         </label>
         <label className="filter-label">Phase
@@ -299,13 +327,13 @@ export function OddExplorer({
           </div>
           <span className="text-sm text-neutral-500">{polygons.length} geometries</span>
         </div>
-        <OddMap polygons={polygons} points={points} onPolygonClick={setSelected} />
+        <OddMap polygons={polygons} points={visiblePoints} onPolygonClick={setSelected} />
       </div>
 
       <div className="grid gap-3 content-start">
-        <div className="viz-card p-4"><div className="text-3xl font-semibold tabular-nums">{new Set(points.map(d=>d.company)).size}</div><div className="text-sm text-neutral-500">companies in current market layer</div></div>
-        <div className="viz-card p-4"><div className="text-3xl font-semibold tabular-nums">{new Set(points.map(d=>d.state)).size}</div><div className="text-sm text-neutral-500">states</div></div>
-        <div className="viz-card p-4"><div className="text-3xl font-semibold tabular-nums">{polygons.length}</div><div className="text-sm text-neutral-500">displayed sourced geometries</div></div>
+        <div className="viz-card p-4"><div className="text-3xl font-semibold tabular-nums">{new Set([...polygons.map(d=>canonicalCompany(d.company)), ...visiblePoints.map(d=>canonicalCompany(d.company))]).size}</div><div className="text-sm text-neutral-500">companies in current market layer</div></div>
+        <div className="viz-card p-4"><div className="text-3xl font-semibold tabular-nums">{new Set([...polygons.map(d=>d.state), ...visiblePoints.map(d=>d.state)]).size}</div><div className="text-sm text-neutral-500">states</div></div>
+        <div className="viz-card p-4"><div className="text-3xl font-semibold tabular-nums">{polygons.length}</div><div className="text-sm text-neutral-500">sourced boundaries / corridors</div></div>
         {selected && <div className="viz-card p-4">
           <div className="text-xs uppercase tracking-wide text-neutral-500">Selected boundary</div>
           <div className="font-semibold mt-1">{selected.company} · {selected.market}</div>
