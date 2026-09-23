@@ -1,7 +1,7 @@
 {
   "dataset": "AV Observatory ODD / service-area event history",
   "methodology": "AV Map records are ingested as a historical baseline and are not assumed current. Observatory current_updates are independently maintained. Testing and deployment phases remain separate; Waymo S2 mileage is deployment exposure only.",
-  "retrieved_at": "2026-09-23T01:42:20.716994+00:00",
+  "retrieved_at": "2026-09-23T05:30:33.182335+00:00",
   "upstream": {
     "name": "AV Map",
     "url": "https://github.com/path-avmap/av-map-data",
@@ -4508,21 +4508,21 @@
     },
     {
       "date": "2026-09-22",
-      "event_type": "planned_service_verified",
+      "event_type": "current_service_verified",
       "company": "Waymo",
       "state": "NV",
       "market": "Las Vegas",
       "lat": 36.1699,
       "lon": -115.1398,
-      "phase": "planned",
-      "status": "planned_service",
+      "phase": "deployment",
+      "status": "limited_public_service",
       "mode": "ridehail",
-      "source_url": "https://waymo.com/blog/shorts/ro-den-lv-sd-tmpa/",
+      "source_url": "https://support.google.com/waymo/answer/9059119?hl=en",
       "geometry_basis": "city_point_only",
-      "verification_status": "verified_current_market",
-      "note": "Waymo lists Las Vegas as Up Next, not a current rider-service market.",
+      "verification_status": "official_service_area_current",
+      "note": "Waymo Help lists Las Vegas as a service area and says it is gradually adding riders. No current vector service-area boundary is ingested, so the map uses a market point.",
       "evidence_status": "current",
-      "activity_type": "testing"
+      "activity_type": "deployment"
     },
     {
       "date": "2026-09-22",
