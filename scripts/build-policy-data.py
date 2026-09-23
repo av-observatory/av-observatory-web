@@ -76,7 +76,7 @@ state_links = {
 statute_dates = {"AR": "2019", "AZ": "2021", "CO": "2017", "GA": "2017", "HI": "2020-09-15", "MI": "2016", "PA": "2022", "TN": "2017", "TX": "2017"}
 
 def event(id, level, place, title, summary, kind, status, date, source, **extra):
-    return dict(id=id, level=level, jurisdiction=place, title=title, summary=summary,
+    return dict(id=id, level=level, jurisdiction=place, title=title, summary=summary, takeaway=summary.split(". ")[0].rstrip("."),
                 instrument=kind, status=status, date=date, source_url=source,
                 verified_at=REVIEWED, **extra)
 
@@ -113,6 +113,31 @@ for number, (topic, detail) in occupant_sections.items():
         "FMVSS rulemaking", "effective", "2022-03-30", "https://www.federalregister.gov/d/2022-05426",
         fmvss=[number], scope="ADS-specific", rulemaking_id="fmvss-2022-final",
         effective_date="2022-09-26", **({"proposal_url": "https://www.federalregister.gov/d/2020-05886"} if number not in {"212", "219"} else {"added_in_final": True})))
+# Reader-facing points are kept with the records so R2 and the static snapshot
+# can update the list without changing the interface.
+fmvss_takeaways = {
+    "fmvss-204-2026": "Exempts FMVSS 208-certified vehicles from the steering-column displacement test",
+    "fmvss-102-2026": "Would adapt transmission-display rules for vehicles without manual controls",
+    "fmvss-103-104-2026": "Would adapt defrosting and wiper rules for driverless designs",
+    "fmvss-110-2026": "Would adapt tire-information placards for ADS vehicle designs",
+    "fmvss-135-2026": "Would remove the brake-pedal requirement for ADS-only vehicles; braking standards remain",
+    "fmvss-201-2022": "Adapts interior-impact tests for vehicles without a driver seat",
+    "fmvss-203-2022": "Exempts vehicles without steering controls from steering-control impact tests",
+    "fmvss-204-2022": "Exempts vehicles without steering controls from steering-column displacement tests",
+    "fmvss-205-2022": "Updates glazing rules for trucks designed to carry occupants",
+    "fmvss-206-2022": "Updates door-lock rules for vehicles without a conventional driver seat",
+    "fmvss-207-2022": "Requires a driver seat only when manual driving controls are present",
+    "fmvss-208-2022": "Adapts occupant crash protection and testing for vehicles without manual controls",
+    "fmvss-212-2022": "Updates windshield-mounting coverage for trucks carrying occupants",
+    "fmvss-214-2022": "Adapts side-impact tests for vehicles without conventional driver controls",
+    "fmvss-216a-2022": "Updates roof-crush test setup for vehicles designed to carry occupants",
+    "fmvss-219-2022": "Updates windshield-intrusion coverage for trucks carrying occupants",
+    "fmvss-225-2022": "Updates the shuttle-bus definition for buses without manual controls",
+    "fmvss-226-2022": "Adapts ejection-mitigation tests for vehicles without conventional driver controls",
+}
+for rule in federal:
+    rule["takeaway"] = fmvss_takeaways.get(rule["id"], rule["takeaway"])
+
 oversight = [
     event("nhtsa-sgo-2021", "federal", "US", "Standing General Order crash reporting", "NHTSA ordered specified ADS and Level 2 ADAS crash reports from manufacturers and operators; the reports are not determinations of fault.", "oversight order", "in_effect_as_amended", "2021-06-29", "https://www.nhtsa.gov/press-releases/nhtsa-orders-crash-reporting-vehicles-equipped-advanced-driver-assistance-systems"),
     event("nhtsa-sgo-2025", "federal", "US", "Third amended Standing General Order", "NHTSA revised ADS crash reporting requirements in April 2025. Review the current order and amendments for applicable thresholds and deadlines.", "oversight order", "in_effect", "2025-04-24", "https://www.nhtsa.gov/laws-regulations/standing-general-order-crash-reporting"),

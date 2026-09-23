@@ -78,7 +78,7 @@ for row in SEEN.values():
     # Curated descriptions are retained until a human reviews changes to the text.
     summary = (original or {}).get("summary") or (description.strip()[:280] or title)
     refreshed.append(dict(id=f"{jurisdiction.lower()}-{re.sub(r'\W', '', number).lower()}-{item.get('session', {}).get('year_start', date.today().year)}",
-        jurisdiction=jurisdiction, number=number, title=title, summary=summary,
+        jurisdiction=jurisdiction, number=number, title=title, summary=summary, takeaway=(original or {}).get("takeaway") or summary.split(". ")[0].rstrip("."),
         status=status, last_action_date=action_date, last_action=action, session=session,
         source_url=url, repository_url="https://legiscan.com/legiscan",
         reviewed_at=date.today().isoformat(), bill_id=item["bill_id"],
