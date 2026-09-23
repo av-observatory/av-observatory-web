@@ -44,11 +44,12 @@ function compact(n: number) {
 }
 
 export default async function OverviewPage() {
-  const [cpuc, sgo, waymoS2, odd] = await Promise.all([
+  const [cpuc, sgo, waymoS2, odd, currentGeometries] = await Promise.all([
     loadJson<ActivityMonthlyDataset>("cpuc_activity_monthly.json"),
     loadJson<SgoMonthlyDataset>("sgo_incidents_monthly.json"),
     loadJson<WaymoS2StateSummary>("waymo_s2_state_summary.json"),
     loadJson<{ verified_through?: string; locations: OperationalLocation[] }>("operational_domains.json"),
+    loadJson<{ type:"FeatureCollection"; features:{ properties?:Record<string,unknown>; geometry?:unknown }[] }>("odd_current_geometries.geojson"),
   ]);
 
   const incidents = sgoIncidentsStat(sgo);
@@ -56,11 +57,45 @@ export default async function OverviewPage() {
   const totalWaymoMiles = waymoTotalMiles(waymoS2);
 
   const currentOps = odd.locations.filter(isCurrentOperation);
-  const currentCompanies = Array.from(new Set(currentOps.map(d => d.company))).sort();
-  const currentStates = Array.from(new Set(currentOps.map(d => d.state))).sort();
+
+  // Current service-area polygons are authoritative geography for operators such as Waymo.
+  // Merge them into the overview market/operator index so an operator cannot disappear from
+  // a market merely because its point-style operational record is stale or absent.
+  const polygonOps: OperationalLocation[] = currentGeometries.features.flatMap(feature => {
+    const p = feature.properties ?? {};
+    const company = String(p.company ?? "");
+    const market = String(p.market ?? "");
+    const state = String(p.state ?? "");
+    const activity = String(p.activity_type ?? p.phase ?? "");
+    const evidence = String(p.evidence_status ?? "current");
+    const mode = String(p.mode ?? "passenger");
+    if (!company || !market || !state || activity !== "deployment" || evidence !== "current") return [];
+    return [{
+      company,
+      market,
+      state,
+      phase: "deployment",
+      activity_type: "deployment",
+      evidence_status: "current",
+      status: String(p.status ?? "current_service_area"),
+      mode,
+      source_url: String(p.source_url ?? ""),
+      source_date: String(p.event_date ?? ""),
+    }];
+  });
+
+  const mergedOpsMap = new Map<string, OperationalLocation>();
+  for (const d of [...currentOps, ...polygonOps]) {
+    const key = `${d.company}|${d.market}|${d.state}|${d.mode}`;
+    mergedOpsMap.set(key, d);
+  }
+  const mergedCurrentOps = Array.from(mergedOpsMap.values());
+
+  const currentCompanies = Array.from(new Set(mergedCurrentOps.map(d => d.company))).sort();
+  const currentStates = Array.from(new Set(mergedCurrentOps.map(d => d.state))).sort();
 
   const companiesByState = new Map<string, Set<string>>();
-  for (const d of currentOps) {
+  for (const d of mergedCurrentOps) {
     if (!companiesByState.has(d.state)) companiesByState.set(d.state, new Set());
     companiesByState.get(d.state)!.add(d.company);
   }
@@ -70,7 +105,7 @@ export default async function OverviewPage() {
 
   const passengerMarkets = new Map<string, { state: string; companies: Set<string> }>();
   const freightCorridors = new Map<string, Set<string>>();
-  for (const d of currentOps) {
+  for (const d of mergedCurrentOps) {
     if (d.mode === "freight") {
       if (!freightCorridors.has(d.market)) freightCorridors.set(d.market, new Set());
       freightCorridors.get(d.market)!.add(d.company);
