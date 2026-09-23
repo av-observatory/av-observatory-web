@@ -152,6 +152,47 @@ function pointInGeometry(point:[number,number],geometry:any){
   return false;
 }
 
+function convexHull(points:[number,number][]):[number,number][] {
+  const unique=Array.from(new Map(points.map(p=>[`${p[0]}|${p[1]}`,p])).values())
+    .sort((a,b)=>a[0]-b[0]||a[1]-b[1]);
+  if(unique.length<=2)return unique;
+  const cross=(o:[number,number],a:[number,number],b:[number,number]) =>
+    (a[0]-o[0])*(b[1]-o[1])-(a[1]-o[1])*(b[0]-o[0]);
+  const lower:[number,number][]=[];
+  for(const p of unique){
+    while(lower.length>=2&&cross(lower[lower.length-2],lower[lower.length-1],p)<=0)lower.pop();
+    lower.push(p);
+  }
+  const upper:[number,number][]=[];
+  for(let i=unique.length-1;i>=0;i--){
+    const p=unique[i];
+    while(upper.length>=2&&cross(upper[upper.length-2],upper[upper.length-1],p)<=0)upper.pop();
+    upper.push(p);
+  }
+  lower.pop(); upper.pop();
+  const hull=[...lower,...upper];
+  if(hull.length)hull.push(hull[0]);
+  return hull;
+}
+
+function derivedRegionFeature(name:string,state:string,cells:S2Feature[]):ServiceFeature|undefined {
+  const pts=cells.flatMap(cell=>geometryPoints(cell.geometry));
+  const hull=convexHull(pts);
+  if(hull.length<4)return undefined;
+  return {
+    type:"Feature",
+    properties:{
+      company:"Waymo",
+      market:name,
+      state,
+      geometry_basis:"derived_s2_reporting_region",
+      geometry_precision:"analytical_envelope_not_official_service_boundary",
+      note:"Derived from the outer envelope of published Waymo S2 cells. This is an Observatory analysis region, not an official Waymo service-area or ODD boundary.",
+    },
+    geometry:{type:"Polygon",coordinates:[hull]},
+  };
+}
+
 type MarketFacet = {
   market:string;
   state:string;
@@ -256,18 +297,72 @@ export function WaymoS2Explorer({
 
   const facets=useMemo<MarketFacet[]>(()=>{
     const map=new Map<string,MarketFacet>();
+
+    // California is reported in the S2 data as two broad operational clusters.
+    // Build explicit analytical envelopes around those reported cells so the facets
+    // can show all observed VMT without clipping it to an older/smaller service polygon.
+    const northCaCells=mapData.features.filter(f =>
+      f.properties.state==="California" &&
+      ["San Francisco","San Mateo","Santa Clara"].includes(f.properties.county)
+    );
+    const southCaCells=mapData.features.filter(f =>
+      f.properties.state==="California" &&
+      f.properties.county==="Los Angeles"
+    );
+
+    const northFeature=derivedRegionFeature("Northern California","CA",northCaCells);
+    if(northFeature){
+      map.set("Northern California|CA",{
+        market:"Northern California",
+        state:"CA",
+        serviceFeature:northFeature,
+        status:"observed_s2_reporting_region",
+        cells:northCaCells,
+      });
+    }
+    const southFeature=derivedRegionFeature("Southern California","CA",southCaCells);
+    if(southFeature){
+      map.set("Southern California|CA",{
+        market:"Southern California",
+        state:"CA",
+        serviceFeature:southFeature,
+        status:"observed_s2_reporting_region",
+        cells:southCaCells,
+      });
+    }
+
     for(const f of waymoService){
       const p=f.properties??{};
       const market=String(p.market??"");
       const state=String(p.state??"");
       if(!market||!state)continue;
-      map.set(`${market}|${state}`,{market,state,serviceFeature:f,status:String(p.status??""),source_url:String(p.source_url??""),cells:[]});
+
+      // When S2 VMT exists for the broad California reporting region, that region
+      // replaces the Bay Area/Los Angeles service polygon as the primary facet.
+      if(state==="CA" && (
+        (market==="San Francisco Bay Area" && northCaCells.length>0) ||
+        (market==="Los Angeles" && southCaCells.length>0)
+      )) continue;
+
+      map.set(`${market}|${state}`,{
+        market,state,serviceFeature:f,status:String(p.status??""),
+        source_url:String(p.source_url??""),cells:[]
+      });
     }
+
     for(const loc of locations){
       if(loc.company!=="Waymo")continue;
       if((loc.evidence_status??"current")!=="current"||(loc.activity_type??loc.phase)!=="deployment")continue;
+      if(loc.state==="CA" && (
+        (loc.market==="San Francisco Bay Area" && northCaCells.length>0) ||
+        (loc.market==="Los Angeles" && southCaCells.length>0)
+      )) continue;
       const key=`${loc.market}|${loc.state}`;
-      if(!map.has(key)) map.set(key,{market:loc.market,state:loc.state,point:loc.lon!==null&&loc.lat!==null?[loc.lon,loc.lat]:undefined,status:loc.status,source_url:loc.source_url,cells:[]});
+      if(!map.has(key)) map.set(key,{
+        market:loc.market,state:loc.state,
+        point:loc.lon!==null&&loc.lat!==null?[loc.lon,loc.lat]:undefined,
+        status:loc.status,source_url:loc.source_url,cells:[]
+      });
       else{
         const x=map.get(key)!;
         if(loc.lon!==null&&loc.lat!==null)x.point=[loc.lon,loc.lat];
@@ -277,7 +372,7 @@ export function WaymoS2Explorer({
 
     const cellCenters=mapData.features.map(cell=>({cell,center:geometryCenter(cell.geometry)}));
     for(const facet of map.values()){
-      if(!facet.serviceFeature)continue;
+      if(facet.cells.length||!facet.serviceFeature)continue;
       facet.cells=cellCenters.filter(({center})=>pointInGeometry(center,facet.serviceFeature!.geometry)).map(x=>x.cell);
     }
     return Array.from(map.values()).sort((a,b)=>a.state.localeCompare(b.state)||a.market.localeCompare(b.market));
@@ -340,6 +435,11 @@ export function WaymoS2Explorer({
                 {facet.cells.length?`${facet.cells.length} S2 cells`:"boundary only"}
               </span>
             </div>
+            {String(facet.serviceFeature?.properties?.geometry_basis??"")==="derived_s2_reporting_region" && (
+              <div className="mt-2 text-[11px] leading-snug text-neutral-500">
+                Derived S2 reporting envelope — not an official Waymo service-area or ODD boundary.
+              </div>
+            )}
             <div className="mt-2 flex gap-4 text-xs text-neutral-600">
               {facet.cells.length>0 ? <>
                 <span><strong className="text-neutral-900">{compactMiles(total)}</strong> cumulative mi</span>
