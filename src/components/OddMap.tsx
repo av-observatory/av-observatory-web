@@ -319,12 +319,12 @@ export function OddMap({
         aria-label="Interactive ODD and service-area map"
       />
       {!hideLegend && <div className="mt-3 flex flex-wrap gap-x-5 gap-y-1 text-xs text-neutral-600">
-        <span><span className="inline-block w-3 h-3 align-middle mr-1 rounded-sm bg-[#2a78d6]/25 border border-[#184f95]" />Deployment/service boundary</span>
-        <span><span className="inline-block w-3 h-3 align-middle mr-1 rounded-sm bg-[#eda100]/25 border border-[#a86f00]" />Testing boundary</span>
-        <span><span className="inline-block w-3 h-1 align-middle mr-1 bg-[#184f95]" />Road-following corridor (only when sourced)</span>
-        {s2Features.length > 0 && <span><span className="inline-block w-3 h-3 align-middle mr-1 rounded-sm bg-[#438ad8]" />Waymo VMT by S2 cell</span>}
-        <span><span className="inline-block w-2.5 h-2.5 align-middle mr-1 rounded-full bg-[#184f95]" />Deployment market point</span>
-        <span><span className="inline-block w-2.5 h-2.5 align-middle mr-1 rounded-full bg-[#a86f00]" />Testing market point</span>
+        <span><span className="inline-block w-3 h-3 align-middle mr-1 rounded-sm bg-[#2a78d6]/25 border border-[#184f95]" />Deployment/Service Boundary</span>
+        <span><span className="inline-block w-3 h-3 align-middle mr-1 rounded-sm bg-[#eda100]/25 border border-[#a86f00]" />Testing Boundary</span>
+        <span><span className="inline-block w-3 h-1 align-middle mr-1 bg-[#184f95]" />Road-Following Corridor (Only When Sourced)</span>
+        {s2Features.length > 0 && <span><span className="inline-block w-3 h-3 align-middle mr-1 rounded-sm bg-[#438ad8]" />Waymo VMT by S2 Cell</span>}
+        <span><span className="inline-block w-2.5 h-2.5 align-middle mr-1 rounded-full bg-[#184f95]" />Deployment Market Point</span>
+        <span><span className="inline-block w-2.5 h-2.5 align-middle mr-1 rounded-full bg-[#a86f00]" />Testing Market Point</span>
       </div>}
     </div>
   );

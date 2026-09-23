@@ -5,13 +5,13 @@ import { RegistryManufacturer, RegistryPermit, RegistryStateStatus } from "@/lib
 import { UsStateMap } from "@/components/UsStateMap";
 
 const TYPE_LABELS: Record<string, string> = {
-  testing_with_driver: "Testing · drivered",
-  driverless_testing: "Testing · driverless",
-  drivered_deployment: "Deployment · drivered",
-  driverless_deployment: "Deployment · driverless",
-  deployment: "Deployment · driver status unspecified",
-  testing_registry: "Testing · driver status unspecified",
-  federal_disclosure: "Operational / federal evidence",
+  testing_with_driver: "Testing · Drivered",
+  driverless_testing: "Testing · Driverless",
+  drivered_deployment: "Deployment · Drivered",
+  driverless_deployment: "Deployment · Driverless",
+  deployment: "Deployment · Driver Status Unspecified",
+  testing_registry: "Testing · Driver Status Unspecified",
+  federal_disclosure: "Operational / Federal Evidence",
 };
 
 const TYPE_OPTIONS = [
@@ -206,16 +206,16 @@ export function ManufacturerSearch({
           <UsStateMap
             categoryByAbbrev={nationalCategories}
             categories={{
-              public_roster: { label: "Public company-level permit / registry roster", color: "#1f5fae" },
-              permit_regime: { label: "Permit / authorization required; holder roster not public", color: "#6da7ec" },
-              operational: { label: "Documented operation; no public holder roster ingested", color: "#9fd3c7" },
-              unclear: { label: "Regulatory status under review", color: "#d8d6cf" },
+              public_roster: { label: "Public Company-Level Permit / Registry Roster", color: "#1f5fae" },
+              permit_regime: { label: "Permit / Authorization Required; Holder Roster Not Public", color: "#6da7ec" },
+              operational: { label: "Documented Operation; No Public Holder Roster Ingested", color: "#9fd3c7" },
+              unclear: { label: "Regulatory Status Under Review", color: "#d8d6cf" },
             }}
             markers={operationalMarkers}
             onStateClick={(abbr) => abbr && setState(abbr)}
           />
         ) : (
-          <UsStateMap highlightAbbrevs={mapStates} highlightLabel="Matches filters" markers={operationalMarkers} onStateClick={(abbr) => abbr && setState(abbr)} />
+          <UsStateMap highlightAbbrevs={mapStates} highlightLabel="Matches Filters" markers={operationalMarkers} onStateClick={(abbr) => abbr && setState(abbr)} />
         )}
         <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs text-neutral-500">
           {evidence === "all" && <span>● Orange points = currently documented operating markets</span>}

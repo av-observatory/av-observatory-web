@@ -80,10 +80,10 @@ export function UsStateMap({
     if (isCategoryMode) {
       const key = categoryByAbbrev?.[abbrev];
       const cat = key ? categories?.[key] : undefined;
-      return cat ? `${name}: ${cat.label}` : `${name}: no classified record yet`;
+      return cat ? `${name}: ${cat.label}` : `${name}: No Classified Record Yet`;
     }
-    if (isHighlightMode) return `${name}: ${highlightSet.has(abbrev) ? highlightLabel : "No data"}`;
-    return `${name}: ${value !== undefined ? Math.round(value).toLocaleString() : "No public operational data yet"}`;
+    if (isHighlightMode) return `${name}: ${highlightSet.has(abbrev) ? highlightLabel : "No Data"}`;
+    return `${name}: ${value !== undefined ? Math.round(value).toLocaleString() : "No Public Operational Data Yet"}`;
   }
 
   function reset() {

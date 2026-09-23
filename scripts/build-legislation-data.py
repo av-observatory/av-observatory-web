@@ -9,9 +9,16 @@ as_of = "2026-09-23"
 ncsl = "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
 
 def bill(state, number, title, summary, status, action_date, action, url, session="2025-2026", repository=ncsl):
+    # Stage is supported by the indexed action, not inferred from a bill's title.
+    stage = "executive" if status in {"to_governor", "vetoed"} else (
+        "passed_legislature" if status == "enrolled" else (
+        "floor" if status == "engrossed" else (
+        "committee" if any(word in action.lower() for word in ("committee", "referred", "assigned", "carried over")) else "introduced")))
+    stage_dates = {"executive": action_date} if status == "to_governor" and "governor" in action.lower() else {}
     return dict(id=f"{state.lower()}-{number.lower().replace('.', '').replace(' ', '')}-{session[:4]}",
         jurisdiction=state, number=number, title=title, summary=summary, takeaway=summary, status=status,
-        last_action_date=action_date, last_action=action, session=session,
+        measure_type="resolution" if state != "US" and number.startswith("HR ") else "bill",
+        last_action_date=action_date, last_action=action, session=session, progress_stage=stage, stage_dates=stage_dates, hearings=[],
         source_url=url, repository_url=repository, reviewed_at=as_of, summary_reviewed_at=as_of)
 
 federal = [
@@ -45,7 +52,7 @@ state_bills = [
 ]
 
 states = [dict(code=s["code"], name=s["name"], repository_url=ncsl) for s in policy["states"]]
-dataset = dict(schema_version="1.0.0", as_of=as_of, state_index_reviewed="2026-09-15",
+dataset = dict(schema_version="1.1.0", as_of=as_of, state_index_reviewed="2026-09-15",
     methodology="Introduced AV bills, selected by subject relevance. State seed: NCSL 2026 AV legislation database, pending/to-governor records as indexed September 15. Federal seed: 119th Congress bill texts on govinfo. Status may change after the source review; an empty jurisdiction means no pending bill indexed in this snapshot, not a finding that no bill exists. Cross-check the linked legislature before relying on a status. LegiScan API refresh can discover and update current-session bills when configured.",
     source="reviewed snapshot", federal=federal, states=states, state_bills=state_bills)
 output = root / "public/data/legislation_tracker.json"

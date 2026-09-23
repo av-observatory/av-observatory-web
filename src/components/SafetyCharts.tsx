@@ -25,7 +25,7 @@ export function TopEntitiesChart({ data }: { data: SgoMonthlyDataset }) {
         <XAxis type="number" {...AXIS_PROPS} />
         <YAxis type="category" dataKey="entity" {...AXIS_PROPS} fontSize={11} width={180} />
         <Tooltip {...TOOLTIP_PROPS} formatter={(v) => Number(v).toLocaleString()} />
-        <Bar dataKey="count" name="Incident reports" fill={SERIES.blue} radius={[0, 3, 3, 0]} maxBarSize={22} />
+        <Bar dataKey="count" name="Incident Reports" fill={SERIES.blue} radius={[0, 3, 3, 0]} maxBarSize={22} />
       </BarChart>
     </ResponsiveContainer>
   );
@@ -41,7 +41,7 @@ export function TopStatesChart({ data }: { data: SgoMonthlyDataset }) {
         <XAxis dataKey="state" {...AXIS_PROPS} />
         <YAxis {...AXIS_PROPS} />
         <Tooltip {...TOOLTIP_PROPS} formatter={(v) => Number(v).toLocaleString()} />
-        <Bar dataKey="count" name="Incident reports" fill={SERIES.blue} radius={[3, 3, 0, 0]} maxBarSize={40} />
+        <Bar dataKey="count" name="Incident Reports" fill={SERIES.blue} radius={[3, 3, 0, 0]} maxBarSize={40} />
       </BarChart>
     </ResponsiveContainer>
   );
@@ -60,7 +60,7 @@ export function NationalTrendChart({ data }: { data: SgoMonthlyDataset }) {
         <XAxis dataKey="label" {...AXIS_PROPS} interval="preserveStartEnd" />
         <YAxis {...AXIS_PROPS} />
         <Tooltip {...TOOLTIP_PROPS} formatter={(v) => Number(v).toLocaleString()} />
-        <Line type="monotone" dataKey="count" name="Incident reports filed" stroke={SERIES.blue} strokeWidth={2.5} dot={false} activeDot={{ r: 5 }} />
+        <Line type="monotone" dataKey="count" name="Incident Reports Filed" stroke={SERIES.blue} strokeWidth={2.5} dot={false} activeDot={{ r: 5 }} />
       </LineChart>
     </ResponsiveContainer>
   );
@@ -76,7 +76,7 @@ export function WaymoStateMilesChart({ data }: { data: WaymoS2StateSummary }) {
         <XAxis dataKey="state" {...AXIS_PROPS} />
         <YAxis {...AXIS_PROPS} tickFormatter={(v) => (v / 1_000_000).toFixed(0) + "M"} />
         <Tooltip {...TOOLTIP_PROPS} formatter={(v) => Number(v).toLocaleString()} />
-        <Bar dataKey="miles" name="Waymo reported operational miles" fill={SERIES.blue} radius={[3, 3, 0, 0]} maxBarSize={60} />
+        <Bar dataKey="miles" name="Waymo Reported Operational Miles" fill={SERIES.blue} radius={[3, 3, 0, 0]} maxBarSize={60} />
       </BarChart>
     </ResponsiveContainer>
   );
@@ -89,7 +89,7 @@ const VEHICLE_CLASS_LABELS: Record<string, string> = {
 
 const PROGRAM_TYPE_LABELS: Record<string, string> = {
   commercial: "Commercial (has/had paid service)",
-  testing: "Testing / development-stage",
+  testing: "Testing / Development-Stage",
   unknown: "Unclassified",
 };
 
@@ -181,7 +181,7 @@ export function WaymoCaExposureChart({ data }: { data: WaymoCaExposureRate }) {
         <XAxis dataKey="label" {...AXIS_PROPS} interval="preserveStartEnd" />
         <YAxis {...AXIS_PROPS} />
         <Tooltip {...TOOLTIP_PROPS} formatter={(v) => `${v} / million mi`} />
-        <Line type="monotone" dataKey="rate" name="SGO incidents per million CA miles" stroke={SERIES.red} strokeWidth={2.5} dot={false} activeDot={{ r: 5 }} />
+        <Line type="monotone" dataKey="rate" name="SGO Incidents per Million CA Miles" stroke={SERIES.red} strokeWidth={2.5} dot={false} activeDot={{ r: 5 }} />
       </LineChart>
     </ResponsiveContainer>
   );
