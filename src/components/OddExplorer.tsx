@@ -58,12 +58,6 @@ function canonicalCompany(s: string) {
     "MOTIONAL": "Motional",
     "GLYDWAYS": "Glydways",
     "GATIK AI": "Gatik",
-    "PLUSAI": "PlusAI",
-    "WERIDE AI": "WeRide",
-    "WAABI": "Waabi",
-    "TORC": "Torc",
-    "BEEP": "Beep",
-    "GATIK AI": "Gatik",
     "GATIK": "Gatik",
     "PLUSAI": "PlusAI",
     "PLUS": "PlusAI",
@@ -73,6 +67,8 @@ function canonicalCompany(s: string) {
     "TORC ROBOTICS": "Torc",
     "TORC": "Torc",
     "BEEP": "Beep",
+    "MOBILEYE VISION": "Mobileye",
+    "MOBILEYE": "Mobileye",
   };
   return aliases[raw] ?? s.replace(/\s+(Inc\.?|LLC|Corp\.?|Corporation)$/i, "").trim();
 }
