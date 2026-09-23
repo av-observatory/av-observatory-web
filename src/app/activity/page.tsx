@@ -20,10 +20,10 @@ export default async function ActivityPage() {
 
   return (
     <div className="max-w-6xl px-8 py-6">
-      <p className="eyebrow mb-3">Activity · California</p>
-      <h1 className="text-4xl font-semibold tracking-tight max-w-3xl">Trips, waiting time, VMT, and fleet utilization</h1>
+      <p className="eyebrow mb-3">Trip Reporting · California</p>
+      <h1 className="text-4xl font-semibold tracking-tight max-w-3xl">California AV Trip Reporting</h1>
       <p className="mt-2 text-sm text-neutral-600 max-w-3xl">
-        CPUC passenger-service reporting, with derived operating indicators calculated from the reported monthly fields.
+        California is the only state represented in this trip tracker: its Public Utilities Commission requires AV passenger-service participants to report these trip and mileage data. These California results do not describe AV activity nationwide.
       </p>
 
       <section className="mt-5">

@@ -68,8 +68,8 @@ export default async function SafetyPage() {
 
   return (
     <div className="max-w-6xl px-8 py-6">
-      <p className="eyebrow mb-3">United States · Safety</p>
-      <h1 className="text-4xl font-semibold tracking-tight max-w-3xl">A national view of autonomous-vehicle safety reporting</h1>
+      <p className="eyebrow mb-3">United States · Crash Reporting</p>
+      <h1 className="text-4xl font-semibold tracking-tight max-w-3xl">AV Crash Reporting</h1>
       <p className="mt-2 text-sm text-neutral-600 max-w-3xl">NHTSA SGO incident reports by reporting entity, geography, vehicle, roadway, collision counterpart, injury severity, and reported ODD status. August 2026 is currently incomplete and excluded.</p>
 
       <div className="mt-5 grid sm:grid-cols-3 gap-2.5">

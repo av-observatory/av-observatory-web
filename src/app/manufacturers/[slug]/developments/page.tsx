@@ -7,8 +7,8 @@ export default async function DevelopmentsPage({params}: {params:Promise<{slug:s
   const {slug} = await params;
   const company = (await currentCompanyProfiles()).find(c => c.slug === slug);
   if (!company) notFound();
-  const coverage = company.developments.filter(item => item.kind !== "deployment evidence").sort((a,b)=>b.date.localeCompare(a.date));
-  const evidence = company.developments.filter(item => item.kind === "deployment evidence").sort((a,b)=>b.date.localeCompare(a.date));
+  const coverage = company.developments.filter(item => item.kind !== "activity evidence").sort((a,b)=>b.date.localeCompare(a.date));
+  const evidence = company.developments.filter(item => item.kind === "activity evidence").sort((a,b)=>b.date.localeCompare(a.date));
   return <div className="max-w-4xl px-8 py-8">
     <Link href="/manufacturers" className="text-sm underline text-[#184f95]">← All manufacturers</Link>
     <p className="eyebrow mt-8">Company developments</p><h1 className="text-4xl font-semibold tracking-tight text-[#0b1d33] mt-3">{company.name}</h1>

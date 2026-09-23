@@ -1,4 +1,4 @@
-export type Development = { date: string; headline: string; summary: string; source: string; publisher: string; kind: "announcement" | "filing" | "deployment evidence" | "regulatory action" | "media" };
+export type Development = { date: string; headline: string; summary: string; source: string; publisher: string; kind: "announcement" | "filing" | "activity evidence" | "regulatory action" | "media" };
 export type CompanyProfile = { slug: string; name: string; service: string; approach: string; partnerships: string; source: string; developments: Development[] };
 
 import data from "../../public/data/manufacturer_profiles.json";
@@ -14,8 +14,8 @@ export function buildProfiles(locations: {company:string; mode:string; market:st
     const modes = Array.from(new Set(rows.map(r => modeLabel[r.mode] ?? r.mode))).join(" and ").toLowerCase();
     const c = profiles[name];
     const evidence = Array.from(new Map(rows.filter(r => r.source_url && r.source_date).map(r => [`${r.source_url}|${r.market}`, r])).values()).map(r => ({
-      date: r.source_date!, headline: `Deployment evidence: ${r.market}, ${r.state}`, summary: `The Observatory records ${name}'s ${r.mode} activity in this market, based on the linked source. The date is the source or verification date, not necessarily the service launch date.`, source: r.source_url, publisher: "Operating record", kind: "deployment evidence" as const,
+      date: r.source_date!, headline: `Activity evidence: ${r.market}, ${r.state}`, summary: `The Observatory records ${name}'s ${r.mode} activity in this market, based on the linked source. The date is the source or verification date, not necessarily the service launch date.`, source: r.source_url, publisher: "Operating record", kind: "activity evidence" as const,
     }));
-    return { slug: companySlug(name), name, service: c?.service ?? `${modes.charAt(0).toUpperCase()+modes.slice(1)} documented in the Observatory's current U.S. deployment records.`, approach: c?.approach ?? "Service geography and operating conditions vary by market; examine the linked deployment evidence for scope.", partnerships: c?.partnerships ?? "Partnerships have not yet been independently documented in this profile.", source: c?.source ?? rows.find(r => r.source_url)?.source_url ?? "", developments: [...(c?.developments ?? []), ...evidence] };
+    return { slug: companySlug(name), name, service: c?.service ?? `${modes.charAt(0).toUpperCase()+modes.slice(1)} documented in the Observatory's current U.S. activity records.`, approach: c?.approach ?? "Service geography and operating conditions vary by market; examine the linked activity evidence for scope.", partnerships: c?.partnerships ?? "Partnerships have not yet been independently documented in this profile.", source: c?.source ?? rows.find(r => r.source_url)?.source_url ?? "", developments: [...(c?.developments ?? []), ...evidence] };
   }).sort((a,b) => a.name.localeCompare(b.name));
 }

@@ -40,8 +40,8 @@ function s2ForCity(city: string, state: string, cells: S2Feature[]) {
   return cells.filter(f => f.properties.state === stateName[state] && counties[key(city, state)]?.includes(f.properties.county ?? ""));
 }
 
-export function CompanyDeploymentExplorer({ locations, geometries, latestS2, vintages }: {
-  locations: Location[]; geometries: Geojson; latestS2: S2Geojson; vintages: VintageSummary;
+export function CompanyDeploymentExplorer({ locations, geometries, latestS2, vintages, waymoOnly = false }: {
+  locations: Location[]; geometries: Geojson; latestS2: S2Geojson; vintages: VintageSummary; waymoOnly?: boolean;
 }) {
   const [company, setCompany] = useState("Waymo");
   const [city, setCity] = useState("San Francisco Bay Area|CA");
@@ -61,8 +61,8 @@ export function CompanyDeploymentExplorer({ locations, geometries, latestS2, vin
     return () => controller.abort();
   }, [vintage, vintages.latest_vintage]);
 
-  const companies = useMemo(() => Array.from(new Set(locations.filter(current).map(x => x.company)))
-    .sort((a, b) => a === "Waymo" ? -1 : b === "Waymo" ? 1 : a.localeCompare(b)), [locations]);
+  const companies = useMemo(() => Array.from(new Set(locations.filter(x => current(x) && (!waymoOnly || x.company === "Waymo")).map(x => x.company)))
+    .sort((a, b) => a === "Waymo" ? -1 : b === "Waymo" ? 1 : a.localeCompare(b)), [locations, waymoOnly]);
   const selectedLocations = useMemo(() => locations.filter(x => x.company === company && current(x)), [locations, company]);
   const companyGeometries = useMemo(() => geometries.features.filter(f => {
     const p = f.properties ?? {};
@@ -120,7 +120,7 @@ export function CompanyDeploymentExplorer({ locations, geometries, latestS2, vin
   }
 
   return <div>
-    <div className="viz-card p-4 sm:p-5">
+    {!waymoOnly && <div className="viz-card p-4 sm:p-5">
       <h2 className="text-xl font-semibold text-[#0b1d33]">Select a company</h2>
       <p className="text-sm text-neutral-600 mt-1">Current testing and deployment locations supported by the linked record. An announced market is excluded until activity is documented.</p>
       {[
@@ -131,7 +131,7 @@ export function CompanyDeploymentExplorer({ locations, geometries, latestS2, vin
           className={`inline-flex items-center gap-2 rounded-lg border px-3 py-2 text-sm font-medium transition-colors ${company === name ? "border-[#123b69] bg-[#eaf2fa] text-[#0b1d33] ring-1 ring-[#123b69]" : "border-neutral-200 bg-white text-neutral-700 hover:border-[#7ca7d0]"}`}>
           {logoDomains[name] ? <img src={`https://www.google.com/s2/favicons?domain=${logoDomains[name]}&sz=64`} alt="" className="w-7 h-7 object-contain" /> : <span aria-hidden="true" className="w-7 h-7 rounded bg-neutral-100 text-neutral-600 flex items-center justify-center font-bold">{name[0]}</span>}
           {name}</button>)}</div></section>)}
-    </div>
+    </div>}
 
     <div className="grid lg:grid-cols-[240px_minmax(0,1fr)] gap-4 mt-4 items-start">
       <aside className="viz-card p-4"><h2 className="font-semibold text-lg">{company} locations</h2>
