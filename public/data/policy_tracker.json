@@ -2000,6 +2000,23 @@
       "date_precision": "year"
     },
     {
+      "id": "ca-ab1592-2016",
+      "level": "state",
+      "jurisdiction": "California",
+      "title": "AB 1592 · limited pilot project",
+      "summary": "Authorized a limited autonomous vehicle pilot project without the ordinary driver-seat controls under specified conditions. This targeted exception did not replace the general DMV testing and deployment rules.",
+      "takeaway": "Authorized a limited autonomous vehicle pilot project without the ordinary driver-seat controls under specified conditions",
+      "instrument": "legislation",
+      "status": "historical",
+      "date": "2016-09-29",
+      "source_url": "https://leginfo.legislature.ca.gov/faces/billHistoryClient.xhtml?bill_id=201520160AB1592",
+      "verified_at": "2026-09-23",
+      "state": "CA",
+      "source_label": "Enacted bill / legislature",
+      "source_tier": "primary",
+      "date_precision": "day"
+    },
+    {
       "id": "nv-ab511-2011",
       "level": "state",
       "jurisdiction": "Nevada",
