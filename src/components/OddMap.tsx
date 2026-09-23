@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   ComposableMap, Geographies, Geography, Marker, ZoomableGroup,
 } from "react-simple-maps";
@@ -13,6 +13,61 @@ type Feature = {
   geometry: unknown;
 };
 type FeatureCollection = { type: "FeatureCollection"; features: Feature[] };
+
+function reverseRings(geometry: any) {
+  if (!geometry || !geometry.type || !geometry.coordinates) return geometry;
+  if (geometry.type === "Polygon") {
+    return { ...geometry, coordinates: geometry.coordinates.map((ring: number[][]) => [...ring].reverse()) };
+  }
+  if (geometry.type === "MultiPolygon") {
+    return {
+      ...geometry,
+      coordinates: geometry.coordinates.map((poly: number[][][]) =>
+        poly.map((ring: number[][]) => [...ring].reverse())
+      ),
+    };
+  }
+  return geometry;
+}
+
+function geometryCoordinates(geometry: any, out: [number, number][] = []) {
+  if (!geometry) return out;
+  const walk = (value: any) => {
+    if (Array.isArray(value) && typeof value[0] === "number" && typeof value[1] === "number") {
+      out.push([value[0], value[1]]);
+      return;
+    }
+    if (Array.isArray(value)) value.forEach(walk);
+  };
+  walk(geometry.coordinates);
+  return out;
+}
+
+function fitView(polygons: OddPolygon[], points: OddPoint[]) {
+  const coords: [number, number][] = [];
+  polygons.forEach(p => geometryCoordinates(p.feature.geometry, coords));
+  points.forEach(p => coords.push([p.lon, p.lat]));
+  if (!coords.length) return { center: [-96, 38] as [number, number], zoom: 1 };
+
+  const xs = coords.map(d => d[0]);
+  const ys = coords.map(d => d[1]);
+  const minX = Math.min(...xs), maxX = Math.max(...xs);
+  const minY = Math.min(...ys), maxY = Math.max(...ys);
+  const spanX = Math.max(0.05, maxX - minX);
+  const spanY = Math.max(0.05, maxY - minY);
+  const span = Math.max(spanX, spanY * 1.45);
+  const center: [number, number] = [(minX + maxX) / 2, (minY + maxY) / 2];
+
+  let zoom = 1;
+  if (span < 0.35) zoom = 9;
+  else if (span < 0.75) zoom = 7;
+  else if (span < 1.5) zoom = 5.5;
+  else if (span < 3) zoom = 4;
+  else if (span < 7) zoom = 2.8;
+  else if (span < 15) zoom = 2;
+  else if (span < 28) zoom = 1.45;
+  return { center, zoom };
+}
 
 export type OddPolygon = {
   feature: Feature;
@@ -55,6 +110,10 @@ export function OddMap({
     type: "FeatureCollection",
     features: polygons.map(p => ({
       ...p.feature,
+      // d3-geo/react-simple-maps uses the opposite spherical ring winding from
+      // RFC 7946 GeoJSON. Reverse rings so a city service area is not rendered
+      // as "the entire world except the city".
+      geometry: reverseRings(p.feature.geometry),
       properties: {
         ...(p.feature.properties ?? {}),
         __company: p.company,
@@ -73,9 +132,16 @@ export function OddMap({
     return m;
   }, [polygons]);
 
+  const fitted = useMemo(() => fitView(polygons, points), [polygons, points]);
+
+  useEffect(() => {
+    setCenter(fitted.center);
+    setZoom(fitted.zoom);
+  }, [fitted.center[0], fitted.center[1], fitted.zoom]);
+
   function reset() {
-    setZoom(1);
-    setCenter([-96, 38]);
+    setCenter(fitted.center);
+    setZoom(fitted.zoom);
   }
 
   return (
@@ -90,8 +156,8 @@ export function OddMap({
         <ZoomableGroup
           zoom={zoom}
           center={center}
-          minZoom={1}
-          maxZoom={10}
+          minZoom={0.9}
+          maxZoom={12}
           onMoveEnd={({ coordinates, zoom: z }) => {
             setCenter(coordinates as [number, number]);
             setZoom(z ?? 1);
@@ -126,9 +192,9 @@ export function OddMap({
                   key={geo.rsmKey}
                   geography={geo}
                   fill={isLine ? "none" : phaseColor}
-                  fillOpacity={isLine ? 0 : 0.38}
+                  fillOpacity={isLine ? 0 : 0.22}
                   stroke={phaseStroke}
-                  strokeWidth={(isLine ? 3 : 1.2) / zoom}
+                  strokeWidth={(isLine ? 3 : 1.6) / zoom}
                   onMouseEnter={(evt) => setHover({ text: label, x: evt.clientX, y: evt.clientY })}
                   onMouseMove={(evt) => setHover(h => h ? { ...h, x: evt.clientX, y: evt.clientY } : h)}
                   onMouseLeave={() => setHover(null)}
