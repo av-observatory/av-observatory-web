@@ -27,7 +27,15 @@ export type SgoIncidentRow = {
   within_odd: string;
 };
 
+function hasValidFilingMonth(r:SgoIncidentRow) {
+  const yearText = (r.report_year ?? "").trim();
+  const monthText = (r.report_month ?? "").trim();
+  if (!yearText || !monthText) return false;
+  const y = Number(yearText), m = Number(monthText);
+  return Number.isInteger(y) && y >= 2021 && Number.isInteger(m) && m >= 1 && m <= 12;
+}
 function complete(r:SgoIncidentRow) {
+  if (!hasValidFilingMonth(r)) return true;
   const y=Number(r.report_year), m=Number(r.report_month);
   return y<2026 || (y===2026 && m<=7);
 }
@@ -50,11 +58,14 @@ export function SgoDeepDive({ rows }: { rows:SgoIncidentRow[] }) {
     (state==="ALL"||r.state===state)
   ),[completeRows,entity,state]);
 
+  const datedFiltered = useMemo(() => filtered.filter(hasValidFilingMonth), [filtered]);
+  const undatedCount = filtered.length - datedFiltered.length;
+
   const monthly=useMemo(()=>{
     const m=new Map<string,number>();
-    for(const r of filtered){const k=ym(r);m.set(k,(m.get(k)||0)+1);}
+    for(const r of datedFiltered){const k=ym(r);m.set(k,(m.get(k)||0)+1);}
     return Array.from(m,([month,count])=>({month,count})).sort((a,b)=>a.month.localeCompare(b.month));
-  },[filtered]);
+  },[datedFiltered]);
 
   const crashWith=useMemo(()=>countBy(filtered,"crash_with",10),[filtered]);
   const severity=useMemo(()=>countBy(filtered,"highest_injury_severity",10),[filtered]);
@@ -96,7 +107,10 @@ export function SgoDeepDive({ rows }: { rows:SgoIncidentRow[] }) {
 
     <div className="viz-card p-4 mt-3">
       <div className="font-semibold">Reports over time</div>
-      <div className="text-sm text-neutral-500">Filing month. August 2026 is excluded as incomplete.</div>
+      <div className="text-sm text-neutral-500">
+        Filing month for records with a valid filing month/year. August 2026 is excluded as incomplete.
+        {undatedCount > 0 && ` ${undatedCount.toLocaleString()} records in this view lack filing month/year and are excluded from this trend only.`}
+      </div>
       <ResponsiveContainer width="100%" height={300}>
         <LineChart data={monthly} margin={{top:14,right:12,bottom:5,left:0}}>
           <CartesianGrid {...GRID_PROPS}/><XAxis dataKey="month" {...AXIS_PROPS} interval="preserveStartEnd"/><YAxis {...AXIS_PROPS} allowDecimals={false}/>
