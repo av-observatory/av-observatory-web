@@ -38,6 +38,18 @@ export type OddPoint = {
   mode: string;
 };
 
+export type S2CellFeature = {
+  type: "Feature";
+  properties: {
+    state?: string;
+    county?: string;
+    s2_cell?: string;
+    waymo_ro_miles?: number;
+    incremental_miles?: number;
+  };
+  geometry: any;
+};
+
 const LEAFLET_JS = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.js";
 const LEAFLET_CSS = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.css";
 
@@ -86,12 +98,14 @@ export function OddMap({
   onPolygonClick,
   compact = false,
   hideLegend = false,
+  s2Features = [],
 }: {
   polygons: OddPolygon[];
   points: OddPoint[];
   onPolygonClick?: (p: OddPolygon) => void;
   compact?: boolean;
   hideLegend?: boolean;
+  s2Features?: S2CellFeature[];
 }) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const mapRef = useRef<any>(null);
@@ -127,7 +141,22 @@ export function OddMap({
 
       const bounds = L.latLngBounds([]);
       const polygonLayer = L.layerGroup().addTo(map);
+      const s2Layer = L.layerGroup().addTo(map);
       const pointLayer = L.layerGroup().addTo(map);
+
+      const s2Values = s2Features
+        .map(f => Number(f.properties?.waymo_ro_miles ?? 0))
+        .filter(v => Number.isFinite(v) && v > 0)
+        .sort((a,b)=>a-b);
+      const q = (p:number) => s2Values.length
+        ? s2Values[Math.min(s2Values.length-1, Math.floor((s2Values.length-1)*p))]
+        : 0;
+      const s2Breaks = [0.1,0.25,0.4,0.55,0.7,0.82,0.92,0.98].map(q);
+      const s2Ramp = ["#edf4fd","#d5e7fb","#a9cef6","#78afea","#438ad8","#2468b7","#174b8a","#0b2f5f"];
+      const s2Index = (v:number) => {
+        for (let i=0;i<s2Breaks.length;i++) if (v<=s2Breaks[i]) return i;
+        return s2Breaks.length-1;
+      };
 
       for (const p of polygons) {
         const isLine = p.geometry_type === "LineString" || p.geometry_type === "MultiLineString";
@@ -154,7 +183,7 @@ export function OddMap({
             weight: isLine ? 4 : 2,
             opacity: 0.95,
             fillColor,
-            fillOpacity: isLine ? 0 : 0.22,
+            fillOpacity: isLine ? 0 : (s2Features.length ? 0.035 : 0.22),
           },
         });
 
@@ -183,6 +212,35 @@ export function OddMap({
 
         try {
           const b = layer.getBounds();
+          if (b?.isValid()) bounds.extend(b);
+        } catch {}
+      }
+
+      for (const feature of s2Features) {
+        const miles = Number(feature.properties?.waymo_ro_miles ?? 0);
+        const added = Number(feature.properties?.incremental_miles ?? 0);
+        const cell = L.geoJSON(feature as any, {
+          style: {
+            color: "rgba(255,255,255,.9)",
+            weight: 0.45,
+            opacity: 0.9,
+            fillColor: miles > 0 ? s2Ramp[s2Index(miles)] : "#e5e5e3",
+            fillOpacity: miles > 0 ? 0.88 : 0.25,
+          },
+        });
+        const p = feature.properties ?? {};
+        cell.bindTooltip(
+          `<div style="font:12px/1.35 system-ui,-apple-system,Segoe UI,sans-serif;min-width:170px">
+            <div style="font-weight:700">${escapeHtml(p.county || "Waymo S2 cell")}${p.state ? `, ${escapeHtml(p.state)}` : ""}</div>
+            <div style="font-size:15px;font-weight:700;margin-top:3px">${escapeHtml(Math.round(miles).toLocaleString())} miles</div>
+            <div style="color:#666">Added since prior release: ${escapeHtml(Math.round(added).toLocaleString())} mi</div>
+            <div style="color:#666">S2 ${escapeHtml(p.s2_cell || "")}</div>
+          </div>`,
+          {sticky:true,direction:"top",opacity:0.96}
+        );
+        cell.addTo(s2Layer);
+        try {
+          const b = cell.getBounds();
           if (b?.isValid()) bounds.extend(b);
         } catch {}
       }
@@ -250,7 +308,7 @@ export function OddMap({
         mapRef.current = null;
       }
     };
-  }, [polygons, points, onPolygonClick]);
+  }, [polygons, points, onPolygonClick, s2Features]);
 
   return (
     <div>
@@ -263,6 +321,7 @@ export function OddMap({
         <span><span className="inline-block w-3 h-3 align-middle mr-1 rounded-sm bg-[#2a78d6]/25 border border-[#184f95]" />Deployment/service boundary</span>
         <span><span className="inline-block w-3 h-3 align-middle mr-1 rounded-sm bg-[#eda100]/25 border border-[#a86f00]" />Testing boundary</span>
         <span><span className="inline-block w-3 h-1 align-middle mr-1 bg-[#184f95]" />Road-following corridor (only when sourced)</span>
+        {s2Features.length > 0 && <span><span className="inline-block w-3 h-3 align-middle mr-1 rounded-sm bg-[#438ad8]" />Waymo VMT by S2 cell</span>}
         <span><span className="inline-block w-2.5 h-2.5 align-middle mr-1 rounded-full bg-[#eb6834]" />Market without sourced polygon</span>
       </div>}
     </div>
