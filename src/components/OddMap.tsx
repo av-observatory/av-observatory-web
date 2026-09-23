@@ -154,14 +154,24 @@ export function OddMap({
           },
         });
 
+        const props = (p.feature.properties ?? {}) as Record<string, unknown>;
+        const status = props.status ? `<div style="margin-top:4px"><b>Status:</b> ${escapeHtml(props.status).replaceAll("_"," ")}</div>` : "";
+        const basis = props.geometry_basis ? `<div><b>Geometry:</b> ${escapeHtml(props.geometry_basis).replaceAll("_"," ")}</div>` : "";
+        const routeBasis = props.route_basis ? `<div style="margin-top:4px">${escapeHtml(props.route_basis)}</div>` : "";
+        const regulatory = props.regulatory_basis ? `<div style="margin-top:4px;color:#666">${escapeHtml(props.regulatory_basis)}</div>` : "";
         const source = p.source_url
-          ? `<div style="margin-top:6px"><a href="${escapeHtml(p.source_url)}" target="_blank" rel="noreferrer">Source</a></div>`
+          ? `<a href="${escapeHtml(p.source_url)}" target="_blank" rel="noreferrer">status / route source</a>`
           : "";
+        const geometrySource = props.geometry_source_url
+          ? `<a href="${escapeHtml(props.geometry_source_url)}" target="_blank" rel="noreferrer">geometry source</a>`
+          : "";
+        const links = [source, geometrySource].filter(Boolean).join(" · ");
         layer.bindPopup(
-          `<div style="font:13px/1.4 system-ui,-apple-system,Segoe UI,sans-serif;min-width:180px">
+          `<div style="font:13px/1.4 system-ui,-apple-system,Segoe UI,sans-serif;min-width:220px;max-width:320px">
             <div style="font-weight:700">${escapeHtml(p.company)} · ${escapeHtml(p.market)}</div>
             <div>${escapeHtml(p.state)} · ${escapeHtml(p.phase)}${p.event_date ? ` · ${escapeHtml(p.event_date)}` : ""}</div>
-            ${source}
+            ${status}${basis}${routeBasis}${regulatory}
+            ${links ? `<div style="margin-top:7px">${links}</div>` : ""}
           </div>`
         );
         layer.on("click", () => onPolygonClick?.(p));
