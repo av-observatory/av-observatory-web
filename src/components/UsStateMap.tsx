@@ -43,6 +43,7 @@ export function UsStateMap({
   categories,
   markers = [],
   onStateClick,
+  selectedAbbrev,
 }: {
   valueByAbbrev?: Record<string, number>;
   highlightAbbrevs?: string[];
@@ -51,6 +52,7 @@ export function UsStateMap({
   categories?: Record<string, MapCategory>;
   markers?: MapMarker[];
   onStateClick?: (abbrev: string, name: string) => void;
+  selectedAbbrev?: string;
 }) {
   const [hovered, setHovered] = useState<{ text: string; x: number; y: number } | null>(null);
   const [zoom, setZoom] = useState(1);
@@ -118,8 +120,12 @@ export function UsStateMap({
                     key={geo.rsmKey}
                     geography={geo}
                     fill={colorFor(abbrev)}
-                    stroke="#ffffff"
                     strokeWidth={0.75 / zoom}
+                    stroke={selectedAbbrev === abbrev ? "#eb6834" : "#ffffff"}
+                    aria-label={stateText(name, abbrev, value)}
+                    role={onStateClick ? "button" : undefined}
+                    tabIndex={onStateClick ? 0 : undefined}
+                    onKeyDown={(evt) => { if (onStateClick && (evt.key === "Enter" || evt.key === " ")) { evt.preventDefault(); onStateClick(abbrev, name); } }}
                     onMouseEnter={(evt) => setHovered({ text: stateText(name, abbrev, value), x: evt.clientX, y: evt.clientY })}
                     onMouseMove={(evt) => setHovered((h) => h ? { ...h, x: evt.clientX, y: evt.clientY } : h)}
                     onMouseLeave={() => setHovered(null)}

@@ -6,7 +6,7 @@ import { SgoMonthlyDataset, WaymoS2StateSummary } from "@/lib/safety";
 import { sgoIncidentsStat, waymoTotalMiles, entitiesReportingStat } from "@/lib/overview";
 import { StatTile } from "@/components/StatTile";
 import { Panel } from "@/components/Panel";
-import { UsStateMap } from "@/components/UsStateMap";
+import { NationalStatePolicy } from "@/components/NationalStatePolicy";
 
 async function loadJson<T>(filename: string): Promise<T> {
   const file = path.join(process.cwd(), "public", "data", filename);
@@ -170,22 +170,8 @@ export default async function OverviewPage() {
           </div>
           <Link href="/deployment" className="text-sm underline font-medium text-[#0b1d33]">Deployment detail →</Link>
         </div>
-        <div className="grid lg:grid-cols-[1.45fr_.55fr] gap-3">
-          <Panel title="Operating footprint" subtitle="Current deployment evidence by state." source={`Operator, regulator, and platform sources · verified through ${odd.verified_through ?? "latest refresh"}`}>
-            <UsStateMap valueByAbbrev={operationValueByState} />
-          </Panel>
-          <Panel title="National operating mix">
-            <div className="space-y-3 text-sm">
-              <SummaryRow label="Current operating companies" value={currentCompanies.length} />
-              <SummaryRow label="Passenger markets" value={passengerMarkets.size} />
-              <SummaryRow label="Freight corridors / markets" value={freightCorridors.size} />
-              <SummaryRow label="States with current deployment evidence" value={currentStates.length} />
-            </div>
-            <div className="mt-4 flex flex-wrap gap-1.5">
-              {currentCompanies.map(company => <span key={company} className="badge">{company}</span>)}
-            </div>
-          </Panel>
-        </div>
+        <NationalStatePolicy valueByAbbrev={operationValueByState} companiesByState={Object.fromEntries(Array.from(companiesByState, ([state, companies]) => [state, Array.from(companies).sort()]))} />
+        <p className="mt-2 text-xs text-neutral-500">Operator, regulator, and platform evidence · verified through {odd.verified_through ?? "latest refresh"}. Policy research currently covers selected states; unreviewed states are clearly marked.</p>
       </section>
 
       <section className="mt-7 grid lg:grid-cols-2 gap-3">
