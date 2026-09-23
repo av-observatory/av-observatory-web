@@ -93,7 +93,7 @@ export function OddMap({
           maxZoom={10}
           onMoveEnd={({ coordinates, zoom: z }) => {
             setCenter(coordinates as [number, number]);
-            setZoom(z);
+            setZoom(z ?? 1);
           }}
         >
           <Geographies geography={STATES_URL}>
@@ -104,11 +104,7 @@ export function OddMap({
                 fill="#f3f2ef"
                 stroke="#d7d5ce"
                 strokeWidth={0.8 / zoom}
-                style={{
-                  default: { outline: "none" },
-                  hover: { fill: "#eceae4", outline: "none" },
-                  pressed: { outline: "none" },
-                }}
+                style={{ outline: "none", cursor: "grab" }}
               />
             ))}
           </Geographies>
@@ -132,11 +128,7 @@ export function OddMap({
                   onMouseMove={(evt) => setHover(h => h ? { ...h, x: evt.clientX, y: evt.clientY } : h)}
                   onMouseLeave={() => setHover(null)}
                   onClick={() => p && onPolygonClick?.(p)}
-                  style={{
-                    default: { outline: "none", cursor: "pointer" },
-                    hover: { fillOpacity: 0.62, outline: "none", cursor: "pointer" },
-                    pressed: { outline: "none" },
-                  }}
+                  style={{ outline: "none", cursor: "pointer" }}
                 />
               );
             })}

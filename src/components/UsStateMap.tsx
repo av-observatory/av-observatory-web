@@ -104,7 +104,7 @@ export function UsStateMap({
           maxZoom={6}
           onMoveEnd={({ coordinates, zoom: nextZoom }) => {
             setCenter(coordinates as [number, number]);
-            setZoom(nextZoom);
+            setZoom(nextZoom ?? 1);
           }}
         >
           <Geographies geography={GEO_URL}>
@@ -124,11 +124,7 @@ export function UsStateMap({
                     onMouseMove={(evt) => setHovered((h) => h ? { ...h, x: evt.clientX, y: evt.clientY } : h)}
                     onMouseLeave={() => setHovered(null)}
                     onClick={() => onStateClick?.(abbrev, name)}
-                    style={{
-                      default: { outline: "none" },
-                      hover: { fill: "#0b1d33", outline: "none", cursor: onStateClick ? "pointer" : "grab" },
-                      pressed: { outline: "none" },
-                    }}
+                    style={{ outline: "none", cursor: onStateClick ? "pointer" : "grab" }}
                   />
                 );
               })

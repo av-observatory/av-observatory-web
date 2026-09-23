@@ -9,39 +9,33 @@ async function loadJson<T>(filename: string): Promise<T> {
 }
 
 type OperationalLocation = {
-  company: string;
-  state: string;
-  market: string;
-  lat: number;
-  lon: number;
-  phase: string;
-  status: string;
-  mode: string;
-  geometry_basis: string;
-  source_url: string;
-  source_date?: string;
-  geometry_path?: string;
-  note?: string;
+  company: string; state: string; market: string; lat: number; lon: number;
+  phase: string; status: string; mode: string; geometry_basis: string;
+  source_url: string; source_date?: string; geometry_path?: string; note?: string;
 };
+type OddEvent = {
+  date:string; event_type:string; phase:string; company:string; market:string;
+  state:string; geometry_ref?:string|null; geometry_basis?:string; source_url?:string|null;
+};
+type Feature = { type:"Feature"; properties?:Record<string,unknown>; geometry:unknown };
 
 export default async function OddPage() {
-  const odd = await loadJson<{ locations: OperationalLocation[] }>("operational_domains.json");
+  const [odd, history, geometries] = await Promise.all([
+    loadJson<{ locations: OperationalLocation[] }>("operational_domains.json"),
+    loadJson<{ historical_events: OddEvent[] }>("odd_history.json"),
+    loadJson<{ type:"FeatureCollection"; features:Feature[] }>("odd_geometries.geojson"),
+  ]);
 
   return (
     <div className="max-w-6xl px-8 py-6">
-      <p className="eyebrow mb-3">Operational design domains</p>
-      <h1 className="text-4xl font-semibold tracking-tight">Where AVs actually operate</h1>
+      <p className="eyebrow mb-3">Deployment · ODD / service areas</p>
+      <h1 className="text-4xl font-semibold tracking-tight">ODD and service-area geography</h1>
       <p className="mt-2 text-sm text-neutral-600 max-w-3xl">
-        Company testing and deployment footprints, kept separate because an AV developer may test in a much larger or different geography than it serves in deployment.
+        Interactive testing and deployment boundaries. This same analysis is integrated into the Deployment page.
       </p>
-
       <section className="mt-5">
-        <OddExplorer locations={odd.locations} />
+        <OddExplorer locations={odd.locations} history={history.historical_events} geometries={geometries} />
       </section>
-
-      <div className="mt-5 text-xs text-neutral-500 max-w-4xl leading-relaxed">
-        Geometry is labeled by provenance and phase. Testing ODDs are not assumed to equal deployment ODDs. Waymo S2 mileage is treated as deployment/operational exposure only, not testing exposure.
-      </div>
     </div>
   );
 }
