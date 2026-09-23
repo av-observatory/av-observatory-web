@@ -76,8 +76,11 @@ function canonicalCompany(s: string) {
 function canonicalMarket(s: string) {
   const v = s.toLowerCase().replace(/,\s*[a-z]{2}$/i, "").replace(/[^a-z0-9]+/g, " ").trim();
   const aliases: Record<string,string> = {
-    "san francisco bay area": "san francisco",
-    "sf bay area": "san francisco",
+    "san francisco bay area": "san francisco bay area",
+    "sf bay area": "san francisco bay area",
+    "san francisco": "san francisco bay area",
+    "silicon valley": "san francisco bay area",
+    "bay area": "san francisco bay area",
   };
   return aliases[v] ?? v;
 }
@@ -116,6 +119,7 @@ export function OddExplorer({
   const [phase,setPhase]=useState("deployment");
   const [evidence,setEvidence]=useState<"current"|"announced"|"historical">("current");
   const [vintage,setVintage]=useState<"current"|"history">("current");
+  const [historyDate,setHistoryDate]=useState("LATEST");
   const [selected,setSelected]=useState<OddPolygon|null>(null);
 
   const eventByGeometry = useMemo(() => {
@@ -190,22 +194,53 @@ export function OddExplorer({
     return Array.from(map.values());
   }, [allPolygons]);
 
+  const historyDates = useMemo(() => Array.from(new Set(
+    allPolygons.map(p => p.event_date).filter((d): d is string => Boolean(d))
+  )).sort().reverse(), [allPolygons]);
+
+  const historicalSnapshot = useMemo(() => {
+    const cutoff = historyDate === "LATEST" ? "9999-12-31" : historyDate;
+    const map = new Map<string, OddPolygon>();
+    for (const p of allPolygons) {
+      if ((p.event_date ?? "") > cutoff) continue;
+      const key = `${canonicalCompany(p.company).toLowerCase()}|${canonicalMarket(p.market)}|${p.state}|${p.phase}`;
+      const prior = map.get(key);
+      if (!prior || (p.event_date ?? "") >= (prior.event_date ?? "")) map.set(key, p);
+    }
+    return Array.from(map.values());
+  }, [allPolygons, historyDate]);
+
   const polygons = useMemo(() => {
-    const showHistorical = evidence === "historical" || vintage === "history";
-    const currentRoutes = currentRouteGeometries.filter(p => {
+    const currentGeos = currentRouteGeometries.filter(p => {
       const props = p.feature.properties ?? {};
       return String(props.evidence_status ?? "current") === evidence;
     });
-    const base = showHistorical ? [...allPolygons, ...currentRoutes] : evidence === "current" ? [...latestPerMarket.filter(p =>
-      currentMarketKeys.has(`${canonicalCompany(p.company).toLowerCase()}|${canonicalMarket(p.market)}|${p.state}`)
-    ), ...currentRoutes] : currentRoutes;
+
+    const currentGeoKeys = new Set(currentGeos.map(p =>
+      `${canonicalCompany(p.company).toLowerCase()}|${canonicalMarket(p.market)}|${p.state}|${p.phase}`
+    ));
+
+    let base: OddPolygon[];
+    if (evidence === "historical" || vintage === "history") {
+      base = historicalSnapshot;
+    } else if (evidence === "current") {
+      const fallbackHistorical = latestPerMarket.filter(p => {
+        const marketKey = `${canonicalCompany(p.company).toLowerCase()}|${canonicalMarket(p.market)}|${p.state}`;
+        const fullKey = `${marketKey}|${p.phase}`;
+        return currentMarketKeys.has(marketKey) && !currentGeoKeys.has(fullKey);
+      });
+      base = [...currentGeos, ...fallbackHistorical];
+    } else {
+      base = currentGeos;
+    }
+
     return base.filter(p =>
       (company==="ALL" || canonicalCompany(p.company)===company) &&
       (state==="ALL" || p.state===state) &&
       (market==="ALL" || canonicalMarket(p.market)===canonicalMarket(market)) &&
       (phase==="ALL" || p.phase===phase)
     );
-  }, [allPolygons, latestPerMarket, currentRouteGeometries, currentMarketKeys, company, state, market, phase, evidence, vintage]);
+  }, [historicalSnapshot, latestPerMarket, currentRouteGeometries, currentMarketKeys, company, state, market, phase, evidence, vintage]);
 
   const historicalPoints = useMemo<OddPoint[]>(() => history.flatMap(e => {
     const raw = String(e.geometry_ref ?? "");
@@ -320,10 +355,16 @@ export function OddExplorer({
         </label>
         <label className="filter-label">Boundary view
           <select className="filter-select" value={vintage} onChange={e=>setVintage(e.target.value as "current"|"history")}>
-            <option value="current">Latest boundary for current markets</option>
-            <option value="history">All historical boundaries</option>
+            <option value="current">Current service areas</option>
+            <option value="history">Historical snapshot</option>
           </select>
         </label>
+        {vintage === "history" && <label className="filter-label">As of date
+          <select className="filter-select" value={historyDate} onChange={e=>setHistoryDate(e.target.value)}>
+            <option value="LATEST">Latest historical snapshot</option>
+            {historyDates.map(d=><option key={d} value={d}>{d}</option>)}
+          </select>
+        </label>}
       </div>
     </div>
 
