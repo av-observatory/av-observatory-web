@@ -1,6 +1,6 @@
 {
   "dataset": "AV operational markets and ODD geometry registry",
-  "methodology": "Operational market records are separate from permit records. geometry_basis states whether a boundary is exact, digitized, inferred from an administrative area, observed from S2 mileage, a route corridor, or currently only a city point.",
+  "methodology": "Operational market records are separate from permit records. geometry_basis states whether a boundary is exact, digitized, inferred from an administrative area, observed from S2 mileage, a route corridor, or currently only a city point. Testing and deployment ODDs are stored separately because a company's testing geography can differ materially from its passenger/freight deployment geography. Waymo S2 observed-mileage footprints are deployment-only and must not be used as testing ODDs.",
   "locations": [
     {
       "company": "Waymo",
@@ -12,7 +12,9 @@
       "mode": "ridehail",
       "geometry_basis": "city_point_only",
       "source_url": "https://waymo.com/rides/",
-      "note": "Waymo lists Phoenix among cities currently serving riders."
+      "note": "Waymo lists Phoenix among cities currently serving riders.",
+      "phase": "deployment",
+      "exposure_basis": "Deployment / rider-only operational footprint where derived from Waymo S2 mileage; not testing mileage."
     },
     {
       "company": "Waymo",
@@ -24,7 +26,9 @@
       "mode": "ridehail",
       "geometry_basis": "city_point_only",
       "source_url": "https://waymo.com/rides/",
-      "note": "Current service market; exact service boundary to be digitized or sourced."
+      "note": "Current service market; exact service boundary to be digitized or sourced.",
+      "phase": "deployment",
+      "exposure_basis": "Deployment / rider-only operational footprint where derived from Waymo S2 mileage; not testing mileage."
     },
     {
       "company": "Waymo",
@@ -36,7 +40,9 @@
       "mode": "ridehail",
       "geometry_basis": "city_point_only",
       "source_url": "https://waymo.com/rides/",
-      "note": "Current service market."
+      "note": "Current service market.",
+      "phase": "deployment",
+      "exposure_basis": "Deployment / rider-only operational footprint where derived from Waymo S2 mileage; not testing mileage."
     },
     {
       "company": "Waymo",
@@ -48,7 +54,9 @@
       "mode": "ridehail",
       "geometry_basis": "city_point_only",
       "source_url": "https://waymo.com/rides/",
-      "note": "Public riders began September 2026."
+      "note": "Public riders began September 2026.",
+      "phase": "deployment",
+      "exposure_basis": "Deployment / rider-only operational footprint where derived from Waymo S2 mileage; not testing mileage."
     },
     {
       "company": "Waymo",
@@ -60,7 +68,9 @@
       "mode": "ridehail",
       "geometry_basis": "city_point_only",
       "source_url": "https://waymo.com/rides/",
-      "note": "Public riders began September 2026."
+      "note": "Public riders began September 2026.",
+      "phase": "deployment",
+      "exposure_basis": "Deployment / rider-only operational footprint where derived from Waymo S2 mileage; not testing mileage."
     },
     {
       "company": "Waymo",
@@ -71,7 +81,9 @@
       "status": "public_service",
       "mode": "ridehail",
       "geometry_basis": "city_point_only",
-      "source_url": "https://waymo.com/rides/"
+      "source_url": "https://waymo.com/rides/",
+      "phase": "deployment",
+      "exposure_basis": "Deployment / rider-only operational footprint where derived from Waymo S2 mileage; not testing mileage."
     },
     {
       "company": "Waymo",
@@ -82,7 +94,9 @@
       "status": "public_service",
       "mode": "ridehail",
       "geometry_basis": "city_point_only",
-      "source_url": "https://waymo.com/rides/"
+      "source_url": "https://waymo.com/rides/",
+      "phase": "deployment",
+      "exposure_basis": "Deployment / rider-only operational footprint where derived from Waymo S2 mileage; not testing mileage."
     },
     {
       "company": "Waymo",
@@ -94,7 +108,9 @@
       "mode": "ridehail",
       "geometry_basis": "city_point_only",
       "source_url": "https://waymo.com/rides/",
-      "note": "Public riders began September 2026."
+      "note": "Public riders began September 2026.",
+      "phase": "deployment",
+      "exposure_basis": "Deployment / rider-only operational footprint where derived from Waymo S2 mileage; not testing mileage."
     },
     {
       "company": "Waymo",
@@ -105,7 +121,9 @@
       "status": "public_service",
       "mode": "ridehail",
       "geometry_basis": "city_point_only",
-      "source_url": "https://waymo.com/rides/"
+      "source_url": "https://waymo.com/rides/",
+      "phase": "deployment",
+      "exposure_basis": "Deployment / rider-only operational footprint where derived from Waymo S2 mileage; not testing mileage."
     },
     {
       "company": "Waymo",
@@ -116,7 +134,9 @@
       "status": "public_service",
       "mode": "ridehail",
       "geometry_basis": "city_point_only",
-      "source_url": "https://waymo.com/rides/"
+      "source_url": "https://waymo.com/rides/",
+      "phase": "deployment",
+      "exposure_basis": "Deployment / rider-only operational footprint where derived from Waymo S2 mileage; not testing mileage."
     },
     {
       "company": "Waymo",
@@ -127,7 +147,9 @@
       "status": "public_service",
       "mode": "ridehail",
       "geometry_basis": "city_point_only",
-      "source_url": "https://waymo.com/rides/"
+      "source_url": "https://waymo.com/rides/",
+      "phase": "deployment",
+      "exposure_basis": "Deployment / rider-only operational footprint where derived from Waymo S2 mileage; not testing mileage."
     },
     {
       "company": "Waymo",
@@ -138,7 +160,9 @@
       "status": "public_service",
       "mode": "ridehail",
       "geometry_basis": "city_point_only",
-      "source_url": "https://waymo.com/rides/"
+      "source_url": "https://waymo.com/rides/",
+      "phase": "deployment",
+      "exposure_basis": "Deployment / rider-only operational footprint where derived from Waymo S2 mileage; not testing mileage."
     },
     {
       "company": "Waymo",
@@ -149,7 +173,9 @@
       "status": "public_service",
       "mode": "ridehail",
       "geometry_basis": "city_point_only",
-      "source_url": "https://waymo.com/rides/"
+      "source_url": "https://waymo.com/rides/",
+      "phase": "deployment",
+      "exposure_basis": "Deployment / rider-only operational footprint where derived from Waymo S2 mileage; not testing mileage."
     },
     {
       "company": "Waymo",
@@ -160,7 +186,9 @@
       "status": "public_service",
       "mode": "ridehail",
       "geometry_basis": "city_point_only",
-      "source_url": "https://waymo.com/rides/"
+      "source_url": "https://waymo.com/rides/",
+      "phase": "deployment",
+      "exposure_basis": "Deployment / rider-only operational footprint where derived from Waymo S2 mileage; not testing mileage."
     },
     {
       "company": "Zoox",
@@ -172,7 +200,8 @@
       "mode": "ridehail",
       "geometry_basis": "digitized_official_map",
       "source_url": "https://zoox.com/common/files/ldwlsxvdtgylf_860g9luw-leip_my24_sept2025.pdf",
-      "note": "Zoox publishes an ODD map in its safety documentation; polygon still needs digitization."
+      "note": "Zoox publishes an ODD map in its safety documentation; polygon still needs digitization.",
+      "phase": "deployment"
     },
     {
       "company": "Zoox",
@@ -184,7 +213,8 @@
       "mode": "ridehail",
       "geometry_basis": "city_point_only",
       "source_url": "https://zoox.com/community/",
-      "note": "Zoox says San Francisco service is available to select riders."
+      "note": "Zoox says San Francisco service is available to select riders.",
+      "phase": "deployment"
     },
     {
       "company": "May Mobility",
@@ -195,7 +225,8 @@
       "status": "public_service",
       "mode": "ridehail",
       "geometry_basis": "city_point_only",
-      "source_url": "https://maymobility.com/locations"
+      "source_url": "https://maymobility.com/locations",
+      "phase": "deployment"
     },
     {
       "company": "May Mobility",
@@ -206,7 +237,8 @@
       "status": "public_service",
       "mode": "shuttle",
       "geometry_basis": "city_point_only",
-      "source_url": "https://maymobility.com/locations"
+      "source_url": "https://maymobility.com/locations",
+      "phase": "deployment"
     },
     {
       "company": "May Mobility",
@@ -217,7 +249,8 @@
       "status": "public_service",
       "mode": "shuttle",
       "geometry_basis": "city_point_only",
-      "source_url": "https://maymobility.com/locations"
+      "source_url": "https://maymobility.com/locations",
+      "phase": "deployment"
     },
     {
       "company": "Aurora",
@@ -229,7 +262,8 @@
       "mode": "freight",
       "geometry_basis": "route_corridor",
       "source_url": "https://ir.aurora.tech/_assets/_acc6fea185daf9fec42b60d2966ad292/aurora/news/2026-02-11_Aurora_Triples_Driverless_Network_to_10_Routes_132.pdf",
-      "note": "Freight corridor; should be rendered as a route line, not a city polygon."
+      "note": "Freight corridor; should be rendered as a route line, not a city polygon.",
+      "phase": "deployment"
     },
     {
       "company": "Aurora",
@@ -240,7 +274,8 @@
       "status": "driverless_commercial",
       "mode": "freight",
       "geometry_basis": "route_corridor",
-      "source_url": "https://ir.aurora.tech/_assets/_acc6fea185daf9fec42b60d2966ad292/aurora/news/2026-02-11_Aurora_Triples_Driverless_Network_to_10_Routes_132.pdf"
+      "source_url": "https://ir.aurora.tech/_assets/_acc6fea185daf9fec42b60d2966ad292/aurora/news/2026-02-11_Aurora_Triples_Driverless_Network_to_10_Routes_132.pdf",
+      "phase": "deployment"
     },
     {
       "company": "Aurora",
@@ -251,7 +286,8 @@
       "status": "driverless_commercial",
       "mode": "freight",
       "geometry_basis": "route_corridor",
-      "source_url": "https://ir.aurora.tech/_assets/_acc6fea185daf9fec42b60d2966ad292/aurora/news/2026-02-11_Aurora_Triples_Driverless_Network_to_10_Routes_132.pdf"
+      "source_url": "https://ir.aurora.tech/_assets/_acc6fea185daf9fec42b60d2966ad292/aurora/news/2026-02-11_Aurora_Triples_Driverless_Network_to_10_Routes_132.pdf",
+      "phase": "deployment"
     }
   ]
 }

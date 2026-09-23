@@ -3,6 +3,7 @@ import path from "path";
 import { MaAdtRegistry } from "@/lib/deployment";
 import { StatePermitRegistry } from "@/lib/registry";
 import { ManufacturerSearch } from "@/components/ManufacturerSearch";
+import Link from "next/link";
 
 async function loadJson<T>(filename: string): Promise<T> {
   const file = path.join(process.cwd(), "public", "data", filename);
@@ -34,6 +35,10 @@ export default async function DeploymentPage() {
       <section className="mt-5">
         <ManufacturerSearch manufacturers={registry.manufacturers} stateStatuses={registry.states_status_notes} operationalLocations={odd.locations} />
       </section>
+
+      <div className="mt-4 text-sm">
+        <Link href="/odd" className="font-medium underline text-[#0b1d33]">Explore actual operating markets and ODD/service-area geometry →</Link>
+      </div>
 
       <section className="mt-7">
         <h2 className="text-xl font-semibold tracking-tight">State regulatory coverage</h2>
