@@ -124,7 +124,7 @@ export function OddExplorer({
     locations
       .filter(d => (d.evidence_status ?? "current") === "current")
       .filter(d => (d.activity_type ?? d.phase) === phase || phase === "ALL")
-      .map(d => `${d.company.toLowerCase()}|${canonicalMarket(d.market)}|${d.state}`)
+      .map(d => `${canonicalCompany(d.company).toLowerCase()}|${canonicalMarket(d.market)}|${d.state}`)
   ), [locations, phase]);
 
   const allPolygons = useMemo<OddPolygon[]>(() => geometries.features.flatMap(feature => {
@@ -166,7 +166,7 @@ export function OddExplorer({
   const latestPerMarket = useMemo(() => {
     const map = new Map<string, OddPolygon>();
     for (const p of allPolygons) {
-      const key = `${p.company.toLowerCase()}|${canonicalMarket(p.market)}|${p.state}|${p.phase}`;
+      const key = `${canonicalCompany(p.company).toLowerCase()}|${canonicalMarket(p.market)}|${p.state}|${p.phase}`;
       const prior = map.get(key);
       if (!prior || (p.event_date ?? "") >= (prior.event_date ?? "")) map.set(key,p);
     }
@@ -180,7 +180,7 @@ export function OddExplorer({
       return String(props.evidence_status ?? "current") === evidence;
     });
     const base = showHistorical ? [...allPolygons, ...currentRoutes] : evidence === "current" ? [...latestPerMarket.filter(p =>
-      currentMarketKeys.has(`${p.company.toLowerCase()}|${canonicalMarket(p.market)}|${p.state}`)
+      currentMarketKeys.has(`${canonicalCompany(p.company).toLowerCase()}|${canonicalMarket(p.market)}|${p.state}`)
     ), ...currentRoutes] : currentRoutes;
     return base.filter(p =>
       (company==="ALL" || canonicalCompany(p.company)===company) &&
