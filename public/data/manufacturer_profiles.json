@@ -1,0 +1,238 @@
+{
+  "schema_version": "1.0.0",
+  "description": "Reviewed manufacturer and operator profiles and sourced company developments. Deployment evidence is derived separately from operational_domains.json and ODD geometries.",
+  "profiles": {
+    "Waymo": {
+      "service": "Driverless passenger ridehail in selected U.S. markets.",
+      "approach": "Geofenced commercial robotaxi service with market-specific operating areas.",
+      "partnerships": "Uber distributes Waymo rides in Austin and Atlanta.",
+      "source": "https://waymo.com/waymo-on-uber/",
+      "developments": [
+        {
+          "date": "2026-09-01",
+          "headline": "Waymo begins welcoming riders in Denver, Tampa, and San Diego",
+          "summary": "The company's service notice distinguishes gradual rider access from general availability.",
+          "source": "https://support.google.com/waymo/announcements/12766613?hl=en",
+          "publisher": "Waymo Help",
+          "kind": "announcement"
+        },
+        {
+          "date": "2026-02-24",
+          "headline": "Limited public rides begin in four additional cities",
+          "summary": "Waymo announced rider access in Dallas, Houston, San Antonio, and Orlando.",
+          "source": "https://waymo.com/blog/2026/02/dallas-houston-san-antonio-orlando/",
+          "publisher": "Waymo",
+          "kind": "announcement"
+        }
+      ]
+    },
+    "Aurora": {
+      "service": "Commercial autonomous long-haul trucking.",
+      "approach": "Aurora Driver operates on selected freight corridors, with truck-platform integrations.",
+      "partnerships": "Aurora names FedEx, Uber Freight, Volvo Autonomous Solutions, and others as commercial or technology collaborators.",
+      "source": "https://ir.aurora.tech/",
+      "developments": [
+        {
+          "date": "2026-07-29",
+          "headline": "Aurora outlines fleet and corridor plans in shareholder letter",
+          "summary": "Its second-quarter filing discusses driverless fleet allocation and customer routes; the targets are company projections.",
+          "source": "https://www.sec.gov/Archives/edgar/data/1828108/000182810826000075/aurora26q2shareholderlet.htm",
+          "publisher": "Aurora SEC filing",
+          "kind": "filing"
+        },
+        {
+          "date": "2026-07-22",
+          "headline": "Aurora launches second-generation driverless trucks",
+          "summary": "Aurora describes the updated commercial hardware fleet and customer rollout.",
+          "source": "https://ir.aurora.tech/news-events/press-releases/detail/144/aurora-launches-second-generation-driverless-trucks-in-u-s-to-meet-customer-demand",
+          "publisher": "Aurora",
+          "kind": "announcement"
+        }
+      ]
+    },
+    "May Mobility": {
+      "service": "Autonomous passenger rides and shuttle-style service.",
+      "approach": "Deploys its driving system with local service partners in selected markets.",
+      "partnerships": "Lyft carries its Atlanta rides; the company also describes partnerships with Uber, Toyota, NTT, and Grab. Announced services are not necessarily live.",
+      "source": "https://maymobility.com/posts/may-mobility-first-publicly-listed-pure-play-autonomous-ride-hail-technology-company-acp-holdings-acquisition-corp/",
+      "developments": [
+        {
+          "date": "2025-09-10",
+          "headline": "May Mobility and Lyft launch an Atlanta fleet",
+          "summary": "The partners describe their first autonomous fleet on the Lyft platform.",
+          "source": "https://maymobility.com/posts/lyft-and-may-mobility-deploy-their-first-autonomous-vehicle-fleet-in-atlanta/",
+          "publisher": "May Mobility",
+          "kind": "announcement"
+        }
+      ]
+    },
+    "Gatik": {
+      "service": "Middle-mile autonomous freight for retail and distribution routes.",
+      "approach": "Uses box trucks on repeatable, selected logistics routes.",
+      "partnerships": "Gatik names Walmart, PepsiCo, Isuzu, and NVIDIA in customer or technology arrangements, with different roles.",
+      "source": "https://www.gatik.ai/",
+      "developments": [
+        {
+          "date": "2026-06-08",
+          "headline": "PepsiCo and Gatik announce freight agreement",
+          "summary": "The companies describe a multiyear autonomous freight arrangement in PepsiCo's North American supply chain.",
+          "source": "https://www.pepsico.com/newsroom/press-releases/2026/pepsico-and-gatik-announce-multi-year-agreement-to-deploy-autonomous-freight-in-north-america",
+          "publisher": "PepsiCo",
+          "kind": "announcement"
+        },
+        {
+          "date": "2026-01-27",
+          "headline": "Gatik reports scaled driverless commercial deliveries",
+          "summary": "Company announcement on expanded freight operations and its vehicle program.",
+          "source": "https://archive.gatik.ai/news/press-releases/gatik-becomes-first-us-company-to-operate-fully-driverless-trucks-at-scale-for-commercial-deliveries/",
+          "publisher": "Gatik",
+          "kind": "announcement"
+        }
+      ]
+    },
+    "Zoox": {
+      "service": "Passenger robotaxi service in limited markets.",
+      "approach": "Uses a purpose-built bidirectional vehicle and staged market rollout.",
+      "partnerships": "Operates its own rider app; this profile does not identify a third-party ridehail distributor.",
+      "source": "https://zoox.com/journal/las-vegas",
+      "developments": [
+        {
+          "date": "2026-07-30",
+          "headline": "NHTSA grants temporary commercial vehicle exemption",
+          "summary": "The federal exemption addresses Zoox's purpose-built robotaxi design; state and local service approvals are separate.",
+          "source": "https://www.nhtsa.gov/press-releases/cutting-red-tape-safely-fast-track-automated-vehicle",
+          "publisher": "NHTSA",
+          "kind": "regulatory action"
+        },
+        {
+          "date": "2025-09-10",
+          "headline": "Zoox launches public Las Vegas service",
+          "summary": "Zoox describes availability on and near the Strip through its own app.",
+          "source": "https://zoox.com/journal/las-vegas",
+          "publisher": "Zoox",
+          "kind": "announcement"
+        }
+      ]
+    },
+    "Avride": {
+      "service": "Passenger robotaxi rides offered in a limited Dallas area.",
+      "approach": "Avride's driving system is integrated into Hyundai IONIQ 5 vehicles offered through a ridehail platform. The Dallas launch included an onboard safety operator.",
+      "partnerships": "Uber distributes Dallas rides; Hyundai supplies the vehicle platform.",
+      "source": "https://www.uber.com/us/en/newsroom/avride-on-uber/",
+      "developments": [
+        {
+          "date": "2025-12-02",
+          "headline": "Uber and Avride launch Dallas robotaxi rides",
+          "summary": "The initial service covered a limited nine-square-mile area with an onboard safety operator.",
+          "source": "https://www.uber.com/us/en/newsroom/avride-on-uber/",
+          "publisher": "Uber",
+          "kind": "announcement"
+        }
+      ]
+    },
+    "Beep": {
+      "service": "Autonomous transit and shuttle services in selected local programs.",
+      "approach": "Deploys shared, fixed-route mobility services with transit and civic partners.",
+      "partnerships": "Atlanta Beltline is a local pilot partner; Mobileye led Beep's 2026 funding round and collaborates on AV deployment.",
+      "source": "https://ridebeep.com/about-beep/press-releases",
+      "developments": [
+        {
+          "date": "2026-09-09",
+          "headline": "Beep announces funding led by Mobileye",
+          "summary": "The company says the round supports commercial autonomous mobility networks.",
+          "source": "https://ridebeep.com/press-releases/beep-closes-series-b-to-accelerate-commercial-deployment-of-autonomous-mobility-networks",
+          "publisher": "Beep",
+          "kind": "announcement"
+        },
+        {
+          "date": "2026-06-10",
+          "headline": "ATL Spoke pilot opens in Atlanta",
+          "summary": "Beep and Atlanta Beltline announced public service for an autonomous transit pilot.",
+          "source": "https://ridebeep.com/press-releases/beep-atlanta-beltline-partner-to-launch-atl-spoke-the-citys-first-autonomous-transit",
+          "publisher": "Beep",
+          "kind": "announcement"
+        }
+      ]
+    },
+    "Kodiak AI": {
+      "service": "Autonomous freight trucking, including customer-owned trucks.",
+      "approach": "Provides a truck-driving system for selected long-haul and industrial logistics operations.",
+      "partnerships": "Atlas Energy Solutions is a commercial customer; Bosch and AMD are hardware collaborators.",
+      "source": "https://kodiak.ai/news",
+      "developments": [
+        {
+          "date": "2026-07-31",
+          "headline": "Atlas expands Kodiak-powered driverless fleet",
+          "summary": "The partners set a timetable to grow the Atlas fleet in the Permian Basin.",
+          "source": "https://kodiak.ai/news/atlas-driverless-permian-expansion",
+          "publisher": "Kodiak AI",
+          "kind": "announcement"
+        },
+        {
+          "date": "2026-01-05",
+          "headline": "Kodiak and Bosch reach hardware agreement",
+          "summary": "The companies announced work on autonomous trucking hardware and sensors.",
+          "source": "https://kodiak.ai/news/kodiak-bosch-scale-autonomous-trucking-hardware",
+          "publisher": "Kodiak AI",
+          "kind": "announcement"
+        }
+      ]
+    },
+    "Motional": {
+      "service": "IONIQ 5-based passenger robotaxis in Las Vegas.",
+      "approach": "Develops an automated driving system for a commercial ridehail fleet; rider access depends on the market and phase.",
+      "partnerships": "Uber distributes Motional rides in Las Vegas; Hyundai Motor Group is Motional's majority owner and vehicle partner.",
+      "source": "https://motional.com/news/uber-and-motional-launch-robotaxi-service-las-vegas",
+      "developments": [
+        {
+          "date": "2026-03-13",
+          "headline": "Uber and Motional launch Las Vegas robotaxi service",
+          "summary": "Uber riders became eligible to match with Motional IONIQ 5 vehicles.",
+          "source": "https://motional.com/news/uber-and-motional-launch-robotaxi-service-las-vegas",
+          "publisher": "Motional",
+          "kind": "announcement"
+        },
+        {
+          "date": "2026-02-02",
+          "headline": "Motional begins driverless Las Vegas testing",
+          "summary": "Testing preceded the public ridehail launch and should be distinguished from paid service.",
+          "source": "https://motional.com/news/our-journey-commercialize-driverless-ride-hail-las-vegas",
+          "publisher": "Motional",
+          "kind": "announcement"
+        }
+      ]
+    },
+    "Tesla": {
+      "service": "Robotaxi rides in limited Texas and Florida markets, with supervision varying by place and phase.",
+      "approach": "Offers rides through its Robotaxi app using Tesla vehicles and its own driving system.",
+      "partnerships": "The rider service is distributed through Tesla's own app; no third-party ridehail partner is identified here.",
+      "source": "https://www.tesla.com/support/robotaxi",
+      "developments": [
+        {
+          "date": "2026-06-03",
+          "headline": "Reuters reports unsupervised Austin rollout",
+          "summary": "The report covers Tesla's announcement of unsupervised rides in Austin; it does not establish the same operating mode in every market.",
+          "source": "https://www.reuters.com/business/autos-transportation/tesla-rolls-out-unsupervised-robotaxis-austin-2026-06-03/",
+          "publisher": "Reuters",
+          "kind": "media"
+        }
+      ]
+    },
+    "Waabi": {
+      "service": "Autonomous trucking activity on selected routes; a robotaxi partnership is announced but future-facing.",
+      "approach": "Develops a driving system and direct-to-customer trucking model, with a planned extension to robotaxis.",
+      "partnerships": "Uber Freight and Volvo Autonomous Solutions are trucking collaborators; Uber announced a future robotaxi partnership.",
+      "source": "https://waabi.ai/insights",
+      "developments": [
+        {
+          "date": "2026-01-28",
+          "headline": "Waabi announces funding and Uber robotaxi partnership",
+          "summary": "The company describes future robotaxi deployment and continuing trucking development; the announced robotaxis are not counted as live rides.",
+          "source": "https://waabi.ai/insights/waabi-secures-1-billion-in-new-funding-to-lead-physical-ai-revolution",
+          "publisher": "Waabi",
+          "kind": "announcement"
+        }
+      ]
+    }
+  }
+}

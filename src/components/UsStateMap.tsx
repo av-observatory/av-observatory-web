@@ -169,8 +169,6 @@ export function UsStateMap({
         </div>
       )}
 
-      <div className="mt-1 text-xs text-neutral-500">Drag to pan · scroll or controls to zoom · hover for details</div>
-
       {hovered && (
         <div className="fixed z-20 pointer-events-none bg-neutral-900 text-white text-xs rounded px-2 py-1 max-w-xs" style={{ left: hovered.x + 12, top: hovered.y + 12 }}>
           {hovered.text}

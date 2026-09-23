@@ -14,7 +14,7 @@ const DOWNLOADS = [
   {
     title: "Waymo S2-Cell Safety Benchmark",
     description: "State/county/S2-cell level Waymo reported miles and HPMS human-driving benchmark crash counts, across vintage snapshots.",
-    file: "waymo_s2_benchmark.csv",
+    file: "waymo_s2_latest.geojson",
     json: "waymo_s2_state_summary.json",
   },
 ];
@@ -27,8 +27,8 @@ export default function DownloadsPage() {
       <h1 className="text-2xl font-semibold tracking-tight text-[#0b1d33]">Downloads</h1>
       <p className="mt-2 text-neutral-600">
         Standardized datasets underlying the charts on this site. Raw source
-        files and full provenance (source registry, hashes) are not yet
-        published externally; these are the cleaned, analysis-ready tables.
+        files are available below. Each deployed revision has a versioned R2 backup
+        with a manifest of file sizes and SHA-256 hashes when R2 is configured.
       </p>
 
       <div className="mt-8 space-y-4">
@@ -38,7 +38,7 @@ export default function DownloadsPage() {
             <p className="mt-1 text-sm text-neutral-600">{d.description}</p>
             <div className="mt-3 flex gap-4 text-sm">
               <a href={`${BASE_PATH}/data/${d.file}`} download className="text-[#0b1d33] font-medium underline">
-                Download CSV
+                Download {d.file.endsWith(".csv") ? "CSV" : "GeoJSON"}
               </a>
               <a href={`${BASE_PATH}/data/${d.json}`} download className="text-[#0b1d33] font-medium underline">
                 Download JSON
