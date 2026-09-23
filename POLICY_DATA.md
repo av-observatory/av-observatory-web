@@ -2,6 +2,8 @@
 
 `public/data/policy_tracker.json` is the reviewed, machine-readable snapshot. It contains federal FMVSS and oversight events, 50 state records plus D.C., state legislation/executive-order events and city policy events. Each event has a stable ID, jurisdiction level, instrument, status, date (null if unverified), summary, source URL and verification date. `source_tier: secondary` marks state entries whose direct legislation link still requires review. An event with `historical_status_unverified`, `rescinded`, or `completed` is not current operating authority.
 
+The five-stage FMVSS display uses `status: under_review` after the comment deadline and `status: effective` only after a final rule's effective date. Federal entries include `comment_deadline`, `effective_date`, and links to the proposal or comment extension where applicable. The 2020 occupant-protection proposal remains in the source record alongside its 2022 final rule, but they appear as one rulemaking in the display. California DMV and CPUC rulemaking milestones are individual `state_events` with stable IDs and primary agency links.
+
 Edit the curated records in `scripts/build-policy-data.py` and state descriptions in `src/lib/statePolicySurvey.ts` / `src/lib/statePolicy.ts`, then run `npm run policy:rebuild` and review the JSON diff. The generator does not automatically infer legal changes from headlines. Add new city events to `city` and federal rulemakings to `federal`, keeping proposal and final status separate. Run `npm run build` before publishing.
 
 ## R2 configuration
