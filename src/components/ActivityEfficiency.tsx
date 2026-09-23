@@ -87,7 +87,7 @@ export function WaymoWaitingTime({ rows }: { rows: ActivityMonthlyRow[] }) {
         <LineChart data={data} margin={{top:14,right:15,bottom:4,left:4}}>
           <CartesianGrid {...GRID_PROPS}/><XAxis dataKey="label" {...AXIS_PROPS} interval="preserveStartEnd"/><YAxis {...AXIS_PROPS} tickFormatter={v=>`${Math.round(v/1000)}K`}/>
           <Tooltip {...TOOLTIP_PROPS} formatter={v=>`${Number(v).toLocaleString()} hours`}/>
-          <Line type="monotone" dataKey="hours" name="Waiting hours" stroke={SERIES.violet} strokeWidth={2.5} dot={false}/>
+          <Line type="monotone" dataKey="hours" name="Waiting Hours" stroke={SERIES.violet} strokeWidth={2.5} dot={false}/>
         </LineChart>
       </ResponsiveContainer>
     </div>
@@ -98,7 +98,7 @@ export function WaymoWaitingTime({ rows }: { rows: ActivityMonthlyRow[] }) {
         <LineChart data={data} margin={{top:14,right:15,bottom:4,left:4}}>
           <CartesianGrid {...GRID_PROPS}/><XAxis dataKey="label" {...AXIS_PROPS} interval="preserveStartEnd"/><YAxis {...AXIS_PROPS} unit=" min"/>
           <Tooltip {...TOOLTIP_PROPS} formatter={v=>`${v} min/trip`}/>
-          <Line type="monotone" dataKey="minutes" name="Waiting minutes / trip" stroke={SERIES.blue} strokeWidth={2.5} dot={false}/>
+          <Line type="monotone" dataKey="minutes" name="Waiting Minutes / Trip" stroke={SERIES.blue} strokeWidth={2.5} dot={false}/>
         </LineChart>
       </ResponsiveContainer>
     </div>
@@ -138,8 +138,8 @@ export function WaymoVmtUtilization({ rows }: { rows: ActivityMonthlyRow[] }) {
         <LineChart data={data} margin={{top:14,right:15,bottom:4,left:4}}>
           <CartesianGrid {...GRID_PROPS}/><XAxis dataKey="label" {...AXIS_PROPS} interval="preserveStartEnd"/><YAxis {...AXIS_PROPS} domain={[0,100]} unit="%"/>
           <Tooltip {...TOOLTIP_PROPS} formatter={v=>`${v}%`}/><Legend {...LEGEND_PROPS}/>
-          <Line type="monotone" dataKey="occupied" name="Passenger-occupied VMT" stroke={SERIES.blue} strokeWidth={2.5} dot={false}/>
-          <Line type="monotone" dataKey="deadhead" name="Non-passenger VMT" stroke={SERIES.orange} strokeWidth={2.5} dot={false}/>
+          <Line type="monotone" dataKey="occupied" name="Passenger-Occupied VMT" stroke={SERIES.blue} strokeWidth={2.5} dot={false}/>
+          <Line type="monotone" dataKey="deadhead" name="Non-Passenger VMT" stroke={SERIES.orange} strokeWidth={2.5} dot={false}/>
         </LineChart>
       </ResponsiveContainer>
     </div>
@@ -172,7 +172,7 @@ export function WaymoParkingEstimate({ rows }: { rows: ActivityMonthlyRow[] }) {
       <LineChart data={data} margin={{top:14,right:15,bottom:4,left:4}}>
         <CartesianGrid {...GRID_PROPS}/><XAxis dataKey="label" {...AXIS_PROPS} interval="preserveStartEnd"/><YAxis {...AXIS_PROPS} tickFormatter={v=>`${Math.round(v/1000)}K`}/>
         <Tooltip {...TOOLTIP_PROPS} formatter={v=>`${Number(v).toLocaleString()} estimated stationary hours`}/>
-        <Line type="monotone" dataKey="hours" name="Estimated stationary P1 hours" stroke={SERIES.aqua} strokeWidth={2.5} dot={false}/>
+        <Line type="monotone" dataKey="hours" name="Estimated Stationary P1 Hours" stroke={SERIES.aqua} strokeWidth={2.5} dot={false}/>
       </LineChart>
     </ResponsiveContainer>
     <div className="text-xs text-neutral-500">This is an assumption-based estimate, not directly reported parking time.</div>

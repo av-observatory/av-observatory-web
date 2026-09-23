@@ -51,7 +51,7 @@ export function TripsChart({ rows }: { rows: ActivityMonthlyRow[] }) {
         <XAxis dataKey="label" {...AXIS_PROPS} />
         <YAxis {...AXIS_PROPS} tickFormatter={(v) => (v / 1_000_000).toFixed(1) + "M"} />
         <Tooltip {...TOOLTIP_PROPS} formatter={(v) => Number(v).toLocaleString()} />
-        <Line type="monotone" dataKey="trips" name="Passenger trips" stroke={SERIES.blue} strokeWidth={2.5} dot={false} activeDot={{ r: 5 }} />
+        <Line type="monotone" dataKey="trips" name="Passenger Trips" stroke={SERIES.blue} strokeWidth={2.5} dot={false} activeDot={{ r: 5 }} />
       </LineChart>
     </ResponsiveContainer>
   );
@@ -164,7 +164,7 @@ export function NonPassengerShareChart({ rows }: { rows: ActivityMonthlyRow[] })
         <XAxis dataKey="label" {...AXIS_PROPS} />
         <YAxis {...AXIS_PROPS} tickFormatter={(v) => `${v}%`} domain={[0, 100]} />
         <Tooltip {...TOOLTIP_PROPS} formatter={(v) => `${v}%`} />
-        <Line type="monotone" dataKey="nonPassengerSharePct" name="Non-passenger VMT share" stroke={SERIES.orange} strokeWidth={2.5} dot={false} activeDot={{ r: 5 }} />
+        <Line type="monotone" dataKey="nonPassengerSharePct" name="Non-Passenger VMT Share" stroke={SERIES.orange} strokeWidth={2.5} dot={false} activeDot={{ r: 5 }} />
       </LineChart>
     </ResponsiveContainer>
   );
@@ -202,7 +202,7 @@ export function WaitingHoursChart({ rows }: { rows: ActivityMonthlyRow[] }) {
         <XAxis dataKey="label" {...AXIS_PROPS} />
         <YAxis {...AXIS_PROPS} tickFormatter={(v) => Number(v).toLocaleString()} />
         <Tooltip {...TOOLTIP_PROPS} formatter={(v) => `${Number(v).toLocaleString()} hours`} />
-        <Line type="monotone" dataKey="waitingHours" name="Total reported waiting hours" stroke={SERIES.violet} strokeWidth={2.5} dot={false} activeDot={{ r: 5 }} />
+        <Line type="monotone" dataKey="waitingHours" name="Total Reported Waiting Hours" stroke={SERIES.violet} strokeWidth={2.5} dot={false} activeDot={{ r: 5 }} />
       </LineChart>
     </ResponsiveContainer>
   );

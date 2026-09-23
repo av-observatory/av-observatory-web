@@ -24,6 +24,42 @@ RELEVANT = re.compile(r"\b(?:autonomous (?:vehicle|driving|truck|taxi|mobility)|
 STATUS = {0: "draft", 1: "introduced", 2: "engrossed", 3: "enrolled", 4: "passed", 5: "vetoed", 6: "failed"}
 SEEN = {}
 
+STAGES = ("introduced", "committee", "floor", "passed_legislature", "executive", "law")
+PROGRESS_EVENTS = {1: "introduced", 2: "floor", 3: "passed_legislature", 9: "committee", 10: "committee", 7: "law", 8: "law"}
+
+def process_details(item, status, action, action_date, source_url):
+    """Only use dated LegiScan progress/calendar entries; do not invent hearings."""
+    dates = {}
+    stage = "introduced"
+    for entry in item.get("progress") or []:
+        current = PROGRESS_EVENTS.get(int(entry.get("event") or 0))
+        value = str(entry.get("date") or "")[:10]
+        if current and re.fullmatch(r"\d{4}-\d{2}-\d{2}", value):
+            dates[current] = value
+            if STAGES.index(current) > STAGES.index(stage):
+                stage = current
+    if status == "engrossed":
+        stage = max((stage, "floor"), key=STAGES.index)
+    elif status == "enrolled":
+        stage = max((stage, "passed_legislature"), key=STAGES.index)
+    elif status in {"passed", "vetoed"}:
+        stage = max((stage, "executive"), key=STAGES.index)
+    if re.search(r"\b(referred to|assigned to|in (?:house|senate) .*committee|committee hearing)\b", action, re.I):
+        stage = max((stage, "committee"), key=STAGES.index)
+    if re.search(r"\b(sent to (?:governor|president)|presented to (?:governor|president))\b", action, re.I):
+        stage = max((stage, "executive"), key=STAGES.index)
+        dates["executive"] = action_date
+    if re.search(r"\b(signed (?:by|into law)|became law|chaptered|veto override adopted|approved without signature|allowed to become law)\b", action, re.I):
+        stage = "law"
+        dates["law"] = action_date
+    hearings = []
+    for event in item.get("calendar") or []:
+        value = str(event.get("date") or "")[:10]
+        if "hearing" in str(event.get("type") or "").lower() and re.fullmatch(r"\d{4}-\d{2}-\d{2}", value):
+            hearings.append(dict(date=value, time=str(event.get("time") or ""), description=str(event.get("description") or "Committee hearing"), source_url=source_url))
+    hearings = sorted(hearings, key=lambda x: x["date"], reverse=True)[:3]
+    return stage, dates, hearings
+
 def request(**params):
     url = "https://api.legiscan.com/?" + urlencode(dict(key=KEY, **params))
     with urlopen(url, timeout=30) as response:
@@ -77,9 +113,12 @@ for row in SEEN.values():
         raise ValueError(f"Missing HTTPS source for {jurisdiction} {number}")
     # Curated descriptions are retained until a human reviews changes to the text.
     summary = (original or {}).get("summary") or (description.strip()[:280] or title)
+    progress_stage, stage_dates, hearings = process_details(item, status, action, action_date, url)
+    measure_type = "resolution" if "resolution" in str(item.get("bill_type") or "").lower() else (original or {}).get("measure_type", "bill")
     refreshed.append(dict(id=f"{jurisdiction.lower()}-{re.sub(r'\W', '', number).lower()}-{item.get('session', {}).get('year_start', date.today().year)}",
-        jurisdiction=jurisdiction, number=number, title=title, summary=summary, takeaway=(original or {}).get("takeaway") or summary.split(". ")[0].rstrip("."),
+        jurisdiction=jurisdiction, number=number, title=title, summary=summary, measure_type=measure_type, takeaway=(original or {}).get("takeaway") or summary.split(". ")[0].rstrip("."),
         status=status, last_action_date=action_date, last_action=action, session=session,
+        progress_stage=progress_stage, stage_dates=stage_dates, hearings=hearings,
         source_url=url, repository_url="https://legiscan.com/legiscan",
         reviewed_at=date.today().isoformat(), bill_id=item["bill_id"],
         summary_reviewed_at=(original or {}).get("summary_reviewed_at")))
