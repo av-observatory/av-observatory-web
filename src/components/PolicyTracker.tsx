@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import { UsStateMap, type MapCategory } from "@/components/UsStateMap";
 import { PolicyNav } from "@/components/PolicyNav";
-import { displayDate, usePolicyData } from "@/lib/policyTracker";
+import { displayDate, usePolicyData, type PolicyEvent } from "@/lib/policyTracker";
 
 function Intro({ level, description }: { level: string; description: string }) {
   return <><p className="eyebrow mb-3">Policy tracker / {level}</p><h1 className="text-4xl font-semibold tracking-tight text-[#0b1d33]">Autonomous vehicle policy tracker</h1><p className="mt-3 text-sm leading-relaxed text-neutral-600 max-w-3xl">{description}</p></>;
@@ -17,9 +17,36 @@ const categories: Record<string, MapCategory> = {
   none: { label: "No AV-specific law or order identified", color: "#e6e5e0" },
 };
 
+const fmvssStages = ["Proposal", "Comments", "Agency review", "Final rule", "In effect"] as const;
+type FmvssItem = ReturnType<typeof usePolicyData>["data"]["federal"][number];
+
+function FmvssTimeline({ item }: { item: FmvssItem }) {
+  const final = item.status === "effective";
+  const deadline = "comment_deadline" in item ? item.comment_deadline : undefined;
+  const effective = "effective_date" in item ? item.effective_date : undefined;
+  const current = final ? 4 : item.status === "under_review" ? 2 : 1;
+  return <div className="mt-5" aria-label={`Rulemaking status: ${fmvssStages[current]}`}>
+    <ol className="grid grid-cols-5 gap-1" aria-label="Five stages of FMVSS rulemaking">
+      {fmvssStages.map((label, index) => <li key={label} aria-current={index === current ? "step" : undefined} className="min-w-0">
+        <div className={`h-2 rounded-sm ${index === current ? "bg-[#123b69]" : index < current ? "bg-[#80a9d0]" : "bg-neutral-200"}`} />
+        <div className={`mt-2 text-[12px] leading-tight sm:text-sm ${index === current ? "font-semibold text-[#123b69]" : index < current ? "text-neutral-700" : "text-neutral-500"}`}>{label}</div>
+      </li>)}
+    </ol>
+    <p className="text-sm text-neutral-700 mt-3">{final
+      ? `Final rule published ${displayDate(item.date)}; in effect since ${displayDate(effective ?? null)}.`
+      : deadline ? `Comments closed ${displayDate(deadline)}. NHTSA is reviewing the proposal; no final amendment is identified.`
+        : "Comment status requires review."}</p>
+  </div>;
+}
+
+function StateHistoryEvent({ item }: { item: PolicyEvent }) {
+  return <article className="border-l-2 border-[#3987e5] pl-3"><div className="text-xs uppercase tracking-wide text-neutral-500">{displayDate(item.date)} · {item.instrument.replaceAll("_", " ")} · {item.status.replaceAll("_", " ")}</div><h4 className="text-sm font-semibold mt-1">{item.title}</h4><p className="text-sm text-neutral-700 mt-1">{item.summary}</p><a href={item.source_url} target="_blank" rel="noreferrer" className="text-sm text-[#184f95] underline inline-block mt-1">{item.source_label ?? "Source text"} ↗</a>{item.source_tier === "secondary" && <p className="text-xs text-amber-800 mt-1">Secondary survey; primary legislation link pending review.</p>}</article>;
+}
+
 export function FederalTracker() {
   const { data, source } = usePolicyData();
-  const events = [...data.federal].sort((a, b) => (b.date ?? "").localeCompare(a.date ?? ""));
+  const events = data.federal.filter(item => item.fmvss.length && item.id !== "fmvss-2020-nprm").sort((a, b) => (b.date ?? "").localeCompare(a.date ?? ""));
+  const early = data.federal.filter(item => !item.fmvss.length);
   return <main className="max-w-6xl px-8 py-8">
     <Intro level="Federal" description="Follow federal vehicle safety oversight and every AV-specific FMVSS rulemaking identified in the tracked record. Proposed changes are separated from final rules." />
     <PolicyNav active="federal" />
@@ -29,7 +56,9 @@ export function FederalTracker() {
     </div>
     <section className="mt-7"><h2 className="text-xl font-semibold">NHTSA oversight history</h2><p className="text-sm text-neutral-600 mt-1">Crash reporting and ADS oversight proposals sit outside the FMVSS vehicle design rules.</p><div className="grid md:grid-cols-2 gap-3 mt-3">{[...data.federal_oversight].sort((a, b) => (b.date ?? "").localeCompare(a.date ?? "")).map(item => <article key={item.id} className="viz-card p-4"><div className="text-xs text-[#184f95] uppercase font-semibold">{displayDate(item.date)} · {item.status.replaceAll("_", " ")}</div><h3 className="font-semibold mt-2">{item.title}</h3><p className="text-sm text-neutral-700 mt-2">{item.summary}</p><a className="text-sm text-[#184f95] underline inline-block mt-2" href={item.source_url} target="_blank" rel="noreferrer">NHTSA / Federal Register ↗</a></article>)}</div></section>
     <section className="mt-7"><div className="flex flex-wrap justify-between items-end gap-2"><div><h2 className="text-xl font-semibold">FMVSS change history</h2><p className="text-sm text-neutral-600 mt-1">AV design-specific federal rulemaking. Research reports, exemptions and intended future rules are excluded from the count.</p></div><a href={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/data/policy_tracker.json`} className="text-sm text-[#184f95] underline">Download JSON ↗</a></div>
-      <div className="grid md:grid-cols-2 gap-3 mt-3">{events.map(item => <article className="viz-card p-5" key={item.id}><div className="flex justify-between items-start gap-3 text-xs"><span className="font-semibold uppercase tracking-wide text-[#184f95]">{item.status.replaceAll("_", " ")}</span><span className="text-neutral-500 whitespace-nowrap">{displayDate(item.date)}</span></div><h3 className="font-semibold text-[#0b1d33] mt-2">{item.title}</h3><p className="text-sm text-neutral-700 mt-2 leading-relaxed">{item.summary}</p><a href={item.source_url} target="_blank" rel="noreferrer" className="inline-block mt-3 text-sm text-[#184f95] underline">Federal Register text ↗</a></article>)}</div>
+      <p className="text-sm text-neutral-600 mt-2">Proposal → comments → agency review → final rule → in effect. A closed comment period does not make a proposal law; compliance may have a later date.</p>
+      <div className="grid md:grid-cols-2 gap-3 mt-3">{events.map(item => <article className="viz-card p-5" key={item.id}><div className="flex justify-between items-start gap-3 text-xs"><span className="font-semibold uppercase tracking-wide text-[#184f95]">FMVSS {item.fmvss.join(" / ")}</span><span className="text-neutral-500 whitespace-nowrap">{displayDate(item.date)}</span></div><h3 className="font-semibold text-[#0b1d33] mt-2">{item.title}</h3><p className="text-sm text-neutral-700 mt-2 leading-relaxed">{item.summary}</p><FmvssTimeline item={item} /><div className="flex flex-wrap gap-x-4 gap-y-1 mt-3"><a href={item.source_url} target="_blank" rel="noreferrer" className="text-sm text-[#184f95] underline">{item.status === "effective" ? "Final rule" : "Proposed rule"} ↗</a>{"proposal_url" in item && item.proposal_url && <a href={item.proposal_url} target="_blank" rel="noreferrer" className="text-sm text-[#184f95] underline">Original proposal ↗</a>}{"comment_extension_url" in item && item.comment_extension_url && <a href={item.comment_extension_url} target="_blank" rel="noreferrer" className="text-sm text-[#184f95] underline">Comment extension ↗</a>}</div></article>)}</div>
+      <div className="viz-card p-5 mt-3"><h3 className="font-semibold">Before a specific FMVSS proposal</h3><p className="text-sm text-neutral-600 mt-1">Early requests for information do not themselves amend a standard.</p><div className="flex flex-wrap gap-x-5 gap-y-2 mt-3">{early.map(item => <a key={item.id} href={item.source_url} target="_blank" rel="noreferrer" className="text-sm text-[#184f95] underline">{displayDate(item.date)} · {item.title} ↗</a>)}</div></div>
     </section>
     <div className="mt-6 text-xs text-neutral-500">Reviewed {data.as_of} · Data source: {source === "R2" ? "R2 live record" : "reviewed site snapshot"}. <Link href="/policy/states" className="underline">Continue to state policy →</Link></div>
   </main>;
@@ -44,8 +73,12 @@ export function StateTracker() {
   const history = data.state_events.filter(e => e.state === state.code).sort((a, b) => (b.date ?? "").localeCompare(a.date ?? ""));
   return <main className="max-w-7xl px-8 py-8"><Intro level="States" description="Select any state to see its framework, enacted instruments, and policy history. Color shows the type of identified law or executive order, never the number of AVs operating there." /><PolicyNav active="states" />
     <div className="grid lg:grid-cols-[1.35fr_.85fr] gap-3 items-start"><section className="viz-card p-4"><div className="eyebrow">Policy map · 50 states + D.C.</div><p className="text-sm text-neutral-600 mt-2">Includes narrow testing and pilot statutes. Historical and rescinded orders are marked in the history and do not imply current authority.</p><div className="mt-4"><UsStateMap categoryByAbbrev={categoryByAbbrev} categories={categories} selectedAbbrev={state.code} onStateClick={code => setSelected(code)} /></div><div className="mt-5"><label htmlFor="state-search" className="text-xs font-semibold text-neutral-600">Find a state</label><input id="state-search" value={filter} onChange={e => setFilter(e.target.value)} placeholder="State name or abbreviation" className="block mt-1 w-full rounded border border-neutral-300 p-2 text-sm" /><div className="flex flex-wrap gap-1.5 mt-2 max-h-32 overflow-auto">{data.states.filter(s => `${s.name} ${s.code}`.toLowerCase().includes(filter.toLowerCase())).map(s => <button key={s.code} onClick={() => setSelected(s.code)} className={`text-xs rounded px-2 py-1 border ${s.code === state.code ? "bg-[#0b1d33] text-white" : "border-neutral-200"}`}>{s.code}</button>)}</div></div></section>
-    <section className="viz-card p-5" aria-live="polite"><div className="eyebrow">{state.code} · {categories[categoryByAbbrev[state.code]]?.label}</div><h2 className="text-2xl font-semibold mt-2 text-[#0b1d33]">{state.name}</h2><p className="font-semibold mt-5">{state.framework}</p><p className="text-sm text-neutral-700 leading-relaxed mt-2">{state.analysis}</p><h3 className="font-semibold text-sm mt-5">Oversight</h3><p className="text-sm text-neutral-700 mt-1">{state.oversight}</p><h3 className="font-semibold text-sm mt-6 border-t border-neutral-200 pt-5">Policy history</h3>{history.length ? <div className="space-y-4 mt-3">{history.map(item => <article key={item.id} className="border-l-2 border-[#3987e5] pl-3"><div className="text-xs uppercase tracking-wide text-neutral-500">{displayDate(item.date)} · {item.instrument.replaceAll("_", " ")} · {item.status.replaceAll("_", " ")}</div><h4 className="text-sm font-semibold mt-1">{item.title}</h4><p className="text-sm text-neutral-700 mt-1">{item.summary}</p><a href={item.source_url} target="_blank" rel="noreferrer" className="text-sm text-[#184f95] underline inline-block mt-1">{item.source_label ?? "Source text"} ↗</a>{item.source_tier === "secondary" && <p className="text-xs text-amber-800 mt-1">Secondary survey; primary legislation link pending review.</p>}</article>)}</div> : <p className="text-sm text-neutral-600 mt-2">No enacted AV-specific statute or executive order has been identified in the reviewed sources. General vehicle law still applies.</p>}
-    <p className="text-xs text-neutral-500 mt-6">Reviewed {state.verified_at} · {source === "R2" ? "R2 live record" : "reviewed site snapshot"}. <Link href="/deployment" className="underline">See deployment separately →</Link></p></section></div><p className="text-xs text-neutral-500 mt-4">Classification is a research index, not an operating authorization. <a href={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/data/LIC_BASE_PATH ?? ""}/data/policy_tracker.json`} className="underline">Download all policy records as JSON ↗</a></p></main>;
+    <section className="viz-card p-5" aria-live="polite"><div className="eyebrow">{state.code} · {categories[categoryByAbbrev[state.code]]?.label}</div><h2 className="text-2xl font-semibold mt-2 text-[#0b1d33]">{state.name}</h2><p className="font-semibold mt-5">{state.framework}</p><p className="text-sm text-neutral-700 leading-relaxed mt-2">{state.analysis}</p><h3 className="font-semibold text-sm mt-5">Oversight</h3><p className="text-sm text-neutral-700 mt-1">{state.oversight}</p><h3 className="font-semibold text-sm mt-6 border-t border-neutral-200 pt-5">Policy history</h3>{history.length ? state.code === "CA" ? <div className="space-y-7 mt-3">{[
+      { label: "DMV · vehicle testing and deployment", items: history.filter(e => e.id.startsWith("ca-dmv")) },
+      { label: "CPUC · passenger service", items: history.filter(e => e.id.startsWith("ca-cpuc")) },
+      { label: "State law", items: history.filter(e => !e.id.startsWith("ca-dmv") && !e.id.startsWith("ca-cpuc")) },
+    ].map(group => <div key={group.label}><h4 className="text-sm font-semibold text-[#0b1d33] mb-3">{group.label}</h4><div className="space-y-4">{group.items.map(item => <StateHistoryEvent key={item.id} item={item} />)}</div></div>)}</div> : <div className="space-y-4 mt-3">{history.map(item => <StateHistoryEvent key={item.id} item={item} />)}</div> : <p className="text-sm text-neutral-600 mt-2">No enacted AV-specific statute or executive order has been identified in the reviewed sources. General vehicle law still applies.</p>}
+    <p className="text-xs text-neutral-500 mt-6">Reviewed {state.verified_at} · {source === "R2" ? "R2 live record" : "reviewed site snapshot"}. <Link href="/deployment" className="underline">See deployment separately →</Link></p></section></div><p className="text-xs text-neutral-500 mt-4">Classification is a research index, not an operating authorization. <a href={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/data/policy_tracker.json`} className="underline">Download all policy records as JSON ↗</a></p></main>;
 }
 
 export function CityTracker() {
