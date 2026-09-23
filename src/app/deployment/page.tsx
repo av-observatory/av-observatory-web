@@ -25,6 +25,7 @@ export default async function DeploymentPage() {
   const oddHistory = await loadJson<{ historical_events: { date:string; event_type:string; phase:string; company:string; market:string; state:string; geometry_ref?:string|null; geometry_basis?:string; source_url?:string|null }[] }>("odd_history.json");
   const oddGeometries = await loadJson<{ type:"FeatureCollection"; features:{ type:"Feature"; properties?:Record<string,unknown>; geometry:unknown }[] }>("odd_geometries.geojson");
   const oddCurrentGeometries = await loadJson<{ type:"FeatureCollection"; features:{ type:"Feature"; properties?:Record<string,unknown>; geometry:unknown }[] }>("odd_current_geometries.geojson");
+  const waymoS2Latest = await loadJson<any>("waymo_s2_latest.geojson");
 
   return (
     <div className="max-w-6xl px-8 py-6">
@@ -54,6 +55,7 @@ export default async function DeploymentPage() {
           geometries={oddGeometries}
           currentGeometries={oddCurrentGeometries}
           manufacturerNames={registry.manufacturers.map(m => m.display_name)}
+          s2Geojson={waymoS2Latest}
         />
       </section>
 
