@@ -91,26 +91,36 @@ export function OddExplorer({
   geometries,
   currentGeometries,
   manufacturerNames = [],
+  initialCompany = "ALL",
+  hideCompanyFilter = false,
+  excludeCompanies = [],
 }: {
   locations: OperationalLocation[];
   history: OddEvent[];
   geometries: FeatureCollection;
   currentGeometries?: FeatureCollection;
   manufacturerNames?: string[];
+  initialCompany?: string;
+  hideCompanyFilter?: boolean;
+  excludeCompanies?: string[];
 }) {
+  const excluded = useMemo(() => new Set(excludeCompanies.map(canonicalCompany)), [excludeCompanies]);
   const companies = useMemo(
-    () => Array.from(new Set([...manufacturerNames, ...locations.map(d=>d.company), ...history.map(d=>d.company)].map(canonicalCompany))).sort(),
-    [manufacturerNames, locations, history]
+    () => Array.from(new Set([...manufacturerNames, ...locations.map(d=>d.company), ...history.map(d=>d.company)].map(canonicalCompany)))
+      .filter(name => !excluded.has(name))
+      .sort(),
+    [manufacturerNames, locations, history, excluded]
   );
   const states = useMemo(
     () => Array.from(new Set([...locations.map(d=>d.state), ...history.map(d=>d.state)])).sort(),
     [locations, history]
   );
-  const [company,setCompany]=useState("ALL");
+  const [company,setCompany]=useState(initialCompany);
   const [state,setState]=useState("ALL");
   const [market,setMarket]=useState("ALL");
   const markets = useMemo(() => Array.from(new Set(
     [...locations, ...history]
+      .filter(d => !excluded.has(canonicalCompany(d.company)))
       .filter(d => company === "ALL" || canonicalCompany(d.company) === company)
       .filter(d => state === "ALL" || d.state === state)
       .map(d => d.market)
@@ -235,12 +245,13 @@ export function OddExplorer({
     }
 
     return base.filter(p =>
+      !excluded.has(canonicalCompany(p.company)) &&
       (company==="ALL" || canonicalCompany(p.company)===company) &&
       (state==="ALL" || p.state===state) &&
       (market==="ALL" || canonicalMarket(p.market)===canonicalMarket(market)) &&
       (phase==="ALL" || p.phase===phase)
     );
-  }, [historicalSnapshot, latestPerMarket, currentRouteGeometries, currentMarketKeys, company, state, market, phase, evidence, vintage]);
+  }, [historicalSnapshot, latestPerMarket, currentRouteGeometries, currentMarketKeys, company, state, market, phase, evidence, vintage, excluded]);
 
   const historicalPoints = useMemo<OddPoint[]>(() => history.flatMap(e => {
     const raw = String(e.geometry_ref ?? "");
@@ -259,6 +270,7 @@ export function OddExplorer({
   }), [history]);
 
   const currentPoints = useMemo<OddPoint[]>(() => locations.filter(d =>
+    !excluded.has(canonicalCompany(d.company)) &&
     d.lat !== null && d.lon !== null && Number.isFinite(d.lat) && Number.isFinite(d.lon) &&
     (company==="ALL"||canonicalCompany(d.company)===company) &&
     (state==="ALL"||d.state===state) &&
@@ -279,6 +291,7 @@ export function OddExplorer({
   const points = useMemo(() => {
     if (evidence === "historical" || vintage === "history") {
       return historicalPoints.filter(d =>
+        !excluded.has(canonicalCompany(d.company)) &&
         (company==="ALL"||canonicalCompany(d.company)===company) &&
         (state==="ALL"||d.state===state) &&
         (market==="ALL"||canonicalMarket(d.market)===canonicalMarket(market)) &&
@@ -286,7 +299,7 @@ export function OddExplorer({
       );
     }
     return currentPoints;
-  }, [vintage, evidence, historicalPoints, currentPoints, company, state, market, phase]);
+  }, [vintage, evidence, historicalPoints, currentPoints, company, state, market, phase, excluded]);
 
   const polygonMarketKeys = useMemo(() => new Set(
     polygons
@@ -311,22 +324,23 @@ export function OddExplorer({
   }), [companies, latestPerMarket, currentRouteGeometries, locations, historicalPoints, history]);
 
   const evidenceRows = useMemo(() => locations.filter(d =>
+    !excluded.has(canonicalCompany(d.company)) &&
     (company==="ALL" || canonicalCompany(d.company)===company) &&
     (state==="ALL" || d.state===state) &&
     (market==="ALL" || canonicalMarket(d.market)===canonicalMarket(market)) &&
     (phase==="ALL" || (d.activity_type ?? d.phase)===phase) &&
     ((d.evidence_status ?? "current")===evidence)
-  ), [locations, company, state, market, phase, evidence]);
+  ), [locations, company, state, market, phase, evidence, excluded]);
 
   return <div>
     <div className="viz-card p-4">
       <div className="grid md:grid-cols-3 xl:grid-cols-6 gap-3">
-        <label className="filter-label">Company
+        {!hideCompanyFilter && <label className="filter-label">Company
           <select className="filter-select" value={company} onChange={e=>setCompany(e.target.value)}>
             <option value="ALL">All companies</option>
             {companies.map(x=><option key={x}>{x}</option>)}
           </select>
-        </label>
+        </label>}
         <label className="filter-label">State
           <select className="filter-select" value={state} onChange={e=>setState(e.target.value)}>
             <option value="ALL">All states</option>
