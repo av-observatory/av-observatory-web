@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { OddMap, OddPolygon, OddPoint } from "@/components/OddMap";
+import { OddMap, OddPolygon, OddPoint, S2CellFeature } from "@/components/OddMap";
 
 type OperationalLocation = {
   company: string;
@@ -39,6 +39,43 @@ type Feature = {
   geometry: unknown;
 };
 type FeatureCollection = { type: "FeatureCollection"; features: Feature[] };
+type S2Collection = { type: "FeatureCollection"; features: S2CellFeature[] };
+
+function geometryPoints(geometry:any,out:[number,number][]=[]){
+  const walk=(x:any)=>{
+    if(Array.isArray(x)&&typeof x[0]==="number"&&typeof x[1]==="number") out.push([x[0],x[1]]);
+    else if(Array.isArray(x)) x.forEach(walk);
+  };
+  walk(geometry?.coordinates);
+  return out;
+}
+function geometryCenter(geometry:any):[number,number]{
+  const pts=geometryPoints(geometry);
+  if(!pts.length)return [0,0];
+  let minX=Infinity,minY=Infinity,maxX=-Infinity,maxY=-Infinity;
+  for(const [x,y] of pts){minX=Math.min(minX,x);minY=Math.min(minY,y);maxX=Math.max(maxX,x);maxY=Math.max(maxY,y);}
+  return [(minX+maxX)/2,(minY+maxY)/2];
+}
+function pointInRing([x,y]:[number,number],ring:number[][]){
+  let inside=false;
+  for(let i=0,j=ring.length-1;i<ring.length;j=i++){
+    const xi=ring[i][0],yi=ring[i][1],xj=ring[j][0],yj=ring[j][1];
+    const hit=((yi>y)!==(yj>y))&&(x<((xj-xi)*(y-yi))/(yj-yi+1e-15)+xi);
+    if(hit)inside=!inside;
+  }
+  return inside;
+}
+function pointInPolygon(point:[number,number],rings:number[][][]){
+  if(!rings?.length||!pointInRing(point,rings[0]))return false;
+  for(let i=1;i<rings.length;i++) if(pointInRing(point,rings[i]))return false;
+  return true;
+}
+function pointInGeometry(point:[number,number],geometry:any){
+  if(!geometry)return false;
+  if(geometry.type==="Polygon")return pointInPolygon(point,geometry.coordinates);
+  if(geometry.type==="MultiPolygon")return geometry.coordinates.some((poly:number[][][])=>pointInPolygon(point,poly));
+  return false;
+}
 
 function canonicalCompany(s: string) {
   const raw = s.toUpperCase().replace(/[^A-Z0-9]+/g, " ").replace(/\b(INC|LLC|CORP|CORPORATION|TECHNOLOGIES|OPERATIONS)\b/g, "").replace(/\s+/g, " ").trim();
@@ -94,6 +131,7 @@ export function OddExplorer({
   initialCompany = "ALL",
   hideCompanyFilter = false,
   excludeCompanies = [],
+  s2Geojson,
 }: {
   locations: OperationalLocation[];
   history: OddEvent[];
@@ -103,6 +141,7 @@ export function OddExplorer({
   initialCompany?: string;
   hideCompanyFilter?: boolean;
   excludeCompanies?: string[];
+  s2Geojson?: S2Collection;
 }) {
   const excluded = useMemo(() => new Set(excludeCompanies.map(canonicalCompany)), [excludeCompanies]);
   const companies = useMemo(
@@ -310,10 +349,10 @@ export function OddExplorer({
   ), [points, polygonMarketKeys]);
 
   const marketFacets = useMemo(() => {
-    const map = new Map<string, { market:string; state:string; polygons:OddPolygon[]; points:OddPoint[]; companies:Set<string> }>();
+    const map = new Map<string, { market:string; state:string; polygons:OddPolygon[]; points:OddPoint[]; companies:Set<string>; s2Cells:S2CellFeature[] }>();
     const ensure = (marketName:string, stateName:string) => {
       const key = `${canonicalMarket(marketName)}|${stateName}`;
-      if (!map.has(key)) map.set(key, { market:marketName, state:stateName, polygons:[], points:[], companies:new Set<string>() });
+      if (!map.has(key)) map.set(key, { market:marketName, state:stateName, polygons:[], points:[], companies:new Set<string>(), s2Cells:[] });
       return map.get(key)!;
     };
     for (const p of polygons) {
@@ -326,10 +365,23 @@ export function OddExplorer({
       facet.points.push(p);
       facet.companies.add(canonicalCompany(p.company));
     }
+
+    if (evidence==="current" && vintage==="current" && s2Geojson?.features?.length) {
+      const cellCenters=s2Geojson.features.map(cell=>({cell,center:geometryCenter(cell.geometry)}));
+      for (const facet of map.values()) {
+        if (!facet.companies.has("Waymo")) continue;
+        const waymoPolygon=facet.polygons.find(p=>canonicalCompany(p.company)==="Waymo" && p.geometry_type!=="LineString" && p.geometry_type!=="MultiLineString");
+        if (!waymoPolygon) continue;
+        facet.s2Cells=cellCenters
+          .filter(({center})=>pointInGeometry(center,waymoPolygon.feature.geometry))
+          .map(x=>x.cell);
+      }
+    }
+
     return Array.from(map.values()).sort((a,b) =>
       a.state.localeCompare(b.state) || a.market.localeCompare(b.market)
     );
-  }, [polygons, visiblePoints]);
+  }, [polygons, visiblePoints, s2Geojson, evidence, vintage]);
 
   const coverageRows = useMemo(() => companies.map(name => {
     const polygonCount = latestPerMarket.filter(p => canonicalCompany(p.company) === name).length + currentRouteGeometries.filter(p => canonicalCompany(p.company) === name).length;
@@ -424,7 +476,11 @@ export function OddExplorer({
                     <div className="text-sm text-neutral-500">{facet.state}</div>
                   </div>
                   <div className="text-xs text-neutral-400 text-right">
-                    {facet.polygons.length > 0 ? `${facet.polygons.length} sourced geometr${facet.polygons.length===1?"y":"ies"}` : "point evidence"}
+                    {facet.s2Cells.length > 0
+                      ? `${facet.s2Cells.length.toLocaleString()} S2 cells · ${Math.round(facet.s2Cells.reduce((s,f)=>s+Number(f.properties?.waymo_ro_miles??0),0)).toLocaleString()} mi`
+                      : facet.polygons.length > 0
+                        ? `${facet.polygons.length} sourced geometr${facet.polygons.length===1?"y":"ies"}`
+                        : "point evidence"}
                   </div>
                 </div>
                 <div className="mt-2 flex flex-wrap gap-1.5">
@@ -432,7 +488,7 @@ export function OddExplorer({
                 </div>
               </div>
               <div className="px-3 pb-3">
-                <OddMap polygons={facet.polygons} points={facet.points} onPolygonClick={setSelected} compact hideLegend />
+                <OddMap polygons={facet.polygons} points={facet.points} s2Features={facet.s2Cells} onPolygonClick={setSelected} compact hideLegend />
               </div>
             </div>
           ))}
@@ -442,6 +498,7 @@ export function OddExplorer({
       <div className="mt-3 flex flex-wrap gap-x-5 gap-y-1 text-xs text-neutral-600">
         <span><span className="inline-block w-3 h-3 align-middle mr-1 rounded-sm bg-[#2a78d6]/25 border border-[#184f95]" />Deployment/service boundary</span>
         <span><span className="inline-block w-3 h-3 align-middle mr-1 rounded-sm bg-[#eda100]/25 border border-[#a86f00]" />Testing boundary</span>
+        <span><span className="inline-block w-3 h-3 align-middle mr-1 rounded-sm bg-[#438ad8]" />Waymo VMT by S2 cell</span>
         <span><span className="inline-block w-3 h-1 align-middle mr-1 bg-[#184f95]" />Road-following corridor</span>
         <span><span className="inline-block w-2.5 h-2.5 align-middle mr-1 rounded-full bg-[#eb6834]" />Current market without sourced polygon</span>
       </div>
