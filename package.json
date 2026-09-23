@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "policy:rebuild": "python3 scripts/build-policy-data.py && node scripts/validate-policy-data.mjs"
   },
   "dependencies": {
     "@types/react-simple-maps": "^3.0.6",

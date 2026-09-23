@@ -4,7 +4,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const NAV_ITEMS = [
-  { href: "/", label: "U.S. Overview" },
+  { href: "/", label: "Policy Tracker" },
+  { href: "/policy/states", label: "State Policy Map" },
+  { href: "/policy/cities", label: "City Policy" },
   { href: "/deployment", label: "Deployment" },
   { href: "/manufacturers", label: "Manufacturers" },
   { href: "/safety", label: "Safety" },
