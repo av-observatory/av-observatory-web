@@ -4,6 +4,7 @@ import { MaAdtRegistry } from "@/lib/deployment";
 import { StatePermitRegistry } from "@/lib/registry";
 import { ManufacturerSearch } from "@/components/ManufacturerSearch";
 import { OddExplorer } from "@/components/OddExplorer";
+import { WaymoS2Explorer } from "@/components/WaymoS2Explorer";
 
 async function loadJson<T>(filename: string): Promise<T> {
   const file = path.join(process.cwd(), "public", "data", filename);
@@ -23,6 +24,8 @@ export default async function DeploymentPage() {
   const odd = await loadJson<{ locations: { company:string; state:string; market:string; lat:number; lon:number; phase:string; status:string; mode:string; geometry_basis:string; source_url:string; note?:string }[] }>("operational_domains.json");
   const oddHistory = await loadJson<{ historical_events: { date:string; event_type:string; phase:string; company:string; market:string; state:string; geometry_ref?:string|null; geometry_basis?:string; source_url?:string|null }[] }>("odd_history.json");
   const oddGeometries = await loadJson<{ type:"FeatureCollection"; features:{ type:"Feature"; properties?:Record<string,unknown>; geometry:unknown }[] }>("odd_geometries.geojson");
+  const s2Summary = await loadJson<any>("waymo_s2_vintage_summary.json");
+  const s2Geo = await loadJson<any>("waymo_s2_latest.geojson");
 
   return (
     <div className="max-w-6xl px-8 py-6">
@@ -49,7 +52,18 @@ export default async function DeploymentPage() {
           locations={odd.locations}
           history={oddHistory.historical_events}
           geometries={oddGeometries}
+          manufacturerNames={registry.manufacturers.map(m => m.display_name)}
         />
+      </section>
+
+      <section id="s2" className="mt-8">
+        <div className="mb-2">
+          <h2 className="text-xl font-semibold tracking-tight">Observed deployment footprint · Waymo S2</h2>
+          <p className="text-sm text-neutral-600 mt-1">
+            Cell-level Waymo operational mileage across published benchmark vintages, including incremental mileage between releases.
+          </p>
+        </div>
+        <WaymoS2Explorer summary={s2Summary} geojson={s2Geo} />
       </section>
 
       <section id="regulatory" className="mt-7">

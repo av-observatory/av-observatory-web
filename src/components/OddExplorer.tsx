@@ -46,14 +46,16 @@ export function OddExplorer({
   locations,
   history,
   geometries,
+  manufacturerNames = [],
 }: {
   locations: OperationalLocation[];
   history: OddEvent[];
   geometries: FeatureCollection;
+  manufacturerNames?: string[];
 }) {
   const companies = useMemo(
-    () => Array.from(new Set([...locations.map(d=>d.company), ...history.map(d=>d.company)])).sort(),
-    [locations, history]
+    () => Array.from(new Set([...manufacturerNames, ...locations.map(d=>d.company), ...history.map(d=>d.company)])).sort(),
+    [manufacturerNames, locations, history]
   );
   const states = useMemo(
     () => Array.from(new Set([...locations.map(d=>d.state), ...history.map(d=>d.state)])).sort(),
@@ -119,7 +121,23 @@ export function OddExplorer({
     );
   }, [allPolygons, latestPerMarket, currentMarketKeys, company, state, phase, vintage]);
 
-  const points = useMemo<OddPoint[]>(() => locations.filter(d =>
+  const historicalPoints = useMemo<OddPoint[]>(() => history.flatMap(e => {
+    const raw = String(e.geometry_ref ?? "");
+    const m = raw.match(/^(-?\d+(?:\.\d+)?),(-?\d+(?:\.\d+)?)$/);
+    if (!m) return [];
+    return [{
+      company:e.company,
+      market:e.market,
+      state:e.state,
+      lon:Number(m[1]),
+      lat:Number(m[2]),
+      phase:e.phase,
+      status:e.event_type,
+      mode:"historical",
+    }];
+  }), [history]);
+
+  const currentPoints = useMemo<OddPoint[]>(() => locations.filter(d =>
     (company==="ALL"||d.company===company) &&
     (state==="ALL"||d.state===state) &&
     (phase==="ALL"||d.phase===phase)
@@ -133,6 +151,29 @@ export function OddExplorer({
     status:d.status,
     mode:d.mode,
   })),[locations,company,state,phase]);
+
+  const points = useMemo(() => {
+    if (vintage === "history") {
+      return historicalPoints.filter(d =>
+        (company==="ALL"||d.company===company) &&
+        (state==="ALL"||d.state===state) &&
+        (phase==="ALL"||d.phase===phase)
+      );
+    }
+    return currentPoints;
+  }, [vintage, historicalPoints, currentPoints, company, state, phase]);
+
+  const coverageRows = useMemo(() => companies.map(name => {
+    const polygonCount = latestPerMarket.filter(p => p.company === name).length;
+    const currentMarketCount = locations.filter(d => d.company === name).length;
+    const historicPointCount = historicalPoints.filter(d => d.company === name).length;
+    const phases = Array.from(new Set(history.filter(e => e.company === name).map(e => e.phase).filter(Boolean)));
+    let coverage = "No ODD geography sourced yet";
+    if (polygonCount > 0) coverage = `${polygonCount} sourced polygon${polygonCount===1?"":"s"}`;
+    else if (currentMarketCount > 0) coverage = `${currentMarketCount} current market point${currentMarketCount===1?"":"s"}`;
+    else if (historicPointCount > 0) coverage = `${historicPointCount} historical point record${historicPointCount===1?"":"s"}`;
+    return { name, polygonCount, currentMarketCount, historicPointCount, phases: phases.join(", "), coverage };
+  }), [companies, latestPerMarket, locations, historicalPoints, history]);
 
   return <div>
     <div className="viz-card p-4">
@@ -188,6 +229,19 @@ export function OddExplorer({
           <div className="text-xs text-neutral-500 mt-2 break-all">{selected.geometry_ref}</div>
           {selected.source_url && <a className="text-sm underline inline-block mt-2" href={selected.source_url} target="_blank" rel="noreferrer">source</a>}
         </div>}
+      </div>
+    </div>
+
+    <div className="viz-card mt-3 overflow-hidden">
+      <div className="px-4 py-3 border-b border-neutral-200 flex items-baseline justify-between">
+        <h3 className="font-semibold">Manufacturer ODD coverage</h3>
+        <span className="text-xs text-neutral-500">{coverageRows.filter(r=>r.polygonCount>0||r.currentMarketCount>0||r.historicPointCount>0).length} of {coverageRows.length} manufacturers have sourced geography</span>
+      </div>
+      <div className="overflow-x-auto max-h-[340px]">
+        <table className="w-full text-sm">
+          <thead className="sticky top-0 bg-[#fcfcfb] text-left text-neutral-500"><tr><th>Manufacturer</th><th>Coverage</th><th>Phases seen</th></tr></thead>
+          <tbody>{coverageRows.map(r=><tr key={r.name} className="border-t border-neutral-100"><td className="font-medium">{r.name}</td><td>{r.coverage}</td><td className="text-neutral-600">{r.phases || "—"}</td></tr>)}</tbody>
+        </table>
       </div>
     </div>
 

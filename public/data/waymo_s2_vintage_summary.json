@@ -1,0 +1,153 @@
+{
+  "dataset": "Waymo S2 vintage progression",
+  "source": "Waymo self-published safety benchmark data",
+  "phase": "deployment",
+  "latest_vintage": "202603",
+  "vintages": [
+    {
+      "vintage_end": "202407",
+      "vintage_start": "202009",
+      "cell_count": 945,
+      "cumulative_miles": 25280185.5,
+      "incremental_miles_vs_prior_release": 25280185.5,
+      "negative_revision_cells": 0,
+      "states": [
+        {
+          "state": "Unspecified",
+          "cumulative_miles": 25280185.5,
+          "cell_count": 945
+        }
+      ]
+    },
+    {
+      "vintage_end": "202409",
+      "vintage_start": "202009",
+      "cell_count": 964,
+      "cumulative_miles": 32979452.3,
+      "incremental_miles_vs_prior_release": 7699266.8,
+      "negative_revision_cells": 0,
+      "states": [
+        {
+          "state": "Unspecified",
+          "cumulative_miles": 32979452.3,
+          "cell_count": 964
+        }
+      ]
+    },
+    {
+      "vintage_end": "202412",
+      "vintage_start": "202009",
+      "cell_count": 987,
+      "cumulative_miles": 49448610.0,
+      "incremental_miles_vs_prior_release": 16472834.0,
+      "negative_revision_cells": 0,
+      "states": [
+        {
+          "state": "Unspecified",
+          "cumulative_miles": 49448610.0,
+          "cell_count": 987
+        }
+      ]
+    },
+    {
+      "vintage_end": "202503",
+      "vintage_start": "202009",
+      "cell_count": 1090,
+      "cumulative_miles": 71432301.3,
+      "incremental_miles_vs_prior_release": 21983903.5,
+      "negative_revision_cells": 0,
+      "states": [
+        {
+          "state": "Unspecified",
+          "cumulative_miles": 71432301.3,
+          "cell_count": 1090
+        }
+      ]
+    },
+    {
+      "vintage_end": "202506",
+      "vintage_start": "202009",
+      "cell_count": 1148,
+      "cumulative_miles": 95965170.8,
+      "incremental_miles_vs_prior_release": 24533923.2,
+      "negative_revision_cells": 0,
+      "states": [
+        {
+          "state": "Unspecified",
+          "cumulative_miles": 95965170.8,
+          "cell_count": 1148
+        }
+      ]
+    },
+    {
+      "vintage_end": "202509",
+      "vintage_start": "202009",
+      "cell_count": 1272,
+      "cumulative_miles": 127157594.3,
+      "incremental_miles_vs_prior_release": 31191507.4,
+      "negative_revision_cells": 0,
+      "states": [
+        {
+          "state": "Unspecified",
+          "cumulative_miles": 127157594.3,
+          "cell_count": 1272
+        }
+      ]
+    },
+    {
+      "vintage_end": "202512",
+      "vintage_start": "202009",
+      "cell_count": 1842,
+      "cumulative_miles": 170712345.1,
+      "incremental_miles_vs_prior_release": 43574210.4,
+      "negative_revision_cells": 15,
+      "states": [
+        {
+          "state": "California",
+          "cumulative_miles": 91377181.8,
+          "cell_count": 933
+        },
+        {
+          "state": "Arizona",
+          "cumulative_miles": 68613293.0,
+          "cell_count": 622
+        },
+        {
+          "state": "Texas",
+          "cumulative_miles": 10721870.3,
+          "cell_count": 287
+        }
+      ]
+    },
+    {
+      "vintage_end": "202603",
+      "vintage_start": "202009",
+      "cell_count": 2079,
+      "cumulative_miles": 218821152.7,
+      "incremental_miles_vs_prior_release": 48049807.8,
+      "negative_revision_cells": 14,
+      "states": [
+        {
+          "state": "California",
+          "cumulative_miles": 118893629.0,
+          "cell_count": 992
+        },
+        {
+          "state": "Arizona",
+          "cumulative_miles": 80551000.5,
+          "cell_count": 622
+        },
+        {
+          "state": "Texas",
+          "cumulative_miles": 15788782.8,
+          "cell_count": 289
+        },
+        {
+          "state": "Georgia",
+          "cumulative_miles": 3587740.4,
+          "cell_count": 176
+        }
+      ]
+    }
+  ]
+}
