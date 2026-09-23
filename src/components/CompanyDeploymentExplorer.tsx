@@ -15,6 +15,7 @@ export type S2Geojson = { type: "FeatureCollection"; features: S2Feature[]; meta
 export type VintageSummary = { latest_vintage: string; vintages: { vintage_end: string }[] };
 
 const freight = new Set(["Aurora", "Gatik", "Kodiak AI", "PlusAI", "Torc", "Waabi"]);
+const waymoS2Csv = "https://storage.googleapis.com/waymo-uploads/files/documents/safety/safety-impact-data/CSV4%20-%20Miles%20and%20Benchmark%20Crashes%20for%20Dynamic%20Benchmark%20202009-202603-2022benchmark.csv";
 const logoDomains: Record<string, string> = {
   Waymo: "waymo.com", Zoox: "zoox.com", Tesla: "tesla.com", Motional: "motional.com",
   Avride: "avride.ai", Beep: "ridebeep.com", "May Mobility": "maymobility.com",
@@ -152,7 +153,7 @@ export function CompanyDeploymentExplorer({ locations, geometries, latestS2, vin
         {company === "Waymo" && !s2Ready && !s2LoadError && <p role="status" className="text-sm text-neutral-600 mt-3">Loading this S2 release…</p>}
         {s2LoadError && <p role="status" className="text-sm text-amber-800 mt-3">This S2 release could not load; showing the available boundary or point.</p>}
         <div className="mt-4"><OddMap key={`${company}|${selectedCity ? key(selectedCity.market, selectedCity.state) : "all"}|${vintage}`} polygons={polygons} points={points} s2Features={s2Cells} /></div>
-        {selectedSource && <a href={selectedSource} target="_blank" rel="noreferrer" className="text-sm underline text-[#184f95] inline-block mt-3">Current activity source ↗</a>}
+        {company === "Waymo" ? <a href={waymoS2Csv} target="_blank" rel="noreferrer" className="text-sm underline text-[#184f95] inline-block mt-3">Download Source S2 Mileage CSV ↗</a> : selectedSource && <a href={selectedSource} target="_blank" rel="noreferrer" className="text-sm underline text-[#184f95] inline-block mt-3">Current Activity Source ↗</a>}
         {company === "Waymo" && hasS2 && <p className="text-xs text-neutral-500 mt-2">S2 cells record operational mileage, including miles outside passenger service. Northern and Southern California cell groups are analytical reporting areas, not official ODD boundaries.</p>}
       </section>
     </div>

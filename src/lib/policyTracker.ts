@@ -28,7 +28,9 @@ export function usePolicyData() {
 }
 
 export function displayDate(date: string | null) {
-  if (!date) return "Date under review";
+  // An aggregate current framework or continuing oversight position has no
+  // single enactment date. Omit the date instead of inventing one.
+  if (!date) return "";
   if (/^\d{4}$/.test(date)) return date;
   return new Date(`${date}T12:00:00Z`).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric", timeZone: "UTC" });
 }

@@ -2,9 +2,9 @@
   "dataset": "NHTSA Standing General Order (ADS) Incident Reports -- Monthly Summary",
   "source": "NHTSA Standing General Order 2021-01, ADS incident reports",
   "coverage": "National -- all ADS operators reporting under SGO 2021-01",
-  "notes": "Counts are of incident reports filed, not verified at-fault crashes, and are grouped by the report's filing month/year (not necessarily the incident month). A report reflects the reporting entity's own account; NHTSA may not have completed review.",
+  "notes": "One latest version per NHTSA report ID; earlier versions remain in sgo_incidents_all_versions.csv. Counts are reports, not verified at-fault crashes. Monthly charts use the latest report version's filing month/year when present, not the incident month; reports without a valid filing month remain in all-time counts.",
   "vehicle_class_and_program_type_note": "vehicle_class (trucking/light_duty) and program_type (commercial/testing) are the Observatory's OWN editorial classification of each reporting entity's primary business focus, NOT a field NHTSA provides. See pipelines/sgo/operator_classification.py for the mapping and its documented limitations.",
-  "row_count": 3773,
+  "row_count": 3336,
   "states_represented": [
     "AR",
     "AZ",
@@ -19,8 +19,10 @@
     "MS",
     "NM",
     "NV",
+    "OH",
     "OK",
     "PA",
+    "RI",
     "TN",
     "TX",
     "Unknown",
@@ -28,6 +30,7 @@
     "WY"
   ],
   "entities_represented": [
+    "Ambarella",
     "Apollo Autonomous Driving USA",
     "Apple Inc.",
     "Argo AI",
@@ -35,6 +38,7 @@
     "AutoX Technologies Inc",
     "Avride Inc.",
     "Beep, Inc.",
+    "Chrysler (FCA US, LLC)",
     "Cruise LLC",
     "Daimler Trucks North America, LLC",
     "Easymile Inc.",
@@ -44,13 +48,16 @@
     "General Motors, LLC",
     "Ghost Autonomy Inc.",
     "Hyundai Motor America",
+    "Kia America, Inc.",
     "Kodiak Robotics",
     "Local Motors Industries",
+    "Lucid USA, Inc.",
     "MOIA America LLC",
     "May Mobility",
     "Mercedes-Benz USA, LLC",
     "Mobileye Vision Technologies",
     "Motional",
+    "NAVYA Inc.",
     "NVIDIA CORP",
     "Navistar, Inc.",
     "Nuro",
@@ -59,6 +66,7 @@
     "PACCAR Incorporated",
     "PlusAI Inc",
     "Pony.ai",
+    "Robert Bosch, LLC",
     "Robotic Research",
     "Stack AV",
     "TORC Robotics, Inc.",
@@ -68,6 +76,7 @@
     "TuSimple",
     "VinFast Auto, LLC",
     "Volkswagen Group of America, Inc.",
+    "Volvo Car USA, LLC",
     "Waymo LLC",
     "WeRide Corp",
     "Zoox, Inc."
@@ -249,21 +258,6 @@
   "monthly_national_total": [
     {
       "year": 2021,
-      "month": 10,
-      "incident_count": 15
-    },
-    {
-      "year": 2021,
-      "month": 11,
-      "incident_count": 14
-    },
-    {
-      "year": 2021,
-      "month": 12,
-      "incident_count": 14
-    },
-    {
-      "year": 2021,
       "month": 5,
       "incident_count": 1
     },
@@ -275,12 +269,27 @@
     {
       "year": 2021,
       "month": 8,
-      "incident_count": 18
+      "incident_count": 17
     },
     {
       "year": 2021,
       "month": 9,
-      "incident_count": 20
+      "incident_count": 19
+    },
+    {
+      "year": 2021,
+      "month": 10,
+      "incident_count": 14
+    },
+    {
+      "year": 2021,
+      "month": 11,
+      "incident_count": 13
+    },
+    {
+      "year": 2021,
+      "month": 12,
+      "incident_count": 14
     },
     {
       "year": 2022,
@@ -289,28 +298,13 @@
     },
     {
       "year": 2022,
-      "month": 10,
-      "incident_count": 7
-    },
-    {
-      "year": 2022,
-      "month": 11,
-      "incident_count": 9
-    },
-    {
-      "year": 2022,
-      "month": 12,
-      "incident_count": 27
-    },
-    {
-      "year": 2022,
       "month": 2,
-      "incident_count": 10
+      "incident_count": 8
     },
     {
       "year": 2022,
       "month": 3,
-      "incident_count": 7
+      "incident_count": 5
     },
     {
       "year": 2022,
@@ -320,37 +314,92 @@
     {
       "year": 2022,
       "month": 5,
-      "incident_count": 17
+      "incident_count": 15
     },
     {
       "year": 2022,
       "month": 6,
-      "incident_count": 13
+      "incident_count": 12
     },
     {
       "year": 2022,
       "month": 7,
-      "incident_count": 25
+      "incident_count": 23
     },
     {
       "year": 2022,
       "month": 8,
-      "incident_count": 32
+      "incident_count": 31
     },
     {
       "year": 2022,
       "month": 9,
-      "incident_count": 14
+      "incident_count": 12
+    },
+    {
+      "year": 2022,
+      "month": 10,
+      "incident_count": 7
+    },
+    {
+      "year": 2022,
+      "month": 11,
+      "incident_count": 8
+    },
+    {
+      "year": 2022,
+      "month": 12,
+      "incident_count": 19
     },
     {
       "year": 2023,
       "month": 1,
-      "incident_count": 9
+      "incident_count": 8
+    },
+    {
+      "year": 2023,
+      "month": 2,
+      "incident_count": 12
+    },
+    {
+      "year": 2023,
+      "month": 3,
+      "incident_count": 27
+    },
+    {
+      "year": 2023,
+      "month": 4,
+      "incident_count": 22
+    },
+    {
+      "year": 2023,
+      "month": 5,
+      "incident_count": 20
+    },
+    {
+      "year": 2023,
+      "month": 6,
+      "incident_count": 22
+    },
+    {
+      "year": 2023,
+      "month": 7,
+      "incident_count": 25
+    },
+    {
+      "year": 2023,
+      "month": 8,
+      "incident_count": 46
+    },
+    {
+      "year": 2023,
+      "month": 9,
+      "incident_count": 29
     },
     {
       "year": 2023,
       "month": 10,
-      "incident_count": 34
+      "incident_count": 33
     },
     {
       "year": 2023,
@@ -363,54 +412,54 @@
       "incident_count": 17
     },
     {
-      "year": 2023,
-      "month": 2,
-      "incident_count": 13
-    },
-    {
-      "year": 2023,
-      "month": 3,
-      "incident_count": 33
-    },
-    {
-      "year": 2023,
-      "month": 4,
-      "incident_count": 23
-    },
-    {
-      "year": 2023,
-      "month": 5,
-      "incident_count": 20
-    },
-    {
-      "year": 2023,
-      "month": 6,
-      "incident_count": 23
-    },
-    {
-      "year": 2023,
-      "month": 7,
-      "incident_count": 27
-    },
-    {
-      "year": 2023,
-      "month": 8,
-      "incident_count": 50
-    },
-    {
-      "year": 2023,
-      "month": 9,
-      "incident_count": 34
+      "year": 2024,
+      "month": 1,
+      "incident_count": 15
     },
     {
       "year": 2024,
-      "month": 1,
-      "incident_count": 16
+      "month": 2,
+      "incident_count": 14
+    },
+    {
+      "year": 2024,
+      "month": 3,
+      "incident_count": 27
+    },
+    {
+      "year": 2024,
+      "month": 4,
+      "incident_count": 14
+    },
+    {
+      "year": 2024,
+      "month": 5,
+      "incident_count": 22
+    },
+    {
+      "year": 2024,
+      "month": 6,
+      "incident_count": 31
+    },
+    {
+      "year": 2024,
+      "month": 7,
+      "incident_count": 28
+    },
+    {
+      "year": 2024,
+      "month": 8,
+      "incident_count": 32
+    },
+    {
+      "year": 2024,
+      "month": 9,
+      "incident_count": 45
     },
     {
       "year": 2024,
       "month": 10,
-      "incident_count": 47
+      "incident_count": 45
     },
     {
       "year": 2024,
@@ -423,64 +472,9 @@
       "incident_count": 62
     },
     {
-      "year": 2024,
-      "month": 2,
-      "incident_count": 16
-    },
-    {
-      "year": 2024,
-      "month": 3,
-      "incident_count": 27
-    },
-    {
-      "year": 2024,
-      "month": 4,
-      "incident_count": 15
-    },
-    {
-      "year": 2024,
-      "month": 5,
-      "incident_count": 26
-    },
-    {
-      "year": 2024,
-      "month": 6,
-      "incident_count": 31
-    },
-    {
-      "year": 2024,
-      "month": 7,
-      "incident_count": 30
-    },
-    {
-      "year": 2024,
-      "month": 8,
-      "incident_count": 33
-    },
-    {
-      "year": 2024,
-      "month": 9,
-      "incident_count": 54
-    },
-    {
       "year": 2025,
       "month": 1,
       "incident_count": 53
-    },
-    {
-      "year": 2025,
-      "month": 10,
-      "incident_count": 40
-    },
-    {
-      "year": 2025,
-      "month": 11,
-      "incident_count": 54
-    },
-    {
-      "year": 2025,
-      "month": 12,
-      "incident_count": 54
     },
     {
       "year": 2025,
@@ -490,7 +484,7 @@
     {
       "year": 2025,
       "month": 3,
-      "incident_count": 59
+      "incident_count": 58
     },
     {
       "year": 2025,
@@ -505,7 +499,7 @@
     {
       "year": 2025,
       "month": 6,
-      "incident_count": 44
+      "incident_count": 43
     },
     {
       "year": 2025,
@@ -515,32 +509,47 @@
     {
       "year": 2025,
       "month": 8,
-      "incident_count": 29
+      "incident_count": 27
     },
     {
       "year": 2025,
       "month": 9,
-      "incident_count": 33
+      "incident_count": 32
     },
     {
-      "year": 2026,
-      "month": 1,
-      "incident_count": 45
+      "year": 2025,
+      "month": 10,
+      "incident_count": 39
     },
     {
-      "year": 2026,
-      "month": 2,
+      "year": 2025,
+      "month": 11,
+      "incident_count": 54
+    },
+    {
+      "year": 2025,
+      "month": 12,
       "incident_count": 51
     },
     {
       "year": 2026,
+      "month": 1,
+      "incident_count": 40
+    },
+    {
+      "year": 2026,
+      "month": 2,
+      "incident_count": 49
+    },
+    {
+      "year": 2026,
       "month": 3,
-      "incident_count": 57
+      "incident_count": 56
     },
     {
       "year": 2026,
       "month": 4,
-      "incident_count": 60
+      "incident_count": 59
     },
     {
       "year": 2026,
@@ -550,7 +559,7 @@
     {
       "year": 2026,
       "month": 6,
-      "incident_count": 61
+      "incident_count": 60
     },
     {
       "year": 2026,
@@ -564,54 +573,6 @@
     }
   ],
   "monthly_by_state": [
-    {
-      "year": 2021,
-      "month": 10,
-      "state": "AZ",
-      "incident_count": 1
-    },
-    {
-      "year": 2021,
-      "month": 10,
-      "state": "CA",
-      "incident_count": 12
-    },
-    {
-      "year": 2021,
-      "month": 10,
-      "state": "CO",
-      "incident_count": 2
-    },
-    {
-      "year": 2021,
-      "month": 11,
-      "state": "AZ",
-      "incident_count": 2
-    },
-    {
-      "year": 2021,
-      "month": 11,
-      "state": "CA",
-      "incident_count": 11
-    },
-    {
-      "year": 2021,
-      "month": 11,
-      "state": "Unknown",
-      "incident_count": 1
-    },
-    {
-      "year": 2021,
-      "month": 12,
-      "state": "CA",
-      "incident_count": 13
-    },
-    {
-      "year": 2021,
-      "month": 12,
-      "state": "NV",
-      "incident_count": 1
-    },
     {
       "year": 2021,
       "month": 5,
@@ -634,7 +595,7 @@
       "year": 2021,
       "month": 8,
       "state": "CA",
-      "incident_count": 10
+      "incident_count": 9
     },
     {
       "year": 2021,
@@ -676,7 +637,7 @@
       "year": 2021,
       "month": 9,
       "state": "CA",
-      "incident_count": 13
+      "incident_count": 12
     },
     {
       "year": 2021,
@@ -691,6 +652,48 @@
       "incident_count": 3
     },
     {
+      "year": 2021,
+      "month": 10,
+      "state": "AZ",
+      "incident_count": 1
+    },
+    {
+      "year": 2021,
+      "month": 10,
+      "state": "CA",
+      "incident_count": 11
+    },
+    {
+      "year": 2021,
+      "month": 10,
+      "state": "CO",
+      "incident_count": 2
+    },
+    {
+      "year": 2021,
+      "month": 11,
+      "state": "AZ",
+      "incident_count": 2
+    },
+    {
+      "year": 2021,
+      "month": 11,
+      "state": "CA",
+      "incident_count": 11
+    },
+    {
+      "year": 2021,
+      "month": 12,
+      "state": "CA",
+      "incident_count": 13
+    },
+    {
+      "year": 2021,
+      "month": 12,
+      "state": "NV",
+      "incident_count": 1
+    },
+    {
       "year": 2022,
       "month": 1,
       "state": "CA",
@@ -698,69 +701,9 @@
     },
     {
       "year": 2022,
-      "month": 10,
-      "state": "AZ",
-      "incident_count": 1
-    },
-    {
-      "year": 2022,
-      "month": 10,
-      "state": "CA",
-      "incident_count": 2
-    },
-    {
-      "year": 2022,
-      "month": 10,
-      "state": "TX",
-      "incident_count": 4
-    },
-    {
-      "year": 2022,
-      "month": 11,
-      "state": "AZ",
-      "incident_count": 1
-    },
-    {
-      "year": 2022,
-      "month": 11,
-      "state": "CA",
-      "incident_count": 7
-    },
-    {
-      "year": 2022,
-      "month": 11,
-      "state": "TX",
-      "incident_count": 1
-    },
-    {
-      "year": 2022,
-      "month": 12,
-      "state": "AZ",
-      "incident_count": 4
-    },
-    {
-      "year": 2022,
-      "month": 12,
-      "state": "CA",
-      "incident_count": 21
-    },
-    {
-      "year": 2022,
-      "month": 12,
-      "state": "FL",
-      "incident_count": 1
-    },
-    {
-      "year": 2022,
-      "month": 12,
-      "state": "NV",
-      "incident_count": 1
-    },
-    {
-      "year": 2022,
       "month": 2,
       "state": "CA",
-      "incident_count": 10
+      "incident_count": 8
     },
     {
       "year": 2022,
@@ -772,7 +715,7 @@
       "year": 2022,
       "month": 3,
       "state": "CA",
-      "incident_count": 4
+      "incident_count": 2
     },
     {
       "year": 2022,
@@ -802,7 +745,7 @@
       "year": 2022,
       "month": 5,
       "state": "CA",
-      "incident_count": 10
+      "incident_count": 9
     },
     {
       "year": 2022,
@@ -836,12 +779,6 @@
     },
     {
       "year": 2022,
-      "month": 5,
-      "state": "Unknown",
-      "incident_count": 1
-    },
-    {
-      "year": 2022,
       "month": 6,
       "state": "AZ",
       "incident_count": 1
@@ -850,7 +787,7 @@
       "year": 2022,
       "month": 6,
       "state": "CA",
-      "incident_count": 8
+      "incident_count": 7
     },
     {
       "year": 2022,
@@ -874,7 +811,7 @@
       "year": 2022,
       "month": 7,
       "state": "CA",
-      "incident_count": 21
+      "incident_count": 19
     },
     {
       "year": 2022,
@@ -922,7 +859,7 @@
       "year": 2022,
       "month": 8,
       "state": "TX",
-      "incident_count": 6
+      "incident_count": 5
     },
     {
       "year": 2022,
@@ -934,7 +871,7 @@
       "year": 2022,
       "month": 9,
       "state": "CA",
-      "incident_count": 8
+      "incident_count": 6
     },
     {
       "year": 2022,
@@ -947,6 +884,66 @@
       "month": 9,
       "state": "TX",
       "incident_count": 3
+    },
+    {
+      "year": 2022,
+      "month": 10,
+      "state": "AZ",
+      "incident_count": 1
+    },
+    {
+      "year": 2022,
+      "month": 10,
+      "state": "CA",
+      "incident_count": 2
+    },
+    {
+      "year": 2022,
+      "month": 10,
+      "state": "TX",
+      "incident_count": 4
+    },
+    {
+      "year": 2022,
+      "month": 11,
+      "state": "AZ",
+      "incident_count": 1
+    },
+    {
+      "year": 2022,
+      "month": 11,
+      "state": "CA",
+      "incident_count": 6
+    },
+    {
+      "year": 2022,
+      "month": 11,
+      "state": "TX",
+      "incident_count": 1
+    },
+    {
+      "year": 2022,
+      "month": 12,
+      "state": "AZ",
+      "incident_count": 2
+    },
+    {
+      "year": 2022,
+      "month": 12,
+      "state": "CA",
+      "incident_count": 15
+    },
+    {
+      "year": 2022,
+      "month": 12,
+      "state": "FL",
+      "incident_count": 1
+    },
+    {
+      "year": 2022,
+      "month": 12,
+      "state": "NV",
+      "incident_count": 1
     },
     {
       "year": 2023,
@@ -970,7 +967,193 @@
       "year": 2023,
       "month": 1,
       "state": "NV",
+      "incident_count": 2
+    },
+    {
+      "year": 2023,
+      "month": 2,
+      "state": "AZ",
+      "incident_count": 2
+    },
+    {
+      "year": 2023,
+      "month": 2,
+      "state": "CA",
+      "incident_count": 7
+    },
+    {
+      "year": 2023,
+      "month": 2,
+      "state": "NV",
+      "incident_count": 1
+    },
+    {
+      "year": 2023,
+      "month": 2,
+      "state": "TX",
+      "incident_count": 2
+    },
+    {
+      "year": 2023,
+      "month": 3,
+      "state": "AZ",
+      "incident_count": 5
+    },
+    {
+      "year": 2023,
+      "month": 3,
+      "state": "CA",
+      "incident_count": 21
+    },
+    {
+      "year": 2023,
+      "month": 3,
+      "state": "TX",
+      "incident_count": 1
+    },
+    {
+      "year": 2023,
+      "month": 4,
+      "state": "AZ",
+      "incident_count": 4
+    },
+    {
+      "year": 2023,
+      "month": 4,
+      "state": "CA",
+      "incident_count": 14
+    },
+    {
+      "year": 2023,
+      "month": 4,
+      "state": "MI",
+      "incident_count": 1
+    },
+    {
+      "year": 2023,
+      "month": 4,
+      "state": "NV",
+      "incident_count": 1
+    },
+    {
+      "year": 2023,
+      "month": 4,
+      "state": "TX",
+      "incident_count": 2
+    },
+    {
+      "year": 2023,
+      "month": 5,
+      "state": "AZ",
+      "incident_count": 6
+    },
+    {
+      "year": 2023,
+      "month": 5,
+      "state": "CA",
+      "incident_count": 6
+    },
+    {
+      "year": 2023,
+      "month": 5,
+      "state": "TX",
+      "incident_count": 8
+    },
+    {
+      "year": 2023,
+      "month": 6,
+      "state": "AZ",
+      "incident_count": 2
+    },
+    {
+      "year": 2023,
+      "month": 6,
+      "state": "CA",
+      "incident_count": 17
+    },
+    {
+      "year": 2023,
+      "month": 6,
+      "state": "NV",
+      "incident_count": 1
+    },
+    {
+      "year": 2023,
+      "month": 6,
+      "state": "TX",
+      "incident_count": 2
+    },
+    {
+      "year": 2023,
+      "month": 7,
+      "state": "AZ",
+      "incident_count": 1
+    },
+    {
+      "year": 2023,
+      "month": 7,
+      "state": "CA",
+      "incident_count": 20
+    },
+    {
+      "year": 2023,
+      "month": 7,
+      "state": "MN",
+      "incident_count": 1
+    },
+    {
+      "year": 2023,
+      "month": 7,
+      "state": "NV",
+      "incident_count": 1
+    },
+    {
+      "year": 2023,
+      "month": 7,
+      "state": "TX",
+      "incident_count": 2
+    },
+    {
+      "year": 2023,
+      "month": 8,
+      "state": "AZ",
       "incident_count": 3
+    },
+    {
+      "year": 2023,
+      "month": 8,
+      "state": "CA",
+      "incident_count": 36
+    },
+    {
+      "year": 2023,
+      "month": 8,
+      "state": "FL",
+      "incident_count": 1
+    },
+    {
+      "year": 2023,
+      "month": 8,
+      "state": "TX",
+      "incident_count": 6
+    },
+    {
+      "year": 2023,
+      "month": 9,
+      "state": "AZ",
+      "incident_count": 4
+    },
+    {
+      "year": 2023,
+      "month": 9,
+      "state": "CA",
+      "incident_count": 17
+    },
+    {
+      "year": 2023,
+      "month": 9,
+      "state": "TX",
+      "incident_count": 8
     },
     {
       "year": 2023,
@@ -995,12 +1178,6 @@
       "month": 10,
       "state": "TX",
       "incident_count": 8
-    },
-    {
-      "year": 2023,
-      "month": 10,
-      "state": "Unknown",
-      "incident_count": 1
     },
     {
       "year": 2023,
@@ -1051,220 +1228,238 @@
       "incident_count": 4
     },
     {
-      "year": 2023,
-      "month": 2,
+      "year": 2024,
+      "month": 1,
       "state": "AZ",
-      "incident_count": 2
+      "incident_count": 6
     },
     {
-      "year": 2023,
-      "month": 2,
+      "year": 2024,
+      "month": 1,
       "state": "CA",
       "incident_count": 8
     },
     {
-      "year": 2023,
-      "month": 2,
+      "year": 2024,
+      "month": 1,
       "state": "NV",
       "incident_count": 1
     },
     {
-      "year": 2023,
+      "year": 2024,
       "month": 2,
-      "state": "TX",
-      "incident_count": 2
-    },
-    {
-      "year": 2023,
-      "month": 3,
-      "state": "AZ",
-      "incident_count": 5
-    },
-    {
-      "year": 2023,
-      "month": 3,
-      "state": "CA",
-      "incident_count": 27
-    },
-    {
-      "year": 2023,
-      "month": 3,
-      "state": "TX",
-      "incident_count": 1
-    },
-    {
-      "year": 2023,
-      "month": 4,
       "state": "AZ",
       "incident_count": 4
     },
     {
-      "year": 2023,
-      "month": 4,
+      "year": 2024,
+      "month": 2,
       "state": "CA",
-      "incident_count": 14
+      "incident_count": 6
     },
     {
-      "year": 2023,
-      "month": 4,
+      "year": 2024,
+      "month": 2,
       "state": "MI",
       "incident_count": 1
     },
     {
-      "year": 2023,
-      "month": 4,
-      "state": "NV",
-      "incident_count": 2
-    },
-    {
-      "year": 2023,
-      "month": 4,
-      "state": "TX",
-      "incident_count": 2
-    },
-    {
-      "year": 2023,
-      "month": 5,
-      "state": "AZ",
-      "incident_count": 6
-    },
-    {
-      "year": 2023,
-      "month": 5,
-      "state": "CA",
-      "incident_count": 6
-    },
-    {
-      "year": 2023,
-      "month": 5,
-      "state": "TX",
-      "incident_count": 8
-    },
-    {
-      "year": 2023,
-      "month": 6,
-      "state": "AZ",
-      "incident_count": 2
-    },
-    {
-      "year": 2023,
-      "month": 6,
-      "state": "CA",
-      "incident_count": 17
-    },
-    {
-      "year": 2023,
-      "month": 6,
-      "state": "NV",
-      "incident_count": 2
-    },
-    {
-      "year": 2023,
-      "month": 6,
-      "state": "TX",
-      "incident_count": 2
-    },
-    {
-      "year": 2023,
-      "month": 7,
-      "state": "AZ",
-      "incident_count": 1
-    },
-    {
-      "year": 2023,
-      "month": 7,
-      "state": "CA",
-      "incident_count": 22
-    },
-    {
-      "year": 2023,
-      "month": 7,
-      "state": "MN",
-      "incident_count": 1
-    },
-    {
-      "year": 2023,
-      "month": 7,
+      "year": 2024,
+      "month": 2,
       "state": "NV",
       "incident_count": 1
-    },
-    {
-      "year": 2023,
-      "month": 7,
-      "state": "TX",
-      "incident_count": 2
-    },
-    {
-      "year": 2023,
-      "month": 8,
-      "state": "AZ",
-      "incident_count": 3
-    },
-    {
-      "year": 2023,
-      "month": 8,
-      "state": "CA",
-      "incident_count": 40
-    },
-    {
-      "year": 2023,
-      "month": 8,
-      "state": "FL",
-      "incident_count": 1
-    },
-    {
-      "year": 2023,
-      "month": 8,
-      "state": "TX",
-      "incident_count": 6
-    },
-    {
-      "year": 2023,
-      "month": 9,
-      "state": "AZ",
-      "incident_count": 6
-    },
-    {
-      "year": 2023,
-      "month": 9,
-      "state": "CA",
-      "incident_count": 18
-    },
-    {
-      "year": 2023,
-      "month": 9,
-      "state": "TX",
-      "incident_count": 10
     },
     {
       "year": 2024,
-      "month": 1,
-      "state": "AZ",
-      "incident_count": 6
+      "month": 2,
+      "state": "TX",
+      "incident_count": 2
     },
     {
       "year": 2024,
-      "month": 1,
-      "state": "CA",
+      "month": 3,
+      "state": "AZ",
       "incident_count": 9
     },
     {
       "year": 2024,
-      "month": 1,
+      "month": 3,
+      "state": "CA",
+      "incident_count": 12
+    },
+    {
+      "year": 2024,
+      "month": 3,
+      "state": "NV",
+      "incident_count": 3
+    },
+    {
+      "year": 2024,
+      "month": 3,
+      "state": "TX",
+      "incident_count": 3
+    },
+    {
+      "year": 2024,
+      "month": 4,
+      "state": "AZ",
+      "incident_count": 2
+    },
+    {
+      "year": 2024,
+      "month": 4,
+      "state": "CA",
+      "incident_count": 8
+    },
+    {
+      "year": 2024,
+      "month": 4,
+      "state": "FL",
+      "incident_count": 1
+    },
+    {
+      "year": 2024,
+      "month": 4,
       "state": "NV",
       "incident_count": 1
     },
     {
       "year": 2024,
+      "month": 4,
+      "state": "TX",
+      "incident_count": 2
+    },
+    {
+      "year": 2024,
+      "month": 5,
+      "state": "AZ",
+      "incident_count": 7
+    },
+    {
+      "year": 2024,
+      "month": 5,
+      "state": "CA",
+      "incident_count": 10
+    },
+    {
+      "year": 2024,
+      "month": 5,
+      "state": "FL",
+      "incident_count": 1
+    },
+    {
+      "year": 2024,
+      "month": 5,
+      "state": "TX",
+      "incident_count": 4
+    },
+    {
+      "year": 2024,
+      "month": 6,
+      "state": "AZ",
+      "incident_count": 6
+    },
+    {
+      "year": 2024,
+      "month": 6,
+      "state": "CA",
+      "incident_count": 18
+    },
+    {
+      "year": 2024,
+      "month": 6,
+      "state": "FL",
+      "incident_count": 2
+    },
+    {
+      "year": 2024,
+      "month": 6,
+      "state": "TX",
+      "incident_count": 5
+    },
+    {
+      "year": 2024,
+      "month": 7,
+      "state": "AZ",
+      "incident_count": 4
+    },
+    {
+      "year": 2024,
+      "month": 7,
+      "state": "CA",
+      "incident_count": 19
+    },
+    {
+      "year": 2024,
+      "month": 7,
+      "state": "FL",
+      "incident_count": 2
+    },
+    {
+      "year": 2024,
+      "month": 7,
+      "state": "TX",
+      "incident_count": 3
+    },
+    {
+      "year": 2024,
+      "month": 8,
+      "state": "AZ",
+      "incident_count": 11
+    },
+    {
+      "year": 2024,
+      "month": 8,
+      "state": "CA",
+      "incident_count": 20
+    },
+    {
+      "year": 2024,
+      "month": 8,
+      "state": "NV",
+      "incident_count": 1
+    },
+    {
+      "year": 2024,
+      "month": 9,
+      "state": "AZ",
+      "incident_count": 10
+    },
+    {
+      "year": 2024,
+      "month": 9,
+      "state": "CA",
+      "incident_count": 24
+    },
+    {
+      "year": 2024,
+      "month": 9,
+      "state": "GA",
+      "incident_count": 1
+    },
+    {
+      "year": 2024,
+      "month": 9,
+      "state": "NV",
+      "incident_count": 1
+    },
+    {
+      "year": 2024,
+      "month": 9,
+      "state": "TX",
+      "incident_count": 9
+    },
+    {
+      "year": 2024,
       "month": 10,
       "state": "AZ",
-      "incident_count": 12
+      "incident_count": 11
     },
     {
       "year": 2024,
       "month": 10,
       "state": "CA",
-      "incident_count": 25
+      "incident_count": 24
     },
     {
       "year": 2024,
@@ -1333,210 +1528,6 @@
       "incident_count": 6
     },
     {
-      "year": 2024,
-      "month": 2,
-      "state": "AZ",
-      "incident_count": 5
-    },
-    {
-      "year": 2024,
-      "month": 2,
-      "state": "CA",
-      "incident_count": 6
-    },
-    {
-      "year": 2024,
-      "month": 2,
-      "state": "MI",
-      "incident_count": 1
-    },
-    {
-      "year": 2024,
-      "month": 2,
-      "state": "NV",
-      "incident_count": 2
-    },
-    {
-      "year": 2024,
-      "month": 2,
-      "state": "TX",
-      "incident_count": 2
-    },
-    {
-      "year": 2024,
-      "month": 3,
-      "state": "AZ",
-      "incident_count": 9
-    },
-    {
-      "year": 2024,
-      "month": 3,
-      "state": "CA",
-      "incident_count": 12
-    },
-    {
-      "year": 2024,
-      "month": 3,
-      "state": "NV",
-      "incident_count": 3
-    },
-    {
-      "year": 2024,
-      "month": 3,
-      "state": "TX",
-      "incident_count": 3
-    },
-    {
-      "year": 2024,
-      "month": 4,
-      "state": "AZ",
-      "incident_count": 2
-    },
-    {
-      "year": 2024,
-      "month": 4,
-      "state": "CA",
-      "incident_count": 9
-    },
-    {
-      "year": 2024,
-      "month": 4,
-      "state": "FL",
-      "incident_count": 1
-    },
-    {
-      "year": 2024,
-      "month": 4,
-      "state": "NV",
-      "incident_count": 1
-    },
-    {
-      "year": 2024,
-      "month": 4,
-      "state": "TX",
-      "incident_count": 2
-    },
-    {
-      "year": 2024,
-      "month": 5,
-      "state": "AZ",
-      "incident_count": 8
-    },
-    {
-      "year": 2024,
-      "month": 5,
-      "state": "CA",
-      "incident_count": 13
-    },
-    {
-      "year": 2024,
-      "month": 5,
-      "state": "FL",
-      "incident_count": 1
-    },
-    {
-      "year": 2024,
-      "month": 5,
-      "state": "TX",
-      "incident_count": 4
-    },
-    {
-      "year": 2024,
-      "month": 6,
-      "state": "AZ",
-      "incident_count": 6
-    },
-    {
-      "year": 2024,
-      "month": 6,
-      "state": "CA",
-      "incident_count": 18
-    },
-    {
-      "year": 2024,
-      "month": 6,
-      "state": "FL",
-      "incident_count": 2
-    },
-    {
-      "year": 2024,
-      "month": 6,
-      "state": "TX",
-      "incident_count": 5
-    },
-    {
-      "year": 2024,
-      "month": 7,
-      "state": "AZ",
-      "incident_count": 5
-    },
-    {
-      "year": 2024,
-      "month": 7,
-      "state": "CA",
-      "incident_count": 19
-    },
-    {
-      "year": 2024,
-      "month": 7,
-      "state": "FL",
-      "incident_count": 2
-    },
-    {
-      "year": 2024,
-      "month": 7,
-      "state": "TX",
-      "incident_count": 4
-    },
-    {
-      "year": 2024,
-      "month": 8,
-      "state": "AZ",
-      "incident_count": 11
-    },
-    {
-      "year": 2024,
-      "month": 8,
-      "state": "CA",
-      "incident_count": 21
-    },
-    {
-      "year": 2024,
-      "month": 8,
-      "state": "NV",
-      "incident_count": 1
-    },
-    {
-      "year": 2024,
-      "month": 9,
-      "state": "AZ",
-      "incident_count": 10
-    },
-    {
-      "year": 2024,
-      "month": 9,
-      "state": "CA",
-      "incident_count": 31
-    },
-    {
-      "year": 2024,
-      "month": 9,
-      "state": "GA",
-      "incident_count": 1
-    },
-    {
-      "year": 2024,
-      "month": 9,
-      "state": "NV",
-      "incident_count": 1
-    },
-    {
-      "year": 2024,
-      "month": 9,
-      "state": "TX",
-      "incident_count": 11
-    },
-    {
       "year": 2025,
       "month": 1,
       "state": "AZ",
@@ -1571,126 +1562,6 @@
       "month": 1,
       "state": "TX",
       "incident_count": 2
-    },
-    {
-      "year": 2025,
-      "month": 10,
-      "state": "AZ",
-      "incident_count": 5
-    },
-    {
-      "year": 2025,
-      "month": 10,
-      "state": "CA",
-      "incident_count": 22
-    },
-    {
-      "year": 2025,
-      "month": 10,
-      "state": "DC",
-      "incident_count": 1
-    },
-    {
-      "year": 2025,
-      "month": 10,
-      "state": "GA",
-      "incident_count": 1
-    },
-    {
-      "year": 2025,
-      "month": 10,
-      "state": "NV",
-      "incident_count": 3
-    },
-    {
-      "year": 2025,
-      "month": 10,
-      "state": "TX",
-      "incident_count": 8
-    },
-    {
-      "year": 2025,
-      "month": 11,
-      "state": "AZ",
-      "incident_count": 5
-    },
-    {
-      "year": 2025,
-      "month": 11,
-      "state": "CA",
-      "incident_count": 28
-    },
-    {
-      "year": 2025,
-      "month": 11,
-      "state": "FL",
-      "incident_count": 2
-    },
-    {
-      "year": 2025,
-      "month": 11,
-      "state": "GA",
-      "incident_count": 8
-    },
-    {
-      "year": 2025,
-      "month": 11,
-      "state": "MN",
-      "incident_count": 1
-    },
-    {
-      "year": 2025,
-      "month": 11,
-      "state": "NV",
-      "incident_count": 1
-    },
-    {
-      "year": 2025,
-      "month": 11,
-      "state": "PA",
-      "incident_count": 1
-    },
-    {
-      "year": 2025,
-      "month": 11,
-      "state": "TX",
-      "incident_count": 8
-    },
-    {
-      "year": 2025,
-      "month": 12,
-      "state": "AZ",
-      "incident_count": 7
-    },
-    {
-      "year": 2025,
-      "month": 12,
-      "state": "CA",
-      "incident_count": 25
-    },
-    {
-      "year": 2025,
-      "month": 12,
-      "state": "DC",
-      "incident_count": 1
-    },
-    {
-      "year": 2025,
-      "month": 12,
-      "state": "FL",
-      "incident_count": 2
-    },
-    {
-      "year": 2025,
-      "month": 12,
-      "state": "GA",
-      "incident_count": 4
-    },
-    {
-      "year": 2025,
-      "month": 12,
-      "state": "TX",
-      "incident_count": 15
     },
     {
       "year": 2025,
@@ -1738,7 +1609,7 @@
       "year": 2025,
       "month": 3,
       "state": "CA",
-      "incident_count": 44
+      "incident_count": 43
     },
     {
       "year": 2025,
@@ -1845,12 +1716,6 @@
     {
       "year": 2025,
       "month": 6,
-      "state": "NV",
-      "incident_count": 1
-    },
-    {
-      "year": 2025,
-      "month": 6,
       "state": "TX",
       "incident_count": 6
     },
@@ -1912,7 +1777,7 @@
       "year": 2025,
       "month": 8,
       "state": "GA",
-      "incident_count": 2
+      "incident_count": 1
     },
     {
       "year": 2025,
@@ -1924,7 +1789,7 @@
       "year": 2025,
       "month": 8,
       "state": "TX",
-      "incident_count": 2
+      "incident_count": 1
     },
     {
       "year": 2025,
@@ -1960,7 +1825,127 @@
       "year": 2025,
       "month": 9,
       "state": "TX",
-      "incident_count": 9
+      "incident_count": 8
+    },
+    {
+      "year": 2025,
+      "month": 10,
+      "state": "AZ",
+      "incident_count": 5
+    },
+    {
+      "year": 2025,
+      "month": 10,
+      "state": "CA",
+      "incident_count": 22
+    },
+    {
+      "year": 2025,
+      "month": 10,
+      "state": "DC",
+      "incident_count": 1
+    },
+    {
+      "year": 2025,
+      "month": 10,
+      "state": "GA",
+      "incident_count": 1
+    },
+    {
+      "year": 2025,
+      "month": 10,
+      "state": "NV",
+      "incident_count": 3
+    },
+    {
+      "year": 2025,
+      "month": 10,
+      "state": "TX",
+      "incident_count": 7
+    },
+    {
+      "year": 2025,
+      "month": 11,
+      "state": "AZ",
+      "incident_count": 5
+    },
+    {
+      "year": 2025,
+      "month": 11,
+      "state": "CA",
+      "incident_count": 28
+    },
+    {
+      "year": 2025,
+      "month": 11,
+      "state": "FL",
+      "incident_count": 2
+    },
+    {
+      "year": 2025,
+      "month": 11,
+      "state": "GA",
+      "incident_count": 8
+    },
+    {
+      "year": 2025,
+      "month": 11,
+      "state": "MN",
+      "incident_count": 1
+    },
+    {
+      "year": 2025,
+      "month": 11,
+      "state": "NV",
+      "incident_count": 1
+    },
+    {
+      "year": 2025,
+      "month": 11,
+      "state": "PA",
+      "incident_count": 1
+    },
+    {
+      "year": 2025,
+      "month": 11,
+      "state": "TX",
+      "incident_count": 8
+    },
+    {
+      "year": 2025,
+      "month": 12,
+      "state": "AZ",
+      "incident_count": 7
+    },
+    {
+      "year": 2025,
+      "month": 12,
+      "state": "CA",
+      "incident_count": 25
+    },
+    {
+      "year": 2025,
+      "month": 12,
+      "state": "DC",
+      "incident_count": 1
+    },
+    {
+      "year": 2025,
+      "month": 12,
+      "state": "FL",
+      "incident_count": 2
+    },
+    {
+      "year": 2025,
+      "month": 12,
+      "state": "GA",
+      "incident_count": 4
+    },
+    {
+      "year": 2025,
+      "month": 12,
+      "state": "TX",
+      "incident_count": 12
     },
     {
       "year": 2026,
@@ -1996,7 +1981,7 @@
       "year": 2026,
       "month": 1,
       "state": "TX",
-      "incident_count": 12
+      "incident_count": 7
     },
     {
       "year": 2026,
@@ -2038,7 +2023,7 @@
       "year": 2026,
       "month": 2,
       "state": "TX",
-      "incident_count": 15
+      "incident_count": 13
     },
     {
       "year": 2026,
@@ -2074,7 +2059,7 @@
       "year": 2026,
       "month": 3,
       "state": "TX",
-      "incident_count": 16
+      "incident_count": 15
     },
     {
       "year": 2026,
@@ -2086,7 +2071,7 @@
       "year": 2026,
       "month": 4,
       "state": "CA",
-      "incident_count": 24
+      "incident_count": 23
     },
     {
       "year": 2026,
@@ -2206,7 +2191,7 @@
       "year": 2026,
       "month": 6,
       "state": "TX",
-      "incident_count": 18
+      "incident_count": 17
     },
     {
       "year": 2026,
@@ -2290,120 +2275,6 @@
   "monthly_by_entity": [
     {
       "year": 2021,
-      "month": 10,
-      "reporting_entity": "Cruise LLC",
-      "incident_count": 1
-    },
-    {
-      "year": 2021,
-      "month": 10,
-      "reporting_entity": "Easymile Inc.",
-      "incident_count": 2
-    },
-    {
-      "year": 2021,
-      "month": 10,
-      "reporting_entity": "General Motors, LLC",
-      "incident_count": 1
-    },
-    {
-      "year": 2021,
-      "month": 10,
-      "reporting_entity": "Transdev Alternative Services",
-      "incident_count": 4
-    },
-    {
-      "year": 2021,
-      "month": 10,
-      "reporting_entity": "Waymo LLC",
-      "incident_count": 5
-    },
-    {
-      "year": 2021,
-      "month": 10,
-      "reporting_entity": "Zoox, Inc.",
-      "incident_count": 2
-    },
-    {
-      "year": 2021,
-      "month": 11,
-      "reporting_entity": "Argo AI",
-      "incident_count": 1
-    },
-    {
-      "year": 2021,
-      "month": 11,
-      "reporting_entity": "Cruise LLC",
-      "incident_count": 1
-    },
-    {
-      "year": 2021,
-      "month": 11,
-      "reporting_entity": "Ford Motor Company",
-      "incident_count": 2
-    },
-    {
-      "year": 2021,
-      "month": 11,
-      "reporting_entity": "Pony.ai",
-      "incident_count": 1
-    },
-    {
-      "year": 2021,
-      "month": 11,
-      "reporting_entity": "Transdev Alternative Services",
-      "incident_count": 4
-    },
-    {
-      "year": 2021,
-      "month": 11,
-      "reporting_entity": "Waymo LLC",
-      "incident_count": 4
-    },
-    {
-      "year": 2021,
-      "month": 11,
-      "reporting_entity": "WeRide Corp",
-      "incident_count": 1
-    },
-    {
-      "year": 2021,
-      "month": 12,
-      "reporting_entity": "Cruise LLC",
-      "incident_count": 4
-    },
-    {
-      "year": 2021,
-      "month": 12,
-      "reporting_entity": "General Motors, LLC",
-      "incident_count": 4
-    },
-    {
-      "year": 2021,
-      "month": 12,
-      "reporting_entity": "Hyundai Motor America",
-      "incident_count": 1
-    },
-    {
-      "year": 2021,
-      "month": 12,
-      "reporting_entity": "Transdev Alternative Services",
-      "incident_count": 2
-    },
-    {
-      "year": 2021,
-      "month": 12,
-      "reporting_entity": "Waymo LLC",
-      "incident_count": 2
-    },
-    {
-      "year": 2021,
-      "month": 12,
-      "reporting_entity": "Zoox, Inc.",
-      "incident_count": 1
-    },
-    {
-      "year": 2021,
       "month": 5,
       "reporting_entity": "Transdev Alternative Services",
       "incident_count": 1
@@ -2431,12 +2302,6 @@
       "month": 8,
       "reporting_entity": "Argo AI",
       "incident_count": 2
-    },
-    {
-      "year": 2021,
-      "month": 8,
-      "reporting_entity": "Cruise LLC",
-      "incident_count": 1
     },
     {
       "year": 2021,
@@ -2514,7 +2379,7 @@
       "year": 2021,
       "month": 9,
       "reporting_entity": "Waymo LLC",
-      "incident_count": 6
+      "incident_count": 5
     },
     {
       "year": 2021,
@@ -2523,130 +2388,130 @@
       "incident_count": 1
     },
     {
-      "year": 2022,
-      "month": 1,
-      "reporting_entity": "Waymo LLC",
-      "incident_count": 4
-    },
-    {
-      "year": 2022,
-      "month": 1,
-      "reporting_entity": "Zoox, Inc.",
+      "year": 2021,
+      "month": 10,
+      "reporting_entity": "Cruise LLC",
       "incident_count": 1
     },
     {
-      "year": 2022,
+      "year": 2021,
       "month": 10,
+      "reporting_entity": "Easymile Inc.",
+      "incident_count": 2
+    },
+    {
+      "year": 2021,
+      "month": 10,
+      "reporting_entity": "Transdev Alternative Services",
+      "incident_count": 4
+    },
+    {
+      "year": 2021,
+      "month": 10,
+      "reporting_entity": "Waymo LLC",
+      "incident_count": 5
+    },
+    {
+      "year": 2021,
+      "month": 10,
+      "reporting_entity": "Zoox, Inc.",
+      "incident_count": 2
+    },
+    {
+      "year": 2021,
+      "month": 11,
       "reporting_entity": "Argo AI",
-      "incident_count": 2
+      "incident_count": 1
     },
     {
-      "year": 2022,
-      "month": 10,
+      "year": 2021,
+      "month": 11,
+      "reporting_entity": "Cruise LLC",
+      "incident_count": 1
+    },
+    {
+      "year": 2021,
+      "month": 11,
       "reporting_entity": "Ford Motor Company",
-      "incident_count": 2
-    },
-    {
-      "year": 2022,
-      "month": 10,
-      "reporting_entity": "Toyota Motor Engineering & Manufacturing",
       "incident_count": 1
     },
     {
-      "year": 2022,
-      "month": 10,
-      "reporting_entity": "Transdev Alternative Services",
-      "incident_count": 1
-    },
-    {
-      "year": 2022,
-      "month": 10,
-      "reporting_entity": "Waymo LLC",
-      "incident_count": 1
-    },
-    {
-      "year": 2022,
+      "year": 2021,
       "month": 11,
-      "reporting_entity": "Aurora Operations, Inc.",
+      "reporting_entity": "Pony.ai",
       "incident_count": 1
     },
     {
-      "year": 2022,
+      "year": 2021,
       "month": 11,
       "reporting_entity": "Transdev Alternative Services",
-      "incident_count": 3
+      "incident_count": 4
     },
     {
-      "year": 2022,
+      "year": 2021,
       "month": 11,
       "reporting_entity": "Waymo LLC",
-      "incident_count": 3
+      "incident_count": 4
     },
     {
-      "year": 2022,
+      "year": 2021,
       "month": 11,
-      "reporting_entity": "Zoox, Inc.",
-      "incident_count": 2
-    },
-    {
-      "year": 2022,
-      "month": 12,
-      "reporting_entity": "Beep, Inc.",
+      "reporting_entity": "WeRide Corp",
       "incident_count": 1
     },
     {
-      "year": 2022,
+      "year": 2021,
       "month": 12,
       "reporting_entity": "Cruise LLC",
-      "incident_count": 2
+      "incident_count": 4
     },
     {
-      "year": 2022,
+      "year": 2021,
       "month": 12,
       "reporting_entity": "General Motors, LLC",
+      "incident_count": 4
+    },
+    {
+      "year": 2021,
+      "month": 12,
+      "reporting_entity": "Hyundai Motor America",
+      "incident_count": 1
+    },
+    {
+      "year": 2021,
+      "month": 12,
+      "reporting_entity": "Transdev Alternative Services",
       "incident_count": 2
     },
     {
-      "year": 2022,
+      "year": 2021,
       "month": 12,
-      "reporting_entity": "Mercedes-Benz USA, LLC",
+      "reporting_entity": "Waymo LLC",
+      "incident_count": 2
+    },
+    {
+      "year": 2021,
+      "month": 12,
+      "reporting_entity": "Zoox, Inc.",
       "incident_count": 1
     },
     {
       "year": 2022,
-      "month": 12,
-      "reporting_entity": "NVIDIA CORP",
-      "incident_count": 2
-    },
-    {
-      "year": 2022,
-      "month": 12,
-      "reporting_entity": "Transdev Alternative Services",
-      "incident_count": 11
-    },
-    {
-      "year": 2022,
-      "month": 12,
+      "month": 1,
       "reporting_entity": "Waymo LLC",
       "incident_count": 4
     },
     {
       "year": 2022,
-      "month": 12,
+      "month": 1,
       "reporting_entity": "Zoox, Inc.",
-      "incident_count": 4
-    },
-    {
-      "year": 2022,
-      "month": 2,
-      "reporting_entity": "Cruise LLC",
       "incident_count": 1
     },
     {
       "year": 2022,
       "month": 2,
       "reporting_entity": "General Motors, LLC",
-      "incident_count": 2
+      "incident_count": 1
     },
     {
       "year": 2022,
@@ -2669,19 +2534,7 @@
     {
       "year": 2022,
       "month": 3,
-      "reporting_entity": "Cruise LLC",
-      "incident_count": 1
-    },
-    {
-      "year": 2022,
-      "month": 3,
       "reporting_entity": "Ford Motor Company",
-      "incident_count": 1
-    },
-    {
-      "year": 2022,
-      "month": 3,
-      "reporting_entity": "General Motors, LLC",
       "incident_count": 1
     },
     {
@@ -2760,7 +2613,7 @@
       "year": 2022,
       "month": 5,
       "reporting_entity": "Ford Motor Company",
-      "incident_count": 2
+      "incident_count": 1
     },
     {
       "year": 2022,
@@ -2806,12 +2659,6 @@
     },
     {
       "year": 2022,
-      "month": 5,
-      "reporting_entity": "Zoox, Inc.",
-      "incident_count": 1
-    },
-    {
-      "year": 2022,
       "month": 6,
       "reporting_entity": "Apple Inc.",
       "incident_count": 1
@@ -2833,12 +2680,6 @@
       "month": 6,
       "reporting_entity": "Ford Motor Company",
       "incident_count": 2
-    },
-    {
-      "year": 2022,
-      "month": 6,
-      "reporting_entity": "Mercedes-Benz USA, LLC",
-      "incident_count": 1
     },
     {
       "year": 2022,
@@ -2904,7 +2745,7 @@
       "year": 2022,
       "month": 7,
       "reporting_entity": "Zoox, Inc.",
-      "incident_count": 3
+      "incident_count": 1
     },
     {
       "year": 2022,
@@ -2958,7 +2799,7 @@
       "year": 2022,
       "month": 8,
       "reporting_entity": "PACCAR Incorporated",
-      "incident_count": 2
+      "incident_count": 1
     },
     {
       "year": 2022,
@@ -2993,19 +2834,7 @@
     {
       "year": 2022,
       "month": 9,
-      "reporting_entity": "Cruise LLC",
-      "incident_count": 1
-    },
-    {
-      "year": 2022,
-      "month": 9,
       "reporting_entity": "Ford Motor Company",
-      "incident_count": 1
-    },
-    {
-      "year": 2022,
-      "month": 9,
-      "reporting_entity": "General Motors, LLC",
       "incident_count": 1
     },
     {
@@ -3030,6 +2859,108 @@
       "year": 2022,
       "month": 9,
       "reporting_entity": "Waymo LLC",
+      "incident_count": 4
+    },
+    {
+      "year": 2022,
+      "month": 10,
+      "reporting_entity": "Argo AI",
+      "incident_count": 2
+    },
+    {
+      "year": 2022,
+      "month": 10,
+      "reporting_entity": "Ford Motor Company",
+      "incident_count": 2
+    },
+    {
+      "year": 2022,
+      "month": 10,
+      "reporting_entity": "Toyota Motor Engineering & Manufacturing",
+      "incident_count": 1
+    },
+    {
+      "year": 2022,
+      "month": 10,
+      "reporting_entity": "Transdev Alternative Services",
+      "incident_count": 1
+    },
+    {
+      "year": 2022,
+      "month": 10,
+      "reporting_entity": "Waymo LLC",
+      "incident_count": 1
+    },
+    {
+      "year": 2022,
+      "month": 11,
+      "reporting_entity": "Aurora Operations, Inc.",
+      "incident_count": 1
+    },
+    {
+      "year": 2022,
+      "month": 11,
+      "reporting_entity": "Transdev Alternative Services",
+      "incident_count": 2
+    },
+    {
+      "year": 2022,
+      "month": 11,
+      "reporting_entity": "Waymo LLC",
+      "incident_count": 3
+    },
+    {
+      "year": 2022,
+      "month": 11,
+      "reporting_entity": "Zoox, Inc.",
+      "incident_count": 2
+    },
+    {
+      "year": 2022,
+      "month": 12,
+      "reporting_entity": "Beep, Inc.",
+      "incident_count": 1
+    },
+    {
+      "year": 2022,
+      "month": 12,
+      "reporting_entity": "Cruise LLC",
+      "incident_count": 2
+    },
+    {
+      "year": 2022,
+      "month": 12,
+      "reporting_entity": "General Motors, LLC",
+      "incident_count": 2
+    },
+    {
+      "year": 2022,
+      "month": 12,
+      "reporting_entity": "Mercedes-Benz USA, LLC",
+      "incident_count": 1
+    },
+    {
+      "year": 2022,
+      "month": 12,
+      "reporting_entity": "NVIDIA CORP",
+      "incident_count": 1
+    },
+    {
+      "year": 2022,
+      "month": 12,
+      "reporting_entity": "Transdev Alternative Services",
+      "incident_count": 4
+    },
+    {
+      "year": 2022,
+      "month": 12,
+      "reporting_entity": "Waymo LLC",
+      "incident_count": 4
+    },
+    {
+      "year": 2022,
+      "month": 12,
+      "reporting_entity": "Zoox, Inc.",
       "incident_count": 4
     },
     {
@@ -3064,7 +2995,319 @@
     },
     {
       "year": 2023,
-      "month": 1,
+      "month": 2,
+      "reporting_entity": "Cruise LLC",
+      "incident_count": 2
+    },
+    {
+      "year": 2023,
+      "month": 2,
+      "reporting_entity": "General Motors, LLC",
+      "incident_count": 2
+    },
+    {
+      "year": 2023,
+      "month": 2,
+      "reporting_entity": "Kodiak Robotics",
+      "incident_count": 1
+    },
+    {
+      "year": 2023,
+      "month": 2,
+      "reporting_entity": "Motional",
+      "incident_count": 1
+    },
+    {
+      "year": 2023,
+      "month": 2,
+      "reporting_entity": "PACCAR Incorporated",
+      "incident_count": 1
+    },
+    {
+      "year": 2023,
+      "month": 2,
+      "reporting_entity": "Transdev Alternative Services",
+      "incident_count": 1
+    },
+    {
+      "year": 2023,
+      "month": 2,
+      "reporting_entity": "Waymo LLC",
+      "incident_count": 3
+    },
+    {
+      "year": 2023,
+      "month": 2,
+      "reporting_entity": "Zoox, Inc.",
+      "incident_count": 1
+    },
+    {
+      "year": 2023,
+      "month": 3,
+      "reporting_entity": "Cruise LLC",
+      "incident_count": 5
+    },
+    {
+      "year": 2023,
+      "month": 3,
+      "reporting_entity": "General Motors, LLC",
+      "incident_count": 5
+    },
+    {
+      "year": 2023,
+      "month": 3,
+      "reporting_entity": "Mercedes-Benz USA, LLC",
+      "incident_count": 2
+    },
+    {
+      "year": 2023,
+      "month": 3,
+      "reporting_entity": "Transdev Alternative Services",
+      "incident_count": 7
+    },
+    {
+      "year": 2023,
+      "month": 3,
+      "reporting_entity": "Waymo LLC",
+      "incident_count": 8
+    },
+    {
+      "year": 2023,
+      "month": 4,
+      "reporting_entity": "Aurora Operations, Inc.",
+      "incident_count": 1
+    },
+    {
+      "year": 2023,
+      "month": 4,
+      "reporting_entity": "Cruise LLC",
+      "incident_count": 5
+    },
+    {
+      "year": 2023,
+      "month": 4,
+      "reporting_entity": "General Motors, LLC",
+      "incident_count": 5
+    },
+    {
+      "year": 2023,
+      "month": 4,
+      "reporting_entity": "May Mobility",
+      "incident_count": 1
+    },
+    {
+      "year": 2023,
+      "month": 4,
+      "reporting_entity": "PACCAR Incorporated",
+      "incident_count": 1
+    },
+    {
+      "year": 2023,
+      "month": 4,
+      "reporting_entity": "Transdev Alternative Services",
+      "incident_count": 2
+    },
+    {
+      "year": 2023,
+      "month": 4,
+      "reporting_entity": "Waymo LLC",
+      "incident_count": 6
+    },
+    {
+      "year": 2023,
+      "month": 4,
+      "reporting_entity": "Zoox, Inc.",
+      "incident_count": 1
+    },
+    {
+      "year": 2023,
+      "month": 5,
+      "reporting_entity": "Cruise LLC",
+      "incident_count": 5
+    },
+    {
+      "year": 2023,
+      "month": 5,
+      "reporting_entity": "General Motors, LLC",
+      "incident_count": 5
+    },
+    {
+      "year": 2023,
+      "month": 5,
+      "reporting_entity": "Transdev Alternative Services",
+      "incident_count": 3
+    },
+    {
+      "year": 2023,
+      "month": 5,
+      "reporting_entity": "Waymo LLC",
+      "incident_count": 6
+    },
+    {
+      "year": 2023,
+      "month": 5,
+      "reporting_entity": "WeRide Corp",
+      "incident_count": 1
+    },
+    {
+      "year": 2023,
+      "month": 6,
+      "reporting_entity": "Cruise LLC",
+      "incident_count": 5
+    },
+    {
+      "year": 2023,
+      "month": 6,
+      "reporting_entity": "General Motors, LLC",
+      "incident_count": 6
+    },
+    {
+      "year": 2023,
+      "month": 6,
+      "reporting_entity": "Pony.ai",
+      "incident_count": 1
+    },
+    {
+      "year": 2023,
+      "month": 6,
+      "reporting_entity": "Transdev Alternative Services",
+      "incident_count": 1
+    },
+    {
+      "year": 2023,
+      "month": 6,
+      "reporting_entity": "Waymo LLC",
+      "incident_count": 6
+    },
+    {
+      "year": 2023,
+      "month": 6,
+      "reporting_entity": "WeRide Corp",
+      "incident_count": 1
+    },
+    {
+      "year": 2023,
+      "month": 6,
+      "reporting_entity": "Zoox, Inc.",
+      "incident_count": 2
+    },
+    {
+      "year": 2023,
+      "month": 7,
+      "reporting_entity": "Cruise LLC",
+      "incident_count": 7
+    },
+    {
+      "year": 2023,
+      "month": 7,
+      "reporting_entity": "General Motors, LLC",
+      "incident_count": 7
+    },
+    {
+      "year": 2023,
+      "month": 7,
+      "reporting_entity": "Hyundai Motor America",
+      "incident_count": 1
+    },
+    {
+      "year": 2023,
+      "month": 7,
+      "reporting_entity": "May Mobility",
+      "incident_count": 1
+    },
+    {
+      "year": 2023,
+      "month": 7,
+      "reporting_entity": "Transdev Alternative Services",
+      "incident_count": 3
+    },
+    {
+      "year": 2023,
+      "month": 7,
+      "reporting_entity": "Waymo LLC",
+      "incident_count": 6
+    },
+    {
+      "year": 2023,
+      "month": 8,
+      "reporting_entity": "Aurora Operations, Inc.",
+      "incident_count": 1
+    },
+    {
+      "year": 2023,
+      "month": 8,
+      "reporting_entity": "Beep, Inc.",
+      "incident_count": 2
+    },
+    {
+      "year": 2023,
+      "month": 8,
+      "reporting_entity": "Cruise LLC",
+      "incident_count": 15
+    },
+    {
+      "year": 2023,
+      "month": 8,
+      "reporting_entity": "General Motors, LLC",
+      "incident_count": 13
+    },
+    {
+      "year": 2023,
+      "month": 8,
+      "reporting_entity": "Ghost Autonomy Inc.",
+      "incident_count": 1
+    },
+    {
+      "year": 2023,
+      "month": 8,
+      "reporting_entity": "May Mobility",
+      "incident_count": 1
+    },
+    {
+      "year": 2023,
+      "month": 8,
+      "reporting_entity": "Waymo LLC",
+      "incident_count": 12
+    },
+    {
+      "year": 2023,
+      "month": 8,
+      "reporting_entity": "WeRide Corp",
+      "incident_count": 1
+    },
+    {
+      "year": 2023,
+      "month": 9,
+      "reporting_entity": "Cruise LLC",
+      "incident_count": 9
+    },
+    {
+      "year": 2023,
+      "month": 9,
+      "reporting_entity": "General Motors, LLC",
+      "incident_count": 9
+    },
+    {
+      "year": 2023,
+      "month": 9,
+      "reporting_entity": "Mercedes-Benz USA, LLC",
+      "incident_count": 1
+    },
+    {
+      "year": 2023,
+      "month": 9,
+      "reporting_entity": "Transdev Alternative Services",
+      "incident_count": 1
+    },
+    {
+      "year": 2023,
+      "month": 9,
+      "reporting_entity": "Waymo LLC",
+      "incident_count": 8
+    },
+    {
+      "year": 2023,
+      "month": 9,
       "reporting_entity": "Zoox, Inc.",
       "incident_count": 1
     },
@@ -3072,12 +3315,6 @@
       "year": 2023,
       "month": 10,
       "reporting_entity": "Apollo Autonomous Driving USA",
-      "incident_count": 1
-    },
-    {
-      "year": 2023,
-      "month": 10,
-      "reporting_entity": "Avride Inc.",
       "incident_count": 1
     },
     {
@@ -3195,606 +3432,150 @@
       "incident_count": 12
     },
     {
-      "year": 2023,
-      "month": 2,
-      "reporting_entity": "Cruise LLC",
-      "incident_count": 2
-    },
-    {
-      "year": 2023,
-      "month": 2,
-      "reporting_entity": "General Motors, LLC",
-      "incident_count": 2
-    },
-    {
-      "year": 2023,
-      "month": 2,
-      "reporting_entity": "Kodiak Robotics",
-      "incident_count": 1
-    },
-    {
-      "year": 2023,
-      "month": 2,
-      "reporting_entity": "Motional",
-      "incident_count": 1
-    },
-    {
-      "year": 2023,
-      "month": 2,
-      "reporting_entity": "PACCAR Incorporated",
-      "incident_count": 1
-    },
-    {
-      "year": 2023,
-      "month": 2,
-      "reporting_entity": "Transdev Alternative Services",
-      "incident_count": 1
-    },
-    {
-      "year": 2023,
-      "month": 2,
-      "reporting_entity": "Waymo LLC",
-      "incident_count": 4
-    },
-    {
-      "year": 2023,
-      "month": 2,
-      "reporting_entity": "Zoox, Inc.",
-      "incident_count": 1
-    },
-    {
-      "year": 2023,
-      "month": 3,
-      "reporting_entity": "Cruise LLC",
-      "incident_count": 5
-    },
-    {
-      "year": 2023,
-      "month": 3,
-      "reporting_entity": "General Motors, LLC",
-      "incident_count": 5
-    },
-    {
-      "year": 2023,
-      "month": 3,
-      "reporting_entity": "Mercedes-Benz USA, LLC",
-      "incident_count": 2
-    },
-    {
-      "year": 2023,
-      "month": 3,
-      "reporting_entity": "Transdev Alternative Services",
-      "incident_count": 10
-    },
-    {
-      "year": 2023,
-      "month": 3,
-      "reporting_entity": "Waymo LLC",
-      "incident_count": 8
-    },
-    {
-      "year": 2023,
-      "month": 3,
-      "reporting_entity": "Zoox, Inc.",
-      "incident_count": 3
-    },
-    {
-      "year": 2023,
-      "month": 4,
-      "reporting_entity": "Aurora Operations, Inc.",
-      "incident_count": 1
-    },
-    {
-      "year": 2023,
-      "month": 4,
-      "reporting_entity": "Cruise LLC",
-      "incident_count": 5
-    },
-    {
-      "year": 2023,
-      "month": 4,
-      "reporting_entity": "General Motors, LLC",
-      "incident_count": 5
-    },
-    {
-      "year": 2023,
-      "month": 4,
-      "reporting_entity": "May Mobility",
-      "incident_count": 1
-    },
-    {
-      "year": 2023,
-      "month": 4,
-      "reporting_entity": "PACCAR Incorporated",
-      "incident_count": 1
-    },
-    {
-      "year": 2023,
-      "month": 4,
-      "reporting_entity": "Transdev Alternative Services",
-      "incident_count": 2
-    },
-    {
-      "year": 2023,
-      "month": 4,
-      "reporting_entity": "Waymo LLC",
-      "incident_count": 6
-    },
-    {
-      "year": 2023,
-      "month": 4,
-      "reporting_entity": "Zoox, Inc.",
-      "incident_count": 2
-    },
-    {
-      "year": 2023,
-      "month": 5,
-      "reporting_entity": "Cruise LLC",
-      "incident_count": 5
-    },
-    {
-      "year": 2023,
-      "month": 5,
-      "reporting_entity": "General Motors, LLC",
-      "incident_count": 5
-    },
-    {
-      "year": 2023,
-      "month": 5,
-      "reporting_entity": "Transdev Alternative Services",
-      "incident_count": 3
-    },
-    {
-      "year": 2023,
-      "month": 5,
-      "reporting_entity": "Waymo LLC",
-      "incident_count": 6
-    },
-    {
-      "year": 2023,
-      "month": 5,
-      "reporting_entity": "WeRide Corp",
-      "incident_count": 1
-    },
-    {
-      "year": 2023,
-      "month": 6,
-      "reporting_entity": "Cruise LLC",
-      "incident_count": 5
-    },
-    {
-      "year": 2023,
-      "month": 6,
-      "reporting_entity": "General Motors, LLC",
-      "incident_count": 6
-    },
-    {
-      "year": 2023,
-      "month": 6,
-      "reporting_entity": "Motional",
-      "incident_count": 1
-    },
-    {
-      "year": 2023,
-      "month": 6,
-      "reporting_entity": "Pony.ai",
-      "incident_count": 1
-    },
-    {
-      "year": 2023,
-      "month": 6,
-      "reporting_entity": "Transdev Alternative Services",
-      "incident_count": 1
-    },
-    {
-      "year": 2023,
-      "month": 6,
-      "reporting_entity": "Waymo LLC",
-      "incident_count": 6
-    },
-    {
-      "year": 2023,
-      "month": 6,
-      "reporting_entity": "WeRide Corp",
-      "incident_count": 1
-    },
-    {
-      "year": 2023,
-      "month": 6,
-      "reporting_entity": "Zoox, Inc.",
-      "incident_count": 2
-    },
-    {
-      "year": 2023,
-      "month": 7,
-      "reporting_entity": "Cruise LLC",
-      "incident_count": 8
-    },
-    {
-      "year": 2023,
-      "month": 7,
-      "reporting_entity": "General Motors, LLC",
-      "incident_count": 8
-    },
-    {
-      "year": 2023,
-      "month": 7,
-      "reporting_entity": "Hyundai Motor America",
-      "incident_count": 1
-    },
-    {
-      "year": 2023,
-      "month": 7,
-      "reporting_entity": "May Mobility",
-      "incident_count": 1
-    },
-    {
-      "year": 2023,
-      "month": 7,
-      "reporting_entity": "Transdev Alternative Services",
-      "incident_count": 3
-    },
-    {
-      "year": 2023,
-      "month": 7,
-      "reporting_entity": "Waymo LLC",
-      "incident_count": 6
-    },
-    {
-      "year": 2023,
-      "month": 8,
-      "reporting_entity": "Aurora Operations, Inc.",
-      "incident_count": 1
-    },
-    {
-      "year": 2023,
-      "month": 8,
-      "reporting_entity": "Beep, Inc.",
-      "incident_count": 2
-    },
-    {
-      "year": 2023,
-      "month": 8,
-      "reporting_entity": "Cruise LLC",
-      "incident_count": 16
-    },
-    {
-      "year": 2023,
-      "month": 8,
-      "reporting_entity": "General Motors, LLC",
-      "incident_count": 16
-    },
-    {
-      "year": 2023,
-      "month": 8,
+      "year": 2024,
+      "month": 1,
       "reporting_entity": "Ghost Autonomy Inc.",
       "incident_count": 1
     },
     {
-      "year": 2023,
-      "month": 8,
-      "reporting_entity": "May Mobility",
-      "incident_count": 1
+      "year": 2024,
+      "month": 1,
+      "reporting_entity": "Nuro",
+      "incident_count": 2
     },
     {
-      "year": 2023,
-      "month": 8,
-      "reporting_entity": "Waymo LLC",
-      "incident_count": 12
-    },
-    {
-      "year": 2023,
-      "month": 8,
-      "reporting_entity": "WeRide Corp",
-      "incident_count": 1
-    },
-    {
-      "year": 2023,
-      "month": 9,
-      "reporting_entity": "Cruise LLC",
-      "incident_count": 11
-    },
-    {
-      "year": 2023,
-      "month": 9,
-      "reporting_entity": "General Motors, LLC",
-      "incident_count": 11
-    },
-    {
-      "year": 2023,
-      "month": 9,
-      "reporting_entity": "Mercedes-Benz USA, LLC",
-      "incident_count": 1
-    },
-    {
-      "year": 2023,
-      "month": 9,
+      "year": 2024,
+      "month": 1,
       "reporting_entity": "Transdev Alternative Services",
       "incident_count": 1
     },
     {
-      "year": 2023,
-      "month": 9,
+      "year": 2024,
+      "month": 1,
+      "reporting_entity": "Waymo LLC",
+      "incident_count": 7
+    },
+    {
+      "year": 2024,
+      "month": 1,
+      "reporting_entity": "WeRide Corp",
+      "incident_count": 1
+    },
+    {
+      "year": 2024,
+      "month": 1,
+      "reporting_entity": "Zoox, Inc.",
+      "incident_count": 3
+    },
+    {
+      "year": 2024,
+      "month": 2,
+      "reporting_entity": "Aurora Operations, Inc.",
+      "incident_count": 1
+    },
+    {
+      "year": 2024,
+      "month": 2,
+      "reporting_entity": "May Mobility",
+      "incident_count": 1
+    },
+    {
+      "year": 2024,
+      "month": 2,
+      "reporting_entity": "Transdev Alternative Services",
+      "incident_count": 1
+    },
+    {
+      "year": 2024,
+      "month": 2,
+      "reporting_entity": "Volkswagen Group of America, Inc.",
+      "incident_count": 1
+    },
+    {
+      "year": 2024,
+      "month": 2,
+      "reporting_entity": "Waymo LLC",
+      "incident_count": 7
+    },
+    {
+      "year": 2024,
+      "month": 2,
+      "reporting_entity": "Zoox, Inc.",
+      "incident_count": 3
+    },
+    {
+      "year": 2024,
+      "month": 3,
+      "reporting_entity": "Hyundai Motor America",
+      "incident_count": 1
+    },
+    {
+      "year": 2024,
+      "month": 3,
+      "reporting_entity": "Nuro",
+      "incident_count": 1
+    },
+    {
+      "year": 2024,
+      "month": 3,
+      "reporting_entity": "PACCAR Incorporated",
+      "incident_count": 1
+    },
+    {
+      "year": 2024,
+      "month": 3,
+      "reporting_entity": "Transdev Alternative Services",
+      "incident_count": 2
+    },
+    {
+      "year": 2024,
+      "month": 3,
+      "reporting_entity": "Volkswagen Group of America, Inc.",
+      "incident_count": 1
+    },
+    {
+      "year": 2024,
+      "month": 3,
+      "reporting_entity": "Waymo LLC",
+      "incident_count": 19
+    },
+    {
+      "year": 2024,
+      "month": 3,
+      "reporting_entity": "Zoox, Inc.",
+      "incident_count": 2
+    },
+    {
+      "year": 2024,
+      "month": 4,
+      "reporting_entity": "Aurora Operations, Inc.",
+      "incident_count": 1
+    },
+    {
+      "year": 2024,
+      "month": 4,
+      "reporting_entity": "May Mobility",
+      "incident_count": 1
+    },
+    {
+      "year": 2024,
+      "month": 4,
+      "reporting_entity": "PACCAR Incorporated",
+      "incident_count": 1
+    },
+    {
+      "year": 2024,
+      "month": 4,
+      "reporting_entity": "Transdev Alternative Services",
+      "incident_count": 1
+    },
+    {
+      "year": 2024,
+      "month": 4,
       "reporting_entity": "Waymo LLC",
       "incident_count": 9
     },
     {
-      "year": 2023,
-      "month": 9,
-      "reporting_entity": "Zoox, Inc.",
-      "incident_count": 1
-    },
-    {
-      "year": 2024,
-      "month": 1,
-      "reporting_entity": "Ghost Autonomy Inc.",
-      "incident_count": 1
-    },
-    {
-      "year": 2024,
-      "month": 1,
-      "reporting_entity": "Nuro",
-      "incident_count": 2
-    },
-    {
-      "year": 2024,
-      "month": 1,
-      "reporting_entity": "Transdev Alternative Services",
-      "incident_count": 1
-    },
-    {
-      "year": 2024,
-      "month": 1,
-      "reporting_entity": "Waymo LLC",
-      "incident_count": 8
-    },
-    {
-      "year": 2024,
-      "month": 1,
-      "reporting_entity": "WeRide Corp",
-      "incident_count": 1
-    },
-    {
-      "year": 2024,
-      "month": 1,
-      "reporting_entity": "Zoox, Inc.",
-      "incident_count": 3
-    },
-    {
-      "year": 2024,
-      "month": 10,
-      "reporting_entity": "Beep, Inc.",
-      "incident_count": 1
-    },
-    {
-      "year": 2024,
-      "month": 10,
-      "reporting_entity": "Kodiak Robotics",
-      "incident_count": 1
-    },
-    {
-      "year": 2024,
-      "month": 10,
-      "reporting_entity": "May Mobility",
-      "incident_count": 1
-    },
-    {
-      "year": 2024,
-      "month": 10,
-      "reporting_entity": "PACCAR Incorporated",
-      "incident_count": 1
-    },
-    {
-      "year": 2024,
-      "month": 10,
-      "reporting_entity": "VinFast Auto, LLC",
-      "incident_count": 1
-    },
-    {
-      "year": 2024,
-      "month": 10,
-      "reporting_entity": "Waymo LLC",
-      "incident_count": 39
-    },
-    {
-      "year": 2024,
-      "month": 10,
-      "reporting_entity": "Zoox, Inc.",
-      "incident_count": 3
-    },
-    {
-      "year": 2024,
-      "month": 11,
-      "reporting_entity": "Aurora Operations, Inc.",
-      "incident_count": 1
-    },
-    {
-      "year": 2024,
-      "month": 11,
-      "reporting_entity": "Cruise LLC",
-      "incident_count": 1
-    },
-    {
-      "year": 2024,
-      "month": 11,
-      "reporting_entity": "General Motors, LLC",
-      "incident_count": 1
-    },
-    {
-      "year": 2024,
-      "month": 11,
-      "reporting_entity": "Mobileye Vision Technologies",
-      "incident_count": 5
-    },
-    {
-      "year": 2024,
-      "month": 11,
-      "reporting_entity": "PACCAR Incorporated",
-      "incident_count": 2
-    },
-    {
-      "year": 2024,
-      "month": 11,
-      "reporting_entity": "Transdev Alternative Services",
-      "incident_count": 1
-    },
-    {
-      "year": 2024,
-      "month": 11,
-      "reporting_entity": "Waymo LLC",
-      "incident_count": 43
-    },
-    {
-      "year": 2024,
-      "month": 12,
-      "reporting_entity": "Avride Inc.",
-      "incident_count": 1
-    },
-    {
-      "year": 2024,
-      "month": 12,
-      "reporting_entity": "Nuro",
-      "incident_count": 1
-    },
-    {
-      "year": 2024,
-      "month": 12,
-      "reporting_entity": "Transdev Alternative Services",
-      "incident_count": 3
-    },
-    {
-      "year": 2024,
-      "month": 12,
-      "reporting_entity": "Waymo LLC",
-      "incident_count": 54
-    },
-    {
-      "year": 2024,
-      "month": 12,
-      "reporting_entity": "WeRide Corp",
-      "incident_count": 1
-    },
-    {
-      "year": 2024,
-      "month": 12,
-      "reporting_entity": "Zoox, Inc.",
-      "incident_count": 2
-    },
-    {
-      "year": 2024,
-      "month": 2,
-      "reporting_entity": "Aurora Operations, Inc.",
-      "incident_count": 1
-    },
-    {
-      "year": 2024,
-      "month": 2,
-      "reporting_entity": "May Mobility",
-      "incident_count": 1
-    },
-    {
-      "year": 2024,
-      "month": 2,
-      "reporting_entity": "Motional",
-      "incident_count": 1
-    },
-    {
-      "year": 2024,
-      "month": 2,
-      "reporting_entity": "Transdev Alternative Services",
-      "incident_count": 1
-    },
-    {
-      "year": 2024,
-      "month": 2,
-      "reporting_entity": "Volkswagen Group of America, Inc.",
-      "incident_count": 1
-    },
-    {
-      "year": 2024,
-      "month": 2,
-      "reporting_entity": "Waymo LLC",
-      "incident_count": 8
-    },
-    {
-      "year": 2024,
-      "month": 2,
-      "reporting_entity": "Zoox, Inc.",
-      "incident_count": 3
-    },
-    {
-      "year": 2024,
-      "month": 3,
-      "reporting_entity": "Hyundai Motor America",
-      "incident_count": 1
-    },
-    {
-      "year": 2024,
-      "month": 3,
-      "reporting_entity": "Nuro",
-      "incident_count": 1
-    },
-    {
-      "year": 2024,
-      "month": 3,
-      "reporting_entity": "PACCAR Incorporated",
-      "incident_count": 1
-    },
-    {
-      "year": 2024,
-      "month": 3,
-      "reporting_entity": "Transdev Alternative Services",
-      "incident_count": 2
-    },
-    {
-      "year": 2024,
-      "month": 3,
-      "reporting_entity": "Volkswagen Group of America, Inc.",
-      "incident_count": 1
-    },
-    {
-      "year": 2024,
-      "month": 3,
-      "reporting_entity": "Waymo LLC",
-      "incident_count": 19
-    },
-    {
-      "year": 2024,
-      "month": 3,
-      "reporting_entity": "Zoox, Inc.",
-      "incident_count": 2
-    },
-    {
-      "year": 2024,
-      "month": 4,
-      "reporting_entity": "Aurora Operations, Inc.",
-      "incident_count": 1
-    },
-    {
-      "year": 2024,
-      "month": 4,
-      "reporting_entity": "May Mobility",
-      "incident_count": 1
-    },
-    {
-      "year": 2024,
-      "month": 4,
-      "reporting_entity": "PACCAR Incorporated",
-      "incident_count": 1
-    },
-    {
-      "year": 2024,
-      "month": 4,
-      "reporting_entity": "Transdev Alternative Services",
-      "incident_count": 1
-    },
-    {
-      "year": 2024,
-      "month": 4,
-      "reporting_entity": "Waymo LLC",
-      "incident_count": 10
-    },
-    {
       "year": 2024,
       "month": 4,
       "reporting_entity": "Zoox, Inc.",
@@ -3828,7 +3609,7 @@
       "year": 2024,
       "month": 5,
       "reporting_entity": "Transdev Alternative Services",
-      "incident_count": 2
+      "incident_count": 1
     },
     {
       "year": 2024,
@@ -3840,7 +3621,7 @@
       "year": 2024,
       "month": 5,
       "reporting_entity": "Waymo LLC",
-      "incident_count": 19
+      "incident_count": 16
     },
     {
       "year": 2024,
@@ -3930,7 +3711,7 @@
       "year": 2024,
       "month": 7,
       "reporting_entity": "Waymo LLC",
-      "incident_count": 20
+      "incident_count": 18
     },
     {
       "year": 2024,
@@ -3960,7 +3741,7 @@
       "year": 2024,
       "month": 8,
       "reporting_entity": "Waymo LLC",
-      "incident_count": 31
+      "incident_count": 30
     },
     {
       "year": 2024,
@@ -4002,7 +3783,127 @@
       "year": 2024,
       "month": 9,
       "reporting_entity": "Waymo LLC",
-      "incident_count": 40
+      "incident_count": 31
+    },
+    {
+      "year": 2024,
+      "month": 10,
+      "reporting_entity": "Beep, Inc.",
+      "incident_count": 1
+    },
+    {
+      "year": 2024,
+      "month": 10,
+      "reporting_entity": "Kodiak Robotics",
+      "incident_count": 1
+    },
+    {
+      "year": 2024,
+      "month": 10,
+      "reporting_entity": "May Mobility",
+      "incident_count": 1
+    },
+    {
+      "year": 2024,
+      "month": 10,
+      "reporting_entity": "PACCAR Incorporated",
+      "incident_count": 1
+    },
+    {
+      "year": 2024,
+      "month": 10,
+      "reporting_entity": "VinFast Auto, LLC",
+      "incident_count": 1
+    },
+    {
+      "year": 2024,
+      "month": 10,
+      "reporting_entity": "Waymo LLC",
+      "incident_count": 37
+    },
+    {
+      "year": 2024,
+      "month": 10,
+      "reporting_entity": "Zoox, Inc.",
+      "incident_count": 3
+    },
+    {
+      "year": 2024,
+      "month": 11,
+      "reporting_entity": "Aurora Operations, Inc.",
+      "incident_count": 1
+    },
+    {
+      "year": 2024,
+      "month": 11,
+      "reporting_entity": "Cruise LLC",
+      "incident_count": 1
+    },
+    {
+      "year": 2024,
+      "month": 11,
+      "reporting_entity": "General Motors, LLC",
+      "incident_count": 1
+    },
+    {
+      "year": 2024,
+      "month": 11,
+      "reporting_entity": "Mobileye Vision Technologies",
+      "incident_count": 5
+    },
+    {
+      "year": 2024,
+      "month": 11,
+      "reporting_entity": "PACCAR Incorporated",
+      "incident_count": 2
+    },
+    {
+      "year": 2024,
+      "month": 11,
+      "reporting_entity": "Transdev Alternative Services",
+      "incident_count": 1
+    },
+    {
+      "year": 2024,
+      "month": 11,
+      "reporting_entity": "Waymo LLC",
+      "incident_count": 43
+    },
+    {
+      "year": 2024,
+      "month": 12,
+      "reporting_entity": "Avride Inc.",
+      "incident_count": 1
+    },
+    {
+      "year": 2024,
+      "month": 12,
+      "reporting_entity": "Nuro",
+      "incident_count": 1
+    },
+    {
+      "year": 2024,
+      "month": 12,
+      "reporting_entity": "Transdev Alternative Services",
+      "incident_count": 3
+    },
+    {
+      "year": 2024,
+      "month": 12,
+      "reporting_entity": "Waymo LLC",
+      "incident_count": 54
+    },
+    {
+      "year": 2024,
+      "month": 12,
+      "reporting_entity": "WeRide Corp",
+      "incident_count": 1
+    },
+    {
+      "year": 2024,
+      "month": 12,
+      "reporting_entity": "Zoox, Inc.",
+      "incident_count": 2
     },
     {
       "year": 2025,
@@ -4039,108 +3940,6 @@
       "month": 1,
       "reporting_entity": "Zoox, Inc.",
       "incident_count": 3
-    },
-    {
-      "year": 2025,
-      "month": 10,
-      "reporting_entity": "Aurora Operations, Inc.",
-      "incident_count": 1
-    },
-    {
-      "year": 2025,
-      "month": 10,
-      "reporting_entity": "Avride Inc.",
-      "incident_count": 1
-    },
-    {
-      "year": 2025,
-      "month": 10,
-      "reporting_entity": "Motional",
-      "incident_count": 2
-    },
-    {
-      "year": 2025,
-      "month": 10,
-      "reporting_entity": "Tesla, Inc.",
-      "incident_count": 1
-    },
-    {
-      "year": 2025,
-      "month": 10,
-      "reporting_entity": "Waymo LLC",
-      "incident_count": 32
-    },
-    {
-      "year": 2025,
-      "month": 10,
-      "reporting_entity": "Zoox, Inc.",
-      "incident_count": 3
-    },
-    {
-      "year": 2025,
-      "month": 11,
-      "reporting_entity": "Aurora Operations, Inc.",
-      "incident_count": 1
-    },
-    {
-      "year": 2025,
-      "month": 11,
-      "reporting_entity": "Avride Inc.",
-      "incident_count": 4
-    },
-    {
-      "year": 2025,
-      "month": 11,
-      "reporting_entity": "Beep, Inc.",
-      "incident_count": 1
-    },
-    {
-      "year": 2025,
-      "month": 11,
-      "reporting_entity": "May Mobility",
-      "incident_count": 3
-    },
-    {
-      "year": 2025,
-      "month": 11,
-      "reporting_entity": "Motional",
-      "incident_count": 1
-    },
-    {
-      "year": 2025,
-      "month": 11,
-      "reporting_entity": "Waymo LLC",
-      "incident_count": 42
-    },
-    {
-      "year": 2025,
-      "month": 11,
-      "reporting_entity": "Zoox, Inc.",
-      "incident_count": 2
-    },
-    {
-      "year": 2025,
-      "month": 12,
-      "reporting_entity": "Avride Inc.",
-      "incident_count": 10
-    },
-    {
-      "year": 2025,
-      "month": 12,
-      "reporting_entity": "May Mobility",
-      "incident_count": 3
-    },
-    {
-      "year": 2025,
-      "month": 12,
-      "reporting_entity": "Waymo LLC",
-      "incident_count": 39
-    },
-    {
-      "year": 2025,
-      "month": 12,
-      "reporting_entity": "Zoox, Inc.",
-      "incident_count": 2
     },
     {
       "year": 2025,
@@ -4230,7 +4029,7 @@
       "year": 2025,
       "month": 3,
       "reporting_entity": "Waymo LLC",
-      "incident_count": 51
+      "incident_count": 50
     },
     {
       "year": 2025,
@@ -4295,12 +4094,6 @@
     {
       "year": 2025,
       "month": 6,
-      "reporting_entity": "Hyundai Motor America",
-      "incident_count": 1
-    },
-    {
-      "year": 2025,
-      "month": 6,
       "reporting_entity": "Motional",
       "incident_count": 1
     },
@@ -4356,7 +4149,7 @@
       "year": 2025,
       "month": 8,
       "reporting_entity": "May Mobility",
-      "incident_count": 2
+      "incident_count": 1
     },
     {
       "year": 2025,
@@ -4368,12 +4161,6 @@
       "year": 2025,
       "month": 8,
       "reporting_entity": "Ohmio, Inc.",
-      "incident_count": 1
-    },
-    {
-      "year": 2025,
-      "month": 8,
-      "reporting_entity": "Tesla, Inc.",
       "incident_count": 1
     },
     {
@@ -4421,18 +4208,108 @@
     {
       "year": 2025,
       "month": 9,
-      "reporting_entity": "Tesla, Inc.",
-      "incident_count": 1
-    },
-    {
-      "year": 2025,
-      "month": 9,
       "reporting_entity": "Waymo LLC",
       "incident_count": 25
     },
     {
       "year": 2025,
       "month": 9,
+      "reporting_entity": "Zoox, Inc.",
+      "incident_count": 2
+    },
+    {
+      "year": 2025,
+      "month": 10,
+      "reporting_entity": "Aurora Operations, Inc.",
+      "incident_count": 1
+    },
+    {
+      "year": 2025,
+      "month": 10,
+      "reporting_entity": "Avride Inc.",
+      "incident_count": 1
+    },
+    {
+      "year": 2025,
+      "month": 10,
+      "reporting_entity": "Motional",
+      "incident_count": 2
+    },
+    {
+      "year": 2025,
+      "month": 10,
+      "reporting_entity": "Waymo LLC",
+      "incident_count": 32
+    },
+    {
+      "year": 2025,
+      "month": 10,
+      "reporting_entity": "Zoox, Inc.",
+      "incident_count": 3
+    },
+    {
+      "year": 2025,
+      "month": 11,
+      "reporting_entity": "Aurora Operations, Inc.",
+      "incident_count": 1
+    },
+    {
+      "year": 2025,
+      "month": 11,
+      "reporting_entity": "Avride Inc.",
+      "incident_count": 4
+    },
+    {
+      "year": 2025,
+      "month": 11,
+      "reporting_entity": "Beep, Inc.",
+      "incident_count": 1
+    },
+    {
+      "year": 2025,
+      "month": 11,
+      "reporting_entity": "May Mobility",
+      "incident_count": 3
+    },
+    {
+      "year": 2025,
+      "month": 11,
+      "reporting_entity": "Motional",
+      "incident_count": 1
+    },
+    {
+      "year": 2025,
+      "month": 11,
+      "reporting_entity": "Waymo LLC",
+      "incident_count": 42
+    },
+    {
+      "year": 2025,
+      "month": 11,
+      "reporting_entity": "Zoox, Inc.",
+      "incident_count": 2
+    },
+    {
+      "year": 2025,
+      "month": 12,
+      "reporting_entity": "Avride Inc.",
+      "incident_count": 7
+    },
+    {
+      "year": 2025,
+      "month": 12,
+      "reporting_entity": "May Mobility",
+      "incident_count": 3
+    },
+    {
+      "year": 2025,
+      "month": 12,
+      "reporting_entity": "Waymo LLC",
+      "incident_count": 39
+    },
+    {
+      "year": 2025,
+      "month": 12,
       "reporting_entity": "Zoox, Inc.",
       "incident_count": 2
     },
@@ -4453,12 +4330,6 @@
       "month": 1,
       "reporting_entity": "Nuro",
       "incident_count": 1
-    },
-    {
-      "year": 2026,
-      "month": 1,
-      "reporting_entity": "Tesla, Inc.",
-      "incident_count": 5
     },
     {
       "year": 2026,
@@ -4493,14 +4364,8 @@
     {
       "year": 2026,
       "month": 2,
-      "reporting_entity": "Tesla, Inc.",
-      "incident_count": 1
-    },
-    {
-      "year": 2026,
-      "month": 2,
       "reporting_entity": "Waymo LLC",
-      "incident_count": 37
+      "incident_count": 36
     },
     {
       "year": 2026,
@@ -4512,7 +4377,7 @@
       "year": 2026,
       "month": 3,
       "reporting_entity": "Avride Inc.",
-      "incident_count": 8
+      "incident_count": 7
     },
     {
       "year": 2026,
@@ -4560,7 +4425,7 @@
       "year": 2026,
       "month": 4,
       "reporting_entity": "Waymo LLC",
-      "incident_count": 42
+      "incident_count": 41
     },
     {
       "year": 2026,
@@ -4632,7 +4497,7 @@
       "year": 2026,
       "month": 6,
       "reporting_entity": "Avride Inc.",
-      "incident_count": 8
+      "incident_count": 7
     },
     {
       "year": 2026,
@@ -4722,24 +4587,6 @@
   "monthly_by_vehicle_class": [
     {
       "year": 2021,
-      "month": 10,
-      "vehicle_class": "light_duty",
-      "incident_count": 15
-    },
-    {
-      "year": 2021,
-      "month": 11,
-      "vehicle_class": "light_duty",
-      "incident_count": 14
-    },
-    {
-      "year": 2021,
-      "month": 12,
-      "vehicle_class": "light_duty",
-      "incident_count": 14
-    },
-    {
-      "year": 2021,
       "month": 5,
       "vehicle_class": "light_duty",
       "incident_count": 1
@@ -4754,13 +4601,31 @@
       "year": 2021,
       "month": 8,
       "vehicle_class": "light_duty",
-      "incident_count": 18
+      "incident_count": 17
     },
     {
       "year": 2021,
       "month": 9,
       "vehicle_class": "light_duty",
-      "incident_count": 20
+      "incident_count": 19
+    },
+    {
+      "year": 2021,
+      "month": 10,
+      "vehicle_class": "light_duty",
+      "incident_count": 14
+    },
+    {
+      "year": 2021,
+      "month": 11,
+      "vehicle_class": "light_duty",
+      "incident_count": 13
+    },
+    {
+      "year": 2021,
+      "month": 12,
+      "vehicle_class": "light_duty",
+      "incident_count": 14
     },
     {
       "year": 2022,
@@ -4770,39 +4635,15 @@
     },
     {
       "year": 2022,
-      "month": 10,
-      "vehicle_class": "light_duty",
-      "incident_count": 7
-    },
-    {
-      "year": 2022,
-      "month": 11,
+      "month": 2,
       "vehicle_class": "light_duty",
       "incident_count": 8
     },
     {
       "year": 2022,
-      "month": 11,
-      "vehicle_class": "trucking",
-      "incident_count": 1
-    },
-    {
-      "year": 2022,
-      "month": 12,
-      "vehicle_class": "light_duty",
-      "incident_count": 27
-    },
-    {
-      "year": 2022,
-      "month": 2,
-      "vehicle_class": "light_duty",
-      "incident_count": 10
-    },
-    {
-      "year": 2022,
       "month": 3,
       "vehicle_class": "light_duty",
-      "incident_count": 7
+      "incident_count": 5
     },
     {
       "year": 2022,
@@ -4820,7 +4661,7 @@
       "year": 2022,
       "month": 5,
       "vehicle_class": "light_duty",
-      "incident_count": 16
+      "incident_count": 14
     },
     {
       "year": 2022,
@@ -4832,7 +4673,7 @@
       "year": 2022,
       "month": 6,
       "vehicle_class": "light_duty",
-      "incident_count": 12
+      "incident_count": 11
     },
     {
       "year": 2022,
@@ -4844,7 +4685,7 @@
       "year": 2022,
       "month": 7,
       "vehicle_class": "light_duty",
-      "incident_count": 24
+      "incident_count": 22
     },
     {
       "year": 2022,
@@ -4862,25 +4703,115 @@
       "year": 2022,
       "month": 8,
       "vehicle_class": "trucking",
-      "incident_count": 4
+      "incident_count": 3
     },
     {
       "year": 2022,
       "month": 9,
       "vehicle_class": "light_duty",
-      "incident_count": 14
+      "incident_count": 12
+    },
+    {
+      "year": 2022,
+      "month": 10,
+      "vehicle_class": "light_duty",
+      "incident_count": 7
+    },
+    {
+      "year": 2022,
+      "month": 11,
+      "vehicle_class": "light_duty",
+      "incident_count": 7
+    },
+    {
+      "year": 2022,
+      "month": 11,
+      "vehicle_class": "trucking",
+      "incident_count": 1
+    },
+    {
+      "year": 2022,
+      "month": 12,
+      "vehicle_class": "light_duty",
+      "incident_count": 19
     },
     {
       "year": 2023,
       "month": 1,
       "vehicle_class": "light_duty",
-      "incident_count": 9
+      "incident_count": 8
+    },
+    {
+      "year": 2023,
+      "month": 2,
+      "vehicle_class": "light_duty",
+      "incident_count": 10
+    },
+    {
+      "year": 2023,
+      "month": 2,
+      "vehicle_class": "trucking",
+      "incident_count": 2
+    },
+    {
+      "year": 2023,
+      "month": 3,
+      "vehicle_class": "light_duty",
+      "incident_count": 27
+    },
+    {
+      "year": 2023,
+      "month": 4,
+      "vehicle_class": "light_duty",
+      "incident_count": 20
+    },
+    {
+      "year": 2023,
+      "month": 4,
+      "vehicle_class": "trucking",
+      "incident_count": 2
+    },
+    {
+      "year": 2023,
+      "month": 5,
+      "vehicle_class": "light_duty",
+      "incident_count": 20
+    },
+    {
+      "year": 2023,
+      "month": 6,
+      "vehicle_class": "light_duty",
+      "incident_count": 22
+    },
+    {
+      "year": 2023,
+      "month": 7,
+      "vehicle_class": "light_duty",
+      "incident_count": 25
+    },
+    {
+      "year": 2023,
+      "month": 8,
+      "vehicle_class": "light_duty",
+      "incident_count": 45
+    },
+    {
+      "year": 2023,
+      "month": 8,
+      "vehicle_class": "trucking",
+      "incident_count": 1
+    },
+    {
+      "year": 2023,
+      "month": 9,
+      "vehicle_class": "light_duty",
+      "incident_count": 29
     },
     {
       "year": 2023,
       "month": 10,
       "vehicle_class": "light_duty",
-      "incident_count": 32
+      "incident_count": 31
     },
     {
       "year": 2023,
@@ -4907,82 +4838,106 @@
       "incident_count": 4
     },
     {
-      "year": 2023,
+      "year": 2024,
+      "month": 1,
+      "vehicle_class": "light_duty",
+      "incident_count": 15
+    },
+    {
+      "year": 2024,
       "month": 2,
       "vehicle_class": "light_duty",
-      "incident_count": 11
+      "incident_count": 13
     },
     {
-      "year": 2023,
+      "year": 2024,
       "month": 2,
       "vehicle_class": "trucking",
-      "incident_count": 2
+      "incident_count": 1
     },
     {
-      "year": 2023,
+      "year": 2024,
       "month": 3,
       "vehicle_class": "light_duty",
-      "incident_count": 33
+      "incident_count": 26
     },
     {
-      "year": 2023,
+      "year": 2024,
+      "month": 3,
+      "vehicle_class": "trucking",
+      "incident_count": 1
+    },
+    {
+      "year": 2024,
       "month": 4,
       "vehicle_class": "light_duty",
-      "incident_count": 21
+      "incident_count": 12
     },
     {
-      "year": 2023,
+      "year": 2024,
       "month": 4,
       "vehicle_class": "trucking",
       "incident_count": 2
     },
     {
-      "year": 2023,
+      "year": 2024,
       "month": 5,
       "vehicle_class": "light_duty",
       "incident_count": 20
     },
     {
-      "year": 2023,
-      "month": 6,
-      "vehicle_class": "light_duty",
-      "incident_count": 23
+      "year": 2024,
+      "month": 5,
+      "vehicle_class": "trucking",
+      "incident_count": 2
     },
     {
-      "year": 2023,
-      "month": 7,
+      "year": 2024,
+      "month": 6,
       "vehicle_class": "light_duty",
       "incident_count": 27
     },
     {
-      "year": 2023,
-      "month": 8,
-      "vehicle_class": "light_duty",
-      "incident_count": 49
-    },
-    {
-      "year": 2023,
-      "month": 8,
+      "year": 2024,
+      "month": 6,
       "vehicle_class": "trucking",
-      "incident_count": 1
-    },
-    {
-      "year": 2023,
-      "month": 9,
-      "vehicle_class": "light_duty",
-      "incident_count": 34
+      "incident_count": 4
     },
     {
       "year": 2024,
-      "month": 1,
+      "month": 7,
       "vehicle_class": "light_duty",
-      "incident_count": 16
+      "incident_count": 26
+    },
+    {
+      "year": 2024,
+      "month": 7,
+      "vehicle_class": "trucking",
+      "incident_count": 2
+    },
+    {
+      "year": 2024,
+      "month": 8,
+      "vehicle_class": "light_duty",
+      "incident_count": 32
+    },
+    {
+      "year": 2024,
+      "month": 9,
+      "vehicle_class": "light_duty",
+      "incident_count": 38
+    },
+    {
+      "year": 2024,
+      "month": 9,
+      "vehicle_class": "trucking",
+      "incident_count": 7
     },
     {
       "year": 2024,
       "month": 10,
       "vehicle_class": "light_duty",
-      "incident_count": 45
+      "incident_count": 43
     },
     {
       "year": 2024,
@@ -5009,96 +4964,6 @@
       "incident_count": 62
     },
     {
-      "year": 2024,
-      "month": 2,
-      "vehicle_class": "light_duty",
-      "incident_count": 15
-    },
-    {
-      "year": 2024,
-      "month": 2,
-      "vehicle_class": "trucking",
-      "incident_count": 1
-    },
-    {
-      "year": 2024,
-      "month": 3,
-      "vehicle_class": "light_duty",
-      "incident_count": 26
-    },
-    {
-      "year": 2024,
-      "month": 3,
-      "vehicle_class": "trucking",
-      "incident_count": 1
-    },
-    {
-      "year": 2024,
-      "month": 4,
-      "vehicle_class": "light_duty",
-      "incident_count": 13
-    },
-    {
-      "year": 2024,
-      "month": 4,
-      "vehicle_class": "trucking",
-      "incident_count": 2
-    },
-    {
-      "year": 2024,
-      "month": 5,
-      "vehicle_class": "light_duty",
-      "incident_count": 24
-    },
-    {
-      "year": 2024,
-      "month": 5,
-      "vehicle_class": "trucking",
-      "incident_count": 2
-    },
-    {
-      "year": 2024,
-      "month": 6,
-      "vehicle_class": "light_duty",
-      "incident_count": 27
-    },
-    {
-      "year": 2024,
-      "month": 6,
-      "vehicle_class": "trucking",
-      "incident_count": 4
-    },
-    {
-      "year": 2024,
-      "month": 7,
-      "vehicle_class": "light_duty",
-      "incident_count": 28
-    },
-    {
-      "year": 2024,
-      "month": 7,
-      "vehicle_class": "trucking",
-      "incident_count": 2
-    },
-    {
-      "year": 2024,
-      "month": 8,
-      "vehicle_class": "light_duty",
-      "incident_count": 33
-    },
-    {
-      "year": 2024,
-      "month": 9,
-      "vehicle_class": "light_duty",
-      "incident_count": 47
-    },
-    {
-      "year": 2024,
-      "month": 9,
-      "vehicle_class": "trucking",
-      "incident_count": 7
-    },
-    {
       "year": 2025,
       "month": 1,
       "vehicle_class": "light_duty",
@@ -5106,9 +4971,81 @@
     },
     {
       "year": 2025,
+      "month": 2,
+      "vehicle_class": "light_duty",
+      "incident_count": 52
+    },
+    {
+      "year": 2025,
+      "month": 2,
+      "vehicle_class": "trucking",
+      "incident_count": 4
+    },
+    {
+      "year": 2025,
+      "month": 3,
+      "vehicle_class": "light_duty",
+      "incident_count": 56
+    },
+    {
+      "year": 2025,
+      "month": 3,
+      "vehicle_class": "trucking",
+      "incident_count": 2
+    },
+    {
+      "year": 2025,
+      "month": 4,
+      "vehicle_class": "light_duty",
+      "incident_count": 66
+    },
+    {
+      "year": 2025,
+      "month": 5,
+      "vehicle_class": "light_duty",
+      "incident_count": 66
+    },
+    {
+      "year": 2025,
+      "month": 5,
+      "vehicle_class": "trucking",
+      "incident_count": 2
+    },
+    {
+      "year": 2025,
+      "month": 6,
+      "vehicle_class": "light_duty",
+      "incident_count": 43
+    },
+    {
+      "year": 2025,
+      "month": 7,
+      "vehicle_class": "light_duty",
+      "incident_count": 37
+    },
+    {
+      "year": 2025,
+      "month": 8,
+      "vehicle_class": "light_duty",
+      "incident_count": 27
+    },
+    {
+      "year": 2025,
+      "month": 9,
+      "vehicle_class": "light_duty",
+      "incident_count": 30
+    },
+    {
+      "year": 2025,
+      "month": 9,
+      "vehicle_class": "trucking",
+      "incident_count": 2
+    },
+    {
+      "year": 2025,
       "month": 10,
       "vehicle_class": "light_duty",
-      "incident_count": 39
+      "incident_count": 38
     },
     {
       "year": 2025,
@@ -5132,91 +5069,19 @@
       "year": 2025,
       "month": 12,
       "vehicle_class": "light_duty",
-      "incident_count": 54
-    },
-    {
-      "year": 2025,
-      "month": 2,
-      "vehicle_class": "light_duty",
-      "incident_count": 52
-    },
-    {
-      "year": 2025,
-      "month": 2,
-      "vehicle_class": "trucking",
-      "incident_count": 4
-    },
-    {
-      "year": 2025,
-      "month": 3,
-      "vehicle_class": "light_duty",
-      "incident_count": 57
-    },
-    {
-      "year": 2025,
-      "month": 3,
-      "vehicle_class": "trucking",
-      "incident_count": 2
-    },
-    {
-      "year": 2025,
-      "month": 4,
-      "vehicle_class": "light_duty",
-      "incident_count": 66
-    },
-    {
-      "year": 2025,
-      "month": 5,
-      "vehicle_class": "light_duty",
-      "incident_count": 66
-    },
-    {
-      "year": 2025,
-      "month": 5,
-      "vehicle_class": "trucking",
-      "incident_count": 2
-    },
-    {
-      "year": 2025,
-      "month": 6,
-      "vehicle_class": "light_duty",
-      "incident_count": 44
-    },
-    {
-      "year": 2025,
-      "month": 7,
-      "vehicle_class": "light_duty",
-      "incident_count": 37
-    },
-    {
-      "year": 2025,
-      "month": 8,
-      "vehicle_class": "light_duty",
-      "incident_count": 29
-    },
-    {
-      "year": 2025,
-      "month": 9,
-      "vehicle_class": "light_duty",
-      "incident_count": 31
-    },
-    {
-      "year": 2025,
-      "month": 9,
-      "vehicle_class": "trucking",
-      "incident_count": 2
+      "incident_count": 51
     },
     {
       "year": 2026,
       "month": 1,
       "vehicle_class": "light_duty",
-      "incident_count": 45
+      "incident_count": 40
     },
     {
       "year": 2026,
       "month": 2,
       "vehicle_class": "light_duty",
-      "incident_count": 50
+      "incident_count": 48
     },
     {
       "year": 2026,
@@ -5228,13 +5093,13 @@
       "year": 2026,
       "month": 3,
       "vehicle_class": "light_duty",
-      "incident_count": 57
+      "incident_count": 56
     },
     {
       "year": 2026,
       "month": 4,
       "vehicle_class": "light_duty",
-      "incident_count": 60
+      "incident_count": 59
     },
     {
       "year": 2026,
@@ -5252,7 +5117,7 @@
       "year": 2026,
       "month": 6,
       "vehicle_class": "light_duty",
-      "incident_count": 61
+      "incident_count": 60
     },
     {
       "year": 2026,
@@ -5282,42 +5147,6 @@
   "monthly_by_program_type": [
     {
       "year": 2021,
-      "month": 10,
-      "program_type": "commercial",
-      "incident_count": 10
-    },
-    {
-      "year": 2021,
-      "month": 10,
-      "program_type": "testing",
-      "incident_count": 5
-    },
-    {
-      "year": 2021,
-      "month": 11,
-      "program_type": "commercial",
-      "incident_count": 11
-    },
-    {
-      "year": 2021,
-      "month": 11,
-      "program_type": "testing",
-      "incident_count": 3
-    },
-    {
-      "year": 2021,
-      "month": 12,
-      "program_type": "commercial",
-      "incident_count": 8
-    },
-    {
-      "year": 2021,
-      "month": 12,
-      "program_type": "testing",
-      "incident_count": 6
-    },
-    {
-      "year": 2021,
       "month": 5,
       "program_type": "commercial",
       "incident_count": 1
@@ -5338,7 +5167,7 @@
       "year": 2021,
       "month": 8,
       "program_type": "commercial",
-      "incident_count": 12
+      "incident_count": 11
     },
     {
       "year": 2021,
@@ -5350,13 +5179,49 @@
       "year": 2021,
       "month": 9,
       "program_type": "commercial",
-      "incident_count": 15
+      "incident_count": 14
     },
     {
       "year": 2021,
       "month": 9,
       "program_type": "testing",
       "incident_count": 5
+    },
+    {
+      "year": 2021,
+      "month": 10,
+      "program_type": "commercial",
+      "incident_count": 10
+    },
+    {
+      "year": 2021,
+      "month": 10,
+      "program_type": "testing",
+      "incident_count": 4
+    },
+    {
+      "year": 2021,
+      "month": 11,
+      "program_type": "commercial",
+      "incident_count": 11
+    },
+    {
+      "year": 2021,
+      "month": 11,
+      "program_type": "testing",
+      "incident_count": 2
+    },
+    {
+      "year": 2021,
+      "month": 12,
+      "program_type": "commercial",
+      "incident_count": 8
+    },
+    {
+      "year": 2021,
+      "month": 12,
+      "program_type": "testing",
+      "incident_count": 6
     },
     {
       "year": 2022,
@@ -5372,63 +5237,27 @@
     },
     {
       "year": 2022,
-      "month": 10,
-      "program_type": "commercial",
-      "incident_count": 2
-    },
-    {
-      "year": 2022,
-      "month": 10,
-      "program_type": "testing",
-      "incident_count": 5
-    },
-    {
-      "year": 2022,
-      "month": 11,
-      "program_type": "commercial",
-      "incident_count": 7
-    },
-    {
-      "year": 2022,
-      "month": 11,
-      "program_type": "testing",
-      "incident_count": 2
-    },
-    {
-      "year": 2022,
-      "month": 12,
-      "program_type": "commercial",
-      "incident_count": 19
-    },
-    {
-      "year": 2022,
-      "month": 12,
-      "program_type": "testing",
-      "incident_count": 8
-    },
-    {
-      "year": 2022,
       "month": 2,
       "program_type": "commercial",
-      "incident_count": 7
+      "incident_count": 6
     },
     {
       "year": 2022,
       "month": 2,
       "program_type": "testing",
-      "incident_count": 3
+      "incident_count": 2
     },
     {
       "year": 2022,
       "month": 3,
       "program_type": "commercial",
-      "incident_count": 4
+      "incident_count": 3
     },
     {
       "year": 2022,
       "month": 3,
       "program_type": "testing",
-      "incident_count": 3
+      "incident_count": 2
     },
     {
       "year": 2022,
@@ -5452,13 +5281,13 @@
       "year": 2022,
       "month": 5,
       "program_type": "testing",
-      "incident_count": 7
+      "incident_count": 5
     },
     {
       "year": 2022,
       "month": 6,
       "program_type": "commercial",
-      "incident_count": 7
+      "incident_count": 6
     },
     {
       "year": 2022,
@@ -5476,7 +5305,7 @@
       "year": 2022,
       "month": 7,
       "program_type": "testing",
-      "incident_count": 9
+      "incident_count": 7
     },
     {
       "year": 2022,
@@ -5488,19 +5317,55 @@
       "year": 2022,
       "month": 8,
       "program_type": "testing",
-      "incident_count": 11
-    },
-    {
-      "year": 2022,
-      "month": 9,
-      "program_type": "commercial",
       "incident_count": 10
     },
     {
       "year": 2022,
       "month": 9,
+      "program_type": "commercial",
+      "incident_count": 9
+    },
+    {
+      "year": 2022,
+      "month": 9,
       "program_type": "testing",
-      "incident_count": 4
+      "incident_count": 3
+    },
+    {
+      "year": 2022,
+      "month": 10,
+      "program_type": "commercial",
+      "incident_count": 2
+    },
+    {
+      "year": 2022,
+      "month": 10,
+      "program_type": "testing",
+      "incident_count": 5
+    },
+    {
+      "year": 2022,
+      "month": 11,
+      "program_type": "commercial",
+      "incident_count": 6
+    },
+    {
+      "year": 2022,
+      "month": 11,
+      "program_type": "testing",
+      "incident_count": 2
+    },
+    {
+      "year": 2022,
+      "month": 12,
+      "program_type": "commercial",
+      "incident_count": 12
+    },
+    {
+      "year": 2022,
+      "month": 12,
+      "program_type": "testing",
+      "incident_count": 7
     },
     {
       "year": 2023,
@@ -5512,7 +5377,103 @@
       "year": 2023,
       "month": 1,
       "program_type": "testing",
-      "incident_count": 3
+      "incident_count": 2
+    },
+    {
+      "year": 2023,
+      "month": 2,
+      "program_type": "commercial",
+      "incident_count": 7
+    },
+    {
+      "year": 2023,
+      "month": 2,
+      "program_type": "testing",
+      "incident_count": 5
+    },
+    {
+      "year": 2023,
+      "month": 3,
+      "program_type": "commercial",
+      "incident_count": 22
+    },
+    {
+      "year": 2023,
+      "month": 3,
+      "program_type": "testing",
+      "incident_count": 5
+    },
+    {
+      "year": 2023,
+      "month": 4,
+      "program_type": "commercial",
+      "incident_count": 15
+    },
+    {
+      "year": 2023,
+      "month": 4,
+      "program_type": "testing",
+      "incident_count": 7
+    },
+    {
+      "year": 2023,
+      "month": 5,
+      "program_type": "commercial",
+      "incident_count": 15
+    },
+    {
+      "year": 2023,
+      "month": 5,
+      "program_type": "testing",
+      "incident_count": 5
+    },
+    {
+      "year": 2023,
+      "month": 6,
+      "program_type": "commercial",
+      "incident_count": 14
+    },
+    {
+      "year": 2023,
+      "month": 6,
+      "program_type": "testing",
+      "incident_count": 8
+    },
+    {
+      "year": 2023,
+      "month": 7,
+      "program_type": "commercial",
+      "incident_count": 17
+    },
+    {
+      "year": 2023,
+      "month": 7,
+      "program_type": "testing",
+      "incident_count": 8
+    },
+    {
+      "year": 2023,
+      "month": 8,
+      "program_type": "commercial",
+      "incident_count": 32
+    },
+    {
+      "year": 2023,
+      "month": 8,
+      "program_type": "testing",
+      "incident_count": 14
+    },
+    {
+      "year": 2023,
+      "month": 9,
+      "program_type": "commercial",
+      "incident_count": 19
+    },
+    {
+      "year": 2023,
+      "month": 9,
+      "program_type": "testing",
+      "incident_count": 10
     },
     {
       "year": 2023,
@@ -5524,7 +5485,7 @@
       "year": 2023,
       "month": 10,
       "program_type": "testing",
-      "incident_count": 13
+      "incident_count": 12
     },
     {
       "year": 2023,
@@ -5545,106 +5506,10 @@
       "incident_count": 3
     },
     {
-      "year": 2023,
-      "month": 2,
-      "program_type": "commercial",
-      "incident_count": 8
-    },
-    {
-      "year": 2023,
-      "month": 2,
-      "program_type": "testing",
-      "incident_count": 5
-    },
-    {
-      "year": 2023,
-      "month": 3,
-      "program_type": "commercial",
-      "incident_count": 25
-    },
-    {
-      "year": 2023,
-      "month": 3,
-      "program_type": "testing",
-      "incident_count": 8
-    },
-    {
-      "year": 2023,
-      "month": 4,
-      "program_type": "commercial",
-      "incident_count": 15
-    },
-    {
-      "year": 2023,
-      "month": 4,
-      "program_type": "testing",
-      "incident_count": 8
-    },
-    {
-      "year": 2023,
-      "month": 5,
-      "program_type": "commercial",
-      "incident_count": 15
-    },
-    {
-      "year": 2023,
-      "month": 5,
-      "program_type": "testing",
-      "incident_count": 5
-    },
-    {
-      "year": 2023,
-      "month": 6,
-      "program_type": "commercial",
-      "incident_count": 14
-    },
-    {
-      "year": 2023,
-      "month": 6,
-      "program_type": "testing",
-      "incident_count": 9
-    },
-    {
-      "year": 2023,
-      "month": 7,
-      "program_type": "commercial",
-      "incident_count": 18
-    },
-    {
-      "year": 2023,
-      "month": 7,
-      "program_type": "testing",
-      "incident_count": 9
-    },
-    {
-      "year": 2023,
-      "month": 8,
-      "program_type": "commercial",
-      "incident_count": 33
-    },
-    {
-      "year": 2023,
-      "month": 8,
-      "program_type": "testing",
-      "incident_count": 17
-    },
-    {
-      "year": 2023,
-      "month": 9,
-      "program_type": "commercial",
-      "incident_count": 22
-    },
-    {
-      "year": 2023,
-      "month": 9,
-      "program_type": "testing",
-      "incident_count": 12
-    },
-    {
       "year": 2024,
       "month": 1,
       "program_type": "commercial",
-      "incident_count": 10
+      "incident_count": 9
     },
     {
       "year": 2024,
@@ -5654,9 +5519,105 @@
     },
     {
       "year": 2024,
+      "month": 2,
+      "program_type": "commercial",
+      "incident_count": 10
+    },
+    {
+      "year": 2024,
+      "month": 2,
+      "program_type": "testing",
+      "incident_count": 4
+    },
+    {
+      "year": 2024,
+      "month": 3,
+      "program_type": "commercial",
+      "incident_count": 21
+    },
+    {
+      "year": 2024,
+      "month": 3,
+      "program_type": "testing",
+      "incident_count": 6
+    },
+    {
+      "year": 2024,
+      "month": 4,
+      "program_type": "commercial",
+      "incident_count": 12
+    },
+    {
+      "year": 2024,
+      "month": 4,
+      "program_type": "testing",
+      "incident_count": 2
+    },
+    {
+      "year": 2024,
+      "month": 5,
+      "program_type": "commercial",
+      "incident_count": 19
+    },
+    {
+      "year": 2024,
+      "month": 5,
+      "program_type": "testing",
+      "incident_count": 3
+    },
+    {
+      "year": 2024,
+      "month": 6,
+      "program_type": "commercial",
+      "incident_count": 27
+    },
+    {
+      "year": 2024,
+      "month": 6,
+      "program_type": "testing",
+      "incident_count": 4
+    },
+    {
+      "year": 2024,
+      "month": 7,
+      "program_type": "commercial",
+      "incident_count": 22
+    },
+    {
+      "year": 2024,
+      "month": 7,
+      "program_type": "testing",
+      "incident_count": 6
+    },
+    {
+      "year": 2024,
+      "month": 8,
+      "program_type": "commercial",
+      "incident_count": 31
+    },
+    {
+      "year": 2024,
+      "month": 8,
+      "program_type": "testing",
+      "incident_count": 1
+    },
+    {
+      "year": 2024,
+      "month": 9,
+      "program_type": "commercial",
+      "incident_count": 40
+    },
+    {
+      "year": 2024,
+      "month": 9,
+      "program_type": "testing",
+      "incident_count": 5
+    },
+    {
+      "year": 2024,
       "month": 10,
       "program_type": "commercial",
-      "incident_count": 42
+      "incident_count": 40
     },
     {
       "year": 2024,
@@ -5689,102 +5650,6 @@
       "incident_count": 4
     },
     {
-      "year": 2024,
-      "month": 2,
-      "program_type": "commercial",
-      "incident_count": 11
-    },
-    {
-      "year": 2024,
-      "month": 2,
-      "program_type": "testing",
-      "incident_count": 5
-    },
-    {
-      "year": 2024,
-      "month": 3,
-      "program_type": "commercial",
-      "incident_count": 21
-    },
-    {
-      "year": 2024,
-      "month": 3,
-      "program_type": "testing",
-      "incident_count": 6
-    },
-    {
-      "year": 2024,
-      "month": 4,
-      "program_type": "commercial",
-      "incident_count": 13
-    },
-    {
-      "year": 2024,
-      "month": 4,
-      "program_type": "testing",
-      "incident_count": 2
-    },
-    {
-      "year": 2024,
-      "month": 5,
-      "program_type": "commercial",
-      "incident_count": 23
-    },
-    {
-      "year": 2024,
-      "month": 5,
-      "program_type": "testing",
-      "incident_count": 3
-    },
-    {
-      "year": 2024,
-      "month": 6,
-      "program_type": "commercial",
-      "incident_count": 27
-    },
-    {
-      "year": 2024,
-      "month": 6,
-      "program_type": "testing",
-      "incident_count": 4
-    },
-    {
-      "year": 2024,
-      "month": 7,
-      "program_type": "commercial",
-      "incident_count": 24
-    },
-    {
-      "year": 2024,
-      "month": 7,
-      "program_type": "testing",
-      "incident_count": 6
-    },
-    {
-      "year": 2024,
-      "month": 8,
-      "program_type": "commercial",
-      "incident_count": 32
-    },
-    {
-      "year": 2024,
-      "month": 8,
-      "program_type": "testing",
-      "incident_count": 1
-    },
-    {
-      "year": 2024,
-      "month": 9,
-      "program_type": "commercial",
-      "incident_count": 49
-    },
-    {
-      "year": 2024,
-      "month": 9,
-      "program_type": "testing",
-      "incident_count": 5
-    },
-    {
       "year": 2025,
       "month": 1,
       "program_type": "commercial",
@@ -5795,42 +5660,6 @@
       "month": 1,
       "program_type": "testing",
       "incident_count": 5
-    },
-    {
-      "year": 2025,
-      "month": 10,
-      "program_type": "commercial",
-      "incident_count": 34
-    },
-    {
-      "year": 2025,
-      "month": 10,
-      "program_type": "testing",
-      "incident_count": 6
-    },
-    {
-      "year": 2025,
-      "month": 11,
-      "program_type": "commercial",
-      "incident_count": 47
-    },
-    {
-      "year": 2025,
-      "month": 11,
-      "program_type": "testing",
-      "incident_count": 7
-    },
-    {
-      "year": 2025,
-      "month": 12,
-      "program_type": "commercial",
-      "incident_count": 42
-    },
-    {
-      "year": 2025,
-      "month": 12,
-      "program_type": "testing",
-      "incident_count": 12
     },
     {
       "year": 2025,
@@ -5848,7 +5677,7 @@
       "year": 2025,
       "month": 3,
       "program_type": "commercial",
-      "incident_count": 53
+      "incident_count": 52
     },
     {
       "year": 2025,
@@ -5890,7 +5719,7 @@
       "year": 2025,
       "month": 6,
       "program_type": "testing",
-      "incident_count": 6
+      "incident_count": 5
     },
     {
       "year": 2025,
@@ -5908,7 +5737,7 @@
       "year": 2025,
       "month": 8,
       "program_type": "commercial",
-      "incident_count": 26
+      "incident_count": 24
     },
     {
       "year": 2025,
@@ -5920,7 +5749,7 @@
       "year": 2025,
       "month": 9,
       "program_type": "commercial",
-      "incident_count": 28
+      "incident_count": 27
     },
     {
       "year": 2025,
@@ -5929,10 +5758,46 @@
       "incident_count": 5
     },
     {
+      "year": 2025,
+      "month": 10,
+      "program_type": "commercial",
+      "incident_count": 33
+    },
+    {
+      "year": 2025,
+      "month": 10,
+      "program_type": "testing",
+      "incident_count": 6
+    },
+    {
+      "year": 2025,
+      "month": 11,
+      "program_type": "commercial",
+      "incident_count": 47
+    },
+    {
+      "year": 2025,
+      "month": 11,
+      "program_type": "testing",
+      "incident_count": 7
+    },
+    {
+      "year": 2025,
+      "month": 12,
+      "program_type": "commercial",
+      "incident_count": 42
+    },
+    {
+      "year": 2025,
+      "month": 12,
+      "program_type": "testing",
+      "incident_count": 9
+    },
+    {
       "year": 2026,
       "month": 1,
       "program_type": "commercial",
-      "incident_count": 39
+      "incident_count": 34
     },
     {
       "year": 2026,
@@ -5944,7 +5809,7 @@
       "year": 2026,
       "month": 2,
       "program_type": "commercial",
-      "incident_count": 39
+      "incident_count": 37
     },
     {
       "year": 2026,
@@ -5962,13 +5827,13 @@
       "year": 2026,
       "month": 3,
       "program_type": "testing",
-      "incident_count": 12
+      "incident_count": 11
     },
     {
       "year": 2026,
       "month": 4,
       "program_type": "commercial",
-      "incident_count": 46
+      "incident_count": 45
     },
     {
       "year": 2026,
@@ -5998,7 +5863,7 @@
       "year": 2026,
       "month": 6,
       "program_type": "testing",
-      "incident_count": 12
+      "incident_count": 11
     },
     {
       "year": 2026,

@@ -29,6 +29,7 @@ function derived(r: ActivityMonthlyRow) {
   const waiting = r.total_waiting_hours ?? 0;
   const waitMin = trips > 0 ? waiting*60/trips : null;
   const avgTrip = trips > 0 && r.total_passenger_miles_traveled != null ? r.total_passenger_miles_traveled/trips : null;
+  const ridersPerTrip = trips > 0 && r.total_passengers_carried != null ? r.total_passengers_carried/trips : null;
   const occupied = total > 0 ? p3/total : null;
   const deadhead = total > 0 ? (p1+p2)/total : null;
   const p1Share = total > 0 ? p1/total : null;
@@ -36,7 +37,7 @@ function derived(r: ActivityMonthlyRow) {
   const movingHours14 = p1/14;
   const parkedHours14 = Math.max(0, waiting-movingHours14);
   const parkedMinTrip14 = trips > 0 ? parkedHours14*60/trips : null;
-  return {trips,p1,p2,p3,total,waiting,waitMin,avgTrip,occupied,deadhead,p1Share,pickupShare,parkedHours14,parkedMinTrip14};
+  return {trips,p1,p2,p3,total,waiting,waitMin,avgTrip,ridersPerTrip,occupied,deadhead,p1Share,pickupShare,parkedHours14,parkedMinTrip14};
 }
 
 export function WaymoCompositeStats({ rows }: { rows: ActivityMonthlyRow[] }) {
@@ -46,19 +47,18 @@ export function WaymoCompositeStats({ rows }: { rows: ActivityMonthlyRow[] }) {
   const d=derived(row);
   const label=monthLabel(row.calendar_year,row.calendar_month);
   const stats=[
+    ["Trips in Latest Month", d.trips.toLocaleString(), label],
+    ["Riders per Trip", d.ridersPerTrip === null ? "—" : d.ridersPerTrip.toFixed(2), "Passengers carried ÷ trips"],
     ["Wait time / trip", d.waitMin===null?"—":`${d.waitMin.toFixed(1)} min`, "P1 waiting hours ÷ trips"],
     ["Avg rider miles / trip", d.avgTrip===null?"—":`${d.avgTrip.toFixed(1)} mi`, "Passenger miles ÷ trips"],
-    ["Occupied VMT share", fmtPct(d.occupied), "Period 3 ÷ total VMT"],
-    ["Non-passenger VMT", fmtPct(d.deadhead), "(P1 + P2) ÷ total VMT"],
-    ["Idle / positioning VMT", fmtPct(d.p1Share), "Period 1 ÷ total VMT"],
-    ["Pickup VMT", fmtPct(d.pickupShare), "Period 2 ÷ total VMT"],
+    ["Unoccupied Share", fmtPct(d.deadhead), "P1 + P2 ÷ total VMT"],
   ];
   return <div>
     <div className="flex items-baseline justify-between mb-2">
       <h2 className="text-xl font-semibold tracking-tight">Waymo operating indicators</h2>
       <span className="text-sm text-neutral-500">{label}</span>
     </div>
-    <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-2.5">
+    <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-2.5">
       {stats.map(([label,value,note])=><div key={label} className="viz-card p-3">
         <div className="text-xs text-neutral-500 font-medium">{label}</div>
         <div className="text-2xl font-semibold tracking-tight tabular-nums mt-1">{value}</div>

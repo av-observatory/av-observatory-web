@@ -39,10 +39,25 @@ function complete(r:SgoIncidentRow) {
   const y=Number(r.report_year), m=Number(r.report_month);
   return y<2026 || (y===2026 && m<=7);
 }
-function countBy(rows:SgoIncidentRow[], key:keyof SgoIncidentRow, limit=12) {
+function countBy(rows:SgoIncidentRow[], key:keyof SgoIncidentRow, limit=12, label=(s:string)=>s) {
   const m=new Map<string,number>();
-  for(const r of rows){const v=(r[key]||"Unknown").trim()||"Unknown";m.set(v,(m.get(v)||0)+1);}
+  for(const r of rows){const v=label((r[key]||"Unknown").trim()||"Unknown");m.set(v,(m.get(v)||0)+1);}
   return Array.from(m,([name,count])=>({name,count})).sort((a,b)=>b.count-a.count).slice(0,limit);
+}
+function severityLabel(raw:string) {
+  if (/^(No Injuries Reported|No Injured Reported|Property Damage\. No Injured Reported)$/i.test(raw)) return "No Injuries";
+  return raw.replace(" W/O Hospitalization", ", No Hospital").replace(" W/ Hospitalization", ", Hospitalized");
+}
+function oddLabel(raw:string) {
+  if (/^\[?REDACTED/i.test(raw)) return "Redacted";
+  if (/^Unknown/i.test(raw)) return "Unknown";
+  if (/^No, see Narrative/i.test(raw)) return "No";
+  return raw;
+}
+function vehicleLabel(make:string,model:string) {
+  const normalizedMake = ({JAGUAR:"Jaguar",JLR:"Jaguar",HYUNDAI:"Hyundai",TESLA:"Tesla",TOYOTA:"Toyota",ZOOX:"Zoox",ZEEKR:"Zeekr"} as Record<string,string>)[make.trim()] ?? make.trim();
+  const normalizedModel = /^i[- ]?pace$/i.test(model.trim()) ? "I-PACE" : model.trim();
+  return [normalizedMake,normalizedModel].filter(Boolean).join(" ") || "Unknown";
 }
 function ym(r:SgoIncidentRow){return `${r.report_year}-${String(r.report_month).padStart(2,"0")}`;}
 
@@ -68,13 +83,13 @@ export function SgoDeepDive({ rows }: { rows:SgoIncidentRow[] }) {
   },[datedFiltered]);
 
   const crashWith=useMemo(()=>countBy(filtered,"crash_with",10),[filtered]);
-  const severity=useMemo(()=>countBy(filtered,"highest_injury_severity",10),[filtered]);
+  const severity=useMemo(()=>countBy(filtered,"highest_injury_severity",10,severityLabel),[filtered]);
   const roadway=useMemo(()=>countBy(filtered,"roadway_type",10),[filtered]);
-  const withinOdd=useMemo(()=>countBy(filtered,"within_odd",8),[filtered]);
+  const withinOdd=useMemo(()=>countBy(filtered,"within_odd",8,oddLabel),[filtered]);
   const models=useMemo(()=> {
     const m=new Map<string,number>();
     for(const r of filtered){
-      const label=[r.make,r.model].filter(Boolean).join(" ").trim()||"Unknown";
+      const label=vehicleLabel(r.make,r.model);
       m.set(label,(m.get(label)||0)+1);
     }
     return Array.from(m,([name,count])=>({name,count})).sort((a,b)=>b.count-a.count).slice(0,12);
@@ -133,9 +148,9 @@ function Breakdown({title,subtitle,data}:{title:string;subtitle:string;data:{nam
   return <div className="viz-card p-4">
     <div className="font-semibold">{title}</div>
     <div className="text-sm text-neutral-500">{subtitle}</div>
-    <ResponsiveContainer width="100%" height={280}>
+    <ResponsiveContainer width="100%" height={Math.max(280,data.length*32+35)}>
       <BarChart data={data} layout="vertical" margin={{top:10,right:15,bottom:5,left:30}}>
-        <CartesianGrid {...GRID_PROPS}/><XAxis type="number" {...AXIS_PROPS} allowDecimals={false}/><YAxis type="category" dataKey="name" {...AXIS_PROPS} width={125}/>
+        <CartesianGrid {...GRID_PROPS}/><XAxis type="number" {...AXIS_PROPS} allowDecimals={false}/><YAxis type="category" dataKey="name" {...AXIS_PROPS} width={135} tick={{fontSize:11}}/>
         <Tooltip {...TOOLTIP_PROPS}/><Bar dataKey="count" name="Reports" fill={SERIES.blue}/>
       </BarChart>
     </ResponsiveContainer>
