@@ -10,7 +10,6 @@ permissions:
 
 jobs:
   refresh:
-    if: ${{ vars.POLICY_R2_BUCKET != '' && vars.POLICY_R2_ACCOUNT_ID != '' }}
     runs-on: ubuntu-latest
     env:
       LEGISCAN_API_KEY: ${{ secrets.LEGISCAN_API_KEY }}
@@ -21,12 +20,15 @@ jobs:
       R2_BUCKET: ${{ vars.POLICY_R2_BUCKET }}
     steps:
       - uses: actions/checkout@v4
+      - name: Report refresh configuration
+        if: ${{ env.R2_BUCKET == '' || env.R2_ACCOUNT_ID == '' || env.AWS_ACCESS_KEY_ID == '' || env.AWS_SECRET_ACCESS_KEY == '' || env.LEGISCAN_API_KEY == '' }}
+        run: echo '::warning::Legislation refresh skipped. Configure R2 settings and the LEGISCAN_API_KEY secret.'
       - name: Search current sessions and resolve bill details
-        if: ${{ env.LEGISCAN_API_KEY != '' && env.AWS_ACCESS_KEY_ID != '' && env.AWS_SECRET_ACCESS_KEY != '' }}
+        if: ${{ env.R2_BUCKET != '' && env.R2_ACCOUNT_ID != '' && env.LEGISCAN_API_KEY != '' && env.AWS_ACCESS_KEY_ID != '' && env.AWS_SECRET_ACCESS_KEY != '' }}
         run: python3 scripts/refresh-legislation.py /tmp/legislation_tracker.json
       - name: Validate refreshed index
-        if: ${{ env.LEGISCAN_API_KEY != '' && env.AWS_ACCESS_KEY_ID != '' && env.AWS_SECRET_ACCESS_KEY != '' }}
+        if: ${{ env.R2_BUCKET != '' && env.R2_ACCOUNT_ID != '' && env.LEGISCAN_API_KEY != '' && env.AWS_ACCESS_KEY_ID != '' && env.AWS_SECRET_ACCESS_KEY != '' }}
         run: node scripts/validate-legislation-data.mjs /tmp/legislation_tracker.json
-      - name: Publish to R2
-        if: ${{ env.LEGISCAN_API_KEY != '' && env.AWS_ACCESS_KEY_ID != '' && env.AWS_SECRET_ACCESS_KEY != '' }}
-        run: aws s3 cp /tmp/legislation_tracker.json "s3://${R2_BUCKET}/policy/legislation_tracker.json" --endpoint-url "https://${R2_ACCOUNT_ID}.r2.cloudflarestorage.com" --content-type application/json --cache-control 'public, max-age=300'
+      - name: Publish and verify versioned bill index
+        if: ${{ env.R2_BUCKET != '' && env.R2_ACCOUNT_ID != '' && env.LEGISCAN_API_KEY != '' && env.AWS_ACCESS_KEY_ID != '' && env.AWS_SECRET_ACCESS_KEY != '' }}
+        run: python3 scripts/publish-r2-data.py legislation --file /tmp/legislation_tracker.json

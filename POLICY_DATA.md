@@ -16,7 +16,9 @@ For ongoing updates, configure repository secret `LEGISCAN_API_KEY` from LegiSca
 
 ## R2 configuration
 
-The site fetches the public R2 object at runtime when `NEXT_PUBLIC_POLICY_R2_URL` is set at build time. It falls back to its bundled snapshot if R2 is unavailable. GitHub Actions uploads the validated JSON after a successful build when these repository settings exist:
+The site fetches the public R2 policy and bill objects at runtime when their public URLs are supplied at build time. It falls back to its bundled snapshots if R2 is unavailable. The Pages workflow publishes **all** files in `public/data/` (JSON, GeoJSON, CSV) after validation and a successful build. Each revision gets an immutable `backups/site/<commit SHA>/` snapshot and a manifest listing SHA-256, size, and media type for every dataset. It verifies uploaded sizes and checksum metadata through R2's S3 API before updating `data/<filename>` and `backups/site/latest.json`. Reviewed policy also goes to `policy/policy_tracker.json`; the static bill index only seeds `policy/legislation_tracker.json` if no live bill index exists. Daily legislation refreshes get separate immutable `backups/legislation/<timestamp>-<hash>/` snapshots and update the live bill index after verification. Rerunning a site revision is safe; immutable objects are verified and reused.
+
+Configure these GitHub repository settings under **Settings → Secrets and variables → Actions**:
 
 | GitHub setting | Value |
 | --- | --- |
@@ -25,5 +27,11 @@ The site fetches the public R2 object at runtime when `NEXT_PUBLIC_POLICY_R2_URL
 | Variable `POLICY_R2_PUBLIC_URL` | Public HTTPS URL ending `/policy/policy_tracker.json` |
 | Secret `POLICY_R2_ACCESS_KEY_ID` | R2 S3 API token access key |
 | Secret `POLICY_R2_SECRET_ACCESS_KEY` | R2 S3 API token secret |
+| Variable `LEGISLATION_R2_PUBLIC_URL` | Public HTTPS URL ending `/policy/legislation_tracker.json` |
+| Secret `LEGISCAN_API_KEY` | Optional: required for the daily bill search and refresh |
 
-Create the bucket and public custom domain, grant the API token write access to the bucket, then allow the GitHub Pages origin in its CORS policy for `GET`. Rerun the Pages workflow to upload `policy/policy_tracker.json`. The UI identifies whether R2 or the bundled snapshot supplied the visible record. Without these settings, the site publishes the JSON snapshot but does not store it in R2.
+In Cloudflare **R2 → Overview**, create a bucket; then **Manage R2 API Tokens → Create** and grant **Object Read & Write** on this bucket only. Copy its Access Key ID and Secret Access Key into GitHub **secrets**, never repository files, logs, chat, or variables. Connect a **public custom domain** to the bucket; use its HTTPS origin in the two public URL variables (for example, `https://data.example.org/policy/policy_tracker.json`). Permit `GET` and the GitHub Pages origin `https://av-observatory.github.io` in the bucket CORS policy. The site's `public/data/` copies remain available via GitHub Pages; the `backups/` paths are the versioned R2 archive, not a source for the browser UI.
+
+After saving the settings, open **Actions → Deploy AV Observatory to GitHub Pages → Run workflow** on `main`. Confirm the step **Publish and verify versioned R2 data snapshot** succeeds (a skipped step means no upload), then check `https://<your-data-domain>/backups/site/latest.json`, `.../data/manufacturer_profiles.json`, `.../policy/policy_tracker.json`, and the site's source label. The optional LegiScan secret enables **Refresh AV legislative bill index**; trigger it manually once, then verify `.../backups/legislation/latest.json`. The workflow emits a visible warning when credentials are missing. R2 holds an extra copy, but it cannot be claimed as an active backup until that upload succeeds. Review retention or bucket lock policies separately if accidental deletion protection is needed.
+
+Curated operator services, approaches, partnerships, and developments live in `public/data/manufacturer_profiles.json`; deployment evidence lives in the operational domains and ODD datasets. Edit the JSON, then run `npm run build` before publishing. `scripts/publish-r2-data.py site --revision <commit> --dry-run` validates every data file and prints the manifest without credentials or uploads.
