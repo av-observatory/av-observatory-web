@@ -913,13 +913,13 @@
       "phase": "deployment",
       "activity_type": "deployment",
       "evidence_status": "current",
-      "status": "public_service",
+      "status": "limited_public_service",
       "mode": "ridehail",
       "geometry_basis": "city_point_only",
-      "source_url": "https://waymo.com/rides/",
+      "source_url": "https://waymo.com/blog/2026/09/ride-in-denver-san-diego-tampa/",
       "source_date": "2026-09-22",
       "verification_status": "verified_current_market",
-      "note": "Current market/status verified; exact current ODD boundary may be narrower than the market label."
+      "note": "Waymo began welcoming public riders September 1, 2026, with access expanding progressively; not labeled open-to-all unless the source says so."
     },
     {
       "company": "Waymo",
@@ -981,13 +981,13 @@
       "phase": "deployment",
       "activity_type": "deployment",
       "evidence_status": "current",
-      "status": "public_service",
+      "status": "limited_public_service",
       "mode": "ridehail",
       "geometry_basis": "city_point_only",
-      "source_url": "https://waymo.com/rides/",
+      "source_url": "https://waymo.com/blog/2026/09/ride-in-denver-san-diego-tampa/",
       "source_date": "2026-09-22",
       "verification_status": "verified_current_market",
-      "note": "Current market/status verified; exact current ODD boundary may be narrower than the market label."
+      "note": "Waymo began welcoming public riders September 1, 2026, with access expanding progressively; not labeled open-to-all unless the source says so."
     },
     {
       "company": "Waymo",
@@ -1032,13 +1032,13 @@
       "phase": "deployment",
       "activity_type": "deployment",
       "evidence_status": "current",
-      "status": "public_service",
+      "status": "limited_public_service",
       "mode": "ridehail",
       "geometry_basis": "city_point_only",
-      "source_url": "https://waymo.com/rides/",
+      "source_url": "https://waymo.com/blog/2026/09/ride-in-denver-san-diego-tampa/",
       "source_date": "2026-09-22",
       "verification_status": "verified_current_market",
-      "note": "Current market/status verified; exact current ODD boundary may be narrower than the market label."
+      "note": "Waymo began welcoming public riders September 1, 2026, with access expanding progressively; not labeled open-to-all unless the source says so."
     },
     {
       "company": "Waymo",
@@ -1063,16 +1063,16 @@
       "market": "Las Vegas",
       "lat": 36.1699,
       "lon": -115.1398,
-      "phase": "deployment",
-      "activity_type": "deployment",
+      "phase": "testing",
+      "activity_type": "testing",
       "evidence_status": "current",
-      "status": "public_service",
+      "status": "rider_only_internal_validation",
       "mode": "ridehail",
       "geometry_basis": "city_point_only",
-      "source_url": "https://waymo.com/rides/",
+      "source_url": "https://waymo.com/blog/shorts/ro-den-lv-sd-tmpa/",
       "source_date": "2026-09-22",
       "verification_status": "verified_current_market",
-      "note": "Current market/status verified; exact current ODD boundary may be narrower than the market label."
+      "note": "Waymo reported fully autonomous rider-only operations for employees in Las Vegas while preparing for public service. As of the current Waymo rides page, Las Vegas remains 'Up Next,' so it is not counted as current public rider service."
     },
     {
       "company": "Waymo",
