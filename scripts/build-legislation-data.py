@@ -10,7 +10,7 @@ ncsl = "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-data
 
 def bill(state, number, title, summary, status, action_date, action, url, session="2025-2026", repository=ncsl):
     return dict(id=f"{state.lower()}-{number.lower().replace('.', '').replace(' ', '')}-{session[:4]}",
-        jurisdiction=state, number=number, title=title, summary=summary, status=status,
+        jurisdiction=state, number=number, title=title, summary=summary, takeaway=summary, status=status,
         last_action_date=action_date, last_action=action, session=session,
         source_url=url, repository_url=repository, reviewed_at=as_of, summary_reviewed_at=as_of)
 
