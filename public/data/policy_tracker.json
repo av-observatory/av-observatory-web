@@ -180,9 +180,9 @@
       "oversight": "Alabama DOT has state-level jurisdiction under the commercial vehicle framework.",
       "enacted_legislation": true,
       "executive_order_history": false,
-      "source_url": "https://www.bakerdonelson.com/avmap",
-      "source_label": "State law survey (secondary source; verify primary text)",
-      "source_tier": "secondary",
+      "source_url": "https://alison.legislature.state.al.us/files/pdf/SearchableInstruments/2019RS/PrintFiles/SB47-Enr.pdf",
+      "source_label": "Alabama SB 47 enrolled text",
+      "source_tier": "primary",
       "verified_at": "2026-09-23"
     },
     {
@@ -215,7 +215,7 @@
       "code": "AR",
       "name": "Arkansas",
       "framework": "Driverless operation with submissions",
-      "analysis": "Arkansas permits driverless operation when statutatutory conditions and advance submissions, including commercial-purpose information, are satisfied.",
+      "analysis": "Arkansas permiermits driverless operation when statutory conditions and advance submissions, including commercial-purpose information, are satisfied.",
       "oversight": "State submission and applicable traffic and vehicle rules.",
       "enacted_legislation": true,
       "executive_order_history": false,
@@ -258,9 +258,9 @@
       "oversight": "Pilot approval and participating municipalities.",
       "enacted_legislation": true,
       "executive_order_history": false,
-      "source_url": "https://www.bakerdonelson.com/avmap",
-      "source_label": "State law survey (secondary source; verify primary text)",
-      "source_tier": "secondary",
+      "source_url": "https://www.cga.ct.gov/2017/act/pa/2017PA-00069-R00SB-00260-PA.htm",
+      "source_label": "Connecticut Public Act 17-69",
+      "source_tier": "primary",
       "verified_at": "2026-09-23"
     },
     {
@@ -362,9 +362,9 @@
       "oversight": "State traffic and vehicle requirements under Iowa's AV statute.",
       "enacted_legislation": true,
       "executive_order_history": false,
-      "source_url": "https://www.bakerdonelson.com/avmap",
-      "source_label": "State law survey (secondary source; verify primary text)",
-      "source_tier": "secondary",
+      "source_url": "https://www.legis.iowa.gov/docs/code/321.514.pdf",
+      "source_label": "Iowa Code § 321.514",
+      "source_tier": "primary",
       "verified_at": "2026-09-23"
     },
     {
@@ -375,9 +375,9 @@
       "oversight": "State vehicle and traffic rules.",
       "enacted_legislation": true,
       "executive_order_history": false,
-      "source_url": "https://www.bakerdonelson.com/avmap",
-      "source_label": "State law survey (secondary source; verify primary text)",
-      "source_tier": "secondary",
+      "source_url": "https://www.kslegislature.gov/b2025_26/laws/008_000_0000_chapter/008_029_0000_article/008_029_0002_section/008_029_0002_k/",
+      "source_label": "Kansas Statutes § 8-2902",
+      "source_tier": "primary",
       "verified_at": "2026-09-23"
     },
     {
@@ -388,9 +388,9 @@
       "oversight": "State vehicle law and any remaining commercial-carrier requirements.",
       "enacted_legislation": true,
       "executive_order_history": false,
-      "source_url": "https://www.bakerdonelson.com/avmap",
-      "source_label": "State law survey (secondary source; verify primary text)",
-      "source_tier": "secondary",
+      "source_url": "https://apps.legislature.ky.gov/record/24rs/hb7.html",
+      "source_label": "Kentucky HB 7 (2024)",
+      "source_tier": "primary",
       "verified_at": "2026-09-23"
     },
     {
@@ -401,14 +401,14 @@
       "oversight": "State commercial-vehicle and traffic requirements.",
       "enacted_legislation": true,
       "executive_order_history": false,
-      "source_url": "https://www.bakerdonelson.com/avmap",
-      "source_label": "State law survey (secondary source; verify primary text)",
-      "source_tier": "secondary",
-      "verified_at": "2026-09-23"
+      "source_url": "https://www.legis.la.gov/legis/LawPrint.aspx?d=1148308",
+      "source_label": "Louisiana Revised Statutes § 32:400.3",
+      "source_tier": "primary",
+      "verified_at": "2026-09-23-09-23"
     },
     {
       "code": "ME",
-         "name": "Maine",
+      "name": "Maine",
       "framework": "Pilot authority",
       "analysis": "Maine authorizes transportation officials to establish AV pilot activity. The guide does not describe a broad commercial robotaxi approval regime.",
       "oversight": "Maine DOT pilot rules and general vehicle requirements.",
@@ -427,9 +427,9 @@
       "oversight": "Motor Vehicle Administration and applicable vehicle law.",
       "enacted_legislation": true,
       "executive_order_history": false,
-      "source_url": "https://www.bakerdonelson.com/avmap",
-      "source_label": "State law survey (secondary source; verify primary text)",
-      "source_tier": "secondary",
+      "source_url": "https://www.mgaleg.maryland.gov/mgawebsite/Laws/StatuteText?article=gtr&enactments=false&section=15-901",
+      "source_label": "Maryland Transportation Code § 15-901",
+      "source_tier": "primary",
       "verified_at": "2026-09-23"
     },
     {
@@ -479,9 +479,9 @@
       "oversight": "State traffic, registration, and safety requirements.",
       "enacted_legislation": true,
       "executive_order_history": false,
-      "source_url": "https://www.bakerdonelson.com/avmap",
-      "source_label": "State law survey (secondary source; verify primary text)",
-      "source_tier": "secondary",
+      "source_url": "https://billstatus.ls.state.ms.us/documents/2023/pdf/HB/1000-1099/HB1003SG.pdf",
+      "source_label": "Mississippi HB 1003 sent to governor (2023)",
+      "source_tier": "primary",
       "verified_at": "2026-09-23"
     },
     {
@@ -505,9 +505,9 @@
       "oversight": "State vehicle and commercial-carrier requirements.",
       "enacted_legislation": true,
       "executive_order_history": false,
-      "source_url": "https://www.bakerdonelson.com/avmap",
-      "source_label": "State law survey (secondary source; verify primary text)",
-      "source_tier": "secondary",
+      "source_url": "https://mca.legmt.gov/bills/mca/title_0610/chapter_0060/part_0040/section_0090/0610-0060-0040-0090.html",
+      "source_label": "Montana Code § 61-6-409",
+      "source_tier": "primary",
       "verified_at": "2026-09-23"
     },
     {
@@ -518,9 +518,9 @@
       "oversight": "State statutory requirements for driverless operation and ordinary vehicle law.",
       "enacted_legislation": true,
       "executive_order_history": false,
-      "source_url": "https://www.bakerdonelson.com/avmap",
-      "source_label": "State law survey (secondary source; verify primary text)",
-      "source_tier": "secondary",
+      "source_url": "https://nebraskalegislature.gov/laws/statutes.php?statute=60-3302",
+      "source_label": "Nebraska Revised Statutes § 60-3302",
+      "source_tier": "primary",
       "verified_at": "2026-09-23"
     },
     {
@@ -544,9 +544,9 @@
       "oversight": "Pilot approval and commission reporting.",
       "enacted_legislation": true,
       "executive_order_history": false,
-      "source_url": "https://www.bakerdonelson.com/avmap",
-      "source_label": "State law survey (secondary source; verify primary text)",
-      "source_tier": "secondary",
+      "source_url": "https://gc.nh.gov/rsa/html/XX/242/242-1.htm",
+      "source_label": "New Hampshire RSA 242:1",
+      "source_tier": "primary",
       "verified_at": "2026-09-23"
     },
     {
@@ -570,9 +570,9 @@
       "oversight": "State transportation and testing-notification requirements.",
       "enacted_legislation": true,
       "executive_order_history": false,
-      "source_url": "https://www.bakerdonelson.com/avmap",
-      "source_label": "State law survey (secondary source; verify primary text)",
-      "source_tier": "secondary",
+      "source_url": "https://www.dot.nm.gov/highway-operations-program/operations-support-division-director/intelligent-transportation-systems/",
+      "source_label": "NMDOT autonomous vehicle testing notification",
+      "source_tier": "primary",
       "verified_at": "2026-09-23"
     },
     {
@@ -596,9 +596,9 @@
       "oversight": "State traffic law and committee-led policy review.",
       "enacted_legislation": true,
       "executive_order_history": false,
-      "source_url": "https://www.bakerdonelson.com/avmap",
-      "source_label": "State law survey (secondary source; verify primary text)",
-      "source_tier": "secondary",
+      "source_url": "https://www.ncleg.gov/EnactedLegislaslation/Statutes/HTML/ByArticle/Chapter_20/Article_18.html",
+      "source_label": "North Carolina General Statutes Article 18",
+      "source_tier": "primary",
       "verified_at": "2026-09-23"
     },
     {
@@ -609,9 +609,9 @@
       "oversight": "Ordinary vehicle law plus the state's AV operating provision.",
       "enacted_legislation": true,
       "executive_order_history": false,
-      "source_url": "https://www.bakerdonelson.com/avmap",
-      "source_label": "State law survey (secondary source; verify primary text)",
-      "source_tier": "secondary",
+      "source_url": "https://ndlegis.gov/cencode/t39c01.html",
+      "source_label": "North Dakota Century Code Chapter 39-01",
+      "source_tier": "primary",
       "verified_at": "2026-09-23"
     },
     {
@@ -635,9 +635,9 @@
       "oversight": "State traffic, registration, and on-demand network requirements.",
       "enacted_legislation": true,
       "executive_order_history": false,
-      "source_url": "https://www.bakerdonelson.com/avmap",
-      "source_label": "State law survey (secondary source; verify primary text)",
-      "source_tier": "secondary",
+      "source_url": "https://www.oklegislature.gov/BillInfo.aspx?Bill=SB1541&Session=2200",
+      "source_label": "Oklahoma SB 1541 (2022)",
+      "source_tier": "primary",
       "verified_at": "2026-09-23"
     },
     {
@@ -700,9 +700,9 @@
       "oversight": "State AV, commercial-carrier, and traffic rules.",
       "enacted_legislation": true,
       "executive_order_history": false,
-      "source_url": "https://www.bakerdonelson.com/avmap",
-      "source_label": "State law survey (secondary source; verify primary text)",
-      "source_tier": "secondary",
+      "source_url": "https://mylrc.sdlegislature.gov/api/Documents/Bill/264493.pdf?Year=2024",
+      "source_label": "South Dakota HB 1095 enrolled (2024)",
+      "source_tier": "primary",
       "verified_at": "2026-09-23"
     },
     {
@@ -739,9 +739,9 @@
       "oversight": "State AV statute and ordinary traffic requirements.",
       "enacted_legislation": true,
       "executive_order_history": false,
-      "source_url": "https://www.bakerdonelson.com/avmap",
-      "source_label": "State law survey (secondary source; verify primary text)",
-      "source_tier": "secondary",
+      "source_url": "https://le.utah.gov/xcode/Title41/Chapter26/41-26.html",
+      "source_label": "Utah Code Chapter 41-26",
+      "source_tier": "primary",
       "verified_at": "2026-09-23"
     },
     {
@@ -752,9 +752,9 @@
       "oversight": "Test-specific approval and public-comment process.",
       "enacted_legislation": true,
       "executive_order_history": false,
-      "source_url": "https://www.bakerdonelson.com/avmap",
-      "source_label": "State law survey (secondary source; verify primary text)",
-      "source_tier": "secondary",
+      "source_url": "https://legislature.vermont.gov/statutes/fullchapter/23/041",
+      "source_label": "Vermont Automated Vehicle Testing Act",
+      "source_tier": "primary",
       "verified_at": "2026-09-23"
     },
     {
@@ -791,9 +791,9 @@
       "oversight": "State vehicle rules and law-enforcement interaction plan.",
       "enacted_legislation": true,
       "executive_order_history": false,
-      "source_url": "https://www.bakerdonelson.com/avmap",
-      "source_label": "State law survey (secondary source; verify primary text)",
-      "source_tier": "secondary",
+      "source_url": "https://code.wvlegislature.gov/17H-1/",
+      "source_label": "West Virginia Fully Autonomous Vehicle Act",
+      "source_tier": "primary",
       "verified_at": "2026-09-23"
     },
     {
@@ -846,11 +846,11 @@
       "instrument": "legislation",
       "status": "in_effect",
       "date": null,
-      "source_url": "https://www.bakerdonelson.com/avmap",
+      "source_url": "https://alison.legislature.state.al.us/files/pdf/SearchableInstruments/2019RS/PrintFiles/SB47-Enr.pdf",
       "verified_at": "2026-09-23",
       "state": "AL",
-      "source_label": "State law survey (secondary source; verify primary text)",
-      "source_tier": "secondary",
+      "source_label": "Alabama SB 47 enrolled text",
+      "source_tier": "primary",
       "date_precision": "undetermined"
     },
     {
@@ -941,11 +941,11 @@
       "instrument": "legislation",
       "status": "in_effect",
       "date": null,
-      "source_url": "https://www.bakerdonelson.com/avmap",
+      "source_url": "https://www.cga.ct.gov/2017/act/pa/2017PA-00069-R00SB-00260-PA.htm",
       "verified_at": "2026-09-23",
       "state": "CT",
-      "source_label": "State law survey (secondary source; verify primary text)",
-      "source_tier": "secondary",
+      "source_label": "Connecticut Public Act 17-69",
+      "source_tier": "primary",
       "date_precision": "undetermined"
     },
     {
@@ -1007,7 +1007,7 @@
       "source_url": "https://data.capitol.hawaii.gov/sessions/sessionlaws/Years/SLH2020/SLH2020_Act21.pdf",
       "verified_at": "2026-09-23",
       "state": "HI",
-      "source_label": "Hawaii Act 21 (2020)",
+      "source_label": "Hawabel": "Hawaii Act 21 (2020)",
       "source_tier": "primary",
       "date_precision": "day"
     },
@@ -1016,7 +1016,7 @@
       "level": "state",
       "jurisdiction": "Idaho",
       "title": "Idaho Executive Order 2018-01",
-      "summary": "Created a comeated a committee to study controlled testing and operation, not a statewide operating permit.",
+      "summary": "Created a committee to study controlled testing and operation, not a statewide operating permit.",
       "instrument": "executive_order",
       "status": "historical_status_unverified",
       "date": "2018-01-02",
@@ -1066,11 +1066,11 @@
       "instrument": "legislation",
       "status": "in_effect",
       "date": null,
-      "source_url": "https://www.bakerdonelson.com/avmap",
+      "source_url": "https://www.legis.iowa.gov/docs/code/321.514.pdf",
       "verified_at": "2026-09-23",
       "state": "IA",
-      "source_label": "State law survey (secondary source; verify primary text)",
-      "source_tier": "secondary",
+      "source_label": "Iowa Code § 321.514",
+      "source_tier": "primary",
       "date_precision": "undetermined"
     },
     {
@@ -1082,11 +1082,11 @@
       "instrument": "legislation",
       "status": "in_effect",
       "date": null,
-      "source_url": "https://www.bakerdonelson.com/avmap",
+      "source_url": "https://www.kslegislature.gov/b2025_26/laws/008_000_0000_chapter/008_029_0000_article/008_029_0002_section/008_029_0002_k/",
       "verified_at": "2026-09-23",
       "state": "KS",
-      "source_label": "State law survey (secondary source; verify primary text)",
-      "source_tier": "secondary",
+      "source_label": "Kansas Statutes § 8-2902",
+      "source_tier": "primary",
       "date_precision": "undetermined"
     },
     {
@@ -1098,11 +1098,11 @@
       "instrument": "legislation",
       "status": "in_effect",
       "date": null,
-      "source_url": "https://www.bakerdonelson.com/avmap",
+      "source_url": "https://apps.legislature.ky.gov/record/24rs/hb7.html",
       "verified_at": "2026-09-23",
       "state": "KY",
-      "source_label": "State law survey (secondary source; verify primary text)",
-      "source_tier": "secondary",
+      "source_label": "Kentucky HB 7 (2024)",
+      "source_tier": "primary",
       "date_precision": "undetermined"
     },
     {
@@ -1114,11 +1114,11 @@
       "instrument": "legislation",
       "status": "in_effect",
       "date": null,
-      "source_url": "https://www.bakerdonelson.com/avmap",
+      "source_url": "https://www.legis.la.gov/legis/LawPrint.aspx?d=1148308",
       "verified_at": "2026-09-23",
       "state": "LA",
-      "source_label": "State law survey (secondary source; verify primary text)",
-      "source_tier": "secondary",
+      "source_label": "Louisiana Revised Statutes § 32:400.3",
+      "source_tier": "primary",
       "date_precision": "undetermined"
     },
     {
@@ -1161,11 +1161,11 @@
       "instrument": "legislation",
       "status": "in_effect",
       "date": null,
-      "source_url": "https://www.bakerdonelson.com/avmap",
+      "source_url": "https://www.mgaleg.maryland.gov/mgawebsite/Laws/StatuteText?article=gtr&enactments=false&section=15-901",
       "verified_at": "2026-09-23",
       "state": "MD",
-      "source_label": "State law survey (secondary source; verify primary text)",
-      "source_tier": "secondary",
+      "source_label": "Maryland Transportation Code § 15-901",
+      "source_tier": "primary",
       "date_precision": "undetermined"
     },
     {
@@ -1236,7 +1236,7 @@
       "title": "Minnesota Executive Order 19-18",
       "summary": "Replaced the 2018 advisory council order with a governor's council and interagency coordination.",
       "instrument": "executive_order",
-      "status": "historical_status_unverified",
+      "status": "historical_statusorical_status_unverified",
       "date": "2019-04-01",
       "source_url": "https://www.leg.mn.gov/archive/execorders/19-18.pdf",
       "verified_at": "2026-09-23",
@@ -1245,7 +1245,7 @@
       "source_tier": "primary"
     },
     {
-      "id": "ms-statute-baseline-baseline",
+      "id": "ms-statute-baseline",
       "level": "state",
       "jurisdiction": "Mississippi",
       "title": "Enacted AV statute · current framework",
@@ -1253,11 +1253,11 @@
       "instrument": "legislation",
       "status": "in_effect",
       "date": null,
-      "source_url": "https://www.bakerdonelson.com/avmap",
+      "source_url": "https://billstatus.ls.state.ms.us/documents/2023/pdf/HB/1000-1099/HB1003SG.pdf",
       "verified_at": "2026-09-23",
       "state": "MS",
-      "source_label": "State law survey (secondary source; verify primary text)",
-      "source_tier": "secondary",
+      "source_label": "Mississippi HB 1003 sent to governor (2023)",
+      "source_tier": "primary",
       "date_precision": "undetermined"
     },
     {
@@ -1269,11 +1269,11 @@
       "instrument": "legislation",
       "status": "in_effect",
       "date": null,
-      "source_url": "https://www.bakerdonelson.com/avmap",
+      "source_url": "https://mca.legmt.gov/bills/mca/title_0610/chapter_0060/part_0040/section_0090/0610-0060-0040-0090.html",
       "verified_at": "2026-09-23",
       "state": "MT",
-      "source_label": "State law survey (secondary source; verify primary text)",
-      "source_tier": "secondary",
+      "source_label": "Montana Code § 61-6-409",
+      "source_tier": "primary",
       "date_precision": "undetermined"
     },
     {
@@ -1285,11 +1285,11 @@
       "instrument": "legislation",
       "status": "in_effect",
       "date": null,
-      "source_url": "https://www.bakerdonelson.com/avmap",
+      "source_url": "https://nebraskalegislature.gov/laws/statutes.php?statute=60-3302",
       "verified_at": "2026-09-23",
       "state": "NE",
-      "source_label": "State law survey (secondary source; verify primary text)",
-      "source_tier": "secondary",
+      "source_label": "Nebraska Revised Statutes § 60-3302",
+      "source_tier": "primary",
       "date_precision": "undetermined"
     },
     {
@@ -1317,11 +1317,11 @@
       "instrument": "legislation",
       "status": "in_effect",
       "date": null,
-      "source_url": "https://www.bakerdonelson.com/avmap",
+      "source_url": "https://gc.nh.gov/rsa/html/XX/242/242-1.htm",
       "verified_at": "2026-09-23",
       "state": "NH",
-      "source_label": "State law survey (secondary source; verify primary text)",
-      "source_tier": "secondary",
+      "source_label": "New Hampshire RSA 242:1",
+      "source_tier": "primary",
       "date_precision": "undetermined"
     },
     {
@@ -1333,11 +1333,11 @@
       "instrument": "legislation",
       "status": "in_effect",
       "date": null,
-      "source_url": "https://www.bakerdonelson.com/avmap",
+      "source_url": "https://www.dot.nm.gov/highway-operations-program/operations-support-division-director/intelligent-transportation-systems/",
       "verified_at": "2026-09-23",
       "state": "NM",
-      "source_label": "State law survey (secondary source; verify primary text)",
-      "source_tier": "secondary",
+      "source_label": "NMDOT autonomous vehicle testing notification",
+      "source_tier": "primary",
       "date_precision": "undetermined"
     },
     {
@@ -1365,11 +1365,11 @@
       "instrument": "legislation",
       "status": "in_effect",
       "date": null,
-      "source_url": "https://www.bakerdonelson.com/avmap",
+      "source_url": "https://www.ncleg.gov/EnactedLegislation/Statutes/HTML/ByArticle/Chapter_20/Article_18.html",
       "verified_at": "2026-09-23",
       "state": "NC",
-      "source_label": "State law survey (secondary source; verify primary text)",
-      "source_tier": "secondary",
+      "source_label": "North Carolina General Statutes Article 18",
+      "source_tier": "primary",
       "date_precision": "undetermined"
     },
     {
@@ -1381,11 +1381,11 @@
       "instrument": "legislation",
       "status": "in_effect",
       "date": null,
-      "source_url": "https://www.bakerdonelson.com/avmap",
+      "source_url": "https://ndlegis.gov/cencode/t39c01.html",
       "verified_at": "2026-09-23",
       "state": "ND",
-      "source_label": "State law survey (secondary source; verify primary text)",
-      "source_tier": "secondary",
+      "source_label": "North Dakota Century Code Chapter 39-01",
+      "source_tier": "primary",
       "date_precision": "undetermined"
     },
     {
@@ -1412,11 +1412,11 @@
       "instrument": "legislation",
       "status": "in_effect",
       "date": null,
-      "source_url": "https://www.bakerdonelson.com/avmap",
+      "source_url": "https://www.oklegislature.gov/BillInfo.aspx?Bill=SB1541&Session=2200",
       "verified_at": "2026-09-23",
       "state": "OK",
-      "source_label": "State law survey (secondary source; verify primary text)",
-      "source_tier": "secondary",
+      "source_label": "Oklahoma SB 1541 (2022)",
+      "source_tier": "primary",
       "date_precision": "undetermined"
     },
     {
@@ -1444,11 +1444,11 @@
       "instrument": "legislation",
       "status": "in_effect",
       "date": null,
-      "source_url": "https://www.bakerdonelson.com/avmap",
+      "source_url": "https://mylrc.sdlegislature.gov/api/Documents/Bill/264493.pdf?Year=2024",
       "verified_at": "2026-09-23",
       "state": "SD",
-      "source_label": "State law survey (secondary source; verify primary text)",
-      "source_tier": "secondary",
+      "source_label": "South Dakota HB 1095 enrolled (2024)",
+      "source_tier": "primary",
       "date_precision": "undetermined"
     },
     {
@@ -1460,7 +1460,7 @@
       "instrument": "legislation",
       "status": "in_effect",
       "date": "2017",
-      "source_url": "https://wapp.capitol.tn.gov/apps/BillInfo/Default?BillNumber=HB0381&ga=110",
+      "source_url": "https://wapp.capitol.tn.gov/apps/BillInfo/Default?BlInfo/Default?BillNumber=HB0381&ga=110",
       "verified_at": "2026-09-23",
       "state": "TN",
       "source_label": "Tennessee Automated Vehicles Act, HB 381",
@@ -1472,7 +1472,7 @@
       "level": "state",
       "jurisdiction": "Texas",
       "title": "Enacted AV statute · current framework",
-      "summary": "Texas authorized AV operation in 2017 and added a mandatory TxDMV authory TxDMV authorization for commercial automated-vehicle operation in 2026. The state does not publish a complete public holder roster in the sources reviewed; documented service is distinct from authorization.",
+      "summary": "Texas authorized AV operation in 2017 and added a mandatory TxDMV authorization for commercial automated-vehicle operation in 2026. The state does not publish a complete public holder roster in the sources reviewed; documented service is distinct from authorization.",
       "instrument": "legislation",
       "status": "in_effect",
       "date": "2017",
@@ -1508,11 +1508,11 @@
       "instrument": "legislation",
       "status": "in_effect",
       "date": null,
-      "source_url": "https://www.bakerdonelson.com/avmap",
+      "source_url": "https://le.utah.gov/xcode/Title41/Chapter26/41-26.html",
       "verified_at": "2026-09-23",
       "state": "UT",
-      "source_label": "State law survey (secondary source; verify primary text)",
-      "source_tier": "secondary",
+      "source_label": "Utah Code Chapter 41-26",
+      "source_tier": "primary",
       "date_precision": "undetermined"
     },
     {
@@ -1524,11 +1524,11 @@
       "instrument": "legislation",
       "status": "in_effect",
       "date": null,
-      "source_url": "https://www.bakerdonelson.com/avmap",
+      "source_url": "https://legislature.vermont.gov/statutes/fullchapter/23/041",
       "verified_at": "2026-09-23",
       "state": "VT",
-      "source_label": "State law survey (secondary source; verify primary text)",
-      "source_tier": "secondary",
+      "source_label": "Vermont Automated Vehicle Testing Act",
+      "source_tier": "primary",
       "date_precision": "undetermined"
     },
     {
@@ -1571,11 +1571,11 @@
       "instrument": "legislation",
       "status": "in_effect",
       "date": null,
-      "source_url": "https://www.bakerdonelson.com/avmap",
+      "source_url": "https://code.wvlegislature.gov/17H-1/",
       "verified_at": "2026-09-23",
       "state": "WV",
-      "source_label": "State law survey (secondary source; verify primary text)",
-      "source_tier": "secondary",
+      "source_label": "West Virginia Fully Autonomous Vehicle Act",
+      "source_tier": "primary",
       "date_precision": "undetermined"
     },
     {
@@ -1687,7 +1687,7 @@
       "date": null,
       "source_url": "https://www.boston.gov/departments/new-urban-mechanics/autonomous-vehicles-bostons-approach",
       "verified_at": "2026-09-23",
-      "state": "MA"
+      "state "state": "MA"
     }
   ]
 }
