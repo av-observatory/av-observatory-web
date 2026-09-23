@@ -111,7 +111,7 @@ export function UsStateMap({
         >
           <Geographies geography={GEO_URL}>
             {({ geographies }) =>
-              geographies.map((geo) => {
+              [...geographies].sort((a, b) => Number(STATE_ABBREV_BY_NAME[a.properties?.name as string] === selectedAbbrev) - Number(STATE_ABBREV_BY_NAME[b.properties?.name as string] === selectedAbbrev)).map((geo) => {
                 const name = (geo.properties?.name as string) ?? "";
                 const abbrev = STATE_ABBREV_BY_NAME[name] ?? "";
                 const value = valueByAbbrev?.[abbrev];
@@ -120,8 +120,8 @@ export function UsStateMap({
                     key={geo.rsmKey}
                     geography={geo}
                     fill={colorFor(abbrev)}
-                    strokeWidth={0.75 / zoom}
-                    stroke={selectedAbbrev === abbrev ? "#eb6834" : "#ffffff"}
+                    strokeWidth={(selectedAbbrev === abbrev ? 2.8 : 0.75) / zoom}
+                    stroke={selectedAbbrev === abbrev ? "#111827" : "#ffffff"}
                     aria-label={stateText(name, abbrev, value)}
                     role={onStateClick ? "button" : undefined}
                     tabIndex={onStateClick ? 0 : undefined}

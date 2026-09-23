@@ -17,6 +17,12 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.POLICY_R2_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.POLICY_R2_SECRET_ACCESS_KEY }}
+      AWS_DEFAULT_REGION: auto
+      R2_ACCOUNT_ID: ${{ vars.POLICY_R2_ACCOUNT_ID }}
+      R2_BUCKET: ${{ vars.POLICY_R2_BUCKET }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -30,8 +36,17 @@ jobs:
       - name: Install
         run: npm ci
 
+      - name: Validate policy snapshot
+        run: node scripts/validate-policy-data.mjs
+
       - name: Build static site
+        env:
+          NEXT_PUBLIC_POLICY_R2_URL: ${{ vars.POLICY_R2_PUBLIC_URL }}
         run: npm run build
+
+      - name: Publish policy JSON to Cloudflare R2
+        if: ${{ env.R2_BUCKET != '' && env.R2_ACCOUNT_ID != '' && env.AWS_ACCESS_KEY_ID != '' && env.AWS_SECRET_ACCESS_KEY != '' }}
+        run: aws s3 cp public/data/policy_tracker.json "s3://${R2_BUCKET}/policy/policy_tracker.json" --endpoint-url "https://${R2_ACCOUNT_ID}.r2.cloudflarestorage.com" --content-type application/json --cache-control 'public, max-age=300'
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

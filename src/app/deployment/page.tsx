@@ -5,6 +5,7 @@ import { StatePermitRegistry } from "@/lib/registry";
 import { ManufacturerSearch } from "@/components/ManufacturerSearch";
 import { OddExplorer } from "@/components/OddExplorer";
 import { DeploymentTabs } from "@/components/DeploymentTabs";
+import Link from "next/link";
 
 async function loadJson<T>(filename: string): Promise<T> {
   const file = path.join(process.cwd(), "public", "data", filename);
@@ -34,8 +35,9 @@ export default async function DeploymentPage() {
         Autonomous Vehicle Deployment Explorer
       </h1>
       <p className="mt-2 text-sm text-neutral-600 max-w-3xl">
-        Company-level permits, testing registries, deployment authority, and documented operation across U.S. states.
+        Documented operating areas, service markets, testing registries and company-level permit evidence. The separate policy map classifies state laws and executive orders.
       </p>
+      <Link href="/policy/states" className="inline-block mt-2 text-sm underline text-[#184f95]">Explore state policy map →</Link>
       <DeploymentTabs active="overview" />
 
       <section className="mt-5">
@@ -60,7 +62,7 @@ export default async function DeploymentPage() {
       </section>
 
       <section id="regulatory" className="mt-7">
-        <h2 className="text-xl font-semibold tracking-tight">State regulatory coverage</h2>
+        <h2 className="text-xl font-semibold tracking-tight">Permit evidence and regulatory context</h2>
         <div className="mt-4 overflow-x-auto viz-card">
           <table className="w-full text-sm">
             <thead className="text-left text-neutral-500">

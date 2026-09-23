@@ -50,10 +50,10 @@ export const policyBriefs: Record<string, PolicyBrief> = {
     sources: [{ label: "NYC DOT AV testing", url: "https://www.nyc.gov/html/dot/html/motorist/autonomous-vehicles.shtml" }], reviewed: "September 2026",
   },
   MA: {
-    framework: "State-approved testing program",
-    analysis: "Massachusetts Executive Order 572 established a framework for testing highly automated driving technologies. State guidance describes an approval process for testing; it should not be treated as an unrestricted deployment permit.",
-    oversight: "MassDOT testing review and safety requirements.",
-    sources: [{ label: "Massachusetts self-driving systems", url: "https://www.mass.gov/self-driving-systems-in-massachusetts" }], reviewed: "September 2026",
+    framework: "Historical testing order rescinded",
+    analysis: "Executive Order 572 established a testing framework in 2016, but Executive Order 603 rescinded it in 2022. Historical testing guidance is not evidence of current approval authority.",
+    oversight: "Current testing authority requires separate verification.",
+    sources: [{ label: "Executive Order 572", url: "https://www.mass.gov/executive-orders/no-572-to-promote-the-testing-and-deployment-of-highly-automated-driving-technologies" }, { label: "Rescinding Executive Order 603", url: "https://www.mass.gov/executive-orders/no-603-rescinding-certain-executive-orders" }], reviewed: "September 2026",
   },
   WA: {
     framework: "Testing self-certification and vehicle registration",
