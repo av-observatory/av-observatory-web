@@ -1,38 +1,24 @@
 import { promises as fs } from "fs";
 import path from "path";
-import { WaymoS2Explorer } from "@/components/WaymoS2Explorer";
-import { DeploymentTabs } from "@/components/DeploymentTabs";
+import Link from "next/link";
+import { CompanyDeploymentExplorer, type Location, type Geojson, type S2Geojson, type VintageSummary } from "@/components/CompanyDeploymentExplorer";
 
 async function loadJson<T>(filename: string): Promise<T> {
-  const file = path.join(process.cwd(), "public", "data", filename);
-  const raw = await fs.readFile(file, "utf-8");
-  return JSON.parse(raw);
+  return JSON.parse(await fs.readFile(path.join(process.cwd(), "public", "data", filename), "utf-8"));
 }
 
 export default async function WaymoDeploymentPage() {
-  const odd = await loadJson<{ locations: { company:string; state:string; market:string; lat:number|null; lon:number|null; phase:string; status:string; mode:string; geometry_basis:string; source_url:string; note?:string }[] }>("operational_domains.json");
-  const oddCurrentGeometries = await loadJson<{ type:"FeatureCollection"; features:{ type:"Feature"; properties?:Record<string,unknown>; geometry:unknown }[] }>("odd_current_geometries.geojson");
-  const s2Summary = await loadJson<any>("waymo_s2_vintage_summary.json");
-  const s2Geo = await loadJson<any>("waymo_s2_latest.geojson");
-
-  return (
-    <div className="max-w-6xl px-8 py-6">
-      <p className="eyebrow mb-3">United States · Deployment · Waymo</p>
-      <h1 className="text-4xl font-semibold tracking-tight">Waymo Deployment Explorer</h1>
-      <p className="mt-2 text-sm text-neutral-600 max-w-3xl">
-        Current Waymo markets with observed S2 mileage where published, using current service-area boundaries as context and as the fallback where VMT has not yet been reported.
-      </p>
-      <DeploymentTabs active="waymo" />
-
-      <section id="s2" className="mt-8">
-        <div className="mb-2">
-          <h2 className="text-xl font-semibold tracking-tight">Waymo markets and observed deployment</h2>
-          <p className="text-sm text-neutral-600 mt-1">
-            Market-by-market views prioritize published S2 VMT. Current service-area polygons remain as context and fill gaps where Waymo has not yet published cell-level mileage.
-          </p>
-        </div>
-        <WaymoS2Explorer summary={s2Summary} geojson={s2Geo} serviceGeojson={oddCurrentGeometries} locations={odd.locations} />
-      </section>
-    </div>
-  );
+  const [operational, geometries, latestS2, vintages] = await Promise.all([
+    loadJson<{ locations: Location[] }>("operational_domains.json"),
+    loadJson<Geojson>("odd_current_geometries.geojson"),
+    loadJson<S2Geojson>("waymo_s2_latest.geojson"),
+    loadJson<VintageSummary>("waymo_s2_vintage_summary.json"),
+  ]);
+  return <main className="max-w-7xl px-5 sm:px-8 py-6">
+    <p className="eyebrow mb-3">United States · Deployment</p>
+    <h1 className="text-3xl sm:text-4xl font-semibold tracking-tight">Waymo deployment</h1>
+    <p className="text-sm text-neutral-600 mt-2">Select a city to explore S2 operational mileage or its documented service-area geography. The same map also covers other companies.</p>
+    <Link href="/deployment" className="text-sm text-[#184f95] underline inline-block mt-2">Deployment overview →</Link>
+    <div className="mt-5"><CompanyDeploymentExplorer locations={operational.locations} geometries={geometries} latestS2={latestS2} vintages={vintages} /></div>
+  </main>;
 }
