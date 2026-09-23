@@ -119,8 +119,8 @@ export function OddMap({
                 : ref;
               const geometryType = String((geo.geometry as { type?: string })?.type ?? p?.geometry_type ?? "");
               const isLine = geometryType === "LineString" || geometryType === "MultiLineString";
-              const phaseColor = p?.phase === "testing" ? "#eda100" : p?.phase === "announced" ? "#7a5cc7" : "#2a78d6";
-              const phaseStroke = p?.phase === "testing" ? "#a86f00" : p?.phase === "announced" ? "#4a3aa7" : "#184f95";
+              const phaseColor = p?.phase === "testing" ? "#eda100" : "#2a78d6";
+              const phaseStroke = p?.phase === "testing" ? "#a86f00" : "#184f95";
               return (
                 <Geography
                   key={geo.rsmKey}
@@ -163,7 +163,6 @@ export function OddMap({
         <span><span className="inline-block w-3 h-3 align-middle mr-1 rounded-sm bg-[#2a78d6]/40 border border-[#184f95]" />Deployment/service boundary</span>
         <span><span className="inline-block w-3 h-3 align-middle mr-1 rounded-sm bg-[#eda100]/40 border border-[#a86f00]" />Testing boundary</span>
         <span><span className="inline-block w-3 h-1 align-middle mr-1 bg-[#184f95]" />Freight corridor (schematic where exact road geometry is unavailable)</span>
-        <span><span className="inline-block w-3 h-3 align-middle mr-1 rounded-sm bg-[#7a5cc7]/40 border border-[#4a3aa7]" />Publicly announced</span>
         <span><span className="inline-block w-2.5 h-2.5 align-middle mr-1 rounded-full bg-[#eb6834]" />Current market point without current polygon</span>
       </div>
       <div className="mt-1 text-xs text-neutral-500">Drag to pan · scroll or controls to zoom · hover or click polygons for details</div>
