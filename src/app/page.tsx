@@ -1,18 +1,11 @@
 import { promises as fs } from "fs";
 import path from "path";
+import Link from "next/link";
 import { ActivityMonthlyDataset } from "@/lib/activity";
 import { SgoMonthlyDataset, WaymoS2StateSummary } from "@/lib/safety";
-import { StatePermitRegistry } from "@/lib/registry";
-import Link from "next/link";
-import {
-  sgoIncidentsStat,
-  waymoTotalMiles,
-  entitiesReportingStat,
-} from "@/lib/overview";
+import { sgoIncidentsStat, waymoTotalMiles, entitiesReportingStat } from "@/lib/overview";
 import { StatTile } from "@/components/StatTile";
 import { Panel } from "@/components/Panel";
-import { TripsChart } from "@/components/ActivityCharts";
-import { CountyMilesTable } from "@/components/SafetyCharts";
 import { UsStateMap } from "@/components/UsStateMap";
 
 async function loadJson<T>(filename: string): Promise<T> {
@@ -21,163 +14,224 @@ async function loadJson<T>(filename: string): Promise<T> {
   return JSON.parse(raw);
 }
 
-const STATE_NAME_TO_ABBREV: Record<string, string> = {
-  California: "CA", Arizona: "AZ", Texas: "TX", Georgia: "GA",
+type OperationalLocation = {
+  company: string;
+  state: string;
+  market: string;
+  phase: string;
+  activity_type?: string;
+  evidence_status?: string;
+  status: string;
+  mode: string;
+  source_url: string;
+  source_date?: string;
 };
 
+function isCurrentOperation(d: OperationalLocation) {
+  const activity = d.activity_type ?? d.phase;
+  const status = (d.status ?? "").toLowerCase();
+  return (d.evidence_status ?? "current") === "current"
+    && activity === "deployment"
+    && !status.includes("planned")
+    && !status.includes("authorized")
+    && !status.includes("permit");
+}
+
+function compact(n: number) {
+  if (n >= 1_000_000) return `${(n / 1_000_000).toFixed(n >= 10_000_000 ? 0 : 1)}M`;
+  if (n >= 1_000) return `${(n / 1_000).toFixed(n >= 100_000 ? 0 : 1)}K`;
+  return Math.round(n).toLocaleString();
+}
+
 export default async function OverviewPage() {
-  const [cpuc, sgo, waymoS2, registry] = await Promise.all([
+  const [cpuc, sgo, waymoS2, odd] = await Promise.all([
     loadJson<ActivityMonthlyDataset>("cpuc_activity_monthly.json"),
     loadJson<SgoMonthlyDataset>("sgo_incidents_monthly.json"),
     loadJson<WaymoS2StateSummary>("waymo_s2_state_summary.json"),
-    loadJson<StatePermitRegistry>("state_permit_registry.json"),
+    loadJson<{ verified_through?: string; locations: OperationalLocation[] }>("operational_domains.json"),
   ]);
+
   const incidents = sgoIncidentsStat(sgo);
-  const totalWaymoMiles = waymoTotalMiles(waymoS2);
   const entities = entitiesReportingStat(sgo);
+  const totalWaymoMiles = waymoTotalMiles(waymoS2);
 
-  const milesByAbbrev: Record<string, number> = {};
-  for (const s of waymoS2.state_summary) milesByAbbrev[STATE_NAME_TO_ABBREV[s.state] ?? s.state] = s.waymo_ro_miles;
+  const currentOps = odd.locations.filter(isCurrentOperation);
+  const currentCompanies = Array.from(new Set(currentOps.map(d => d.company))).sort();
+  const currentStates = Array.from(new Set(currentOps.map(d => d.state))).sort();
 
-  const authorizationByState: Record<string, number> = {};
-  const operationalStates = new Set<string>();
-  for (const p of registry.all_permits) {
-    if (p.state === "US") continue;
-    if (p.source_category === "operational_evidence") {
-      operationalStates.add(p.state);
+  const companiesByState = new Map<string, Set<string>>();
+  for (const d of currentOps) {
+    if (!companiesByState.has(d.state)) companiesByState.set(d.state, new Set());
+    companiesByState.get(d.state)!.add(d.company);
+  }
+  const operationValueByState = Object.fromEntries(
+    Array.from(companiesByState.entries()).map(([state, companies]) => [state, companies.size])
+  );
+
+  const passengerMarkets = new Map<string, { state: string; companies: Set<string> }>();
+  const freightCorridors = new Map<string, Set<string>>();
+  for (const d of currentOps) {
+    if (d.mode === "freight") {
+      if (!freightCorridors.has(d.market)) freightCorridors.set(d.market, new Set());
+      freightCorridors.get(d.market)!.add(d.company);
       continue;
     }
-    authorizationByState[p.state] = (authorizationByState[p.state] ?? 0) + 1;
+    const key = `${d.market}|${d.state}`;
+    if (!passengerMarkets.has(key)) passengerMarkets.set(key, { state: d.state, companies: new Set() });
+    passengerMarkets.get(key)!.companies.add(d.company);
   }
 
-  const regulatoryCategoryByState: Record<string, string> = {};
-  for (const state of operationalStates) regulatoryCategoryByState[state] = "operational";
-  for (const state of Object.keys(authorizationByState)) regulatoryCategoryByState[state] = "public_roster";
-  for (const s of registry.states_status_notes) {
-    if (s.status === "permit_required_not_public") regulatoryCategoryByState[s.state] = "permit_regime";
-    else if (!regulatoryCategoryByState[s.state] && s.status === "unclear") regulatoryCategoryByState[s.state] = "unclear";
-  }
+  const topPassengerMarkets = Array.from(passengerMarkets.entries())
+    .map(([key, value]) => ({
+      market: key.split("|")[0],
+      state: value.state,
+      companies: Array.from(value.companies).sort(),
+    }))
+    .sort((a, b) => b.companies.length - a.companies.length || a.market.localeCompare(b.market))
+    .slice(0, 10);
 
-  const authorizationStates = Object.keys(authorizationByState).length;
-  const permitRegimeStates = registry.states_status_notes.filter(s => s.status === "permit_required_not_public").length;
-  const documentedOperationalStates = operationalStates.size;
+  const freightRows = Array.from(freightCorridors.entries())
+    .map(([market, companies]) => ({ market, companies: Array.from(companies).sort() }))
+    .sort((a, b) => a.market.localeCompare(b.market))
+    .slice(0, 8);
 
-  const dataAvailability: { state: string; cpuc: boolean; sgo: boolean; waymoS2: boolean }[] = (() => {
-    const states = new Set<string>(["CA", ...sgo.states_represented, ...Object.keys(milesByAbbrev)]);
-    return Array.from(states)
-      .sort()
-      .map((state) => ({
-        state,
-        cpuc: state === "CA",
-        sgo: sgo.states_represented.includes(state),
-        waymoS2: Object.keys(milesByAbbrev).includes(state),
-      }));
-  })();
+  const latestPeriod = cpuc.data.reduce((best, row) => {
+    const key = row.calendar_year * 100 + row.calendar_month;
+    return key > best ? key : best;
+  }, 0);
+  const latestRows = cpuc.data.filter(row => row.calendar_year * 100 + row.calendar_month === latestPeriod);
+  const latestTrips = latestRows.reduce((sum, row) => sum + (row.total_trips ?? 0), 0);
+  const latestVmt = latestRows.reduce((sum, row) => sum + (row.total_vmt_all_periods ?? 0), 0);
+  const latestYear = Math.floor(latestPeriod / 100);
+  const latestMonth = latestPeriod % 100;
+  const latestPeriodLabel = new Date(latestYear, latestMonth - 1, 1).toLocaleString("en-US", { month: "short", year: "numeric" });
 
   return (
-    <div className="px-8 py-8">
+    <div className="max-w-6xl px-8 py-8">
       <p className="eyebrow mb-3">United States</p>
-      <h1 className="text-4xl font-semibold tracking-tight text-[#0b1d33] max-w-3xl">The U.S. Autonomous Vehicle Observatory</h1>
+      <h1 className="text-4xl font-semibold tracking-tight text-[#0b1d33] max-w-3xl">
+        The U.S. Autonomous Vehicle Observatory
+      </h1>
       <p className="mt-2 text-sm text-neutral-600 max-w-3xl">
-        National AV deployment, safety, and activity data from federal, state, and operator sources.
+        A national snapshot of where autonomous vehicles are operating, the major passenger and freight markets, reported safety incidents, and available ride and mileage exposure data.
       </p>
 
-      <div className="mt-5 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-2.5">
-        <StatTile label="States in national incident data" value={sgo.states_represented.length.toString()} caption="States represented in NHTSA SGO incident reports" href="/safety#geography" />
-        <StatTile label="ADS reporting entities" value={entities.total.toString()} caption="Entities represented in the national SGO dataset" href="/safety#entities" />
-        <StatTile label="Reported incidents" value={incidents.total.toLocaleString()} pctChange={incidents.pctChange} caption="NHTSA SGO, all represented operators and states" href="/safety#trends" />
-        <StatTile label="States with public holder rosters" value={authorizationStates.toString()} caption="Company-level permit / registry records currently ingested" href="/deployment#regulatory" />
-        <StatTile label="Additional permit-regime states" value={permitRegimeStates.toString()} caption="Permit required, but holder roster not publicly available" href="/deployment#regulatory" />
+      <div className="mt-5 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-2.5">
+        <StatTile label="Current operating companies" value={currentCompanies.length.toString()} caption="Companies with current deployment evidence in the Observatory" href="/deployment" />
+        <StatTile label="States with current operations" value={currentStates.length.toString()} caption="States represented by current deployment evidence" href="/deployment" />
+        <StatTile label="Passenger markets" value={passengerMarkets.size.toString()} caption="Current ridehail, shuttle, and passenger-service markets" href="/deployment" />
+        <StatTile label="Reported SGO incidents" value={incidents.total.toLocaleString()} pctChange={incidents.pctChange} caption="NHTSA incident reports; reports are not findings of fault" href="/safety" />
+        <StatTile label={`CA passenger trips · ${latestPeriodLabel}`} value={compact(latestTrips)} caption="Latest CPUC-reported monthly passenger trips" href="/activity" />
+        <StatTile label="Waymo published miles" value={compact(totalWaymoMiles)} caption={`Latest S2 benchmark vintage ${waymoS2.vintage_end}`} href="/deployment/waymo" />
       </div>
 
-      <div className="mt-6 grid lg:grid-cols-3 gap-3">
-        <div className="lg:col-span-2">
-          <Panel
-            title="U.S. AV regulatory and operating footprint"
-            subtitle="Public holder rosters, non-public permit regimes, and documented operation."
-            source="State DMV, DOT, PUC, NHTSA, and operator-published records"
-          >
-            <UsStateMap
-              categoryByAbbrev={regulatoryCategoryByState}
-              categories={{
-                public_roster: { label: "Public company-level permit / registry roster", color: "#1f5fae" },
-                permit_regime: { label: "Permit / authorization required; holder roster not public", color: "#6da7ec" },
-                operational: { label: "Documented AV operation; no public holder roster ingested", color: "#9fd3c7" },
-                unclear: { label: "Regulatory status under review", color: "#d8d6cf" },
-              }}
-            />
-          </Panel>
-          <div className="mt-2 text-xs"><Link href="/deployment" className="underline font-medium text-[#0b1d33]">Open the national Deployment Explorer →</Link></div>
-        </div>
-        <Panel
-          title="California passenger trips"
-          subtitle="Monthly CPUC-reported passenger service."
-          source="CPUC AV Program deployment reports"
-        >
-          <TripsChart rows={cpuc.data} />
-        </Panel>
-      </div>
-
-      <div className="mt-7 flex items-baseline justify-between gap-4">
-        <h2 className="text-lg font-semibold tracking-tight">Exposure and source coverage</h2>
-        <span className="text-xs text-neutral-500">State and operator detail</span>
-      </div>
-
-      <div className="mt-2 grid lg:grid-cols-3 gap-3">
-        <Panel
-          title="Top counties by Waymo reported miles"
-          source="Waymo self-published safety benchmark data"
-        >
-          <CountyMilesTable data={waymoS2} limit={8} />
-        </Panel>
-
-        <Panel
-          title="Coverage by state"
-          subtitle="Current source coverage by geography."
-        >
-          <table className="w-full text-xs">
-            <thead>
-              <tr className="text-left text-neutral-500 border-b border-neutral-200">
-                <th className="py-1.5 pr-2 font-medium">State</th>
-                <th className="py-1.5 px-2 font-medium text-center">CPUC</th>
-                <th className="py-1.5 px-2 font-medium text-center">SGO</th>
-                <th className="py-1.5 px-2 font-medium text-center">Waymo S2</th>
-              </tr>
-            </thead>
-            <tbody>
-              {dataAvailability.map((row) => (
-                <tr key={row.state} className="border-b border-neutral-100">
-                  <td className="py-1.5 pr-2">{row.state}</td>
-                  <Dot on={row.cpuc} />
-                  <Dot on={row.sgo} />
-                  <Dot on={row.waymoS2} />
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </Panel>
-
-        <Panel title="Coverage counts">
-          <div className="space-y-4 text-sm">
-            <div className="flex justify-between border-b border-neutral-100 pb-2"><span>Public permit / registry rosters</span><strong>{authorizationStates}</strong></div>
-            <div className="flex justify-between border-b border-neutral-100 pb-2"><span>Permit regimes, roster not public</span><strong>{permitRegimeStates}</strong></div>
-            <div className="flex justify-between border-b border-neutral-100 pb-2"><span>States with operational evidence</span><strong>{documentedOperationalStates}</strong></div>
-            <div className="flex justify-between"><span>States in NHTSA SGO data</span><strong>{sgo.states_represented.length}</strong></div>
+      <section className="mt-7">
+        <div className="flex items-baseline justify-between gap-4 mb-2">
+          <div>
+            <h2 className="text-xl font-semibold tracking-tight">Current U.S. operations</h2>
+            <p className="text-sm text-neutral-600 mt-1">
+              State shading is the number of companies with current deployment evidence, not permit eligibility or testing authority.
+            </p>
           </div>
-        </Panel>
-      </div>
+          <Link href="/deployment" className="text-sm underline font-medium text-[#0b1d33]">Deployment detail →</Link>
+        </div>
+        <div className="grid lg:grid-cols-[1.45fr_.55fr] gap-3">
+          <Panel title="Operating footprint" subtitle="Current deployment evidence by state." source={`Operator, regulator, and platform sources · verified through ${odd.verified_through ?? "latest refresh"}`}>
+            <UsStateMap valueByAbbrev={operationValueByState} />
+          </Panel>
+          <Panel title="National operating mix">
+            <div className="space-y-3 text-sm">
+              <SummaryRow label="Current operating companies" value={currentCompanies.length} />
+              <SummaryRow label="Passenger markets" value={passengerMarkets.size} />
+              <SummaryRow label="Freight corridors / markets" value={freightCorridors.size} />
+              <SummaryRow label="States with current deployment evidence" value={currentStates.length} />
+            </div>
+            <div className="mt-4 flex flex-wrap gap-1.5">
+              {currentCompanies.map(company => <span key={company} className="badge">{company}</span>)}
+            </div>
+          </Panel>
+        </div>
+      </section>
 
-      <div className="mt-4 text-[11px] text-neutral-400">
-        Last updated: pipeline runs are manual for now; see each page for source-specific dates.
+      <section className="mt-7 grid lg:grid-cols-2 gap-3">
+        <Panel title="Primary passenger markets" subtitle="Current passenger-service markets; operators shown where multiple services overlap.">
+          <div className="divide-y divide-neutral-100">
+            {topPassengerMarkets.map(row => (
+              <div key={`${row.market}-${row.state}`} className="py-2 first:pt-0 flex items-start justify-between gap-4 text-sm">
+                <div>
+                  <div className="font-medium">{row.market}, {row.state}</div>
+                  <div className="text-xs text-neutral-500 mt-0.5">{row.companies.join(" · ")}</div>
+                </div>
+                <div className="text-xs text-neutral-400 tabular-nums">{row.companies.length} operator{row.companies.length === 1 ? "" : "s"}</div>
+              </div>
+            ))}
+          </div>
+          <Link href="/deployment" className="inline-block mt-3 text-sm underline font-medium text-[#0b1d33]">Explore service areas and ODDs →</Link>
+        </Panel>
+
+        <Panel title="Current freight operations" subtitle="Reported commercial freight corridors and operating markets.">
+          {freightRows.length ? (
+            <div className="divide-y divide-neutral-100">
+              {freightRows.map(row => (
+                <div key={row.market} className="py-2 first:pt-0 text-sm">
+                  <div className="font-medium">{row.market}</div>
+                  <div className="text-xs text-neutral-500 mt-0.5">{row.companies.join(" · ")}</div>
+                </div>
+              ))}
+            </div>
+          ) : <div className="text-sm text-neutral-500">No current freight deployment records in the current dataset.</div>}
+          <Link href="/deployment" className="inline-block mt-3 text-sm underline font-medium text-[#0b1d33]">See corridor evidence →</Link>
+        </Panel>
+      </section>
+
+      <section className="mt-7">
+        <h2 className="text-xl font-semibold tracking-tight">National indicators</h2>
+        <p className="text-sm text-neutral-600 mt-1">
+          The overview stops at headline indicators; detailed charts and record-level analysis live on the dedicated pages.
+        </p>
+        <div className="mt-3 grid md:grid-cols-3 gap-3">
+          <OverviewCard
+            eyebrow="Safety reporting"
+            title={`${incidents.total.toLocaleString()} NHTSA SGO incident reports`}
+            body={`${entities.total} reporting entities across ${sgo.states_represented.filter(s => s !== "Unknown").length} identified states. Counts are reports, not verified at-fault crashes.`}
+            href="/safety"
+            linkLabel="Open Safety"
+          />
+          <OverviewCard
+            eyebrow="Passenger activity"
+            title={`${compact(latestTrips)} reported trips in ${latestPeriodLabel}`}
+            body={`California CPUC passenger-service reports also record ${compact(latestVmt)} vehicle miles in the latest month. This is California reporting, not a national rides total.`}
+            href="/activity"
+            linkLabel="Open Activity"
+          />
+          <OverviewCard
+            eyebrow="Waymo exposure"
+            title={`${compact(totalWaymoMiles)} published operational miles`}
+            body="Waymo's S2 benchmark provides unusually detailed geographic exposure data. It is kept in the dedicated Waymo deployment view rather than repeated here."
+            href="/deployment/waymo"
+            linkLabel="Open Waymo deployment"
+          />
+        </div>
+      </section>
+
+      <div className="mt-5 text-[11px] text-neutral-400">
+        Sources have different reporting scopes and vintages. Headline counts are labeled to avoid treating California trip reporting, NHTSA incident reporting, and operator-published mileage as directly comparable national measures.
       </div>
     </div>
   );
 }
 
-function Dot({ on }: { on: boolean }) {
+function SummaryRow({ label, value }: { label: string; value: number }) {
+  return <div className="flex justify-between border-b border-neutral-100 pb-2"><span>{label}</span><strong className="tabular-nums">{value}</strong></div>;
+}
+
+function OverviewCard({ eyebrow, title, body, href, linkLabel }: { eyebrow: string; title: string; body: string; href: string; linkLabel: string }) {
   return (
-    <td className="py-1.5 px-2 text-center">
-      <span className={`inline-block w-2 h-2 rounded-full ${on ? "bg-emerald-500" : "bg-neutral-200"}`} />
-    </td>
+    <div className="viz-card p-5">
+      <div className="eyebrow">{eyebrow}</div>
+      <div className="text-lg font-semibold mt-2">{title}</div>
+      <p className="text-sm text-neutral-600 mt-2 leading-relaxed">{body}</p>
+      <Link href={href} className="inline-block mt-4 text-sm underline font-medium text-[#0b1d33]">{linkLabel} →</Link>
+    </div>
   );
 }
