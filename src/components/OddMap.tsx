@@ -23,6 +23,7 @@ export type OddPolygon = {
   event_date?: string;
   event_type?: string;
   geometry_ref: string;
+  geometry_type?: string;
   source_url?: string;
 };
 
@@ -116,14 +117,18 @@ export function OddMap({
               const label = p
                 ? [p.company, p.market, p.phase, p.event_date].filter(Boolean).join(" · ")
                 : ref;
+              const geometryType = String((geo.geometry as { type?: string })?.type ?? p?.geometry_type ?? "");
+              const isLine = geometryType === "LineString" || geometryType === "MultiLineString";
+              const phaseColor = p?.phase === "testing" ? "#eda100" : p?.phase === "planned" ? "#7a5cc7" : "#2a78d6";
+              const phaseStroke = p?.phase === "testing" ? "#a86f00" : p?.phase === "planned" ? "#4a3aa7" : "#184f95";
               return (
                 <Geography
                   key={geo.rsmKey}
                   geography={geo}
-                  fill={p?.phase === "testing" ? "#eda100" : "#2a78d6"}
-                  fillOpacity={0.38}
-                  stroke={p?.phase === "testing" ? "#a86f00" : "#184f95"}
-                  strokeWidth={1.2 / zoom}
+                  fill={isLine ? "none" : phaseColor}
+                  fillOpacity={isLine ? 0 : 0.38}
+                  stroke={phaseStroke}
+                  strokeWidth={(isLine ? 3 : 1.2) / zoom}
                   onMouseEnter={(evt) => setHover({ text: label, x: evt.clientX, y: evt.clientY })}
                   onMouseMove={(evt) => setHover(h => h ? { ...h, x: evt.clientX, y: evt.clientY } : h)}
                   onMouseLeave={() => setHover(null)}
@@ -157,6 +162,8 @@ export function OddMap({
       <div className="mt-2 flex flex-wrap gap-x-5 gap-y-1 text-xs text-neutral-600">
         <span><span className="inline-block w-3 h-3 align-middle mr-1 rounded-sm bg-[#2a78d6]/40 border border-[#184f95]" />Deployment/service boundary</span>
         <span><span className="inline-block w-3 h-3 align-middle mr-1 rounded-sm bg-[#eda100]/40 border border-[#a86f00]" />Testing boundary</span>
+        <span><span className="inline-block w-3 h-1 align-middle mr-1 bg-[#184f95]" />Freight corridor (schematic where exact road geometry is unavailable)</span>
+        <span><span className="inline-block w-3 h-3 align-middle mr-1 rounded-sm bg-[#7a5cc7]/40 border border-[#4a3aa7]" />Planned / announced</span>
         <span><span className="inline-block w-2.5 h-2.5 align-middle mr-1 rounded-full bg-[#eb6834]" />Current market point without current polygon</span>
       </div>
       <div className="mt-1 text-xs text-neutral-500">Drag to pan · scroll or controls to zoom · hover or click polygons for details</div>

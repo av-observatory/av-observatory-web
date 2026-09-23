@@ -21,9 +21,10 @@ const STATUS_LABELS: Record<string, string> = {
 export default async function DeploymentPage() {
   const ma = await loadJson<MaAdtRegistry>("ma_adt_testing_registry.json");
   const registry = await loadJson<StatePermitRegistry>("state_permit_registry.json");
-  const odd = await loadJson<{ locations: { company:string; state:string; market:string; lat:number; lon:number; phase:string; status:string; mode:string; geometry_basis:string; source_url:string; note?:string }[] }>("operational_domains.json");
+  const odd = await loadJson<{ locations: { company:string; state:string; market:string; lat:number|null; lon:number|null; phase:string; status:string; mode:string; geometry_basis:string; source_url:string; note?:string }[] }>("operational_domains.json");
   const oddHistory = await loadJson<{ historical_events: { date:string; event_type:string; phase:string; company:string; market:string; state:string; geometry_ref?:string|null; geometry_basis?:string; source_url?:string|null }[] }>("odd_history.json");
   const oddGeometries = await loadJson<{ type:"FeatureCollection"; features:{ type:"Feature"; properties?:Record<string,unknown>; geometry:unknown }[] }>("odd_geometries.geojson");
+  const oddCurrentGeometries = await loadJson<{ type:"FeatureCollection"; features:{ type:"Feature"; properties?:Record<string,unknown>; geometry:unknown }[] }>("odd_current_geometries.geojson");
   const s2Summary = await loadJson<any>("waymo_s2_vintage_summary.json");
   const s2Geo = await loadJson<any>("waymo_s2_latest.geojson");
 
@@ -52,6 +53,7 @@ export default async function DeploymentPage() {
           locations={odd.locations}
           history={oddHistory.historical_events}
           geometries={oddGeometries}
+          currentGeometries={oddCurrentGeometries}
           manufacturerNames={registry.manufacturers.map(m => m.display_name)}
         />
       </section>

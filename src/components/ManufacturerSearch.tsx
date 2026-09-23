@@ -38,7 +38,7 @@ function driverMode(p: RegistryPermit) {
 }
 
 type OperationalLocation = {
-  company: string; state: string; market: string; lat: number; lon: number;
+  company: string; state: string; market: string; lat: number | null; lon: number | null;
   status: string; mode: string; geometry_basis: string; source_url: string; note?: string;
 };
 
@@ -65,6 +65,7 @@ export function ManufacturerSearch({
   const states = useMemo(() => Array.from(new Set([
     ...manufacturers.flatMap(m => m.permits.map(p => p.state).filter(realState)),
     ...stateStatuses.map(s => s.state),
+    ...operationalLocations.map(s => s.state),
   ])).sort(), [manufacturers, stateStatuses]);
 
   const statusByState = useMemo(() => Object.fromEntries(stateStatuses.map(s => [s.state, s])), [stateStatuses]);
@@ -103,6 +104,7 @@ export function ManufacturerSearch({
   const useNationalCategoryMap = company === "ALL" && state === "ALL" && type === "all" && driver === "all" && evidence === "authorizations";
   const selectedStatus = state !== "ALL" ? statusByState[state] : undefined;
   const operationalMarkers = useMemo(() => operationalLocations.filter(loc => {
+    if (loc.lat === null || loc.lon === null || !Number.isFinite(loc.lat) || !Number.isFinite(loc.lon)) return false;
     if (state !== "ALL" && loc.state !== state) return false;
     if (company !== "ALL") {
       const selected = manufacturers.find(m => m.manufacturer_key === company);
@@ -113,7 +115,7 @@ export function ManufacturerSearch({
     return true;
   }).map(loc => ({
     name: loc.market,
-    coordinates: [loc.lon, loc.lat] as [number, number],
+    coordinates: [loc.lon as number, loc.lat as number] as [number, number],
     company: loc.company,
     status: loc.status,
     mode: loc.mode,

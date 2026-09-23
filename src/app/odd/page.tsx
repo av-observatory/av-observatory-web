@@ -9,7 +9,7 @@ async function loadJson<T>(filename: string): Promise<T> {
 }
 
 type OperationalLocation = {
-  company: string; state: string; market: string; lat: number; lon: number;
+  company: string; state: string; market: string; lat: number | null; lon: number | null;
   phase: string; status: string; mode: string; geometry_basis: string;
   source_url: string; source_date?: string; geometry_path?: string; note?: string;
 };
@@ -20,10 +20,11 @@ type OddEvent = {
 type Feature = { type:"Feature"; properties?:Record<string,unknown>; geometry:unknown };
 
 export default async function OddPage() {
-  const [odd, history, geometries] = await Promise.all([
+  const [odd, history, geometries, currentGeometries] = await Promise.all([
     loadJson<{ locations: OperationalLocation[] }>("operational_domains.json"),
     loadJson<{ historical_events: OddEvent[] }>("odd_history.json"),
     loadJson<{ type:"FeatureCollection"; features:Feature[] }>("odd_geometries.geojson"),
+    loadJson<{ type:"FeatureCollection"; features:Feature[] }>("odd_current_geometries.geojson"),
   ]);
 
   return (
@@ -34,7 +35,7 @@ export default async function OddPage() {
         Interactive testing and deployment boundaries. This same analysis is integrated into the Deployment page.
       </p>
       <section className="mt-5">
-        <OddExplorer locations={odd.locations} history={history.historical_events} geometries={geometries} />
+        <OddExplorer locations={odd.locations} history={history.historical_events} geometries={geometries} currentGeometries={currentGeometries} />
       </section>
     </div>
   );
