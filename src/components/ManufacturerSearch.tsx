@@ -165,9 +165,6 @@ export function ManufacturerSearch({
   ).sort(), [rows]);
 
   const companyCount = matchingCompanies.length;
-  const permitCount = rows.filter(({p}) => p.source_category !== "operational_evidence").length;
-  const evidenceCount = rows.filter(({p}) => p.source_category === "operational_evidence").length;
-
   return <div>
     <div className="viz-card p-4">
       <div className="grid md:grid-cols-3 xl:grid-cols-5 gap-3">
