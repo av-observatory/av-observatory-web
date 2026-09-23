@@ -1,0 +1,34 @@
+name: Refresh AV 311 Complaints
+
+on:
+  schedule:
+    - cron: "17 10 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh-av-311
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch reviewed city AV category and update CSV
+        run: |
+          python3 scripts/refresh-311.py
+          python3 scripts/refresh-311.py --check
+          python3 scripts/export-data-csv.py
+          python3 scripts/export-data-csv.py --check
+      - name: Commit changed public records
+        run: |
+          git add public/data/av_311_complaints.json public/data/av_311_complaints.csv public/data/av_311_complaints_monthly.csv
+          if ! git diff --cached --quiet; then
+            git config user.name "AV Observatory Data Bot"
+            git config user.email "actions@users.noreply.github.com"
+            git commit -m "Refresh validated AV 311 requests"
+            git push
+          fi

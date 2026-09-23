@@ -86,6 +86,13 @@ def main():
             export(stem + ".csv", data["locations"], output)
         elif stem == "waymo_ca_exposure_rate":
             export(stem + ".csv", data["monthly"], output)
+        elif stem == "av_311_complaints":
+            export(stem + ".csv", data["records"], output)
+            export(stem + "_monthly.csv", data["monthly"], output)
+        elif stem == "av_311_source_registry":
+            export(stem + ".csv", data["states"], output)
+        elif stem == "ca_waymo_sgo_rates":
+            export(stem + ".csv", data["monthly"], output)
         elif stem == "cpuc_vs_waymo_s2_ca_miles":
             export(stem + ".csv", [{"title": data["title"], "purpose": data["purpose"],
                 **{side + "_" + k: v for side in ("cpuc_side", "waymo_s2_side") for k, v in data[side].items()},

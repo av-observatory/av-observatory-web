@@ -1,0 +1,13 @@
+state,markets,status,note,source_url
+AR,"[""Northwest Arkansas""]",review_needed,Bentonville 311 exists; no public AV-identifiable request export verified.,https://www.bentonvillear.com/1478/Bentonville-Citizen-Connect
+AZ,"[""Phoenix""]",review_needed,Phoenix open-data portal identified; no AV-identifiable 311 export verified.,https://www.phoenixopendata.com/
+CA,"[""San Francisco""]",indexed,Dedicated Autonomous Vehicle Complaints category in San Francisco 311.,https://data.sf.gov/d/vw6y-z8j6
+CA,"[""Los Angeles"",""San Diego"",""San Francisco Bay Area""]",source_reviewed,LA MyLA311 open requests publish type but no AV identifier verified; other cities require separate source reviews.,https://data.lacity.org/City-Infrastructure-Service-Requests/MyLA311-Cases-2026/2cy6-i7zn
+CO,"[""Denver""]",source_reviewed,Denver 311 open requests identified; AV complaint classification not verified.,https://opendata-geospatialdenver.hub.arcgis.com/search?q=311
+FL,"[""Miami"",""Orlando"",""Tampa"",""Altamonte Springs"",""Lake Nona""]",source_reviewed,Miami-Dade 311 publishes yearly requests; AV-identifiable fields not verified for these markets.,https://opendata.miamidade.gov/
+GA,"[""Atlanta"",""South Metro Atlanta""]",review_needed,ATL311 accepts requests; no AV-identifiable public request export verified.,https://www.atlantaga.gov/government/departments/customer-service-atl311
+MN,"[""Eden Prairie"",""Grand Rapids""]",review_needed,No AV-identifiable municipal 311 export verified.,https://www.edenprairie.org/
+NE,"[""Nebraska trucking corridors""]",not_applicable,Documented trucking corridors do not map to a single municipal 311 jurisdiction.,https://data.nebraska.gov/
+NV,"[""Las Vegas""]",source_reviewed,Las Vegas open-data service requests identified; AV complaint classification not verified.,https://opendataportal-lasvegas.opendata.arcgis.com/search?tags=calls+for+service
+TN,"[""Nashville""]",source_reviewed,hubNashville open service requests identified; AV complaint classification not verified.,https://data.nashville.gov/datasets/hubnashville-311-service-requests-current-year/about
+TX,"[""Austin"",""Dallas"",""Houston"",""San Antonio"",""Fort Worth""]",source_reviewed,"Austin, Dallas, Houston and San Antonio publish municipal requests; sampled Austin and Dallas fields did not provide an AV-specific category or narrative for reliable classification.",https://data.austintexas.gov/Utilities-and-City-Services/Austin-311-Public-Data/xwdj-i9he

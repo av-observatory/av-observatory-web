@@ -7,6 +7,7 @@ import { SafetyExplorer } from "@/components/SafetyExplorer";
 import { UsStateMap } from "@/components/UsStateMap";
 import { TopEntitiesChart } from "@/components/SafetyCharts";
 import { SgoDeepDive, SgoIncidentRow } from "@/components/SgoDeepDive";
+import { SgoSeriousCrashList, type SeriousCrash } from "@/components/SgoSeriousCrashList";
 
 async function loadJson<T>(filename: string): Promise<T> {
   const file = path.join(process.cwd(), "public", "data", filename);
@@ -40,6 +41,10 @@ async function loadSgoRows(): Promise<SgoIncidentRow[]> {
   const file = path.join(process.cwd(), "public", "data", "sgo_incidents.csv");
   const raw = await fs.readFile(file, "utf-8");
   const rows = parseCsv(raw);
+  const details = parseCsv(await fs.readFile(path.join(process.cwd(), "public", "data", "sgo_crash_details.csv"), "utf-8"));
+  const detailHeader = details.shift() ?? [];
+  const detailIdx = new Map(detailHeader.map((h, i) => [h, i]));
+  const bags = new Map(details.map(r => [r[detailIdx.get("report_id") ?? -1], r[detailIdx.get("air_bag_deployment") ?? -1]]));
   const header = rows.shift() ?? [];
   const idx = new Map(header.map((h,i)=>[h,i]));
   const fields: (keyof SgoIncidentRow)[] = [
@@ -50,14 +55,19 @@ async function loadSgoRows(): Promise<SgoIncidentRow[]> {
   return rows.filter(r=>r.length>1).map(r=>{
     const out = {} as SgoIncidentRow;
     for (const key of fields) out[key] = r[idx.get(key) ?? -1] ?? "";
+    out.air_bag_deployment = bags.get(out.report_id) ?? "Unknown";
     return out;
   });
 }
 
 export default async function SafetyPage() {
-  const [sgo, incidentRows] = await Promise.all([
+  const [sgo, incidentRows, seriousCrashes] = await Promise.all([
     loadJson<SgoMonthlyDataset>("sgo_incidents_monthly.json"),
     loadSgoRows(),
+    fs.readFile(path.join(process.cwd(), "public", "data", "sgo_serious_fatal_crashes.csv"), "utf-8").then(raw => {
+      const rows = parseCsv(raw); const header = rows.shift() ?? [];
+      return rows.filter(r => r.length > 1).map(r => Object.fromEntries(header.map((key, i) => [key, r[i] ?? ""])) as SeriousCrash);
+    }),
   ]);
 
   const incidentsByState: Record<string, number> = {};
@@ -105,6 +115,8 @@ export default async function SafetyPage() {
         </div>
         <SgoDeepDive rows={incidentRows} />
       </section>
+
+      <SgoSeriousCrashList crashes={seriousCrashes} />
 
     </div>
   );

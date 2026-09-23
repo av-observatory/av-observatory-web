@@ -2,6 +2,7 @@ import { promises as fs } from "fs";
 import path from "path";
 import { ActivityMonthlyDataset } from "@/lib/activity";
 import { ActivityExplorer } from "@/components/ActivityExplorer";
+import { CaCrashRates, type CaCrashRateDataset } from "@/components/CaCrashRates";
 import {
   WaymoCompositeStats,
   WaymoWaitingTime,
@@ -16,7 +17,10 @@ async function loadDataset(): Promise<ActivityMonthlyDataset> {
 }
 
 export default async function ActivityPage() {
-  const dataset = await loadDataset();
+  const [dataset, rates] = await Promise.all([
+    loadDataset(),
+    fs.readFile(path.join(process.cwd(), "public", "data", "ca_waymo_sgo_rates.json"), "utf-8").then(raw => JSON.parse(raw) as CaCrashRateDataset),
+  ]);
 
   return (
     <div className="max-w-6xl px-8 py-6">
@@ -29,6 +33,8 @@ export default async function ActivityPage() {
       <section className="mt-5">
         <WaymoCompositeStats rows={dataset.data} />
       </section>
+
+      <CaCrashRates data={rates} />
 
       <section className="mt-7">
         <div className="flex items-baseline justify-between gap-3 mb-2">

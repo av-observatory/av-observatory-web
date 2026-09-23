@@ -12,7 +12,7 @@ const GROUPS = [
 
 function groupFor(name: string) {
   if (/policy|legislation/.test(name)) return "policy";
-  if (/sgo_incidents|cpuc_activity|cpuc_vs_waymo|exposure_rate/.test(name)) return "reporting";
+  if (/sgo_|ca_waymo_sgo|cpuc_activity|cpuc_vs_waymo|exposure_rate|av_311/.test(name)) return "reporting";
   return "operations";
 }
 function labelFor(name: string) {
@@ -26,6 +26,8 @@ function descriptionFor(name: string) {
   if (name === "sgo_incidents.csv") return "One latest-version record per NHTSA SGO report ID.";
   if (name === "sgo_incidents_all_versions.csv") return "Original versioned reports; contains multiple versions of some reports.";
   if (name === "sgo_incidents_monthly.json") return "Monthly aggregates of latest-version SGO crash reports.";
+  if (name.startsWith("av_311")) return "Reviewed municipal 311 AV category records, monthly totals, and deployment-market source coverage.";
+  if (name === "ca_waymo_sgo_rates.json") return "California Waymo SGO crash and alleged severe-injury crash counts per million CPUC passenger-service miles; scopes differ.";
   if (name.startsWith("cpuc_activity")) return "California CPUC monthly passenger trips, riders, and vehicle miles.";
   if (name === "manufacturer_profiles.json") return "Operator services, approaches, partnerships, and developments.";
   if (name === "operational_domains.json") return "Documented testing and deployment locations.";

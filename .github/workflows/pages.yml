@@ -42,6 +42,14 @@ jobs:
       - name: Validate latest-version SGO reports
         run: python3 scripts/validate-sgo-snapshot.py
 
+      - name: Validate enriched SGO crash and rate data
+        run: python3 scripts/validate-safety-rates.py
+
+      - name: Validate AV 311 and Waymo map
+        run: |
+          python3 scripts/refresh-311.py --check
+          python3 scripts/build-waymo-explorer.py --check
+
       - name: Validate CSV companions
         run: python3 scripts/export-data-csv.py --check
 

@@ -25,6 +25,7 @@ export type SgoIncidentRow = {
   crash_with: string;
   highest_injury_severity: string;
   within_odd: string;
+  air_bag_deployment: string;
 };
 
 function hasValidFilingMonth(r:SgoIncidentRow) {
@@ -87,6 +88,7 @@ export function SgoDeepDive({ rows }: { rows:SgoIncidentRow[] }) {
   const severity=useMemo(()=>countBy(filtered,"highest_injury_severity",10,severityLabel),[filtered]);
   const roadway=useMemo(()=>countBy(filtered,"roadway_type",10),[filtered]);
   const withinOdd=useMemo(()=>countBy(filtered,"within_odd",8,oddLabel),[filtered]);
+  const airBags=useMemo(()=>countBy(filtered,"air_bag_deployment",3),[filtered]);
   const models=useMemo(()=> {
     const m=new Map<string,number>();
     for(const r of filtered){
@@ -140,6 +142,7 @@ export function SgoDeepDive({ rows }: { rows:SgoIncidentRow[] }) {
       <Breakdown title="Highest alleged injury severity" subtitle="As reported in SGO filings" data={severity} />
       <Breakdown title="Roadway type" subtitle="Reported roadway classification" data={roadway} />
       <Breakdown title="Within reported ODD?" subtitle="Reporting entity's Within ODD field" data={withinOdd} />
+      <Breakdown title="Air Bag Deployment" subtitle="Subject vehicle or crash partner; Unknown includes incomplete reports" data={airBags} />
       <Breakdown title="Vehicle make / model" subtitle="Most frequently represented vehicles in filtered reports" data={models} />
     </div>
   </div>;

@@ -1,0 +1,126 @@
+{
+  "schema_version": "1.0.0",
+  "methodology": "Coverage inventory for states with documented deployment in operational_domains.json. Each municipal 311 jurisdiction is separately assessed; a missing source is never counted as zero complaints. Indexed means an explicit AV complaint category in a reviewed public feed.",
+  "states": [
+    {
+      "state": "AR",
+      "markets": [
+        "Northwest Arkansas"
+      ],
+      "status": "review_needed",
+      "note": "Bentonville 311 exists; no public AV-identifiable request export verified.",
+      "source_url": "https://www.bentonvillear.com/1478/Bentonville-Citizen-Connect"
+    },
+    {
+      "state": "AZ",
+      "markets": [
+        "Phoenix"
+      ],
+      "status": "review_needed",
+      "note": "Phoenix open-data portal identified; no AV-identifiable 311 export verified.",
+      "source_url": "https://www.phoenixopendata.com/"
+    },
+    {
+      "state": "CA",
+      "markets": [
+        "San Francisco"
+      ],
+      "status": "indexed",
+      "note": "Dedicated Autonomous Vehicle Complaints category in San Francisco 311.",
+      "source_url": "https://data.sf.gov/d/vw6y-z8j6"
+    },
+    {
+      "state": "CA",
+      "markets": [
+        "Los Angeles",
+        "San Diego",
+        "San Francisco Bay Area"
+      ],
+      "status": "source_reviewed",
+      "note": "LA MyLA311 open requests publish type but no AV identifier verified; other cities require separate source reviews.",
+      "source_url": "https://data.lacity.org/City-Infrastructure-Service-Requests/MyLA311-Cases-2026/2cy6-i7zn"
+    },
+    {
+      "state": "CO",
+      "markets": [
+        "Denver"
+      ],
+      "status": "source_reviewed",
+      "note": "Denver 311 open requests identified; AV complaint classification not verified.",
+      "source_url": "https://opendata-geospatialdenver.hub.arcgis.com/search?q=311"
+    },
+    {
+      "state": "FL",
+      "markets": [
+        "Miami",
+        "Orlando",
+        "Tampa",
+        "Altamonte Springs",
+        "Lake Nona"
+      ],
+      "status": "source_reviewed",
+      "note": "Miami-Dade 311 publishes yearly requests; AV-identifiable fields not verified for these markets.",
+      "source_url": "https://opendata.miamidade.gov/"
+    },
+    {
+      "state": "GA",
+      "markets": [
+        "Atlanta",
+        "South Metro Atlanta"
+      ],
+      "status": "review_needed",
+      "note": "ATL311 accepts requests; no AV-identifiable public request export verified.",
+      "source_url": "https://www.atlantaga.gov/government/departments/customer-service-atl311"
+    },
+    {
+      "state": "MN",
+      "markets": [
+        "Eden Prairie",
+        "Grand Rapids"
+      ],
+      "status": "review_needed",
+      "note": "No AV-identifiable municipal 311 export verified.",
+      "source_url": "https://www.edenprairie.org/"
+    },
+    {
+      "state": "NE",
+      "markets": [
+        "Nebraska trucking corridors"
+      ],
+      "status": "not_applicable",
+      "note": "Documented trucking corridors do not map to a single municipal 311 jurisdiction.",
+      "source_url": "https://data.nebraska.gov/"
+    },
+    {
+      "state": "NV",
+      "markets": [
+        "Las Vegas"
+      ],
+      "status": "source_reviewed",
+      "note": "Las Vegas open-data service requests identified; AV complaint classification not verified.",
+      "source_url": "https://opendataportal-lasvegas.opendata.arcgis.com/search?tags=calls+for+service"
+    },
+    {
+      "state": "TN",
+      "markets": [
+        "Nashville"
+      ],
+      "status": "source_reviewed",
+      "note": "hubNashville open service requests identified; AV complaint classification not verified.",
+      "source_url": "https://data.nashville.gov/datasets/hubnashville-311-service-requests-current-year/about"
+    },
+    {
+      "state": "TX",
+      "markets": [
+        "Austin",
+        "Dallas",
+        "Houston",
+        "San Antonio",
+        "Fort Worth"
+      ],
+      "status": "source_reviewed",
+      "note": "Austin, Dallas, Houston and San Antonio publish municipal requests; sampled Austin and Dallas fields did not provide an AV-specific category or narrative for reliable classification.",
+      "source_url": "https://data.austintexas.gov/Utilities-and-City-Services/Austin-311-Public-Data/xwdj-i9he"
+    }
+  ]
+}
