@@ -36,23 +36,42 @@ orders = {
 }
 
 state_links = {
+    "AL": ("Alabama SB 47 enrolled text", "https://alison.legislature.state.al.us/files/pdf/SearchableInstruments/2019RS/PrintFiles/SB47-Enr.pdf"),
     "AR": ("Arkansas HB 1561 · AV pilot program", "https://www.arkleg.state.ar.us/Bills/Detail?ddBienniumSession=2019%2F2019R&id=HB1561"),
     "AZ": ("Arizona DOT AV framework and HB 2813 history", "https://azdot.gov/mvd/services/professional-services/autonomous-vehicles-testing-and-operating-state-arizona"),
     "CA": ("California DMV AV program", "https://www.dmv.ca.gov/portal/vehicle-industry-services/autonomous-vehicles/"),
     "CO": ("Colorado SB 17-213", "https://leg.colorado.gov/bills/sb17-213"),
+    "CT": ("Connecticut Public Act 17-69", "https://www.cga.ct.gov/2017/act/pa/2017PA-00069-R00SB-00260-PA.htm"),
     "FL": ("Florida Statutes § 316.85", "https://www.flsenate.gov/Laws/Statutes/2025/316.85"),
     "GA": ("Georgia SB 219", "https://www.legis.ga.gov/Legislation/20172018/170801.pdf"),
     "HI": ("Hawaii Act 21 (2020)", "https://data.capitol.hawaii.gov/sessions/sessionlaws/Years/SLH2020/SLH2020_Act21.pdf"),
+    "IA": ("Iowa Code § 321.514", "https://www.legis.iowa.gov/docs/code/321.514.pdf"),
     "IL": ("Illinois Vehicle Code § 11-208(e-10)", "https://www.ilga.gov/legislation/ilcs/fulltext?DocName=062500050K11-208"),
     "ME": ("Maine Resolve Chapter 46", "https://www.legislature.maine.gov/legis/bills/bills_128th/chapters/RESOLVE46.asp"),
+    "KS": ("Kansas Statutes § 8-2902", "https://www.kslegislature.gov/b2025_26/laws/008_000_0000_chapter/008_029_0000_article/008_029_0002_section/008_029_0002_k/"),
+    "KY": ("Kentucky HB 7 (2024)", "https://apps.legislature.ky.gov/record/24rs/hb7.html"),
+    "LA": ("Louisiana Revised Statutes § 32:400.3", "https://www.legis.la.gov/legis/LawPrint.aspx?d=1148308"),
+    "MD": ("Maryland Transportation Code § 15-901", "https://www.mgaleg.maryland.gov/mgawebsite/Laws/StatuteText?article=gtr&enactments=false&section=15-901"),
+    "MS": ("Mississippi HB 1003 sent to governor (2023)", "https://billstatus.ls.state.ms.us/documents/2023/pdf/HB/1000-1099/HB1003SG.pdf"),
+    "MT": ("Montana Code § 61-6-409", "https://mca.legmt.gov/bills/mca/title_0610/chapter_0060/part_0040/section_0090/0610-0060-0040-0090.html"),
+    "NE": ("Nebraska Revised Statutes § 60-3302", "https://nebraskalegislature.gov/laws/statutes.php?statute=60-3302"),
+    "NH": ("New Hampshire RSA 242:1", "https://gc.nh.gov/rsa/html/XX/242/242-1.htm"),
+    "NM": ("NMDOT autonomous vehicle testing notification", "https://www.dot.nm.gov/highway-operations-program/operations-support-division-director/intelligent-transportation-systems/"),
+    "NC": ("North Carolina General Statutes Article 18", "https://www.ncleg.gov/EnactedLegislation/Statutes/HTML/ByArticle/Chapter_20/Article_18.html"),
+    "ND": ("North Dakota Century Code Chapter 39-01", "https://ndlegis.gov/cencode/t39c01.html"),
+    "OK": ("Oklahoma SB 1541 (2022)", "https://www.oklegislature.gov/BillInfo.aspx?Bill=SB1541&Session=2200"),
     "DC": ("DDOT AV law and testing guidance", "https://ddot.dc.gov/page/autonomous-vehicles"),
     "MI": ("Michigan automated vehicle statutes", "https://www.legislature.mi.gov/Laws/MCL?objectName=mcl-300-1949-VI-AUTOMATED-VEHICLES"),
     "NV": ("Nevada DMV AV program", "https://dmv.nv.gov/autonomous.htm"),
     "NY": ("New York State DMV AV demonstration", "https://dmv.ny.gov/business/autonomous-vehicle-technology-demonstration-testing-and-operation"),
     "PA": ("Pennsylvania Vehicle Code Chapter 85", "https://www.legis.state.pa.us/WU01/LI/LI/CT/HTM/75/75.HTM"),
+    "SD": ("South Dakota HB 1095 enrolled (2024)", "https://mylrc.sdlegislature.gov/api/Documents/Bill/264493.pdf?Year=2024"),
     "TN": ("Tennessee Automated Vehicles Act, HB 381", "https://wapp.capitol.tn.gov/apps/BillInfo/Default?BillNumber=HB0381&ga=110"),
     "TX": ("Texas DMV commercial AV authorization", "https://www.txdmv.gov/AVprogram"),
+    "UT": ("Utah Code Chapter 41-26", "https://le.utah.gov/xcode/Title41/Chapter26/41-26.html"),
+    "VT": ("Vermont Automated Vehicle Testing Act", "https://legislature.vermont.gov/statutes/fullchapter/23/041"),
     "WA": ("Washington DOL AV guidance", "https://dol.wa.gov/vehicles-and-boats/vehicles/vehicle-registration/register-other-vehicles-and-other-services/registering-autonomous-vehicles"),
+    "WV": ("West Virginia Fully Autonomous Vehicle Act", "https://code.wvlegislature.gov/17H-1/"),
 }
 statute_dates = {"AR": "2019", "AZ": "2021", "CO": "2017", "GA": "2017", "HI": "2020-09-15", "MI": "2016", "PA": "2022", "TN": "2017", "TX": "2017"}
 
@@ -62,12 +81,12 @@ def event(id, level, place, title, summary, kind, status, date, source, **extra)
                 verified_at=REVIEWED, **extra)
 
 federal = [
-    event("fmvss-2018-rfc", "federal", "US", "FMVSS barrier review", "NHTSA requested public comment on standards that might impede certification or testing of ADS vehicles without human driving controls. This request did not amend a standard.", "FMVSS rulemaking", "request_for_comment", "2018-01-18", "https://www.federalregister.gov/documents/2018/01/18/2018-00671/removing-regulatory-barriers-for-vehicles-with-automated-driving-systems", fmvss=[]),
+    event("fmvss-2018-rfc", "federal", "US", "FMVSS barrier review", "NHTSA requested public comment on standards that might impede certification or testing of ADS vehicles without  without human driving controls. This request did not amend a standard.", "FMVSS rulemaking", "request_for_comment", "2018-01-18", "https://www.federalregister.gov/documents/2018/01/18/2018-00671/removing-regulatory-barriers-for-vehicles-with-automated-driving-systems", fmvss=[]),
     event("fmvss-2019-anprm", "federal", "US", "Removing regulatory barriers for ADS vehicles", "Advanced notice sought input on adapting crash avoidance standards for vehicles without traditional manual controls; it did not change an FMVSS.", "FMVSS rulemaking", "advance_notice", "2019-05-28", "https://www.federalregister.gov/documents/2019/05/28/2019-11032/removing-regulatory-barriers-for-vehicles-with-automated-driving-systems", fmvss=[]),
     event("fmvss-2020-nprm", "federal", "US", "Occupant protection proposal", "Proposed adapting crash protection requirements for ADS vehicles without conventional driving controls.", "FMVSS rulemaking", "superseded_by_final", "2020-03-30", "https://www.federalregister.gov/documents/2020/03/30/2020-05886/occupant-protection-for-automated-driving-systems", fmvss=["208"]),
     event("fmvss-2022-final", "federal", "US", "Occupant protection final rule", "Updated occupant protection standards for ADS vehicles without traditional manual driving controls; a finalized vehicle design rule, not an ADS driving performance test.", "FMVSS rulemaking", "final", "2022-03-30", "https://www.federalregister.gov/documents/2022/03/30/2022-05426/occupant-protection-for-vehicles-with-automated-driving-systems", fmvss=["208"]),
     event("fmvss-102-2026", "federal", "US", "Transmission displays · FMVSS 102", "Proposed changes to requirements written around human-operated transmission controls in ADS-equipped vehicles.", "FMVSS rulemaking", "proposed", "2026-03-16", "https://www.federalregister.gov/documents/2026/03/16/2026-05024/federal-motor-vehicle-safety-standards-modernization-of-fmvss-no-102-to-accommodate-ads-equipped", fmvss=["102"]),
-    event("fmvss-103-104-2026", "federal", "US", "Defrosting and windshield wiping · FMVSS 103/104", "Proposed changes to defrosting and wiping requirements for ADS vehicles without conventional driver controls.", "FMVSS rulemaking", "proposed", "2026-03-16", "https://www.federalregister.gov/documents/2026/03/16/2026-05023/federal-motor-vehicle-safety-standards-modernization-of-fmvss-no-103-and--and-fmvss-no-104-to-accommodate", fmvss=["103", "104"]),
+    event("fmvss-103-104-2026", "federal", "US", "Defrosting and windshield wiping · FMVSS 103/104", "Proposed changes to defrosting and wiping requirements for ADS vehicles without conventional driver controls.", "FMVSS rulemaking", "proposed", "2026-03-16", "https://www.federalregister.gov/documents/2026/03/16/2026-05023/federal-motor-vehicle-safety-standards-modernization-of-fmvss-no-103-and-fmvss-no-104-to-accommodate", fmvss=["103", "104"]),
     event("fmvss-110-2026", "federal", "US", "Tire placards · FMVSS 110", "Proposed adapting tire information placard requirements to ADS-equipped vehicle designs.", "FMVSS rulemaking", "proposed", "2026-04-01", "https://www.federalregister.gov/documents/2026/04/01/2026-06254/federal-motor-vehicle-safety-standards-modernization-of-fmvss-no-110-to-accommodate-ads-equipped", fmvss=["110"]),
     event("fmvss-135-2026", "federal", "US", "Brake controls · FMVSS 135", "Proposed removing the manual brake pedal requirement for vehicles designed exclusively for ADS operation while retaining braking performance requirements.", "FMVSS rulemaking", "proposed", "2026-06-26", "https://www.federalregister.gov/d/2026-12981", fmvss=["135"]),
 ]
@@ -119,7 +138,7 @@ for code, name in names.items():
             events[-1].update(title="Act 21 · AV testing pilot", date="2020-09-15", date_precision="day", status="historical_status_unverified")
         if code == "TX":
             events.append(event("tx-sb2807-2025", "state", name, "SB 2807 · commercial AV authorization", "Added a TxDMV authorization program for commercial AV operation; the authorization requirement became enforceable May 28, 2026.", "legislation", "in_effect", "2025", "https://www.txdmv.gov/AVprogram", state=code, source_label="TxDMV AV program", source_tier="primary", date_precision="year"))
-    for date, title, summary, source, status in orders.get(code, []):
+    for date, title, summary, source, surce, status in orders.get(code, []):
         events.append(event(f"{code.lower()}-eo-{date[:4]}", "state", name, title, summary,
             "executive_order", status, date, source, state=code, source_label=title, source_tier="primary"))
     states.append(dict(code=code, name=name, framework=brief[0], analysis=brief[1], oversight=brief[2],
