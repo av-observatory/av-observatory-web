@@ -103,25 +103,35 @@ export function ManufacturerSearch({
   const mapStates = Array.from(new Set(rows.map(({p}) => p.state).filter(realState)));
   const useNationalCategoryMap = company === "ALL" && state === "ALL" && type === "all" && driver === "all" && evidence === "authorizations";
   const selectedStatus = state !== "ALL" ? statusByState[state] : undefined;
-  const operationalMarkers = useMemo(() => operationalLocations.filter(loc => {
-    if (loc.lat === null || loc.lon === null || !Number.isFinite(loc.lat) || !Number.isFinite(loc.lon)) return false;
-    if (state !== "ALL" && loc.state !== state) return false;
-    if (company !== "ALL") {
-      const selected = manufacturers.find(m => m.manufacturer_key === company);
-      if (!selected) return false;
-      if (canonicalCompany(loc.company) !== canonicalCompany(selected.display_name) &&
-          !canonicalCompany(selected.display_name).startsWith(canonicalCompany(loc.company))) return false;
-    }
-    return true;
-  }).map(loc => ({
-    name: loc.market,
-    coordinates: [loc.lon as number, loc.lat as number] as [number, number],
-    company: loc.company,
-    status: loc.status,
-    mode: loc.mode,
-  })), [operationalLocations, state, company, manufacturers]);
+  const operationalMarkers = useMemo(() => {
+    // Operating-market points are a different evidence type from permit/registry records.
+    // Never overlay them on an authorization-only view because that makes a point (e.g. Zoox
+    // in San Francisco) look like the only company covered by the selected permit filters.
+    if (evidence !== "all") return [];
+    return operationalLocations.filter(loc => {
+      if (loc.lat === null || loc.lon === null || !Number.isFinite(loc.lat) || !Number.isFinite(loc.lon)) return false;
+      if (state !== "ALL" && loc.state !== state) return false;
+      if (company !== "ALL") {
+        const selected = manufacturers.find(m => m.manufacturer_key === company);
+        if (!selected) return false;
+        if (canonicalCompany(loc.company) !== canonicalCompany(selected.display_name) &&
+            !canonicalCompany(selected.display_name).startsWith(canonicalCompany(loc.company))) return false;
+      }
+      return true;
+    }).map(loc => ({
+      name: loc.market,
+      coordinates: [loc.lon as number, loc.lat as number] as [number, number],
+      company: loc.company,
+      status: loc.status,
+      mode: loc.mode,
+    }));
+  }, [operationalLocations, state, company, manufacturers, evidence]);
 
-  const companyCount = new Set(rows.map(({m}) => m.manufacturer_key)).size;
+  const matchingCompanies = useMemo(() => Array.from(
+    new Map(rows.map(({m}) => [m.manufacturer_key, m.display_name])).values()
+  ).sort(), [rows]);
+
+  const companyCount = matchingCompanies.length;
   const permitCount = rows.filter(({p}) => p.source_category !== "operational_evidence").length;
   const evidenceCount = rows.filter(({p}) => p.source_category === "operational_evidence").length;
 
@@ -154,7 +164,12 @@ export function ManufacturerSearch({
     <div className="grid lg:grid-cols-[1.45fr_.55fr] gap-5 mt-5">
       <div className="viz-card p-5">
         <div className="flex items-start justify-between gap-4 mb-2">
-          <div><div className="eyebrow">Geographic footprint</div><h3 className="text-xl font-semibold mt-1">Where the selected AV activity is documented</h3></div>
+          <div>
+            <div className="eyebrow">{evidence === "authorizations" ? "Authorization footprint" : "Geographic footprint"}</div>
+            <h3 className="text-xl font-semibold mt-1">
+              {evidence === "authorizations" ? "States with matching permit / registry records" : "Where the selected AV activity is documented"}
+            </h3>
+          </div>
           <div className="text-right text-xs text-neutral-500">{mapStates.length} states</div>
         </div>
         {useNationalCategoryMap ? (
@@ -172,7 +187,20 @@ export function ManufacturerSearch({
         ) : (
           <UsStateMap highlightAbbrevs={mapStates} highlightLabel="Matches filters" markers={operationalMarkers} onStateClick={(abbr) => abbr && setState(abbr)} />
         )}
-        <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs text-neutral-500"><span>● Orange points = currently documented operating markets</span><span>Click a state to filter.</span></div>
+        <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs text-neutral-500">
+          {evidence === "all" && <span>● Orange points = currently documented operating markets</span>}
+          <span>{evidence === "authorizations" ? "Permit / registry records are state-level unless a source publishes a more specific ODD." : "Click a state to filter."}</span>
+        </div>
+        {matchingCompanies.length > 0 && (
+          <div className="mt-3 border-t border-neutral-200 pt-3">
+            <div className="text-xs font-semibold uppercase tracking-wide text-neutral-500 mb-2">
+              Companies matching these filters
+            </div>
+            <div className="flex flex-wrap gap-1.5">
+              {matchingCompanies.map(name => <span key={name} className="badge">{name}</span>)}
+            </div>
+          </div>
+        )}
         {selectedStatus && (
           <div className="mt-3 border-t border-neutral-200 pt-3 text-sm">
             <div className="font-medium">{selectedStatus.state} · {selectedStatus.agency ?? "State regulatory status"}</div>
