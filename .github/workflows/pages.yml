@@ -39,14 +39,25 @@ jobs:
       - name: Validate policy snapshot
         run: node scripts/validate-policy-data.mjs
 
+      - name: Validate bill snapshot
+        run: node scripts/validate-legislation-data.mjs
+
       - name: Build static site
         env:
           NEXT_PUBLIC_POLICY_R2_URL: ${{ vars.POLICY_R2_PUBLIC_URL }}
+          NEXT_PUBLIC_LEGISLATION_R2_URL: ${{ vars.LEGISLATION_R2_PUBLIC_URL }}
         run: npm run build
 
       - name: Publish policy JSON to Cloudflare R2
         if: ${{ env.R2_BUCKET != '' && env.R2_ACCOUNT_ID != '' && env.AWS_ACCESS_KEY_ID != '' && env.AWS_SECRET_ACCESS_KEY != '' }}
         run: aws s3 cp public/data/policy_tracker.json "s3://${R2_BUCKET}/policy/policy_tracker.json" --endpoint-url "https://${R2_ACCOUNT_ID}.r2.cloudflarestorage.com" --content-type application/json --cache-control 'public, max-age=300'
+
+      - name: Publish reviewed bill snapshot to Cloudflare R2
+        if: ${{ env.R2_BUCKET != '' && env.R2_ACCOUNT_ID != '' && env.AWS_ACCESS_KEY_ID != '' && env.AWS_SECRET_ACCESS_KEY != '' }}
+        run: |
+          if ! aws s3api head-object --bucket "$R2_BUCKET" --key policy/legislation_tracker.json --endpoint-url "https://${R2_ACCOUNT_ID}.r2.cloudflarestorage.com" >/dev/null 2>&1; then
+            aws s3 cp public/data/legislation_tracker.json "s3://${R2_BUCKET}/policy/legislation_tracker.json" --endpoint-url "https://${R2_ACCOUNT_ID}.r2.cloudflarestorage.com" --content-type application/json --cache-control 'public, max-age=300'
+          fi
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

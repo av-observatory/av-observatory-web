@@ -170,6 +170,253 @@
       ],
       "comment_deadline": "2026-08-26",
       "comment_extension_url": "https://www.federalregister.gov/d/2026-15231"
+    },
+    {
+      "id": "fmvss-201-2022",
+      "level": "federal",
+      "jurisdiction": "US",
+      "title": "FMVSS 201 · Interior impact",
+      "summary": "Revised interior impact applicability and test references for vehicles without a conventional driver's seating position.",
+      "instrument": "FMVSS rulemaking",
+      "status": "effective",
+      "date": "2022-03-30",
+      "source_url": "https://www.federalregister.gov/d/2022-05426",
+      "verified_at": "2026-09-23",
+      "fmvss": [
+        "201"
+      ],
+      "scope": "ADS-specific",
+      "rulemaking_id": "fmvss-2022-final",
+      "effective_date": "2022-09-26",
+      "proposal_url": "https://www.federalregister.gov/d/2020-05886"
+    },
+    {
+      "id": "fmvss-203-2022",
+      "level": "federal",
+      "jurisdiction": "US",
+      "title": "FMVSS 203 · Steering control impact",
+      "summary": "Excluded vehicles without steering controls from the steering control impact standard.",
+      "instrument": "FMVSS rulemaking",
+      "status": "effective",
+      "date": "2022-03-30",
+      "source_url": "https://www.federalregister.gov/d/2022-05426",
+      "verified_at": "2026-09-23",
+      "fmvss": [
+        "203"
+      ],
+      "scope": "ADS-specific",
+      "rulemaking_id": "fmvss-2022-final",
+      "effective_date": "2022-09-26",
+      "proposal_url": "https://www.federalregister.gov/d/2020-05886"
+    },
+    {
+      "id": "fmvss-204-2022",
+      "level": "federal",
+      "jurisdiction": "US",
+      "title": "FMVSS 204 · Steering control rearward displacement",
+      "summary": "Excluded vehicles without steering controls from the steering column displacement standard.",
+      "instrument": "FMVSS rulemaking",
+      "status": "effective",
+      "date": "2022-03-30",
+      "source_url": "https://www.federalregister.gov/d/2022-05426",
+      "verified_at": "2026-09-23",
+      "fmvss": [
+        "204"
+      ],
+      "scope": "ADS-specific",
+      "rulemaking_id": "fmvss-2022-final",
+      "effective_date": "2022-09-26",
+      "proposal_url": "https://www.federalregister.gov/d/2020-05886"
+    },
+    {
+      "id": "fmvss-205-2022",
+      "level": "federal",
+      "jurisdiction": "US",
+      "title": "FMVSS 205 · Glazing materials",
+      "summary": "Updated the glazing standard's application to trucks designed to carry at least one person.",
+      "instrument": "FMVSS rulemaking",
+      "status": "effective",
+      "date": "2022-03-30",
+      "source_url": "https://www.federalregister.gov/d/2022-05426",
+      "verified_at": "2026-09-23",
+      "fmvss": [
+        "205"
+      ],
+      "scope": "ADS-specific",
+      "rulemaking_id": "fmvss-2022-final",
+      "effective_date": "2022-09-26",
+      "proposal_url": "https://www.federalregister.gov/d/2020-05886"
+    },
+    {
+      "id": "fmvss-206-2022",
+      "level": "federal",
+      "jurisdiction": "US",
+      "title": "FMVSS 206 · Door locks and retention",
+      "summary": "Updated door definitions and applicability for vehicles without a conventional driver's seating position.",
+      "instrument": "FMVSS rulemaking",
+      "status": "effective",
+      "date": "2022-03-30",
+      "source_url": "https://www.federalregister.gov/d/2022-05426",
+      "verified_at": "2026-09-23",
+      "fmvss": [
+        "206"
+      ],
+      "scope": "ADS-specific",
+      "rulemaking_id": "fmvss-2022-final",
+      "effective_date": "2022-09-26",
+      "proposal_url": "https://www.federalregister.gov/d/2020-05886"
+    },
+    {
+      "id": "fmvss-207-2022",
+      "level": "federal",
+      "jurisdiction": "US",
+      "title": "FMVSS 207 · Seating systems",
+      "summary": "Required a designated driver's seat only where manually operated driving controls are present.",
+      "instrument": "FMVSS rulemaking",
+      "status": "effective",
+      "date": "2022-03-30",
+      "source_url": "https://www.federalregister.gov/d/2022-05426",
+      "verified_at": "2026-09-23",
+      "fmvss": [
+        "207"
+      ],
+      "scope": "ADS-specific",
+      "rulemaking_id": "fmvss-2022-final",
+      "effective_date": "2022-09-26",
+      "proposal_url": "https://www.federalregister.gov/d/2020-05886"
+    },
+    {
+      "id": "fmvss-208-2022",
+      "level": "federal",
+      "jurisdiction": "US",
+      "title": "FMVSS 208 · Occupant crash protection",
+      "summary": "Revised crash protection requirements, seating terminology and test procedures for vehicles without manual driving controls.",
+      "instrument": "FMVSS rulemaking",
+      "status": "effective",
+      "date": "2022-03-30",
+      "source_url": "https://www.federalregister.gov/d/2022-05426",
+      "verified_at": "2026-09-23",
+      "fmvss": [
+        "208"
+      ],
+      "scope": "ADS-specific",
+      "rulemaking_id": "fmvss-2022-final",
+      "effective_date": "2022-09-26",
+      "proposal_url": "https://www.federalregister.gov/d/2020-05886"
+    },
+    {
+      "id": "fmvss-212-2022",
+      "level": "federal",
+      "jurisdiction": "US",
+      "title": "FMVSS 212 · Windshield mounting",
+      "summary": "Conforming applicability change for trucks designed to carry at least one person, added in the final rule.",
+      "instrument": "FMVSS rulemaking",
+      "status": "effective",
+      "date": "2022-03-30",
+      "source_url": "https://www.federalregister.gov/d/2022-05426",
+      "verified_at": "2026-09-23",
+      "fmvss": [
+        "212"
+      ],
+      "scope": "ADS-specific",
+      "rulemaking_id": "fmvss-2022-final",
+      "effective_date": "2022-09-26",
+      "added_in_final": true
+    },
+    {
+      "id": "fmvss-214-2022",
+      "level": "federal",
+      "jurisdiction": "US",
+      "title": "FMVSS 214 · Side impact protection",
+      "summary": "Revised side impact test procedures and seating references for vehicles without traditional driver controls.",
+      "instrument": "FMVSS rulemaking",
+      "status": "effective",
+      "date": "2022-03-30",
+      "source_url": "https://www.federalregister.gov/d/2022-05426",
+      "verified_at": "2026-09-23",
+      "fmvss": [
+        "214"
+      ],
+      "scope": "ADS-specific",
+      "rulemaking_id": "fmvss-2022-final",
+      "effective_date": "2022-09-26",
+      "proposal_url": "https://www.federalregister.gov/d/2020-05886"
+    },
+    {
+      "id": "fmvss-216a-2022",
+      "level": "federal",
+      "jurisdiction": "US",
+      "title": "FMVSS 216a · Roof crush resistance",
+      "summary": "Updated applicability and test setup for roof crush protection in vehicles designed to carry occupants.",
+      "instrument": "FMVSS rulemaking",
+      "status": "effective",
+      "date": "2022-03-30",
+      "source_url": "https://www.federalregister.gov/d/2022-05426",
+      "verified_at": "2026-09-23",
+      "fmvss": [
+        "216a"
+      ],
+      "scope": "ADS-specific",
+      "rulemaking_id": "fmvss-2022-final",
+      "effective_date": "2022-09-26",
+      "proposal_url": "https://www.federalregister.gov/d/2020-05886"
+    },
+    {
+      "id": "fmvss-219-2022",
+      "level": "federal",
+      "jurisdiction": "US",
+      "title": "FMVSS 219 · Windshield zone intrusion",
+      "summary": "Conforming applicability change for trucks designed to carry at least one person, added in the final rule.",
+      "instrument": "FMVSS rulemaking",
+      "status": "effective",
+      "date": "2022-03-30",
+      "source_url": "https://www.federalregister.gov/d/2022-05426",
+      "verified_at": "2026-09-23",
+      "fmvss": [
+        "219"
+      ],
+      "scope": "ADS-specific",
+      "rulemaking_id": "fmvss-2022-final",
+      "effective_date": "2022-09-26",
+      "added_in_final": true
+    },
+    {
+      "id": "fmvss-225-2022",
+      "level": "federal",
+      "jurisdiction": "US",
+      "title": "FMVSS 225 · Child restraint anchorages",
+      "summary": "Revised the shuttle bus definition to account for buses without manual driving controls.",
+      "instrument": "FMVSS rulemaking",
+      "status": "effective",
+      "date": "2022-03-30",
+      "source_url": "https://www.federalregister.gov/d/2022-05426",
+      "verified_at": "2026-09-23",
+      "fmvss": [
+        "225"
+      ],
+      "scope": "ADS-specific",
+      "rulemaking_id": "fmvss-2022-final",
+      "effective_date": "2022-09-26",
+      "proposal_url": "https://www.federalregister.gov/d/2020-05886"
+    },
+    {
+      "id": "fmvss-226-2022",
+      "level": "federal",
+      "jurisdiction": "US",
+      "title": "FMVSS 226 · Ejection mitigation",
+      "summary": "Updated applicability and test setup for ejection mitigation in vehicles without conventional driver controls.",
+      "instrument": "FMVSS rulemaking",
+      "status": "effective",
+      "date": "2022-03-30",
+      "source_url": "https://www.federalregister.gov/d/2022-05426",
+      "verified_at": "2026-09-23",
+      "fmvss": [
+        "226"
+      ],
+      "scope": "ADS-specific",
+      "rulemaking_id": "fmvss-2022-final",
+      "effective_date": "2022-09-26",
+      "proposal_url": "https://www.federalregister.gov/d/2020-05886"
     }
   ],
   "federal_oversight": [

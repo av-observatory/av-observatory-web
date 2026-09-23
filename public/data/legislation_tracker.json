@@ -1,0 +1,598 @@
+{
+  "schema_version": "1.0.0",
+  "as_of": "2026-09-23",
+  "state_index_reviewed": "2026-09-15",
+  "methodology": "Introduced AV bills, selected by subject relevance. State seed: NCSL 2026 AV legislation database, pending/to-governor records as indexed September 15. Federal seed: 119th Congress bill texts on govinfo. Status may change after the source review; an empty jurisdiction means no pending bill indexed in this snapshot, not a finding that no bill exists. Cross-check the linked legislature before relying on a status. LegiScan API refresh can discover and update current-session bills when configured.",
+  "source": "reviewed snapshot",
+  "federal": [
+    {
+      "id": "us-hr7390-119t",
+      "jurisdiction": "US",
+      "number": "H.R. 7390",
+      "title": "SELF DRIVE Act of 2026",
+      "summary": "Would create a federal safety framework for ADS-equipped vehicles, including NHTSA authority and manufacturer requirements.",
+      "status": "introduced",
+      "last_action_date": "2026-02-05",
+      "last_action": "Referred to House committees; a subcommittee later forwarded it to the full committee.",
+      "session": "119th Congress",
+      "source_url": "https://www.congress.gov/bill/119th-congress/house-bill/7390",
+      "repository_url": "https://www.govinfo.gov/app/details/BILLS-119hr7390ih",
+      "reviewed_at": "2026-09-23",
+      "summary_reviewed_at": "2026-09-23"
+    },
+    {
+      "id": "us-s3742-119t",
+      "jurisdiction": "US",
+      "number": "S. 3742",
+      "title": "AV Safety Data Act",
+      "summary": "Would expand incident reporting for certain autonomous vehicles.",
+      "status": "introduced",
+      "last_action_date": "2026-01-29",
+      "last_action": "Referred to Senate Commerce, Science, and Transportation.",
+      "session": "119th Congress",
+      "source_url": "https://www.congress.gov/bill/119th-congress/senate-bill/3742",
+      "repository_url": "https://www.govinfo.gov/app/details/BILLS-119s3742is",
+      "reviewed_at": "2026-09-23",
+      "summary_reviewed_at": "2026-09-23"
+    },
+    {
+      "id": "us-hr10033-119t",
+      "jurisdiction": "US",
+      "number": "H.R. 10033",
+      "title": "AV Emergency Response Coordination Act",
+      "summary": "Would set minimum coordination requirements between AV operators and emergency responders.",
+      "status": "introduced",
+      "last_action_date": "2026-08-03",
+      "last_action": "Referred to House Transportation and Energy and Commerce committees.",
+      "session": "119th Congress",
+      "source_url": "https://www.congress.gov/bill/119th-congress/house-bill/10033",
+      "repository_url": "https://www.govinfo.gov/app/details/BILLS-119hr10033ih",
+      "reviewed_at": "2026-09-23",
+      "summary_reviewed_at": "2026-09-23"
+    },
+    {
+      "id": "us-s1798-119t",
+      "jurisdiction": "US",
+      "number": "S. 1798",
+      "title": "Autonomous Vehicle Acceleration Act of 2025",
+      "summary": "Would direct federal standards for autonomous vehicles and address NHTSA exemption authority.",
+      "status": "introduced",
+      "last_action_date": "2025-05-15",
+      "last_action": "Referred to Senate Commerce, Science, and Transportation.",
+      "session": "119th Congress",
+      "source_url": "https://www.congress.gov/bill/119th-congress/senate-bill/1798",
+      "repository_url": "https://www.govinfo.gov/app/details/BILLS-119s1798is",
+      "reviewed_at": "2026-09-23",
+      "summary_reviewed_at": "2026-09-23"
+    },
+    {
+      "id": "us-hr4661-119t",
+      "jurisdiction": "US",
+      "number": "H.R. 4661",
+      "title": "AMERICA DRIVES Act",
+      "summary": "Would establish a federal framework for autonomous mobility and related transportation policy.",
+      "status": "introduced",
+      "last_action_date": "2025-07-23",
+      "last_action": "Referred to House Transportation and Infrastructure.",
+      "session": "119th Congress",
+      "source_url": "https://www.congress.gov/bill/119th-congress/house-bill/4661",
+      "repository_url": "https://www.govinfo.gov/app/details/BILLS-119hr4661ih",
+      "reviewed_at": "2026-09-23",
+      "summary_reviewed_at": "2026-09-23"
+    },
+    {
+      "id": "us-hr8692-119t",
+      "jurisdiction": "US",
+      "number": "H.R. 8692",
+      "title": "Shared Autonomous Mobility Act of 2026",
+      "summary": "Would address shared autonomous mobility services and federal transportation programs.",
+      "status": "introduced",
+      "last_action_date": "2026-05-07",
+      "last_action": "Referred to House Transportation and Infrastructure.",
+      "session": "119th Congress",
+      "source_url": "https://www.congress.gov/bill/119th-congress/house-bill/8692",
+      "repository_url": "https://www.govinfo.gov/app/details/BILLS-119hr8692ih",
+      "reviewed_at": "2026-09-23",
+      "summary_reviewed_at": "2026-09-23"
+    }
+  ],
+  "states": [
+    {
+      "code": "AL",
+      "name": "Alabama",
+      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+    },
+    {
+      "code": "AK",
+      "name": "Alaska",
+      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+    },
+    {
+      "code": "AZ",
+      "name": "Arizona",
+      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+    },
+    {
+      "code": "AR",
+      "name": "Arkansas",
+      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+    },
+    {
+      "code": "CA",
+      "name": "California",
+      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+    },
+    {
+      "code": "CO",
+      "name": "Colorado",
+      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+    },
+    {
+      "code": "CT",
+      "name": "Connecticut",
+      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+    },
+    {
+      "code": "DE",
+      "name": "Delaware",
+      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+    },
+    {
+      "code": "FL",
+      "name": "Florida",
+      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+    },
+    {
+      "code": "GA",
+      "name": "Georgia",
+      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+    },
+    {
+      "code": "HI",
+      "name": "Hawaii",
+      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+    },
+    {
+      "code": "ID",
+      "name": "Idaho",
+      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+    },
+    {
+      "code": "IL",
+      "name": "Illinois",
+      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+    },
+    {
+      "code": "IN",
+      "name": "Indiana",
+      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+    },
+    {
+      "code": "IA",
+      "name": "Iowa",
+      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+    },
+    {
+      "code": "KS",
+      "name": "Kansas",
+      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+    },
+    {
+      "code": "KY",
+      "name": "Kentucky",
+      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+    },
+    {
+      "code": "LA",
+      "name": "Louisiana",
+      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+    },
+    {
+      "code": "ME",
+      "name": "Maine",
+      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+    },
+    {
+      "code": "MD",
+      "name": "Maryland",
+      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+    },
+    {
+      "code": "MA",
+      "name": "Massachusetts",
+      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+    },
+    {
+      "code": "MI",
+      "name": "Michigan",
+      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+    },
+    {
+      "code": "MN",
+      "name": "Minnesota",
+      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+    },
+    {
+      "code": "MS",
+      "name": "Mississippi",
+      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+    },
+    {
+      "code": "MO",
+      "name": "Missouri",
+      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+    },
+    {
+      "code": "MT",
+      "name": "Montana",
+      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+    },
+    {
+      "code": "NE",
+      "name": "Nebraska",
+      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+    },
+    {
+      "code": "NV",
+      "name": "Nevada",
+      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+    },
+    {
+      "code": "NH",
+      "name": "New Hampshire",
+      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+    },
+    {
+      "code": "NJ",
+      "name": "New Jersey",
+      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+    },
+    {
+      "code": "NM",
+      "name": "New Mexico",
+      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+    },
+    {
+      "code": "NY",
+      "name": "New York",
+      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+    },
+    {
+      "code": "NC",
+      "name": "North Carolina",
+      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+    },
+    {
+      "code": "ND",
+      "name": "North Dakota",
+      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+    },
+    {
+      "code": "OH",
+      "name": "Ohio",
+      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+    },
+    {
+      "code": "OK",
+      "name": "Oklahoma",
+      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+    },
+    {
+      "code": "OR",
+      "name": "Oregon",
+      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+    },
+    {
+      "code": "PA",
+      "name": "Pennsylvania",
+      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+    },
+    {
+      "code": "RI",
+      "name": "Rhode Island",
+      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+    },
+    {
+      "code": "SC",
+      "name": "South Carolina",
+      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+    },
+    {
+      "code": "SD",
+      "name": "South Dakota",
+      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+    },
+    {
+      "code": "TN",
+      "name": "Tennessee",
+      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+    },
+    {
+      "code": "TX",
+      "name": "Texas",
+      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+    },
+    {
+      "code": "UT",
+      "name": "Utah",
+      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+    },
+    {
+      "code": "VT",
+      "name": "Vermont",
+      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+    },
+    {
+      "code": "VA",
+      "name": "Virginia",
+      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+    },
+    {
+      "code": "WA",
+      "name": "Washington",
+      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+    },
+    {
+      "code": "WV",
+      "name": "West Virginia",
+      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+    },
+    {
+      "code": "WI",
+      "name": "Wisconsin",
+      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+    },
+    {
+      "code": "WY",
+      "name": "Wyoming",
+      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+    },
+    {
+      "code": "DC",
+      "name": "District of Columbia",
+      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+    }
+  ],
+  "state_bills": [
+    {
+      "id": "ca-sb1246-2025",
+      "jurisdiction": "CA",
+      "number": "SB 1246",
+      "title": "Autonomous vehicles",
+      "summary": "Would require AV manufacturers to maintain remote assistance capacity and broaden emergency responder coordination.",
+      "status": "to_governor",
+      "last_action_date": "2026-08-21",
+      "last_action": "Sent to governor in the NCSL index.",
+      "session": "2025-2026",
+      "source_url": "https://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id=202520260SB1246",
+      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database",
+      "reviewed_at": "2026-09-23",
+      "summary_reviewed_at": "2026-09-23"
+    },
+    {
+      "id": "dc-b26-0684-2025",
+      "jurisdiction": "DC",
+      "number": "B 26-0684",
+      "title": "AV deployment authorization",
+      "summary": "Would establish a DDOT commercial AV program with permits, safety plans and reporting.",
+      "status": "pending",
+      "last_action_date": "2026-05-01",
+      "last_action": "Referred to Transportation and the Environment Committee.",
+      "session": "2025-2026",
+      "source_url": "https://lims.dccouncil.gov/Legislation/B26-0684",
+      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database",
+      "reviewed_at": "2026-09-23",
+      "summary_reviewed_at": "2026-09-23"
+    },
+    {
+      "id": "il-sb3308-2025",
+      "jurisdiction": "IL",
+      "number": "SB 3308",
+      "title": "Automated Driving Systems Development Act",
+      "summary": "Would establish eligibility, permits and review for AV pilot projects.",
+      "status": "pending",
+      "last_action_date": "2026-02-03",
+      "last_action": "Assigned to Senate Assignments Committee in NCSL index.",
+      "session": "2025-2026",
+      "source_url": "https://legiscan.com/IL/bill/SB3308/2025",
+      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database",
+      "reviewed_at": "2026-09-23",
+      "summary_reviewed_at": "2026-09-23"
+    },
+    {
+      "id": "il-sb3392-2025",
+      "jurisdiction": "IL",
+      "number": "SB 3392",
+      "title": "Autonomous Vehicle Pilot Project Act",
+      "summary": "Would require a pilot's operational design domain and limit its geographic scope.",
+      "status": "pending",
+      "last_action_date": "2026-02-04",
+      "last_action": "Assigned to Senate Assignments Committee.",
+      "session": "2025-2026",
+      "source_url": "https://legiscan.com/IL/bill/SB3392/2025",
+      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database",
+      "reviewed_at": "2026-09-23",
+      "summary_reviewed_at": "2026-09-23"
+    },
+    {
+      "id": "il-hb4663-2025",
+      "jurisdiction": "IL",
+      "number": "HB 4663",
+      "title": "Autonomous Vehicle Pilot Project Act",
+      "summary": "House proposal for AV pilot authorization and operational design domain limits.",
+      "status": "pending",
+      "last_action_date": "2026-01-28",
+      "last_action": "Assigned to House Rules Committee.",
+      "session": "2025-2026",
+      "source_url": "https://legiscan.com/IL/bill/HB4663/2025",
+      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database",
+      "reviewed_at": "2026-09-23",
+      "summary_reviewed_at": "2026-09-23"
+    },
+    {
+      "id": "il-hb4789-2025",
+      "jurisdiction": "IL",
+      "number": "HB 4789",
+      "title": "Automated Driving Systems Development Act",
+      "summary": "House proposal for a state AV pilot application and oversight framework.",
+      "status": "pending",
+      "last_action_date": "2026-02-02",
+      "last_action": "Assigned to House Rules Committee.",
+      "session": "2025-2026",
+      "source_url": "https://legiscan.com/IL/bill/HB4789/2025",
+      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database",
+      "reviewed_at": "2026-09-23",
+      "summary_reviewed_at": "2026-09-23"
+    },
+    {
+      "id": "il-hb5103-2025",
+      "jurisdiction": "IL",
+      "number": "HB 5103",
+      "title": "Automated Driving Systems Development Act",
+      "summary": "Would establish a state AV pilot program and application process.",
+      "status": "pending",
+      "last_action_date": "2026-02-05",
+      "last_action": "Assigned to House Rules Committee.",
+      "session": "2025-2026",
+      "source_url": "https://legiscan.com/IL/bill/HB5103/2025",
+      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database",
+      "reviewed_at": "2026-09-23",
+      "summary_reviewed_at": "2026-09-23"
+    },
+    {
+      "id": "il-hb5220-2025",
+      "jurisdiction": "IL",
+      "number": "HB 5220",
+      "title": "Autonomous Vehicles Article",
+      "summary": "Would set requirements for AV testing on public roads and authorize state rules.",
+      "status": "pending",
+      "last_action_date": "2026-02-05",
+      "last_action": "Assigned to House Rules Committee.",
+      "session": "2025-2026",
+      "source_url": "https://legiscan.com/IL/bill/HB5220/2025",
+      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database",
+      "reviewed_at": "2026-09-23",
+      "summary_reviewed_at": "2026-09-23"
+    },
+    {
+      "id": "nj-a768-2026",
+      "jurisdiction": "NJ",
+      "number": "A 768",
+      "title": "AV testing on state roadways",
+      "summary": "Would permit AV testing and use on New Jersey roads under specified conditions.",
+      "status": "pending",
+      "last_action_date": "2026-01-13",
+      "last_action": "Assembly Science, Innovation and Technology Committee.",
+      "session": "2026-2027",
+      "source_url": "https://www.njleg.state.nj.us/bill-search/2026/A768",
+      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database",
+      "reviewed_at": "2026-09-23",
+      "summary_reviewed_at": "2026-09-23"
+    },
+    {
+      "id": "nj-a958-2026",
+      "jurisdiction": "NJ",
+      "number": "A 958",
+      "title": "Law enforcement AV interaction training",
+      "summary": "Would require training for law enforcement interactions with AVs.",
+      "status": "pending",
+      "last_action_date": "2026-01-13",
+      "last_action": "Assembly Public Safety and Preparedness Committee.",
+      "session": "2026-2027",
+      "source_url": "https://www.njleg.state.nj.us/bill-search/2026/A958",
+      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database",
+      "reviewed_at": "2026-09-23",
+      "summary_reviewed_at": "2026-09-23"
+    },
+    {
+      "id": "nj-s1677-2026",
+      "jurisdiction": "NJ",
+      "number": "S 1677",
+      "title": "Fully autonomous vehicle pilot",
+      "summary": "Would establish a state pilot program for fully autonomous vehicles.",
+      "status": "pending",
+      "last_action_date": "2026-05-11",
+      "last_action": "Senate Budget and Appropriations Committee.",
+      "session": "2026-2027",
+      "source_url": "https://www.njleg.state.nj.us/bill-search/2026/S1677",
+      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database",
+      "reviewed_at": "2026-09-23",
+      "summary_reviewed_at": "2026-09-23"
+    },
+    {
+      "id": "nj-a3968-2026",
+      "jurisdiction": "NJ",
+      "number": "A 3968",
+      "title": "Fully autonomous vehicle pilot",
+      "summary": "Assembly companion proposal for an AV pilot program.",
+      "status": "pending",
+      "last_action_date": "2026-06-01",
+      "last_action": "Assembly Appropriations Committee.",
+      "session": "2026-2027",
+      "source_url": "https://www.njleg.state.nj.us/bill-search/2026/A3968",
+      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database",
+      "reviewed_at": "2026-09-23",
+      "summary_reviewed_at": "2026-09-23"
+    },
+    {
+      "id": "ny-s10413-2025",
+      "jurisdiction": "NY",
+      "number": "S 10413",
+      "title": "Autonomous taxi licensing",
+      "summary": "Would require NYC Taxi and Limousine Commission licensing before AV taxi or ride-hail service in large cities.",
+      "status": "pending",
+      "last_action_date": "2026-05-15",
+      "last_action": "Senate Transportation Committee.",
+      "session": "2025-2026",
+      "source_url": "https://www.nysenate.gov/legislation/bills/2025/S10413",
+      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database",
+      "reviewed_at": "2026-09-23",
+      "summary_reviewed_at": "2026-09-23"
+    },
+    {
+      "id": "ny-a11500-2025",
+      "jurisdiction": "NY",
+      "number": "A 11500",
+      "title": "Albany-area driverless pilot",
+      "summary": "Would allow fully autonomous vehicle operation in Albany and Rensselaer counties for a limited term.",
+      "status": "pending",
+      "last_action_date": "2026-05-28",
+      "last_action": "Assembly Transportation Committee.",
+      "session": "2025-2026",
+      "source_url": "https://assembly.state.ny.us/leg/?bn=A11500&term=2025",
+      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database",
+      "reviewed_at": "2026-09-23",
+      "summary_reviewed_at": "2026-09-23"
+    },
+    {
+      "id": "pa-hr563-2025",
+      "jurisdiction": "PA",
+      "number": "HR 563",
+      "title": "Driverless vehicles study",
+      "summary": "Would direct a study of driverless vehicles' safety and workforce effects.",
+      "status": "pending",
+      "last_action_date": "2026-06-10",
+      "last_action": "House Communications and Technology Committee.",
+      "session": "2025-2026",
+      "source_url": "https://www.legis.state.pa.us/cfdocs/billInfo/billInfo.cfm?syear=2025&sind=0&body=H&type=R&bn=563",
+      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database",
+      "reviewed_at": "2026-09-23",
+      "summary_reviewed_at": "2026-09-23"
+    },
+    {
+      "id": "va-sb670-2026",
+      "jurisdiction": "VA",
+      "number": "SB 670",
+      "title": "Commercial automated driving systems",
+      "summary": "Would require licenses and conditions for commercial fully autonomous passenger and freight operation.",
+      "status": "pending_carryover",
+      "last_action_date": "2026-02-11",
+      "last_action": "Carried over in House Transportation Committee.",
+      "session": "2026",
+      "source_url": "https://lis.virginia.gov/bill-details/20261/SB670",
+      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database",
+      "reviewed_at": "2026-09-23",
+      "summary_reviewed_at": "2026-09-23"
+    }
+  ]
+}

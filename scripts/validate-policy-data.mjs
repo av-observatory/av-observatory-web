@@ -20,6 +20,10 @@ for (const rule of data.federal.filter(e => e.fmvss?.length && e.id !== "fmvss-2
 const occupant = data.federal.find(e => e.id === "fmvss-2022-final");
 const amended = ["201", "203", "204", "205", "206", "207", "208", "212", "214", "216a", "219", "225", "226"];
 if (JSON.stringify(occupant?.fmvss) !== JSON.stringify(amended)) throw Error("2022 ADS final rule must index all 13 amended numbered standards");
+for (const number of amended) {
+  const child = data.federal.find(e => e.id === `fmvss-${number}-2022`);
+  if (child?.rulemaking_id !== occupant.id || JSON.stringify(child.fmvss) !== JSON.stringify([number])) throw Error(`FMVSS ${number} must have its own indexed entry`);
+}
 const steering = data.federal.find(e => e.id === "fmvss-204-2026");
 if (steering?.effective_date !== "2026-07-06" || steering?.status !== "effective" || steering?.scope !== "related vehicle design") throw Error("2026 FMVSS 204 final rule missing or misclassified");
 console.log(`Validated ${data.states.length} jurisdictions and ${all.length} policy events`);
