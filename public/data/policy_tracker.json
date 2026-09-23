@@ -215,7 +215,7 @@
       "code": "AR",
       "name": "Arkansas",
       "framework": "Driverless operation with submissions",
-      "analysis": "Arkansas permiermits driverless operation when statutory conditions and advance submissions, including commercial-purpose information, are satisfied.",
+      "analysis": "Arkansas permits driverless operation when statutory conditions and advance submissions, including commercial-purpose information, are satisfied.",
       "oversight": "State submission and applicable traffic and vehicle rules.",
       "enacted_legislation": true,
       "executive_order_history": false,
@@ -404,7 +404,7 @@
       "source_url": "https://www.legis.la.gov/legis/LawPrint.aspx?d=1148308",
       "source_label": "Louisiana Revised Statutes § 32:400.3",
       "source_tier": "primary",
-      "verified_at": "2026-09-23-09-23"
+      "verified_at": "2026-09-23"
     },
     {
       "code": "ME",
@@ -596,7 +596,7 @@
       "oversight": "State traffic law and committee-led policy review.",
       "enacted_legislation": true,
       "executive_order_history": false,
-      "source_url": "https://www.ncleg.gov/EnactedLegislaslation/Statutes/HTML/ByArticle/Chapter_20/Article_18.html",
+      "source_url": "https://www.ncleg.gov/EnactedLegislation/Statutes/HTML/ByArticle/Chapter_20/Article_18.html",
       "source_label": "North Carolina General Statutes Article 18",
       "source_tier": "primary",
       "verified_at": "2026-09-23"
@@ -1007,7 +1007,7 @@
       "source_url": "https://data.capitol.hawaii.gov/sessions/sessionlaws/Years/SLH2020/SLH2020_Act21.pdf",
       "verified_at": "2026-09-23",
       "state": "HI",
-      "source_label": "Hawabel": "Hawaii Act 21 (2020)",
+      "source_label": "Hawaii Act 21 (2020)",
       "source_tier": "primary",
       "date_precision": "day"
     },
@@ -1236,7 +1236,7 @@
       "title": "Minnesota Executive Order 19-18",
       "summary": "Replaced the 2018 advisory council order with a governor's council and interagency coordination.",
       "instrument": "executive_order",
-      "status": "historical_statusorical_status_unverified",
+      "status": "historical_status_unverified",
       "date": "2019-04-01",
       "source_url": "https://www.leg.mn.gov/archive/execorders/19-18.pdf",
       "verified_at": "2026-09-23",
@@ -1460,7 +1460,7 @@
       "instrument": "legislation",
       "status": "in_effect",
       "date": "2017",
-      "source_url": "https://wapp.capitol.tn.gov/apps/BillInfo/Default?BlInfo/Default?BillNumber=HB0381&ga=110",
+      "source_url": "https://wapp.capitol.tn.gov/apps/BillInfo/Default?BillNumber=HB0381&ga=110",
       "verified_at": "2026-09-23",
       "state": "TN",
       "source_label": "Tennessee Automated Vehicles Act, HB 381",
@@ -1687,7 +1687,7 @@
       "date": null,
       "source_url": "https://www.boston.gov/departments/new-urban-mechanics/autonomous-vehicles-bostons-approach",
       "verified_at": "2026-09-23",
-      "state "state": "MA"
+      "state": "MA"
     }
   ]
 }
