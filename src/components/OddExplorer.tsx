@@ -157,6 +157,15 @@ export function OddExplorer({
     const props = feature.properties ?? {};
     const companyName = String(props.company ?? "");
     if (!companyName) return [];
+
+    // Do not draw schematic endpoint-to-endpoint lines as if they were road corridors.
+    // Keep these records in the evidence table until a sourced road-following geometry exists.
+    const precision = String(props.geometry_precision ?? "");
+    const basis = String(props.geometry_basis ?? "");
+    if (precision === "schematic_endpoints_not_exact_route" || basis === "route_corridor_endpoint_connection") {
+      return [];
+    }
+
     return [{
       feature,
       company: companyName,
@@ -165,7 +174,7 @@ export function OddExplorer({
       phase: String(props.phase ?? "deployment"),
       event_date: String(props.event_date ?? ""),
       event_type: "current_corridor",
-      geometry_ref: String(props.geometry_basis ?? "current-route-corridor") + ":" + String(props.market ?? ""),
+      geometry_ref: basis + ":" + String(props.market ?? ""),
       geometry_type: String((feature.geometry as { type?: string })?.type ?? ""),
       source_url: props.source_url ? String(props.source_url) : undefined,
     }];
