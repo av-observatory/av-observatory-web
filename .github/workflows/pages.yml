@@ -45,6 +45,9 @@ jobs:
       - name: Validate operator profiles
         run: node scripts/validate-manufacturer-data.mjs
 
+      - name: Validate latest-version SGO reports
+        run: python3 scripts/validate-sgo-snapshot.py
+
       - name: Build static site
         env:
           NEXT_PUBLIC_POLICY_R2_URL: ${{ vars.POLICY_R2_PUBLIC_URL }}

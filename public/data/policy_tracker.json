@@ -2321,14 +2321,15 @@
       "level": "city",
       "jurisdiction": "Boston",
       "title": "Boston AV testing approach",
-      "summary": "Boston's earlier testing approach used a local memorandum of understanding. The city's published program information includes historical approvals and should not be read as a current permit roster.",
+      "summary": "Boston's earlier testing approach used a local memorandum of understanding. The city first approved on-street testing in December 2016; its older approval list should not be read as a current permit roster.",
       "takeaway": "Boston's earlier testing approach used a local memorandum of understanding",
       "instrument": "testing framework",
       "status": "historical_status_unverified",
-      "date": null,
+      "date": "2016",
       "source_url": "https://www.boston.gov/departments/new-urban-mechanics/autonomous-vehicles-bostons-approach",
       "verified_at": "2026-09-23",
-      "state": "MA"
+      "state": "MA",
+      "date_precision": "year"
     }
   ]
 }
