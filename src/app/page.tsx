@@ -4,7 +4,7 @@ import operations from "../../public/data/operational_domains.json";
 import bills from "../../public/data/legislation_tracker.json";
 
 const stateActions = policy.states.filter(s => s.enacted_legislation || s.executive_order_history).length;
-const operators = new Set(operations.locations.filter(x => x.evidence_status === "current" && ["testing","deployment"].includes(x.activity_type ?? x.phase)).map(x => x.company)).size;
+const operators = new Set(operations.locations.filter(x => x.evidence_status === "current" && ["testing","deployment"].includes(x.activity_type ?? x.phase) && !/planned|permit|authorized/i.test(x.status)).map(x => x.company)).size;
 const chapters = [
   { id: "01", title: "Policy Trackers", lead: "What governments require—and what lawmakers are proposing.", href: "/policy/federal", accent: "#6ea6e2", links: [["Federal Regs and Rules", "/policy/federal"], ["Federal Legislation", "/policy/federal-legislation"], ["State Regulations", "/policy/states"], ["State Legislation", "/policy/state-legislation"]] },
   { id: "02", title: "Crash Reporting", lead: "Inspect nationally reported AV incidents by company, place, and crash characteristics.", href: "/safety", accent: "#e0a55b", links: [["Explore NHTSA SGO reports", "/safety"]] },
