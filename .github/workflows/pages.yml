@@ -17,12 +17,6 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      AWS_ACCESS_KEY_ID: ${{ secrets.POLICY_R2_ACCESS_KEY_ID }}
-      AWS_SECRET_ACCESS_KEY: ${{ secrets.POLICY_R2_SECRET_ACCESS_KEY }}
-      AWS_DEFAULT_REGION: auto
-      R2_ACCOUNT_ID: ${{ vars.POLICY_R2_ACCOUNT_ID }}
-      R2_BUCKET: ${{ vars.POLICY_R2_BUCKET }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -54,26 +48,7 @@ jobs:
           NEXT_PUBLIC_LEGISLATION_R2_URL: ${{ vars.LEGISLATION_R2_PUBLIC_URL }}
         run: npm run build
 
-      - name: Report R2 configuration
-        if: ${{ env.R2_BUCKET == '' || env.R2_ACCOUNT_ID == '' || env.AWS_ACCESS_KEY_ID == '' || env.AWS_SECRET_ACCESS_KEY == '' }}
-        run: |
-          echo '::warning::R2 backup skipped because one or more GitHub Actions settings are absent.'
-          for setting in R2_BUCKET R2_ACCOUNT_ID AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY; do
-            if [[ -z "${!setting}" ]]; then
-              case "$setting" in
-                R2_BUCKET) label=POLICY_R2_BUCKET ;;
-                R2_ACCOUNT_ID) label=POLICY_R2_ACCOUNT_ID ;;
-                AWS_ACCESS_KEY_ID) label=POLICY_R2_ACCESS_KEY_ID ;;
-                AWS_SECRET_ACCESS_KEY) label=POLICY_R2_SECRET_ACCESS_KEY ;;
-              esac
-              echo "::warning::Missing GitHub Actions setting: $label"
-            fi
-          done
-
-      - name: Publish and verify versioned R2 data snapshot
-        if: ${{ env.R2_BUCKET != '' && env.R2_ACCOUNT_ID != '' && env.AWS_ACCESS_KEY_ID != '' && env.AWS_SECRET_ACCESS_KEY != '' }}
-        run: python3 scripts/publish-r2-data.py site --revision "$GITHUB_SHA"
-
+      # The parent data repository publishes the validated site snapshot to R2.
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
