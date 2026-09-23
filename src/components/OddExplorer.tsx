@@ -10,6 +10,8 @@ type OperationalLocation = {
   lat: number | null;
   lon: number | null;
   phase: string;
+  activity_type?: string;
+  evidence_status?: string;
   status: string;
   mode: string;
   geometry_basis: string;
@@ -55,6 +57,12 @@ function canonicalCompany(s: string) {
     "VOLKSWAGEN": "MOIA America",
     "MOTIONAL": "Motional",
     "GLYDWAYS": "Glydways",
+    "GATIK AI": "Gatik",
+    "PLUSAI": "PlusAI",
+    "WERIDE AI": "WeRide",
+    "WAABI": "Waabi",
+    "TORC": "Torc",
+    "BEEP": "Beep",
     "GATIK AI": "Gatik",
     "GATIK": "Gatik",
     "PLUSAI": "PlusAI",
@@ -102,6 +110,7 @@ export function OddExplorer({
   const [company,setCompany]=useState("ALL");
   const [state,setState]=useState("ALL");
   const [phase,setPhase]=useState("deployment");
+  const [evidence,setEvidence]=useState<"current"|"announced"|"historical">("current");
   const [vintage,setVintage]=useState<"current"|"history">("current");
   const [selected,setSelected]=useState<OddPolygon|null>(null);
 
@@ -117,7 +126,8 @@ export function OddExplorer({
 
   const currentMarketKeys = useMemo(() => new Set(
     locations
-      .filter(d => d.phase === phase || phase === "ALL")
+      .filter(d => (d.evidence_status ?? "current") === "current")
+      .filter(d => (d.activity_type ?? d.phase) === phase || phase === "ALL")
       .map(d => `${d.company.toLowerCase()}|${canonicalMarket(d.market)}|${d.state}`)
   ), [locations, phase]);
 
@@ -168,15 +178,20 @@ export function OddExplorer({
   }, [allPolygons]);
 
   const polygons = useMemo(() => {
-    const base = vintage === "history" ? [...allPolygons, ...currentRouteGeometries] : [...latestPerMarket.filter(p =>
+    const showHistorical = evidence === "historical" || vintage === "history";
+    const currentRoutes = currentRouteGeometries.filter(p => {
+      const props = p.feature.properties ?? {};
+      return String(props.evidence_status ?? "current") === evidence;
+    });
+    const base = showHistorical ? [...allPolygons, ...currentRoutes] : evidence === "current" ? [...latestPerMarket.filter(p =>
       currentMarketKeys.has(`${p.company.toLowerCase()}|${canonicalMarket(p.market)}|${p.state}`)
-    ), ...currentRouteGeometries];
+    ), ...currentRoutes] : currentRoutes;
     return base.filter(p =>
       (company==="ALL" || canonicalCompany(p.company)===company) &&
       (state==="ALL" || p.state===state) &&
       (phase==="ALL" || p.phase===phase)
     );
-  }, [allPolygons, latestPerMarket, currentRouteGeometries, currentMarketKeys, company, state, phase, vintage]);
+  }, [allPolygons, latestPerMarket, currentRouteGeometries, currentMarketKeys, company, state, phase, evidence, vintage]);
 
   const historicalPoints = useMemo<OddPoint[]>(() => history.flatMap(e => {
     const raw = String(e.geometry_ref ?? "");
@@ -198,7 +213,8 @@ export function OddExplorer({
     d.lat !== null && d.lon !== null && Number.isFinite(d.lat) && Number.isFinite(d.lon) &&
     (company==="ALL"||canonicalCompany(d.company)===company) &&
     (state==="ALL"||d.state===state) &&
-    (phase==="ALL"||d.phase===phase)
+    (phase==="ALL"||(d.activity_type ?? d.phase)===phase) &&
+    ((d.evidence_status ?? "current")===evidence)
   ).map(d=>({
     company:d.company,
     market:d.market,
@@ -208,10 +224,10 @@ export function OddExplorer({
     phase:d.phase,
     status:d.status,
     mode:d.mode,
-  })),[locations,company,state,phase]);
+  })),[locations,company,state,phase,evidence]);
 
   const points = useMemo(() => {
-    if (vintage === "history") {
+    if (evidence === "historical" || vintage === "history") {
       return historicalPoints.filter(d =>
         (company==="ALL"||canonicalCompany(d.company)===company) &&
         (state==="ALL"||d.state===state) &&
@@ -219,11 +235,11 @@ export function OddExplorer({
       );
     }
     return currentPoints;
-  }, [vintage, historicalPoints, currentPoints, company, state, phase]);
+  }, [vintage, evidence, historicalPoints, currentPoints, company, state, phase]);
 
   const coverageRows = useMemo(() => companies.map(name => {
     const polygonCount = latestPerMarket.filter(p => canonicalCompany(p.company) === name).length + currentRouteGeometries.filter(p => canonicalCompany(p.company) === name).length;
-    const currentMarketCount = locations.filter(d => canonicalCompany(d.company) === name).length;
+    const currentMarketCount = locations.filter(d => canonicalCompany(d.company) === name && (d.evidence_status ?? "current") === "current").length;
     const historicPointCount = historicalPoints.filter(d => canonicalCompany(d.company) === name).length;
     const phases = Array.from(new Set([...history.filter(e => canonicalCompany(e.company) === name).map(e => e.phase), ...locations.filter(e => canonicalCompany(e.company) === name).map(e => e.phase)].filter(Boolean)));
     let coverage = "No current public ODD verified";
@@ -233,9 +249,16 @@ export function OddExplorer({
     return { name, polygonCount, currentMarketCount, historicPointCount, phases: phases.join(", "), coverage };
   }), [companies, latestPerMarket, currentRouteGeometries, locations, historicalPoints, history]);
 
+  const evidenceRows = useMemo(() => locations.filter(d =>
+    (company==="ALL" || canonicalCompany(d.company)===company) &&
+    (state==="ALL" || d.state===state) &&
+    (phase==="ALL" || (d.activity_type ?? d.phase)===phase) &&
+    ((d.evidence_status ?? "current")===evidence)
+  ), [locations, company, state, phase, evidence]);
+
   return <div>
     <div className="viz-card p-4">
-      <div className="grid md:grid-cols-4 gap-3">
+      <div className="grid md:grid-cols-5 gap-3">
         <label className="filter-label">Company
           <select className="filter-select" value={company} onChange={e=>setCompany(e.target.value)}>
             <option value="ALL">All companies</option>
@@ -252,8 +275,14 @@ export function OddExplorer({
           <select className="filter-select" value={phase} onChange={e=>setPhase(e.target.value)}>
             <option value="deployment">Deployment / service</option>
             <option value="testing">Testing</option>
-            <option value="planned">Planned / announced</option>
-            <option value="ALL">Testing + deployment + planned</option>
+            <option value="ALL">Testing + deployment</option>
+          </select>
+        </label>
+        <label className="filter-label">Evidence status
+          <select className="filter-select" value={evidence} onChange={e=>setEvidence(e.target.value as "current"|"announced"|"historical")}>
+            <option value="current">Current activity</option>
+            <option value="announced">Announced future activity</option>
+            <option value="historical">Historical</option>
           </select>
         </label>
         <label className="filter-label">Boundary view
@@ -270,7 +299,7 @@ export function OddExplorer({
         <div className="flex items-baseline justify-between gap-4 mb-2">
           <div>
             <h2 className="text-xl font-semibold">ODD and service-area boundaries</h2>
-            <div className="text-sm text-neutral-500">{vintage==="current" ? "Latest sourced polygon for markets currently tracked as operating." : "Historical polygon archive."}</div>
+            <div className="text-sm text-neutral-500">{evidence==="current" ? "Current testing/deployment geography, with exact boundaries only where sourced." : evidence==="announced" ? "Future activity mentioned by a source; not counted as current operation." : "Historical geometry archive."}</div>
           </div>
           <span className="text-sm text-neutral-500">{polygons.length} geometries</span>
         </div>
@@ -293,9 +322,33 @@ export function OddExplorer({
 
     <div className="viz-card mt-3 overflow-hidden">
       <div className="px-4 py-3 border-b border-neutral-200 flex items-baseline justify-between">
-        <h3 className="font-semibold">Manufacturer ODD coverage</h3>
-        <span className="text-xs text-neutral-500">{coverageRows.filter(r=>r.polygonCount>0||r.currentMarketCount>0||r.historicPointCount>0).length} of {coverageRows.length} manufacturers have sourced geography</span>
+        <h3 className="font-semibold">Source-grounded geography records</h3>
+        <span className="text-xs text-neutral-500">{evidenceRows.length} records in view</span>
       </div>
+      <div className="overflow-x-auto max-h-[420px]">
+        <table className="w-full text-sm">
+          <thead className="sticky top-0 bg-[#fcfcfb] text-left text-neutral-500">
+            <tr><th>Company</th><th>Market / corridor</th><th>State</th><th>Activity</th><th>Evidence</th><th>Geometry basis</th><th>Source</th></tr>
+          </thead>
+          <tbody>{evidenceRows.map((d,i)=><tr key={`${d.company}-${d.market}-${i}`} className="border-t border-neutral-100">
+            <td className="font-medium">{canonicalCompany(d.company)}</td>
+            <td>{d.market}</td>
+            <td>{d.state}</td>
+            <td>{(d.activity_type ?? d.phase).replaceAll("_"," ")}</td>
+            <td>{(d.evidence_status ?? "current").replaceAll("_"," ")}</td>
+            <td className="text-neutral-600">{d.geometry_basis.replaceAll("_"," ")}</td>
+            <td><a href={d.source_url} target="_blank" rel="noreferrer" className="underline">{d.source_date ?? "source"}</a></td>
+          </tr>)}</tbody>
+        </table>
+      </div>
+    </div>
+
+    <div className="viz-card mt-3 overflow-hidden">
+      <div className="px-4 py-3 border-b border-neutral-200 flex items-baseline justify-between">
+        <h3 className="font-semibold">Manufacturer ODD coverage</h3>
+        <span className="text-xs text-neutral-500">{coverageRows.filter(r=>r.polygonCount>0||r.currentMarketCount>0||r.historicPointCount>0).length} of {coverageRows.length} manufacturers/entities have sourced geography</span>
+      </div>
+      <div className="px-4 pb-2 text-xs text-neutral-500">“No current public ODD verified” means the Observatory has not yet found a defensible current testing/deployment geography for that entity; it does not mean the entity is inactive.</div>
       <div className="overflow-x-auto max-h-[340px]">
         <table className="w-full text-sm">
           <thead className="sticky top-0 bg-[#fcfcfb] text-left text-neutral-500"><tr><th>Manufacturer</th><th>Coverage</th><th>Phases seen</th></tr></thead>
