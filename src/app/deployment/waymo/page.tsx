@@ -33,16 +33,6 @@ export default async function WaymoDeploymentPage() {
         </div>
         <WaymoS2Explorer summary={s2Summary} geojson={s2Geo} serviceGeojson={oddCurrentGeometries} locations={odd.locations} />
       </section>
-
-      <section id="s2-legacy" className="hidden" className="mt-8">
-        <div className="mb-2">
-          <h2 className="text-xl font-semibold tracking-tight">Observed deployment footprint · Waymo S2</h2>
-          <p className="text-sm text-neutral-600 mt-1">
-            Cell-level Waymo operational mileage across published benchmark vintages, including incremental mileage between releases.
-          </p>
-        </div>
-        <WaymoS2Explorer summary={s2Summary} geojson={s2Geo} serviceGeojson={oddCurrentGeometries} locations={odd.locations} />
-      </section>
     </div>
   );
 }
