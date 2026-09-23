@@ -34,33 +34,76 @@
       "level": "federal",
       "jurisdiction": "US",
       "title": "Occupant protection proposal",
-      "summary": "Proposed adapting crash protection requirements for ADS vehicles without conventional driving controls.",
+      "summary": "Proposed adapting 11 numbered crash protection standards for ADS vehicles without conventional driving controls; the final rule later added changes to 212 and 219.",
       "instrument": "FMVSS rulemaking",
       "status": "superseded_by_final",
       "date": "2020-03-30",
-      "source_url": "https://www.federalregister.gov/documents/2020/03/30/2020-05886/occupant-protection-for-automated-driving-systems",
+      "source_url": "https://www.federalregister.gov/d/2020-05886",
       "verified_at": "2026-09-23",
       "fmvss": [
-        "208"
-      ]
+        "201",
+        "203",
+        "204",
+        "205",
+        "206",
+        "207",
+        "208",
+        "214",
+        "216a",
+        "225",
+        "226"
+      ],
+      "scope": "ADS-specific"
     },
     {
       "id": "fmvss-2022-final",
       "level": "federal",
       "jurisdiction": "US",
       "title": "Occupant protection final rule",
-      "summary": "Updated occupant protection standards for ADS vehicles without traditional manual driving controls; a finalized vehicle design rule, not an ADS driving performance test.",
+      "summary": "Amended 13 numbered standards for ADS vehicles without traditional manual driving controls, including FMVSS 204's exclusion for vehicles without steering controls. This addresses vehicle crash protection, not ADS driving performance.",
       "instrument": "FMVSS rulemaking",
       "status": "effective",
       "date": "2022-03-30",
-      "source_url": "https://www.federalregister.gov/documents/2022/03/30/2022-05426/occupant-protection-for-vehicles-with-automated-driving-systems",
+      "source_url": "https://www.federalregister.gov/d/2022-05426",
       "verified_at": "2026-09-23",
       "fmvss": [
-        "208"
+        "201",
+        "203",
+        "204",
+        "205",
+        "206",
+        "207",
+        "208",
+        "212",
+        "214",
+        "216a",
+        "219",
+        "225",
+        "226"
       ],
+      "scope": "ADS-specific",
       "effective_date": "2022-09-26",
       "proposal_date": "2020-03-30",
-      "proposal_url": "https://www.federalregister.gov/documents/2020/03/30/2020-05886/occupant-protection-for-automated-driving-systems"
+      "proposal_url": "https://www.federalregister.gov/d/2020-05886"
+    },
+    {
+      "id": "fmvss-204-2026",
+      "level": "federal",
+      "jurisdiction": "US",
+      "title": "Steering control rearward displacement · FMVSS 204",
+      "summary": "A separate, generally applicable rule excludes vehicles certified to FMVSS 208 frontal barrier crash protection from FMVSS 204's steering column rearward displacement requirements and removes obsolete text. It is relevant to AV design but is not an ADS-specific rule.",
+      "instrument": "FMVSS rulemaking",
+      "status": "effective",
+      "date": "2026-06-03",
+      "source_url": "https://www.federalregister.gov/d/2026-11080",
+      "verified_at": "2026-09-23",
+      "fmvss": [
+        "204"
+      ],
+      "scope": "related vehicle design",
+      "effective_date": "2026-07-06",
+      "proposal_date": "2025-05-30",
+      "proposal_url": "https://www.federalregister.gov/d/2025-09738"
     },
     {
       "id": "fmvss-102-2026",
