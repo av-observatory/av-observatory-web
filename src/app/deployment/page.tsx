@@ -54,7 +54,6 @@ export default async function DeploymentPage() {
           geometries={oddGeometries}
           currentGeometries={oddCurrentGeometries}
           manufacturerNames={registry.manufacturers.map(m => m.display_name)}
-          excludeCompanies={["Waymo"]}
         />
       </section>
 
