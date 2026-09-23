@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { UsStateMap } from "@/components/UsStateMap";
+import { OddMap, OddPolygon, OddPoint } from "@/components/OddMap";
 
 type OperationalLocation = {
   company: string;
@@ -19,41 +19,120 @@ type OperationalLocation = {
   note?: string;
 };
 
-const BASIS_LABELS: Record<string,string> = {
-  official_polygon: "Official polygon",
-  digitized_official_map: "Digitized official map",
-  authorized_admin_area: "Authorized administrative area",
-  observed_s2_footprint: "Observed S2 footprint",
-  route_corridor: "Route corridor",
-  city_point_only: "City point only",
+type OddEvent = {
+  date: string;
+  event_type: string;
+  phase: string;
+  company: string;
+  market: string;
+  state: string;
+  geometry_ref?: string | null;
+  geometry_basis?: string;
+  source_url?: string | null;
 };
 
-export function OddExplorer({ locations }: { locations: OperationalLocation[] }) {
-  const companies = useMemo(()=>Array.from(new Set(locations.map(d=>d.company))).sort(),[locations]);
-  const states = useMemo(()=>Array.from(new Set(locations.map(d=>d.state))).sort(),[locations]);
-  const modes = useMemo(()=>Array.from(new Set(locations.map(d=>d.mode))).sort(),[locations]);
-  const phases = useMemo(()=>Array.from(new Set(locations.map(d=>d.phase))).sort(),[locations]);
+type Feature = {
+  type: "Feature";
+  properties?: Record<string, unknown>;
+  geometry: unknown;
+};
+type FeatureCollection = { type: "FeatureCollection"; features: Feature[] };
+
+function canonicalMarket(s: string) {
+  return s.toLowerCase().replace(/,\s*[a-z]{2}$/i, "").replace(/[^a-z0-9]+/g, " ").trim();
+}
+
+export function OddExplorer({
+  locations,
+  history,
+  geometries,
+}: {
+  locations: OperationalLocation[];
+  history: OddEvent[];
+  geometries: FeatureCollection;
+}) {
+  const companies = useMemo(
+    () => Array.from(new Set([...locations.map(d=>d.company), ...history.map(d=>d.company)])).sort(),
+    [locations, history]
+  );
+  const states = useMemo(
+    () => Array.from(new Set([...locations.map(d=>d.state), ...history.map(d=>d.state)])).sort(),
+    [locations, history]
+  );
   const [company,setCompany]=useState("ALL");
   const [state,setState]=useState("ALL");
-  const [mode,setMode]=useState("ALL");
   const [phase,setPhase]=useState("deployment");
+  const [vintage,setVintage]=useState<"current"|"history">("current");
+  const [selected,setSelected]=useState<OddPolygon|null>(null);
 
-  const rows=useMemo(()=>locations.filter(d =>
+  const eventByGeometry = useMemo(() => {
+    const map = new Map<string, OddEvent>();
+    for (const e of history) {
+      if (!e.geometry_ref || !String(e.geometry_ref).endsWith(".geojson")) continue;
+      const prior = map.get(e.geometry_ref);
+      if (!prior || e.date >= prior.date) map.set(e.geometry_ref, e);
+    }
+    return map;
+  }, [history]);
+
+  const currentMarketKeys = useMemo(() => new Set(
+    locations
+      .filter(d => d.phase === phase || phase === "ALL")
+      .map(d => `${d.company.toLowerCase()}|${canonicalMarket(d.market)}|${d.state}`)
+  ), [locations, phase]);
+
+  const allPolygons = useMemo<OddPolygon[]>(() => geometries.features.flatMap(feature => {
+    const ref = String(feature.properties?.geometry_ref ?? "");
+    const e = eventByGeometry.get(ref);
+    if (!e) return [];
+    return [{
+      feature,
+      company: e.company,
+      market: e.market,
+      state: e.state,
+      phase: e.phase,
+      event_date: e.date,
+      event_type: e.event_type,
+      geometry_ref: ref,
+      source_url: e.source_url ?? undefined,
+    }];
+  }), [geometries, eventByGeometry]);
+
+  const latestPerMarket = useMemo(() => {
+    const map = new Map<string, OddPolygon>();
+    for (const p of allPolygons) {
+      const key = `${p.company.toLowerCase()}|${canonicalMarket(p.market)}|${p.state}|${p.phase}`;
+      const prior = map.get(key);
+      if (!prior || (p.event_date ?? "") >= (prior.event_date ?? "")) map.set(key,p);
+    }
+    return Array.from(map.values());
+  }, [allPolygons]);
+
+  const polygons = useMemo(() => {
+    const base = vintage === "history" ? allPolygons : latestPerMarket.filter(p =>
+      currentMarketKeys.has(`${p.company.toLowerCase()}|${canonicalMarket(p.market)}|${p.state}`)
+    );
+    return base.filter(p =>
+      (company==="ALL" || p.company===company) &&
+      (state==="ALL" || p.state===state) &&
+      (phase==="ALL" || p.phase===phase)
+    );
+  }, [allPolygons, latestPerMarket, currentMarketKeys, company, state, phase, vintage]);
+
+  const points = useMemo<OddPoint[]>(() => locations.filter(d =>
     (company==="ALL"||d.company===company) &&
     (state==="ALL"||d.state===state) &&
-    (mode==="ALL"||d.mode===mode) &&
     (phase==="ALL"||d.phase===phase)
-  ),[locations,company,state,mode,phase]);
-
-  const markers=rows.map(d=>({
-    name:d.market,
-    coordinates:[d.lon,d.lat] as [number,number],
+  ).map(d=>({
     company:d.company,
+    market:d.market,
+    state:d.state,
+    lat:d.lat,
+    lon:d.lon,
+    phase:d.phase,
     status:d.status,
     mode:d.mode,
-  }));
-
-  const polygonCount=rows.filter(d=>d.geometry_basis!=="city_point_only").length;
+  })),[locations,company,state,phase]);
 
   return <div>
     <div className="viz-card p-4">
@@ -72,14 +151,15 @@ export function OddExplorer({ locations }: { locations: OperationalLocation[] })
         </label>
         <label className="filter-label">Phase
           <select className="filter-select" value={phase} onChange={e=>setPhase(e.target.value)}>
+            <option value="deployment">Deployment / service</option>
+            <option value="testing">Testing</option>
             <option value="ALL">Testing + deployment</option>
-            {phases.map(x=><option key={x}>{x}</option>)}
           </select>
         </label>
-        <label className="filter-label">Mode
-          <select className="filter-select" value={mode} onChange={e=>setMode(e.target.value)}>
-            <option value="ALL">All modes</option>
-            {modes.map(x=><option key={x}>{x}</option>)}
+        <label className="filter-label">Boundary view
+          <select className="filter-select" value={vintage} onChange={e=>setVintage(e.target.value as "current"|"history")}>
+            <option value="current">Latest boundary for current markets</option>
+            <option value="history">All historical boundaries</option>
           </select>
         </label>
       </div>
@@ -88,35 +168,52 @@ export function OddExplorer({ locations }: { locations: OperationalLocation[] })
     <div className="grid lg:grid-cols-[1.55fr_.45fr] gap-3 mt-3">
       <div className="viz-card p-4">
         <div className="flex items-baseline justify-between gap-4 mb-2">
-          <h2 className="text-xl font-semibold">Operating markets</h2>
-          <span className="text-sm text-neutral-500">{rows.length} markets</span>
+          <div>
+            <h2 className="text-xl font-semibold">ODD and service-area boundaries</h2>
+            <div className="text-sm text-neutral-500">{vintage==="current" ? "Latest sourced polygon for markets currently tracked as operating." : "Historical polygon archive."}</div>
+          </div>
+          <span className="text-sm text-neutral-500">{polygons.length} polygons</span>
         </div>
-        <UsStateMap markers={markers} />
-        <div className="text-xs text-neutral-500 mt-2">Orange points are market locations. Default view is deployment. Testing ODDs are kept separate and can be selected with the Phase filter.</div>
+        <OddMap polygons={polygons} points={points} onPolygonClick={setSelected} />
       </div>
+
       <div className="grid gap-3 content-start">
-        <div className="viz-card p-4"><div className="text-3xl font-semibold tabular-nums">{new Set(rows.map(d=>d.company)).size}</div><div className="text-sm text-neutral-500">companies</div></div>
-        <div className="viz-card p-4"><div className="text-3xl font-semibold tabular-nums">{new Set(rows.map(d=>d.state)).size}</div><div className="text-sm text-neutral-500">states</div></div>
-        <div className="viz-card p-4"><div className="text-3xl font-semibold tabular-nums">{polygonCount}</div><div className="text-sm text-neutral-500">markets with non-point geometry identified</div></div>
+        <div className="viz-card p-4"><div className="text-3xl font-semibold tabular-nums">{new Set(points.map(d=>d.company)).size}</div><div className="text-sm text-neutral-500">companies in current market layer</div></div>
+        <div className="viz-card p-4"><div className="text-3xl font-semibold tabular-nums">{new Set(points.map(d=>d.state)).size}</div><div className="text-sm text-neutral-500">states</div></div>
+        <div className="viz-card p-4"><div className="text-3xl font-semibold tabular-nums">{polygons.length}</div><div className="text-sm text-neutral-500">displayed sourced polygons</div></div>
+        {selected && <div className="viz-card p-4">
+          <div className="text-xs uppercase tracking-wide text-neutral-500">Selected boundary</div>
+          <div className="font-semibold mt-1">{selected.company} · {selected.market}</div>
+          <div className="text-sm text-neutral-600 mt-1">{selected.phase} · {selected.event_date ?? "date unknown"}</div>
+          <div className="text-xs text-neutral-500 mt-2 break-all">{selected.geometry_ref}</div>
+          {selected.source_url && <a className="text-sm underline inline-block mt-2" href={selected.source_url} target="_blank" rel="noreferrer">source</a>}
+        </div>}
       </div>
     </div>
 
     <div className="viz-card mt-3 overflow-hidden">
-      <table className="w-full text-sm">
-        <thead className="text-left text-neutral-500"><tr><th>Company</th><th>Market</th><th>State</th><th>Phase</th><th>Status</th><th>Mode</th><th>Geometry</th><th>Source</th></tr></thead>
-        <tbody>
-          {rows.map((d,i)=><tr key={i} className="border-t border-neutral-100">
-            <td className="font-medium">{d.company}</td>
-            <td>{d.market}</td>
-            <td>{d.state}</td>
-            <td>{d.phase}</td>
-            <td>{d.status.replaceAll("_"," ")}</td>
-            <td>{d.mode}</td>
-            <td>{BASIS_LABELS[d.geometry_basis] ?? d.geometry_basis}</td>
-            <td><a href={d.source_url} target="_blank" rel="noreferrer" className="underline">source</a></td>
-          </tr>)}
-        </tbody>
-      </table>
+      <div className="px-4 py-3 border-b border-neutral-200 flex items-baseline justify-between">
+        <h3 className="font-semibold">Boundaries behind this view</h3>
+        <span className="text-xs text-neutral-500">Blue = deployment · yellow = testing</span>
+      </div>
+      <div className="overflow-x-auto max-h-[420px]">
+        <table className="w-full text-sm">
+          <thead className="sticky top-0 bg-[#fcfcfb] text-left text-neutral-500">
+            <tr><th>Company</th><th>Market</th><th>State</th><th>Phase</th><th>Date</th><th>Geometry</th><th>Source</th></tr>
+          </thead>
+          <tbody>
+            {polygons.sort((a,b)=>(b.event_date??"").localeCompare(a.event_date??"")).map((p,i)=><tr key={i} className="border-t border-neutral-100">
+              <td className="font-medium">{p.company}</td>
+              <td>{p.market}</td>
+              <td>{p.state}</td>
+              <td>{p.phase}</td>
+              <td>{p.event_date ?? "—"}</td>
+              <td className="text-neutral-600">{p.geometry_ref}</td>
+              <td>{p.source_url ? <a href={p.source_url} target="_blank" rel="noreferrer" className="underline">source</a> : "—"}</td>
+            </tr>)}
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>;
 }

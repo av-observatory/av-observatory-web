@@ -37,18 +37,18 @@ export default async function SafetyPage() {
         <StatTile label="Reporting entities" value={sgo.entities_represented.length.toString()} caption="ADS reporting entities represented" />
       </div>
 
-      <section className="mt-7">
+      <section id="trends" className="mt-7">
         <h2 className="text-xl font-semibold tracking-tight">Incident reports over time</h2>
         <div className="viz-card p-4 mt-2"><SafetyExplorer data={sgo} /></div>
       </section>
 
-      <section className="mt-5 grid lg:grid-cols-5 gap-3">
+      <section id="geography" className="mt-5 grid lg:grid-cols-5 gap-3">
         <div className="lg:col-span-3">
           <ChartCard title="Where incidents are reported" subtitle="Cumulative NHTSA SGO incident-report counts by state. Darker shading means more reports, not necessarily greater risk." source="NHTSA Standing General Order 2021-01">
             <UsStateMap valueByAbbrev={incidentsByState} />
           </ChartCard>
         </div>
-        <div className="lg:col-span-2">
+        <div id="entities" className="lg:col-span-2">
           <ChartCard title="Reporting entities" subtitle="All-time report count by entity. Exposure differs substantially across operators." source="NHTSA Standing General Order 2021-01">
             <TopEntitiesChart data={sgo} />
           </ChartCard>

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ComposableMap, Geographies, Geography, Marker } from "react-simple-maps";
+import { ComposableMap, Geographies, Geography, Marker, ZoomableGroup } from "react-simple-maps";
 
 const GEO_URL = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
 
@@ -52,7 +52,9 @@ export function UsStateMap({
   markers?: MapMarker[];
   onStateClick?: (abbrev: string, name: string) => void;
 }) {
-  const [hovered, setHovered] = useState<{ name: string; abbrev: string; value: number | null; x: number; y: number } | null>(null);
+  const [hovered, setHovered] = useState<{ text: string; x: number; y: number } | null>(null);
+  const [zoom, setZoom] = useState(1);
+  const [center, setCenter] = useState<[number, number]>([-96, 38]);
   const values = valueByAbbrev ? Object.values(valueByAbbrev) : [];
   const max = values.length ? Math.max(...values) : 0;
   const highlightSet = new Set(highlightAbbrevs ?? []);
@@ -72,50 +74,86 @@ export function UsStateMap({
     return SEQUENTIAL_RAMP[step];
   }
 
-  function hoverText() {
-    if (!hovered) return "";
+  function stateText(name: string, abbrev: string, value: number | undefined) {
     if (isCategoryMode) {
-      const key = categoryByAbbrev?.[hovered.abbrev];
+      const key = categoryByAbbrev?.[abbrev];
       const cat = key ? categories?.[key] : undefined;
-      return cat ? `${hovered.name}: ${cat.label}` : `${hovered.name}: no classified record yet`;
+      return cat ? `${name}: ${cat.label}` : `${name}: no classified record yet`;
     }
-    if (isHighlightMode) return `${hovered.name}: ${highlightSet.has(hovered.abbrev) ? highlightLabel : "No data"}`;
-    return `${hovered.name}: ${hovered.value !== null ? Math.round(hovered.value).toLocaleString() : "No public operational data yet"}`;
+    if (isHighlightMode) return `${name}: ${highlightSet.has(abbrev) ? highlightLabel : "No data"}`;
+    return `${name}: ${value !== undefined ? Math.round(value).toLocaleString() : "No public operational data yet"}`;
+  }
+
+  function reset() {
+    setZoom(1);
+    setCenter([-96, 38]);
   }
 
   return (
     <div className="relative">
+      <div className="absolute right-2 top-2 z-[2] flex gap-1">
+        <button className="map-control" onClick={() => setZoom(z => Math.min(6, z * 1.5))} aria-label="Zoom in">+</button>
+        <button className="map-control" onClick={() => setZoom(z => Math.max(1, z / 1.5))} aria-label="Zoom out">−</button>
+        <button className="map-control px-2" onClick={reset}>Reset</button>
+      </div>
       <ComposableMap projection="geoAlbersUsa" width={800} height={480} style={{ width: "100%", height: "auto" }}>
-        <Geographies geography={GEO_URL}>
-          {({ geographies }) =>
-            geographies.map((geo) => {
-              const name = (geo.properties?.name as string) ?? "";
-              const abbrev = STATE_ABBREV_BY_NAME[name] ?? "";
-              const value = valueByAbbrev?.[abbrev];
-              const isHovered = hovered?.name === name;
-              return (
-                <Geography
-                  key={geo.rsmKey}
-                  geography={geo}
-                  fill={isHovered ? "#0b1d33" : colorFor(abbrev)}
-                  stroke="#ffffff"
-                  strokeWidth={0.75}
-                  onMouseEnter={(evt) => setHovered({ name, abbrev, value: value ?? null, x: evt.clientX, y: evt.clientY })}
-                  onMouseMove={(evt) => setHovered((h) => (h ? { ...h, x: evt.clientX, y: evt.clientY } : h))}
-                  onMouseLeave={() => setHovered(null)}
-                  onClick={() => onStateClick?.(abbrev, name)}
-                  style={{ outline: "none", cursor: onStateClick ? "pointer" : "default" }}
-                />
-              );
-            })
-          }
-        </Geographies>
-        {markers.map((m, i) => (
-          <Marker key={`${m.name}-${m.company ?? ""}-${i}`} coordinates={m.coordinates}>
-            <circle r={5.5} fill="#eb6834" stroke="#ffffff" strokeWidth={1.5} />
-            <title>{[m.company, m.name, m.status].filter(Boolean).join(" · ")}</title>
-          </Marker>
-        ))}
+        <ZoomableGroup
+          zoom={zoom}
+          center={center}
+          minZoom={1}
+          maxZoom={6}
+          onMoveEnd={({ coordinates, zoom: nextZoom }) => {
+            setCenter(coordinates as [number, number]);
+            setZoom(nextZoom);
+          }}
+        >
+          <Geographies geography={GEO_URL}>
+            {({ geographies }) =>
+              geographies.map((geo) => {
+                const name = (geo.properties?.name as string) ?? "";
+                const abbrev = STATE_ABBREV_BY_NAME[name] ?? "";
+                const value = valueByAbbrev?.[abbrev];
+                return (
+                  <Geography
+                    key={geo.rsmKey}
+                    geography={geo}
+                    fill={colorFor(abbrev)}
+                    stroke="#ffffff"
+                    strokeWidth={0.75 / zoom}
+                    onMouseEnter={(evt) => setHovered({ text: stateText(name, abbrev, value), x: evt.clientX, y: evt.clientY })}
+                    onMouseMove={(evt) => setHovered((h) => h ? { ...h, x: evt.clientX, y: evt.clientY } : h)}
+                    onMouseLeave={() => setHovered(null)}
+                    onClick={() => onStateClick?.(abbrev, name)}
+                    style={{
+                      default: { outline: "none" },
+                      hover: { fill: "#0b1d33", outline: "none", cursor: onStateClick ? "pointer" : "grab" },
+                      pressed: { outline: "none" },
+                    }}
+                  />
+                );
+              })
+            }
+          </Geographies>
+
+          {markers.map((m, i) => (
+            <Marker key={`${m.name}-${m.company ?? ""}-${i}`} coordinates={m.coordinates}>
+              <circle
+                r={5.5 / Math.sqrt(zoom)}
+                fill="#eb6834"
+                stroke="#ffffff"
+                strokeWidth={1.5 / zoom}
+                onMouseEnter={(evt) => setHovered({
+                  text: [m.company, m.name, m.status, m.mode].filter(Boolean).join(" · "),
+                  x: evt.clientX,
+                  y: evt.clientY,
+                })}
+                onMouseMove={(evt) => setHovered((h) => h ? { ...h, x: evt.clientX, y: evt.clientY } : h)}
+                onMouseLeave={() => setHovered(null)}
+                style={{ cursor: "pointer" }}
+              />
+            </Marker>
+          ))}
+        </ZoomableGroup>
       </ComposableMap>
 
       {isCategoryMode && categories && (
@@ -129,9 +167,11 @@ export function UsStateMap({
         </div>
       )}
 
+      <div className="mt-1 text-xs text-neutral-500">Drag to pan · scroll or controls to zoom · hover for details</div>
+
       {hovered && (
-        <div className="fixed z-10 pointer-events-none bg-neutral-900 text-white text-xs rounded px-2 py-1" style={{ left: hovered.x + 12, top: hovered.y + 12 }}>
-          {hoverText()}
+        <div className="fixed z-20 pointer-events-none bg-neutral-900 text-white text-xs rounded px-2 py-1 max-w-xs" style={{ left: hovered.x + 12, top: hovered.y + 12 }}>
+          {hovered.text}
         </div>
       )}
     </div>

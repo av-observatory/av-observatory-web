@@ -3,7 +3,7 @@ import path from "path";
 import { MaAdtRegistry } from "@/lib/deployment";
 import { StatePermitRegistry } from "@/lib/registry";
 import { ManufacturerSearch } from "@/components/ManufacturerSearch";
-import Link from "next/link";
+import { OddExplorer } from "@/components/OddExplorer";
 
 async function loadJson<T>(filename: string): Promise<T> {
   const file = path.join(process.cwd(), "public", "data", filename);
@@ -20,7 +20,9 @@ const STATUS_LABELS: Record<string, string> = {
 export default async function DeploymentPage() {
   const ma = await loadJson<MaAdtRegistry>("ma_adt_testing_registry.json");
   const registry = await loadJson<StatePermitRegistry>("state_permit_registry.json");
-  const odd = await loadJson<{ locations: { company:string; state:string; market:string; lat:number; lon:number; status:string; mode:string; geometry_basis:string; source_url:string; note?:string }[] }>("operational_domains.json");
+  const odd = await loadJson<{ locations: { company:string; state:string; market:string; lat:number; lon:number; phase:string; status:string; mode:string; geometry_basis:string; source_url:string; note?:string }[] }>("operational_domains.json");
+  const oddHistory = await loadJson<{ historical_events: { date:string; event_type:string; phase:string; company:string; market:string; state:string; geometry_ref?:string|null; geometry_basis?:string; source_url?:string|null }[] }>("odd_history.json");
+  const oddGeometries = await loadJson<{ type:"FeatureCollection"; features:{ type:"Feature"; properties?:Record<string,unknown>; geometry:unknown }[] }>("odd_geometries.geojson");
 
   return (
     <div className="max-w-6xl px-8 py-6">
@@ -36,11 +38,21 @@ export default async function DeploymentPage() {
         <ManufacturerSearch manufacturers={registry.manufacturers} stateStatuses={registry.states_status_notes} operationalLocations={odd.locations} />
       </section>
 
-      <div className="mt-4 text-sm">
-        <Link href="/odd" className="font-medium underline text-[#0b1d33]">Explore actual operating markets and ODD/service-area geometry →</Link>
-      </div>
+      <section id="odd" className="mt-8">
+        <div className="flex items-baseline justify-between gap-4 mb-2">
+          <div>
+            <h2 className="text-xl font-semibold tracking-tight">ODD and service-area geography</h2>
+            <p className="text-sm text-neutral-600 mt-1">Actual sourced operating-area polygons, separated from state authorization. Testing and deployment boundaries remain distinct.</p>
+          </div>
+        </div>
+        <OddExplorer
+          locations={odd.locations}
+          history={oddHistory.historical_events}
+          geometries={oddGeometries}
+        />
+      </section>
 
-      <section className="mt-7">
+      <section id="regulatory" className="mt-7">
         <h2 className="text-xl font-semibold tracking-tight">State regulatory coverage</h2>
         <div className="mt-4 overflow-x-auto viz-card">
           <table className="w-full text-sm">

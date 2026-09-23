@@ -83,11 +83,11 @@ export default async function OverviewPage() {
       </p>
 
       <div className="mt-5 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-2.5">
-        <StatTile label="States in national incident data" value={sgo.states_represented.length.toString()} caption="States represented in NHTSA SGO incident reports" />
-        <StatTile label="ADS reporting entities" value={entities.total.toString()} caption="Entities represented in the national SGO dataset" />
-        <StatTile label="Reported incidents" value={incidents.total.toLocaleString()} pctChange={incidents.pctChange} caption="NHTSA SGO, all represented operators and states" />
-        <StatTile label="States with public holder rosters" value={authorizationStates.toString()} caption="Company-level permit / registry records currently ingested" />
-        <StatTile label="Additional permit-regime states" value={permitRegimeStates.toString()} caption="Permit required, but holder roster not publicly available" />
+        <StatTile label="States in national incident data" value={sgo.states_represented.length.toString()} caption="States represented in NHTSA SGO incident reports" href="/safety#geography" />
+        <StatTile label="ADS reporting entities" value={entities.total.toString()} caption="Entities represented in the national SGO dataset" href="/safety#entities" />
+        <StatTile label="Reported incidents" value={incidents.total.toLocaleString()} pctChange={incidents.pctChange} caption="NHTSA SGO, all represented operators and states" href="/safety#trends" />
+        <StatTile label="States with public holder rosters" value={authorizationStates.toString()} caption="Company-level permit / registry records currently ingested" href="/deployment#regulatory" />
+        <StatTile label="Additional permit-regime states" value={permitRegimeStates.toString()} caption="Permit required, but holder roster not publicly available" href="/deployment#regulatory" />
       </div>
 
       <div className="mt-6 grid lg:grid-cols-3 gap-3">
