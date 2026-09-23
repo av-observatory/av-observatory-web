@@ -1,4 +1,4 @@
-name: Refresh AV 311 Complaints
+name: Refresh Citizen AV Complaints
 
 on:
   schedule:
@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Fetch reviewed city AV category and update CSV
+      - name: Fetch San Francisco AV 311 and Austin resident reports
         run: |
           python3 scripts/refresh-311.py
           python3 scripts/refresh-311.py --check
@@ -25,7 +25,7 @@ jobs:
           python3 scripts/export-data-csv.py --check
       - name: Commit changed public records
         run: |
-          git add public/data/av_311_complaints.json public/data/av_311_complaints.csv public/data/av_311_complaints_monthly.csv
+          git add public/data/av_311_complaints.json public/data/av_311_complaints.csv public/data/av_311_complaints_monthly.csv public/data/austin_av_reports.json public/data/austin_av_reports.csv public/data/austin_av_reports_monthly.csv public/data/austin_av_reports_resident_issues.csv public/data/austin_av_reports_reporter_types.csv
           if ! git diff --cached --quiet; then
             git config user.name "AV Observatory Data Bot"
             git config user.email "actions@users.noreply.github.com"

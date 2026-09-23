@@ -1,10 +1,10 @@
 {
   "schema_version": "1.0.0",
-  "dataset": "AV-identifiable municipal 311 service requests",
+  "dataset": "San Francisco AV-identifiable 311 service requests",
   "source_url": "https://data.sf.gov/d/vw6y-z8j6",
   "source_api": "https://data.sf.gov/resource/vw6y-z8j6.json",
-  "selection": "Exact service_name match: Autonomous Vehicle Complaints. Other city request types and any unclassified AV mentions are excluded.",
-  "limitations": "311 entries are public requests, not verified AV incidents. They can include feedback or duplicates and do not identify an operator. The SF AV category begins in April 2025. Other deployment markets are not included until a public 311 source with identifiable AV fields is validated; their absence does not mean zero complaints.",
+  "selection": "Exact service_name match: Autonomous Vehicle Complaints. Other city request types and unclassified AV mentions are excluded.",
+  "limitations": "These are public 311 requests, not verified incidents. The published subtypes describe how SF311 classified a request, not the specific behavior alleged. Operator identity is unavailable; the AV category begins in April 2025.",
   "source_data_as_of": "2026-09-23T01:00:00.000",
   "total_records": 964,
   "markets": [

@@ -1,0 +1,324 @@
+id,source_id,market,state,reported_date,month,reporter_type,issue,operator,source_url
+ATX-1,1,Austin,TX,2023-07-08,2023-07,AFD,Near Miss,Cruise,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/1
+ATX-6,6,Austin,TX,2023-07-13,2023-07,Resident Feedback,Nuisance,Cruise,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/6
+ATX-5,5,Austin,TX,2023-07-15,2023-07,Resident Feedback,Blocking Traffic,Cruise,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/5
+ATX-4,4,Austin,TX,2023-07-18,2023-07,APD,Blocking Traffic,Cruise,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/4
+ATX-2,2,Austin,TX,2023-07-26,2023-07,Resident Feedback,Nuisance,Cruise,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/2
+ATX-3,3,Austin,TX,2023-07-30,2023-07,Resident Feedback,Safety Concern,Cruise,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/3
+ATX-7,7,Austin,TX,2023-08-01,2023-08,Resident Feedback,Safety Concern,Cruise,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/7
+ATX-14,14,Austin,TX,2023-08-01,2023-08,Resident Feedback,Safety Concern,Cruise,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/14
+ATX-12,12,Austin,TX,2023-08-04,2023-08,Resident Feedback,Near Miss,Cruise,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/12
+ATX-10,10,Austin,TX,2023-08-05,2023-08,Resident Feedback,Blocking Traffic,Cruise,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/10
+ATX-8,8,Austin,TX,2023-08-06,2023-08,AFD,Blocking Traffic,Cruise,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/8
+ATX-9,9,Austin,TX,2023-08-07,2023-08,APD,Ignore APD Direction,Cruise,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/9
+ATX-13,13,Austin,TX,2023-08-08,2023-08,APD,Ignore APD Direction,Cruise,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/13
+ATX-11,11,Austin,TX,2023-08-17,2023-08,AFD,Blocking Traffic,Cruise,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/11
+ATX-22,22,Austin,TX,2023-08-17,2023-08,AFD,Near Miss,Cruise,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/22
+ATX-17,17,Austin,TX,2023-08-23,2023-08,AFD,Collision,Cruise,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/17
+ATX-15,15,Austin,TX,2023-08-30,2023-08,APD,Collision,Cruise,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/15
+ATX-16,16,Austin,TX,2023-08-30,2023-08,AFD,Near Miss,Cruise,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/16
+ATX-18,18,Austin,TX,2023-09-02,2023-09,AFD,Blocking Traffic,Cruise,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/18
+ATX-26,26,Austin,TX,2023-09-02,2023-09,AFD,Near Miss,Cruise,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/26
+ATX-19,19,Austin,TX,2023-09-07,2023-09,Resident Feedback,Nuisance,Cruise,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/19
+ATX-20,20,Austin,TX,2023-09-07,2023-09,Resident Feedback,Near Miss,Cruise,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/20
+ATX-21,21,Austin,TX,2023-09-07,2023-09,Resident Feedback,Safety Concern,Cruise,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/21
+ATX-23,23,Austin,TX,2023-09-09,2023-09,AFD,Collision,Cruise,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/23
+ATX-24,24,Austin,TX,2023-09-09,2023-09,Resident Feedback,Safety Concern,Cruise,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/24
+ATX-29,29,Austin,TX,2023-09-12,2023-09,APD,Collision,Cruise,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/29
+ATX-25,25,Austin,TX,2023-09-13,2023-09,APD,Blocking Traffic,Cruise,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/25
+ATX-82,82,Austin,TX,2023-09-14,2023-09,Resident Feedback,Near Miss,Cruise,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/82
+ATX-27,27,Austin,TX,2023-09-15,2023-09,Resident Feedback,Near Miss,Cruise,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/27
+ATX-28,28,Austin,TX,2023-09-17,2023-09,Resident Feedback,Blocking Traffic,Cruise,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/28
+ATX-30,30,Austin,TX,2023-09-18,2023-09,Resident Feedback,Collision,Cruise,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/30
+ATX-34,34,Austin,TX,2023-09-19,2023-09,Resident Feedback,Near Miss,Cruise,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/34
+ATX-31,31,Austin,TX,2023-09-20,2023-09,City Employee,Blocking Traffic,Cruise,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/31
+ATX-33,33,Austin,TX,2023-09-20,2023-09,AFD,Near Miss,Cruise,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/33
+ATX-32,32,Austin,TX,2023-09-24,2023-09,AFD,Near Miss,Cruise,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/32
+ATX-51,51,Austin,TX,2023-09-24,2023-09,Resident Feedback,Near Miss,Cruise,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/51
+ATX-53,53,Austin,TX,2023-09-24,2023-09,Resident Feedback,Near Miss,Cruise,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/53
+ATX-35,35,Austin,TX,2023-09-25,2023-09,Resident Feedback,Near Miss,Cruise,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/35
+ATX-39,39,Austin,TX,2023-09-25,2023-09,Resident Feedback,Near Miss,Cruise,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/39
+ATX-36,36,Austin,TX,2023-09-27,2023-09,City Employee,Near Miss,Cruise,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/36
+ATX-38,38,Austin,TX,2023-09-28,2023-09,AFD,Near Miss,Cruise,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/38
+ATX-37,37,Austin,TX,2023-09-30,2023-09,AFD,Safety Concern,Cruise,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/37
+ATX-40,40,Austin,TX,2023-09-30,2023-09,City Employee,Blocking Traffic,Cruise,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/40
+ATX-42,42,Austin,TX,2023-09-30,2023-09,City Employee,Blocking Traffic,Cruise,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/42
+ATX-41,41,Austin,TX,2023-10-01,2023-10,APD,Ignore APD Direction,Cruise,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/41
+ATX-44,44,Austin,TX,2023-10-06,2023-10,City Employee,Blocking Traffic,Cruise,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/44
+ATX-43,43,Austin,TX,2023-10-11,2023-10,EMS,Safety Concern,Cruise,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/43
+ATX-47,47,Austin,TX,2023-10-14,2023-10,Resident Feedback,Safety Concern,Cruise,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/47
+ATX-45,45,Austin,TX,2023-10-21,2023-10,AFD,Near Miss,Cruise,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/45
+ATX-46,46,Austin,TX,2023-10-23,2023-10,Resident Feedback,Near Miss,Cruise,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/46
+ATX-50,50,Austin,TX,2023-10-23,2023-10,Resident Feedback,Near Miss,Cruise,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/50
+ATX-49,49,Austin,TX,2023-10-24,2023-10,City Employee,Collision,AV Ride,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/49
+ATX-48,48,Austin,TX,2023-10-30,2023-10,Resident Feedback,Safety Concern,Cruise,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/48
+ATX-52,52,Austin,TX,2023-10-30,2023-10,City Employee,Nuisance,Cruise,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/52
+ATX-54,54,Austin,TX,2024-06-21,2024-06,Resident Feedback,Near Miss,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/54
+ATX-55,55,Austin,TX,2024-07-01,2024-07,Resident Feedback,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/55
+ATX-61,61,Austin,TX,2024-08-03,2024-08,Resident Feedback,Nuisance,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/61
+ATX-56,56,Austin,TX,2024-08-17,2024-08,Resident Feedback,Nuisance,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/56
+ATX-57,57,Austin,TX,2024-08-18,2024-08,Resident Feedback,Nuisance,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/57
+ATX-58,58,Austin,TX,2024-08-20,2024-08,Resident Feedback,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/58
+ATX-59,59,Austin,TX,2024-08-20,2024-08,Resident Feedback,Nuisance,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/59
+ATX-60,60,Austin,TX,2024-09-24,2024-09,Resident Feedback,Safety Concern,Zoox,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/60
+ATX-64,64,Austin,TX,2024-09-28,2024-09,APD,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/64
+ATX-63,63,Austin,TX,2024-10-01,2024-10,City Employee,Blocking Traffic,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/63
+ATX-62,62,Austin,TX,2024-10-04,2024-10,APD,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/62
+ATX-65,65,Austin,TX,2024-10-05,2024-10,Resident Feedback,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/65
+ATX-67,67,Austin,TX,2024-10-08,2024-10,AFD,Collision,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/67
+ATX-66,66,Austin,TX,2024-10-15,2024-10,APD,Ignore APD Direction,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/66
+ATX-68,68,Austin,TX,2024-10-16,2024-10,AFD,Collision,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/68
+ATX-69,69,Austin,TX,2024-10-19,2024-10,APD,Ignore APD Direction,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/69
+ATX-70,70,Austin,TX,2024-10-19,2024-10,APD,Ignore APD Direction,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/70
+ATX-74,74,Austin,TX,2024-10-19,2024-10,APD,Ignore APD Direction,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/74
+ATX-71,71,Austin,TX,2024-11-01,2024-11,Resident Feedback,Nuisance,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/71
+ATX-78,78,Austin,TX,2024-12-08,2024-12,APD,Blocking Traffic,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/78
+ATX-72,72,Austin,TX,2024-12-11,2024-12,Resident Feedback,Blocking Traffic,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/72
+ATX-73,73,Austin,TX,2025-01-11,2025-01,APD,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/73
+ATX-75,75,Austin,TX,2025-01-30,2025-01,Resident Feedback,Safety Concern,Zoox,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/75
+ATX-79,79,Austin,TX,2025-01-30,2025-01,Resident Feedback,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/79
+ATX-76,76,Austin,TX,2025-02-07,2025-02,Resident Feedback,Near Miss,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/76
+ATX-77,77,Austin,TX,2025-02-11,2025-02,AFD,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/77
+ATX-83,83,Austin,TX,2025-02-16,2025-02,City Employee,Blocking Traffic,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/83
+ATX-87,87,Austin,TX,2025-02-26,2025-02,APD,Ignore APD Direction,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/87
+ATX-81,81,Austin,TX,2025-03-01,2025-03,APD,Blocking Traffic,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/81
+ATX-80,80,Austin,TX,2025-03-03,2025-03,Resident Feedback,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/80
+ATX-115,115,Austin,TX,2025-03-13,2025-03,APD,Blocking Traffic,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/115
+ATX-88,88,Austin,TX,2025-03-15,2025-03,APD,Ignore APD Direction,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/88
+ATX-99,99,Austin,TX,2025-03-16,2025-03,APD,Blocking Traffic,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/99
+ATX-100,100,Austin,TX,2025-03-16,2025-03,APD,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/100
+ATX-85,85,Austin,TX,2025-03-17,2025-03,APD,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/85
+ATX-84,84,Austin,TX,2025-03-18,2025-03,Resident Feedback,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/84
+ATX-86,86,Austin,TX,2025-03-21,2025-03,Resident Feedback,Blocking Traffic,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/86
+ATX-90,90,Austin,TX,2025-03-23,2025-03,APD,Blocking Traffic,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/90
+ATX-89,89,Austin,TX,2025-03-24,2025-03,APD,Blocking Traffic,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/89
+ATX-92,92,Austin,TX,2025-04-15,2025-04,City Employee,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/92
+ATX-91,91,Austin,TX,2025-04-16,2025-04,Resident Feedback,Blocking Traffic,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/91
+ATX-126,126,Austin,TX,2025-04-18,2025-04,AFD,Blocking Traffic,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/126
+ATX-93,93,Austin,TX,2025-05-02,2025-05,City Employee,Blocking Traffic,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/93
+ATX-95,95,Austin,TX,2025-05-02,2025-05,Resident Feedback,Nuisance,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/95
+ATX-114,114,Austin,TX,2025-05-02,2025-05,Resident Feedback,Blocking Traffic,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/114
+ATX-94,94,Austin,TX,2025-05-04,2025-05,Resident Feedback,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/94
+ATX-96,96,Austin,TX,2025-05-12,2025-05,APD,Blocking Traffic,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/96
+ATX-118,118,Austin,TX,2025-05-13,2025-05,APD,Ignore APD Direction,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/118
+ATX-97,97,Austin,TX,2025-05-14,2025-05,Resident Feedback,Blocking Traffic,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/97
+ATX-98,98,Austin,TX,2025-05-14,2025-05,Resident Feedback,Blocking Traffic,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/98
+ATX-101,101,Austin,TX,2025-05-21,2025-05,APD,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/101
+ATX-103,103,Austin,TX,2025-05-27,2025-05,Resident Feedback,Nuisance,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/103
+ATX-106,106,Austin,TX,2025-05-28,2025-05,Resident Feedback,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/106
+ATX-102,102,Austin,TX,2025-05-29,2025-05,Resident Feedback,Nuisance,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/102
+ATX-104,104,Austin,TX,2025-05-29,2025-05,Resident Feedback,Nuisance,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/104
+ATX-105,105,Austin,TX,2025-05-30,2025-05,Resident Feedback,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/105
+ATX-108,108,Austin,TX,2025-06-02,2025-06,AFD,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/108
+ATX-107,107,Austin,TX,2025-06-04,2025-06,Resident Feedback,Nuisance,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/107
+ATX-116,116,Austin,TX,2025-06-08,2025-06,Resident Feedback,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/116
+ATX-109,109,Austin,TX,2025-06-09,2025-06,Resident Feedback,Blocking Traffic,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/109
+ATX-110,110,Austin,TX,2025-06-13,2025-06,City Employee,Nuisance,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/110
+ATX-111,111,Austin,TX,2025-06-13,2025-06,City Employee,Nuisance,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/111
+ATX-128,128,Austin,TX,2025-06-13,2025-06,AFD,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/128
+ATX-112,112,Austin,TX,2025-06-16,2025-06,City Employee,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/112
+ATX-113,113,Austin,TX,2025-06-16,2025-06,City Employee,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/113
+ATX-117,117,Austin,TX,2025-06-22,2025-06,Resident Feedback,Safety Concern,Tesla,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/117
+ATX-119,119,Austin,TX,2025-06-27,2025-06,Resident Feedback,Blocking Traffic,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/119
+ATX-122,122,Austin,TX,2025-06-30,2025-06,Resident Feedback,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/122
+ATX-121,121,Austin,TX,2025-07-01,2025-07,Resident Feedback,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/121
+ATX-120,120,Austin,TX,2025-07-02,2025-07,Resident Feedback,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/120
+ATX-123,123,Austin,TX,2025-07-03,2025-07,AFD,Collision,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/123
+ATX-124,124,Austin,TX,2025-07-11,2025-07,Resident Feedback,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/124
+ATX-133,133,Austin,TX,2025-07-18,2025-07,City Employee,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/133
+ATX-125,125,Austin,TX,2025-07-23,2025-07,APD,Ignore APD Direction,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/125
+ATX-129,129,Austin,TX,2025-07-25,2025-07,Resident Feedback,Near Miss,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/129
+ATX-127,127,Austin,TX,2025-07-31,2025-07,City Employee,Blocking Traffic,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/127
+ATX-171,171,Austin,TX,2025-08-22,2025-08,AISD Police,School bus stop arm violation,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/171
+ATX-130,130,Austin,TX,2025-08-26,2025-08,Resident Feedback,Nuisance,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/130
+ATX-131,131,Austin,TX,2025-08-26,2025-08,City Employee,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/131
+ATX-169,169,Austin,TX,2025-08-26,2025-08,AISD Police,School bus stop arm violation,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/169
+ATX-139,139,Austin,TX,2025-08-28,2025-08,Resident Feedback,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/139
+ATX-132,132,Austin,TX,2025-08-30,2025-08,Resident Feedback,Near Miss,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/132
+ATX-143,143,Austin,TX,2025-09-01,2025-09,Resident Feedback,Nuisance,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/143
+ATX-135,135,Austin,TX,2025-09-03,2025-09,City Employee,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/135
+ATX-134,134,Austin,TX,2025-09-06,2025-09,APD,Ignore APD Direction,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/134
+ATX-136,136,Austin,TX,2025-09-06,2025-09,APD,Ignore APD Direction,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/136
+ATX-137,137,Austin,TX,2025-09-08,2025-09,City Employee,Nuisance,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/137
+ATX-138,138,Austin,TX,2025-09-08,2025-09,Resident Feedback,Nuisance,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/138
+ATX-140,140,Austin,TX,2025-09-09,2025-09,Resident Feedback,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/140
+ATX-144,144,Austin,TX,2025-09-13,2025-09,APD,Ignore APD Direction,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/144
+ATX-145,145,Austin,TX,2025-09-13,2025-09,APD,Collision,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/145
+ATX-141,141,Austin,TX,2025-09-18,2025-09,AFD,Blocking Traffic,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/141
+ATX-142,142,Austin,TX,2025-09-18,2025-09,Resident Feedback,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/142
+ATX-149,149,Austin,TX,2025-09-19,2025-09,Resident Feedback,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/149
+ATX-150,150,Austin,TX,2025-09-20,2025-09,APD,Collision,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/150
+ATX-146,146,Austin,TX,2025-09-21,2025-09,Resident Feedback,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/146
+ATX-147,147,Austin,TX,2025-09-24,2025-09,Resident Feedback,Safety Issue - School,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/147
+ATX-153,153,Austin,TX,2025-09-25,2025-09,AFD,Nuisance,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/153
+ATX-170,170,Austin,TX,2025-09-25,2025-09,AISD Police,School bus stop arm violation,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/170
+ATX-148,148,Austin,TX,2025-09-26,2025-09,Resident Feedback,Nuisance,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/148
+ATX-151,151,Austin,TX,2025-09-27,2025-09,Resident Feedback,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/151
+ATX-172,172,Austin,TX,2025-09-29,2025-09,AISD Police,School bus stop arm violation,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/172
+ATX-175,175,Austin,TX,2025-09-30,2025-09,AISD Police,School bus stop arm violation,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/175
+ATX-173,173,Austin,TX,2025-10-02,2025-10,AISD Police,School bus stop arm violation,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/173
+ATX-155,155,Austin,TX,2025-10-05,2025-10,EMS,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/155
+ATX-158,158,Austin,TX,2025-10-05,2025-10,EMS,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/158
+ATX-174,174,Austin,TX,2025-10-08,2025-10,AISD Police,School bus stop arm violation,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/174
+ATX-152,152,Austin,TX,2025-10-09,2025-10,Resident Feedback,Nuisance,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/152
+ATX-176,176,Austin,TX,2025-10-09,2025-10,AISD Police,School bus stop arm violation,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/176
+ATX-177,177,Austin,TX,2025-10-09,2025-10,AISD Police,School bus stop arm violation,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/177
+ATX-178,178,Austin,TX,2025-10-09,2025-10,AISD Police,School bus stop arm violation,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/178
+ATX-154,154,Austin,TX,2025-10-13,2025-10,Resident Feedback,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/154
+ATX-159,159,Austin,TX,2025-10-13,2025-10,Resident Feedback,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/159
+ATX-181,181,Austin,TX,2025-10-15,2025-10,AISD Police,School bus stop arm violation,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/181
+ATX-179,179,Austin,TX,2025-10-16,2025-10,AISD Police,School bus stop arm violation,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/179
+ATX-182,182,Austin,TX,2025-10-23,2025-10,AISD Police,School bus stop arm violation,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/182
+ATX-156,156,Austin,TX,2025-10-24,2025-10,Resident Feedback,Nuisance,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/156
+ATX-160,160,Austin,TX,2025-10-24,2025-10,Resident Feedback,Nuisance,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/160
+ATX-180,180,Austin,TX,2025-10-24,2025-10,AISD Police,School bus stop arm violation,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/180
+ATX-157,157,Austin,TX,2025-10-30,2025-10,Resident Feedback,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/157
+ATX-163,163,Austin,TX,2025-10-30,2025-10,Resident Feedback,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/163
+ATX-161,161,Austin,TX,2025-11-09,2025-11,APD,Ignore APD Direction,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/161
+ATX-162,162,Austin,TX,2025-11-09,2025-11,APD,Ignore APD Direction,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/162
+ATX-183,183,Austin,TX,2025-11-10,2025-11,AISD Police,School bus stop arm violation,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/183
+ATX-185,185,Austin,TX,2025-11-11,2025-11,AISD Police,School bus stop arm violation,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/185
+ATX-166,166,Austin,TX,2025-11-12,2025-11,Resident Feedback,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/166
+ATX-189,189,Austin,TX,2025-11-12,2025-11,AISD Police,School bus stop arm violation,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/189
+ATX-167,167,Austin,TX,2025-11-13,2025-11,Resident Feedback,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/167
+ATX-184,184,Austin,TX,2025-11-14,2025-11,AISD Police,School bus stop arm violation,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/184
+ATX-186,186,Austin,TX,2025-11-14,2025-11,AISD Police,School bus stop arm violation,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/186
+ATX-201,201,Austin,TX,2025-11-21,2025-11,APD,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/201
+ATX-164,164,Austin,TX,2025-11-22,2025-11,Resident Feedback,Blocking Traffic,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/164
+ATX-195,195,Austin,TX,2025-11-22,2025-11,Resident Feedback,Near Miss,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/195
+ATX-168,168,Austin,TX,2025-11-25,2025-11,APD,Ignore APD Direction,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/168
+ATX-192,192,Austin,TX,2025-11-25,2025-11,APD,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/192
+ATX-254,254,Austin,TX,2025-11-25,2025-11,APD,Ignore APD Direction,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/254
+ATX-165,165,Austin,TX,2025-11-27,2025-11,Resident Feedback,Nuisance,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/165
+ATX-187,187,Austin,TX,2025-12-01,2025-12,AISD Police,School bus stop arm violation,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/187
+ATX-190,190,Austin,TX,2025-12-04,2025-12,Resident Feedback,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/190
+ATX-191,191,Austin,TX,2025-12-06,2025-12,AFD,Safety Concern,Tesla,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/191
+ATX-188,188,Austin,TX,2025-12-07,2025-12,Resident Feedback,Near Miss,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/188
+ATX-194,194,Austin,TX,2025-12-10,2025-12,AFD,Blocking Traffic,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/194
+ATX-198,198,Austin,TX,2025-12-11,2025-12,AISD Police,School bus stop arm violation,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/198
+ATX-197,197,Austin,TX,2025-12-12,2025-12,AISD Police,School bus stop arm violation,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/197
+ATX-193,193,Austin,TX,2025-12-13,2025-12,Resident Feedback,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/193
+ATX-196,196,Austin,TX,2025-12-17,2025-12,AFD,Collision,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/196
+ATX-200,200,Austin,TX,2025-12-17,2025-12,APD,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/200
+ATX-199,199,Austin,TX,2025-12-18,2025-12,Resident Feedback,Nuisance,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/199
+ATX-206,206,Austin,TX,2025-12-18,2025-12,Resident Feedback,Nuisance,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/206
+ATX-219,219,Austin,TX,2025-12-19,2025-12,AISD Police,School bus stop arm violation,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/219
+ATX-205,205,Austin,TX,2025-12-22,2025-12,Resident Feedback,Nuisance,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/205
+ATX-237,237,Austin,TX,2025-12-22,2025-12,Resident Feedback,Near Miss,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/237
+ATX-207,207,Austin,TX,2025-12-23,2025-12,AFD,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/207
+ATX-208,208,Austin,TX,2025-12-24,2025-12,Resident Feedback,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/208
+ATX-209,209,Austin,TX,2025-12-27,2025-12,Resident Feedback,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/209
+ATX-212,212,Austin,TX,2025-12-30,2025-12,Resident Feedback,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/212
+ATX-204,204,Austin,TX,2026-01-03,2026-01,resident feedback,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/204
+ATX-256,256,Austin,TX,2026-01-03,2026-01,APD,Blocking Traffic,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/256
+ATX-210,210,Austin,TX,2026-01-06,2026-01,City Employee,Unspecified,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/210
+ATX-211,211,Austin,TX,2026-01-12,2026-01,AISD Police,School bus stop arm violation,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/211
+ATX-220,220,Austin,TX,2026-01-14,2026-01,AISD Police,School bus stop arm violation,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/220
+ATX-215,215,Austin,TX,2026-01-16,2026-01,Resident Feedback,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/215
+ATX-213,213,Austin,TX,2026-01-17,2026-01,APD,Ignore APD Direction,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/213
+ATX-214,214,Austin,TX,2026-01-20,2026-01,AISD Police,Safety Issue - School,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/214
+ATX-216,216,Austin,TX,2026-01-22,2026-01,Resident Feedback,Nuisance,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/216
+ATX-221,221,Austin,TX,2026-01-23,2026-01,Resident Feedback,Nuisance,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/221
+ATX-223,223,Austin,TX,2026-01-29,2026-01,AISD Police,Safety Issue - School,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/223
+ATX-224,224,Austin,TX,2026-01-30,2026-01,AISD Police,Safety Issue - School,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/224
+ATX-222,222,Austin,TX,2026-01-31,2026-01,APD,Blocking Traffic,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/222
+ATX-217,217,Austin,TX,2026-02-05,2026-02,Resident Feedback,Unspecified,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/217
+ATX-218,218,Austin,TX,2026-02-12,2026-02,Resident Feedback,Nuisance,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/218
+ATX-234,234,Austin,TX,2026-02-12,2026-02,AISD Police,Safety Issue - School,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/234
+ATX-235,235,Austin,TX,2026-02-14,2026-02,APD,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/235
+ATX-240,240,Austin,TX,2026-02-14,2026-02,Resident Feedback,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/240
+ATX-236,236,Austin,TX,2026-02-17,2026-02,Resident Feedback,Nuisance,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/236
+ATX-229,229,Austin,TX,2026-02-24,2026-02,City Employee,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/229
+ATX-238,238,Austin,TX,2026-03-01,2026-03,EMS,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/238
+ATX-239,239,Austin,TX,2026-03-01,2026-03,APD,Safety Concern,Tesla,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/239
+ATX-264,264,Austin,TX,2026-03-01,2026-03,AFD,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/264
+ATX-242,242,Austin,TX,2026-03-02,2026-03,Resident Feedback,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/242
+ATX-243,243,Austin,TX,2026-03-10,2026-03,Resident Feedback,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/243
+ATX-230,230,Austin,TX,2026-03-11,2026-03,APD,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/230
+ATX-232,232,Austin,TX,2026-03-11,2026-03,Resident Feedback,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/232
+ATX-247,247,Austin,TX,2026-03-11,2026-03,City Employee,Ignore APD Direction,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/247
+ATX-233,233,Austin,TX,2026-03-12,2026-03,City Employee,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/233
+ATX-231,231,Austin,TX,2026-03-14,2026-03,City Employee,Near Miss,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/231
+ATX-249,249,Austin,TX,2026-03-14,2026-03,APD,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/249
+ATX-245,245,Austin,TX,2026-03-19,2026-03,Resident Feedback,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/245
+ATX-244,244,Austin,TX,2026-03-20,2026-03,Resident Feedback,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/244
+ATX-248,248,Austin,TX,2026-03-20,2026-03,APD,Ignore APD Direction,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/248
+ATX-253,253,Austin,TX,2026-03-21,2026-03,APD,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/253
+ATX-251,251,Austin,TX,2026-03-22,2026-03,APD,Blocking Traffic,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/251
+ATX-252,252,Austin,TX,2026-03-23,2026-03,City Employee,Near Miss,Zoox,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/252
+ATX-319,319,Austin,TX,2026-03-23,2026-03,AISD Police,Ignore APD Direction,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/319
+ATX-250,250,Austin,TX,2026-03-24,2026-03,APD,Blocking Traffic,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/250
+ATX-255,255,Austin,TX,2026-03-24,2026-03,Resident Feedback,Blocking Traffic,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/255
+ATX-260,260,Austin,TX,2026-03-25,2026-03,AISD Police,School bus stop arm violation,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/260
+ATX-257,257,Austin,TX,2026-04-01,2026-04,Resident Feedback,Near Miss,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/257
+ATX-279,279,Austin,TX,2026-04-01,2026-04,Resident Feedback,Nuisance,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/279
+ATX-258,258,Austin,TX,2026-04-02,2026-04,APD,Safety Concern,Tesla,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/258
+ATX-259,259,Austin,TX,2026-04-02,2026-04,APD,Blocking Traffic,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/259
+ATX-274,274,Austin,TX,2026-04-03,2026-04,City Employee,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/274
+ATX-261,261,Austin,TX,2026-04-10,2026-04,Resident Feedback,Blocking Traffic,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/261
+ATX-263,263,Austin,TX,2026-04-13,2026-04,Resident Feedback,Safety Concern,AV Ride,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/263
+ATX-262,262,Austin,TX,2026-04-14,2026-04,City Employee,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/262
+ATX-265,265,Austin,TX,2026-04-16,2026-04,Resident Feedback,Safety Concern,Tesla,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/265
+ATX-267,267,Austin,TX,2026-04-17,2026-04,Resident Feedback,Nuisance,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/267
+ATX-268,268,Austin,TX,2026-04-18,2026-04,APD,Blocking Traffic,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/268
+ATX-271,271,Austin,TX,2026-04-18,2026-04,City Employee,Ignore APD Direction,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/271
+ATX-266,266,Austin,TX,2026-04-20,2026-04,City Employee,Nuisance,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/266
+ATX-272,272,Austin,TX,2026-04-21,2026-04,City Employee,Ignore APD Direction,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/272
+ATX-273,273,Austin,TX,2026-04-23,2026-04,APD,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/273
+ATX-276,276,Austin,TX,2026-04-24,2026-04,APD,Ignore APD Direction,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/276
+ATX-275,275,Austin,TX,2026-04-25,2026-04,Resident Feedback,Blocking Traffic,Zoox,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/275
+ATX-277,277,Austin,TX,2026-04-25,2026-04,Resident Feedback,Nuisance,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/277
+ATX-278,278,Austin,TX,2026-04-26,2026-04,Resident Feedback,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/278
+ATX-281,281,Austin,TX,2026-05-01,2026-05,Resident Feedback,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/281
+ATX-280,280,Austin,TX,2026-05-03,2026-05,Resident Feedback,Nuisance,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/280
+ATX-282,282,Austin,TX,2026-05-04,2026-05,Resident Feedback,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/282
+ATX-298,298,Austin,TX,2026-05-07,2026-05,Resident Feedback,Nuisance,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/298
+ATX-284,284,Austin,TX,2026-05-08,2026-05,City Employee,Near Miss,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/284
+ATX-288,288,Austin,TX,2026-05-08,2026-05,AFD,Collision,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/288
+ATX-283,283,Austin,TX,2026-05-10,2026-05,APD,Safety Concern,Zoox,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/283
+ATX-287,287,Austin,TX,2026-05-14,2026-05,Resident Feedback,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/287
+ATX-289,289,Austin,TX,2026-05-16,2026-05,Unspecified,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/289
+ATX-291,291,Austin,TX,2026-05-17,2026-05,Resident Feedback,Near Miss,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/291
+ATX-290,290,Austin,TX,2026-05-18,2026-05,Resident Feedback,Near Miss,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/290
+ATX-295,295,Austin,TX,2026-05-19,2026-05,Resident Feedback,Near Miss,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/295
+ATX-303,303,Austin,TX,2026-05-24,2026-05,City Employee,Near Miss,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/303
+ATX-300,300,Austin,TX,2026-05-25,2026-05,Resident Feedback,Nuisance,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/300
+ATX-304,304,Austin,TX,2026-05-27,2026-05,APD,Blocking Traffic,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/304
+ATX-296,296,Austin,TX,2026-05-28,2026-05,AFD,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/296
+ATX-297,297,Austin,TX,2026-05-28,2026-05,EMS,Ignore APD Direction,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/297
+ATX-305,305,Austin,TX,2026-06-02,2026-06,AFD,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/305
+ATX-306,306,Austin,TX,2026-06-03,2026-06,Resident Feedback,Nuisance,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/306
+ATX-309,309,Austin,TX,2026-06-10,2026-06,City Employee,Blocking Traffic,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/309
+ATX-312,312,Austin,TX,2026-06-10,2026-06,APD,Near Miss,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/312
+ATX-307,307,Austin,TX,2026-06-13,2026-06,AFD,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/307
+ATX-299,299,Austin,TX,2026-06-14,2026-06,Resident Feedback,Nuisance,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/299
+ATX-308,308,Austin,TX,2026-06-19,2026-06,City Employee,Nuisance,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/308
+ATX-315,315,Austin,TX,2026-06-19,2026-06,AFD,Collision,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/315
+ATX-313,313,Austin,TX,2026-06-22,2026-06,Resident Feedback,Near Miss,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/313
+ATX-314,314,Austin,TX,2026-06-23,2026-06,APD,Ignore APD Direction,Tesla,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/314
+ATX-318,318,Austin,TX,2026-06-24,2026-06,Resident Feedback,Nuisance,Tesla,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/318
+ATX-316,316,Austin,TX,2026-06-30,2026-06,APD,Ignore APD Direction,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/316
+ATX-321,321,Austin,TX,2026-07-11,2026-07,Resident Feedback,Nuisance,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/321
+ATX-320,320,Austin,TX,2026-07-23,2026-07,City Employee,Near Miss,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/320
+ATX-332,332,Austin,TX,2026-07-23,2026-07,APD,Blocking Traffic,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/332
+ATX-331,331,Austin,TX,2026-07-27,2026-07,APD,Near Miss,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/331
+ATX-325,325,Austin,TX,2026-08-02,2026-08,APD,Safety Concern,Tesla,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/325
+ATX-329,329,Austin,TX,2026-08-04,2026-08,Resident Feedback,Safety Concern,AV Ride,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/329
+ATX-330,330,Austin,TX,2026-08-04,2026-08,City Employee,Blocking Traffic,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/330
+ATX-327,327,Austin,TX,2026-08-13,2026-08,City Employee,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/327
+ATX-328,328,Austin,TX,2026-08-13,2026-08,Resident Feedback,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/328
+ATX-326,326,Austin,TX,2026-08-15,2026-08,Resident Feedback,Safety Concern,Tesla,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/326
+ATX-336,336,Austin,TX,2026-08-15,2026-08,Resident Feedback,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/336
+ATX-337,337,Austin,TX,2026-08-19,2026-08,Resident Feedback,Nuisance,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/337
+ATX-335,335,Austin,TX,2026-08-22,2026-08,Resident Feedback,Nuisance,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/335
+ATX-338,338,Austin,TX,2026-08-25,2026-08,Resident Feedback,Nuisance,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/338
+ATX-341,341,Austin,TX,2026-09-01,2026-09,Resident Feedback,Nuisance,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/341
+ATX-340,340,Austin,TX,2026-09-02,2026-09,Resident Feedback,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/340
+ATX-345,345,Austin,TX,2026-09-02,2026-09,Resident Feedback,Near Miss,Tesla,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/345
+ATX-350,350,Austin,TX,2026-09-05,2026-09,Resident Feedback,Nuisance,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/350
+ATX-348,348,Austin,TX,2026-09-08,2026-09,Resident Feedback,Nuisance,Tesla,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/348
+ATX-349,349,Austin,TX,2026-09-08,2026-09,Resident Feedback,Nuisance,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/349
+ATX-355,355,Austin,TX,2026-09-09,2026-09,Resident Feedback,Nuisance,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/355
+ATX-354,354,Austin,TX,2026-09-11,2026-09,Resident Feedback,Nuisance,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/354
+ATX-346,346,Austin,TX,2026-09-12,2026-09,APD,Ignore APD Direction,Tesla,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/346
+ATX-347,347,Austin,TX,2026-09-12,2026-09,Resident Feedback,Near Miss,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/347

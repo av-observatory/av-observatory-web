@@ -86,6 +86,11 @@ def main():
             export(stem + ".csv", data["locations"], output)
         elif stem == "waymo_ca_exposure_rate":
             export(stem + ".csv", data["monthly"], output)
+        elif stem == "austin_av_reports":
+            export(stem + ".csv", data["records"], output)
+            export(stem + "_monthly.csv", data["monthly"], output)
+            export(stem + "_resident_issues.csv", data["resident_issues"], output)
+            export(stem + "_reporter_types.csv", data["reporter_types"], output)
         elif stem == "av_311_complaints":
             export(stem + ".csv", data["records"], output)
             export(stem + "_monthly.csv", data["monthly"], output)

@@ -1,0 +1,25 @@
+name: Report a Data Gap
+description: Suggest a missing source or correction for the AV Observatory. This issue is public.
+title: "Data gap: "
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: "Thank you for helping improve the Observatory. Do not include private or sensitive personal information; issues are public."
+  - type: textarea
+    id: gap
+    attributes:
+      label: What is missing or incorrect?
+      description: Include the page name and a concise description.
+      placeholder: "On the State Legislation page…"
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Primary source link
+      placeholder: "https://…"
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context

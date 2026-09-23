@@ -1,8 +1,8 @@
 # Reporting datasets and refresh
 
-## 311 requests
+## City AV reports and resident requests
 
-`public/data/av_311_complaints.json` contains the reviewed San Francisco 311 category, one record per public service request ID. `av_311_source_registry.json` inventories official sources across states with documented deployments. Only a municipality with a public AV-identifiable category contributes counts; missing coverage never means zero requests. The daily `refresh-311.yml` workflow runs `python3 scripts/refresh-311.py` and `python3 scripts/export-data-csv.py`, validates, and commits changes. Add another city's official source with an explicit classification and stable request IDs to the refresh script and the registry before including its totals. Do not use keyword inference or public addresses as an AV attribution rule. The publisher in the parent data repository copies each committed JSON/CSV snapshot to R2.
+`public/data/av_311_complaints.json` contains San Francisco requests in the official AV 311 category, keyed by public service request ID. `austin_av_reports.json` contains Austin TPW public AV reports keyed by ArcGIS ObjectID; the city's `Resident Feedback` reporter type is counted separately from police, fire, school police, EMS, and staff records. Austin says its log draws partly from 311, but the Resident Feedback tag does not prove every entry came through 311. One entirely blank ArcGIS feature is excluded. Neither source supplies verified incidents; do not combine or compare their counts as rates. Public narratives and precise addresses are omitted. `av_311_source_registry.json` records coverage across deployed states. The daily `refresh-311.yml` workflow runs `python3 scripts/refresh-311.py` and `python3 scripts/export-data-csv.py`, validates, and commits both sources. The parent repository copies every committed data file to R2.
 
 ## NHTSA incidents and CPUC mileage
 
@@ -10,4 +10,8 @@
 
 ## Waymo map
 
-`python3 scripts/build-waymo-explorer.py` takes the latest reviewed S2 GeoJSON snapshot and generates both `public/data/waymo_s2_explorer.csv` and the standalone `public/waymo-s2-explorer/index.html`. The HTML embeds its starting CSV and requires network access only for Leaflet, PapaParse, and the CartoDB map tiles. Rows with the same S2 Cell in multiple counties have their mileage summed for one polygon, and county names are retained. The Level 13 geometry decoder lives in the single HTML file without an S2 CDN. Run `python3 scripts/build-waymo-explorer.py --check` before publishing. The CSV and other top-level `public/data` files are included in the parent repository's R2 snapshot.
+`python3 scripts/build-waymo-explorer.py` takes the latest reviewed S2 GeoJSON snapshot and generates both `public/data/waymo_s2_explorer.csv` and the standalone `public/waymo-s2-explorer/index.html`. The HTML embeds its starting CSV and requires network access only for Leaflet, PapaParse, and the OpenStreetMap map tiles. Rows with the same S2 Cell in multiple counties have their mileage summed for one polygon, and county names are retained. The Level 13 geometry decoder lives in the single HTML file without an S2 CDN. Run `python3 scripts/build-waymo-explorer.py --check` before publishing. The CSV and other top-level `public/data` files are included in the parent repository's R2 snapshot.
+
+## Private contact delivery
+
+Every page links to `/contact`. The public site never contains the maintainer's email address. It currently accepts publicly visible data-gap reports via GitHub Issues. To activate the private form, create a form at a provider such as Formspree, verify the private receiving address in that provider's dashboard, and set the public repository variable `NEXT_PUBLIC_CONTACT_FORM_URL` to that form's HTTPS endpoint. Add that variable to the Pages build environment. The endpoint is public; the recipient address and provider account remain private. Test an actual submission before announcing private contact. Do not put the recipient address into HTML, client JavaScript, or a build variable.

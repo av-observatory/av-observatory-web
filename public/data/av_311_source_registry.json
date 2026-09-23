@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "methodology": "Coverage inventory for states with documented deployment in operational_domains.json. Each municipal 311 jurisdiction is separately assessed; a missing source is never counted as zero complaints. Indexed means an explicit AV complaint category in a reviewed public feed.",
+  "methodology": "Coverage inventory for states with documented deployment in operational_domains.json. San Francisco has an explicit AV 311 category; Austin has city-compiled AV reports identifiable as Resident Feedback, including but not limited to 311. Do not infer zero requests in other markets or compare city counts as rates.",
   "states": [
     {
       "state": "AR",
@@ -112,15 +112,23 @@
     {
       "state": "TX",
       "markets": [
-        "Austin",
+        "Austin"
+      ],
+      "status": "indexed_resident_feedback",
+      "note": "Austin TPW publishes AV incident reports with a Resident Feedback reporter type. These city-compiled records include but are not limited to 311 submissions; other source types remain separate.",
+      "source_url": "https://austin.maps.arcgis.com/apps/dashboards/dbd59d9b20634de1afad32a8267b739b"
+    },
+    {
+      "state": "TX",
+      "markets": [
         "Dallas",
         "Houston",
         "San Antonio",
         "Fort Worth"
       ],
       "status": "source_reviewed",
-      "note": "Austin, Dallas, Houston and San Antonio publish municipal requests; sampled Austin and Dallas fields did not provide an AV-specific category or narrative for reliable classification.",
-      "source_url": "https://data.austintexas.gov/Utilities-and-City-Services/Austin-311-Public-Data/xwdj-i9he"
+      "note": "Municipal 311 requests exist, but no validated AV-specific category or public classification has been indexed for these markets.",
+      "source_url": "https://www.dallasopendata.com/"
     }
   ]
 }
