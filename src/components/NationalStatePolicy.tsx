@@ -26,7 +26,7 @@ export function NationalStatePolicy({ valueByAbbrev, companiesByState }: {
         <p className="text-sm leading-relaxed text-neutral-700 mt-2">{brief.analysis}</p>
         <h4 className="font-semibold text-sm mt-5">Oversight</h4>
         <p className="text-sm text-neutral-700 mt-1">{brief.oversight}</p>
-        <p className="text-xs text-neutral-500 mt-5">Reviewed {brief.reviewed}. Policy summary; check the linked agencies for current rules.</p>
+        <p className="text-xs text-neutral-500 mt-5">{brief.reviewed}. Policy snapshot; check the linked primary authorities before relying on it for an operating decision.</p>
         <div className="mt-2 flex flex-col gap-1">{brief.sources.map(s => <a key={s.url} href={s.url} target="_blank" rel="noreferrer" className="text-sm underline text-[#184f95]">{s.label} ↗</a>)}</div>
       </> : <>
         <p className="mt-5 text-sm text-neutral-700">A state-specific policy analysis has not yet been verified for {selected.name}. The map&apos;s operating evidence does not establish the state&apos;s permit rules or where a company is authorized to drive.</p>

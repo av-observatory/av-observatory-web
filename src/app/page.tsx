@@ -171,7 +171,7 @@ export default async function OverviewPage() {
           <Link href="/deployment" className="text-sm underline font-medium text-[#0b1d33]">Deployment detail →</Link>
         </div>
         <NationalStatePolicy valueByAbbrev={operationValueByState} companiesByState={Object.fromEntries(Array.from(companiesByState, ([state, companies]) => [state, Array.from(companies).sort()]))} />
-        <p className="mt-2 text-xs text-neutral-500">Operator, regulator, and platform evidence · verified through {odd.verified_through ?? "latest refresh"}. Policy research currently covers selected states; unreviewed states are clearly marked.</p>
+        <p className="mt-2 text-xs text-neutral-500">Operator, regulator, and platform evidence · verified through {odd.verified_through ?? "latest refresh"}. Policy summaries cover all 50 states and D.C.; nine have additional agency-level review and the others use an August 2026 state-law survey.</p>
       </section>
 
       <section className="mt-7 grid lg:grid-cols-2 gap-3">

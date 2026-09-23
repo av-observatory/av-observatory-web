@@ -1,3 +1,5 @@
+import { surveyBriefs } from "./statePolicySurvey";
+
 export type PolicyBrief = {
   framework: string;
   analysis: string;
@@ -7,6 +9,7 @@ export type PolicyBrief = {
 };
 
 export const policyBriefs: Record<string, PolicyBrief> = {
+  ...surveyBriefs,
   CA: {
     framework: "Separate testing and deployment permits",
     analysis: "California distinguishes testing with a safety driver, driverless testing, and deployment. A state permit is not itself evidence of an active passenger service or a statewide ODD. Passenger service also has CPUC oversight.",
