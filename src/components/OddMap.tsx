@@ -1,97 +1,18 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
-import {
-  ComposableMap, Geographies, Geography, Marker, ZoomableGroup,
-} from "react-simple-maps";
+import { useEffect, useRef } from "react";
 
-const STATES_URL = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
+declare global {
+  interface Window {
+    L?: any;
+  }
+}
 
 type Feature = {
   type: "Feature";
   properties?: Record<string, unknown>;
-  geometry: unknown;
+  geometry: any;
 };
-type FeatureCollection = { type: "FeatureCollection"; features: Feature[] };
-
-function signedRingArea(ring: number[][]) {
-  let area = 0;
-  for (let i = 0; i < ring.length - 1; i++) {
-    const [x1, y1] = ring[i];
-    const [x2, y2] = ring[i + 1];
-    area += x1 * y2 - x2 * y1;
-  }
-  return area / 2;
-}
-
-function normalizeRing(ring: number[][], exterior: boolean) {
-  const area = signedRingArea(ring);
-  // react-simple-maps / d3-geo expects exterior rings clockwise in lon/lat
-  // (negative planar signed area) and holes counter-clockwise. AV Map source
-  // geometries contain mixed winding, so normalize each ring independently.
-  const shouldReverse = exterior ? area > 0 : area < 0;
-  return shouldReverse ? [...ring].reverse() : ring;
-}
-
-function normalizeWinding(geometry: any) {
-  if (!geometry || !geometry.type || !geometry.coordinates) return geometry;
-  if (geometry.type === "Polygon") {
-    return {
-      ...geometry,
-      coordinates: geometry.coordinates.map((ring: number[][], i: number) =>
-        normalizeRing(ring, i === 0)
-      ),
-    };
-  }
-  if (geometry.type === "MultiPolygon") {
-    return {
-      ...geometry,
-      coordinates: geometry.coordinates.map((poly: number[][][]) =>
-        poly.map((ring: number[][], i: number) => normalizeRing(ring, i === 0))
-      ),
-    };
-  }
-  return geometry;
-}
-
-function geometryCoordinates(geometry: any, out: [number, number][] = []) {
-  if (!geometry) return out;
-  const walk = (value: any) => {
-    if (Array.isArray(value) && typeof value[0] === "number" && typeof value[1] === "number") {
-      out.push([value[0], value[1]]);
-      return;
-    }
-    if (Array.isArray(value)) value.forEach(walk);
-  };
-  walk(geometry.coordinates);
-  return out;
-}
-
-function fitView(polygons: OddPolygon[], points: OddPoint[]) {
-  const coords: [number, number][] = [];
-  polygons.forEach(p => geometryCoordinates(p.feature.geometry, coords));
-  points.forEach(p => coords.push([p.lon, p.lat]));
-  if (!coords.length) return { center: [-96, 38] as [number, number], zoom: 1 };
-
-  const xs = coords.map(d => d[0]);
-  const ys = coords.map(d => d[1]);
-  const minX = Math.min(...xs), maxX = Math.max(...xs);
-  const minY = Math.min(...ys), maxY = Math.max(...ys);
-  const spanX = Math.max(0.05, maxX - minX);
-  const spanY = Math.max(0.05, maxY - minY);
-  const span = Math.max(spanX, spanY * 1.45);
-  const center: [number, number] = [(minX + maxX) / 2, (minY + maxY) / 2];
-
-  let zoom = 1;
-  if (span < 0.35) zoom = 9;
-  else if (span < 0.75) zoom = 7;
-  else if (span < 1.5) zoom = 5.5;
-  else if (span < 3) zoom = 4;
-  else if (span < 7) zoom = 2.8;
-  else if (span < 15) zoom = 2;
-  else if (span < 28) zoom = 1.45;
-  return { center, zoom };
-}
 
 export type OddPolygon = {
   feature: Feature;
@@ -117,6 +38,48 @@ export type OddPoint = {
   mode: string;
 };
 
+const LEAFLET_JS = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.js";
+const LEAFLET_CSS = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.css";
+
+function ensureLeafletCss() {
+  if (document.querySelector('link[data-av-odd-leaflet="1"]')) return;
+  const link = document.createElement("link");
+  link.rel = "stylesheet";
+  link.href = LEAFLET_CSS;
+  link.crossOrigin = "";
+  link.dataset.avOddLeaflet = "1";
+  document.head.appendChild(link);
+}
+
+function loadLeaflet(): Promise<any> {
+  if (window.L) return Promise.resolve(window.L);
+  const existing = document.querySelector<HTMLScriptElement>('script[data-av-odd-leaflet="1"]');
+  if (existing) {
+    return new Promise((resolve, reject) => {
+      existing.addEventListener("load", () => resolve(window.L), { once: true });
+      existing.addEventListener("error", reject, { once: true });
+    });
+  }
+
+  return new Promise((resolve, reject) => {
+    const script = document.createElement("script");
+    script.src = LEAFLET_JS;
+    script.crossOrigin = "";
+    script.dataset.avOddLeaflet = "1";
+    script.onload = () => resolve(window.L);
+    script.onerror = reject;
+    document.head.appendChild(script);
+  });
+}
+
+function escapeHtml(value: unknown) {
+  return String(value ?? "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;");
+}
+
 export function OddMap({
   polygons,
   points,
@@ -126,141 +89,168 @@ export function OddMap({
   points: OddPoint[];
   onPolygonClick?: (p: OddPolygon) => void;
 }) {
-  const [zoom, setZoom] = useState(1);
-  const [center, setCenter] = useState<[number, number]>([-96, 38]);
-  const [hover, setHover] = useState<{ text: string; x: number; y: number } | null>(null);
-
-  const collection = useMemo<FeatureCollection>(() => ({
-    type: "FeatureCollection",
-    features: polygons.map(p => ({
-      ...p.feature,
-      // Normalize mixed source winding so no service area is interpreted as
-      // the complement of its intended polygon.
-      geometry: normalizeWinding(p.feature.geometry),
-      properties: {
-        ...(p.feature.properties ?? {}),
-        __company: p.company,
-        __market: p.market,
-        __state: p.state,
-        __phase: p.phase,
-        __date: p.event_date,
-        __geometry_ref: p.geometry_ref,
-      },
-    })),
-  }), [polygons]);
-
-  const polyByRef = useMemo(() => {
-    const m = new Map<string, OddPolygon>();
-    for (const p of polygons) m.set(p.geometry_ref, p);
-    return m;
-  }, [polygons]);
-
-  const fitted = useMemo(() => fitView(polygons, points), [polygons, points]);
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const mapRef = useRef<any>(null);
 
   useEffect(() => {
-    setCenter(fitted.center);
-    setZoom(fitted.zoom);
-  }, [fitted.center[0], fitted.center[1], fitted.zoom]);
+    let cancelled = false;
 
-  function reset() {
-    setCenter(fitted.center);
-    setZoom(fitted.zoom);
-  }
+    ensureLeafletCss();
+
+    loadLeaflet().then((L) => {
+      if (cancelled || !containerRef.current || !L) return;
+
+      if (mapRef.current) {
+        mapRef.current.remove();
+        mapRef.current = null;
+      }
+
+      const map = L.map(containerRef.current, {
+        center: [38, -96],
+        zoom: 4,
+        minZoom: 2,
+        maxZoom: 18,
+        zoomControl: true,
+        scrollWheelZoom: true,
+        worldCopyJump: false,
+      });
+      mapRef.current = map;
+
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 19,
+        attribution: "&copy; OpenStreetMap contributors",
+      }).addTo(map);
+
+      const bounds = L.latLngBounds([]);
+      const polygonLayer = L.layerGroup().addTo(map);
+      const pointLayer = L.layerGroup().addTo(map);
+
+      for (const p of polygons) {
+        const isLine = p.geometry_type === "LineString" || p.geometry_type === "MultiLineString";
+        const deployment = p.phase !== "testing";
+        const color = deployment ? "#184f95" : "#a86f00";
+        const fillColor = deployment ? "#2a78d6" : "#eda100";
+
+        const feature = {
+          ...p.feature,
+          properties: {
+            ...(p.feature.properties ?? {}),
+            company: p.company,
+            market: p.market,
+            state: p.state,
+            phase: p.phase,
+            event_date: p.event_date,
+            geometry_ref: p.geometry_ref,
+          },
+        };
+
+        const layer = L.geoJSON(feature, {
+          style: {
+            color,
+            weight: isLine ? 4 : 2,
+            opacity: 0.95,
+            fillColor,
+            fillOpacity: isLine ? 0 : 0.22,
+          },
+        });
+
+        const source = p.source_url
+          ? `<div style="margin-top:6px"><a href="${escapeHtml(p.source_url)}" target="_blank" rel="noreferrer">Source</a></div>`
+          : "";
+        layer.bindPopup(
+          `<div style="font:13px/1.4 system-ui,-apple-system,Segoe UI,sans-serif;min-width:180px">
+            <div style="font-weight:700">${escapeHtml(p.company)} · ${escapeHtml(p.market)}</div>
+            <div>${escapeHtml(p.state)} · ${escapeHtml(p.phase)}${p.event_date ? ` · ${escapeHtml(p.event_date)}` : ""}</div>
+            ${source}
+          </div>`
+        );
+        layer.on("click", () => onPolygonClick?.(p));
+        layer.addTo(polygonLayer);
+
+        try {
+          const b = layer.getBounds();
+          if (b?.isValid()) bounds.extend(b);
+        } catch {}
+      }
+
+      for (const p of points) {
+        const marker = L.circleMarker([p.lat, p.lon], {
+          radius: 5,
+          color: "#ffffff",
+          weight: 1.5,
+          fillColor: "#eb6834",
+          fillOpacity: 1,
+        });
+        marker.bindPopup(
+          `<div style="font:13px/1.4 system-ui,-apple-system,Segoe UI,sans-serif;min-width:170px">
+            <div style="font-weight:700">${escapeHtml(p.company)} · ${escapeHtml(p.market)}</div>
+            <div>${escapeHtml(p.state)} · ${escapeHtml(p.phase)} · ${escapeHtml(p.status)}</div>
+          </div>`
+        );
+        marker.addTo(pointLayer);
+        bounds.extend([p.lat, p.lon]);
+      }
+
+      const resetView = () => {
+        if (bounds.isValid()) {
+          map.fitBounds(bounds.pad(0.12), { maxZoom: 11, animate: false });
+        } else {
+          map.setView([38, -96], 4, { animate: false });
+        }
+      };
+
+      resetView();
+
+      const ResetControl = L.Control.extend({
+        options: { position: "topright" },
+        onAdd: () => {
+          const button = L.DomUtil.create("button", "odd-leaflet-reset");
+          button.type = "button";
+          button.innerHTML = "Reset";
+          button.title = "Fit map to displayed ODD geography";
+          L.DomEvent.disableClickPropagation(button);
+          L.DomEvent.on(button, "click", resetView);
+          return button;
+        },
+      });
+      new ResetControl().addTo(map);
+
+      const info = L.control({ position: "bottomleft" });
+      info.onAdd = () => {
+        const div = L.DomUtil.create("div", "odd-leaflet-note");
+        div.innerHTML = "Scroll or use +/− to zoom · drag to pan · click areas for details";
+        return div;
+      };
+      info.addTo(map);
+    }).catch(() => {
+      if (!cancelled && containerRef.current) {
+        containerRef.current.innerHTML =
+          '<div style="padding:24px;color:#666">Map library failed to load. Refresh to retry.</div>';
+      }
+    });
+
+    return () => {
+      cancelled = true;
+      if (mapRef.current) {
+        mapRef.current.remove();
+        mapRef.current = null;
+      }
+    };
+  }, [polygons, points, onPolygonClick]);
 
   return (
-    <div className="relative">
-      <div className="absolute top-2 right-2 z-[2] flex gap-1">
-        <button className="map-control" onClick={() => setZoom(z => Math.min(10, z * 1.5))}>+</button>
-        <button className="map-control" onClick={() => setZoom(z => Math.max(1, z / 1.5))}>−</button>
-        <button className="map-control px-2" onClick={reset}>Reset</button>
+    <div>
+      <div
+        ref={containerRef}
+        className="odd-leaflet-map"
+        aria-label="Interactive ODD and service-area map"
+      />
+      <div className="mt-3 flex flex-wrap gap-x-5 gap-y-1 text-xs text-neutral-600">
+        <span><span className="inline-block w-3 h-3 align-middle mr-1 rounded-sm bg-[#2a78d6]/25 border border-[#184f95]" />Deployment/service boundary</span>
+        <span><span className="inline-block w-3 h-3 align-middle mr-1 rounded-sm bg-[#eda100]/25 border border-[#a86f00]" />Testing boundary</span>
+        <span><span className="inline-block w-3 h-1 align-middle mr-1 bg-[#184f95]" />Freight corridor</span>
+        <span><span className="inline-block w-2.5 h-2.5 align-middle mr-1 rounded-full bg-[#eb6834]" />Market without sourced polygon</span>
       </div>
-
-      <ComposableMap projection="geoAlbersUsa" width={900} height={560} style={{ width: "100%", height: "auto" }}>
-        <ZoomableGroup
-          zoom={zoom}
-          center={center}
-          minZoom={0.9}
-          maxZoom={12}
-          onMoveEnd={({ coordinates, zoom: z }) => {
-            setCenter(coordinates as [number, number]);
-            setZoom(z ?? 1);
-          }}
-        >
-          <Geographies geography={STATES_URL}>
-            {({ geographies }) => geographies.map(geo => (
-              <Geography
-                key={geo.rsmKey}
-                geography={geo}
-                fill="#f3f2ef"
-                stroke="#d7d5ce"
-                strokeWidth={0.8 / zoom}
-                style={{ outline: "none", cursor: "grab" }}
-              />
-            ))}
-          </Geographies>
-
-          <Geographies geography={collection}>
-            {({ geographies }) => geographies.map(geo => {
-              const ref = String(geo.properties?.__geometry_ref ?? "");
-              const p = polyByRef.get(ref);
-              const label = p
-                ? [p.company, p.market, p.phase, p.event_date].filter(Boolean).join(" · ")
-                : ref;
-              const geometryType = String((geo.geometry as { type?: string })?.type ?? p?.geometry_type ?? "");
-              const isLine = geometryType === "LineString" || geometryType === "MultiLineString";
-              const phaseColor = p?.phase === "testing" ? "#eda100" : "#2a78d6";
-              const phaseStroke = p?.phase === "testing" ? "#a86f00" : "#184f95";
-              return (
-                <Geography
-                  key={geo.rsmKey}
-                  geography={geo}
-                  fill={isLine ? "none" : phaseColor}
-                  fillOpacity={isLine ? 0 : 0.22}
-                  stroke={phaseStroke}
-                  strokeWidth={(isLine ? 3 : 1.6) / zoom}
-                  onMouseEnter={(evt) => setHover({ text: label, x: evt.clientX, y: evt.clientY })}
-                  onMouseMove={(evt) => setHover(h => h ? { ...h, x: evt.clientX, y: evt.clientY } : h)}
-                  onMouseLeave={() => setHover(null)}
-                  onClick={() => p && onPolygonClick?.(p)}
-                  style={{ outline: "none", cursor: "pointer" }}
-                />
-              );
-            })}
-          </Geographies>
-
-          {points.map((p, i) => (
-            <Marker key={`${p.company}-${p.market}-${i}`} coordinates={[p.lon, p.lat]}>
-              <circle
-                r={5 / Math.sqrt(zoom)}
-                fill="#eb6834"
-                stroke="#fff"
-                strokeWidth={1.5 / zoom}
-                onMouseEnter={(evt) => setHover({
-                  text: [p.company, p.market, p.phase, p.status].filter(Boolean).join(" · "),
-                  x: evt.clientX,
-                  y: evt.clientY,
-                })}
-                onMouseMove={(evt) => setHover(h => h ? { ...h, x: evt.clientX, y: evt.clientY } : h)}
-                onMouseLeave={() => setHover(null)}
-              />
-            </Marker>
-          ))}
-        </ZoomableGroup>
-      </ComposableMap>
-
-      <div className="mt-2 flex flex-wrap gap-x-5 gap-y-1 text-xs text-neutral-600">
-        <span><span className="inline-block w-3 h-3 align-middle mr-1 rounded-sm bg-[#2a78d6]/40 border border-[#184f95]" />Deployment/service boundary</span>
-        <span><span className="inline-block w-3 h-3 align-middle mr-1 rounded-sm bg-[#eda100]/40 border border-[#a86f00]" />Testing boundary</span>
-        <span><span className="inline-block w-3 h-1 align-middle mr-1 bg-[#184f95]" />Freight corridor (schematic where exact road geometry is unavailable)</span>
-        <span><span className="inline-block w-2.5 h-2.5 align-middle mr-1 rounded-full bg-[#eb6834]" />Current market point without current polygon</span>
-      </div>
-      <div className="mt-1 text-xs text-neutral-500">Drag to pan · scroll or controls to zoom · hover or click polygons for details</div>
-
-      {hover && (
-        <div className="fixed z-30 pointer-events-none bg-neutral-900 text-white text-xs rounded px-2 py-1 max-w-sm" style={{ left: hover.x + 12, top: hover.y + 12 }}>
-          {hover.text}
-        </div>
-      )}
     </div>
   );
 }
