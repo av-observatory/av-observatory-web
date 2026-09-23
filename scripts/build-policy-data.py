@@ -194,6 +194,19 @@ for code, name in names.items():
         source_url=link_url, source_label=link_label,
         source_tier="primary" if code in state_links else "secondary", verified_at=REVIEWED))
 
+# Selected primary-source milestones make earlier legislation discoverable
+# without treating the current-code baseline as a complete legislative history.
+historical_laws = [
+    ("CA", "ca-sb1298-2012", "2012", "SB 1298 · AV testing framework", "Directed California DMV to establish testing regulations and created a statutory framework for autonomous vehicles; later statutes and regulations changed the program.", "https://www.leginfo.ca.gov/pub/11-12/bill/sen/sb_1251-1300/sb_1298_bill_20120925_chaptered.html"),
+    ("NV", "nv-ab511-2011", "2011", "AB 511 · first AV framework", "Required Nevada DMV regulations authorizing autonomous vehicle operation and established early testing and licensing provisions; later amendments expanded the framework.", "https://www.leg.state.nv.us/Session/76th2011/Bills/AB/AB511_EN.pdf"),
+    ("NV", "nv-ab69-2017", "2017", "AB 69 · driverless transportation services", "Revised testing and operation provisions and provided for fully autonomous transportation services and network companies under state oversight.", "https://www.leg.state.nv.us/Statutes/79th2017/Stats201724.html"),
+    ("FL", "fl-hb7027-2016", "2016", "HB 7027 · AV operating changes", "Revised Florida's autonomous vehicle operating and equipment rules; this preceded the broader 2019 driverless operation law.", "https://www.flsenate.gov/Session/Bill/2016/7027"),
+    ("FL", "fl-hb311-2019", "2019", "HB 311 · driverless operation", "Authorized a fully autonomous vehicle to operate without a human operator and addressed on-demand AV networks and insurance.", "https://www.flsenate.gov/Session/Bill/2019/311"),
+]
+for code, identifier, year, title, summary, url in historical_laws:
+    events.append(event(identifier, "state", names[code], title, summary, "legislation", "historical", year, url,
+                        state=code, source_label="Enacted bill / legislature", source_tier="primary", date_precision="year"))
+
 # California's rulemaking history is distinct from individual permit grants.
 dmv = "https://www.dmv.ca.gov/portal/vehicle-industry-services/autonomous-vehicles/california-autonomous-vehicle-regulations/"
 cpuc = "https://www.cpuc.ca.gov/regulatory-services/licensing/transportation-licensing-and-analysis-branch/autonomous-vehicle-programs"
