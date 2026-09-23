@@ -234,12 +234,10 @@ export function OddExplorer({
     if (evidence === "historical" || vintage === "history") {
       base = historicalSnapshot;
     } else if (evidence === "current") {
-      const fallbackHistorical = latestPerMarket.filter(p => {
-        const marketKey = `${canonicalCompany(p.company).toLowerCase()}|${canonicalMarket(p.market)}|${p.state}`;
-        const fullKey = `${marketKey}|${p.phase}`;
-        return currentMarketKeys.has(marketKey) && !currentGeoKeys.has(fullKey);
-      });
-      base = [...currentGeos, ...fallbackHistorical];
+      // Current means current. Never substitute a historical polygon just because
+      // a current market lacks a current boundary. Those markets remain visible
+      // as points until a current polygon is sourced.
+      base = currentGeos;
     } else {
       base = currentGeos;
     }
@@ -251,7 +249,7 @@ export function OddExplorer({
       (market==="ALL" || canonicalMarket(p.market)===canonicalMarket(market)) &&
       (phase==="ALL" || p.phase===phase)
     );
-  }, [historicalSnapshot, latestPerMarket, currentRouteGeometries, currentMarketKeys, company, state, market, phase, evidence, vintage, excluded]);
+  }, [historicalSnapshot, currentRouteGeometries, company, state, market, phase, evidence, vintage, excluded]);
 
   const historicalPoints = useMemo<OddPoint[]>(() => history.flatMap(e => {
     const raw = String(e.geometry_ref ?? "");
