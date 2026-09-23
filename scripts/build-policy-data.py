@@ -91,6 +91,28 @@ federal = [
     event("fmvss-110-2026", "federal", "US", "Tire placards · FMVSS 110", "Proposed adapting tire information placard requirements to ADS-equipped vehicle designs.", "FMVSS rulemaking", "under_review", "2026-04-01", "https://www.federalregister.gov/d/2026-06254", fmvss=["110"], comment_deadline="2026-05-01"),
     event("fmvss-135-2026", "federal", "US", "Brake controls · FMVSS 135", "Proposed removing the manual brake pedal requirement for vehicles designed exclusively for ADS operation while retaining braking performance requirements.", "FMVSS rulemaking", "under_review", "2026-06-26", "https://www.federalregister.gov/d/2026-12981", fmvss=["135"], comment_deadline="2026-08-26", comment_extension_url="https://www.federalregister.gov/d/2026-15231"),
 ]
+# One regulatory action can amend many standards. Keep the action above and
+# index each amended standard independently for the reader-facing tracker.
+occupant_sections = {
+    "201": ("Interior impact", "Revised interior impact applicability and test references for vehicles without a conventional driver's seating position."),
+    "203": ("Steering control impact", "Excluded vehicles without steering controls from the steering control impact standard."),
+    "204": ("Steering control rearward displacement", "Excluded vehicles without steering controls from the steering column displacement standard."),
+    "205": ("Glazing materials", "Updated the glazing standard's application to trucks designed to carry at least one person."),
+    "206": ("Door locks and retention", "Updated door definitions and applicability for vehicles without a conventional driver's seating position."),
+    "207": ("Seating systems", "Required a designated driver's seat only where manually operated driving controls are present."),
+    "208": ("Occupant crash protection", "Revised crash protection requirements, seating terminology and test procedures for vehicles without manual driving controls."),
+    "212": ("Windshield mounting", "Conforming applicability change for trucks designed to carry at least one person, added in the final rule."),
+    "214": ("Side impact protection", "Revised side impact test procedures and seating references for vehicles without traditional driver controls."),
+    "216a": ("Roof crush resistance", "Updated applicability and test setup for roof crush protection in vehicles designed to carry occupants."),
+    "219": ("Windshield zone intrusion", "Conforming applicability change for trucks designed to carry at least one person, added in the final rule."),
+    "225": ("Child restraint anchorages", "Revised the shuttle bus definition to account for buses without manual driving controls."),
+    "226": ("Ejection mitigation", "Updated applicability and test setup for ejection mitigation in vehicles without conventional driver controls."),
+}
+for number, (topic, detail) in occupant_sections.items():
+    federal.append(event(f"fmvss-{number}-2022", "federal", "US", f"FMVSS {number} · {topic}", detail,
+        "FMVSS rulemaking", "effective", "2022-03-30", "https://www.federalregister.gov/d/2022-05426",
+        fmvss=[number], scope="ADS-specific", rulemaking_id="fmvss-2022-final",
+        effective_date="2022-09-26", **({"proposal_url": "https://www.federalregister.gov/d/2020-05886"} if number not in {"212", "219"} else {"added_in_final": True})))
 oversight = [
     event("nhtsa-sgo-2021", "federal", "US", "Standing General Order crash reporting", "NHTSA ordered specified ADS and Level 2 ADAS crash reports from manufacturers and operators; the reports are not determinations of fault.", "oversight order", "in_effect_as_amended", "2021-06-29", "https://www.nhtsa.gov/press-releases/nhtsa-orders-crash-reporting-vehicles-equipped-advanced-driver-assistance-systems"),
     event("nhtsa-sgo-2025", "federal", "US", "Third amended Standing General Order", "NHTSA revised ADS crash reporting requirements in April 2025. Review the current order and amendments for applicable thresholds and deadlines.", "oversight order", "in_effect", "2025-04-24", "https://www.nhtsa.gov/laws-regulations/standing-general-order-crash-reporting"),

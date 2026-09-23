@@ -1,0 +1,32 @@
+name: Refresh AV legislative bill index
+
+on:
+  schedule:
+    - cron: "17 12 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  refresh:
+    if: ${{ vars.POLICY_R2_BUCKET != '' && vars.POLICY_R2_ACCOUNT_ID != '' }}
+    runs-on: ubuntu-latest
+    env:
+      LEGISCAN_API_KEY: ${{ secrets.LEGISCAN_API_KEY }}
+      AWS_ACCESS_KEY_ID: ${{ secrets.POLICY_R2_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.POLICY_R2_SECRET_ACCESS_KEY }}
+      AWS_DEFAULT_REGION: auto
+      R2_ACCOUNT_ID: ${{ vars.POLICY_R2_ACCOUNT_ID }}
+      R2_BUCKET: ${{ vars.POLICY_R2_BUCKET }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Search current sessions and resolve bill details
+        if: ${{ env.LEGISCAN_API_KEY != '' && env.AWS_ACCESS_KEY_ID != '' && env.AWS_SECRET_ACCESS_KEY != '' }}
+        run: python3 scripts/refresh-legislation.py /tmp/legislation_tracker.json
+      - name: Validate refreshed index
+        if: ${{ env.LEGISCAN_API_KEY != '' && env.AWS_ACCESS_KEY_ID != '' && env.AWS_SECRET_ACCESS_KEY != '' }}
+        run: node scripts/validate-legislation-data.mjs /tmp/legislation_tracker.json
+      - name: Publish to R2
+        if: ${{ env.LEGISCAN_API_KEY != '' && env.AWS_ACCESS_KEY_ID != '' && env.AWS_SECRET_ACCESS_KEY != '' }}
+        run: aws s3 cp /tmp/legislation_tracker.json "s3://${R2_BUCKET}/policy/legislation_tracker.json" --endpoint-url "https://${R2_ACCOUNT_ID}.r2.cloudflarestorage.com" --content-type application/json --cache-control 'public, max-age=300'

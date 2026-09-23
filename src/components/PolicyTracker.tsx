@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import { UsStateMap, type MapCategory } from "@/components/UsStateMap";
 import { PolicyNav } from "@/components/PolicyNav";
+import { LegislativeBillsPanel } from "@/components/LegislativeBillsPanel";
 import { displayDate, usePolicyData, type PolicyEvent } from "@/lib/policyTracker";
 
 function Intro({ level, description }: { level: string; description: string }) {
@@ -30,8 +31,8 @@ type FmvssItem = ReturnType<typeof usePolicyData>["data"]["federal"][number];
 function StageGuide() {
   return <ol className="grid grid-cols-1 sm:grid-cols-5 gap-2 mt-4" aria-label="What the five rulemaking stages mean">
     {fmvssStages.map((name, index) => <li key={name} className="relative rounded-lg border border-[#d3dfed] bg-[#f7fafe] p-3 min-w-0">
-      <div className="flex items-center gap-2"><span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#123b69] text-white text-xs font-semibold">{index + 1}</span><strong className="text-xs text-[#123b69]">{name}</strong></div>
-      <p className="mt-2 text-xs leading-relaxed text-neutral-700">{stageMeanings[index]}</p>
+      <div className="flex items-center gap-2"><span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#123b69] text-white text-sm font-semibold">{index + 1}</span><strong className="text-sm text-[#123b69]">{name}</strong></div>
+      <p className="mt-2 text-sm leading-relaxed text-neutral-700">{stageMeanings[index]}</p>
     </li>)}
   </ol>;
 }
@@ -45,7 +46,7 @@ function FmvssTimeline({ item }: { item: FmvssItem }) {
     <ol className="grid grid-cols-5 gap-1" aria-label="Five stages of FMVSS rulemaking">
       {fmvssStages.map((label, index) => <li key={label} aria-current={index === current ? "step" : undefined} className="min-w-0">
         <div className={`h-2 rounded-sm ${index === current ? "bg-[#123b69]" : index < current ? "bg-[#80a9d0]" : "bg-neutral-200"}`} />
-        <div className={`mt-2 text-[12px] leading-tight sm:text-sm ${index === current ? "font-semibold text-[#123b69]" : index < current ? "text-neutral-700" : "text-neutral-500"}`}>{label}</div>
+        <div className={`mt-2 text-sm leading-tight ${index === current ? "font-semibold text-[#123b69]" : index < current ? "text-neutral-700" : "text-neutral-500"}`}>{label}</div>
       </li>)}
     </ol>
     <p className="text-sm text-neutral-700 mt-3">{final
@@ -61,7 +62,7 @@ function StateHistoryEvent({ item }: { item: PolicyEvent }) {
 
 export function FederalTracker() {
   const { data, source } = usePolicyData();
-  const events = data.federal.filter(item => item.fmvss.length && item.id !== "fmvss-2020-nprm").sort((a, b) => (b.date ?? "").localeCompare(a.date ?? ""));
+  const events = data.federal.filter(item => item.fmvss.length && !["fmvss-2020-nprm", "fmvss-2022-final"].includes(item.id)).sort((a, b) => (b.date ?? "").localeCompare(a.date ?? "") || a.fmvss[0].localeCompare(b.fmvss[0], undefined, { numeric: true }));
   const early = data.federal.filter(item => !item.fmvss.length);
   return <main className="max-w-6xl px-8 py-8">
     <Intro level="Federal" description="Track NHTSA oversight and verified FMVSS amendments that explicitly address ADS vehicle design, plus related steering-control changes. Each rulemaking links to its proposal and final text where available." />
@@ -73,9 +74,10 @@ export function FederalTracker() {
     <section className="mt-7"><h2 className="text-xl font-semibold">NHTSA oversight history</h2><p className="text-sm text-neutral-600 mt-1">Crash reporting and ADS oversight proposals sit outside the FMVSS vehicle design rules.</p><div className="grid md:grid-cols-2 gap-3 mt-3">{[...data.federal_oversight].sort((a, b) => (b.date ?? "").localeCompare(a.date ?? "")).map(item => <article key={item.id} className="viz-card p-4"><div className="text-xs text-[#184f95] uppercase font-semibold">{displayDate(item.date)} · {item.status.replaceAll("_", " ")}</div><h3 className="font-semibold mt-2">{item.title}</h3><p className="text-sm text-neutral-700 mt-2">{item.summary}</p><a className="text-sm text-[#184f95] underline inline-block mt-2" href={item.source_url} target="_blank" rel="noreferrer">NHTSA / Federal Register ↗</a></article>)}</div></section>
     <section className="mt-7"><div className="flex flex-wrap justify-between items-end gap-2"><div><h2 className="text-xl font-semibold">FMVSS change history</h2><p className="text-sm text-neutral-600 mt-1">ADS design rulemakings and a related steering-control change. The numbers list every standard amended by each tracked final rule; one rulemaking may amend several standards.</p></div><a href={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/data/policy_tracker.json`} className="text-sm text-[#184f95] underline">Download JSON ↗</a></div>
       <StageGuide />
-      <div className="grid md:grid-cols-2 gap-3 mt-3">{events.map(item => <article className="viz-card p-5" key={item.id}><div className="flex flex-wrap justify-between items-start gap-2 text-xs"><span className="font-semibold uppercase tracking-wide text-[#184f95]">FMVSS {item.fmvss.join(" · ")}</span><span className="text-neutral-500 whitespace-nowrap">{displayDate(item.date)}</span></div><div className="mt-2 text-[11px] font-medium text-neutral-500 uppercase tracking-wide">{"scope" in item ? item.scope : "ADS-specific"}</div><h3 className="font-semibold text-[#0b1d33] mt-2">{item.title}</h3><p className="text-sm text-neutral-700 mt-2 leading-relaxed">{item.summary}</p><FmvssTimeline item={item} /><div className="flex flex-wrap gap-x-4 gap-y-1 mt-3"><a href={item.source_url} target="_blank" rel="noreferrer" className="text-sm text-[#184f95] underline">{item.status === "effective" ? "Final rule" : "Proposed rule"} ↗</a>{"proposal_url" in item && item.proposal_url && <a href={item.proposal_url} target="_blank" rel="noreferrer" className="text-sm text-[#184f95] underline">Original proposal ↗</a>}{"comment_extension_url" in item && item.comment_extension_url && <a href={item.comment_extension_url} target="_blank" rel="noreferrer" className="text-sm text-[#184f95] underline">Comment extension ↗</a>}</div></article>)}</div>
+      <div className="grid md:grid-cols-2 gap-3 mt-3">{events.map(item => <article className="viz-card p-5" key={item.id}><div className="flex flex-wrap justify-between items-start gap-2 text-sm"><span className="font-semibold uppercase tracking-wide text-[#184f95]">FMVSS {item.fmvss.join(" · ")}</span><span className="text-neutral-500 whitespace-nowrap">{displayDate(item.date)}</span></div><div className="mt-2 text-sm font-medium text-neutral-500 uppercase tracking-wide">{"scope" in item ? item.scope : "ADS-specific"}</div><h3 className="font-semibold text-[#0b1d33] mt-2">{item.title}</h3><p className="text-sm text-neutral-700 mt-2 leading-relaxed">{item.summary}</p><FmvssTimeline item={item} /><div className="flex flex-wrap gap-x-4 gap-y-1 mt-3"><a href={item.source_url} target="_blank" rel="noreferrer" className="text-sm text-[#184f95] underline">{item.status === "effective" ? "Final rule" : "Proposed rule"} ↗</a>{"proposal_url" in item && item.proposal_url && <a href={item.proposal_url} target="_blank" rel="noreferrer" className="text-sm text-[#184f95] underline">Original proposal ↗</a>}{"comment_extension_url" in item && item.comment_extension_url && <a href={item.comment_extension_url} target="_blank" rel="noreferrer" className="text-sm text-[#184f95] underline">Comment extension ↗</a>}</div></article>)}</div>
       <div className="viz-card p-5 mt-3"><h3 className="font-semibold">Before a specific FMVSS proposal</h3><p className="text-sm text-neutral-600 mt-1">Early requests for information do not themselves amend a standard.</p><div className="flex flex-wrap gap-x-5 gap-y-2 mt-3">{early.map(item => <a key={item.id} href={item.source_url} target="_blank" rel="noreferrer" className="text-sm text-[#184f95] underline">{displayDate(item.date)} · {item.title} ↗</a>)}</div></div>
     </section>
+    <LegislativeBillsPanel jurisdiction="US" />
     <div className="mt-6 text-xs text-neutral-500">Reviewed {data.as_of} · Data source: {source === "R2" ? "R2 live record" : "reviewed site snapshot"}. <Link href="/policy/states" className="underline">Continue to state policy →</Link></div>
   </main>;
 }
@@ -94,7 +96,7 @@ export function StateTracker() {
       { label: "CPUC · passenger service", items: history.filter(e => e.id.startsWith("ca-cpuc")) },
       { label: "State law", items: history.filter(e => !e.id.startsWith("ca-dmv") && !e.id.startsWith("ca-cpuc")) },
     ].map(group => <div key={group.label}><h4 className="text-sm font-semibold text-[#0b1d33] mb-3">{group.label}</h4><div className="space-y-4">{group.items.map(item => <StateHistoryEvent key={item.id} item={item} />)}</div></div>)}</div> : <div className="space-y-4 mt-3">{history.map(item => <StateHistoryEvent key={item.id} item={item} />)}</div> : <p className="text-sm text-neutral-600 mt-2">No enacted AV-specific statute or executive order has been identified in the reviewed sources. General vehicle law still applies.</p>}
-    <p className="text-xs text-neutral-500 mt-6">Reviewed {state.verified_at} · {source === "R2" ? "R2 live record" : "reviewed site snapshot"}. <Link href="/deployment" className="underline">See deployment separately →</Link></p></section></div><p className="text-xs text-neutral-500 mt-4">Classification is a research index, not an operating authorization. <a href={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/data/policy_tracker.json`} className="underline">Download all policy records as JSON ↗</a></p></main>;
+    <p className="text-xs text-neutral-500 mt-6">Reviewed {state.verified_at} · {source === "R2" ? "R2 live record" : "reviewed site snapshot"}. <Link href="/deployment" className="underline">See deployment separately →</Link></p></section></div><LegislativeBillsPanel jurisdiction={state.code} /><p className="text-xs text-neutral-500 mt-4">Classification is a research index, not an operating authorization. <a href={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/data/policy_tracker.json`} className="underline">Download all policy records as JSON ↗</a></p></main>;
 }
 
 export function CityTracker() {
