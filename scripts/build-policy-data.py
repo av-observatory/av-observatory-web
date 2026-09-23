@@ -81,7 +81,7 @@ def event(id, level, place, title, summary, kind, status, date, source, **extra)
                 verified_at=REVIEWED, **extra)
 
 federal = [
-    event("fmvss-2018-rfc", "federal", "US", "FMVSS barrier review", "NHTSA requested public comment on standards that might impede certification or testing of ADS vehicles without  without human driving controls. This request did not amend a standard.", "FMVSS rulemaking", "request_for_comment", "2018-01-18", "https://www.federalregister.gov/documents/2018/01/18/2018-00671/removing-regulatory-barriers-for-vehicles-with-automated-driving-systems", fmvss=[]),
+    event("fmvss-2018-rfc", "federal", "US", "FMVSS barrier review", "NHTSA requested public comment on standards that might impede certification or testing of ADS vehicles without human driving controls. This request did not amend a standard.", "FMVSS rulemaking", "request_for_comment", "2018-01-18", "https://www.federalregister.gov/documents/2018/01/18/2018-00671/removing-regulatory-barriers-for-vehicles-with-automated-driving-systems", fmvss=[]),
     event("fmvss-2019-anprm", "federal", "US", "Removing regulatory barriers for ADS vehicles", "Advanced notice sought input on adapting crash avoidance standards for vehicles without traditional manual controls; it did not change an FMVSS.", "FMVSS rulemaking", "advance_notice", "2019-05-28", "https://www.federalregister.gov/documents/2019/05/28/2019-11032/removing-regulatory-barriers-for-vehicles-with-automated-driving-systems", fmvss=[]),
     event("fmvss-2020-nprm", "federal", "US", "Occupant protection proposal", "Proposed adapting crash protection requirements for ADS vehicles without conventional driving controls.", "FMVSS rulemaking", "superseded_by_final", "2020-03-30", "https://www.federalregister.gov/documents/2020/03/30/2020-05886/occupant-protection-for-automated-driving-systems", fmvss=["208"]),
     event("fmvss-2022-final", "federal", "US", "Occupant protection final rule", "Updated occupant protection standards for ADS vehicles without traditional manual driving controls; a finalized vehicle design rule, not an ADS driving performance test.", "FMVSS rulemaking", "final", "2022-03-30", "https://www.federalregister.gov/documents/2022/03/30/2022-05426/occupant-protection-for-vehicles-with-automated-driving-systems", fmvss=["208"]),
@@ -138,7 +138,7 @@ for code, name in names.items():
             events[-1].update(title="Act 21 · AV testing pilot", date="2020-09-15", date_precision="day", status="historical_status_unverified")
         if code == "TX":
             events.append(event("tx-sb2807-2025", "state", name, "SB 2807 · commercial AV authorization", "Added a TxDMV authorization program for commercial AV operation; the authorization requirement became enforceable May 28, 2026.", "legislation", "in_effect", "2025", "https://www.txdmv.gov/AVprogram", state=code, source_label="TxDMV AV program", source_tier="primary", date_precision="year"))
-    for date, title, summary, source, surce, status in orders.get(code, []):
+    for date, title, summary, source, status in orders.get(code, []):
         events.append(event(f"{code.lower()}-eo-{date[:4]}", "state", name, title, summary,
             "executive_order", status, date, source, state=code, source_label=title, source_tier="primary"))
     states.append(dict(code=code, name=name, framework=brief[0], analysis=brief[1], oversight=brief[2],
