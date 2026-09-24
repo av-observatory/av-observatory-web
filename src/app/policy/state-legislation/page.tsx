@@ -1,2 +1,2 @@
-import { StateLegislationTracker } from "@/components/PolicyTracker";
-export default function StateLegislationPage() { return <StateLegislationTracker />; }
+import { StateLegislationPage } from "@/components/StateLegislationPage";
+export default function Page() { return <StateLegislationPage />; }
