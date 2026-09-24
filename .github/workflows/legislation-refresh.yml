@@ -1,4 +1,5 @@
 name: Refresh AV state legislation database
+# Open States manual trigger marker
 
 on:
   push:
