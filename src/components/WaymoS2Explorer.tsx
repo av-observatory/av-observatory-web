@@ -516,23 +516,37 @@ export function WaymoS2Explorer({
   return <div>
     <div className="viz-card p-4">
       <div className="grid md:grid-cols-2 gap-3">
-        <label className="filter-label">S2 release
-          <select className="filter-select" value={vintage} onChange={e=>setVintage(e.target.value)}>
-            {summary.vintages.slice().reverse().map(v=><option key={v.vintage_end} value={v.vintage_end}>{vintageLabel(v.vintage_end)}</option>)}
-          </select>
-        </label>
-        <label className="filter-label">Cell measure
-          <select className="filter-select" value={metric} onChange={e=>setMetric(e.target.value as Metric)}>
-            <option value="cumulative">VMT by cell · cumulative miles</option>
-            <option value="incremental">VMT added since prior release</option>
-            <option value="miles_per_1000">VMT per 1,000 estimated residents</option>
-            <option value="income">Household income context</option>
-            <option value="hispanic">Hispanic / Latino share</option>
-            <option value="black">Black non-Hispanic share</option>
-            <option value="asian">Asian non-Hispanic share</option>
-            <option value="white">White non-Hispanic share</option>
-          </select>
-        </label>
+        <div>
+          <div className="filter-label">S2 release</div>
+          <div className="mt-2 flex flex-wrap gap-2">
+            {summary.vintages.slice().reverse().map(v=><button
+              key={v.vintage_end}
+              type="button"
+              onClick={()=>setVintage(v.vintage_end)}
+              className={`rounded-full border px-3 py-1.5 text-sm transition ${vintage===v.vintage_end?"border-[#184f95] bg-[#184f95] text-white":"border-[#cad8e8] bg-white text-neutral-700 hover:border-[#184f95] hover:text-[#184f95]"}`}
+            >{vintageLabel(v.vintage_end)}</button>)}
+          </div>
+        </div>
+        <div>
+          <div className="filter-label">Cell measure</div>
+          <div className="mt-2 flex flex-wrap gap-2">
+            {([
+              ["cumulative","Cumulative miles"],
+              ["incremental","Miles added"],
+              ["miles_per_1000","Miles / 1,000 residents"],
+              ["income","Income"],
+              ["hispanic","Hispanic / Latino"],
+              ["black","Black"],
+              ["asian","Asian"],
+              ["white","White"],
+            ] as [Metric,string][]).map(([value,label])=><button
+              key={value}
+              type="button"
+              onClick={()=>setMetric(value)}
+              className={`rounded-full border px-3 py-1.5 text-sm transition ${metric===value?"border-[#184f95] bg-[#184f95] text-white":"border-[#cad8e8] bg-white text-neutral-700 hover:border-[#184f95] hover:text-[#184f95]"}`}
+            >{label}</button>)}
+          </div>
+        </div>
       </div>
     </div>
 
@@ -618,11 +632,17 @@ export function WaymoS2Explorer({
           <h3 className="font-semibold">Mileage Growth by Market</h3>
           <div className="text-sm text-neutral-500">Cumulative operational miles represented by each S2 benchmark release.</div>
         </div>
-        <label className="filter-label min-w-[220px]">Market
-          <select className="filter-select" value={growthMarket} onChange={e=>setGrowthMarket(e.target.value)}>
-            {Object.keys(marketHistory.markets).sort().map(m=><option key={m} value={m}>{m}</option>)}
-          </select>
-        </label>
+        <div className="min-w-[220px]">
+          <div className="filter-label">Market</div>
+          <div className="mt-2 flex flex-wrap gap-2 justify-end">
+            {Object.keys(marketHistory.markets).sort().map(m=><button
+              key={m}
+              type="button"
+              onClick={()=>setGrowthMarket(m)}
+              className={`rounded-full border px-3 py-1.5 text-sm transition ${growthMarket===m?"border-[#184f95] bg-[#184f95] text-white":"border-[#cad8e8] bg-white text-neutral-700 hover:border-[#184f95] hover:text-[#184f95]"}`}
+            >{m}</button>)}
+          </div>
+        </div>
       </div>
       <ResponsiveContainer width="100%" height={260}>
         <LineChart data={chartRows} margin={{top:18,right:10,bottom:5,left:0}}>
