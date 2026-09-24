@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "dataset": "Editorial media and agency context for selected serious or fatal SGO incidents",
-  "method": "Exact NHTSA report ID where available, otherwise matching reporting entity, month, city, and collision counterpart. Media narratives are paraphrased and attributed. Only well-matched cases are enriched; blank entries mean no verified match, not no coverage.",
+  "method": "Narratives are paraphrased from source-linked journalism and agency material. Exact report-ID matches and probable matches are distinguished; probable matches are explicitly marked in the UI. Reviewed unrelated or unresolved articles remain separate from SGO incident narratives.",
   "reviewed_at": "2026-09-24",
   "records": [
     {
@@ -9,35 +9,113 @@
       "match": "exact_nhtsa_report_id",
       "narrative": "A human-driven car first struck a pedestrian, sending her into the path of a Cruise robotaxi. The Cruise vehicle struck her and then moved toward the curb, dragging her roughly 20 feet. Federal investigators linked this SGO report ID to Cruise's software recall; California suspended its driverless permits after the incident.",
       "attribution": "NHTSA investigation and California DMV; media accounts of the same event",
-      "sources": ["https://static.nhtsa.gov/odi/inv/2023/INCLA-PE23018-11022.pdf", "https://www.dmv.ca.gov/portal/news-and-media/dmv-statement-on-cruise-llc-suspension/", "https://apnews.com/article/9b82065277bb1ed23446e67530c9a97b"]
+      "sources": [
+        "https://static.nhtsa.gov/odi/inv/2023/INCLA-PE23018-11022.pdf",
+        "https://www.dmv.ca.gov/portal/news-and-media/dmv-statement-on-cruise-llc-suspension/",
+        "https://apnews.com/article/9b82065277bb1ed23446e67530c9a97b"
+      ]
     },
     {
       "report_id": "30412-6144",
       "match": "report_id_correlated_with_media_event",
       "narrative": "A Cruise driverless vehicle and a San Francisco fire engine responding to an emergency collided at an intersection. News coverage reported that a passenger in the robotaxi went to the hospital. Accounts differed on the vehicles' movements and right of way; the SGO entry lists a serious injury.",
       "attribution": "CBS San Francisco and ABC7 San Francisco; SGO report",
-      "sources": ["https://www.cbsnews.com/sanfrancisco/news/cruise-driverless-car-crash-san-francisco-fire-truck/", "https://abc7news.com/post/cruise-driverless-car-sffd-fire-truck-accident/13666936/"]
+      "sources": [
+        "https://www.cbsnews.com/sanfrancisco/news/cruise-driverless-car-crash-san-francisco-fire-truck/",
+        "https://abc7news.com/post/cruise-driverless-car-sffd-fire-truck-accident/13666936/"
+      ]
     },
     {
       "report_id": "30270-9724",
       "match": "report_time_month_city_and_crash_counterpart",
       "narrative": "Media accounts describe a seven-vehicle crash at Sixth and Harrison in which a speeding human-driven Tesla struck vehicles in traffic, including an unoccupied Waymo. One person in another vehicle died. The Waymo's involvement in the crash does not mean it caused the fatality; police investigated the Tesla driver's actions.",
       "attribution": "CBS San Francisco and San Francisco Chronicle reporting, matched to the Waymo SGO entry",
-      "sources": ["https://www.cbsnews.com/sanfrancisco/news/san-francisco-fatal-multi-vehicle-crash-suspect-arrest/", "https://www.sfchronicle.com/sf/article/crash-tesla-waymo-injuries-driver-arrest-20047538.php"]
+      "sources": [
+        "https://www.cbsnews.com/sanfrancisco/news/san-francisco-fatal-multi-vehicle-crash-suspect-arrest/",
+        "https://www.sfchronicle.com/sf/article/crash-tesla-waymo-injuries-driver-arrest-20047538.php"
+      ]
     },
     {
       "report_id": "30270-16196",
       "match": "report_month_city_and_crash_counterpart",
       "narrative": "Dallas police told local media that another SUV first struck a pedestrian and propelled him into the path of a driverless Waymo traveling the opposite direction. He died. The SGO reports a fatality involving the Waymo; the police account describes a sequence involving both vehicles and is not a final fault determination.",
       "attribution": "Dallas police as reported by CBS Texas and NBC 5 Dallas",
-      "sources": ["https://www.cbsnews.com/texas/news/waymo-involved-deadly-crash-man-hit-dallas-8-8-2026/", "https://www.nbcdfw.com/news/local/pedestrian-killed-suv-crash-waymo-dallas/4060058/"]
+      "sources": [
+        "https://www.cbsnews.com/texas/news/waymo-involved-deadly-crash-man-hit-dallas-8-8-2026/",
+        "https://www.nbcdfw.com/news/local/pedestrian-killed-suv-crash-waymo-dallas/4060058/"
+      ]
     },
     {
       "report_id": "30270-16028",
       "match": "report_month_city_and_collision_sequence",
       "narrative": "Los Angeles reporting described a car that struck a pedestrian and then collided with a Waymo traveling in the opposite lane. The pedestrian was seriously injured. The SGO entry lists a serious injury in a crash involving a passenger car; the reporting does not establish the Waymo as the vehicle that struck the pedestrian.",
       "attribution": "Los Angeles Times reporting and Waymo's account as quoted in local coverage",
-      "sources": ["https://www.latimes.com/california/story/2026-07-26/multiple-people-injured-pico-union-collision-waymo"]
+      "sources": [
+        "https://www.latimes.com/california/story/2026-07-26/multiple-people-injured-pico-union-collision-waymo"
+      ]
+    },
+    {
+      "report_id": "30270-11713",
+      "match": "report_month_city_motorcycle_and_fatal_sequence",
+      "narrative": "Tempe police reported that a motorcycle rear-ended an unoccupied Waymo near Rural Road and Lemon Street. Another driver then struck the rider and continued on; the rider died at the hospital. The news account describes the sequence without assigning legal fault to the Waymo.",
+      "attribution": "Tempe Police Department as reported by The Arizona State Press and Arizona’s Family",
+      "sources": [
+        "https://www.statepress.com/article/2025/09/breaking-waymo-motorcycle-accident",
+        "https://www.tempe.gov/Home/Components/News/News/18611/3149"
+      ]
+    },
+    {
+      "report_id": "30270-15896",
+      "match": "probable_month_city_suv_match_not_report_id_confirmed",
+      "narrative": "FOX5 reported that police responded to a July crash near Sunset Road and Polaris Avenue involving a Waymo and an SUV. Waymo told the station the SUV struck its vehicle from behind, then hit a light pole. Police confirmed at least one person was injured; the SGO record alleges serious injury with hospitalization, a different and more specific source classification. The article does not include an SGO ID or identify the Waymo model, so the match remains probable rather than confirmed.",
+      "attribution": "Las Vegas Metropolitan Police and Waymo as reported by FOX5 Las Vegas",
+      "sources": [
+        "https://www.fox5vegas.com/2026/07/20/least-one-injured-during-crash-involving-waymo-south-las-vegas/"
+      ]
+    },
+    {
+      "report_id": "30270-7681",
+      "match": "probable_month_city_freeway_and_vehicle_match",
+      "narrative": "ABC7 reported a two-vehicle crash shortly before 1 a.m. on the eastbound 10 Freeway near Bundy Drive. A Waymo autonomous specialist was seated in the vehicle with the system active. Both drivers reportedly had mild to moderate injuries; Waymo said the other vehicle struck its car from behind, and CHP had not assigned fault. The SGO entry records a serious injury; these are differing source descriptions of injury severity.",
+      "attribution": "California Highway Patrol and Waymo as reported by ABC7 Los Angeles",
+      "sources": [
+        "https://abc7.com/post/crash-involving-waymo-vehicle-on-10-freeway-in-west-los-angeles/14808113/"
+      ]
+    },
+    {
+      "report_id": "30270-6579",
+      "match": "probable_month_city_time_and_pedestrian_sequence",
+      "narrative": "ABC7 reported that a car fleeing police struck two vehicles, including a Waymo carrying passengers, then hit two pedestrians on a San Francisco sidewalk. One pedestrian had major injuries, another minor injuries, and no Waymo passengers were hurt according to the report. The media account puts the impact near Folsom and 11th around 10:40 p.m.; the SGO record reports a serious injury but does not establish fault.",
+      "attribution": "California Highway Patrol as reported by ABC7 San Francisco; matched by month, city, crash sequence and time",
+      "sources": [
+        "https://abc7news.com/post/police-chase-san-francisco-waymo-pursuit-crash/14011545/"
+      ]
+    },
+    {
+      "report_id": "30412-2588",
+      "match": "exact_nhtsa_report_id_agency_context_only",
+      "narrative": "NHTSA named this SGO report in its inquiry into Cruise hard braking and vehicle immobilization. The agency later said its review identified crashes connected to unexpected braking and that Cruise recalled affected software. Those agency records provide regulatory context but do not establish the sequence or cause of this particular cyclist injury; no independently matched news account was found.",
+      "attribution": "NHTSA investigation records; no matched media report",
+      "sources": [
+        "https://static.nhtsa.gov/odi/inv/2022/INIM-PE22014-89878P.pdf",
+        "https://static.nhtsa.gov/odi/inv/2022/INCLA-PE22014-10746.pdf"
+      ]
+    }
+  ],
+  "reviewed_sources": [
+    {
+      "url": "https://www.axios.com/local/miami/2026/07/15/police-debunk-video-waymo-bicyclist-crash-miami",
+      "title": "Miami Beach police dispute viral cyclist video",
+      "related_report_id": "30270-15830",
+      "status": "match_unverified",
+      "finding": "Axios reports a stationary Waymo awaiting pickup had no contact with a cyclist hit by a separate car. The SGO entry describes a moving Waymo and a bicycle collision. The month and city overlap, but the descriptions do not establish that this article covers the SGO incident. Do not merge them or claim the SGO report was disproved."
+    },
+    {
+      "url": "https://www.azfamily.com/2026/06/21/man-critically-injured-waymo-damaged-after-fight-outside-north-phoenix-pub/",
+      "title": "North Phoenix pub fight with Waymo damage",
+      "related_report_id": null,
+      "status": "excluded_non_traffic_event",
+      "finding": "The critical injury followed a fight outside a Phoenix pub; a Waymo was damaged in the parking lot. The story does not describe a traffic collision and does not match the Scottsdale June SGO report."
     }
   ]
 }

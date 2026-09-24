@@ -7,7 +7,7 @@ import { SafetyExplorer } from "@/components/SafetyExplorer";
 import { UsStateMap } from "@/components/UsStateMap";
 import { TopEntitiesChart } from "@/components/SafetyCharts";
 import { SgoDeepDive, SgoIncidentRow } from "@/components/SgoDeepDive";
-import { SgoSeriousCrashList, type SeriousCrash, type MediaContext } from "@/components/SgoSeriousCrashList";
+import { SgoSeriousCrashList, type SeriousCrash, type MediaContext, type ReviewedSource } from "@/components/SgoSeriousCrashList";
 
 async function loadJson<T>(filename: string): Promise<T> {
   const file = path.join(process.cwd(), "public", "data", filename);
@@ -68,7 +68,7 @@ export default async function SafetyPage() {
       const rows = parseCsv(raw); const header = rows.shift() ?? [];
       return rows.filter(r => r.length > 1).map(r => Object.fromEntries(header.map((key, i) => [key, r[i] ?? ""])) as SeriousCrash);
     }),
-    loadJson<{records:MediaContext[]}>("sgo_media_context.json"),
+    loadJson<{records:MediaContext[];reviewed_sources:ReviewedSource[]}>("sgo_media_context.json"),
   ]);
 
   const incidentsByState: Record<string, number> = {};
@@ -117,7 +117,7 @@ export default async function SafetyPage() {
         <SgoDeepDive rows={incidentRows} />
       </section>
 
-      <SgoSeriousCrashList crashes={seriousCrashes} media={mediaContext.records} />
+      <SgoSeriousCrashList crashes={seriousCrashes} media={mediaContext.records} reviewedSources={mediaContext.reviewed_sources} />
 
     </div>
   );
