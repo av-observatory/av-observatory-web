@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0.0",
+  "dataset": "Editorial media and agency context for selected serious or fatal SGO incidents",
+  "method": "Exact NHTSA report ID where available, otherwise matching reporting entity, month, city, and collision counterpart. Media narratives are paraphrased and attributed. Only well-matched cases are enriched; blank entries mean no verified match, not no coverage.",
+  "reviewed_at": "2026-09-24",
+  "records": [
+    {
+      "report_id": "30412-6395",
+      "match": "exact_nhtsa_report_id",
+      "narrative": "A human-driven car first struck a pedestrian, sending her into the path of a Cruise robotaxi. The Cruise vehicle struck her and then moved toward the curb, dragging her roughly 20 feet. Federal investigators linked this SGO report ID to Cruise's software recall; California suspended its driverless permits after the incident.",
+      "attribution": "NHTSA investigation and California DMV; media accounts of the same event",
+      "sources": ["https://static.nhtsa.gov/odi/inv/2023/INCLA-PE23018-11022.pdf", "https://www.dmv.ca.gov/portal/news-and-media/dmv-statement-on-cruise-llc-suspension/", "https://apnews.com/article/9b82065277bb1ed23446e67530c9a97b"]
+    },
+    {
+      "report_id": "30412-6144",
+      "match": "report_id_correlated_with_media_event",
+      "narrative": "A Cruise driverless vehicle and a San Francisco fire engine responding to an emergency collided at an intersection. News coverage reported that a passenger in the robotaxi went to the hospital. Accounts differed on the vehicles' movements and right of way; the SGO entry lists a serious injury.",
+      "attribution": "CBS San Francisco and ABC7 San Francisco; SGO report",
+      "sources": ["https://www.cbsnews.com/sanfrancisco/news/cruise-driverless-car-crash-san-francisco-fire-truck/", "https://abc7news.com/post/cruise-driverless-car-sffd-fire-truck-accident/13666936/"]
+    },
+    {
+      "report_id": "30270-9724",
+      "match": "report_time_month_city_and_crash_counterpart",
+      "narrative": "Media accounts describe a seven-vehicle crash at Sixth and Harrison in which a speeding human-driven Tesla struck vehicles in traffic, including an unoccupied Waymo. One person in another vehicle died. The Waymo's involvement in the crash does not mean it caused the fatality; police investigated the Tesla driver's actions.",
+      "attribution": "CBS San Francisco and San Francisco Chronicle reporting, matched to the Waymo SGO entry",
+      "sources": ["https://www.cbsnews.com/sanfrancisco/news/san-francisco-fatal-multi-vehicle-crash-suspect-arrest/", "https://www.sfchronicle.com/sf/article/crash-tesla-waymo-injuries-driver-arrest-20047538.php"]
+    },
+    {
+      "report_id": "30270-16196",
+      "match": "report_month_city_and_crash_counterpart",
+      "narrative": "Dallas police told local media that another SUV first struck a pedestrian and propelled him into the path of a driverless Waymo traveling the opposite direction. He died. The SGO reports a fatality involving the Waymo; the police account describes a sequence involving both vehicles and is not a final fault determination.",
+      "attribution": "Dallas police as reported by CBS Texas and NBC 5 Dallas",
+      "sources": ["https://www.cbsnews.com/texas/news/waymo-involved-deadly-crash-man-hit-dallas-8-8-2026/", "https://www.nbcdfw.com/news/local/pedestrian-killed-suv-crash-waymo-dallas/4060058/"]
+    },
+    {
+      "report_id": "30270-16028",
+      "match": "report_month_city_and_collision_sequence",
+      "narrative": "Los Angeles reporting described a car that struck a pedestrian and then collided with a Waymo traveling in the opposite lane. The pedestrian was seriously injured. The SGO entry lists a serious injury in a crash involving a passenger car; the reporting does not establish the Waymo as the vehicle that struck the pedestrian.",
+      "attribution": "Los Angeles Times reporting and Waymo's account as quoted in local coverage",
+      "sources": ["https://www.latimes.com/california/story/2026-07-26/multiple-people-injured-pico-union-collision-waymo"]
+    }
+  ]
+}

@@ -94,6 +94,10 @@ def main():
         elif stem == "av_311_complaints":
             export(stem + ".csv", data["records"], output)
             export(stem + "_monthly.csv", data["monthly"], output)
+        elif stem == "sf_311_waymo_s2_context":
+            export(stem + ".csv", [data], output)
+        elif stem == "sgo_media_context":
+            export(stem + ".csv", data["records"], output)
         elif stem == "av_311_source_registry":
             export(stem + ".csv", data["states"], output)
         elif stem == "ca_waymo_sgo_rates":

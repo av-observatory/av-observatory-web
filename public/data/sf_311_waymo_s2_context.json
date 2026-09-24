@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0.0",
+  "period_start": "2026-01-01",
+  "period_end": "2026-03-31",
+  "sf_311_requests_all_operators": 189,
+  "sf_311_requests_prior_twelve_months": 627,
+  "waymo_ro_miles_sf_county": 9855183.39,
+  "sf_311_requests_per_million_waymo_ro_miles_context_only": 19.18,
+  "s2_cells_start": 121,
+  "s2_cells_end": 123,
+  "numerator_source": "https://data.sf.gov/d/vw6y-z8j6",
+  "denominator_source": "https://waymo.com/safety/impact/",
+  "interpretation": "Context only: all-operator SF311 requests divided by Waymo-only rider-only miles. This is not a Waymo complaint rate, causal comparison, or verified violation rate.",
+  "annual_limit": "A matching San Francisco county S2 baseline for March 2025 is not in the archived county-coded files; the past-year 311 count is shown without a one-year miles rate."
+}

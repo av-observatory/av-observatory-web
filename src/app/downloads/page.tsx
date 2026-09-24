@@ -12,7 +12,7 @@ const GROUPS = [
 
 function groupFor(name: string) {
   if (/policy|legislation/.test(name)) return "policy";
-  if (/sgo_|ca_waymo_sgo|cpuc_activity|cpuc_vs_waymo|exposure_rate|av_311|austin_av_reports/.test(name)) return "reporting";
+  if (/sgo_|ca_waymo_sgo|cpuc_activity|cpuc_vs_waymo|exposure_rate|av_311|austin_av_reports|sf_311_waymo_s2/.test(name)) return "reporting";
   return "operations";
 }
 function labelFor(name: string) {
@@ -27,6 +27,8 @@ function descriptionFor(name: string) {
   if (name === "sgo_incidents_all_versions.csv") return "Original versioned reports; contains multiple versions of some reports.";
   if (name === "sgo_incidents_monthly.json") return "Monthly aggregates of latest-version SGO crash reports.";
   if (name.startsWith("av_311") || name.startsWith("austin_av_reports")) return "Reviewed municipal 311 AV category records, monthly totals, and deployment-market source coverage.";
+  if (name.startsWith("sf_311_waymo_s2")) return "Matched-quarter contextual comparison of all-operator SF311 requests and Waymo-only San Francisco S2 miles; not a Waymo complaint rate.";
+  if (name.startsWith("sgo_media_context")) return "Source-linked media and agency context for independently matched serious or fatal SGO reports.";
   if (name === "ca_waymo_sgo_rates.json") return "California Waymo SGO crash and alleged severe-injury crash counts per million CPUC passenger-service miles; scopes differ.";
   if (name.startsWith("cpuc_activity")) return "California CPUC monthly passenger trips, riders, and vehicle miles.";
   if (name === "manufacturer_profiles.json") return "Operator services, approaches, partnerships, and developments.";

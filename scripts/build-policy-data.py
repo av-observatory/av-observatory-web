@@ -67,7 +67,7 @@ state_links = {
     "PA": ("Pennsylvania Vehicle Code Chapter 85", "https://www.legis.state.pa.us/WU01/LI/LI/CT/HTM/75/75.HTM"),
     "SD": ("South Dakota HB 1095 enrolled (2024)", "https://mylrc.sdlegislature.gov/api/Documents/Bill/264493.pdf?Year=2024"),
     "TN": ("Tennessee Automated Vehicles Act, HB 381", "https://wapp.capitol.tn.gov/apps/BillInfo/Default?BillNumber=HB0381&ga=110"),
-    "TX": ("Texas DMV commercial AV authorization", "https://www.txdmv.gov/AVprogram"),
+    "TX": ("Texas DMV Commercial Vehicle Authorization", "https://www.txdmv.gov/AVprogram"),
     "UT": ("Utah Code Chapter 41-26", "https://le.utah.gov/xcode/Title41/Chapter26/41-26.html"),
     "VT": ("Vermont Automated Vehicle Testing Act", "https://legislature.vermont.gov/statutes/fullchapter/23/041"),
     "WA": ("Washington DOL AV guidance", "https://dol.wa.gov/vehicles-and-boats/vehicles/vehicle-registration/register-other-vehicles-and-other-services/registering-autonomous-vehicles"),
@@ -179,13 +179,13 @@ for code, name in names.items():
     link_label, link_url = state_links.get(code, ("State law survey (secondary source; verify primary text)", GUIDE))
     if code in statutes:
         events.append(event(f"{code.lower()}-statute-baseline", "state", name,
-            "Enacted AV statute · current framework", brief[1], "legislation", "in_effect", statute_dates.get(code),
+            "Enacted AV Statute · Current Framework", brief[1], "legislation", "in_effect", statute_dates.get(code),
             link_url, state=code, source_label=link_label,
             source_tier="primary" if code in state_links else "secondary", date_precision="year" if code in statute_dates else "undetermined"))
         if code == "HI":
             events[-1].update(title="Act 21 · AV testing pilot", date="2020-09-15", date_precision="day", status="historical_status_unverified")
         if code == "TX":
-            events.append(event("tx-sb2807-2025", "state", name, "SB 2807 · commercial AV authorization", "Added a TxDMV authorization program for commercial AV operation; the authorization requirement became enforceable May 28, 2026.", "legislation", "in_effect", "2025", "https://www.txdmv.gov/AVprogram", state=code, source_label="TxDMV AV program", source_tier="primary", date_precision="year"))
+            events.append(event("tx-sb2807-2025", "state", name, "SB 2807 · Commercial Vehicle Authorization", "Added a TxDMV authorization program for commercial AV operation; the authorization requirement became enforceable May 28, 2026.", "legislation", "in_effect", "2025", "https://www.txdmv.gov/AVprogram", state=code, source_label="TxDMV AV program", source_tier="primary", date_precision="year"))
     for date, title, summary, source, status in orders.get(code, []):
         events.append(event(f"{code.lower()}-eo-{date[:4]}", "state", name, title, summary,
             "executive_order", status, date, source, state=code, source_label=title, source_tier="primary"))

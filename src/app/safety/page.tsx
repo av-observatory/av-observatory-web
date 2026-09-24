@@ -7,7 +7,7 @@ import { SafetyExplorer } from "@/components/SafetyExplorer";
 import { UsStateMap } from "@/components/UsStateMap";
 import { TopEntitiesChart } from "@/components/SafetyCharts";
 import { SgoDeepDive, SgoIncidentRow } from "@/components/SgoDeepDive";
-import { SgoSeriousCrashList, type SeriousCrash } from "@/components/SgoSeriousCrashList";
+import { SgoSeriousCrashList, type SeriousCrash, type MediaContext } from "@/components/SgoSeriousCrashList";
 
 async function loadJson<T>(filename: string): Promise<T> {
   const file = path.join(process.cwd(), "public", "data", filename);
@@ -61,13 +61,14 @@ async function loadSgoRows(): Promise<SgoIncidentRow[]> {
 }
 
 export default async function SafetyPage() {
-  const [sgo, incidentRows, seriousCrashes] = await Promise.all([
+  const [sgo, incidentRows, seriousCrashes, mediaContext] = await Promise.all([
     loadJson<SgoMonthlyDataset>("sgo_incidents_monthly.json"),
     loadSgoRows(),
     fs.readFile(path.join(process.cwd(), "public", "data", "sgo_serious_fatal_crashes.csv"), "utf-8").then(raw => {
       const rows = parseCsv(raw); const header = rows.shift() ?? [];
       return rows.filter(r => r.length > 1).map(r => Object.fromEntries(header.map((key, i) => [key, r[i] ?? ""])) as SeriousCrash);
     }),
+    loadJson<{records:MediaContext[]}>("sgo_media_context.json"),
   ]);
 
   const incidentsByState: Record<string, number> = {};
@@ -116,7 +117,7 @@ export default async function SafetyPage() {
         <SgoDeepDive rows={incidentRows} />
       </section>
 
-      <SgoSeriousCrashList crashes={seriousCrashes} />
+      <SgoSeriousCrashList crashes={seriousCrashes} media={mediaContext.records} />
 
     </div>
   );
