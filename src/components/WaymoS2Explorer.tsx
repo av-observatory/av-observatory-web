@@ -188,6 +188,24 @@ function metricRamp(metric:Metric){
   if(["hispanic","black","asian","white"].includes(metric))return PURPLE_RAMP;
   return BLUE_RAMP;
 }
+function marketNameForFeature(p:S2Feature["properties"]){
+  const state=String(p.state??"");
+  const county=String(p.county??"");
+  if(state==="Arizona"&&county==="Maricopa")return {market:"Phoenix",state:"AZ"};
+  if(state==="California"&&["San Francisco","San Mateo","Santa Clara"].includes(county))return {market:"San Francisco Bay Area",state:"CA"};
+  if(state==="California"&&county==="Los Angeles")return {market:"Los Angeles",state:"CA"};
+  if(state==="Texas"&&county==="Travis")return {market:"Austin",state:"TX"};
+  if(state==="Georgia"&&["Fulton","DeKalb"].includes(county))return {market:"Atlanta",state:"GA"};
+  const legacy=county.toUpperCase().replaceAll(" ","_");
+  if(legacy==="PHOENIX")return {market:"Phoenix",state:"AZ"};
+  if(legacy==="SAN_FRANCISCO")return {market:"San Francisco Bay Area",state:"CA"};
+  if(legacy==="LOS_ANGELES")return {market:"Los Angeles",state:"CA"};
+  if(legacy==="AUSTIN")return {market:"Austin",state:"TX"};
+  if(legacy==="ATLANTA")return {market:"Atlanta",state:"GA"};
+  if(county&&state)return {market:county,state};
+  if(county)return {market:county,state};
+  return {market:"Unassigned S2 market",state};
+}
 
 function geometryPoints(geometry:any,out:[number,number][]=[]){
   const walk=(x:any)=>{
@@ -451,6 +469,34 @@ export function WaymoS2Explorer({
       if(facet.cells.length||!facet.serviceFeature)continue;
       facet.cells=cellCenters.filter(({center})=>pointInGeometry(center,facet.serviceFeature!.geometry)).map(x=>x.cell);
     }
+
+    // Guarantee that every market represented in the S2 data appears, even when
+    // there is no current service-area polygon or operational-domain record.
+    const dataMarkets=new Map<string,{market:string;state:string;cells:S2Feature[]}>();
+    for(const cell of mapData.features){
+      const resolved=marketNameForFeature(cell.properties);
+      const key=`${resolved.market}|${resolved.state}`;
+      const group=dataMarkets.get(key)??{market:resolved.market,state:resolved.state,cells:[]};
+      group.cells.push(cell);
+      dataMarkets.set(key,group);
+    }
+    for(const [key,group] of dataMarkets){
+      const existing=map.get(key);
+      if(existing){
+        const ids=new Set(existing.cells.map(x=>String(x.properties.s2_cell)));
+        for(const cell of group.cells){
+          if(!ids.has(String(cell.properties.s2_cell))) existing.cells.push(cell);
+        }
+      }else{
+        map.set(key,{
+          market:group.market,
+          state:group.state,
+          status:"s2_data_only",
+          cells:group.cells,
+        });
+      }
+    }
+
     return Array.from(map.values()).sort((a,b)=>a.state.localeCompare(b.state)||a.market.localeCompare(b.market));
   },[waymoService,locations,mapData]);
 
@@ -528,6 +574,11 @@ export function WaymoS2Explorer({
                 {facet.cells.length?`${facet.cells.length} S2 cells`:"boundary only"}
               </span>
             </div>
+            {facet.status==="s2_data_only" && (
+              <div className="mt-2 text-[11px] leading-snug text-neutral-500">
+                S2 data market — no separate service-area polygon is required for inclusion.
+              </div>
+            )}
             {String(facet.serviceFeature?.properties?.geometry_basis??"")==="derived_s2_reporting_region" && (
               <div className="mt-2 text-[11px] leading-snug text-neutral-500">
                 Derived S2 reporting envelope — not an official Waymo service-area or ODD boundary.
