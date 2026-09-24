@@ -697,7 +697,7 @@ export function WaymoS2Explorer({
     <div className="viz-card p-4 mt-5">
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
-          <h3 className="font-semibold">Waymo Rider-Only Mileage Exposure vs Population</h3>
+          <h3 className="font-semibold">Waymo VMT Exposure</h3>
         </div>
         <div className="flex gap-2">
           {(["race","income"] as DemographicView[]).map(view=><button key={view} type="button" onClick={()=>setDemographicView(view)} className={`rounded-full border px-3 py-1.5 text-sm transition ${demographicView===view?"border-[#184f95] bg-[#184f95] text-white":"border-[#cad8e8] bg-white text-neutral-700"}`}>{view==="race"?"Race / Ethnicity":"Income"}</button>)}
@@ -705,8 +705,8 @@ export function WaymoS2Explorer({
       </div>
       <div className="mt-2 text-xs text-neutral-500">
         {demographicView==="race"
-          ?"Population share is the expected share of Waymo Rider-Only mileage if activity were distributed in proportion to where people live. Observed mileage exposure allocates each S2 cell's RO miles across racial and ethnic groups according to that cell's estimated resident composition. A higher mileage share than population share means Waymo activity is more concentrated in places where that group lives than population alone would predict."
-          :"Population share is the expected share of Waymo Rider-Only mileage if activity were distributed in proportion to where people live. Observed mileage exposure is the share of RO miles occurring in S2 cells within each household-income band. A higher mileage share than population share means Waymo activity is more concentrated in that income context than population alone would predict."}
+          ?"Population share shows the racial and ethnic composition of residents in the S2 footprint and is independent of Waymo activity. Waymo VMT exposure shows how Rider-Only miles are distributed across those same groups based on where people live: each S2 cell's RO miles are allocated according to that cell's estimated resident composition. If VMT exposure share is higher than population share, Waymo activity is more concentrated in places where that group lives than population distribution alone would predict."
+          :"Population share shows how residents in the S2 footprint are distributed across household-income bands and is independent of Waymo activity. Waymo VMT exposure shows the share of Rider-Only miles occurring in cells within each income band. If VMT exposure share is higher than population share, Waymo activity is more concentrated in that income context than population distribution alone would predict."}
       </div>
       <ResponsiveContainer width="100%" height={demographicView==="race"?390:320}>
         <BarChart data={demographicRows} layout="vertical" margin={{top:16,right:28,bottom:5,left:42}}>
@@ -724,7 +724,7 @@ export function WaymoS2Explorer({
             String(name)
           ]}/>
           <Bar dataKey="population_share" name="Population share" fill={SERIES.aqua}/>
-          <Bar dataKey="mileage_share" name="RO mileage exposure share" fill={SERIES.blue}/>
+          <Bar dataKey="mileage_share" name="Waymo VMT exposure share" fill={SERIES.blue}/>
         </BarChart>
       </ResponsiveContainer>
       <div className="text-xs leading-relaxed text-neutral-500">
