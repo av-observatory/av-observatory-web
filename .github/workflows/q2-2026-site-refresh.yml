@@ -1,0 +1,240 @@
+name: Refresh Q2 2026 activity and Waymo S2 site data
+
+on:
+  push:
+    paths:
+      - ".github/workflows/q2-2026-site-refresh.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install helpers
+        run: pip install --quiet s2sphere
+
+      - name: Download authoritative Q2 sources
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/q2
+          curl -fL --retry 3 -o "/tmp/q2/waymo-deployment-2026q2.zip"             "https://www.cpuc.ca.gov/-/media/cpuc-website/divisions/consumer-protection-and-enforcement-division/documents/tlab/av-programs/waymo-deployment-2026q2.zip"
+          curl -fL --retry 3 -o "/tmp/q2/waymo-s2-202606.csv"             "https://storage.googleapis.com/waymo-uploads/files/documents/safety/safety-impact-data/CSV4%20-%20Miles%20and%20Benchmark%20Crashes%20for%20Dynamic%20Benchmark%20202009-202606-2022benchmark.csv"
+
+      - name: Build Q2 site datasets
+        run: |
+          python - <<'PYEOF'
+          import csv, io, json, math, os, re, zipfile
+          from collections import defaultdict
+          from s2sphere import Cell, CellId, LatLng
+
+          DATA="public/data"
+          os.makedirs(DATA,exist_ok=True)
+
+          def num(v):
+              if v is None: return None
+              s=str(v).strip()
+              if s in ("","Redacted","REDACTED","NULL","N/A","Not applicable"): return None
+              return float(s.replace(",",""))
+
+          # ---- CPUC activity: merge Q2 into existing longitudinal site dataset ----
+          zpath="/tmp/q2/waymo-deployment-2026q2.zip"
+          month_bytes=None
+          month_name=None
+          with zipfile.ZipFile(zpath) as z:
+              for name in z.namelist():
+                  if re.search(r"Month[-_ ]?(Part\d+|Level).*\.csv$",name,re.I):
+                      month_bytes=z.read(name); month_name=name; break
+          if month_bytes is None:
+              raise SystemExit("No CPUC month aggregate found")
+          q2=[]
+          rdr=csv.DictReader(io.StringIO(month_bytes.decode("utf-8-sig",errors="replace")))
+          for row in rdr:
+              y,m=int(row["Year"]),int(row["Month"])
+              if y!=2026 or m not in (4,5,6): continue
+              out={
+                "operator_tcpid":row.get("TCPID") or "PSG0038152",
+                "program":"driverless",
+                "calendar_year":y,"calendar_month":m,
+                "total_trips":num(row.get("TotalTrips")),
+                "total_waiting_hours":num(row.get("TotalWaiting")),
+                "total_vmt_period1":num(row.get("TotalVMTPeriod1")),
+                "total_vmt_period2":num(row.get("TotalVMTPeriod2")),
+                "total_vmt_period3":num(row.get("TotalVMTPeriod3")),
+                "total_vmt_zev":num(row.get("TotalVMTZEV")),
+                "total_passengers_carried":num(row.get("TotalPassengersCarried")),
+                "total_passenger_miles_traveled":num(row.get("TotalPMT")),
+                "total_wavs_available":num(row.get("TotalWAVsAvail")),
+                "total_wavs_requested":num(row.get("TotalWAVsRequested")),
+                "total_wavs_declined_unavailable":num(row.get("TotalWAVsDeclinedUnavail")),
+                "total_wavs_fulfilled":num(row.get("TotalWAVsFulfilled")),
+              }
+              parts=[out["total_vmt_period1"],out["total_vmt_period2"],out["total_vmt_period3"]]
+              out["total_vmt_all_periods"]=sum(x for x in parts if x is not None) if any(x is not None for x in parts) else None
+              q2.append(out)
+          if len(q2)!=3: raise SystemExit(f"Expected 3 Q2 CPUC rows, got {len(q2)}")
+
+          cpuc_json=os.path.join(DATA,"cpuc_activity_monthly.json")
+          payload=json.load(open(cpuc_json))
+          by={(r["operator_tcpid"],r.get("program","unspecified"),int(r["calendar_year"]),int(r["calendar_month"])):r for r in payload["data"]}
+          for r in q2: by[(r["operator_tcpid"],r["program"],r["calendar_year"],r["calendar_month"])]=r
+          rows=[by[k] for k in sorted(by)]
+          payload["row_count"]=len(rows); payload["data"]=rows
+          with open(cpuc_json,"w") as f: json.dump(payload,f,indent=2)
+
+          fields=["operator_tcpid","program","calendar_year","calendar_month","total_trips","total_waiting_hours","total_vmt_period1","total_vmt_period2","total_vmt_period3","total_vmt_zev","total_passengers_carried","total_passenger_miles_traveled","total_wavs_available","total_wavs_requested","total_wavs_declined_unavailable","total_wavs_fulfilled","total_vmt_all_periods"]
+          with open(os.path.join(DATA,"cpuc_activity_monthly.csv"),"w",newline="") as f:
+              w=csv.DictWriter(f,fieldnames=fields); w.writeheader(); w.writerows(rows)
+
+          # ---- Waymo S2 June 2026 ----
+          raw=list(csv.DictReader(open("/tmp/q2/waymo-s2-202606.csv",encoding="utf-8-sig")))
+          if not raw: raise SystemExit("Empty Waymo S2 source")
+          vintage_start,vintage_end,benchmark_year="202009","202606","2022"
+
+          # Full standardized benchmark table used by downloads / safety summaries.
+          bench_fields=["vintage_start","vintage_end","benchmark_year","state","county","s2_cell","outcome","benchmark_crash_count","hpms_vmt","waymo_ro_miles","source_archive_key"]
+          source_name="CSV4 - Miles and Benchmark Crashes for Dynamic Benchmark 202009-202606-2022benchmark.csv"
+          with open(os.path.join(DATA,"waymo_s2_benchmark.csv"),"w",newline="") as f:
+              w=csv.DictWriter(f,fieldnames=bench_fields); w.writeheader()
+              for r in raw:
+                  w.writerow({
+                    "vintage_start":vintage_start,"vintage_end":vintage_end,"benchmark_year":benchmark_year,
+                    "state":r["state_name"],"county":r["county_name"],"s2_cell":r["S2 Cell"],"outcome":r["Outcome"],
+                    "benchmark_crash_count":r["Benchmark Crash Count"],
+                    "hpms_vmt":r["HPMS Yearly Vehicle Miles Traveled"],
+                    "waymo_ro_miles":r["Waymo RO Miles"],
+                    "source_archive_key":"raw/Waymo_S2/"+source_name,
+                  })
+
+          # One cell record per S2 cell; Waymo miles and HPMS repeat across outcomes.
+          cells={}
+          crashes=defaultdict(float)
+          for r in raw:
+              key=(r["state_name"],r["county_name"],r["S2 Cell"])
+              cells.setdefault(key,(float(r["Waymo RO Miles"]),float(r["HPMS Yearly Vehicle Miles Traveled"])))
+              crashes[(r["state_name"],r["county_name"],r["Outcome"])]+=float(r["Benchmark Crash Count"])
+
+          prev_csv=os.path.join(DATA,"waymo_s2_latest.csv")
+          prev={}
+          if os.path.exists(prev_csv):
+              for r in csv.DictReader(open(prev_csv)):
+                  prev[r["s2_cell"]]=float(r["waymo_ro_miles"])
+
+          def geometry(cell_id):
+              c=Cell(CellId(int(cell_id)))
+              ring=[]
+              for i in range(4):
+                  ll=LatLng.from_point(c.get_vertex(i))
+                  ring.append([ll.lng().degrees,ll.lat().degrees])
+              ring.append(ring[0])
+              return {"type":"Polygon","coordinates":[ring]}
+
+          compact=[]
+          features=[]
+          for (state,county,s2), (miles,hpms) in sorted(cells.items()):
+              inc=miles-prev.get(s2,0.0)
+              geom=geometry(s2)
+              rec={"state":state,"county":county,"s2_cell":s2,"waymo_ro_miles":miles,"incremental_miles":round(inc,3),"vintage_end":vintage_end,"exposure_phase":"deployment","geometry_geojson":json.dumps(geom,separators=(",",":"))}
+              compact.append(rec)
+              features.append({"type":"Feature","properties":{k:rec[k] for k in ("state","county","s2_cell","waymo_ro_miles","incremental_miles","vintage_end","exposure_phase")},"geometry":geom})
+
+          compact_fields=["state","county","s2_cell","waymo_ro_miles","incremental_miles","vintage_end","exposure_phase","geometry_geojson"]
+          for name in (f"waymo_s2_{vintage_end}.csv","waymo_s2_latest.csv"):
+              with open(os.path.join(DATA,name),"w",newline="") as f:
+                  w=csv.DictWriter(f,fieldnames=compact_fields); w.writeheader(); w.writerows(compact)
+          geo={"type":"FeatureCollection","metadata":{"dataset":"Waymo S2 operational-mileage cells, latest vintage","vintage_end":vintage_end,"phase":"deployment"},"features":features}
+          for name in (f"waymo_s2_{vintage_end}.geojson","waymo_s2_latest.geojson"):
+              with open(os.path.join(DATA,name),"w") as f: json.dump(geo,f,separators=(",",":"))
+
+          # Latest state/county summary, same semantics as backend.
+          miles_state=defaultdict(lambda:{"waymo_ro_miles":0.0,"hpms_vmt":0.0,"cell_count":0})
+          miles_county=defaultdict(lambda:{"waymo_ro_miles":0.0,"hpms_vmt":0.0,"cell_count":0})
+          crash_state=defaultdict(float)
+          for (state,county,s2),(miles,hpms) in cells.items():
+              ms=miles_state[state]; ms["waymo_ro_miles"]+=miles; ms["hpms_vmt"]+=hpms; ms["cell_count"]+=1
+              mc=miles_county[(state,county)]; mc["waymo_ro_miles"]+=miles; mc["hpms_vmt"]+=hpms; mc["cell_count"]+=1
+          for (state,county,outcome),count in crashes.items(): crash_state[(state,outcome)]+=count
+          state_summary=[]
+          for state,m in miles_state.items():
+              outcomes={out:crash_state[(state,out)] for (s,out) in crash_state if s==state}
+              state_summary.append({
+                "state":state,"waymo_ro_miles":round(m["waymo_ro_miles"],1),"hpms_benchmark_vmt":round(m["hpms_vmt"],1),"s2_cell_count":m["cell_count"],
+                "benchmark_crash_counts_by_outcome":{k:round(v,2) for k,v in outcomes.items()},
+                "implied_human_benchmark_rate_per_million_miles":{k:round(v/m["hpms_vmt"]*1_000_000,4) if m["hpms_vmt"] else None for k,v in outcomes.items()},
+              })
+          state_summary.sort(key=lambda r:-r["waymo_ro_miles"])
+          county_summary=[{"state":s,"county":c,"waymo_ro_miles":round(m["waymo_ro_miles"],1),"hpms_benchmark_vmt":round(m["hpms_vmt"],1),"s2_cell_count":m["cell_count"]} for (s,c),m in miles_county.items()]
+          county_summary.sort(key=lambda r:-r["waymo_ro_miles"])
+          ss={
+            "dataset":"Waymo S2-Cell Safety Benchmark -- State Summary (Latest Vintage)",
+            "source":"Waymo self-published safety benchmark data (S2-cell level, rolled up to state)",
+            "vintage_end":vintage_end,
+            "coverage":"States where Waymo has published S2-cell benchmark data as of this vintage",
+            "notes":{
+              "waymo_ro_miles":"Waymo-reported revenue/operations miles for this geography",
+              "hpms_benchmark_vmt":"FHWA Highway Performance Monitoring System human-driving VMT benchmark for the same geography",
+              "benchmark_crash_counts_by_outcome":"Modeled/benchmark human-driving crash counts by outcome category, NOT Waymo's own crash counts.",
+              "implied_human_benchmark_rate_per_million_miles":"benchmark_crash_count / hpms_benchmark_vmt * 1e6; human-driving benchmark rate, NOT a Waymo safety rate."
+            },
+            "state_summary":state_summary,"county_summary":county_summary,
+          }
+          with open(os.path.join(DATA,"waymo_s2_state_summary.json"),"w") as f: json.dump(ss,f,indent=2)
+
+          # Vintage progression summary.
+          vpath=os.path.join(DATA,"waymo_s2_vintage_summary.json")
+          vs=json.load(open(vpath))
+          total=sum(v[0] for v in cells.values())
+          neg=sum(1 for (s,c,cell),(m,h) in cells.items() if cell in prev and m<prev[cell]-1e-9)
+          states=[]
+          for state,m in sorted(miles_state.items(),key=lambda kv:-kv[1]["waymo_ro_miles"]):
+              states.append({"state":state,"cumulative_miles":round(m["waymo_ro_miles"],1),"cell_count":m["cell_count"]})
+          prior_total=vs["vintages"][-1]["cumulative_miles"] if vs.get("vintages") else 0
+          newv={"vintage_end":vintage_end,"vintage_start":vintage_start,"cell_count":len(cells),"cumulative_miles":round(total,1),"incremental_miles_vs_prior_release":round(total-prior_total,1),"negative_revision_cells":neg,"states":states}
+          vs["vintages"]=[v for v in vs["vintages"] if v["vintage_end"]!=vintage_end]+[newv]
+          vs["vintages"].sort(key=lambda v:v["vintage_end"]); vs["latest_vintage"]=vintage_end
+          with open(vpath,"w") as f: json.dump(vs,f,indent=2)
+
+          print("CPUC Q2:",[(r["calendar_month"],r["total_trips"],r["total_vmt_all_periods"]) for r in q2])
+          print("S2 June:",len(cells),round(total,1),"negative revisions",neg)
+          PYEOF
+
+      - name: Regenerate derived site exports
+        run: |
+          python scripts/build-waymo-explorer.py
+          python scripts/export-data-csv.py
+
+      - name: Validate updated site data
+        run: |
+          python scripts/build-waymo-explorer.py --check
+          python scripts/export-data-csv.py --check
+          python - <<'PYEOF'
+          import json,csv
+          v=json.load(open("public/data/waymo_s2_vintage_summary.json"))
+          assert v["latest_vintage"]=="202606"
+          a=json.load(open("public/data/cpuc_activity_monthly.json"))
+          q=[r for r in a["data"] if r["operator_tcpid"]=="PSG0038152" and r["program"]=="driverless" and r["calendar_year"]==2026 and r["calendar_month"] in (4,5,6)]
+          assert len(q)==3
+          g=json.load(open("public/data/waymo_s2_latest.geojson"))
+          assert g["metadata"]["vintage_end"]=="202606"
+          assert len(g["features"])>2000
+          print("Validated June 2026 site snapshot:",len(g["features"]),"cells")
+          PYEOF
+
+      - name: Commit Q2 site data
+        run: |
+          git config user.name "av-observatory-bot"
+          git config user.email "bot@av-observatory.org"
+          git add public/data public/waymo-s2-explorer
+          if git diff --cached --quiet; then
+            echo "No site data changes."
+          else
+            git commit -m "data: publish Q2 2026 CPUC and Waymo S2 updates"
+            git push
+          fi
