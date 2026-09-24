@@ -330,7 +330,10 @@ function MarketMap({
       if(mapRef.current){mapRef.current.remove();mapRef.current=null;}
       const map=L.map(ref.current,{center:[37,-96],zoom:6,minZoom:3,maxZoom:16,zoomControl:true,scrollWheelZoom:true});
       mapRef.current=map;
-      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:19,attribution:"&copy; OpenStreetMap contributors"}).addTo(map);
+      L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",{
+        maxZoom:20,
+        attribution:"&copy; OpenStreetMap contributors &copy; CARTO"
+      }).addTo(map);
       const bounds=L.latLngBounds([]);
 
       if(facet.cells.length){
