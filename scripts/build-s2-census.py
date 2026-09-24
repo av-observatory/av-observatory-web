@@ -225,43 +225,80 @@ def load_census_block_groups() -> gpd.GeoDataFrame:
     return merged
 
 
-def dedupe_latest_s2() -> gpd.GeoDataFrame:
-    payload = json.loads((DATA / "waymo_s2_latest.geojson").read_text())
+def dedupe_s2_universe() -> gpd.GeoDataFrame:
+    """Build the union of all S2 cells across every locally retained release.
+
+    Latest GeoJSON provides the preferred state/county metadata. Historical CSV
+    files add cells that may have disappeared from later releases, so Census
+    context remains available when users explore older vintages.
+    """
     grouped = {}
-    for feature in payload["features"]:
+    latest_payload = json.loads((DATA / "waymo_s2_latest.geojson").read_text())
+    latest_vintage = str(latest_payload.get("metadata", {}).get("vintage_end") or "")
+
+    for feature in latest_payload["features"]:
         p = feature["properties"]
         cell = str(p["s2_cell"])
         state = str(p.get("state") or "")
         county = str(p.get("county") or "")
-        key = (state, county)
-        if key not in COUNTIES:
+        market = market_for(state, county)
+        if not market:
             continue
-        market = COUNTIES[key][2]
-        rec = grouped.setdefault(cell, {
+        grouped[cell] = {
             "s2_cell": cell,
             "market": market,
             "state": state,
-            "counties": set(),
-            "waymo_ro_miles": 0.0,
-            "incremental_miles": 0.0,
-            "vintage_end": str(p.get("vintage_end") or ""),
+            "counties": county,
+            "waymo_ro_miles": float(p.get("waymo_ro_miles") or 0),
+            "incremental_miles": float(p.get("incremental_miles") or 0),
+            "vintage_end": str(p.get("vintage_end") or latest_vintage),
             "geometry": shape(feature["geometry"]),
-        })
-        if rec["market"] != market:
-            raise RuntimeError(f"S2 cell {cell} crosses analytical markets: {rec['market']} vs {market}")
-        rec["counties"].add(county)
-        rec["waymo_ro_miles"] += float(p.get("waymo_ro_miles") or 0)
-        rec["incremental_miles"] += float(p.get("incremental_miles") or 0)
+        }
 
-    rows = []
-    for rec in grouped.values():
-        rec["counties"] = "|".join(sorted(rec["counties"]))
-        rows.append(rec)
-    gdf = gpd.GeoDataFrame(rows, geometry="geometry", crs="EPSG:4326")
+    market_state = {
+        "Phoenix": "Arizona",
+        "San Francisco Bay Area": "California",
+        "Los Angeles": "California",
+        "Austin": "Texas",
+        "Atlanta": "Georgia",
+    }
+
+    for path_s in glob.glob(str(DATA / "waymo_s2_*.csv")):
+        path = Path(path_s)
+        m = re.search(r"waymo_s2_(\d{6})\.csv$", path.name)
+        if not m:
+            continue
+        vintage = m.group(1)
+        with path.open(newline="") as f:
+            for row in csv.DictReader(f):
+                cell = str(row.get("s2_cell") or "")
+                if not cell or cell in grouped:
+                    continue
+                raw_state = str(row.get("state") or "")
+                raw_county = str(row.get("county") or "")
+                market = market_for(raw_state, raw_county)
+                if not market:
+                    continue
+                geom_text = row.get("geometry_geojson")
+                if not geom_text:
+                    continue
+                state = raw_state or market_state.get(market, "")
+                grouped[cell] = {
+                    "s2_cell": cell,
+                    "market": market,
+                    "state": state,
+                    "counties": raw_county,
+                    "waymo_ro_miles": float(row.get("waymo_ro_miles") or 0),
+                    "incremental_miles": float(row.get("incremental_miles") or 0),
+                    "vintage_end": vintage,
+                    "geometry": shape(json.loads(geom_text)),
+                }
+
+    gdf = gpd.GeoDataFrame(list(grouped.values()), geometry="geometry", crs="EPSG:4326")
     if gdf.empty:
-        raise RuntimeError("No latest S2 cells found")
+        raise RuntimeError("No S2 cells found across retained releases")
+    print(f"S2 universe: {len(gdf):,} distinct cells across retained releases")
     return gdf
-
 
 def build_crosswalk(s2: gpd.GeoDataFrame, bg: gpd.GeoDataFrame):
     s2a = s2.to_crs("EPSG:5070").copy()
@@ -380,7 +417,7 @@ def build_census_context(s2: gpd.GeoDataFrame, pieces: gpd.GeoDataFrame):
         "dataset": "Waymo S2 Census demographic context",
         "census_vintage": "2024 ACS 5-year",
         "geometry_vintage": "2024 TIGER/Line block groups",
-        "latest_waymo_vintage": str(s2["vintage_end"].max()),
+        "latest_waymo_vintage": max([p.stem.rsplit("_",1)[-1] for p in DATA.glob("waymo_s2_??????.csv")]),
         "methodology": {
             "population_and_race_ethnicity": "2024 ACS 5-year block-group counts allocated to S2 cells using intersection area / block-group area (areal interpolation).",
             "income": "Household-weighted average of contributing block groups' 2024 ACS median household income (B19013). This is contextual and is not an exact S2-cell median.",
@@ -476,7 +513,7 @@ def build_market_history():
 
 
 def main():
-    s2 = dedupe_latest_s2()
+    s2 = dedupe_s2_universe()
     bg = load_census_block_groups()
     pieces = build_crosswalk(s2, bg)
     build_census_context(s2, pieces)
