@@ -207,6 +207,10 @@ select:focus, input:focus { outline: 2px solid rgba(42,120,214,.25); outline-off
   overflow: hidden;
   background: #eef1f3;
 }
+.waymo-market-facet-map .leaflet-interactive:focus,
+.waymo-market-facet-map .leaflet-interactive:focus-visible {
+  outline: none;
+}
 @media (max-width: 700px) {
   .waymo-market-facet-map { height: 460px; min-height: 380px; }
 }
