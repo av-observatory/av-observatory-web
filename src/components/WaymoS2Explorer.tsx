@@ -569,13 +569,13 @@ export function WaymoS2Explorer({
         <div>
           <div className="filter-label">Map</div>
           <div className="mt-1 flex flex-wrap gap-1.5">
-            {([["interaction","VMT × demographics"],["miles_per_1000","VMT / resident"],["cumulative","Cumulative VMT"],["incremental","Miles added"]] as [Metric,string][]).map(([value,label])=><button key={value} type="button" onClick={()=>setMetric(value)} className={`rounded-md border px-2.5 py-2 text-sm transition ${metric===value?"border-[#184f95] bg-[#184f95] text-white":"border-[#cad8e8] bg-white text-neutral-700 hover:border-[#184f95] hover:text-[#184f95]"}`}>{label}</button>)}
+            {([["interaction","VMT × Demographics"],["miles_per_1000","VMT / Resident"],["cumulative","Cumulative VMT"],["incremental","Miles Added"]] as [Metric,string][]).map(([value,label])=><button key={value} type="button" onClick={()=>setMetric(value)} className={`rounded-md border px-2.5 py-2 text-sm transition ${metric===value?"border-[#184f95] bg-[#184f95] text-white":"border-[#cad8e8] bg-white text-neutral-700 hover:border-[#184f95] hover:text-[#184f95]"}`}>{label}</button>)}
           </div>
         </div>
       </div>
       {metric==="interaction"&&<div className="mt-2 flex flex-wrap items-center gap-2 border-t border-neutral-200 pt-2">
-        <span className="text-xs font-medium text-neutral-500">Resident characteristic</span>
-        {([["black","Black, non-Hispanic"],["hispanic","Hispanic / Latino"],["asian","Asian, non-Hispanic"],["white","White, non-Hispanic"],["income","Household income"]] as [ResidentCharacteristic,string][]).map(([value,label])=><button key={value} type="button" onClick={()=>setCharacteristic(value)} className={`rounded-full border px-2.5 py-1 text-xs transition ${characteristic===value?"border-[#184f95] bg-[#eef4fb] text-[#184f95]":"border-[#d9d9d5] bg-white text-neutral-600"}`}>{label}</button>)}
+        <span className="text-xs font-medium text-neutral-500">Resident Characteristic</span>
+        {([["black","Black, Non-Hispanic"],["hispanic","Hispanic / Latino"],["asian","Asian, Non-Hispanic"],["white","White, Non-Hispanic"],["income","Household Income"]] as [ResidentCharacteristic,string][]).map(([value,label])=><button key={value} type="button" onClick={()=>setCharacteristic(value)} className={`rounded-full border px-2.5 py-1 text-xs transition ${characteristic===value?"border-[#184f95] bg-[#eef4fb] text-[#184f95]":"border-[#d9d9d5] bg-white text-neutral-600"}`}>{label}</button>)}
       </div>}
     </div>
 
