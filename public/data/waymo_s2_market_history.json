@@ -1,0 +1,161 @@
+{
+  "dataset": "Waymo S2 mileage by analytical market and release",
+  "market_definition": {
+    "Phoenix": "Maricopa County, Arizona",
+    "San Francisco Bay Area": "San Francisco, San Mateo, and Santa Clara counties, California",
+    "Los Angeles": "Los Angeles County, California",
+    "Austin": "Travis County, Texas",
+    "Atlanta": "Fulton and DeKalb counties, Georgia"
+  },
+  "vintages": [
+    "202506",
+    "202509",
+    "202512",
+    "202603",
+    "202606"
+  ],
+  "markets": {
+    "Atlanta": [
+      {
+        "vintage_end": "202603",
+        "cumulative_miles": 3587740.4,
+        "incremental_miles_vs_prior_release": 3587740.4,
+        "cell_count": 168
+      },
+      {
+        "vintage_end": "202606",
+        "cumulative_miles": 5783708.0,
+        "incremental_miles_vs_prior_release": 2195967.6,
+        "cell_count": 213
+      }
+    ],
+    "Austin": [
+      {
+        "vintage_end": "202506",
+        "cumulative_miles": 3224903.1,
+        "incremental_miles_vs_prior_release": 3224903.1,
+        "cell_count": 93
+      },
+      {
+        "vintage_end": "202509",
+        "cumulative_miles": 6336633.6,
+        "incremental_miles_vs_prior_release": 3111730.5,
+        "cell_count": 214
+      },
+      {
+        "vintage_end": "202512",
+        "cumulative_miles": 10721870.3,
+        "incremental_miles_vs_prior_release": 4385236.7,
+        "cell_count": 287
+      },
+      {
+        "vintage_end": "202603",
+        "cumulative_miles": 15788782.8,
+        "incremental_miles_vs_prior_release": 5066912.5,
+        "cell_count": 289
+      },
+      {
+        "vintage_end": "202606",
+        "cumulative_miles": 21064489.3,
+        "incremental_miles_vs_prior_release": 5275706.5,
+        "cell_count": 268
+      }
+    ],
+    "Los Angeles": [
+      {
+        "vintage_end": "202506",
+        "cumulative_miles": 16462383.1,
+        "incremental_miles_vs_prior_release": 16462383.1,
+        "cell_count": 297
+      },
+      {
+        "vintage_end": "202509",
+        "cumulative_miles": 25469742.4,
+        "incremental_miles_vs_prior_release": 9007359.3,
+        "cell_count": 311
+      },
+      {
+        "vintage_end": "202512",
+        "cumulative_miles": 37857410.4,
+        "incremental_miles_vs_prior_release": 12387668.0,
+        "cell_count": 310
+      },
+      {
+        "vintage_end": "202603",
+        "cumulative_miles": 51815503.3,
+        "incremental_miles_vs_prior_release": 13958092.9,
+        "cell_count": 315
+      },
+      {
+        "vintage_end": "202606",
+        "cumulative_miles": 67097806.2,
+        "incremental_miles_vs_prior_release": 15282303.0,
+        "cell_count": 312
+      }
+    ],
+    "Phoenix": [
+      {
+        "vintage_end": "202506",
+        "cumulative_miles": 46389725.0,
+        "incremental_miles_vs_prior_release": 46389725.0,
+        "cell_count": 635
+      },
+      {
+        "vintage_end": "202509",
+        "cumulative_miles": 56535054.8,
+        "incremental_miles_vs_prior_release": 10145329.8,
+        "cell_count": 624
+      },
+      {
+        "vintage_end": "202512",
+        "cumulative_miles": 68613293.0,
+        "incremental_miles_vs_prior_release": 12078238.2,
+        "cell_count": 622
+      },
+      {
+        "vintage_end": "202603",
+        "cumulative_miles": 80551000.5,
+        "incremental_miles_vs_prior_release": 11937707.5,
+        "cell_count": 622
+      },
+      {
+        "vintage_end": "202606",
+        "cumulative_miles": 92121323.8,
+        "incremental_miles_vs_prior_release": 11570323.3,
+        "cell_count": 615
+      }
+    ],
+    "San Francisco Bay Area": [
+      {
+        "vintage_end": "202506",
+        "cumulative_miles": 29888159.6,
+        "incremental_miles_vs_prior_release": 29888159.6,
+        "cell_count": 123
+      },
+      {
+        "vintage_end": "202509",
+        "cumulative_miles": 38816163.6,
+        "incremental_miles_vs_prior_release": 8928004.0,
+        "cell_count": 123
+      },
+      {
+        "vintage_end": "202512",
+        "cumulative_miles": 53519771.5,
+        "incremental_miles_vs_prior_release": 14703607.9,
+        "cell_count": 614
+      },
+      {
+        "vintage_end": "202603",
+        "cumulative_miles": 67078125.8,
+        "incremental_miles_vs_prior_release": 13558354.3,
+        "cell_count": 663
+      },
+      {
+        "vintage_end": "202606",
+        "cumulative_miles": 82421306.6,
+        "incremental_miles_vs_prior_release": 15343180.8,
+        "cell_count": 776
+      }
+    ]
+  }
+}
