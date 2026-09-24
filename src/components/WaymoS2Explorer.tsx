@@ -277,9 +277,9 @@ type MarketFacet = {
 };
 
 function MarketMap({
-  facet,metric,breaks,totalMiles,
+  facet,metric,breaks,totalMiles,census,
 }:{
-  facet:MarketFacet; metric:Metric; breaks:number[]; totalMiles:number;
+  facet:MarketFacet; metric:Metric; breaks:number[]; totalMiles:number; census:CensusDataset;
 }){
   const ref=useRef<HTMLDivElement|null>(null);
   const mapRef=useRef<any>(null);
@@ -305,19 +305,19 @@ function MarketMap({
         L.geoJSON({type:"FeatureCollection",features:facet.cells} as any,{
           style:(feature:any)=>{
             const p=feature?.properties??{};
-            const value=metric==="cumulative"?Number(p.waymo_ro_miles||0):Number(p.incremental_miles||0);
-            if(metric==="incremental"&&value<0)return{color:"#fff",weight:0.45,fillColor:"#d9474d",fillOpacity:0.86};
-            const ramp=metric==="cumulative"?BLUE_RAMP:ORANGE_RAMP;
-            return{color:"rgba(255,255,255,.85)",weight:0.45,fillColor:value<=0?"#e5e5e3":ramp[rampIndex(value,breaks)],fillOpacity:value<=0?0.25:0.86};
+            const value=metricValue(p,metric,census);
+            if(metric==="incremental"&&value!==null&&value<0)return{color:"#fff",weight:0.45,fillColor:"#d9474d",fillOpacity:0.86};
+            const ramp=metricRamp(metric);
+            const missing=value===null||!Number.isFinite(value); return{color:"rgba(255,255,255,.85)",weight:0.45,fillColor:missing?"#e5e5e3":ramp[rampIndex(Number(value),breaks)],fillOpacity:missing?0.25:0.86};
           },
           onEachFeature:(feature:any,layer:any)=>{
             const p=feature.properties??{};
             const cumulative=Number(p.waymo_ro_miles||0),added=Number(p.incremental_miles||0);
-            const value=metric==="cumulative"?cumulative:added;
+            const value=metricValue(p,metric,census);
             const share=totalMiles>0?cumulative/totalMiles*100:0;
             layer.bindTooltip(`<div style="font:12px/1.35 system-ui,-apple-system,Segoe UI,sans-serif;min-width:180px">
               <div style="font-weight:700">${escapeHtml(p.county||facet.market)}, ${escapeHtml(p.state||facet.state)}</div>
-              <div style="font-size:15px;font-weight:700;margin-top:3px">${escapeHtml(compactMiles(value))} miles</div>
+              <div style="font-size:15px;font-weight:700;margin-top:3px">${escapeHtml(metricFormat(metric,value))}</div>
               <div style="color:#666">Cumulative ${escapeHtml(compactMiles(cumulative))} · added ${escapeHtml(compactMiles(added))}</div>
               <div style="color:#666">${share.toFixed(2)}% of market-attributed miles · S2 ${escapeHtml(p.s2_cell)}</div>
             </div>`,{sticky:true,direction:"top",opacity:0.96});
@@ -332,7 +332,7 @@ function MarketMap({
       else if(facet.point) map.setView([facet.point[1],facet.point[0]],9,{animate:false});
     });
     return()=>{cancelled=true;if(mapRef.current){mapRef.current.remove();mapRef.current=null;}};
-  },[facet,metric,breaks,totalMiles]);
+  },[facet,metric,breaks,totalMiles,census]);
 
   return <div ref={ref} className="waymo-market-facet-map" />;
 }
