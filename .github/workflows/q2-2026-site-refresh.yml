@@ -236,5 +236,12 @@ jobs:
             echo "No site data changes."
           else
             git commit -m "data: publish Q2 2026 CPUC and Waymo S2 updates"
-            git push
+            for attempt in 1 2 3 4 5; do
+              if git push; then
+                exit 0
+              fi
+              echo "Push attempt $attempt failed; retrying..."
+              sleep $((attempt * 5))
+            done
+            exit 1
           fi
