@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import {
-  LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip,
+  LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip,
   ResponsiveContainer,
 } from "recharts";
 import { GRID_PROPS, AXIS_PROPS, TOOLTIP_PROPS, SERIES } from "@/lib/chartTheme";
@@ -108,6 +108,7 @@ type MarketHistory = {
 
 type Metric = "cumulative" | "incremental" | "miles_per_1000" | "interaction";
 type ResidentCharacteristic = "hispanic" | "black" | "asian" | "white" | "income";
+type DemographicView = "race" | "income";
 
 const LEAFLET_JS = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.js";
 const LEAFLET_CSS = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.css";
@@ -398,8 +399,9 @@ export function WaymoS2Explorer({
   const [mapData,setMapData]=useState<S2GeoJSON>(geojson);
   const [loading,setLoading]=useState(false);
   const [loadError,setLoadError]=useState<string|null>(null);
-  const [metric,setMetric]=useState<Metric>("interaction");
+  const [metric,setMetric]=useState<Metric>("miles_per_1000");
   const [characteristic,setCharacteristic]=useState<ResidentCharacteristic>("black");
+  const [demographicView,setDemographicView]=useState<DemographicView>("race");
   const [selectedMarket,setSelectedMarket]=useState("San Francisco Bay Area");
   const [growthMarket,setGrowthMarket]=useState("San Francisco Bay Area");
 
@@ -540,6 +542,57 @@ export function WaymoS2Explorer({
   const contextBreaks=useMemo(()=>tertileBreaks(activeCells.map(f=>characteristicValue(f.properties,characteristic,census)).filter((v):v is number=>v!==null&&Number.isFinite(v))),[activeCells,characteristic,census]);
   const ramp=metricRamp(metric);
 
+  const raceExposureRows=useMemo(()=>{
+    const groups=[
+      {category:"All Residents",share:(c:CensusCell)=>100},
+      {category:"White, Non-Hispanic",share:(c:CensusCell)=>c.pct_white_non_hispanic},
+      {category:"Black, Non-Hispanic",share:(c:CensusCell)=>c.pct_black_non_hispanic},
+      {category:"Asian, Non-Hispanic",share:(c:CensusCell)=>c.pct_asian_non_hispanic},
+      {category:"Hispanic / Latino",share:(c:CensusCell)=>c.pct_hispanic},
+    ];
+    return groups.map(group=>{
+      let weightedIntensity=0;
+      let groupResidents=0;
+      for(const feature of activeCells){
+        const cell=census.cells[String(feature.properties.s2_cell)];
+        const pop=Number(cell?.estimated_population||0);
+        const share=cell?group.share(cell):null;
+        if(pop<=0||share===null||!Number.isFinite(Number(share)))continue;
+        const residents=pop*Number(share)/100;
+        const intensity=Number(feature.properties.waymo_ro_miles||0)/pop*1000;
+        weightedIntensity+=intensity*residents;
+        groupResidents+=residents;
+      }
+      return {category:group.category,vmt_per_1000:groupResidents>0?weightedIntensity/groupResidents:0,residents:groupResidents};
+    });
+  },[activeCells,census]);
+
+  const incomeExposureRows=useMemo(()=>{
+    const bands=[
+      {category:"< $50K",min:-Infinity,max:50000},
+      {category:"$50K–$75K",min:50000,max:75000},
+      {category:"$75K–$100K",min:75000,max:100000},
+      {category:"$100K–$150K",min:100000,max:150000},
+      {category:"$150K+",min:150000,max:Infinity},
+    ];
+    return bands.map(band=>{
+      let weightedIntensity=0;
+      let residents=0;
+      for(const feature of activeCells){
+        const cell=census.cells[String(feature.properties.s2_cell)];
+        const pop=Number(cell?.estimated_population||0);
+        const income=cell?.household_weighted_bg_median_income;
+        if(pop<=0||income===null||!Number.isFinite(Number(income))||Number(income)<band.min||Number(income)>=band.max)continue;
+        const intensity=Number(feature.properties.waymo_ro_miles||0)/pop*1000;
+        weightedIntensity+=intensity*pop;
+        residents+=pop;
+      }
+      return {category:band.category,vmt_per_1000:residents>0?weightedIntensity/residents:0,residents};
+    });
+  },[activeCells,census]);
+
+  const demographicRows=demographicView==="race"?raceExposureRows:incomeExposureRows;
+
   const growthSeries=marketHistory.markets[growthMarket]??[];
   const chartRows=growthSeries.map(v=>({
     vintage:vintageLabel(v.vintage_end),
@@ -569,14 +622,10 @@ export function WaymoS2Explorer({
         <div>
           <div className="filter-label">Map</div>
           <div className="mt-1 flex flex-wrap gap-1.5">
-            {([["interaction","VMT × Demographics"],["miles_per_1000","VMT / Resident"],["cumulative","Cumulative VMT"],["incremental","Miles Added"]] as [Metric,string][]).map(([value,label])=><button key={value} type="button" onClick={()=>setMetric(value)} className={`rounded-md border px-2.5 py-2 text-sm transition ${metric===value?"border-[#184f95] bg-[#184f95] text-white":"border-[#cad8e8] bg-white text-neutral-700 hover:border-[#184f95] hover:text-[#184f95]"}`}>{label}</button>)}
+            {([["miles_per_1000","VMT / Resident"],["cumulative","Cumulative VMT"],["incremental","Miles Added"]] as [Metric,string][]).map(([value,label])=><button key={value} type="button" onClick={()=>setMetric(value)} className={`rounded-md border px-2.5 py-2 text-sm transition ${metric===value?"border-[#184f95] bg-[#184f95] text-white":"border-[#cad8e8] bg-white text-neutral-700 hover:border-[#184f95] hover:text-[#184f95]"}`}>{label}</button>)}
           </div>
         </div>
       </div>
-      {metric==="interaction"&&<div className="mt-2 flex flex-wrap items-center gap-2 border-t border-neutral-200 pt-2">
-        <span className="text-xs font-medium text-neutral-500">Resident Characteristic</span>
-        {([["black","Black, Non-Hispanic"],["hispanic","Hispanic / Latino"],["asian","Asian, Non-Hispanic"],["white","White, Non-Hispanic"],["income","Household Income"]] as [ResidentCharacteristic,string][]).map(([value,label])=><button key={value} type="button" onClick={()=>setCharacteristic(value)} className={`rounded-full border px-2.5 py-1 text-xs transition ${characteristic===value?"border-[#184f95] bg-[#eef4fb] text-[#184f95]":"border-[#d9d9d5] bg-white text-neutral-600"}`}>{label}</button>)}
-      </div>}
     </div>
 
     {selectedFacet&&(()=>{
@@ -597,19 +646,42 @@ export function WaymoS2Explorer({
       </div>;
     })()}
 
-    <div className="mt-3">
-      {metric==="interaction"?<div className="flex flex-wrap items-center gap-3 text-xs text-neutral-600">
-        <strong>Bivariate map:</strong><span>horizontal = VMT per 1,000 residents (low → high)</span><span>vertical = {characteristicLabel(characteristic)} (low → high)</span>
-        <div className="grid grid-cols-3 gap-[2px]">{[2,1,0].flatMap(row=>[0,1,2].map(col=><span key={`${row}-${col}`} className="h-4 w-4 rounded-[2px]" style={{background:BIVARIATE[row][col]}}/>))}</div>
-        <span className="text-neutral-500">Dark purple identifies cells that are high on both dimensions; this is geographic context, not rider demographics.</span>
-      </div>:<div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-        <span className="text-xs font-medium text-neutral-600">{metricLabel(metric)}</span>
-        {breaks.map((b,i)=><div key={i} className="flex items-center gap-1"><span className="inline-block h-3 w-4 rounded-sm" style={{background:ramp[i]}}/><span className="text-[10px] text-neutral-500">{i===0?`≤${metricFormat(metric,b)}`:`${metricFormat(metric,breaks[i-1])}–${metricFormat(metric,b)}`}</span></div>)}
-        {metric==="incremental"&&<div className="flex items-center gap-1"><span className="inline-block h-3 w-4 rounded-sm bg-[#d9474d]"/><span className="text-[10px] text-neutral-500">negative revision</span></div>}
-      </div>}
+    <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1">
+      <span className="text-xs font-medium text-neutral-600">{metricLabel(metric)}</span>
+      {breaks.map((b,i)=><div key={i} className="flex items-center gap-1"><span className="inline-block h-3 w-4 rounded-sm" style={{background:ramp[i]}}/><span className="text-[10px] text-neutral-500">{i===0?`≤${metricFormat(metric,b)}`:`${metricFormat(metric,breaks[i-1])}–${metricFormat(metric,b)}`}</span></div>)}
+      {metric==="incremental"&&<div className="flex items-center gap-1"><span className="inline-block h-3 w-4 rounded-sm bg-[#d9474d]"/><span className="text-[10px] text-neutral-500">negative revision</span></div>}
     </div>
 
     {loadError&&<div className="text-xs text-red-700 mt-2">Could not load this vintage map: {loadError}</div>}
+
+    <div className="viz-card p-4 mt-5">
+      <div className="flex flex-wrap items-end justify-between gap-3">
+        <div>
+          <h3 className="font-semibold">Average Waymo VMT per 1,000 Residents</h3>
+          <div className="text-sm text-neutral-500">Population-weighted S2-cell VMT intensity for ${selectedFacet?.market??selectedMarket}, ${vintageLabel(vintage)}.</div>
+        </div>
+        <div className="flex gap-2">
+          {(["race","income"] as DemographicView[]).map(view=><button key={view} type="button" onClick={()=>setDemographicView(view)} className={`rounded-full border px-3 py-1.5 text-sm transition ${demographicView===view?"border-[#184f95] bg-[#184f95] text-white":"border-[#cad8e8] bg-white text-neutral-700"}`}>{view==="race"?"Race / Ethnicity":"Income"}</button>)}
+        </div>
+      </div>
+      <div className="mt-2 text-xs text-neutral-500">
+        {demographicView==="race"
+          ?"Each bar is the average VMT-per-resident intensity of the S2 cells where residents of that group live, weighted by the estimated number of group residents in each cell."
+          :"Cells are grouped by estimated household-income context; bars show the population-weighted average VMT-per-resident intensity within each income band."}
+      </div>
+      <ResponsiveContainer width="100%" height={320}>
+        <BarChart data={demographicRows} layout="vertical" margin={{top:16,right:20,bottom:5,left:28}}>
+          <CartesianGrid {...GRID_PROPS}/>
+          <XAxis type="number" {...AXIS_PROPS} tickFormatter={v=>compactMiles(Number(v))}/>
+          <YAxis type="category" dataKey="category" {...AXIS_PROPS} width={145}/>
+          <Tooltip {...TOOLTIP_PROPS} formatter={(v)=>[`${Math.round(Number(v)).toLocaleString()} miles per 1,000 residents`,"Average VMT intensity"]}/>
+          <Bar dataKey="vmt_per_1000" name="Average VMT per 1,000 residents" fill={SERIES.blue}/>
+        </BarChart>
+      </ResponsiveContainer>
+      <div className="text-xs leading-relaxed text-neutral-500">
+        This is a place-based exposure indicator, not rider demographics: it compares Waymo VMT intensity in the S2 cells where different resident groups live.
+      </div>
+    </div>
 
     <div className="viz-card p-4 mt-5">
       <div className="flex flex-wrap items-end justify-between gap-3">
