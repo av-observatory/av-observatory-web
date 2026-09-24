@@ -165,6 +165,6 @@ export function StateLegislationPage() {
       {visibleBills.length ? <div className="mt-3">{visibleBills.map(bill=><BillRow key={bill.id} bill={bill}/>)}</div> : <p className="text-sm text-neutral-600 mt-4">No current-session AV bill is indexed for this state.</p>}
     </section>
 
-    <p className="mt-5 text-xs text-neutral-500">Bill discovery uses Open States API v3 across all 50 states and D.C.; the database is not seeded from NCSL or LegiScan. Bill status and actions are machine-indexed, while linked official legislature records remain the authority. Enacted-law summaries come from the separately reviewed state policy dataset.</p>
+    <p className="mt-5 text-xs text-neutral-500">Bill discovery uses Open States API v3 across all 50 states and D.C. Bill status and actions are machine-indexed, while linked official legislature records remain the authority. Enacted-law summaries come from the separately reviewed state policy dataset.</p>
   </main>;
 }
