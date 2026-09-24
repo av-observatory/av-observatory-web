@@ -372,7 +372,7 @@ function MarketMap({
         bounds.extend([facet.point[1],facet.point[0]]);
       }
 
-      if(bounds.isValid()) map.fitBounds(bounds.pad(0.08),{maxZoom:11,animate:false});
+      if(bounds.isValid()) map.fitBounds(bounds.pad(0.015),{maxZoom:12,animate:false});
       else if(facet.point) map.setView([facet.point[1],facet.point[0]],9,{animate:false});
     });
     return()=>{cancelled=true;if(mapRef.current){mapRef.current.remove();mapRef.current=null;}};
