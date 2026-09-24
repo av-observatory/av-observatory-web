@@ -192,9 +192,10 @@ export function StateTracker() {
           <p className="text-sm text-neutral-600 mt-3">{history.length} indexed {history.length === 1 ? "action" : "actions"}. Current or in-effect actions appear first, followed by the rest from newest to oldest. This history is selective. “Current Status Not Confirmed” means an action is documented but its present legal effect has not been checked.</p>
           {history.length ? <StateHistoryExplorer key={state.code} stateCode={state.code} history={history} /> : <p className="text-sm text-neutral-600 mt-4">No statewide AV-specific law or executive order identified in this review.</p>}
           <p className="text-sm text-neutral-500 mt-6">Reviewed {state.verified_at} · {source === "R2" ? "R2 Live Record" : "Reviewed Site Snapshot"}. <a className="underline" href={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/data/policy_tracker.json`}>Download JSON ↗</a></p>
-        </section><LegislativeBillsPanel jurisdiction={state.code} /></div>}
+        </section></div>}
       </div>
     </div>
+    <LegislativeBillsPanel jurisdiction={state.code} />
   </main>;
 }
 
