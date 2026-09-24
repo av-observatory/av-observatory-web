@@ -513,6 +513,10 @@ export function WaymoS2Explorer({
       {facets.map(facet=>{
         const total=facet.cells.reduce((s,f)=>s+Number(f.properties.waymo_ro_miles||0),0);
         const added=facet.cells.reduce((s,f)=>s+Number(f.properties.incremental_miles||0),0);
+        const censusRows=facet.cells.map(f=>census.cells[String(f.properties.s2_cell)]).filter(Boolean);
+        const population=censusRows.reduce((s,r)=>s+Number(r.estimated_population||0),0);
+        const incomeWeight=censusRows.reduce((s,r)=>s+(r.household_weighted_bg_median_income!==null?Number(r.estimated_households||0):0),0);
+        const income=incomeWeight>0?censusRows.reduce((s,r)=>s+(r.household_weighted_bg_median_income??0)*Number(r.estimated_households||0),0)/incomeWeight:null;
         return <div key={`${facet.market}|${facet.state}`} className="viz-card overflow-hidden">
           <div className="p-4 pb-3">
             <div className="flex items-start justify-between gap-3">
@@ -529,10 +533,12 @@ export function WaymoS2Explorer({
                 Derived S2 reporting envelope — not an official Waymo service-area or ODD boundary.
               </div>
             )}
-            <div className="mt-2 flex gap-4 text-xs text-neutral-600">
+            <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs text-neutral-600">
               {facet.cells.length>0 ? <>
                 <span><strong className="text-neutral-900">{compactMiles(total)}</strong> cumulative mi</span>
                 <span><strong className="text-neutral-900">{compactMiles(added)}</strong> added</span>
+                <span><strong className="text-neutral-900">{compactMiles(population)}</strong> est. residents</span>
+                <span><strong className="text-neutral-900">{income!==null?"$"+Math.round(income).toLocaleString():"—"}</strong> income context</span>
               </> : <span>No published S2 VMT attributed to this current service area in this release.</span>}
             </div>
           </div>
