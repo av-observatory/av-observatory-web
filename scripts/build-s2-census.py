@@ -145,6 +145,60 @@ def fetch_acs_county(state_fips: str, county_fips: str) -> pd.DataFrame:
     return df[["GEOID"] + list(ACS_VARS.keys())]
 
 
+def load_acs_summary() -> pd.DataFrame:
+    """Read the official 2024 ACS 5-year table-based Summary Files.
+
+    These are public pipe-delimited files and do not require a Census API key.
+    GEO_ID for block groups is 1500000US + the 12-digit block-group GEOID.
+    """
+    base = "https://www2.census.gov/programs-surveys/acs/summary_file/2024/table-based-SF/data/5YRData"
+    files = {
+        "b03002": (
+            f"{base}/acsdt5y2024-b03002.dat",
+            ["GEO_ID","B03002_E001","B03002_E003","B03002_E004","B03002_E005","B03002_E006","B03002_E007","B03002_E008","B03002_E009","B03002_E012"],
+        ),
+        "b11001": (
+            f"{base}/acsdt5y2024-b11001.dat",
+            ["GEO_ID","B11001_E001"],
+        ),
+        "b19013": (
+            f"{base}/acsdt5y2024-b19013.dat",
+            ["GEO_ID","B19013_E001"],
+        ),
+    }
+    county_prefixes = {sf + cf for (_, _), (sf, cf, _) in COUNTIES.items()}
+    tables = {}
+    for name, (url, cols) in files.items():
+        path = CACHE / Path(url).name
+        download(url, path)
+        df = pd.read_csv(path, sep="|", usecols=cols, dtype={"GEO_ID": str}, low_memory=False)
+        df = df[df["GEO_ID"].str.startswith("1500000US", na=False)].copy()
+        df["GEOID"] = df["GEO_ID"].str.replace("1500000US", "", regex=False)
+        df = df[df["GEOID"].str[:5].isin(county_prefixes)].copy()
+        tables[name] = df.drop(columns=["GEO_ID"])
+        print(f"Filtered {name}: {len(df):,} block groups in Waymo counties")
+
+    out = tables["b03002"].merge(tables["b11001"], on="GEOID", how="left", validate="one_to_one")
+    out = out.merge(tables["b19013"], on="GEOID", how="left", validate="one_to_one")
+    out = out.rename(columns={
+        "B03002_E001": "population",
+        "B03002_E003": "white_nh",
+        "B03002_E004": "black_nh",
+        "B03002_E005": "aian_nh",
+        "B03002_E006": "asian_nh",
+        "B03002_E007": "nhpi_nh",
+        "B03002_E008": "other_nh",
+        "B03002_E009": "multiracial_nh",
+        "B03002_E012": "hispanic",
+        "B11001_E001": "households",
+        "B19013_E001": "median_household_income",
+    })
+    for col in list(ACS_VARS.keys()):
+        out[col] = pd.to_numeric(out[col], errors="coerce")
+    out.loc[out["median_household_income"] < 0, "median_household_income"] = pd.NA
+    return out
+
+
 def load_census_block_groups() -> gpd.GeoDataFrame:
     frames = []
     needed_by_state = defaultdict(set)
