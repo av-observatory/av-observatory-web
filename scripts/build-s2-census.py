@@ -344,7 +344,17 @@ def build_census_context(s2: gpd.GeoDataFrame, pieces: gpd.GeoDataFrame):
 
 def market_for(state: str, county: str):
     x = COUNTIES.get((state, county))
-    return x[2] if x else None
+    if x:
+        return x[2]
+    legacy = str(county or "").upper().replace(" ", "_")
+    aliases = {
+        "PHOENIX": "Phoenix",
+        "SAN_FRANCISCO": "San Francisco Bay Area",
+        "LOS_ANGELES": "Los Angeles",
+        "AUSTIN": "Austin",
+        "ATLANTA": "Atlanta",
+    }
+    return aliases.get(legacy)
 
 
 def build_market_history():
