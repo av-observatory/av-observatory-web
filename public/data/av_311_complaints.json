@@ -5,13 +5,13 @@
   "source_api": "https://data.sf.gov/resource/vw6y-z8j6.json",
   "selection": "Exact service_name match: Autonomous Vehicle Complaints. Other city request types and unclassified AV mentions are excluded.",
   "limitations": "These are public 311 requests, not verified incidents. The published subtypes describe how SF311 classified a request, not the specific behavior alleged. Operator identity is unavailable; the AV category begins in April 2025.",
-  "source_data_as_of": "2026-09-23T01:00:00.000",
-  "total_records": 964,
+  "source_data_as_of": "2026-09-24T01:00:00.000",
+  "total_records": 967,
   "markets": [
     {
       "market": "San Francisco",
       "state": "CA",
-      "complaints": 964
+      "complaints": 967
     }
   ],
   "monthly": [
@@ -121,7 +121,7 @@
       "month": "2026-09",
       "market": "San Francisco",
       "state": "CA",
-      "complaints": 51
+      "complaints": 54
     }
   ],
   "records": [
@@ -11533,7 +11533,7 @@
       "requested_date": "2026-09-15",
       "month": "2026-09",
       "type": "other",
-      "status": "Open",
+      "status": "Closed",
       "agency": "MTA - Autonomous Vehicles Complaints",
       "source_url": "https://data.sf.gov/resource/vw6y-z8j6.json?service_request_id=202000067929"
     },
@@ -11545,7 +11545,7 @@
       "requested_date": "2026-09-16",
       "month": "2026-09",
       "type": "incident_report",
-      "status": "Open",
+      "status": "Closed",
       "agency": "MTA - Autonomous Vehicles Complaints",
       "source_url": "https://data.sf.gov/resource/vw6y-z8j6.json?service_request_id=202000071830"
     },
@@ -11557,7 +11557,7 @@
       "requested_date": "2026-09-16",
       "month": "2026-09",
       "type": "incident_report",
-      "status": "Open",
+      "status": "Closed",
       "agency": "MTA - Autonomous Vehicles Complaints",
       "source_url": "https://data.sf.gov/resource/vw6y-z8j6.json?service_request_id=202000072613"
     },
@@ -11569,7 +11569,7 @@
       "requested_date": "2026-09-16",
       "month": "2026-09",
       "type": "other",
-      "status": "Open",
+      "status": "Closed",
       "agency": "MTA - Autonomous Vehicles Complaints",
       "source_url": "https://data.sf.gov/resource/vw6y-z8j6.json?service_request_id=202000073958"
     },
@@ -11581,7 +11581,7 @@
       "requested_date": "2026-09-16",
       "month": "2026-09",
       "type": "incident_report",
-      "status": "Open",
+      "status": "Closed",
       "agency": "MTA - Autonomous Vehicles Complaints",
       "source_url": "https://data.sf.gov/resource/vw6y-z8j6.json?service_request_id=202000073975"
     },
@@ -11593,7 +11593,7 @@
       "requested_date": "2026-09-16",
       "month": "2026-09",
       "type": "incident_report",
-      "status": "Open",
+      "status": "Closed",
       "agency": "MTA - Autonomous Vehicles Complaints",
       "source_url": "https://data.sf.gov/resource/vw6y-z8j6.json?service_request_id=202000073982"
     },
@@ -11605,7 +11605,7 @@
       "requested_date": "2026-09-16",
       "month": "2026-09",
       "type": "incident_report",
-      "status": "Open",
+      "status": "Closed",
       "agency": "MTA - Autonomous Vehicles Complaints",
       "source_url": "https://data.sf.gov/resource/vw6y-z8j6.json?service_request_id=202000073994"
     },
@@ -11617,7 +11617,7 @@
       "requested_date": "2026-09-16",
       "month": "2026-09",
       "type": "incident_report",
-      "status": "Open",
+      "status": "Closed",
       "agency": "MTA - Autonomous Vehicles Complaints",
       "source_url": "https://data.sf.gov/resource/vw6y-z8j6.json?service_request_id=202000074175"
     },
@@ -11692,6 +11692,42 @@
       "status": "Open",
       "agency": "MTA - Autonomous Vehicles Complaints",
       "source_url": "https://data.sf.gov/resource/vw6y-z8j6.json?service_request_id=202000096242"
+    },
+    {
+      "id": "SF-202000098495",
+      "source_id": "202000098495",
+      "state": "CA",
+      "market": "San Francisco",
+      "requested_date": "2026-09-23",
+      "month": "2026-09",
+      "type": "incident_report",
+      "status": "Open",
+      "agency": "MTA - Autonomous Vehicles Complaints",
+      "source_url": "https://data.sf.gov/resource/vw6y-z8j6.json?service_request_id=202000098495"
+    },
+    {
+      "id": "SF-202000098866",
+      "source_id": "202000098866",
+      "state": "CA",
+      "market": "San Francisco",
+      "requested_date": "2026-09-23",
+      "month": "2026-09",
+      "type": "other",
+      "status": "Open",
+      "agency": "MTA - Autonomous Vehicles Complaints",
+      "source_url": "https://data.sf.gov/resource/vw6y-z8j6.json?service_request_id=202000098866"
+    },
+    {
+      "id": "SF-202000099492",
+      "source_id": "202000099492",
+      "state": "CA",
+      "market": "San Francisco",
+      "requested_date": "2026-09-23",
+      "month": "2026-09",
+      "type": "incident_report",
+      "status": "Open",
+      "agency": "MTA - Autonomous Vehicles Complaints",
+      "source_url": "https://data.sf.gov/resource/vw6y-z8j6.json?service_request_id=202000099492"
     }
   ]
 }
