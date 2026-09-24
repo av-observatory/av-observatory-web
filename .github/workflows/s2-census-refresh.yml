@@ -1,0 +1,61 @@
+name: Build S2 Census context
+
+on:
+  push:
+    paths:
+      - ".github/workflows/s2-census-refresh.yml"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install geospatial dependencies
+        run: pip install --quiet geopandas pyogrio shapely requests pandas
+
+      - name: Build S2 Census crosswalk and market history
+        run: python scripts/build-s2-census.py
+
+      - name: Validate outputs
+        run: |
+          python - <<'PYEOF'
+          import csv, json
+          c=json.load(open("public/data/waymo_s2_census_2024.json"))
+          assert c["cell_count"] >= 2100, c["cell_count"]
+          assert c["latest_waymo_vintage"] == "202606", c["latest_waymo_vintage"]
+          cells=list(c["cells"].values())
+          assert sum(1 for x in cells if x["estimated_population"] > 0) > 1800
+          assert sum(1 for x in cells if x["household_weighted_bg_median_income"] is not None) > 1800
+          h=json.load(open("public/data/waymo_s2_market_history.json"))
+          assert set(h["markets"]) == {"Phoenix","San Francisco Bay Area","Los Angeles","Austin","Atlanta"}, set(h["markets"])
+          assert h["vintages"][-1] == "202606"
+          rows=list(csv.DictReader(open("public/data/waymo_s2_bg_crosswalk_2024.csv")))
+          assert len(rows) > c["cell_count"]
+          print("Validated", c["cell_count"], "S2 Census cells and", len(rows), "crosswalk intersections")
+          for market, series in h["markets"].items():
+              print(market, series[-1])
+          PYEOF
+
+      - name: Commit derived Census datasets
+        run: |
+          git config user.name "av-observatory-bot"
+          git config user.email "bot@av-observatory.org"
+          git add public/data/waymo_s2_census_2024.json public/data/waymo_s2_bg_crosswalk_2024.csv public/data/waymo_s2_market_history.json
+          if git diff --cached --quiet; then
+            echo "No Census-derived changes."
+          else
+            git commit -m "data: add Census context for Waymo S2 cells"
+            for attempt in 1 2 3 4 5; do
+              if git push; then exit 0; fi
+              sleep $((attempt * 5))
+            done
+            exit 1
+          fi
