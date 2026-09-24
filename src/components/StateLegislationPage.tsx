@@ -47,7 +47,7 @@ function StateTileMap({
       <span className="text-xs text-neutral-500">Darker tiles = more current-session AV measures</span>
     </div>
     <div className="overflow-x-auto pb-1">
-      <div className="grid min-w-[760px] grid-cols-12 grid-rows-9 gap-1.5" aria-label="United States legislation tile map">
+      <div className="mx-auto grid w-max grid-cols-[repeat(12,44px)] grid-rows-[repeat(9,44px)] gap-1.5 px-1" aria-label="United States legislation tile map">
         {Object.entries(TILE_POSITIONS).map(([code,[row,col]])=>{
           const count=counts[code]??0;
           const intensity=count ? 0.16 + 0.68*Math.sqrt(count/max) : 0;
@@ -58,7 +58,7 @@ function StateTileMap({
             onClick={()=>onSelect(isSelected?null:code)}
             title={`${names[code]??code}: ${count} current-session AV measure${count===1?"":"s"}`}
             aria-pressed={isSelected}
-            className={`aspect-square rounded-md border text-sm font-bold transition hover:-translate-y-0.5 hover:shadow-sm ${isSelected?"ring-2 ring-[#0b1d33] ring-offset-1":""} ${count===0?"text-neutral-500":"text-[#0b1d33]"}`}
+            className={`h-11 w-11 rounded-md border text-[12px] font-bold leading-none transition hover:-translate-y-0.5 hover:shadow-sm ${isSelected?"ring-2 ring-[#0b1d33] ring-offset-1":""} ${count===0?"text-neutral-500":"text-[#0b1d33]"}`}
             style={{
               gridRow:row, gridColumn:col,
               background:count? `rgba(42,120,214,${intensity})` : "#f1f0ec",
@@ -66,7 +66,7 @@ function StateTileMap({
             }}
           >
             <span className="block">{code}</span>
-            {count>0 && <span className="block text-[10px] font-medium opacity-75">{count}</span>}
+            {count>0 && <span className="mt-1 block text-[9px] font-medium opacity-75">{count}</span>}
           </button>;
         })}
       </div>
@@ -118,7 +118,7 @@ export function StateLegislationPage() {
     <p className="eyebrow">Policy Trackers / State</p>
     <h1 className="text-4xl font-semibold mt-3 text-[#0b1d33]">State Legislation</h1>
     <p className="mt-3 text-base text-neutral-600 max-w-3xl">Current-session autonomous-vehicle legislation discovered through Open States, with enacted state AV laws shown when a state is selected.</p>
-    <section className="viz-card p-5">
+    <section className="viz-card p-4">
       <div className="flex flex-wrap justify-between gap-3 items-end">
         <div>
           <div className="eyebrow">Legislation Tile Map · 50 States + D.C.</div>
@@ -127,7 +127,7 @@ export function StateLegislationPage() {
         </div>
         <a href={`${process.env.NEXT_PUBLIC_BASE_PATH??""}/data/legislation_tracker.json`} className="text-sm text-[#184f95] underline">Download legislation data ↗</a>
       </div>
-      <div className="mt-5"><StateTileMap selected={selected} onSelect={setSelected} counts={counts} names={names}/></div>
+      <div className="mt-3"><StateTileMap selected={selected} onSelect={setSelected} counts={counts} names={names}/></div>
     </section>
 
     {selected && <section className="viz-card p-5 mt-5">
