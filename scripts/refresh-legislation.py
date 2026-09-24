@@ -244,7 +244,7 @@ states = [{
 } for code in JURISDICTIONS]
 
 out = {
-    "schema_version": "1.2.0",
+    "schema_version": "1.1.0",
     "as_of": date.today().isoformat(),
     "state_index_reviewed": date.today().isoformat(),
     "methodology": "Current-session AV legislation is independently discovered across all 50 states and DC using Open States API v3 full-text search. The database is not seeded from NCSL or LegiScan. Multiple AV search concepts are queried for each active legislative session, results are deduplicated, and normalized actions are used to derive progress status. Official legislature source URLs supplied by Open States are retained where available. Machine-discovered records should be checked against the linked official bill record before legal reliance.",
