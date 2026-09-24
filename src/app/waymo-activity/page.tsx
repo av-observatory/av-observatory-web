@@ -17,11 +17,9 @@ export default async function WaymoActivityPage(){
     load<any>("odd_current_geometries.geojson"),
   ]);
 
-  const uniqueCells=new Set(cells.features.map((f:any)=>String(f.properties.s2_cell)));
-  const total=[...uniqueCells].reduce((sum,id)=>{
-    const rows=cells.features.filter((f:any)=>String(f.properties.s2_cell)===id);
-    return sum+rows.reduce((s:number,f:any)=>s+Number(f.properties.waymo_ro_miles||0),0);
-  },0);
+  const uniqueCells=new Set<string>(cells.features.map((f:any)=>String(f.properties.s2_cell)));
+  const latestSummary=(vintages.vintages as any[]).find((v:any)=>String(v.vintage_end)===String(vintages.latest_vintage));
+  const total=Number(latestSummary?.cumulative_miles||0);
   const base=process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
   return <main className="max-w-7xl px-5 sm:px-8 py-8">
