@@ -119,15 +119,28 @@ export function StateLegislationPage() {
     <h1 className="text-4xl font-semibold mt-3 text-[#0b1d33]">State Legislation</h1>
     <p className="mt-3 text-base text-neutral-600 max-w-3xl">Current-session autonomous-vehicle legislation discovered through Open States, with enacted state AV laws shown when a state is selected.</p>
     <section className="viz-card p-4">
-      <div className="flex flex-wrap justify-between gap-3 items-end">
-        <div>
+      <div className="grid gap-5 lg:grid-cols-[3fr_2fr] lg:items-start">
+        <div className="min-w-0">
           <div className="eyebrow">Legislation Tile Map · 50 States + D.C.</div>
-          <h2 className="text-xl font-semibold mt-2">{selected ? names[selected] : "All States"}</h2>
-          <p className="text-sm text-neutral-600 mt-1">{selected ? "Select the same state again to return to the national view." : "Select a state to filter both enacted and proposed legislation."}</p>
+          <div className="mt-3"><StateTileMap selected={selected} onSelect={setSelected} counts={counts} names={names}/></div>
         </div>
-        <a href={`${process.env.NEXT_PUBLIC_BASE_PATH??""}/data/legislation_tracker.json`} className="text-sm text-[#184f95] underline">Download legislation data ↗</a>
+        <div className="min-w-0 border-t border-neutral-200 pt-4 lg:border-l lg:border-t-0 lg:pl-5 lg:pt-0">
+          <div className="eyebrow">{selected ? names[selected] : "National View"}</div>
+          <h2 className="text-2xl font-semibold mt-2 text-[#0b1d33]">{selected ? names[selected] : "All States"}</h2>
+          <p className="text-sm leading-relaxed text-neutral-600 mt-2">{selected ? "Showing enacted AV legislation and current-session proposals for this state. Select the same state again to return to all states." : "Select a state on the tile map to filter enacted and proposed AV legislation."}</p>
+          <div className="grid grid-cols-2 gap-3 mt-5">
+            <div className="rounded-lg border border-neutral-200 bg-white p-3">
+              <div className="text-2xl font-semibold text-[#0b1d33]">{selected ? currentBills.filter(b=>b.jurisdiction===selected).length : currentBills.length}</div>
+              <div className="text-xs text-neutral-500 mt-1">Current-session measures</div>
+            </div>
+            <div className="rounded-lg border border-neutral-200 bg-white p-3">
+              <div className="text-2xl font-semibold text-[#0b1d33]">{selected ? (counts[selected] ?? 0) : Object.values(counts).filter(Boolean).length}</div>
+              <div className="text-xs text-neutral-500 mt-1">{selected ? "Indexed in this state" : "States with active measures"}</div>
+            </div>
+          </div>
+          <a href={`${process.env.NEXT_PUBLIC_BASE_PATH??""}/data/legislation_tracker.json`} className="inline-block mt-5 text-sm text-[#184f95] underline">Download legislation data ↗</a>
+        </div>
       </div>
-      <div className="mt-3"><StateTileMap selected={selected} onSelect={setSelected} counts={counts} names={names}/></div>
     </section>
 
     {selected && <section className="viz-card p-5 mt-5">
