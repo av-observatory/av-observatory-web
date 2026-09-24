@@ -51,7 +51,7 @@ function BillCard({ bill, asOf }: { bill: Bill; asOf: string }) {
     {!bill.summary_reviewed_at && <p className="mt-1 text-sm text-neutral-500">Machine-indexed description; verify against bill text.</p>}
     {bill.measure_type === "resolution" ? <ResolutionTimeline bill={bill} /> : <LegislativeTimeline bill={bill} asOf={asOf} />}
     <p className="mt-3 text-sm text-neutral-600"><strong>Latest Indexed Action · {displayDate(bill.last_action_date)}</strong><br />{bill.last_action}</p>
-    <div className="flex flex-wrap gap-4 mt-3 text-sm"><a href={bill.source_url} target="_blank" rel="noreferrer" className="text-[#184f95] underline">Bill and actions ↗</a><a href={bill.repository_url} target="_blank" rel="noreferrer" className="text-[#184f95] underline">Source index ↗</a></div>
+    <div className="flex flex-wrap gap-4 mt-3 text-sm"><a href={bill.source_url} target="_blank" rel="noreferrer" className="text-[#184f95] underline">Bill and actions ↗</a><a href={bill.repository_url} target="_blank" rel="noreferrer" className="text-[#184f95] underline">Open States / source index ↗</a></div>
   </article>;
 }
 
@@ -65,7 +65,7 @@ export function LegislativeBillsPanel({ jurisdiction }: { jurisdiction: string }
   const state = data.states.find(s => s.code === jurisdiction);
   return <section className="viz-card p-5 mt-6" aria-label={`${federal ? "Federal" : state?.name ?? jurisdiction} legislative bill tracker`}>
     <div className="flex flex-wrap justify-between items-start gap-3"><div><div className="eyebrow">{federal ? "Congress" : state?.name ?? jurisdiction}</div><h2 className="text-xl font-semibold mt-2 text-[#0b1d33]">Legislation Tracker</h2></div><a href={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/data/legislation_tracker.json`} className="text-sm underline text-[#184f95]">Download bill data ↗</a></div>
-    <p className="mt-3 text-sm text-neutral-700">Proposals and their latest indexed actions. The tracker distinguishes passage from becoming law. {federal ? "119th Congress." : "State records are indexed from NCSL's 2026 AV bill database."}</p>
+    <p className="mt-3 text-sm text-neutral-700">Proposals and their latest indexed actions. The tracker distinguishes passage from becoming law. {federal ? "119th Congress." : "State records are being maintained through the Observatory's Open States-based legislative tracker."}</p>
     {bills.length ? <div className={`grid gap-3 mt-4 items-stretch ${federal ? "md:grid-cols-[.8fr_1.2fr]" : "xl:grid-cols-[.8fr_1.2fr]"}`}>
       <div className="h-full max-h-none overflow-y-auto rounded-lg border border-neutral-200 divide-y divide-neutral-200" aria-label="Select a bill">{bills.map(bill => <button key={bill.id} type="button" onClick={() => setSelectedId(bill.id)} aria-pressed={selectedBill.id === bill.id} className={`w-full text-left px-3 py-3 border-l-4 ${selectedBill.id === bill.id ? "bg-[#eaf2fa] border-[#123b69]" : "bg-white border-transparent hover:bg-neutral-50"}`}><span className="block text-sm font-semibold text-[#0b1d33]">{bill.number} · {bill.title}</span><span className="block text-sm text-neutral-700 mt-1 leading-snug">{bill.takeaway ?? bill.summary}</span><span className="block text-sm text-neutral-500 mt-1">{statusLabel(bill.status)} · {displayDate(bill.last_action_date)}</span></button>)}</div>
       <div aria-live="polite" key={selectedBill.id}><BillCard bill={selectedBill} asOf={data.as_of} /></div>
