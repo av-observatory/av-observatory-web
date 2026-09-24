@@ -1,5 +1,5 @@
 name: Build S2 Census context
-# retry 6
+# retry 7
 
 on:
   push:
@@ -24,6 +24,9 @@ jobs:
 
       - name: Build S2 Census crosswalk and market history
         run: python scripts/build-s2-census.py
+
+      - name: Regenerate CSV companions
+        run: python scripts/export-data-csv.py
 
       - name: Validate outputs
         run: |
@@ -50,7 +53,7 @@ jobs:
         run: |
           git config user.name "av-observatory-bot"
           git config user.email "bot@av-observatory.org"
-          git add public/data/waymo_s2_census_2024.json public/data/waymo_s2_bg_crosswalk_2024.csv public/data/waymo_s2_market_history.json
+          git add public/data/waymo_s2_census_2024.json public/data/waymo_s2_census_2024.csv public/data/waymo_s2_bg_crosswalk_2024.csv public/data/waymo_s2_market_history.json public/data/waymo_s2_market_history.csv
           if git diff --cached --quiet; then
             echo "No Census-derived changes."
           else
