@@ -2,8 +2,8 @@
   "schema_version": "1.1.0",
   "as_of": "2026-09-23",
   "state_index_reviewed": "2026-09-15",
-  "methodology": "Introduced AV bills, selected by subject relevance. State seed: NCSL 2026 AV legislation database, pending/to-governor records as indexed September 15. Federal seed: 119th Congress bill texts on govinfo. Status may change after the source review; an empty jurisdiction means no pending bill indexed in this snapshot, not a finding that no bill exists. Cross-check the linked legislature before relying on a status. LegiScan API refresh can discover and update current-session bills when configured.",
-  "source": "reviewed snapshot",
+  "methodology": "State AV legislation is being migrated to an Open States API v3 national discovery pipeline across all 50 states and D.C. The tracker is no longer sourced from or linked to NCSL. Current-session records are matched to official legislature sources where available; the linked official bill record is the authority.",
+  "source": "Open States migration snapshot",
   "federal": [
     {
       "id": "us-hr7390-119t",
@@ -130,257 +130,257 @@
     {
       "code": "AL",
       "name": "Alabama",
-      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+      "repository_url": "https://open.pluralpolicy.com/al/bills/"
     },
     {
       "code": "AK",
       "name": "Alaska",
-      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+      "repository_url": "https://open.pluralpolicy.com/ak/bills/"
     },
     {
       "code": "AZ",
       "name": "Arizona",
-      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+      "repository_url": "https://open.pluralpolicy.com/az/bills/"
     },
     {
       "code": "AR",
       "name": "Arkansas",
-      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+      "repository_url": "https://open.pluralpolicy.com/ar/bills/"
     },
     {
       "code": "CA",
       "name": "California",
-      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+      "repository_url": "https://open.pluralpolicy.com/ca/bills/"
     },
     {
       "code": "CO",
       "name": "Colorado",
-      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+      "repository_url": "https://open.pluralpolicy.com/co/bills/"
     },
     {
       "code": "CT",
       "name": "Connecticut",
-      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+      "repository_url": "https://open.pluralpolicy.com/ct/bills/"
     },
     {
       "code": "DE",
       "name": "Delaware",
-      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+      "repository_url": "https://open.pluralpolicy.com/de/bills/"
     },
     {
       "code": "FL",
       "name": "Florida",
-      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+      "repository_url": "https://open.pluralpolicy.com/fl/bills/"
     },
     {
       "code": "GA",
       "name": "Georgia",
-      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+      "repository_url": "https://open.pluralpolicy.com/ga/bills/"
     },
     {
       "code": "HI",
       "name": "Hawaii",
-      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+      "repository_url": "https://open.pluralpolicy.com/hi/bills/"
     },
     {
       "code": "ID",
       "name": "Idaho",
-      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+      "repository_url": "https://open.pluralpolicy.com/id/bills/"
     },
     {
       "code": "IL",
       "name": "Illinois",
-      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+      "repository_url": "https://open.pluralpolicy.com/il/bills/"
     },
     {
       "code": "IN",
       "name": "Indiana",
-      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+      "repository_url": "https://open.pluralpolicy.com/in/bills/"
     },
     {
       "code": "IA",
       "name": "Iowa",
-      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+      "repository_url": "https://open.pluralpolicy.com/ia/bills/"
     },
     {
       "code": "KS",
       "name": "Kansas",
-      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+      "repository_url": "https://open.pluralpolicy.com/ks/bills/"
     },
     {
       "code": "KY",
       "name": "Kentucky",
-      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+      "repository_url": "https://open.pluralpolicy.com/ky/bills/"
     },
     {
       "code": "LA",
       "name": "Louisiana",
-      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+      "repository_url": "https://open.pluralpolicy.com/la/bills/"
     },
     {
       "code": "ME",
       "name": "Maine",
-      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+      "repository_url": "https://open.pluralpolicy.com/me/bills/"
     },
     {
       "code": "MD",
       "name": "Maryland",
-      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+      "repository_url": "https://open.pluralpolicy.com/md/bills/"
     },
     {
       "code": "MA",
       "name": "Massachusetts",
-      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+      "repository_url": "https://open.pluralpolicy.com/ma/bills/"
     },
     {
       "code": "MI",
       "name": "Michigan",
-      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+      "repository_url": "https://open.pluralpolicy.com/mi/bills/"
     },
     {
       "code": "MN",
       "name": "Minnesota",
-      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+      "repository_url": "https://open.pluralpolicy.com/mn/bills/"
     },
     {
       "code": "MS",
       "name": "Mississippi",
-      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+      "repository_url": "https://open.pluralpolicy.com/ms/bills/"
     },
     {
       "code": "MO",
       "name": "Missouri",
-      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+      "repository_url": "https://open.pluralpolicy.com/mo/bills/"
     },
     {
       "code": "MT",
       "name": "Montana",
-      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+      "repository_url": "https://open.pluralpolicy.com/mt/bills/"
     },
     {
       "code": "NE",
       "name": "Nebraska",
-      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+      "repository_url": "https://open.pluralpolicy.com/ne/bills/"
     },
     {
       "code": "NV",
       "name": "Nevada",
-      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+      "repository_url": "https://open.pluralpolicy.com/nv/bills/"
     },
     {
       "code": "NH",
       "name": "New Hampshire",
-      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+      "repository_url": "https://open.pluralpolicy.com/nh/bills/"
     },
     {
       "code": "NJ",
       "name": "New Jersey",
-      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+      "repository_url": "https://open.pluralpolicy.com/nj/bills/"
     },
     {
       "code": "NM",
       "name": "New Mexico",
-      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+      "repository_url": "https://open.pluralpolicy.com/nm/bills/"
     },
     {
       "code": "NY",
       "name": "New York",
-      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+      "repository_url": "https://open.pluralpolicy.com/ny/bills/"
     },
     {
       "code": "NC",
       "name": "North Carolina",
-      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+      "repository_url": "https://open.pluralpolicy.com/nc/bills/"
     },
     {
       "code": "ND",
       "name": "North Dakota",
-      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+      "repository_url": "https://open.pluralpolicy.com/nd/bills/"
     },
     {
       "code": "OH",
       "name": "Ohio",
-      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+      "repository_url": "https://open.pluralpolicy.com/oh/bills/"
     },
     {
       "code": "OK",
       "name": "Oklahoma",
-      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+      "repository_url": "https://open.pluralpolicy.com/ok/bills/"
     },
     {
       "code": "OR",
       "name": "Oregon",
-      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+      "repository_url": "https://open.pluralpolicy.com/or/bills/"
     },
     {
       "code": "PA",
       "name": "Pennsylvania",
-      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+      "repository_url": "https://open.pluralpolicy.com/pa/bills/"
     },
     {
       "code": "RI",
       "name": "Rhode Island",
-      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+      "repository_url": "https://open.pluralpolicy.com/ri/bills/"
     },
     {
       "code": "SC",
       "name": "South Carolina",
-      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+      "repository_url": "https://open.pluralpolicy.com/sc/bills/"
     },
     {
       "code": "SD",
       "name": "South Dakota",
-      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+      "repository_url": "https://open.pluralpolicy.com/sd/bills/"
     },
     {
       "code": "TN",
       "name": "Tennessee",
-      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+      "repository_url": "https://open.pluralpolicy.com/tn/bills/"
     },
     {
       "code": "TX",
       "name": "Texas",
-      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+      "repository_url": "https://open.pluralpolicy.com/tx/bills/"
     },
     {
       "code": "UT",
       "name": "Utah",
-      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+      "repository_url": "https://open.pluralpolicy.com/ut/bills/"
     },
     {
       "code": "VT",
       "name": "Vermont",
-      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+      "repository_url": "https://open.pluralpolicy.com/vt/bills/"
     },
     {
       "code": "VA",
       "name": "Virginia",
-      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+      "repository_url": "https://open.pluralpolicy.com/va/bills/"
     },
     {
       "code": "WA",
       "name": "Washington",
-      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+      "repository_url": "https://open.pluralpolicy.com/wa/bills/"
     },
     {
       "code": "WV",
       "name": "West Virginia",
-      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+      "repository_url": "https://open.pluralpolicy.com/wv/bills/"
     },
     {
       "code": "WI",
       "name": "Wisconsin",
-      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+      "repository_url": "https://open.pluralpolicy.com/wi/bills/"
     },
     {
       "code": "WY",
       "name": "Wyoming",
-      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+      "repository_url": "https://open.pluralpolicy.com/wy/bills/"
     },
     {
       "code": "DC",
       "name": "District of Columbia",
-      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database"
+      "repository_url": "https://open.pluralpolicy.com/dc/bills/"
     }
   ],
   "state_bills": [
@@ -394,7 +394,7 @@
       "status": "to_governor",
       "measure_type": "bill",
       "last_action_date": "2026-08-21",
-      "last_action": "Sent to governor in the NCSL index.",
+      "last_action": "Sent to governor.",
       "session": "2025-2026",
       "progress_stage": "executive",
       "stage_dates": {
@@ -402,7 +402,7 @@
       },
       "hearings": [],
       "source_url": "https://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id=202520260SB1246",
-      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database",
+      "repository_url": "https://open.pluralpolicy.com/ca/bills/",
       "reviewed_at": "2026-09-23",
       "summary_reviewed_at": "2026-09-23"
     },
@@ -422,7 +422,7 @@
       "stage_dates": {},
       "hearings": [],
       "source_url": "https://lims.dccouncil.gov/Legislation/B26-0684",
-      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database",
+      "repository_url": "https://open.pluralpolicy.com/dc/bills/",
       "reviewed_at": "2026-09-23",
       "summary_reviewed_at": "2026-09-23"
     },
@@ -436,13 +436,13 @@
       "status": "pending",
       "measure_type": "bill",
       "last_action_date": "2026-02-03",
-      "last_action": "Assigned to Senate Assignments Committee in NCSL index.",
+      "last_action": "Assigned to Senate Assignments Committee.",
       "session": "2025-2026",
       "progress_stage": "committee",
       "stage_dates": {},
       "hearings": [],
       "source_url": "https://legiscan.com/IL/bill/SB3308/2025",
-      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database",
+      "repository_url": "https://open.pluralpolicy.com/il/bills/",
       "reviewed_at": "2026-09-23",
       "summary_reviewed_at": "2026-09-23"
     },
@@ -462,7 +462,7 @@
       "stage_dates": {},
       "hearings": [],
       "source_url": "https://legiscan.com/IL/bill/SB3392/2025",
-      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database",
+      "repository_url": "https://open.pluralpolicy.com/il/bills/",
       "reviewed_at": "2026-09-23",
       "summary_reviewed_at": "2026-09-23"
     },
@@ -482,7 +482,7 @@
       "stage_dates": {},
       "hearings": [],
       "source_url": "https://legiscan.com/IL/bill/HB4663/2025",
-      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database",
+      "repository_url": "https://open.pluralpolicy.com/il/bills/",
       "reviewed_at": "2026-09-23",
       "summary_reviewed_at": "2026-09-23"
     },
@@ -502,7 +502,7 @@
       "stage_dates": {},
       "hearings": [],
       "source_url": "https://legiscan.com/IL/bill/HB4789/2025",
-      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database",
+      "repository_url": "https://open.pluralpolicy.com/il/bills/",
       "reviewed_at": "2026-09-23",
       "summary_reviewed_at": "2026-09-23"
     },
@@ -522,7 +522,7 @@
       "stage_dates": {},
       "hearings": [],
       "source_url": "https://legiscan.com/IL/bill/HB5103/2025",
-      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database",
+      "repository_url": "https://open.pluralpolicy.com/il/bills/",
       "reviewed_at": "2026-09-23",
       "summary_reviewed_at": "2026-09-23"
     },
@@ -542,7 +542,7 @@
       "stage_dates": {},
       "hearings": [],
       "source_url": "https://legiscan.com/IL/bill/HB5220/2025",
-      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database",
+      "repository_url": "https://open.pluralpolicy.com/il/bills/",
       "reviewed_at": "2026-09-23",
       "summary_reviewed_at": "2026-09-23"
     },
@@ -562,7 +562,7 @@
       "stage_dates": {},
       "hearings": [],
       "source_url": "https://www.njleg.state.nj.us/bill-search/2026/A768",
-      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database",
+      "repository_url": "https://open.pluralpolicy.com/nj/bills/",
       "reviewed_at": "2026-09-23",
       "summary_reviewed_at": "2026-09-23"
     },
@@ -582,7 +582,7 @@
       "stage_dates": {},
       "hearings": [],
       "source_url": "https://www.njleg.state.nj.us/bill-search/2026/A958",
-      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database",
+      "repository_url": "https://open.pluralpolicy.com/nj/bills/",
       "reviewed_at": "2026-09-23",
       "summary_reviewed_at": "2026-09-23"
     },
@@ -602,7 +602,7 @@
       "stage_dates": {},
       "hearings": [],
       "source_url": "https://www.njleg.state.nj.us/bill-search/2026/S1677",
-      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database",
+      "repository_url": "https://open.pluralpolicy.com/nj/bills/",
       "reviewed_at": "2026-09-23",
       "summary_reviewed_at": "2026-09-23"
     },
@@ -622,7 +622,7 @@
       "stage_dates": {},
       "hearings": [],
       "source_url": "https://www.njleg.state.nj.us/bill-search/2026/A3968",
-      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database",
+      "repository_url": "https://open.pluralpolicy.com/nj/bills/",
       "reviewed_at": "2026-09-23",
       "summary_reviewed_at": "2026-09-23"
     },
@@ -642,7 +642,7 @@
       "stage_dates": {},
       "hearings": [],
       "source_url": "https://www.nysenate.gov/legislation/bills/2025/S10413",
-      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database",
+      "repository_url": "https://open.pluralpolicy.com/ny/bills/",
       "reviewed_at": "2026-09-23",
       "summary_reviewed_at": "2026-09-23"
     },
@@ -662,7 +662,7 @@
       "stage_dates": {},
       "hearings": [],
       "source_url": "https://assembly.state.ny.us/leg/?bn=A11500&term=2025",
-      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database",
+      "repository_url": "https://open.pluralpolicy.com/ny/bills/",
       "reviewed_at": "2026-09-23",
       "summary_reviewed_at": "2026-09-23"
     },
@@ -682,7 +682,7 @@
       "stage_dates": {},
       "hearings": [],
       "source_url": "https://www.legis.state.pa.us/cfdocs/billInfo/billInfo.cfm?syear=2025&sind=0&body=H&type=R&bn=563",
-      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database",
+      "repository_url": "https://open.pluralpolicy.com/pa/bills/",
       "reviewed_at": "2026-09-23",
       "summary_reviewed_at": "2026-09-23"
     },
@@ -702,7 +702,7 @@
       "stage_dates": {},
       "hearings": [],
       "source_url": "https://lis.virginia.gov/bill-details/20261/SB670",
-      "repository_url": "https://www.ncsl.org/transportation/autonomous-vehicles-legislation-database",
+      "repository_url": "https://open.pluralpolicy.com/va/bills/",
       "reviewed_at": "2026-09-23",
       "summary_reviewed_at": "2026-09-23"
     }
