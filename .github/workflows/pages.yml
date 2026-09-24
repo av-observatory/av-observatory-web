@@ -1,4 +1,5 @@
 name: Deploy AV Observatory to GitHub Pages
+# Q2 2026 data refresh
 
 on:
   push:
