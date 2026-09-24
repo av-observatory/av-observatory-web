@@ -160,7 +160,7 @@ export function StateTracker() {
     <p className="eyebrow">Policy Trackers / State</p>
     <h1 className="text-4xl font-semibold mt-3 text-[#0b1d33]">State Policies</h1>
     <p className="mt-3 text-base text-neutral-600 max-w-3xl">Select a state to explore its AV operating framework, agency oversight, laws and executive orders, and bills under consideration.</p>
-    <PolicyNav active="states" />
+    <PolicyNav active="state-regulations" />
     <div className="grid lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] gap-4 items-start">
       <div className="min-w-0">
         <section className="viz-card p-5">
@@ -195,7 +195,6 @@ export function StateTracker() {
         </section></div>}
       </div>
     </div>
-    <LegislativeBillsPanel jurisdiction={state.code} />
   </main>;
 }
 
