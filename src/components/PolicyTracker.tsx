@@ -2,8 +2,7 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
-import type { MapCategory } from "@/components/UsStateMap";
-import { StateTileMap } from "@/components/StateTileMap";
+import { UsStateMap, type MapCategory } from "@/components/UsStateMap";
 import { PolicyNav } from "@/components/PolicyNav";
 import { LegislativeBillsPanel } from "@/components/LegislativeBillsPanel";
 import { displayDate, usePolicyData, type PolicyEvent } from "@/lib/policyTracker";
@@ -162,12 +161,12 @@ export function StateTracker() {
     <h1 className="text-4xl font-semibold mt-3 text-[#0b1d33]">State Policies</h1>
     <p className="mt-3 text-base text-neutral-600 max-w-3xl">Select a state to explore its AV operating framework, agency oversight, laws and executive orders, and bills under consideration.</p>
     <PolicyNav active="states" />
-    <div className="grid lg:grid-cols-2 gap-4 items-start">
+    <div className="grid lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] gap-4 items-start">
       <div className="min-w-0">
         <section className="viz-card p-5">
           <div className="eyebrow">AV Policy Map · 50 States + D.C.</div>
           <p className="mt-2 text-sm text-neutral-600">Colors show enacted legislation and executive order history. An earlier action may no longer be in force.</p>
-          <div className="mt-5"><StateTileMap states={data.states} categoryByAbbrev={categoryByAbbrev} categories={categories} selectedAbbrev={state.code} onStateClick={setSelected} /></div>
+          <div className="mt-5"><UsStateMap categoryByAbbrev={categoryByAbbrev} categories={categories} selectedAbbrev={state.code} onStateClick={setSelected} /></div>
           <label className="block text-sm font-semibold mt-5" htmlFor="state-policy-search">Find a State</label>
           <input id="state-policy-search" value={filter} onChange={e => setFilter(e.target.value)} placeholder="State name or abbreviation" className="block mt-2 w-full rounded border border-neutral-300 p-2 text-sm" />
           {filter.trim() && <div className="flex flex-wrap gap-1.5 mt-3 max-h-28 overflow-y-auto">{data.states.filter(s => `${s.name} ${s.code}`.toLowerCase().includes(filter.toLowerCase())).map(s => <button key={s.code} type="button" onClick={() => { setSelected(s.code); setFilter(""); }} aria-pressed={state.code === s.code} className={`rounded px-2.5 py-1.5 text-sm border ${state.code === s.code ? "bg-[#123b69] text-white" : "border-neutral-200"}`}>{s.name}</button>)}</div>}
