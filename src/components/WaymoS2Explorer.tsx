@@ -454,11 +454,18 @@ export function WaymoS2Explorer({
     return Array.from(map.values()).sort((a,b)=>a.state.localeCompare(b.state)||a.market.localeCompare(b.market));
   },[waymoService,locations,mapData]);
 
-  const allValues=useMemo(()=>mapData.features.map(f=>metric==="cumulative"?f.properties.waymo_ro_miles:f.properties.incremental_miles),[mapData,metric]);
+  const allValues=useMemo(()=>mapData.features
+    .map(f=>metricValue(f.properties,metric,census))
+    .filter((v):v is number=>v!==null&&Number.isFinite(v)),[mapData,metric,census]);
   const breaks=useMemo(()=>quantileBreaks(allValues),[allValues]);
-  const ramp=metric==="cumulative"?BLUE_RAMP:ORANGE_RAMP;
+  const ramp=metricRamp(metric);
 
-  const chartRows=summary.vintages.map(v=>({vintage:vintageLabel(v.vintage_end),cumulative:Number((v.cumulative_miles/1_000_000).toFixed(1))}));
+  const growthSeries=marketHistory.markets[growthMarket]??[];
+  const chartRows=growthSeries.map(v=>({
+    vintage:vintageLabel(v.vintage_end),
+    cumulative:Number((v.cumulative_miles/1_000_000).toFixed(1)),
+    added:Number((v.incremental_miles_vs_prior_release/1_000_000).toFixed(1)),
+  }));
   const marketsWithVmt=facets.filter(f=>f.cells.length>0).length;
   const marketsWithoutVmt=facets.length-marketsWithVmt;
 
@@ -474,6 +481,12 @@ export function WaymoS2Explorer({
           <select className="filter-select" value={metric} onChange={e=>setMetric(e.target.value as Metric)}>
             <option value="cumulative">VMT by cell · cumulative miles</option>
             <option value="incremental">VMT added since prior release</option>
+            <option value="miles_per_1000">VMT per 1,000 estimated residents</option>
+            <option value="income">Household income context</option>
+            <option value="hispanic">Hispanic / Latino share</option>
+            <option value="black">Black non-Hispanic share</option>
+            <option value="asian">Asian non-Hispanic share</option>
+            <option value="white">White non-Hispanic share</option>
           </select>
         </label>
       </div>
@@ -524,17 +537,17 @@ export function WaymoS2Explorer({
             </div>
           </div>
           <div className="px-3 pb-3">
-            <MarketMap facet={facet} metric={metric} breaks={breaks} totalMiles={total} />
+            <MarketMap facet={facet} metric={metric} breaks={breaks} totalMiles={total} census={census} />
           </div>
         </div>;
       })}
     </div>
 
     <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1">
-      <span className="text-xs font-medium text-neutral-600">{metric==="cumulative"?"Operational miles per cell":"Miles added per cell"}</span>
+      <span className="text-xs font-medium text-neutral-600">{metricLabel(metric)}</span>
       {breaks.map((b,i)=><div key={i} className="flex items-center gap-1">
         <span className="inline-block w-4 h-3 rounded-sm" style={{background:ramp[i]}} />
-        <span className="text-[10px] text-neutral-500">{i===0?`≤${compactMiles(b)}`:`${compactMiles(breaks[i-1])}–${compactMiles(b)}`}</span>
+        <span className="text-[10px] text-neutral-500">{i===0?`≤${metricFormat(metric,b)}`:`${metricFormat(metric,breaks[i-1])}–${metricFormat(metric,b)}`}</span>
       </div>)}
       {metric==="incremental"&&<div className="flex items-center gap-1"><span className="inline-block w-4 h-3 rounded-sm bg-[#d9474d]" /><span className="text-[10px] text-neutral-500">negative revision</span></div>}
     </div>
@@ -542,8 +555,17 @@ export function WaymoS2Explorer({
     {loadError&&<div className="text-xs text-red-700 mt-2">Could not load this vintage map: {loadError}</div>}
 
     <div className="viz-card p-4 mt-5">
-      <h3 className="font-semibold">Published Mileage Growth</h3>
-      <div className="text-sm text-neutral-500">Cumulative operational miles represented by each S2 benchmark release.</div>
+      <div className="flex flex-wrap items-end justify-between gap-3">
+        <div>
+          <h3 className="font-semibold">Mileage Growth by Market</h3>
+          <div className="text-sm text-neutral-500">Cumulative operational miles represented by each S2 benchmark release.</div>
+        </div>
+        <label className="filter-label min-w-[220px]">Market
+          <select className="filter-select" value={growthMarket} onChange={e=>setGrowthMarket(e.target.value)}>
+            {Object.keys(marketHistory.markets).sort().map(m=><option key={m} value={m}>{m}</option>)}
+          </select>
+        </label>
+      </div>
       <ResponsiveContainer width="100%" height={260}>
         <LineChart data={chartRows} margin={{top:18,right:10,bottom:5,left:0}}>
           <CartesianGrid {...GRID_PROPS}/>
@@ -551,8 +573,16 @@ export function WaymoS2Explorer({
           <YAxis {...AXIS_PROPS} tickFormatter={v=>`${v}M`}/>
           <Tooltip {...TOOLTIP_PROPS} formatter={(v)=>`${v}M miles`}/>
           <Line type="monotone" dataKey="cumulative" name="Cumulative miles" stroke={SERIES.blue} strokeWidth={2.5} dot={false}/>
+          <Line type="monotone" dataKey="added" name="Added since prior release" stroke={SERIES.orange} strokeWidth={1.8} dot={false}/>
         </LineChart>
       </ResponsiveContainer>
+    </div>
+
+    <div className="mt-4 rounded-lg border border-[#cad8e8] bg-[#f8fbfe] p-4">
+      <h3 className="font-semibold">Census context methodology</h3>
+      <p className="text-sm leading-relaxed text-neutral-600 mt-2">
+        Resident characteristics use 2024 ACS 5-year block-group estimates joined to 2024 TIGER/Line block-group geometry. Population and race/ethnicity counts are allocated into S2 cells by polygon-overlap area. Income is a household-weighted average of contributing block groups&apos; median household income. These are contextual estimates for residents in the published S2 footprint, not rider demographics, crash-victim demographics, or person-level exposure.
+      </p>
     </div>
   </div>;
 }
