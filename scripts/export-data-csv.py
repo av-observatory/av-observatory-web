@@ -59,6 +59,14 @@ def main():
         elif stem == "waymo_s2_state_summary":
             for key in ("state_summary", "county_summary"):
                 export(stem + "_" + key + ".csv", data[key], output)
+        elif stem == "waymo_s2_census_2024":
+            export(stem + ".csv", data["cells"].values(), output)
+        elif stem == "waymo_s2_market_history":
+            export(stem + ".csv", (
+                {"market": market, **row}
+                for market, rows in data["markets"].items()
+                for row in rows
+            ), output)
         elif stem == "policy_tracker":
             for key in ("federal", "federal_oversight", "states", "state_events", "city_events"):
                 export(stem + "_" + key + ".csv", data[key], output)
