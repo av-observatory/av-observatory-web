@@ -51,7 +51,7 @@ function BillCard({ bill, asOf }: { bill: Bill; asOf: string }) {
     {!bill.summary_reviewed_at && <p className="mt-1 text-sm text-neutral-500">Machine-indexed description; verify against bill text.</p>}
     {bill.measure_type === "resolution" ? <ResolutionTimeline bill={bill} /> : <LegislativeTimeline bill={bill} asOf={asOf} />}
     <p className="mt-3 text-sm text-neutral-600"><strong>Latest Indexed Action · {displayDate(bill.last_action_date)}</strong><br />{bill.last_action}</p>
-    <div className="flex flex-wrap gap-4 mt-3 text-sm"><a href={bill.source_url} target="_blank" rel="noreferrer" className="text-[#184f95] underline">Bill and actions ↗</a><a href={bill.repository_url} target="_blank" rel="noreferrer" className="text-[#184f95] underline">Open States / source index ↗</a></div>
+    <div className="mt-3 text-sm"><a href={bill.source_url} target="_blank" rel="noreferrer" className="text-[#184f95] underline">Official bill record ↗</a></div>
   </article>;
 }
 
