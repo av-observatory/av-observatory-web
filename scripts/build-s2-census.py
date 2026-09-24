@@ -116,14 +116,20 @@ def fetch_acs_county(state_fips: str, county_fips: str) -> pd.DataFrame:
         payload = json.loads(out.read_text())
     else:
         url = f"https://api.census.gov/data/{ACS_YEAR}/{ACS_DATASET}"
-        params = {
-            "get": "NAME," + ",".join(ACS_VARS.values()),
-            "for": "block group:*",
-            "in": f"state:{state_fips} county:{county_fips} tract:*",
-        }
-        r = requests.get(url, params=params, timeout=120)
-        r.raise_for_status()
-        payload = r.json()
+        params = [
+            ("get", "NAME," + ",".join(ACS_VARS.values())),
+            ("for", "block group:*"),
+            ("in", f"state:{state_fips}"),
+            ("in", f"county:{county_fips}"),
+            ("in", "tract:*"),
+        ]
+        r = requests.get(url, params=params, timeout=120, headers={"User-Agent": "AV-Observatory/1.0"})
+        if not r.ok:
+            raise RuntimeError(f"ACS API {r.status_code} for {state_fips}-{county_fips}: {r.text[:500]}")
+        try:
+            payload = r.json()
+        except Exception as e:
+            raise RuntimeError(f"ACS API returned non-JSON for {state_fips}-{county_fips}: {r.text[:500]}") from e
         out.write_text(json.dumps(payload))
         print(f"Fetched ACS block groups {state_fips}-{county_fips}: {len(payload)-1:,}")
 
