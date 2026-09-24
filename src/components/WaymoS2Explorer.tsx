@@ -169,11 +169,11 @@ function metricLabel(metric:Metric){
   if(metric==="cumulative")return "Operational miles per cell";
   if(metric==="incremental")return "Miles added per cell";
   if(metric==="miles_per_1000")return "Miles per 1,000 estimated residents";
-  if(metric==="income")return "Household-weighted block-group median income";
-  if(metric==="hispanic")return "Hispanic / Latino share";
-  if(metric==="black")return "Black non-Hispanic share";
-  if(metric==="asian")return "Asian non-Hispanic share";
-  return "White non-Hispanic share";
+  if(metric==="income")return "Estimated resident household-income context";
+  if(metric==="hispanic")return "Estimated Hispanic / Latino resident share";
+  if(metric==="black")return "Estimated Black non-Hispanic resident share";
+  if(metric==="asian")return "Estimated Asian non-Hispanic resident share";
+  return "Estimated White non-Hispanic resident share";
 }
 function metricFormat(metric:Metric,value:number|null){
   if(value===null||!Number.isFinite(value))return "No estimate";
@@ -517,34 +517,63 @@ export function WaymoS2Explorer({
     <div className="viz-card p-4">
       <div className="grid md:grid-cols-2 gap-3">
         <div>
-          <div className="filter-label">S2 release</div>
-          <div className="mt-2 flex flex-wrap gap-2">
-            {summary.vintages.slice().reverse().map(v=><button
-              key={v.vintage_end}
+          <div className="filter-label">Time</div>
+          <div className="mt-2 flex items-center gap-2">
+            <button
               type="button"
-              onClick={()=>setVintage(v.vintage_end)}
-              className={`rounded-full border px-3 py-1.5 text-sm transition ${vintage===v.vintage_end?"border-[#184f95] bg-[#184f95] text-white":"border-[#cad8e8] bg-white text-neutral-700 hover:border-[#184f95] hover:text-[#184f95]"}`}
-            >{vintageLabel(v.vintage_end)}</button>)}
+              onClick={()=>{
+                const ordered=summary.vintages.map(v=>v.vintage_end);
+                const i=ordered.indexOf(vintage);
+                if(i>0)setVintage(ordered[i-1]);
+              }}
+              disabled={summary.vintages[0]?.vintage_end===vintage}
+              className="rounded-full border border-[#cad8e8] bg-white px-3 py-1.5 text-sm text-neutral-700 disabled:opacity-35"
+            >← Earlier</button>
+            <span className="rounded-full bg-[#eef4fb] px-3 py-1.5 text-sm font-medium text-[#184f95]">{vintageLabel(vintage)}</span>
+            <button
+              type="button"
+              onClick={()=>{
+                const ordered=summary.vintages.map(v=>v.vintage_end);
+                const i=ordered.indexOf(vintage);
+                if(i>=0&&i<ordered.length-1)setVintage(ordered[i+1]);
+              }}
+              disabled={summary.latest_vintage===vintage}
+              className="rounded-full border border-[#cad8e8] bg-white px-3 py-1.5 text-sm text-neutral-700 disabled:opacity-35"
+            >Later →</button>
           </div>
         </div>
         <div>
-          <div className="filter-label">Cell measure</div>
-          <div className="mt-2 flex flex-wrap gap-2">
-            {([
-              ["cumulative","Cumulative miles"],
-              ["incremental","Miles added"],
-              ["miles_per_1000","Miles / 1,000 residents"],
-              ["income","Income"],
-              ["hispanic","Hispanic / Latino"],
-              ["black","Black"],
-              ["asian","Asian"],
-              ["white","White"],
-            ] as [Metric,string][]).map(([value,label])=><button
-              key={value}
-              type="button"
-              onClick={()=>setMetric(value)}
-              className={`rounded-full border px-3 py-1.5 text-sm transition ${metric===value?"border-[#184f95] bg-[#184f95] text-white":"border-[#cad8e8] bg-white text-neutral-700 hover:border-[#184f95] hover:text-[#184f95]"}`}
-            >{label}</button>)}
+          <div className="filter-label">Color map by</div>
+          <div className="mt-2">
+            <div className="text-[11px] font-medium uppercase tracking-wide text-neutral-400">Waymo activity</div>
+            <div className="mt-1 flex flex-wrap gap-2">
+              {([
+                ["cumulative","Cumulative miles"],
+                ["incremental","Miles added"],
+                ["miles_per_1000","Miles per 1,000 residents"],
+              ] as [Metric,string][]).map(([value,label])=><button
+                key={value}
+                type="button"
+                onClick={()=>setMetric(value)}
+                className={`rounded-full border px-3 py-1.5 text-sm transition ${metric===value?"border-[#184f95] bg-[#184f95] text-white":"border-[#cad8e8] bg-white text-neutral-700 hover:border-[#184f95] hover:text-[#184f95]"}`}
+              >{label}</button>)}
+            </div>
+            <div className="mt-3 text-[11px] font-medium uppercase tracking-wide text-neutral-400">Resident characteristics</div>
+            <div className="mt-1 flex flex-wrap gap-2">
+              {([
+                ["income","Median household income"],
+                ["hispanic","% Hispanic / Latino"],
+                ["black","% Black, non-Hispanic"],
+                ["asian","% Asian, non-Hispanic"],
+                ["white","% White, non-Hispanic"],
+              ] as [Metric,string][]).map(([value,label])=><button
+                key={value}
+                type="button"
+                onClick={()=>setMetric(value)}
+                className={`rounded-full border px-3 py-1.5 text-sm transition ${metric===value?"border-[#184f95] bg-[#184f95] text-white":"border-[#cad8e8] bg-white text-neutral-700 hover:border-[#184f95] hover:text-[#184f95]"}`}
+              >{label}</button>)}
+            </div>
+            <div className="mt-2 text-xs text-neutral-500">These buttons change the cell shading; Waymo mileage stays the same.</div>
           </div>
         </div>
       </div>
