@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   refresh:
@@ -23,12 +23,27 @@ jobs:
       - name: Report refresh configuration
         if: ${{ env.R2_BUCKET == '' || env.R2_ACCOUNT_ID == '' || env.AWS_ACCESS_KEY_ID == '' || env.AWS_SECRET_ACCESS_KEY == '' || env.LEGISCAN_API_KEY == '' }}
         run: echo '::warning::Legislation refresh skipped. Configure R2 settings and the LEGISCAN_API_KEY secret.'
-      - name: Search current sessions and resolve bill details
+      - name: Search current sessions and rebuild LegiScan bill database
         if: ${{ env.R2_BUCKET != '' && env.R2_ACCOUNT_ID != '' && env.LEGISCAN_API_KEY != '' && env.AWS_ACCESS_KEY_ID != '' && env.AWS_SECRET_ACCESS_KEY != '' }}
-        run: python3 scripts/refresh-legislation.py /tmp/legislation_tracker.json
+        run: python3 scripts/refresh-legislation.py public/data/legislation_tracker.json
       - name: Validate refreshed index
         if: ${{ env.R2_BUCKET != '' && env.R2_ACCOUNT_ID != '' && env.LEGISCAN_API_KEY != '' && env.AWS_ACCESS_KEY_ID != '' && env.AWS_SECRET_ACCESS_KEY != '' }}
-        run: node scripts/validate-legislation-data.mjs /tmp/legislation_tracker.json
+        run: node scripts/validate-legislation-data.mjs public/data/legislation_tracker.json
+      - name: Refresh CSV companions
+        if: ${{ env.R2_BUCKET != '' && env.R2_ACCOUNT_ID != '' && env.LEGISCAN_API_KEY != '' && env.AWS_ACCESS_KEY_ID != '' && env.AWS_SECRET_ACCESS_KEY != '' }}
+        run: python3 scripts/export-data-csv.py
+      - name: Commit refreshed LegiScan database
+        if: ${{ env.R2_BUCKET != '' && env.R2_ACCOUNT_ID != '' && env.LEGISCAN_API_KEY != '' && env.AWS_ACCESS_KEY_ID != '' && env.AWS_SECRET_ACCESS_KEY != '' }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/data/legislation_tracker.json public/data/legislation_tracker_*.csv
+          if git diff --cached --quiet; then
+            echo "No legislation changes to commit"
+          else
+            git commit -m "Refresh LegiScan state legislation database"
+            git push
+          fi
       - name: Publish and verify versioned bill index
         if: ${{ env.R2_BUCKET != '' && env.R2_ACCOUNT_ID != '' && env.LEGISCAN_API_KEY != '' && env.AWS_ACCESS_KEY_ID != '' && env.AWS_SECRET_ACCESS_KEY != '' }}
-        run: python3 scripts/publish-r2-data.py legislation --file /tmp/legislation_tracker.json
+        run: python3 scripts/publish-r2-data.py legislation --file public/data/legislation_tracker.json
