@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import {
-  BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip,
+  BarChart, Bar, LabelList, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip,
   ResponsiveContainer,
 } from "recharts";
 import { GRID_PROPS, AXIS_PROPS, TOOLTIP_PROPS, SERIES } from "@/lib/chartTheme";
@@ -163,7 +163,9 @@ function Breakdown({title,subtitle,data}:{title:string;subtitle:string;data:{nam
           `${Number(v).toFixed(1)}% (${Number(item.payload.count).toLocaleString()} reports)`,
           "Share of reports"
         ]}/>
-        <Bar dataKey="pct" name="Share of reports" fill={SERIES.blue}/>
+        <Bar dataKey="pct" name="Share of reports" fill={SERIES.blue}>
+          <LabelList dataKey="pct" position="right" formatter={(v)=>`${Number(v).toFixed(1)}%`} style={{fontSize:11,fill:"#5f5f5f"}} />
+        </Bar>
       </BarChart>
     </ResponsiveContainer>
   </div>;
