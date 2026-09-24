@@ -604,6 +604,9 @@ export function WaymoS2Explorer({
 
   return <div>
     <div className="viz-card p-3">
+      <div className="mb-3 text-sm leading-relaxed text-neutral-600">
+        <strong>RO = Rider-Only.</strong> Waymo uses Rider-Only miles for miles driven in fully autonomous service with no human driver behind the wheel. These are not all Waymo vehicle miles and can include both passenger and non-passenger travel within Rider-Only operations.
+      </div>
       <div className="grid gap-3 lg:grid-cols-[1.15fr_1fr_2.2fr] lg:items-end">
         <div>
           <div className="filter-label">Market</div>
