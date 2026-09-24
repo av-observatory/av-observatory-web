@@ -35,7 +35,7 @@ export const CHART_CHROME = {
 
 export const AXIS_PROPS = {
   stroke: CHART_CHROME.axisLine,
-  tick: { fill: CHART_CHROME.textMuted, fontSize: 12 },
+  tick: { fill: CHART_CHROME.textMuted, fontSize: 13 },
   tickLine: false,
   axisLine: { stroke: CHART_CHROME.axisLine },
 };
@@ -52,7 +52,7 @@ export const TOOLTIP_PROPS = {
     border: "none",
     borderRadius: 8,
     boxShadow: "0 4px 12px rgba(11,11,11,0.18)",
-    fontSize: 12,
+    fontSize: 13,
     padding: "8px 12px",
   },
   labelStyle: { color: "#ffffff", fontWeight: 600, marginBottom: 4 },
@@ -61,7 +61,7 @@ export const TOOLTIP_PROPS = {
 };
 
 export const LEGEND_PROPS = {
-  wrapperStyle: { fontSize: 12, color: CHART_CHROME.textSecondary, paddingTop: 8 },
+  wrapperStyle: { fontSize: 13, color: CHART_CHROME.textSecondary, paddingTop: 8 },
   iconType: "circle" as const,
   iconSize: 8,
 };

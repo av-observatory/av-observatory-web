@@ -56,8 +56,8 @@ export function ActivityCompositeStats({ rows, company }: { rows: ActivityMonthl
       <h2 className="text-xl font-semibold tracking-tight">{company} Operating Indicators</h2>
       <span className="text-sm text-neutral-500">{label}</span>
     </div>
-    <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-2.5">
-      {stats.map(([label,value,note])=><div key={label} className="viz-card p-3">
+    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+      {stats.map(([label,value,note])=><div key={label} className="viz-card p-4">
         <div className="text-xs text-neutral-500 font-medium">{label}</div>
         <div className="text-2xl font-semibold tracking-tight tabular-nums mt-1">{value}</div>
         <div className="text-xs text-neutral-500 mt-1 leading-snug">{note}</div>
