@@ -656,7 +656,7 @@ export function WaymoS2Explorer({
     <div className="viz-card p-4 mt-5">
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
-          <h3 className="font-semibold">Average Waymo VMT per 1,000 Residents</h3>
+          <h3 className="font-semibold">Population-Weighted Exposure to Waymo Rider-Only Mileage</h3>
         </div>
         <div className="flex gap-2">
           {(["race","income"] as DemographicView[]).map(view=><button key={view} type="button" onClick={()=>setDemographicView(view)} className={`rounded-full border px-3 py-1.5 text-sm transition ${demographicView===view?"border-[#184f95] bg-[#184f95] text-white":"border-[#cad8e8] bg-white text-neutral-700"}`}>{view==="race"?"Race / Ethnicity":"Income"}</button>)}
@@ -664,8 +664,8 @@ export function WaymoS2Explorer({
       </div>
       <div className="mt-2 text-xs text-neutral-500">
         {demographicView==="race"
-          ?"Each bar is the average VMT-per-resident intensity of the S2 cells where residents of that group live, weighted by the estimated number of group residents in each cell."
-          :"Cells are grouped by estimated household-income context; bars show the population-weighted average VMT-per-resident intensity within each income band."}
+          ?"Population-weighted exposure to Waymo Rider-Only mileage based on where residents live. For each S2 cell, the share of residents in a racial or ethnic group is applied to that cell's estimated population to estimate group residents. Those residents are assigned the cell's Rider-Only mileage intensity (RO miles per 1,000 residents), and the chart reports the group-population-weighted average across all cells."
+          :"Population-weighted exposure to Waymo Rider-Only mileage based on where residents live. S2 cells are grouped by estimated household-income context, and the chart reports the population-weighted average Rider-Only mileage intensity within each income band."}
       </div>
       <ResponsiveContainer width="100%" height={320}>
         <BarChart data={demographicRows} layout="vertical" margin={{top:16,right:20,bottom:5,left:28}}>
@@ -677,7 +677,7 @@ export function WaymoS2Explorer({
         </BarChart>
       </ResponsiveContainer>
       <div className="text-xs leading-relaxed text-neutral-500">
-        This is a place-based exposure indicator, not rider demographics: it compares Waymo VMT intensity in the S2 cells where different resident groups live.
+        This is a place-based exposure indicator, not rider demographics. It describes how much Waymo Rider-Only activity occurs in the places where different resident groups live.
       </div>
     </div>
 
