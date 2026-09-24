@@ -169,7 +169,7 @@ function metricValue(p:S2Feature["properties"],metric:Metric,census:CensusDatase
 }
 function metricLabel(metric:Metric){
   if(metric==="cumulative")return "Rider-Only (RO) miles per cell";
-  if(metric==="incremental")return "RO miles added per cell";
+  if(metric==="incremental")return "RO miles added this quarter per cell";
   if(metric==="miles_per_1000")return "RO miles per 1,000 estimated residents";
   if(metric==="interaction")return "Bivariate: Waymo VMT per resident × resident characteristic";
   return "Rider-Only (RO) miles per cell";
@@ -625,7 +625,7 @@ export function WaymoS2Explorer({
         <div>
           <div className="filter-label">Map</div>
           <div className="mt-1 flex flex-wrap gap-1.5">
-            {([["miles_per_1000","RO Miles / Resident"],["cumulative","Cumulative RO Miles"],["incremental","RO Miles Added"]] as [Metric,string][]).map(([value,label])=><button key={value} type="button" onClick={()=>setMetric(value)} className={`rounded-md border px-2.5 py-2 text-sm transition ${metric===value?"border-[#184f95] bg-[#184f95] text-white":"border-[#cad8e8] bg-white text-neutral-700 hover:border-[#184f95] hover:text-[#184f95]"}`}>{label}</button>)}
+            {([["miles_per_1000","RO Miles / Resident"],["cumulative","Cumulative RO Miles"],["incremental","RO Miles Added This Quarter"]] as [Metric,string][]).map(([value,label])=><button key={value} type="button" onClick={()=>setMetric(value)} className={`rounded-md border px-2.5 py-2 text-sm transition ${metric===value?"border-[#184f95] bg-[#184f95] text-white":"border-[#cad8e8] bg-white text-neutral-700 hover:border-[#184f95] hover:text-[#184f95]"}`}>{label}</button>)}
           </div>
         </div>
       </div>
@@ -641,7 +641,7 @@ export function WaymoS2Explorer({
           <div><h3 className="text-xl font-semibold">{selectedFacet.market} · VMT by S2 Cell</h3><div className="text-xs text-neutral-500">{selectedFacet.cells.length.toLocaleString()} cells · {loading?"Loading…":vintageLabel(vintage)}</div></div>
           <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-neutral-600">
             <span><strong className="text-neutral-900">{compactMiles(total)}</strong> cumulative mi</span>
-            <span><strong className="text-neutral-900">{compactMiles(added)}</strong> added</span>
+            <span><strong className="text-neutral-900">{compactMiles(added)}</strong> added this quarter</span>
             <span><strong className="text-neutral-900">{compactMiles(population)}</strong> est. residents</span>
           </div>
         </div>
@@ -710,7 +710,7 @@ export function WaymoS2Explorer({
           <YAxis {...AXIS_PROPS} tickFormatter={v=>`${v}M`}/>
           <Tooltip {...TOOLTIP_PROPS} formatter={(v)=>`${v}M miles`}/>
           <Line type="monotone" dataKey="cumulative" name="Cumulative RO miles" stroke={SERIES.blue} strokeWidth={2.5} dot={false}/>
-          <Line type="monotone" dataKey="added" name="RO miles added since prior release" stroke={SERIES.orange} strokeWidth={1.8} dot={false}/>
+          <Line type="monotone" dataKey="added" name="RO miles added this quarter" stroke={SERIES.orange} strokeWidth={1.8} dot={false}/>
         </LineChart>
       </ResponsiveContainer>
     </div>
