@@ -333,13 +333,6 @@ function MarketMap({
       L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:19,attribution:"&copy; OpenStreetMap contributors"}).addTo(map);
       const bounds=L.latLngBounds([]);
 
-      if(facet.serviceFeature){
-        const service=L.geoJSON(facet.serviceFeature as any,{
-          style:{color:"#174b8a",weight:2,opacity:0.9,fillColor:"#2a78d6",fillOpacity:facet.cells.length?0.04:0.18},
-        }).addTo(map);
-        try{const b=service.getBounds();if(b?.isValid())bounds.extend(b);}catch{}
-      }
-
       if(facet.cells.length){
         L.geoJSON({type:"FeatureCollection",features:facet.cells} as any,{
           style:(feature:any)=>{
