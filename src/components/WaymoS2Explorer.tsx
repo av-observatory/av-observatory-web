@@ -514,6 +514,7 @@ export function WaymoS2Explorer({
   }));
   const marketsWithVmt=facets.filter(f=>f.cells.length>0).length;
   const marketsWithoutVmt=facets.length-marketsWithVmt;
+  const uniqueMappedCells=new Set(mapData.features.map(f=>String(f.properties.s2_cell))).size;
 
   return <div>
     <div className="viz-card p-4">
@@ -542,7 +543,7 @@ export function WaymoS2Explorer({
       <div className="viz-card p-3"><div className="text-xs text-neutral-500">Waymo markets</div><div className="text-2xl font-semibold mt-1">{facets.length}</div></div>
       <div className="viz-card p-3"><div className="text-xs text-neutral-500">Markets with S2 VMT</div><div className="text-2xl font-semibold mt-1">{marketsWithVmt}</div></div>
       <div className="viz-card p-3"><div className="text-xs text-neutral-500">Boundary only / no VMT yet</div><div className="text-2xl font-semibold mt-1">{marketsWithoutVmt}</div></div>
-      <div className="viz-card p-3"><div className="text-xs text-neutral-500">Published S2 cells</div><div className="text-2xl font-semibold mt-1">{mapData.features.length.toLocaleString()}</div></div>
+      <div className="viz-card p-3"><div className="text-xs text-neutral-500">Published S2 cells</div><div className="text-2xl font-semibold mt-1">{uniqueMappedCells.toLocaleString()}</div></div>
     </div>
 
     <div className="mt-5 flex items-baseline justify-between gap-4">
@@ -559,7 +560,12 @@ export function WaymoS2Explorer({
       {facets.map(facet=>{
         const total=facet.cells.reduce((s,f)=>s+Number(f.properties.waymo_ro_miles||0),0);
         const added=facet.cells.reduce((s,f)=>s+Number(f.properties.incremental_miles||0),0);
-        const censusRows=facet.cells.map(f=>census.cells[String(f.properties.s2_cell)]).filter(Boolean);
+        const censusRows=Array.from(new Map(
+          facet.cells.map(f=>{
+            const id=String(f.properties.s2_cell);
+            return [id,census.cells[id]] as const;
+          })
+        ).values()).filter((r):r is CensusCell=>Boolean(r));
         const population=censusRows.reduce((s,r)=>s+Number(r.estimated_population||0),0);
         const incomeWeight=censusRows.reduce((s,r)=>s+(r.household_weighted_bg_median_income!==null?Number(r.estimated_households||0):0),0);
         const income=incomeWeight>0?censusRows.reduce((s,r)=>s+(r.household_weighted_bg_median_income??0)*Number(r.estimated_households||0),0)/incomeWeight:null;
