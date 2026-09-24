@@ -404,20 +404,20 @@ export function WaymoS2Explorer({
       f.properties.county==="Los Angeles"
     );
 
-    const northFeature=derivedRegionFeature("Northern California","CA",northCaCells);
+    const northFeature=derivedRegionFeature("San Francisco Bay Area","CA",northCaCells);
     if(northFeature){
-      map.set("Northern California|CA",{
-        market:"Northern California",
+      map.set("San Francisco Bay Area|CA",{
+        market:"San Francisco Bay Area",
         state:"CA",
         serviceFeature:northFeature,
         status:"observed_s2_reporting_region",
         cells:northCaCells,
       });
     }
-    const southFeature=derivedRegionFeature("Southern California","CA",southCaCells);
+    const southFeature=derivedRegionFeature("Los Angeles","CA",southCaCells);
     if(southFeature){
-      map.set("Southern California|CA",{
-        market:"Southern California",
+      map.set("Los Angeles|CA",{
+        market:"Los Angeles",
         state:"CA",
         serviceFeature:southFeature,
         status:"observed_s2_reporting_region",
@@ -431,26 +431,22 @@ export function WaymoS2Explorer({
       const state=String(p.state??"");
       if(!market||!state)continue;
 
-      // When S2 VMT exists for the broad California reporting region, that region
-      // replaces the Bay Area/Los Angeles service polygon as the primary facet.
-      if(state==="CA" && (
-        (market==="San Francisco Bay Area" && northCaCells.length>0) ||
-        (market==="Los Angeles" && southCaCells.length>0)
-      )) continue;
-
-      map.set(`${market}|${state}`,{
-        market,state,serviceFeature:f,status:String(p.status??""),
-        source_url:String(p.source_url??""),cells:[]
-      });
+      const key=`${market}|${state}`;
+      if(map.has(key)){
+        const existing=map.get(key)!;
+        existing.source_url=String(p.source_url??existing.source_url??"");
+        existing.status=existing.status||String(p.status??"");
+      }else{
+        map.set(key,{
+          market,state,serviceFeature:f,status:String(p.status??""),
+          source_url:String(p.source_url??""),cells:[]
+        });
+      }
     }
 
     for(const loc of locations){
       if(loc.company!=="Waymo")continue;
       if((loc.evidence_status??"current")!=="current"||(loc.activity_type??loc.phase)!=="deployment")continue;
-      if(loc.state==="CA" && (
-        (loc.market==="San Francisco Bay Area" && northCaCells.length>0) ||
-        (loc.market==="Los Angeles" && southCaCells.length>0)
-      )) continue;
       const key=`${loc.market}|${loc.state}`;
       if(!map.has(key)) map.set(key,{
         market:loc.market,state:loc.state,
@@ -497,7 +493,9 @@ export function WaymoS2Explorer({
       }
     }
 
-    return Array.from(map.values()).sort((a,b)=>a.state.localeCompare(b.state)||a.market.localeCompare(b.market));
+    return Array.from(map.values())
+      .filter(f=>f.cells.length>0)
+      .sort((a,b)=>a.state.localeCompare(b.state)||a.market.localeCompare(b.market));
   },[waymoService,locations,mapData]);
 
   const allValues=useMemo(()=>mapData.features
@@ -512,8 +510,7 @@ export function WaymoS2Explorer({
     cumulative:Number((v.cumulative_miles/1_000_000).toFixed(1)),
     added:Number((v.incremental_miles_vs_prior_release/1_000_000).toFixed(1)),
   }));
-  const marketsWithVmt=facets.filter(f=>f.cells.length>0).length;
-  const marketsWithoutVmt=facets.length-marketsWithVmt;
+  const marketsWithVmt=facets.length;
   const uniqueMappedCells=new Set(mapData.features.map(f=>String(f.properties.s2_cell))).size;
 
   return <div>
@@ -540,9 +537,7 @@ export function WaymoS2Explorer({
     </div>
 
     <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5 mt-3">
-      <div className="viz-card p-3"><div className="text-xs text-neutral-500">Waymo markets</div><div className="text-2xl font-semibold mt-1">{facets.length}</div></div>
-      <div className="viz-card p-3"><div className="text-xs text-neutral-500">Markets with S2 VMT</div><div className="text-2xl font-semibold mt-1">{marketsWithVmt}</div></div>
-      <div className="viz-card p-3"><div className="text-xs text-neutral-500">Boundary only / no VMT yet</div><div className="text-2xl font-semibold mt-1">{marketsWithoutVmt}</div></div>
+      <div className="viz-card p-3"><div className="text-xs text-neutral-500">Markets with S2 data</div><div className="text-2xl font-semibold mt-1">{marketsWithVmt}</div></div>
       <div className="viz-card p-3"><div className="text-xs text-neutral-500">Published S2 cells</div><div className="text-2xl font-semibold mt-1">{uniqueMappedCells.toLocaleString()}</div></div>
     </div>
 
@@ -550,7 +545,7 @@ export function WaymoS2Explorer({
       <div>
         <h3 className="text-xl font-semibold">Waymo Markets · VMT by Cell</h3>
         <p className="text-sm text-neutral-500 mt-1">
-          Each market is shown separately. Where Waymo has published S2 mileage, cells replace the polygon as the primary deployment footprint; current service-area polygons provide context and fill gaps where S2 VMT is not yet published.
+          Each market with published S2 mileage is shown separately. Markets without S2 data are omitted.
         </p>
       </div>
       <span className="text-sm text-neutral-500">{loading?"Loading…":vintageLabel(vintage)}</span>
@@ -577,7 +572,7 @@ export function WaymoS2Explorer({
                 <div className="text-sm text-neutral-500">{facet.state}</div>
               </div>
               <span className={`text-xs px-2 py-1 rounded-full ${facet.cells.length?"bg-blue-50 text-blue-800":"bg-neutral-100 text-neutral-600"}`}>
-                {facet.cells.length?`${facet.cells.length} S2 cells`:"boundary only"}
+                {`${facet.cells.length} S2 cells`}
               </span>
             </div>
             {facet.status==="s2_data_only" && (
