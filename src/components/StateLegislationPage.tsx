@@ -85,9 +85,8 @@ function BillRow({bill}:{bill:Bill}) {
     </div>
     <p className="text-sm leading-relaxed text-neutral-700 mt-2">{bill.takeaway ?? bill.summary}</p>
     <p className="text-sm text-neutral-500 mt-2"><strong>{displayDate(bill.last_action_date)}</strong> · {bill.last_action}</p>
-    <div className="flex flex-wrap gap-4 mt-2 text-sm">
+    <div className="mt-2 text-sm">
       <a href={bill.source_url} target="_blank" rel="noreferrer" className="text-[#184f95] underline">Official bill record ↗</a>
-      {bill.repository_url && <a href={bill.repository_url} target="_blank" rel="noreferrer" className="text-[#184f95] underline">Open States record ↗</a>}
     </div>
   </article>;
 }
