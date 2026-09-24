@@ -1,140 +1,258 @@
 #!/usr/bin/env python3
-"""Refresh the public bill JSON from LegiScan; requires LEGIScan_API_KEY.
+"""Build the AV Observatory state legislation database from Open States API v3.
 
-Writes to a temporary output and validates before replacing the reviewed snapshot.
-GitHub Actions uploads the result to R2; the checked-in fallback is curated.
+The database is independently discovered from Open States across all 50 states + DC.
+NCSL and LegiScan are not used as seed lists. Official legislature source URLs are
+retained where Open States provides them.
+
+Environment:
+  OPENSTATES_API_KEY   required
 """
 import json
 import os
 import re
 import sys
+import time
 from datetime import date
 from pathlib import Path
 from urllib.parse import urlencode
-from urllib.request import urlopen
+from urllib.request import Request, urlopen
 
 ROOT = Path(__file__).resolve().parents[1]
-BASE = json.loads((ROOT / "public/data/legislation_tracker.json").read_text())
-KEY = os.environ.get("LEGISCAN_API_KEY")
-if not KEY:
-    sys.exit("LEGISCAN_API_KEY is required")
 DEST = Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT / "public/data/legislation_tracker.json"
-TERMS = ['"autonomous vehicle"', '"automated driving system"', '"driverless vehicle"', '"self-driving vehicle"', '"robotaxi"']
-RELEVANT = re.compile(r"\b(?:autonomous (?:vehicle|driving|truck|taxi|mobility)|automated driving system|driverless (?:vehicle|truck)|self.driving (?:vehicle|car|truck)|robotaxi)\b", re.I)
-STATUS = {0: "draft", 1: "introduced", 2: "engrossed", 3: "enrolled", 4: "passed", 5: "vetoed", 6: "failed"}
-SEEN = {}
+KEY = os.environ.get("OPENSTATES_API_KEY")
+if not KEY:
+    sys.exit("OPENSTATES_API_KEY is required")
 
-STAGES = ("introduced", "committee", "floor", "passed_legislature", "executive", "law")
-PROGRESS_EVENTS = {1: "introduced", 2: "floor", 3: "passed_legislature", 9: "committee", 10: "committee", 7: "law", 8: "law"}
+API = "https://v3.openstates.org"
+JURISDICTIONS = "AL AK AZ AR CA CO CT DE FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS MO MT NE NV NH NJ NM NY NC ND OH OK OR PA RI SC SD TN TX UT VT VA WA WV WI WY DC".split()
+NAMES = dict(zip(
+    JURISDICTIONS,
+    "Alabama|Alaska|Arizona|Arkansas|California|Colorado|Connecticut|Delaware|Florida|Georgia|Hawaii|Idaho|Illinois|Indiana|Iowa|Kansas|Kentucky|Louisiana|Maine|Maryland|Massachusetts|Michigan|Minnesota|Mississippi|Missouri|Montana|Nebraska|Nevada|New Hampshire|New Jersey|New Mexico|New York|North Carolina|North Dakota|Ohio|Oklahoma|Oregon|Pennsylvania|Rhode Island|South Carolina|South Dakota|Tennessee|Texas|Utah|Vermont|Virginia|Washington|West Virginia|Wisconsin|Wyoming|District of Columbia".split("|")
+))
 
-def process_details(item, status, action, action_date, source_url):
-    """Only use dated LegiScan progress/calendar entries; do not invent hearings."""
-    dates = {}
-    stage = "introduced"
-    for entry in item.get("progress") or []:
-        current = PROGRESS_EVENTS.get(int(entry.get("event") or 0))
-        value = str(entry.get("date") or "")[:10]
-        if current and re.fullmatch(r"\d{4}-\d{2}-\d{2}", value):
-            dates[current] = value
-            if STAGES.index(current) > STAGES.index(stage):
-                stage = current
-    if status == "engrossed":
-        stage = max((stage, "floor"), key=STAGES.index)
-    elif status == "enrolled":
-        stage = max((stage, "passed_legislature"), key=STAGES.index)
-    elif status in {"passed", "vetoed"}:
-        stage = max((stage, "executive"), key=STAGES.index)
-    if re.search(r"\b(referred to|assigned to|in (?:house|senate) .*committee|committee hearing)\b", action, re.I):
-        stage = max((stage, "committee"), key=STAGES.index)
-    if re.search(r"\b(sent to (?:governor|president)|presented to (?:governor|president))\b", action, re.I):
-        stage = max((stage, "executive"), key=STAGES.index)
-        dates["executive"] = action_date
-    if re.search(r"\b(signed (?:by|into law)|became law|chaptered|veto override adopted|approved without signature|allowed to become law)\b", action, re.I):
-        stage = "law"
-        dates["law"] = action_date
-    hearings = []
-    for event in item.get("calendar") or []:
-        value = str(event.get("date") or "")[:10]
-        if "hearing" in str(event.get("type") or "").lower() and re.fullmatch(r"\d{4}-\d{2}-\d{2}", value):
-            hearings.append(dict(date=value, time=str(event.get("time") or ""), description=str(event.get("description") or "Committee hearing"), source_url=source_url))
-    hearings = sorted(hearings, key=lambda x: x["date"], reverse=True)[:3]
-    return stage, dates, hearings
+# Deliberately broad enough to catch bills that avoid "autonomous vehicle" phrasing.
+QUERIES = [
+    "autonomous vehicle",
+    "automated driving system",
+    "driverless",
+    "self-driving",
+    "robotaxi",
+    "automated vehicle",
+]
+RELEVANT = re.compile(
+    r"\b(?:autonomous\s+(?:vehicle|driving|truck|taxi|mobility|shuttle)s?|"
+    r"automated\s+(?:driving\s+system|vehicle)s?|"
+    r"driverless\s+(?:vehicle|car|truck|taxi|shuttle)s?|"
+    r"self[- ]driving\s+(?:vehicle|car|truck|taxi)s?|robotaxi(?:s)?|"
+    r"highly\s+automated\s+vehicle)s?\b",
+    re.I,
+)
+EXCLUDE = re.compile(r"\b(?:autonomous region|autonomous university|autonomous drone|unmanned aircraft)\b", re.I)
 
-def request(**params):
-    url = "https://api.legiscan.com/?" + urlencode(dict(key=KEY, **params))
-    with urlopen(url, timeout=30) as response:
-        payload = json.load(response)
-    if payload.get("status") != "OK":
-        raise RuntimeError(payload.get("alert", {}).get("message", "LegiScan API error"))
-    return payload
+def api_get(path, params=None, retries=4):
+    url = API + path
+    if params:
+        url += "?" + urlencode(params, doseq=True)
+    req = Request(url, headers={"X-API-KEY": KEY, "User-Agent": "AV-Observatory/1.0"})
+    for attempt in range(retries):
+        try:
+            with urlopen(req, timeout=45) as response:
+                return json.load(response)
+        except Exception:
+            if attempt == retries - 1:
+                raise
+            time.sleep(2 ** attempt)
 
-for term in TERMS:
-    page = 1
-    while True:
-        result = request(op="getSearch", state="ALL", query=term, year=2, page=page)["searchresult"]
-        summary = result["summary"]
-        for row in result.values():
-            if not isinstance(row, dict) or "bill_id" not in row:
-                continue
-            if RELEVANT.search(" ".join(str(row.get(x, "")) for x in ("title", "description"))):
-                SEEN[row["bill_id"]] = row
-        total_pages = int(summary["page_total"])
-        if total_pages > 100:
-            raise RuntimeError(f"Search '{term}' is too broad ({total_pages} pages); revise query to avoid an incomplete index")
-        if page >= total_pages:
+def current_sessions(code):
+    payload = api_get(f"/jurisdictions/{code}", {"include": ["legislative_sessions"]})
+    sessions = payload.get("legislative_sessions") or []
+    today = date.today().isoformat()
+    active = []
+    for session in sessions:
+        start = str(session.get("start_date") or "")
+        end = str(session.get("end_date") or "")
+        if start and end and start <= today <= end:
+            active.append(str(session.get("identifier") or session.get("name") or ""))
+    if active:
+        return [x for x in active if x]
+    # Some states do not populate exact active dates. Use the most recently starting
+    # session rather than silently dropping the state.
+    dated = sorted(
+        (s for s in sessions if s.get("identifier") or s.get("name")),
+        key=lambda s: str(s.get("start_date") or ""),
+        reverse=True,
+    )
+    return [str(dated[0].get("identifier") or dated[0].get("name"))] if dated else []
+
+def bill_text(item):
+    bits = [
+        str(item.get("title") or ""),
+        " ".join(str(x.get("abstract") or x) if isinstance(x, dict) else str(x) for x in (item.get("abstracts") or [])),
+        " ".join(str(x) for x in (item.get("subject") or [])),
+    ]
+    return " ".join(bits)
+
+def latest_action(actions):
+    if not actions:
+        return "", "No action text available", []
+    rows = sorted(actions, key=lambda x: (str(x.get("date") or ""), int(x.get("order") or 0)))
+    last = rows[-1]
+    return str(last.get("date") or "")[:10], str(last.get("description") or "No action text available"), rows
+
+def derive_status(actions):
+    classes = []
+    for action in actions:
+        classes.extend(str(x) for x in (action.get("classification") or []))
+    c = set(classes)
+    if "executive-veto" in c:
+        return "vetoed"
+    if "became-law" in c or "executive-signature" in c:
+        return "enacted"
+    if "passage" in c:
+        return "passed"
+    if "committee-passage-favorable" in c:
+        return "engrossed"
+    return "introduced"
+
+def derive_stage(actions, status):
+    if status == "enacted":
+        return "law"
+    if status == "vetoed":
+        return "executive"
+    classes = [str(x) for a in actions for x in (a.get("classification") or [])]
+    if status == "passed":
+        return "passed_legislature"
+    if any(x in classes for x in ("committee-passage-favorable", "passage")):
+        return "floor"
+    if any(x in classes for x in ("referral-committee", "committee-passage")):
+        return "committee"
+    return "introduced"
+
+def source_urls(item):
+    urls = []
+    for source in item.get("sources") or []:
+        if isinstance(source, dict):
+            u = source.get("url")
+        else:
+            u = source
+        if isinstance(u, str) and u.startswith("https://"):
+            urls.append(u)
+    official = next((u for u in urls if "openstates.org" not in u and "pluralpolicy.com" not in u), None)
+    openstates = item.get("openstates_url")
+    if not isinstance(openstates, str) or not openstates.startswith("https://"):
+        openstates = None
+    return official or openstates or "", openstates or official or ""
+
+seen = {}
+state_sessions = {}
+for code in JURISDICTIONS:
+    sessions = current_sessions(code)
+    state_sessions[code] = sessions
+    for session in sessions:
+        for query in QUERIES:
+            page = 1
+            while True:
+                payload = api_get("/bills", {
+                    "jurisdiction": code,
+                    "session": session,
+                    "q": query,
+                    "include": ["actions", "abstracts", "sources"],
+                    "page": page,
+                    "per_page": 50,
+                })
+                results = payload.get("results") or []
+                for item in results:
+                    text = bill_text(item)
+                    if RELEVANT.search(text) and not EXCLUDE.search(text):
+                        key = item.get("id") or f"{code}|{session}|{item.get('identifier')}"
+                        seen[key] = item
+                pagination = payload.get("pagination") or {}
+                max_page = int(pagination.get("max_page") or pagination.get("pages") or page)
+                if page >= max_page or not results:
+                    break
+                page += 1
+
+bills = []
+for item in seen.values():
+    jurisdiction = str(item.get("jurisdiction") or item.get("jurisdiction_abbreviation") or "")
+    if jurisdiction not in JURISDICTIONS:
+        # API results normally return a jurisdiction object/name rather than abbreviation.
+        jid = str((item.get("legislative_session") or {}).get("jurisdiction_id") or item.get("jurisdiction_id") or "")
+        m = re.search(r"/state:([a-z]{2})", jid)
+        jurisdiction = m.group(1).upper() if m else jurisdiction.upper()
+    if jurisdiction not in JURISDICTIONS:
+        continue
+    identifier = str(item.get("identifier") or "")
+    title = str(item.get("title") or "").strip()
+    actions = item.get("actions") or []
+    action_date, action_text, ordered_actions = latest_action(actions)
+    status = derive_status(ordered_actions)
+    stage = derive_stage(ordered_actions, status)
+    source_url, repository_url = source_urls(item)
+    session = str((item.get("legislative_session") or {}).get("identifier") or item.get("session") or "")
+    abstracts = item.get("abstracts") or []
+    summary = ""
+    for abstract in abstracts:
+        value = abstract.get("abstract") if isinstance(abstract, dict) else str(abstract)
+        if value:
+            summary = str(value).strip()
             break
-        page += 1
+    if not summary:
+        summary = title
+    stage_dates = {}
+    for action in ordered_actions:
+        adate = str(action.get("date") or "")[:10]
+        for cls in action.get("classification") or []:
+            if cls == "introduction": stage_dates["introduced"] = adate
+            elif cls in {"referral-committee", "committee-passage-favorable"}: stage_dates["committee"] = adate
+            elif cls == "passage": stage_dates["passed_legislature"] = adate
+            elif cls in {"executive-signature", "executive-veto"}: stage_dates["executive"] = adate
+            elif cls == "became-law": stage_dates["law"] = adate
+    bill_id = re.sub(r"[^a-z0-9]+", "-", identifier.lower()).strip("-")
+    bills.append({
+        "id": f"{jurisdiction.lower()}-{bill_id}-{re.sub(r'[^0-9a-z]+','-',session.lower()).strip('-')}",
+        "jurisdiction": jurisdiction,
+        "number": identifier,
+        "title": title,
+        "summary": summary[:700],
+        "takeaway": summary.split(". ")[0].rstrip(".")[:350],
+        "status": status,
+        "measure_type": "resolution" if any("resolution" in str(x).lower() for x in (item.get("classification") or [])) else "bill",
+        "last_action_date": action_date or date.today().isoformat(),
+        "last_action": action_text,
+        "session": session,
+        "progress_stage": stage,
+        "stage_dates": stage_dates,
+        "hearings": [],
+        "source_url": source_url,
+        "repository_url": repository_url,
+        "reviewed_at": date.today().isoformat(),
+        "summary_reviewed_at": None,
+        "openstates_id": item.get("id"),
+        "openstates_updated_at": item.get("updated_at"),
+    })
 
-old = {(b["jurisdiction"], re.sub(r"\W", "", b["number"]).upper()): b for b in BASE["federal"] + BASE["state_bills"]}
-refreshed = []
-for row in SEEN.values():
-    item = request(op="getBill", id=row["bill_id"])["bill"]
-    title = str(item.get("title") or "")
-    description = str(item.get("description") or "")
-    if not RELEVANT.search(title + " " + description):
-        continue
-    jurisdiction = item.get("state") or row.get("state")
-    if jurisdiction not in {"US", *(s["code"] for s in BASE["states"])}:
-        continue
-    number = item.get("bill_number") or row.get("bill_number")
-    if not number:
-        continue
-    original = old.get((jurisdiction, re.sub(r"\W", "", number).upper()))
-    status = STATUS.get(int(item.get("status", 0)), "unclassified")
-    session = item.get("session", {}).get("session_name") or (original or {}).get("session", "Current session")
-    action = str(item.get("last_action") or "No action text available")
-    action_date = str(item.get("last_action_date") or item.get("status_date") or "")[:10]
-    if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", action_date):
-        raise ValueError(f"Missing action date for {jurisdiction} {number}")
-    url = item.get("state_link") or item.get("url")
-    if not url or not url.startswith("https://"):
-        url = item.get("url")
-    if not url or not url.startswith("https://"):
-        raise ValueError(f"Missing HTTPS source for {jurisdiction} {number}")
-    # Curated descriptions are retained until a human reviews changes to the text.
-    summary = (original or {}).get("summary") or (description.strip()[:280] or title)
-    progress_stage, stage_dates, hearings = process_details(item, status, action, action_date, url)
-    measure_type = "resolution" if "resolution" in str(item.get("bill_type") or "").lower() else (original or {}).get("measure_type", "bill")
-    refreshed.append(dict(id=f"{jurisdiction.lower()}-{re.sub(r'\W', '', number).lower()}-{item.get('session', {}).get('year_start', date.today().year)}",
-        jurisdiction=jurisdiction, number=number, title=title, summary=summary, measure_type=measure_type, takeaway=(original or {}).get("takeaway") or summary.split(". ")[0].rstrip("."),
-        status=status, last_action_date=action_date, last_action=action, session=session,
-        progress_stage=progress_stage, stage_dates=stage_dates, hearings=hearings,
-        source_url=url, repository_url=(item.get("url") if str(item.get("url") or "").startswith("https://") else f"https://legiscan.com/{jurisdiction}/legislation"),
-        reviewed_at=date.today().isoformat(), bill_id=item["bill_id"],
-        summary_reviewed_at=(original or {}).get("summary_reviewed_at")))
+# Preserve federal section from current snapshot; this workflow is specifically the
+# 50-state + DC database. Federal legislation remains in its existing pipeline/page.
+base = json.loads((ROOT / "public/data/legislation_tracker.json").read_text())
+states = [{
+    "code": code,
+    "name": NAMES[code],
+    "repository_url": f"https://open.pluralpolicy.com/{code.lower()}/bills/",
+    "sessions": state_sessions.get(code, []),
+} for code in JURISDICTIONS]
 
-if len(refreshed) < 10:
-    raise RuntimeError(f"Only {len(refreshed)} relevant bills found; refusing to replace the snapshot")
-for state in BASE["states"]:
-    code = state["code"]
-    state["repository_url"] = f"https://legiscan.com/{code}/legislation"
-BASE.update(
-    as_of=date.today().isoformat(),
-    state_index_reviewed=date.today().isoformat(),
-    source="LegiScan API current-session search",
-    methodology="Current-session AV bills are discovered directly through the LegiScan API using AV-specific search terms, then resolved to bill-level records with status, latest action, progress history, and hearings. Official legislature links are retained as the primary bill source when LegiScan supplies them. The current-session bill database is rebuilt from LegiScan on each refresh rather than seeded from NCSL. Enacted-law summaries are maintained separately in the reviewed state policy dataset.",
-    federal=sorted((x for x in refreshed if x["jurisdiction"] == "US"), key=lambda x: x["last_action_date"], reverse=True),
-    state_bills=sorted((x for x in refreshed if x["jurisdiction"] != "US"), key=lambda x: (x["jurisdiction"], x["number"])))
+out = {
+    "schema_version": "1.2.0",
+    "as_of": date.today().isoformat(),
+    "state_index_reviewed": date.today().isoformat(),
+    "methodology": "Current-session AV legislation is independently discovered across all 50 states and DC using Open States API v3 full-text search. The database is not seeded from NCSL or LegiScan. Multiple AV search concepts are queried for each active legislative session, results are deduplicated, and normalized actions are used to derive progress status. Official legislature source URLs supplied by Open States are retained where available. Machine-discovered records should be checked against the linked official bill record before legal reliance.",
+    "source": "Open States API v3 national AV bill discovery",
+    "federal": base.get("federal", []),
+    "state_bills": sorted(bills, key=lambda x: (x["jurisdiction"], x["number"], x["session"])),
+    "states": states,
+}
 DEST.parent.mkdir(parents=True, exist_ok=True)
-DEST.write_text(json.dumps(BASE, ensure_ascii=False, indent=2) + "\n")
-print(f"Indexed {len(BASE['federal'])} federal and {len(BASE['state_bills'])} state bills")
+DEST.write_text(json.dumps(out, ensure_ascii=False, indent=2) + "\n")
+print(f"Open States AV database: {len(bills)} bills across {len({b['jurisdiction'] for b in bills})} jurisdictions")
