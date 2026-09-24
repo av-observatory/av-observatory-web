@@ -337,7 +337,7 @@ function MarketMap({
       const bounds=L.latLngBounds([]);
 
       if(facet.cells.length){
-        L.geoJSON({type:"FeatureCollection",features:facet.cells} as any,{
+        const cellLayer=L.geoJSON({type:"FeatureCollection",features:facet.cells} as any,{
           style:(feature:any)=>{
             const p=feature?.properties??{};
             const value=metricValue(p,metric,census);
@@ -367,12 +367,16 @@ function MarketMap({
             </div>`,{sticky:true,direction:"top",opacity:0.96});
           },
         }).addTo(map);
+        try{
+          const cellBounds=cellLayer.getBounds();
+          if(cellBounds?.isValid()) bounds.extend(cellBounds);
+        }catch{}
       } else if(facet.point){
         L.circleMarker([facet.point[1],facet.point[0]],{radius:6,color:"#fff",weight:1.5,fillColor:"#eb6834",fillOpacity:1}).addTo(map);
         bounds.extend([facet.point[1],facet.point[0]]);
       }
 
-      if(bounds.isValid()) map.fitBounds(bounds.pad(0.015),{maxZoom:12,animate:false});
+      if(bounds.isValid()) map.fitBounds(bounds.pad(0.035),{maxZoom:12,animate:false});
       else if(facet.point) map.setView([facet.point[1],facet.point[0]],9,{animate:false});
     });
     return()=>{cancelled=true;if(mapRef.current){mapRef.current.remove();mapRef.current=null;}};
