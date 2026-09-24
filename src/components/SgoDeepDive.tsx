@@ -85,7 +85,7 @@ export function SgoDeepDive({ rows }: { rows:SgoIncidentRow[] }) {
   },[datedFiltered]);
 
   const crashWith=useMemo(()=>countBy(filtered,"crash_with",10),[filtered]);
-  const severity=useMemo(()=>countBy(filtered,"highest_injury_severity",10,severityLabel),[filtered]);
+  const severity=useMemo(()=>countBy(filtered,"highest_injury_severity",50,severityLabel),[filtered]);
   const roadway=useMemo(()=>countBy(filtered,"roadway_type",10),[filtered]);
   const withinOdd=useMemo(()=>countBy(filtered,"within_odd",8,oddLabel),[filtered]);
   const airBags=useMemo(()=>countBy(filtered,"air_bag_deployment",3),[filtered]);
@@ -149,13 +149,21 @@ export function SgoDeepDive({ rows }: { rows:SgoIncidentRow[] }) {
 }
 
 function Breakdown({title,subtitle,data}:{title:string;subtitle:string;data:{name:string;count:number}[]}) {
+  const total=data.reduce((sum,row)=>sum+row.count,0);
+  const rows=data.map(row=>({...row,pct:total>0?row.count/total*100:0}));
   return <div className="viz-card p-4">
     <div className="font-semibold">{title}</div>
     <div className="text-sm text-neutral-500">{subtitle}</div>
-    <ResponsiveContainer width="100%" height={Math.max(280,data.length*32+35)}>
-      <BarChart data={data} layout="vertical" margin={{top:10,right:15,bottom:5,left:30}}>
-        <CartesianGrid {...GRID_PROPS}/><XAxis type="number" {...AXIS_PROPS} allowDecimals={false}/><YAxis type="category" dataKey="name" {...AXIS_PROPS} width={135} tick={{fontSize:11}}/>
-        <Tooltip {...TOOLTIP_PROPS}/><Bar dataKey="count" name="Reports" fill={SERIES.blue}/>
+    <ResponsiveContainer width="100%" height={Math.max(280,rows.length*32+35)}>
+      <BarChart data={rows} layout="vertical" margin={{top:10,right:15,bottom:5,left:30}}>
+        <CartesianGrid {...GRID_PROPS}/>
+        <XAxis type="number" {...AXIS_PROPS} domain={[0,100]} tickFormatter={(v)=>`${v}%`}/>
+        <YAxis type="category" dataKey="name" {...AXIS_PROPS} width={135} tick={{fontSize:11}}/>
+        <Tooltip {...TOOLTIP_PROPS} formatter={(v,name,item)=>[
+          `${Number(v).toFixed(1)}% (${Number(item.payload.count).toLocaleString()} reports)`,
+          "Share of reports"
+        ]}/>
+        <Bar dataKey="pct" name="Share of reports" fill={SERIES.blue}/>
       </BarChart>
     </ResponsiveContainer>
   </div>;
