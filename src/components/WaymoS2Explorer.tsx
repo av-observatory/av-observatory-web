@@ -73,7 +73,40 @@ type S2Summary = {
   vintages: VintageSummary[];
 };
 
-type Metric = "cumulative" | "incremental";
+type CensusCell = {
+  s2_cell:string;
+  market:string;
+  state:string;
+  counties:string;
+  estimated_population:number;
+  estimated_households:number;
+  household_weighted_bg_median_income:number|null;
+  pct_white_non_hispanic:number|null;
+  pct_black_non_hispanic:number|null;
+  pct_asian_non_hispanic:number|null;
+  pct_aian_non_hispanic:number|null;
+  pct_nhpi_non_hispanic:number|null;
+  pct_other_non_hispanic:number|null;
+  pct_multiracial_non_hispanic:number|null;
+  pct_hispanic:number|null;
+  contributing_block_groups:number;
+  census_overlap_share_of_s2_area:number;
+};
+
+type CensusDataset = {
+  census_vintage:string;
+  geometry_vintage:string;
+  methodology:Record<string,string>;
+  cells:Record<string,CensusCell>;
+};
+
+type MarketHistory = {
+  market_definition:Record<string,string>;
+  vintages:string[];
+  markets:Record<string,{vintage_end:string;cumulative_miles:number;incremental_miles_vs_prior_release:number;cell_count:number}[]>;
+};
+
+type Metric = "cumulative" | "incremental" | "miles_per_1000" | "income" | "hispanic" | "black" | "asian" | "white";
 
 const LEAFLET_JS = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.js";
 const LEAFLET_CSS = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.css";
