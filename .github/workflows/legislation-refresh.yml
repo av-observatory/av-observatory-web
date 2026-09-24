@@ -1,6 +1,11 @@
 name: Refresh AV legislative bill index
 
 on:
+  push:
+    branches: ["main"]
+    paths:
+      - "scripts/refresh-legislation.py"
+      - ".github/workflows/legislation-refresh.yml"
   schedule:
     - cron: "17 12 * * *"
   workflow_dispatch:
