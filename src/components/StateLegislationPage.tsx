@@ -102,6 +102,7 @@ export function StateLegislationPage() {
   const currentBills = useMemo(()=>legislation.state_bills
     .filter(b=>ACTIVE_STATUSES.has(b.status))
     .sort((a,b)=>b.last_action_date.localeCompare(a.last_action_date)),[legislation.state_bills]);
+  const proposedBills = useMemo(()=>currentBills.filter(b=>!["signed","enacted","chaptered"].includes(b.status)),[currentBills]);
 
   const counts = useMemo(()=>{
     const out:Record<string,number>={};
@@ -109,7 +110,7 @@ export function StateLegislationPage() {
     return out;
   },[currentBills]);
 
-  const visibleBills = selected ? currentBills.filter(b=>b.jurisdiction===selected) : currentBills;
+  const visibleBills = selected ? proposedBills.filter(b=>b.jurisdiction===selected) : currentBills;
   const enacted = selected ? policy.state_events
     .filter(e=>e.state===selected && e.instrument==="legislation" && CURRENT_LAW_STATUSES.has(e.status))
     .sort((a,b)=>(b.date??"").localeCompare(a.date??"")) : [];
@@ -146,7 +147,7 @@ export function StateLegislationPage() {
       <div className="flex flex-wrap justify-between gap-3 items-end">
         <div>
           <div className="eyebrow">{selected ? names[selected] : "All States"} · Current Session</div>
-          <h2 className="text-xl font-semibold mt-2">Proposed Legislation</h2>
+          <h2 className="text-xl font-semibold mt-2">{selected ? "Proposed Legislation" : "Current-Session Legislation"}</h2>
           <p className="text-sm text-neutral-600 mt-1">{visibleBills.length} indexed current-session AV measure{visibleBills.length===1?"":"s"}, newest action first.</p>
         </div>
         <span className="text-xs text-neutral-500">{source==="R2"?`Live Open States index · ${legislation.as_of}`:`Site snapshot · ${legislation.as_of}`}</span>
