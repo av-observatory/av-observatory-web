@@ -135,6 +135,7 @@ export function StateTracker() {
   const { data, source } = usePolicyData();
   const [selected, setSelected] = useState("CA");
   const [filter, setFilter] = useState("");
+  const [section, setSection] = useState<"regulations" | "legislation">("regulations");
   const state = data.states.find(s => s.code === selected) ?? data.states[0];
   const categoryByAbbrev = useMemo(() => Object.fromEntries(data.states.map(s => [s.code, s.enacted_legislation ? (s.executive_order_history ? "both" : "law") : (s.executive_order_history ? "order" : "none")])), [data]);
   const regulatoryEvents = data.state_events.filter(e => e.state === state.code && !["legislation", "executive_order"].includes(e.instrument));
@@ -144,7 +145,7 @@ export function StateTracker() {
     <h1 className="text-4xl font-semibold mt-3 text-[#0b1d33]">State Policies</h1>
     <p className="mt-3 text-base text-neutral-600 max-w-3xl">Select a state to explore its AV operating framework, agency oversight, laws and executive orders, and bills under consideration.</p>
     <PolicyNav active="states" />
-    <div className="grid lg:grid-cols-[1.15fr_1fr] gap-4 items-start">
+    <div className="grid lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] gap-4 items-start">
       <div className="min-w-0">
         <section className="viz-card p-5">
           <div className="eyebrow">AV Policy Map · 50 States + D.C.</div>
@@ -154,10 +155,14 @@ export function StateTracker() {
           <input id="state-policy-search" value={filter} onChange={e => setFilter(e.target.value)} placeholder="State name or abbreviation" className="block mt-2 w-full rounded border border-neutral-300 p-2 text-sm" />
           <div className="flex flex-wrap gap-1.5 mt-3 max-h-28 overflow-y-auto">{data.states.filter(s => `${s.name} ${s.code}`.toLowerCase().includes(filter.toLowerCase())).map(s => <button key={s.code} type="button" onClick={() => setSelected(s.code)} aria-pressed={state.code === s.code} className={`rounded px-2.5 py-1.5 text-sm border ${state.code === s.code ? "bg-[#123b69] text-white" : "border-neutral-200"}`}>{s.code}</button>)}</div>
         </section>
-        <LegislativeBillsPanel jurisdiction={state.code} />
       </div>
-      <div className="space-y-4 min-w-0">
-        <section className="viz-card p-5" aria-live="polite">
+      <div className="min-w-0">
+        <div className="flex gap-2 mb-4" role="tablist" aria-label={`${state.name} policy information`}>
+          {([ ["regulations", "Regulations"], ["legislation", "Legislation & Orders"] ] as const).map(([key, label]) =>
+            <button key={key} type="button" role="tab" id={`state-${key}-tab`} aria-selected={section === key} aria-controls={`state-${key}-panel`} onClick={() => setSection(key)} className={`rounded-lg px-5 py-3 text-sm font-semibold border transition-colors ${section === key ? "bg-[#123b69] border-[#123b69] text-white" : "bg-white border-neutral-200 text-[#123b69] hover:border-[#80a9d0]"}`}>{label}</button>
+          )}
+        </div>
+        {section === "regulations" ? <section id="state-regulations-panel" role="tabpanel" aria-labelledby="state-regulations-tab" className="viz-card p-6 sm:p-7" aria-live="polite">
           <p className="eyebrow">{state.code} · Regulatory Framework</p>
           <h2 className="text-2xl font-semibold mt-2">{state.name}</h2>
           <p className="mt-4 font-semibold text-[#123b69]">{state.framework}</p>
@@ -165,14 +170,13 @@ export function StateTracker() {
           <h3 className="font-semibold mt-5">Responsible Authority</h3>
           <p className="text-sm text-neutral-700 mt-2">{state.oversight}</p>
           {regulatoryEvents.length > 0 && <div className="border-t border-neutral-200 mt-5 pt-4"><h3 className="font-semibold">Agency Rules and Decisions</h3>{regulatoryEvents.map(event => <div key={event.id} className="mt-4"><p className="font-medium text-sm">{event.title}</p><p className="text-sm text-neutral-600 mt-1">{event.takeaway ?? event.summary}</p><a className="text-sm underline text-[#184f95]" href={event.source_url} target="_blank" rel="noreferrer">Agency Record ↗</a></div>)}</div>}
-        </section>
-        <section className="viz-card p-5" aria-live="polite">
+        </section> : <div id="state-legislation-panel" role="tabpanel" aria-labelledby="state-legislation-tab" className="space-y-4" aria-live="polite"><section className="viz-card p-6 sm:p-7">
           <p className="eyebrow">Legislation and Executive Orders</p>
           <h2 className="text-xl font-semibold mt-2">{state.name} · Policy History</h2>
           <p className="text-sm text-neutral-600 mt-3">{history.length} indexed {history.length === 1 ? "action" : "actions"}. Current or in-effect actions appear first, followed by the rest from newest to oldest. This history is selective. “Current Status Not Confirmed” means an action is documented but its present legal effect has not been checked.</p>
           {history.length ? <StateHistoryExplorer key={state.code} stateCode={state.code} history={history} /> : <p className="text-sm text-neutral-600 mt-4">No statewide AV-specific law or executive order identified in this review.</p>}
           <p className="text-sm text-neutral-500 mt-6">Reviewed {state.verified_at} · {source === "R2" ? "R2 Live Record" : "Reviewed Site Snapshot"}. <a className="underline" href={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/data/policy_tracker.json`}>Download JSON ↗</a></p>
-        </section>
+        </section><LegislativeBillsPanel jurisdiction={state.code} /></div>}
       </div>
     </div>
   </main>;
