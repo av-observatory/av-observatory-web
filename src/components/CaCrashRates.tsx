@@ -14,11 +14,11 @@ export function CaCrashRates({ data }: { data: CaCrashRateDataset }) {
   const x = (i: number) => 32 + i * 520 / (recent.length - 1);
   const y = (rate: number) => 130 - rate / max * 105;
   return <section className="mt-7"><p className="eyebrow">CPUC Mileage × NHTSA SGO Crashes</p><h2 className="text-xl font-semibold tracking-tight mt-2">California Reported Crashes per Mile</h2>
-    <p className="text-sm text-neutral-600 mt-1">Waymo · {rows[0].month}–{rows.at(-1)?.month} · matched incident months · rates use the units shown on each card</p>
+    <p className="text-sm text-neutral-600 mt-1">Waymo · {rows[0].month}–{rows.at(-1)?.month} · matched months · CPUC driverless miles include P1 + P2 + P3</p>
     <div className="grid sm:grid-cols-3 gap-3 mt-4">
-      <div className="viz-card p-5"><span className="text-sm text-neutral-600">Reported Crashes per Million Miles</span><strong className="block text-3xl text-[#123b69] mt-2">{(crashes / miles * 1e6).toFixed(2)}</strong><span className="text-sm text-neutral-500">{crashes.toLocaleString()} SGO incidents</span></div>
-      <div className="viz-card p-5"><span className="text-sm text-neutral-600">Serious or Fatal Crashes per 100 Million Miles</span><strong className="block text-3xl text-[#123b69] mt-2">{(severe / miles * 1e8).toFixed(2)}</strong><span className="text-sm text-neutral-500">{severe} crashes with serious or fatal injury alleged</span></div>
-      <div className="viz-card p-5"><span className="text-sm text-neutral-600">Waymo California Miles Traveled</span><strong className="block text-3xl text-[#123b69] mt-2">{(miles / 1e6).toFixed(1)}M</strong><span className="text-sm text-neutral-500">CPUC Driverless P1 + P2 + P3 · Matched Months</span></div>
+      <div className="viz-card p-5"><span className="text-sm text-neutral-600">Reported Crashes per Million Miles</span><strong className="block text-3xl text-[#123b69] mt-2">{(crashes / miles * 1e6).toFixed(2)}</strong></div>
+      <div className="viz-card p-5"><span className="text-sm text-neutral-600">Serious or Fatal Crashes per 100 Million Miles</span><strong className="block text-3xl text-[#123b69] mt-2">{(severe / miles * 1e8).toFixed(2)}</strong></div>
+      <div className="viz-card p-5"><span className="text-sm text-neutral-600">Waymo California Miles Traveled</span><strong className="block text-3xl text-[#123b69] mt-2">{(miles / 1e6).toFixed(1)}M</strong></div>
     </div>
     <div className="viz-card p-5 mt-3"><h3 className="font-semibold text-[#152b45]">Reported Crashes per Million Miles</h3><p className="text-sm text-neutral-600">Most Recent 12 Matched Months</p>
       <svg viewBox="0 0 580 164" className="w-full h-auto mt-3" role="img" aria-label="Monthly reported Waymo California SGO crashes per million CPUC driverless miles in the 12 most recent matched months">
