@@ -100,14 +100,30 @@ function OversightHistory({ events }: { events: OversightItem[] }) {
 
 function StateHistoryExplorer({ history, stateCode }: { history: PolicyEvent[]; stateCode: string }) {
   const [group, setGroup] = useState("All");
-  const [selectedId, setSelectedId] = useState(history[0]?.id);
-  const groups = stateCode === "CA" && history.some(entry => entry.id.startsWith("ca-dmv") || entry.id.startsWith("ca-cpuc")) ? ["All", "DMV", "CPUC", "State law"] : ["All"];
+  const [selectedId, setSelectedId] = useState<string | undefined>(history[0]?.id);
+  const groups = stateCode === "CA" && history.some(entry => entry.id.startsWith("ca-dmv") || entry.id.startsWith("ca-cpuc")) ? ["All", "DMV", "CPUC", "State Law"] : ["All"];
   const visible = history.filter(item => group === "All" || (group === "DMV" ? item.id.startsWith("ca-dmv") : group === "CPUC" ? item.id.startsWith("ca-cpuc") : !item.id.startsWith("ca-dmv") && !item.id.startsWith("ca-cpuc")));
-  const item = visible.find(entry => entry.id === selectedId) ?? visible[0];
   return <div className="mt-3">
-    {stateCode === "CA" && <div className="flex flex-wrap gap-1.5 mb-3" aria-label="Policy history categories">{groups.map(name => <button key={name} type="button" onClick={() => setGroup(name)} aria-pressed={group === name} className={`text-sm px-3 py-1.5 rounded-full border ${group === name ? "bg-[#123b69] text-white border-[#123b69]" : "bg-white text-neutral-700 border-neutral-200"}`}>{name}</button>)}</div>}
-    <div className="max-h-64 overflow-y-auto border-y border-neutral-200 divide-y divide-neutral-200" aria-label="Select a policy event">{visible.map(entry => <button key={entry.id} type="button" onClick={() => setSelectedId(entry.id)} aria-pressed={item.id === entry.id} className={`w-full text-left px-3 py-2.5 border-l-4 ${item.id === entry.id ? "bg-[#eaf2fa] border-[#123b69]" : "border-transparent hover:bg-neutral-50"}`}><span className="block font-medium text-sm text-[#0b1d33]">{entry.title}</span><span className="block text-sm text-neutral-700 mt-1">{entry.takeaway ?? entry.summary.split(". ")[0]}</span><span className="block text-sm text-neutral-500 mt-1">{datedStatus(entry)}</span></button>)}</div>
-    <article className="rounded-lg bg-[#f4f8fc] border border-[#d3dfed] p-4 mt-3" aria-live="polite"><div className="text-sm font-medium text-[#184f95]">{[displayDate(item.date), statusLabel(item.instrument), statusLabel(item.status)].filter(Boolean).join(" · ")}</div><h4 className="font-semibold mt-2">{item.title}</h4><p className="text-sm text-neutral-700 mt-2 leading-relaxed">{item.summary}</p>{item.status === "historical_status_unverified" && <p className="text-sm text-neutral-600 mt-3">This action is documented, but its present legal effect has not been confirmed. Check the linked state source before treating it as current authority.</p>}<a href={item.source_url} target="_blank" rel="noreferrer" className="text-sm text-[#184f95] underline inline-block mt-3">{item.source_label ?? "Source text"} ↗</a>{item.source_tier === "secondary" && <p className="text-sm text-amber-800 mt-2">Secondary survey; primary legislation link pending review.</p>}</article>
+    {groups.length > 1 && <div className="flex flex-wrap gap-1.5 mb-3" aria-label="Policy history categories">{groups.map(name => <button key={name} type="button" onClick={() => setGroup(name)} aria-pressed={group === name} className={`text-sm px-3 py-1.5 rounded-full border ${group === name ? "bg-[#123b69] text-white border-[#123b69]" : "bg-white text-neutral-700 border-neutral-200"}`}>{name}</button>)}</div>}
+    <div className="border-y border-neutral-200 divide-y divide-neutral-200" aria-label="State policy history">
+      {visible.map(entry => {
+        const expanded = entry.id === selectedId;
+        const takeaway = entry.takeaway ?? entry.summary.split(". ")[0];
+        return <article key={entry.id} className={`${expanded ? "bg-[#f4f8fc] border-l-4 border-[#123b69]" : "border-l-4 border-transparent"}`}>
+          <button type="button" onClick={() => setSelectedId(expanded ? undefined : entry.id)} aria-expanded={expanded} className="w-full text-left px-4 py-3 hover:bg-[#eaf2fa]">
+            <span className="block font-semibold text-[#0b1d33]">{entry.title}</span>
+            <span className="block text-sm text-neutral-700 mt-1">{takeaway}</span>
+            <span className="block text-sm text-neutral-500 mt-1">{datedStatus(entry)}</span>
+          </button>
+          {expanded && <div className="px-4 pb-4 text-sm leading-relaxed text-neutral-700">
+            {entry.summary.trim() !== takeaway.trim() && <p>{entry.summary}</p>}
+            {entry.status === "historical_status_unverified" && <p className="mt-2">Its present legal effect has not been confirmed. Check the linked state source before treating it as current authority.</p>}
+            <a href={entry.source_url} target="_blank" rel="noreferrer" className="text-[#184f95] underline inline-block mt-2">{entry.source_label ?? "Source Text"} ↗</a>
+            {entry.source_tier === "secondary" && <p className="text-amber-800 mt-2">Secondary survey; primary legislation link pending review.</p>}
+          </div>}
+        </article>;
+      })}
+    </div>
   </div>;
 }
 
