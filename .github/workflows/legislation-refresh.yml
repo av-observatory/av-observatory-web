@@ -27,18 +27,18 @@ jobs:
       - uses: actions/checkout@v4
       - name: Report refresh configuration
         if: ${{ env.R2_BUCKET == '' || env.R2_ACCOUNT_ID == '' || env.AWS_ACCESS_KEY_ID == '' || env.AWS_SECRET_ACCESS_KEY == '' || env.LEGISCAN_API_KEY == '' }}
-        run: echo '::warning::Legislation refresh skipped. Configure R2 settings and the LEGISCAN_API_KEY secret.'
+        run: echo '::warning::Legislation refresh skipped. Configure the LEGISCAN_API_KEY secret.'
       - name: Search current sessions and rebuild LegiScan bill database
-        if: ${{ env.R2_BUCKET != '' && env.R2_ACCOUNT_ID != '' && env.LEGISCAN_API_KEY != '' && env.AWS_ACCESS_KEY_ID != '' && env.AWS_SECRET_ACCESS_KEY != '' }}
+        if: ${{ env.LEGISCAN_API_KEY != '' }}
         run: python3 scripts/refresh-legislation.py public/data/legislation_tracker.json
       - name: Validate refreshed index
-        if: ${{ env.R2_BUCKET != '' && env.R2_ACCOUNT_ID != '' && env.LEGISCAN_API_KEY != '' && env.AWS_ACCESS_KEY_ID != '' && env.AWS_SECRET_ACCESS_KEY != '' }}
+        if: ${{ env.LEGISCAN_API_KEY != '' }}
         run: node scripts/validate-legislation-data.mjs public/data/legislation_tracker.json
       - name: Refresh CSV companions
-        if: ${{ env.R2_BUCKET != '' && env.R2_ACCOUNT_ID != '' && env.LEGISCAN_API_KEY != '' && env.AWS_ACCESS_KEY_ID != '' && env.AWS_SECRET_ACCESS_KEY != '' }}
+        if: ${{ env.LEGISCAN_API_KEY != '' }}
         run: python3 scripts/export-data-csv.py
       - name: Commit refreshed LegiScan database
-        if: ${{ env.R2_BUCKET != '' && env.R2_ACCOUNT_ID != '' && env.LEGISCAN_API_KEY != '' && env.AWS_ACCESS_KEY_ID != '' && env.AWS_SECRET_ACCESS_KEY != '' }}
+        if: ${{ env.LEGISCAN_API_KEY != '' }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -50,5 +50,5 @@ jobs:
             git push
           fi
       - name: Publish and verify versioned bill index
-        if: ${{ env.R2_BUCKET != '' && env.R2_ACCOUNT_ID != '' && env.LEGISCAN_API_KEY != '' && env.AWS_ACCESS_KEY_ID != '' && env.AWS_SECRET_ACCESS_KEY != '' }}
+        if: ${{ env.R2_BUCKET != '' && env.R2_ACCOUNT_ID != '' && env.AWS_ACCESS_KEY_ID != '' && env.AWS_SECRET_ACCESS_KEY != '' && env.LEGISCAN_API_KEY != '' }}
         run: python3 scripts/publish-r2-data.py legislation --file public/data/legislation_tracker.json
