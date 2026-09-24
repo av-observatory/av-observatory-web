@@ -5,6 +5,7 @@ const basePath = isGitHubPages ? "/av-observatory-web" : "";
 
 const nextConfig: NextConfig = {
   output: "export",
+  trailingSlash: true,
   basePath,
   assetPrefix: basePath,
   env: {
