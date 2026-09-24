@@ -88,7 +88,7 @@ function BillRow({bill}:{bill:Bill}) {
     <p className="text-sm text-neutral-500 mt-2"><strong>{displayDate(bill.last_action_date)}</strong> · {bill.last_action}</p>
     <div className="flex flex-wrap gap-4 mt-2 text-sm">
       <a href={bill.source_url} target="_blank" rel="noreferrer" className="text-[#184f95] underline">Official bill record ↗</a>
-      <a href={bill.repository_url} target="_blank" rel="noreferrer" className="text-[#184f95] underline">LegiScan record ↗</a>
+      <a href={bill.repository_url} target="_blank" rel="noreferrer" className="text-[#184f95] underline">Open States record ↗</a>
     </div>
   </article>;
 }
@@ -117,7 +117,7 @@ export function StateLegislationPage() {
   return <main className="max-w-7xl px-5 sm:px-8 py-8">
     <p className="eyebrow">Policy Trackers / State</p>
     <h1 className="text-4xl font-semibold mt-3 text-[#0b1d33]">State Legislation</h1>
-    <p className="mt-3 text-base text-neutral-600 max-w-3xl">Current-session autonomous-vehicle legislation discovered through LegiScan, with enacted state AV laws shown when a state is selected.</p>
+    <p className="mt-3 text-base text-neutral-600 max-w-3xl">Current-session autonomous-vehicle legislation discovered through Open States, with enacted state AV laws shown when a state is selected.</p>
     <PolicyNav active="state-legislation" />
 
     <section className="viz-card p-5">
@@ -149,11 +149,11 @@ export function StateLegislationPage() {
           <h2 className="text-xl font-semibold mt-2">Proposed Legislation</h2>
           <p className="text-sm text-neutral-600 mt-1">{visibleBills.length} indexed current-session AV measure{visibleBills.length===1?"":"s"}, newest action first.</p>
         </div>
-        <span className="text-xs text-neutral-500">{source==="R2"?`Live LegiScan index · ${legislation.as_of}`:`Site snapshot · ${legislation.as_of}`}</span>
+        <span className="text-xs text-neutral-500">{source==="R2"?`Live Open States index · ${legislation.as_of}`:`Site snapshot · ${legislation.as_of}`}</span>
       </div>
       {visibleBills.length ? <div className="mt-3">{visibleBills.map(bill=><BillRow key={bill.id} bill={bill}/>)}</div> : <p className="text-sm text-neutral-600 mt-4">No current-session AV bill is indexed for this state.</p>}
     </section>
 
-    <p className="mt-5 text-xs text-neutral-500">Bill discovery uses the LegiScan API. Bill status and actions are machine-indexed; linked official legislature records remain the authority. Enacted-law summaries come from the separately reviewed state policy dataset.</p>
+    <p className="mt-5 text-xs text-neutral-500">Bill discovery uses Open States API v3 across all 50 states and D.C.; the database is not seeded from NCSL or LegiScan. Bill status and actions are machine-indexed, while linked official legislature records remain the authority. Enacted-law summaries come from the separately reviewed state policy dataset.</p>
   </main>;
 }
