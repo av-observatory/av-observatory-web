@@ -112,6 +112,8 @@ const LEAFLET_JS = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.js";
 const LEAFLET_CSS = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.css";
 const BLUE_RAMP = ["#edf4fd","#d5e7fb","#a9cef6","#78afea","#438ad8","#2468b7","#174b8a","#0b2f5f"];
 const ORANGE_RAMP = ["#fff3e8","#fddfc6","#f8bd8e","#f29356","#df6c28","#b94b15","#8d3510","#63240c"];
+const GREEN_RAMP = ["#eef7f0","#d6eadb","#b5d7bf","#8fc09e","#65a57a","#42875c","#286943","#15482d"];
+const PURPLE_RAMP = ["#f3eff9","#e2d7f1","#c9b9e4","#ad96d4","#8e71c0","#6f50a7","#543b84","#39285d"];
 
 function ensureLeafletCss() {
   if (document.querySelector('link[data-waymo-s2-leaflet="1"]')) return;
@@ -148,6 +150,44 @@ function quantileBreaks(values:number[]){
 }
 function rampIndex(v:number,breaks:number[]){if(v<=0)return 0;for(let i=0;i<breaks.length;i++)if(v<=breaks[i])return i;return breaks.length-1;}
 function escapeHtml(value:unknown){return String(value??"").replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;");}
+function metricValue(p:S2Feature["properties"],metric:Metric,census:CensusDataset){
+  const cell=census.cells[String(p.s2_cell)];
+  if(metric==="cumulative")return Number(p.waymo_ro_miles||0);
+  if(metric==="incremental")return Number(p.incremental_miles||0);
+  if(metric==="miles_per_1000"){
+    const pop=Number(cell?.estimated_population||0);
+    return pop>0?Number(p.waymo_ro_miles||0)/pop*1000:null;
+  }
+  if(metric==="income")return cell?.household_weighted_bg_median_income??null;
+  if(metric==="hispanic")return cell?.pct_hispanic??null;
+  if(metric==="black")return cell?.pct_black_non_hispanic??null;
+  if(metric==="asian")return cell?.pct_asian_non_hispanic??null;
+  if(metric==="white")return cell?.pct_white_non_hispanic??null;
+  return null;
+}
+function metricLabel(metric:Metric){
+  if(metric==="cumulative")return "Operational miles per cell";
+  if(metric==="incremental")return "Miles added per cell";
+  if(metric==="miles_per_1000")return "Miles per 1,000 estimated residents";
+  if(metric==="income")return "Household-weighted block-group median income";
+  if(metric==="hispanic")return "Hispanic / Latino share";
+  if(metric==="black")return "Black non-Hispanic share";
+  if(metric==="asian")return "Asian non-Hispanic share";
+  return "White non-Hispanic share";
+}
+function metricFormat(metric:Metric,value:number|null){
+  if(value===null||!Number.isFinite(value))return "No estimate";
+  if(metric==="income")return "$"+Math.round(value).toLocaleString();
+  if(["hispanic","black","asian","white"].includes(metric))return value.toFixed(1)+"%";
+  if(metric==="miles_per_1000")return compactMiles(value)+" mi / 1k";
+  return compactMiles(value)+" miles";
+}
+function metricRamp(metric:Metric){
+  if(metric==="incremental")return ORANGE_RAMP;
+  if(metric==="income")return GREEN_RAMP;
+  if(["hispanic","black","asian","white"].includes(metric))return PURPLE_RAMP;
+  return BLUE_RAMP;
+}
 
 function geometryPoints(geometry:any,out:[number,number][]=[]){
   const walk=(x:any)=>{
