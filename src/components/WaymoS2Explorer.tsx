@@ -338,18 +338,21 @@ function MarketMap({
 }
 
 export function WaymoS2Explorer({
-  summary,geojson,serviceGeojson,locations,
+  summary,geojson,serviceGeojson,locations,census,marketHistory,
 }:{
   summary:S2Summary;
   geojson:S2GeoJSON;
   serviceGeojson:ServiceGeoJSON;
   locations:MarketLocation[];
+  census:CensusDataset;
+  marketHistory:MarketHistory;
 }){
   const [vintage,setVintage]=useState(summary.latest_vintage);
   const [mapData,setMapData]=useState<S2GeoJSON>(geojson);
   const [loading,setLoading]=useState(false);
   const [loadError,setLoadError]=useState<string|null>(null);
   const [metric,setMetric]=useState<Metric>("cumulative");
+  const [growthMarket,setGrowthMarket]=useState("San Francisco Bay Area");
 
   useEffect(()=>{
     if(vintage===summary.latest_vintage){setMapData(geojson);setLoadError(null);return;}
