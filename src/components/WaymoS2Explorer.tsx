@@ -540,26 +540,45 @@ export function WaymoS2Explorer({
 
   const raceExposureRows=useMemo(()=>{
     const groups=[
-      {category:"All Residents",share:(c:CensusCell)=>100},
       {category:"White, Non-Hispanic",share:(c:CensusCell)=>c.pct_white_non_hispanic},
       {category:"Black, Non-Hispanic",share:(c:CensusCell)=>c.pct_black_non_hispanic},
       {category:"Asian, Non-Hispanic",share:(c:CensusCell)=>c.pct_asian_non_hispanic},
+      {category:"AIAN, Non-Hispanic",share:(c:CensusCell)=>c.pct_aian_non_hispanic},
+      {category:"NHPI, Non-Hispanic",share:(c:CensusCell)=>c.pct_nhpi_non_hispanic},
+      {category:"Other, Non-Hispanic",share:(c:CensusCell)=>c.pct_other_non_hispanic},
+      {category:"Multiracial, Non-Hispanic",share:(c:CensusCell)=>c.pct_multiracial_non_hispanic},
       {category:"Hispanic / Latino",share:(c:CensusCell)=>c.pct_hispanic},
     ];
+    let totalPopulation=0;
+    let totalMiles=0;
+    for(const feature of activeCells){
+      const cell=census.cells[String(feature.properties.s2_cell)];
+      const pop=Number(cell?.estimated_population||0);
+      const miles=Number(feature.properties.waymo_ro_miles||0);
+      if(pop>0) totalPopulation+=pop;
+      if(Number.isFinite(miles)&&miles>0) totalMiles+=miles;
+    }
     return groups.map(group=>{
-      let weightedIntensity=0;
       let groupResidents=0;
+      let groupMiles=0;
       for(const feature of activeCells){
         const cell=census.cells[String(feature.properties.s2_cell)];
         const pop=Number(cell?.estimated_population||0);
+        const miles=Number(feature.properties.waymo_ro_miles||0);
         const share=cell?group.share(cell):null;
-        if(pop<=0||share===null||!Number.isFinite(Number(share)))continue;
-        const residents=pop*Number(share)/100;
-        const intensity=Number(feature.properties.waymo_ro_miles||0)/pop*1000;
-        weightedIntensity+=intensity*residents;
-        groupResidents+=residents;
+        if(share===null||!Number.isFinite(Number(share)))continue;
+        const fraction=Number(share)/100;
+        if(pop>0) groupResidents+=pop*fraction;
+        if(Number.isFinite(miles)&&miles>0) groupMiles+=miles*fraction;
       }
-      return {category:group.category,vmt_per_1000:groupResidents>0?weightedIntensity/groupResidents:0,residents:groupResidents};
+      const populationShare=totalPopulation>0?groupResidents/totalPopulation*100:0;
+      const mileageShare=totalMiles>0?groupMiles/totalMiles*100:0;
+      return {
+        category:group.category,
+        population_share:populationShare,
+        mileage_share:mileageShare,
+        difference_pp:mileageShare-populationShare,
+      };
     });
   },[activeCells,census]);
 
@@ -571,19 +590,37 @@ export function WaymoS2Explorer({
       {category:"$100K–$150K",min:100000,max:150000},
       {category:"$150K+",min:150000,max:Infinity},
     ];
+    let eligiblePopulation=0;
+    let eligibleMiles=0;
+    for(const feature of activeCells){
+      const cell=census.cells[String(feature.properties.s2_cell)];
+      const pop=Number(cell?.estimated_population||0);
+      const miles=Number(feature.properties.waymo_ro_miles||0);
+      const income=cell?.household_weighted_bg_median_income;
+      if(pop<=0||income===null||!Number.isFinite(Number(income)))continue;
+      eligiblePopulation+=pop;
+      if(Number.isFinite(miles)&&miles>0) eligibleMiles+=miles;
+    }
     return bands.map(band=>{
-      let weightedIntensity=0;
       let residents=0;
+      let miles=0;
       for(const feature of activeCells){
         const cell=census.cells[String(feature.properties.s2_cell)];
         const pop=Number(cell?.estimated_population||0);
+        const cellMiles=Number(feature.properties.waymo_ro_miles||0);
         const income=cell?.household_weighted_bg_median_income;
         if(pop<=0||income===null||!Number.isFinite(Number(income))||Number(income)<band.min||Number(income)>=band.max)continue;
-        const intensity=Number(feature.properties.waymo_ro_miles||0)/pop*1000;
-        weightedIntensity+=intensity*pop;
         residents+=pop;
+        if(Number.isFinite(cellMiles)&&cellMiles>0)miles+=cellMiles;
       }
-      return {category:band.category,vmt_per_1000:residents>0?weightedIntensity/residents:0,residents};
+      const populationShare=eligiblePopulation>0?residents/eligiblePopulation*100:0;
+      const mileageShare=eligibleMiles>0?miles/eligibleMiles*100:0;
+      return {
+        category:band.category,
+        population_share:populationShare,
+        mileage_share:mileageShare,
+        difference_pp:mileageShare-populationShare,
+      };
     });
   },[activeCells,census]);
 
@@ -656,7 +693,7 @@ export function WaymoS2Explorer({
     <div className="viz-card p-4 mt-5">
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
-          <h3 className="font-semibold">Population-Weighted Exposure to Waymo Rider-Only Mileage</h3>
+          <h3 className="font-semibold">Waymo Rider-Only Mileage Exposure vs Population</h3>
         </div>
         <div className="flex gap-2">
           {(["race","income"] as DemographicView[]).map(view=><button key={view} type="button" onClick={()=>setDemographicView(view)} className={`rounded-full border px-3 py-1.5 text-sm transition ${demographicView===view?"border-[#184f95] bg-[#184f95] text-white":"border-[#cad8e8] bg-white text-neutral-700"}`}>{view==="race"?"Race / Ethnicity":"Income"}</button>)}
@@ -664,20 +701,24 @@ export function WaymoS2Explorer({
       </div>
       <div className="mt-2 text-xs text-neutral-500">
         {demographicView==="race"
-          ?"Population-weighted exposure to Waymo Rider-Only mileage based on where residents live. For each S2 cell, the share of residents in a racial or ethnic group is applied to that cell's estimated population to estimate group residents. Those residents are assigned the cell's Rider-Only mileage intensity (RO miles per 1,000 residents), and the chart reports the group-population-weighted average across all cells."
-          :"Population-weighted exposure to Waymo Rider-Only mileage based on where residents live. S2 cells are grouped by estimated household-income context, and the chart reports the population-weighted average Rider-Only mileage intensity within each income band."}
+          ?"Population share is the expected share of Waymo Rider-Only mileage if activity were distributed in proportion to where people live. Observed mileage exposure allocates each S2 cell's RO miles across racial and ethnic groups according to that cell's estimated resident composition. A higher mileage share than population share means Waymo activity is more concentrated in places where that group lives than population alone would predict."
+          :"Population share is the expected share of Waymo Rider-Only mileage if activity were distributed in proportion to where people live. Observed mileage exposure is the share of RO miles occurring in S2 cells within each household-income band. A higher mileage share than population share means Waymo activity is more concentrated in that income context than population alone would predict."}
       </div>
-      <ResponsiveContainer width="100%" height={320}>
-        <BarChart data={demographicRows} layout="vertical" margin={{top:16,right:20,bottom:5,left:28}}>
+      <ResponsiveContainer width="100%" height={demographicView==="race"?390:320}>
+        <BarChart data={demographicRows} layout="vertical" margin={{top:16,right:28,bottom:5,left:42}}>
           <CartesianGrid {...GRID_PROPS}/>
-          <XAxis type="number" {...AXIS_PROPS} tickFormatter={v=>compactMiles(Number(v))}/>
-          <YAxis type="category" dataKey="category" {...AXIS_PROPS} width={145}/>
-          <Tooltip {...TOOLTIP_PROPS} formatter={(v)=>[`${Math.round(Number(v)).toLocaleString()} miles per 1,000 residents`,"Average VMT intensity"]}/>
-          <Bar dataKey="vmt_per_1000" name="Average VMT per 1,000 residents" fill={SERIES.blue}/>
+          <XAxis type="number" {...AXIS_PROPS} tickFormatter={v=>`${Number(v).toFixed(0)}%`}/>
+          <YAxis type="category" dataKey="category" {...AXIS_PROPS} width={175}/>
+          <Tooltip {...TOOLTIP_PROPS} formatter={(v,name)=>[
+            `${Number(v).toFixed(1)}%`,
+            name==="mileage_share"?"RO mileage exposure share":"Population share"
+          ]}/>
+          <Bar dataKey="population_share" name="Population share" fill={SERIES.aqua}/>
+          <Bar dataKey="mileage_share" name="RO mileage exposure share" fill={SERIES.blue}/>
         </BarChart>
       </ResponsiveContainer>
       <div className="text-xs leading-relaxed text-neutral-500">
-        This is a place-based exposure indicator, not rider demographics. It describes how much Waymo Rider-Only activity occurs in the places where different resident groups live.
+        This is a place-based exposure comparison, not rider demographics. The population bar is the benchmark: if RO mileage followed resident population exactly, the two bars would be equal.
       </div>
     </div>
 
