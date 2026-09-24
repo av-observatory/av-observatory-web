@@ -101,15 +101,15 @@ export function SgoDeepDive({ rows }: { rows:SgoIncidentRow[] }) {
   return <div>
     <div className="viz-card p-4">
       <div className="grid md:grid-cols-2 gap-3">
-        <label className="filter-label">Reporting entity
+        <label className="filter-label">Reporting Entity
           <select className="filter-select" value={entity} onChange={e=>setEntity(e.target.value)}>
-            <option value="ALL">All reporting entities</option>
+            <option value="ALL">All Reporting Entities</option>
             {entities.map(x=><option key={x}>{x}</option>)}
           </select>
         </label>
         <label className="filter-label">State
           <select className="filter-select" value={state} onChange={e=>setState(e.target.value)}>
-            <option value="ALL">All states</option>
+            <option value="ALL">All States</option>
             {states.map(x=><option key={x}>{x}</option>)}
           </select>
         </label>
@@ -117,14 +117,14 @@ export function SgoDeepDive({ rows }: { rows:SgoIncidentRow[] }) {
     </div>
 
     <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5 mt-3">
-      <div className="viz-card p-3"><div className="text-xs text-neutral-500">Reports in view</div><div className="text-2xl font-semibold mt-1 tabular-nums">{filtered.length.toLocaleString()}</div></div>
+      <div className="viz-card p-3"><div className="text-xs text-neutral-500">Reports in View</div><div className="text-2xl font-semibold mt-1 tabular-nums">{filtered.length.toLocaleString()}</div></div>
       <div className="viz-card p-3"><div className="text-xs text-neutral-500">Entities</div><div className="text-2xl font-semibold mt-1 tabular-nums">{new Set(filtered.map(r=>r.reporting_entity)).size}</div></div>
       <div className="viz-card p-3"><div className="text-xs text-neutral-500">States</div><div className="text-2xl font-semibold mt-1 tabular-nums">{new Set(filtered.map(r=>r.state).filter(Boolean)).size}</div></div>
-      <div className="viz-card p-3"><div className="text-xs text-neutral-500">Vehicle make/models</div><div className="text-2xl font-semibold mt-1 tabular-nums">{new Set(filtered.map(r=>[r.make,r.model].join("|"))).size}</div></div>
+      <div className="viz-card p-3"><div className="text-xs text-neutral-500">Vehicle Make/Models</div><div className="text-2xl font-semibold mt-1 tabular-nums">{new Set(filtered.map(r=>[r.make,r.model].join("|"))).size}</div></div>
     </div>
 
     <div className="viz-card p-4 mt-3">
-      <div className="font-semibold">Reports over time</div>
+      <div className="font-semibold">Reports Over Time</div>
       <div className="text-sm text-neutral-500">
         Filing month for records with a valid filing month/year. August 2026 is excluded as incomplete.
         {undatedCount > 0 && ` ${undatedCount.toLocaleString()} records in this view lack filing month/year and are excluded from this trend only.`}

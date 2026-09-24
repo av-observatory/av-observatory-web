@@ -412,7 +412,7 @@ export function WaymoS2Explorer({
 
     <div className="mt-5 flex items-baseline justify-between gap-4">
       <div>
-        <h3 className="text-xl font-semibold">Waymo markets · VMT by cell</h3>
+        <h3 className="text-xl font-semibold">Waymo Markets · VMT by Cell</h3>
         <p className="text-sm text-neutral-500 mt-1">
           Each market is shown separately. Where Waymo has published S2 mileage, cells replace the polygon as the primary deployment footprint; current service-area polygons provide context and fill gaps where S2 VMT is not yet published.
         </p>
@@ -466,7 +466,7 @@ export function WaymoS2Explorer({
     {loadError&&<div className="text-xs text-red-700 mt-2">Could not load this vintage map: {loadError}</div>}
 
     <div className="viz-card p-4 mt-5">
-      <h3 className="font-semibold">Published mileage growth</h3>
+      <h3 className="font-semibold">Published Mileage Growth</h3>
       <div className="text-sm text-neutral-500">Cumulative operational miles represented by each S2 benchmark release.</div>
       <ResponsiveContainer width="100%" height={260}>
         <LineChart data={chartRows} margin={{top:18,right:10,bottom:5,left:0}}>

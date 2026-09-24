@@ -122,7 +122,7 @@ export function CompanyDeploymentExplorer({ locations, geometries, latestS2, vin
 
   return <div>
     {!waymoOnly && <div className="viz-card p-4 sm:p-5">
-      <h2 className="text-xl font-semibold text-[#0b1d33]">Select a company</h2>
+      <h2 className="text-xl font-semibold text-[#0b1d33]">Select A Company</h2>
       <p className="text-sm text-neutral-600 mt-1">Current testing and deployment locations supported by the linked record. An announced market is excluded until activity is documented.</p>
       {[
         { title: "Passenger, delivery and shuttle", names: companies.filter(n => !freight.has(n)) },

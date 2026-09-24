@@ -33,7 +33,7 @@ export function NationalStatePolicy({ valueByAbbrev, companiesByState }: {
         <a className="inline-block mt-4 text-sm underline text-[#184f95]" href={NATIONAL_POLICY_SOURCE} target="_blank" rel="noreferrer">Research state legislation at NCSL ↗</a>
       </>}
       <div className="mt-6 border-t border-neutral-200 pt-4">
-        <h4 className="font-semibold text-sm">Documented current operations</h4>
+        <h4 className="font-semibold text-sm">Documented Current Operations</h4>
         <p className="text-sm mt-1 text-neutral-700">{companies.length ? companies.join(" · ") : "No current deployment record in this dataset."}</p>
         <Link href="/deployment" className="inline-block mt-2 text-sm underline text-[#184f95]">Examine deployment evidence →</Link>
       </div>

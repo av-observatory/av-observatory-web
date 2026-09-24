@@ -457,7 +457,7 @@ export function OddExplorer({
     <div className="mt-3">
       <div className="flex items-baseline justify-between gap-4 mb-2">
         <div>
-          <h2 className="text-xl font-semibold">ODD and service-area markets</h2>
+          <h2 className="text-xl font-semibold">ODD and Service Area Markets</h2>
           <div className="text-sm text-neutral-500">{evidence==="current" ? "Each card is a separate current market / corridor. Exact boundaries are shown only where sourced; otherwise the market remains a point." : evidence==="announced" ? "Future markets mentioned by a source; not counted as current operation." : "Historical market snapshots."}</div>
         </div>
         <span className="text-sm text-neutral-500">{marketFacets.length} markets</span>
@@ -513,7 +513,7 @@ export function OddExplorer({
 
     <div className="viz-card mt-3 overflow-hidden">
       <div className="px-4 py-3 border-b border-neutral-200 flex items-baseline justify-between">
-        <h3 className="font-semibold">Source-grounded geography records</h3>
+        <h3 className="font-semibold">Source-Grounded Geography Records</h3>
         <span className="text-xs text-neutral-500">{evidenceRows.length} records in view</span>
       </div>
       <div className="overflow-x-auto max-h-[420px]">
@@ -536,7 +536,7 @@ export function OddExplorer({
 
     <div className="viz-card mt-3 overflow-hidden">
       <div className="px-4 py-3 border-b border-neutral-200 flex items-baseline justify-between">
-        <h3 className="font-semibold">Manufacturer ODD coverage</h3>
+        <h3 className="font-semibold">Manufacturer Odd Coverage</h3>
         <span className="text-xs text-neutral-500">{coverageRows.filter(r=>r.polygonCount>0||r.currentMarketCount>0||r.historicPointCount>0).length} of {coverageRows.length} manufacturers/entities have sourced geography</span>
       </div>
       <div className="px-4 pb-2 text-xs text-neutral-500">“No current public ODD verified” means the Observatory has not yet found a defensible current testing/deployment geography for that entity; it does not mean the entity is inactive.</div>
@@ -550,7 +550,7 @@ export function OddExplorer({
 
     <div className="viz-card mt-3 overflow-hidden">
       <div className="px-4 py-3 border-b border-neutral-200 flex items-baseline justify-between">
-        <h3 className="font-semibold">Boundaries behind this view</h3>
+        <h3 className="font-semibold">Boundaries Behind This View</h3>
         <span className="text-xs text-neutral-500">Blue = deployment · yellow = testing</span>
       </div>
       <div className="overflow-x-auto max-h-[420px]">

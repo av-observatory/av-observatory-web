@@ -6,11 +6,9 @@ import {
 import { ActivityMonthlyRow, monthLabel } from "@/lib/activity";
 import { SERIES, AXIS_PROPS, GRID_PROPS, TOOLTIP_PROPS, LEGEND_PROPS } from "@/lib/chartTheme";
 
-const WAYMO_TCP = "PSG0038152";
-
-function waymoDriverless(rows: ActivityMonthlyRow[]) {
+function reportedRows(rows: ActivityMonthlyRow[]) {
   return rows
-    .filter(r => r.operator_tcpid === WAYMO_TCP && r.program === "driverless")
+    .filter(r => r.total_trips !== null && r.total_vmt_all_periods !== null)
     .sort((a,b) => a.calendar_year-b.calendar_year || a.calendar_month-b.calendar_month);
 }
 
@@ -40,8 +38,8 @@ function derived(r: ActivityMonthlyRow) {
   return {trips,p1,p2,p3,total,waiting,waitMin,avgTrip,ridersPerTrip,occupied,deadhead,p1Share,pickupShare,parkedHours14,parkedMinTrip14};
 }
 
-export function WaymoCompositeStats({ rows }: { rows: ActivityMonthlyRow[] }) {
-  const data = waymoDriverless(rows);
+export function ActivityCompositeStats({ rows, company }: { rows: ActivityMonthlyRow[]; company: string }) {
+  const data = reportedRows(rows);
   const row = data.at(-1);
   if (!row) return null;
   const d=derived(row);
@@ -49,13 +47,13 @@ export function WaymoCompositeStats({ rows }: { rows: ActivityMonthlyRow[] }) {
   const stats=[
     ["Trips in Latest Month", d.trips.toLocaleString(), label],
     ["Riders per Trip", d.ridersPerTrip === null ? "—" : d.ridersPerTrip.toFixed(2), "Passengers carried ÷ trips"],
-    ["Wait time / trip", d.waitMin===null?"—":`${d.waitMin.toFixed(1)} min`, "P1 waiting hours ÷ trips"],
-    ["Avg rider miles / trip", d.avgTrip===null?"—":`${d.avgTrip.toFixed(1)} mi`, "Passenger miles ÷ trips"],
+    ["Wait Time per Trip", d.waitMin===null?"—":`${d.waitMin.toFixed(1)} min`, "P1 waiting hours ÷ trips"],
+    ["Average Rider Miles per Trip", d.avgTrip===null?"—":`${d.avgTrip.toFixed(1)} mi`, "Passenger miles ÷ trips"],
     ["Unoccupied Share", fmtPct(d.deadhead), "P1 + P2 ÷ total VMT"],
   ];
   return <div>
     <div className="flex items-baseline justify-between mb-2">
-      <h2 className="text-xl font-semibold tracking-tight">Waymo operating indicators</h2>
+      <h2 className="text-xl font-semibold tracking-tight">{company} Operating Indicators</h2>
       <span className="text-sm text-neutral-500">{label}</span>
     </div>
     <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-2.5">
@@ -68,8 +66,8 @@ export function WaymoCompositeStats({ rows }: { rows: ActivityMonthlyRow[] }) {
   </div>;
 }
 
-export function WaymoWaitingTime({ rows }: { rows: ActivityMonthlyRow[] }) {
-  const data=waymoDriverless(rows).map(r=>{
+export function ActivityWaitingTime({ rows }: { rows: ActivityMonthlyRow[] }) {
+  const data=reportedRows(rows).map(r=>{
     const d=derived(r);
     return {
       label:monthLabel(r.calendar_year,r.calendar_month),
@@ -81,7 +79,7 @@ export function WaymoWaitingTime({ rows }: { rows: ActivityMonthlyRow[] }) {
   });
   return <div className="grid lg:grid-cols-2 gap-3">
     <div className="viz-card p-4">
-      <div className="font-semibold">Total waiting time</div>
+      <div className="font-semibold">Total Waiting Time</div>
       <div className="text-sm text-neutral-500">P1 hours: unassigned between trips, whether moving or stationary.</div>
       <ResponsiveContainer width="100%" height={280}>
         <LineChart data={data} margin={{top:14,right:15,bottom:4,left:4}}>
@@ -92,7 +90,7 @@ export function WaymoWaitingTime({ rows }: { rows: ActivityMonthlyRow[] }) {
       </ResponsiveContainer>
     </div>
     <div className="viz-card p-4">
-      <div className="font-semibold">Waiting time per trip</div>
+      <div className="font-semibold">Waiting Time per Trip</div>
       <div className="text-sm text-neutral-500">A fleet-efficiency measure: P1 waiting hours divided by passenger trips.</div>
       <ResponsiveContainer width="100%" height={280}>
         <LineChart data={data} margin={{top:14,right:15,bottom:4,left:4}}>
@@ -105,8 +103,8 @@ export function WaymoWaitingTime({ rows }: { rows: ActivityMonthlyRow[] }) {
   </div>;
 }
 
-export function WaymoVmtUtilization({ rows }: { rows: ActivityMonthlyRow[] }) {
-  const data=waymoDriverless(rows).map(r=>{
+export function ActivityVmtUtilization({ rows }: { rows: ActivityMonthlyRow[] }) {
+  const data=reportedRows(rows).map(r=>{
     const d=derived(r);
     return {
       label:monthLabel(r.calendar_year,r.calendar_month),
@@ -119,7 +117,7 @@ export function WaymoVmtUtilization({ rows }: { rows: ActivityMonthlyRow[] }) {
   });
   return <div className="grid lg:grid-cols-2 gap-3">
     <div className="viz-card p-4">
-      <div className="font-semibold">VMT by trip period</div>
+      <div className="font-semibold">VMT by Trip Period</div>
       <div className="text-sm text-neutral-500">Occupied, pickup, and unassigned / positioning miles.</div>
       <ResponsiveContainer width="100%" height={300}>
         <AreaChart data={data} margin={{top:14,right:15,bottom:4,left:4}}>
@@ -132,7 +130,7 @@ export function WaymoVmtUtilization({ rows }: { rows: ActivityMonthlyRow[] }) {
       </ResponsiveContainer>
     </div>
     <div className="viz-card p-4">
-      <div className="font-semibold">Utilization of vehicle miles</div>
+      <div className="font-semibold">Utilization of Vehicle Miles</div>
       <div className="text-sm text-neutral-500">Passenger-occupied share versus all miles without a passenger.</div>
       <ResponsiveContainer width="100%" height={300}>
         <LineChart data={data} margin={{top:14,right:15,bottom:4,left:4}}>
@@ -146,8 +144,8 @@ export function WaymoVmtUtilization({ rows }: { rows: ActivityMonthlyRow[] }) {
   </div>;
 }
 
-export function WaymoParkingEstimate({ rows }: { rows: ActivityMonthlyRow[] }) {
-  const data=waymoDriverless(rows).map(r=>{
+export function ActivityParkingEstimate({ rows }: { rows: ActivityMonthlyRow[] }) {
+  const data=reportedRows(rows).map(r=>{
     const d=derived(r);
     return {
       label:monthLabel(r.calendar_year,r.calendar_month),
@@ -160,12 +158,12 @@ export function WaymoParkingEstimate({ rows }: { rows: ActivityMonthlyRow[] }) {
   return <div className="viz-card p-4">
     <div className="flex flex-wrap items-baseline justify-between gap-2">
       <div>
-        <div className="font-semibold">Estimated stationary P1 time</div>
+        <div className="font-semibold">Estimated Stationary P1 Time</div>
         <div className="text-sm text-neutral-500">Sensitivity estimate assuming P1 movement averages 14 mph: waiting hours − (P1 miles ÷ 14 mph).</div>
       </div>
       <div className="text-right">
         <div className="text-xl font-semibold tabular-nums">{latest.hours.toLocaleString()} h</div>
-        <div className="text-sm text-neutral-500">{latest.minutes} min/trip · latest month</div>
+        <div className="text-sm text-neutral-500">{latest.minutes} min/trip · Latest Month</div>
       </div>
     </div>
     <ResponsiveContainer width="100%" height={250}>

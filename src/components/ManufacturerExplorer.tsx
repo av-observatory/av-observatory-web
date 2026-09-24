@@ -13,7 +13,7 @@ export function ManufacturerExplorer({ companies }: { companies: CompanyProfile[
   if (!company) return <p>No current operator profiles are available.</p>;
   return <div className="mt-6">
     <div className="viz-card p-4 sm:p-5">
-      <h2 className="text-xl font-semibold text-[#0b1d33]">Choose a company</h2>
+      <h2 className="text-xl font-semibold text-[#0b1d33]">Choose A Company</h2>
       {[{ title: "Passenger, delivery and shuttle", items: companies.filter(c => !trucking.has(c.name)) }, { title: "Autonomous trucking", items: companies.filter(c => trucking.has(c.name)) }].map(group => group.items.length > 0 && <section key={group.title} className="mt-5"><h3 className="text-sm font-semibold text-neutral-600 mb-2">{group.title}</h3><div className="flex flex-wrap gap-2">{group.items.map(c => <button type="button" key={c.slug} onClick={() => setSelected(c.slug)} aria-pressed={company.slug === c.slug} className={`inline-flex items-center gap-2 rounded-lg border px-3 py-2 text-sm font-medium ${company.slug === c.slug ? "border-[#123b69] bg-[#eaf2fa] text-[#0b1d33] ring-1 ring-[#123b69]" : "border-neutral-200 bg-white text-neutral-700 hover:border-[#7ca7d0]"}`}>{domains[c.name] ? <img src={`https://www.google.com/s2/favicons?domain=${domains[c.name]}&sz=64`} alt="" className="w-7 h-7 object-contain" /> : <span aria-hidden="true" className="w-7 h-7 rounded bg-neutral-100 flex items-center justify-center">{c.name[0]}</span>}{c.name}</button>)}</div></section>)}
     </div>
     <article className="viz-card p-5 sm:p-7 mt-4" aria-live="polite" key={company.slug}>

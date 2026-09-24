@@ -253,7 +253,7 @@ export function ManufacturerSearch({
     </div>
 
     <div className="mt-5 viz-card overflow-hidden">
-      <div className="px-5 py-4 border-b border-neutral-200"><h3 className="font-semibold">Records behind this view</h3><p className="text-xs text-neutral-500 mt-1">Source vocabulary is preserved alongside the Observatory classification.</p></div>
+      <div className="px-5 py-4 border-b border-neutral-200"><h3 className="font-semibold">Records Behind This View</h3><p className="text-xs text-neutral-500 mt-1">Source vocabulary is preserved alongside the Observatory classification.</p></div>
       <div className="overflow-x-auto max-h-[520px]">
         <table className="w-full text-sm">
           <thead className="sticky top-0 bg-[#fcfcfb] text-left text-neutral-500"><tr><th>Company</th><th>State</th><th>Status</th><th>Evidence</th><th>Date</th><th>Source</th></tr></thead>

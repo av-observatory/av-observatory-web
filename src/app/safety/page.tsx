@@ -84,40 +84,40 @@ export default async function SafetyPage() {
       <p className="mt-2 text-sm text-neutral-600 max-w-3xl">NHTSA SGO incident reports by reporting entity, geography, vehicle, roadway, collision counterpart, injury severity, and reported ODD status. August 2026 is currently incomplete and excluded.</p>
 
       <div className="mt-5 grid sm:grid-cols-3 gap-2.5">
-        <StatTile label="Incident reports" value={sgo.row_count.toLocaleString()} caption="NHTSA SGO records in the Observatory" />
-        <StatTile label="States represented" value={sgo.states_represented.length.toString()} caption="States appearing in reported incidents" />
-        <StatTile label="Reporting entities" value={sgo.entities_represented.length.toString()} caption="ADS reporting entities represented" />
+        <StatTile label="Incident Reports" value={sgo.row_count.toLocaleString()} caption="NHTSA SGO records in the Observatory" />
+        <StatTile label="States Represented" value={sgo.states_represented.length.toString()} caption="States appearing in reported incidents" />
+        <StatTile label="Reporting Entities" value={sgo.entities_represented.length.toString()} caption="ADS reporting entities represented" />
       </div>
 
       <section id="trends" className="mt-7">
-        <h2 className="text-xl font-semibold tracking-tight">Incident reports over time</h2>
+        <h2 className="text-xl font-semibold tracking-tight">Incident Reports Over Time</h2>
         <div className="viz-card p-4 mt-2"><SafetyExplorer data={sgo} /></div>
       </section>
 
       <section id="geography" className="mt-5 grid lg:grid-cols-5 gap-3">
         <div className="lg:col-span-3">
-          <ChartCard title="Where incidents are reported" subtitle="Cumulative NHTSA SGO incident-report counts by state. Darker shading means more reports, not necessarily greater risk." source="NHTSA Standing General Order 2021-01">
+          <ChartCard title="Where Incidents Are Reported" subtitle="Cumulative NHTSA SGO incident-report counts by state. Darker shading means more reports, not necessarily greater risk." source="NHTSA Standing General Order 2021-01">
             <UsStateMap valueByAbbrev={incidentsByState} />
           </ChartCard>
         </div>
         <div id="entities" className="lg:col-span-2">
-          <ChartCard title="Reporting entities" subtitle="All-time report count by entity. Exposure differs substantially across operators." source="NHTSA Standing General Order 2021-01">
+          <ChartCard title="Reporting Entities" subtitle="All-time report count by entity. Exposure differs substantially across operators." source="NHTSA Standing General Order 2021-01">
             <TopEntitiesChart data={sgo} />
           </ChartCard>
         </div>
       </section>
 
+      <SgoSeriousCrashList crashes={seriousCrashes} media={mediaContext.records} reviewedSources={mediaContext.reviewed_sources} />
+
       <section className="mt-7">
         <div className="mb-2">
-          <h2 className="text-xl font-semibold tracking-tight">Inside the SGO reports</h2>
+          <h2 className="text-xl font-semibold tracking-tight">Inside the SGO Reports</h2>
           <p className="text-sm text-neutral-600 mt-1">
             Filter the incident-level database and inspect how report characteristics differ across manufacturers, states, road environments, crash counterparts, and alleged injury severity.
           </p>
         </div>
         <SgoDeepDive rows={incidentRows} />
       </section>
-
-      <SgoSeriousCrashList crashes={seriousCrashes} media={mediaContext.records} reviewedSources={mediaContext.reviewed_sources} />
 
     </div>
   );
