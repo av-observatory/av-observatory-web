@@ -330,9 +330,9 @@ function MarketMap({
       if(mapRef.current){mapRef.current.remove();mapRef.current=null;}
       const map=L.map(ref.current,{center:[37,-96],zoom:6,minZoom:3,maxZoom:16,zoomControl:true,scrollWheelZoom:true});
       mapRef.current=map;
-      L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",{
-        maxZoom:20,
-        attribution:"&copy; OpenStreetMap contributors &copy; CARTO"
+      L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}",{
+        maxZoom:16,
+        attribution:"Tiles &copy; Esri"
       }).addTo(map);
       const bounds=L.latLngBounds([]);
 
