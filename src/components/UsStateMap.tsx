@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { ComposableMap, Geographies, Geography, Marker, ZoomableGroup } from "react-simple-maps";
 
-const GEO_URL = `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/data/us-states-10m.json`;
+const GEO_URL = `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/maps/us-states-10m.json`;
 
 const STATE_ABBREV_BY_NAME: Record<string, string> = {
   Alabama: "AL", Alaska: "AK", Arizona: "AZ", Arkansas: "AR", California: "CA",
