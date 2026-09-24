@@ -18,6 +18,8 @@ if not KEY:
     sys.exit("OPENSTATES_API_KEY is required")
 
 API = "https://v3.openstates.org"
+LAST_REQUEST_AT = 0.0
+MIN_REQUEST_INTERVAL = 6.5
 STATE_CODES = "AL AK AZ AR CA CO CT DE FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS MO MT NE NV NH NJ NM NY NC ND OH OK OR PA RI SC SD TN TX UT VT VA WA WV WI WY DC".split()
 STATE_NAMES = dict(zip(
     STATE_CODES,
@@ -34,7 +36,11 @@ RELEVANT = re.compile(
 )
 EXCLUDE = re.compile(r"\b(?:autonomous region|autonomous university|autonomous drone|unmanned aircraft)\b", re.I)
 
-def api_get(path, params=None, retries=4):
+def api_get(path, params=None, retries=5):
+    global LAST_REQUEST_AT
+    elapsed = time.monotonic() - LAST_REQUEST_AT
+    if elapsed < MIN_REQUEST_INTERVAL:
+        time.sleep(MIN_REQUEST_INTERVAL - elapsed)
     url = API + path
     if params:
         url += "?" + urlencode(params, doseq=True)
@@ -42,9 +48,15 @@ def api_get(path, params=None, retries=4):
     for attempt in range(retries):
         try:
             with urlopen(req, timeout=55) as response:
+                LAST_REQUEST_AT = time.monotonic()
                 return json.load(response)
         except HTTPError as exc:
             body = exc.read().decode("utf-8", "replace")
+            LAST_REQUEST_AT = time.monotonic()
+            if exc.code == 429 and attempt < retries - 1:
+                retry_after = exc.headers.get("Retry-After")
+                time.sleep(float(retry_after) if retry_after and retry_after.replace(".","",1).isdigit() else 12.0)
+                continue
             if exc.code < 500 or attempt == retries - 1:
                 safe_url = url.split("apikey=", 1)[0]
                 raise RuntimeError(f"Open States HTTP {exc.code} for {safe_url}: {body[:500]}") from exc
