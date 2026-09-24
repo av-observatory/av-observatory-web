@@ -417,7 +417,11 @@ def build_census_context(s2: gpd.GeoDataFrame, pieces: gpd.GeoDataFrame):
         "dataset": "Waymo S2 Census demographic context",
         "census_vintage": "2024 ACS 5-year",
         "geometry_vintage": "2024 TIGER/Line block groups",
-        "latest_waymo_vintage": max([p.stem.rsplit("_",1)[-1] for p in DATA.glob("waymo_s2_??????.csv")]),
+        "latest_waymo_vintage": max([
+            m.group(1)
+            for p in DATA.glob("waymo_s2_*.csv")
+            if (m := re.fullmatch(r"waymo_s2_(\d{6})\.csv", p.name))
+        ]),
         "methodology": {
             "population_and_race_ethnicity": "2024 ACS 5-year block-group counts allocated to S2 cells using intersection area / block-group area (areal interpolation).",
             "income": "Household-weighted average of contributing block groups' 2024 ACS median household income (B19013). This is contextual and is not an exact S2-cell median.",
@@ -440,7 +444,8 @@ def market_for(state: str, county: str):
     x = COUNTIES.get((state, county))
     if x:
         return x[2]
-    legacy = str(county or "").upper().replace(" ", "_")
+    raw = str(county or "").strip()
+    legacy = raw.upper().replace(" ", "_")
     aliases = {
         "PHOENIX": "Phoenix",
         "SAN_FRANCISCO": "San Francisco Bay Area",
@@ -448,7 +453,13 @@ def market_for(state: str, county: str):
         "AUSTIN": "Austin",
         "ATLANTA": "Atlanta",
     }
-    return aliases.get(legacy)
+    if legacy in aliases:
+        return aliases[legacy]
+    if raw and state:
+        return f"{raw}, {state}"
+    if raw:
+        return raw.replace("_", " ").title()
+    return None
 
 
 def build_market_history():
