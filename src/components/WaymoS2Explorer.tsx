@@ -106,7 +106,8 @@ type MarketHistory = {
   markets:Record<string,{vintage_end:string;cumulative_miles:number;incremental_miles_vs_prior_release:number;cell_count:number}[]>;
 };
 
-type Metric = "cumulative" | "incremental" | "miles_per_1000" | "income" | "hispanic" | "black" | "asian" | "white";
+type Metric = "cumulative" | "incremental" | "miles_per_1000" | "interaction";
+type ResidentCharacteristic = "hispanic" | "black" | "asian" | "white" | "income";
 
 const LEAFLET_JS = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.js";
 const LEAFLET_CSS = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.css";
@@ -114,6 +115,11 @@ const BLUE_RAMP = ["#edf4fd","#d5e7fb","#a9cef6","#78afea","#438ad8","#2468b7","
 const ORANGE_RAMP = ["#fff3e8","#fddfc6","#f8bd8e","#f29356","#df6c28","#b94b15","#8d3510","#63240c"];
 const GREEN_RAMP = ["#eef7f0","#d6eadb","#b5d7bf","#8fc09e","#65a57a","#42875c","#286943","#15482d"];
 const PURPLE_RAMP = ["#f3eff9","#e2d7f1","#c9b9e4","#ad96d4","#8e71c0","#6f50a7","#543b84","#39285d"];
+const BIVARIATE = [
+  ["#e8e8e8","#ace4e4","#5ac8c8"],
+  ["#dfb0d6","#a5add3","#5698b9"],
+  ["#be64ac","#8c62aa","#3b4994"],
+];
 
 function ensureLeafletCss() {
   if (document.querySelector('link[data-waymo-s2-leaflet="1"]')) return;
@@ -158,36 +164,49 @@ function metricValue(p:S2Feature["properties"],metric:Metric,census:CensusDatase
     const pop=Number(cell?.estimated_population||0);
     return pop>0?Number(p.waymo_ro_miles||0)/pop*1000:null;
   }
-  if(metric==="income")return cell?.household_weighted_bg_median_income??null;
-  if(metric==="hispanic")return cell?.pct_hispanic??null;
-  if(metric==="black")return cell?.pct_black_non_hispanic??null;
-  if(metric==="asian")return cell?.pct_asian_non_hispanic??null;
-  if(metric==="white")return cell?.pct_white_non_hispanic??null;
   return null;
 }
 function metricLabel(metric:Metric){
   if(metric==="cumulative")return "Operational miles per cell";
   if(metric==="incremental")return "Miles added per cell";
   if(metric==="miles_per_1000")return "Miles per 1,000 estimated residents";
-  if(metric==="income")return "Estimated resident household-income context";
-  if(metric==="hispanic")return "Estimated Hispanic / Latino resident share";
-  if(metric==="black")return "Estimated Black non-Hispanic resident share";
-  if(metric==="asian")return "Estimated Asian non-Hispanic resident share";
-  return "Estimated White non-Hispanic resident share";
+  if(metric==="interaction")return "Bivariate: Waymo VMT per resident × resident characteristic";
+  return "Operational miles per cell";
 }
 function metricFormat(metric:Metric,value:number|null){
   if(value===null||!Number.isFinite(value))return "No estimate";
-  if(metric==="income")return "$"+Math.round(value).toLocaleString();
-  if(["hispanic","black","asian","white"].includes(metric))return value.toFixed(1)+"%";
-  if(metric==="miles_per_1000")return compactMiles(value)+" mi / 1k";
+  if(metric==="miles_per_1000"||metric==="interaction")return compactMiles(value)+" mi / 1k";
   return compactMiles(value)+" miles";
 }
 function metricRamp(metric:Metric){
   if(metric==="incremental")return ORANGE_RAMP;
-  if(metric==="income")return GREEN_RAMP;
-  if(["hispanic","black","asian","white"].includes(metric))return PURPLE_RAMP;
   return BLUE_RAMP;
 }
+function characteristicValue(p:S2Feature["properties"],characteristic:ResidentCharacteristic,census:CensusDataset){
+  const cell=census.cells[String(p.s2_cell)];
+  if(characteristic==="income")return cell?.household_weighted_bg_median_income??null;
+  if(characteristic==="hispanic")return cell?.pct_hispanic??null;
+  if(characteristic==="black")return cell?.pct_black_non_hispanic??null;
+  if(characteristic==="asian")return cell?.pct_asian_non_hispanic??null;
+  return cell?.pct_white_non_hispanic??null;
+}
+function characteristicLabel(characteristic:ResidentCharacteristic){
+  if(characteristic==="income")return "Median household income";
+  if(characteristic==="hispanic")return "% Hispanic / Latino";
+  if(characteristic==="black")return "% Black, non-Hispanic";
+  if(characteristic==="asian")return "% Asian, non-Hispanic";
+  return "% White, non-Hispanic";
+}
+function characteristicFormat(characteristic:ResidentCharacteristic,value:number|null){
+  if(value===null||!Number.isFinite(value))return "No estimate";
+  return characteristic==="income"?"$"+Math.round(value).toLocaleString():value.toFixed(1)+"%";
+}
+function tertileBreaks(values:number[]){
+  const sorted=values.filter(Number.isFinite).sort((a,b)=>a-b);
+  if(!sorted.length)return [0,1];
+  return [percentile(sorted,1/3),percentile(sorted,2/3)];
+}
+function tertileIndex(value:number,breaks:number[]){return value<=breaks[0]?0:value<=breaks[1]?1:2;}
 function marketNameForFeature(p:S2Feature["properties"]){
   const state=String(p.state??"");
   const county=String(p.county??"");
@@ -295,9 +314,10 @@ type MarketFacet = {
 };
 
 function MarketMap({
-  facet,metric,breaks,totalMiles,census,
+  facet,metric,breaks,totalMiles,census,characteristic,activityBreaks,contextBreaks,
 }:{
   facet:MarketFacet; metric:Metric; breaks:number[]; totalMiles:number; census:CensusDataset;
+  characteristic:ResidentCharacteristic; activityBreaks:number[]; contextBreaks:number[];
 }){
   const ref=useRef<HTMLDivElement|null>(null);
   const mapRef=useRef<any>(null);
@@ -324,6 +344,13 @@ function MarketMap({
           style:(feature:any)=>{
             const p=feature?.properties??{};
             const value=metricValue(p,metric,census);
+            if(metric==="interaction"){
+              const activity=metricValue(p,"miles_per_1000",census);
+              const context=characteristicValue(p,characteristic,census);
+              const missing=activity===null||context===null||!Number.isFinite(activity)||!Number.isFinite(context);
+              if(missing)return{color:"rgba(255,255,255,.85)",weight:0.45,fillColor:"#e5e5e3",fillOpacity:0.25};
+              return{color:"rgba(255,255,255,.9)",weight:0.5,fillColor:BIVARIATE[tertileIndex(Number(context),contextBreaks)][tertileIndex(Number(activity),activityBreaks)],fillOpacity:0.9};
+            }
             if(metric==="incremental"&&value!==null&&value<0)return{color:"#fff",weight:0.45,fillColor:"#d9474d",fillOpacity:0.86};
             const ramp=metricRamp(metric);
             const missing=value===null||!Number.isFinite(value); return{color:"rgba(255,255,255,.85)",weight:0.45,fillColor:missing?"#e5e5e3":ramp[rampIndex(Number(value),breaks)],fillOpacity:missing?0.25:0.86};
@@ -332,10 +359,12 @@ function MarketMap({
             const p=feature.properties??{};
             const cumulative=Number(p.waymo_ro_miles||0),added=Number(p.incremental_miles||0);
             const value=metricValue(p,metric,census);
+            const activity=metricValue(p,"miles_per_1000",census);
+            const context=characteristicValue(p,characteristic,census);
             const share=totalMiles>0?cumulative/totalMiles*100:0;
-            layer.bindTooltip(`<div style="font:12px/1.35 system-ui,-apple-system,Segoe UI,sans-serif;min-width:180px">
+            layer.bindTooltip(`<div style="font:12px/1.35 system-ui,-apple-system,Segoe UI,sans-serif;min-width:210px">
               <div style="font-weight:700">${escapeHtml(p.county||facet.market)}, ${escapeHtml(p.state||facet.state)}</div>
-              <div style="font-size:15px;font-weight:700;margin-top:3px">${escapeHtml(metricFormat(metric,value))}</div>
+              ${metric==="interaction"?`<div style="font-size:14px;font-weight:700;margin-top:3px">${escapeHtml(metricFormat("miles_per_1000",activity))}</div><div style="color:#555">${escapeHtml(characteristicLabel(characteristic))}: ${escapeHtml(characteristicFormat(characteristic,context))}</div>`:`<div style="font-size:15px;font-weight:700;margin-top:3px">${escapeHtml(metricFormat(metric,value))}</div>`}
               <div style="color:#666">Cumulative ${escapeHtml(compactMiles(cumulative))} · added ${escapeHtml(compactMiles(added))}</div>
               <div style="color:#666">${share.toFixed(2)}% of market-attributed miles · S2 ${escapeHtml(p.s2_cell)}</div>
             </div>`,{sticky:true,direction:"top",opacity:0.96});
@@ -350,7 +379,7 @@ function MarketMap({
       else if(facet.point) map.setView([facet.point[1],facet.point[0]],9,{animate:false});
     });
     return()=>{cancelled=true;if(mapRef.current){mapRef.current.remove();mapRef.current=null;}};
-  },[facet,metric,breaks,totalMiles,census]);
+  },[facet,metric,breaks,totalMiles,census,characteristic,activityBreaks,contextBreaks]);
 
   return <div ref={ref} className="waymo-market-facet-map" />;
 }
@@ -369,7 +398,9 @@ export function WaymoS2Explorer({
   const [mapData,setMapData]=useState<S2GeoJSON>(geojson);
   const [loading,setLoading]=useState(false);
   const [loadError,setLoadError]=useState<string|null>(null);
-  const [metric,setMetric]=useState<Metric>("cumulative");
+  const [metric,setMetric]=useState<Metric>("interaction");
+  const [characteristic,setCharacteristic]=useState<ResidentCharacteristic>("black");
+  const [selectedMarket,setSelectedMarket]=useState("San Francisco Bay Area");
   const [growthMarket,setGrowthMarket]=useState("San Francisco Bay Area");
 
   useEffect(()=>{
@@ -498,10 +529,15 @@ export function WaymoS2Explorer({
       .sort((a,b)=>a.state.localeCompare(b.state)||a.market.localeCompare(b.market));
   },[waymoService,locations,mapData]);
 
-  const allValues=useMemo(()=>mapData.features
+  const selectedFacet=facets.find(f=>f.market===selectedMarket)??facets[0];
+  useEffect(()=>{if(selectedFacet&&selectedFacet.market!==selectedMarket)setSelectedMarket(selectedFacet.market);},[selectedFacet,selectedMarket]);
+  const activeCells=selectedFacet?.cells??[];
+  const allValues=useMemo(()=>activeCells
     .map(f=>metricValue(f.properties,metric,census))
-    .filter((v):v is number=>v!==null&&Number.isFinite(v)),[mapData,metric,census]);
+    .filter((v):v is number=>v!==null&&Number.isFinite(v)),[activeCells,metric,census]);
   const breaks=useMemo(()=>quantileBreaks(allValues),[allValues]);
+  const activityBreaks=useMemo(()=>tertileBreaks(activeCells.map(f=>metricValue(f.properties,"miles_per_1000",census)).filter((v):v is number=>v!==null&&Number.isFinite(v))),[activeCells,census]);
+  const contextBreaks=useMemo(()=>tertileBreaks(activeCells.map(f=>characteristicValue(f.properties,characteristic,census)).filter((v):v is number=>v!==null&&Number.isFinite(v))),[activeCells,characteristic,census]);
   const ramp=metricRamp(metric);
 
   const growthSeries=marketHistory.markets[growthMarket]??[];
@@ -514,143 +550,63 @@ export function WaymoS2Explorer({
   const uniqueMappedCells=new Set(mapData.features.map(f=>String(f.properties.s2_cell))).size;
 
   return <div>
-    <div className="viz-card p-4">
-      <div className="grid md:grid-cols-2 gap-3">
+    <div className="viz-card p-3">
+      <div className="grid gap-3 lg:grid-cols-[1.15fr_1fr_2.2fr] lg:items-end">
         <div>
-          <div className="filter-label">Time</div>
-          <div className="mt-2 flex items-center gap-2">
-            <button
-              type="button"
-              onClick={()=>{
-                const ordered=summary.vintages.map(v=>v.vintage_end);
-                const i=ordered.indexOf(vintage);
-                if(i>0)setVintage(ordered[i-1]);
-              }}
-              disabled={summary.vintages[0]?.vintage_end===vintage}
-              className="rounded-full border border-[#cad8e8] bg-white px-3 py-1.5 text-sm text-neutral-700 disabled:opacity-35"
-            >← Earlier</button>
-            <span className="rounded-full bg-[#eef4fb] px-3 py-1.5 text-sm font-medium text-[#184f95]">{vintageLabel(vintage)}</span>
-            <button
-              type="button"
-              onClick={()=>{
-                const ordered=summary.vintages.map(v=>v.vintage_end);
-                const i=ordered.indexOf(vintage);
-                if(i>=0&&i<ordered.length-1)setVintage(ordered[i+1]);
-              }}
-              disabled={summary.latest_vintage===vintage}
-              className="rounded-full border border-[#cad8e8] bg-white px-3 py-1.5 text-sm text-neutral-700 disabled:opacity-35"
-            >Later →</button>
+          <div className="filter-label">Market</div>
+          <select className="filter-select" value={selectedFacet?.market??selectedMarket} onChange={e=>setSelectedMarket(e.target.value)}>
+            {facets.map(f=><option key={f.market} value={f.market}>{f.market}</option>)}
+          </select>
+        </div>
+        <div>
+          <div className="filter-label">Release</div>
+          <div className="mt-1 flex items-center gap-1.5">
+            <button type="button" onClick={()=>{const ordered=summary.vintages.map(v=>v.vintage_end);const i=ordered.indexOf(vintage);if(i>0)setVintage(ordered[i-1]);}} disabled={summary.vintages[0]?.vintage_end===vintage} className="rounded-md border border-[#cad8e8] bg-white px-2.5 py-2 text-sm text-neutral-700 disabled:opacity-35">←</button>
+            <span className="flex-1 rounded-md bg-[#eef4fb] px-3 py-2 text-center text-sm font-medium text-[#184f95]">{vintageLabel(vintage)}</span>
+            <button type="button" onClick={()=>{const ordered=summary.vintages.map(v=>v.vintage_end);const i=ordered.indexOf(vintage);if(i>=0&&i<ordered.length-1)setVintage(ordered[i+1]);}} disabled={summary.latest_vintage===vintage} className="rounded-md border border-[#cad8e8] bg-white px-2.5 py-2 text-sm text-neutral-700 disabled:opacity-35">→</button>
           </div>
         </div>
         <div>
-          <div className="filter-label">Color map by</div>
-          <div className="mt-2">
-            <div className="text-[11px] font-medium uppercase tracking-wide text-neutral-400">Waymo activity</div>
-            <div className="mt-1 flex flex-wrap gap-2">
-              {([
-                ["cumulative","Cumulative miles"],
-                ["incremental","Miles added"],
-                ["miles_per_1000","Miles per 1,000 residents"],
-              ] as [Metric,string][]).map(([value,label])=><button
-                key={value}
-                type="button"
-                onClick={()=>setMetric(value)}
-                className={`rounded-full border px-3 py-1.5 text-sm transition ${metric===value?"border-[#184f95] bg-[#184f95] text-white":"border-[#cad8e8] bg-white text-neutral-700 hover:border-[#184f95] hover:text-[#184f95]"}`}
-              >{label}</button>)}
-            </div>
-            <div className="mt-3 text-[11px] font-medium uppercase tracking-wide text-neutral-400">Resident characteristics</div>
-            <div className="mt-1 flex flex-wrap gap-2">
-              {([
-                ["income","Median household income"],
-                ["hispanic","% Hispanic / Latino"],
-                ["black","% Black, non-Hispanic"],
-                ["asian","% Asian, non-Hispanic"],
-                ["white","% White, non-Hispanic"],
-              ] as [Metric,string][]).map(([value,label])=><button
-                key={value}
-                type="button"
-                onClick={()=>setMetric(value)}
-                className={`rounded-full border px-3 py-1.5 text-sm transition ${metric===value?"border-[#184f95] bg-[#184f95] text-white":"border-[#cad8e8] bg-white text-neutral-700 hover:border-[#184f95] hover:text-[#184f95]"}`}
-              >{label}</button>)}
-            </div>
-            <div className="mt-2 text-xs text-neutral-500">These buttons change the cell shading; Waymo mileage stays the same.</div>
+          <div className="filter-label">Map</div>
+          <div className="mt-1 flex flex-wrap gap-1.5">
+            {([["interaction","VMT × demographics"],["miles_per_1000","VMT / resident"],["cumulative","Cumulative VMT"],["incremental","Miles added"]] as [Metric,string][]).map(([value,label])=><button key={value} type="button" onClick={()=>setMetric(value)} className={`rounded-md border px-2.5 py-2 text-sm transition ${metric===value?"border-[#184f95] bg-[#184f95] text-white":"border-[#cad8e8] bg-white text-neutral-700 hover:border-[#184f95] hover:text-[#184f95]"}`}>{label}</button>)}
           </div>
         </div>
       </div>
+      {metric==="interaction"&&<div className="mt-2 flex flex-wrap items-center gap-2 border-t border-neutral-200 pt-2">
+        <span className="text-xs font-medium text-neutral-500">Resident characteristic</span>
+        {([["black","Black, non-Hispanic"],["hispanic","Hispanic / Latino"],["asian","Asian, non-Hispanic"],["white","White, non-Hispanic"],["income","Household income"]] as [ResidentCharacteristic,string][]).map(([value,label])=><button key={value} type="button" onClick={()=>setCharacteristic(value)} className={`rounded-full border px-2.5 py-1 text-xs transition ${characteristic===value?"border-[#184f95] bg-[#eef4fb] text-[#184f95]":"border-[#d9d9d5] bg-white text-neutral-600"}`}>{label}</button>)}
+      </div>}
     </div>
 
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5 mt-3">
-      <div className="viz-card p-3"><div className="text-xs text-neutral-500">Markets with S2 data</div><div className="text-2xl font-semibold mt-1">{marketsWithVmt}</div></div>
-      <div className="viz-card p-3"><div className="text-xs text-neutral-500">Published S2 cells</div><div className="text-2xl font-semibold mt-1">{uniqueMappedCells.toLocaleString()}</div></div>
-    </div>
-
-    <div className="mt-5 flex items-baseline justify-between gap-4">
-      <div>
-        <h3 className="text-xl font-semibold">Waymo Markets · VMT by Cell</h3>
-        <p className="text-sm text-neutral-500 mt-1">
-          Each market with published S2 mileage is shown separately. Markets without S2 data are omitted.
-        </p>
-      </div>
-      <span className="text-sm text-neutral-500">{loading?"Loading…":vintageLabel(vintage)}</span>
-    </div>
-
-    <div className="mt-3 grid md:grid-cols-2 xl:grid-cols-3 gap-3">
-      {facets.map(facet=>{
-        const total=facet.cells.reduce((s,f)=>s+Number(f.properties.waymo_ro_miles||0),0);
-        const added=facet.cells.reduce((s,f)=>s+Number(f.properties.incremental_miles||0),0);
-        const censusRows=Array.from(new Map(
-          facet.cells.map(f=>{
-            const id=String(f.properties.s2_cell);
-            return [id,census.cells[id]] as const;
-          })
-        ).values()).filter((r):r is CensusCell=>Boolean(r));
-        const population=censusRows.reduce((s,r)=>s+Number(r.estimated_population||0),0);
-        const incomeWeight=censusRows.reduce((s,r)=>s+(r.household_weighted_bg_median_income!==null?Number(r.estimated_households||0):0),0);
-        const income=incomeWeight>0?censusRows.reduce((s,r)=>s+(r.household_weighted_bg_median_income??0)*Number(r.estimated_households||0),0)/incomeWeight:null;
-        return <div key={`${facet.market}|${facet.state}`} className="viz-card overflow-hidden">
-          <div className="p-4 pb-3">
-            <div className="flex items-start justify-between gap-3">
-              <div>
-                <h4 className="font-semibold text-lg">{facet.market}</h4>
-                <div className="text-sm text-neutral-500">{facet.state}</div>
-              </div>
-              <span className={`text-xs px-2 py-1 rounded-full ${facet.cells.length?"bg-blue-50 text-blue-800":"bg-neutral-100 text-neutral-600"}`}>
-                {`${facet.cells.length} S2 cells`}
-              </span>
-            </div>
-            {facet.status==="s2_data_only" && (
-              <div className="mt-2 text-[11px] leading-snug text-neutral-500">
-                S2 data market — no separate service-area polygon is required for inclusion.
-              </div>
-            )}
-            {String(facet.serviceFeature?.properties?.geometry_basis??"")==="derived_s2_reporting_region" && (
-              <div className="mt-2 text-[11px] leading-snug text-neutral-500">
-                Derived S2 reporting envelope — not an official Waymo service-area or ODD boundary.
-              </div>
-            )}
-            <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs text-neutral-600">
-              {facet.cells.length>0 ? <>
-                <span><strong className="text-neutral-900">{compactMiles(total)}</strong> cumulative mi</span>
-                <span><strong className="text-neutral-900">{compactMiles(added)}</strong> added</span>
-                <span><strong className="text-neutral-900">{compactMiles(population)}</strong> est. residents</span>
-                <span><strong className="text-neutral-900">{income!==null?"$"+Math.round(income).toLocaleString():"—"}</strong> income context</span>
-              </> : <span>No published S2 VMT attributed to this current service area in this release.</span>}
-            </div>
+    {selectedFacet&&(()=>{
+      const total=selectedFacet.cells.reduce((sum,f)=>sum+Number(f.properties.waymo_ro_miles||0),0);
+      const added=selectedFacet.cells.reduce((sum,f)=>sum+Number(f.properties.incremental_miles||0),0);
+      const censusRows=Array.from(new Map(selectedFacet.cells.map(f=>{const id=String(f.properties.s2_cell);return [id,census.cells[id]] as const;})).values()).filter((r):r is CensusCell=>Boolean(r));
+      const population=censusRows.reduce((sum,r)=>sum+Number(r.estimated_population||0),0);
+      return <div className="viz-card mt-3 overflow-hidden">
+        <div className="flex flex-wrap items-center justify-between gap-2 px-4 py-3">
+          <div><h3 className="text-xl font-semibold">{selectedFacet.market} · VMT by S2 Cell</h3><div className="text-xs text-neutral-500">{selectedFacet.cells.length.toLocaleString()} cells · {loading?"Loading…":vintageLabel(vintage)}</div></div>
+          <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-neutral-600">
+            <span><strong className="text-neutral-900">{compactMiles(total)}</strong> cumulative mi</span>
+            <span><strong className="text-neutral-900">{compactMiles(added)}</strong> added</span>
+            <span><strong className="text-neutral-900">{compactMiles(population)}</strong> est. residents</span>
           </div>
-          <div className="px-3 pb-3">
-            <MarketMap facet={facet} metric={metric} breaks={breaks} totalMiles={total} census={census} />
-          </div>
-        </div>;
-      })}
-    </div>
+        </div>
+        <div className="px-3 pb-3"><MarketMap facet={selectedFacet} metric={metric} breaks={breaks} totalMiles={total} census={census} characteristic={characteristic} activityBreaks={activityBreaks} contextBreaks={contextBreaks}/></div>
+      </div>;
+    })()}
 
-    <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1">
-      <span className="text-xs font-medium text-neutral-600">{metricLabel(metric)}</span>
-      {breaks.map((b,i)=><div key={i} className="flex items-center gap-1">
-        <span className="inline-block w-4 h-3 rounded-sm" style={{background:ramp[i]}} />
-        <span className="text-[10px] text-neutral-500">{i===0?`≤${metricFormat(metric,b)}`:`${metricFormat(metric,breaks[i-1])}–${metricFormat(metric,b)}`}</span>
-      </div>)}
-      {metric==="incremental"&&<div className="flex items-center gap-1"><span className="inline-block w-4 h-3 rounded-sm bg-[#d9474d]" /><span className="text-[10px] text-neutral-500">negative revision</span></div>}
+    <div className="mt-3">
+      {metric==="interaction"?<div className="flex flex-wrap items-center gap-3 text-xs text-neutral-600">
+        <strong>Bivariate map:</strong><span>horizontal = VMT per 1,000 residents (low → high)</span><span>vertical = {characteristicLabel(characteristic)} (low → high)</span>
+        <div className="grid grid-cols-3 gap-[2px]">{[2,1,0].flatMap(row=>[0,1,2].map(col=><span key={`${row}-${col}`} className="h-4 w-4 rounded-[2px]" style={{background:BIVARIATE[row][col]}}/>))}</div>
+        <span className="text-neutral-500">Dark purple identifies cells that are high on both dimensions; this is geographic context, not rider demographics.</span>
+      </div>:<div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+        <span className="text-xs font-medium text-neutral-600">{metricLabel(metric)}</span>
+        {breaks.map((b,i)=><div key={i} className="flex items-center gap-1"><span className="inline-block h-3 w-4 rounded-sm" style={{background:ramp[i]}}/><span className="text-[10px] text-neutral-500">{i===0?`≤${metricFormat(metric,b)}`:`${metricFormat(metric,breaks[i-1])}–${metricFormat(metric,b)}`}</span></div>)}
+        {metric==="incremental"&&<div className="flex items-center gap-1"><span className="inline-block h-3 w-4 rounded-sm bg-[#d9474d]"/><span className="text-[10px] text-neutral-500">negative revision</span></div>}
+      </div>}
     </div>
 
     {loadError&&<div className="text-xs text-red-700 mt-2">Could not load this vintage map: {loadError}</div>}
