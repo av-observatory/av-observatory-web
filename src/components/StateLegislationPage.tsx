@@ -1,7 +1,6 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { PolicyNav } from "@/components/PolicyNav";
 import { displayDate, usePolicyData } from "@/lib/policyTracker";
 import { useLegislationData, type Bill } from "@/lib/legislationTracker";
 
@@ -119,8 +118,6 @@ export function StateLegislationPage() {
     <p className="eyebrow">Policy Trackers / State</p>
     <h1 className="text-4xl font-semibold mt-3 text-[#0b1d33]">State Legislation</h1>
     <p className="mt-3 text-base text-neutral-600 max-w-3xl">Current-session autonomous-vehicle legislation discovered through Open States, with enacted state AV laws shown when a state is selected.</p>
-    <PolicyNav active="state-legislation" />
-
     <section className="viz-card p-5">
       <div className="flex flex-wrap justify-between gap-3 items-end">
         <div>
