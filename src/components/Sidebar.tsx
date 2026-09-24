@@ -6,7 +6,8 @@ const GROUPS = [
   { title: "Policy Trackers", items: [
     ["/policy/federal", "Federal Regs and Rules"],
     ["/policy/federal-legislation", "Federal Legislation"],
-    ["/policy/states", "State Policies"],
+    ["/policy/states", "State Regulations"],
+    ["/policy/state-legislation", "State Legislation"],
     ["/policy/cities", "City Policy"],
   ] },
   { title: "Reporting", items: [["/safety", "National Crash Data"], ["/activity", "CA Trip Data"], ["/complaints", "Citizen Complaints"]] },
