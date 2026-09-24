@@ -205,7 +205,6 @@ def load_census_block_groups() -> gpd.GeoDataFrame:
     for (_, _), (sf, cf, _) in COUNTIES.items():
         needed_by_state[sf].add(cf)
 
-    acs_frames = []
     for sf, counties in sorted(needed_by_state.items()):
         zip_path = CACHE / f"tl_{TIGER_YEAR}_{sf}_bg.zip"
         download(
@@ -216,12 +215,10 @@ def load_census_block_groups() -> gpd.GeoDataFrame:
         g = g[g["COUNTYFP"].isin(counties)].copy()
         keep = ["GEOID", "STATEFP", "COUNTYFP", "geometry"]
         frames.append(g[keep])
-        for cf in sorted(counties):
-            acs_frames.append(fetch_acs_county(sf, cf))
 
     geo = pd.concat(frames, ignore_index=True)
     geo = gpd.GeoDataFrame(geo, geometry="geometry", crs=frames[0].crs)
-    acs = pd.concat(acs_frames, ignore_index=True)
+    acs = load_acs_summary()
     merged = geo.merge(acs, on="GEOID", how="left", validate="one_to_one")
     if merged["population"].isna().all():
         raise RuntimeError("ACS join failed: all population estimates are missing")
