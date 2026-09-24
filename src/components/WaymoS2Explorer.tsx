@@ -168,11 +168,11 @@ function metricValue(p:S2Feature["properties"],metric:Metric,census:CensusDatase
   return null;
 }
 function metricLabel(metric:Metric){
-  if(metric==="cumulative")return "Operational miles per cell";
-  if(metric==="incremental")return "Miles added per cell";
-  if(metric==="miles_per_1000")return "Miles per 1,000 estimated residents";
+  if(metric==="cumulative")return "Rider-Only (RO) miles per cell";
+  if(metric==="incremental")return "RO miles added per cell";
+  if(metric==="miles_per_1000")return "RO miles per 1,000 estimated residents";
   if(metric==="interaction")return "Bivariate: Waymo VMT per resident × resident characteristic";
-  return "Operational miles per cell";
+  return "Rider-Only (RO) miles per cell";
 }
 function metricFormat(metric:Metric,value:number|null){
   if(value===null||!Number.isFinite(value))return "No estimate";
@@ -622,7 +622,7 @@ export function WaymoS2Explorer({
         <div>
           <div className="filter-label">Map</div>
           <div className="mt-1 flex flex-wrap gap-1.5">
-            {([["miles_per_1000","VMT / Resident"],["cumulative","Cumulative VMT"],["incremental","Miles Added"]] as [Metric,string][]).map(([value,label])=><button key={value} type="button" onClick={()=>setMetric(value)} className={`rounded-md border px-2.5 py-2 text-sm transition ${metric===value?"border-[#184f95] bg-[#184f95] text-white":"border-[#cad8e8] bg-white text-neutral-700 hover:border-[#184f95] hover:text-[#184f95]"}`}>{label}</button>)}
+            {([["miles_per_1000","RO Miles / Resident"],["cumulative","Cumulative RO Miles"],["incremental","RO Miles Added"]] as [Metric,string][]).map(([value,label])=><button key={value} type="button" onClick={()=>setMetric(value)} className={`rounded-md border px-2.5 py-2 text-sm transition ${metric===value?"border-[#184f95] bg-[#184f95] text-white":"border-[#cad8e8] bg-white text-neutral-700 hover:border-[#184f95] hover:text-[#184f95]"}`}>{label}</button>)}
           </div>
         </div>
       </div>
@@ -706,8 +706,8 @@ export function WaymoS2Explorer({
           <XAxis dataKey="vintage" {...AXIS_PROPS}/>
           <YAxis {...AXIS_PROPS} tickFormatter={v=>`${v}M`}/>
           <Tooltip {...TOOLTIP_PROPS} formatter={(v)=>`${v}M miles`}/>
-          <Line type="monotone" dataKey="cumulative" name="Cumulative miles" stroke={SERIES.blue} strokeWidth={2.5} dot={false}/>
-          <Line type="monotone" dataKey="added" name="Added since prior release" stroke={SERIES.orange} strokeWidth={1.8} dot={false}/>
+          <Line type="monotone" dataKey="cumulative" name="Cumulative RO miles" stroke={SERIES.blue} strokeWidth={2.5} dot={false}/>
+          <Line type="monotone" dataKey="added" name="RO miles added since prior release" stroke={SERIES.orange} strokeWidth={1.8} dot={false}/>
         </LineChart>
       </ResponsiveContainer>
     </div>
