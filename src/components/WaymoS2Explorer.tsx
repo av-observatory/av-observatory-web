@@ -658,7 +658,6 @@ export function WaymoS2Explorer({
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
           <h3 className="font-semibold">Average Waymo VMT per 1,000 Residents</h3>
-          <div className="text-sm text-neutral-500">Population-weighted S2-cell VMT intensity for ${selectedFacet?.market??selectedMarket}, ${vintageLabel(vintage)}.</div>
         </div>
         <div className="flex gap-2">
           {(["race","income"] as DemographicView[]).map(view=><button key={view} type="button" onClick={()=>setDemographicView(view)} className={`rounded-full border px-3 py-1.5 text-sm transition ${demographicView===view?"border-[#184f95] bg-[#184f95] text-white":"border-[#cad8e8] bg-white text-neutral-700"}`}>{view==="race"?"Race / Ethnicity":"Income"}</button>)}
