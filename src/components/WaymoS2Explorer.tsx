@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import {
-  LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip,
+  LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
   ResponsiveContainer,
 } from "recharts";
 import { GRID_PROPS, AXIS_PROPS, TOOLTIP_PROPS, SERIES } from "@/lib/chartTheme";
@@ -713,9 +713,15 @@ export function WaymoS2Explorer({
           <CartesianGrid {...GRID_PROPS}/>
           <XAxis type="number" {...AXIS_PROPS} tickFormatter={v=>`${Number(v).toFixed(0)}%`}/>
           <YAxis type="category" dataKey="category" {...AXIS_PROPS} width={175}/>
+          <Legend
+            verticalAlign="top"
+            align="left"
+            height={34}
+            wrapperStyle={{fontSize:12,color:"#5f5f5f"}}
+          />
           <Tooltip {...TOOLTIP_PROPS} formatter={(v,name)=>[
             `${Number(v).toFixed(1)}%`,
-            name==="mileage_share"?"RO mileage exposure share":"Population share"
+            String(name)
           ]}/>
           <Bar dataKey="population_share" name="Population share" fill={SERIES.aqua}/>
           <Bar dataKey="mileage_share" name="RO mileage exposure share" fill={SERIES.blue}/>
