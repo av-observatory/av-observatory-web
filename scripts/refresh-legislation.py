@@ -119,13 +119,20 @@ for row in SEEN.values():
         jurisdiction=jurisdiction, number=number, title=title, summary=summary, measure_type=measure_type, takeaway=(original or {}).get("takeaway") or summary.split(". ")[0].rstrip("."),
         status=status, last_action_date=action_date, last_action=action, session=session,
         progress_stage=progress_stage, stage_dates=stage_dates, hearings=hearings,
-        source_url=url, repository_url="https://legiscan.com/legiscan",
+        source_url=url, repository_url=(item.get("url") if str(item.get("url") or "").startswith("https://") else f"https://legiscan.com/{jurisdiction}/legislation"),
         reviewed_at=date.today().isoformat(), bill_id=item["bill_id"],
         summary_reviewed_at=(original or {}).get("summary_reviewed_at")))
 
 if len(refreshed) < 10:
     raise RuntimeError(f"Only {len(refreshed)} relevant bills found; refusing to replace the snapshot")
-BASE.update(as_of=date.today().isoformat(), state_index_reviewed=date.today().isoformat(), source="LegiScan API current-session search",
+for state in BASE["states"]:
+    code = state["code"]
+    state["repository_url"] = f"https://legiscan.com/{code}/legislation"
+BASE.update(
+    as_of=date.today().isoformat(),
+    state_index_reviewed=date.today().isoformat(),
+    source="LegiScan API current-session search",
+    methodology="Current-session AV bills are discovered directly through the LegiScan API using AV-specific search terms, then resolved to bill-level records with status, latest action, progress history, and hearings. Official legislature links are retained as the primary bill source when LegiScan supplies them. The current-session bill database is rebuilt from LegiScan on each refresh rather than seeded from NCSL. Enacted-law summaries are maintained separately in the reviewed state policy dataset.",
     federal=sorted((x for x in refreshed if x["jurisdiction"] == "US"), key=lambda x: x["last_action_date"], reverse=True),
     state_bills=sorted((x for x in refreshed if x["jurisdiction"] != "US"), key=lambda x: (x["jurisdiction"], x["number"])))
 DEST.parent.mkdir(parents=True, exist_ok=True)
