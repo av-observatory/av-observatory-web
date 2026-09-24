@@ -2,7 +2,7 @@
   "dataset": "Waymo S2 vintage progression",
   "source": "Waymo self-published safety benchmark data",
   "phase": "deployment",
-  "latest_vintage": "202603",
+  "latest_vintage": "202606",
   "vintages": [
     {
       "vintage_end": "202407",
@@ -146,6 +146,36 @@
           "state": "Georgia",
           "cumulative_miles": 3587740.4,
           "cell_count": 176
+        }
+      ]
+    },
+    {
+      "vintage_end": "202606",
+      "vintage_start": "202009",
+      "cell_count": 2209,
+      "cumulative_miles": 268488633.8,
+      "incremental_miles_vs_prior_release": 49667481.1,
+      "negative_revision_cells": 11,
+      "states": [
+        {
+          "state": "California",
+          "cumulative_miles": 149519112.8,
+          "cell_count": 1102
+        },
+        {
+          "state": "Arizona",
+          "cumulative_miles": 92121323.8,
+          "cell_count": 615
+        },
+        {
+          "state": "Texas",
+          "cumulative_miles": 21064489.3,
+          "cell_count": 268
+        },
+        {
+          "state": "Georgia",
+          "cumulative_miles": 5783708.0,
+          "cell_count": 224
         }
       ]
     }
