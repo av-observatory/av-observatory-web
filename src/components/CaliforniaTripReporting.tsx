@@ -40,9 +40,23 @@ export function CaliforniaTripReporting({ rows, waymoRates }: { rows: ActivityMo
       <section className="mt-5"><ActivityCompositeStats rows={selectedRows} company={company} /></section>
       {companyId === "PSG0038152" && program === "driverless" && <CaCrashRates data={waymoRates} />}
       <section className="mt-7"><div className="flex items-baseline justify-between gap-3 mb-2"><h2 className="text-xl font-semibold tracking-tight">Passenger Activity</h2><span className="text-sm text-neutral-500">{company} · {PROGRAMS[program] ?? program}</span></div><div className="viz-card p-4"><ActivityExplorer rows={selectedRows} /></div></section>
-      <section className="mt-7"><h2 className="text-xl font-semibold tracking-tight mb-2">Waiting Time</h2><ActivityWaitingTime rows={selectedRows} /></section>
-      <section className="mt-7"><h2 className="text-xl font-semibold tracking-tight mb-2">VMT and Utilization</h2><ActivityVmtUtilization rows={selectedRows} /></section>
-      <section className="mt-7"><h2 className="text-xl font-semibold tracking-tight mb-2">Estimated Stationary Time</h2><ActivityParkingEstimate rows={selectedRows} /></section>
+      {companyId === "PSG0038152" && program === "driverless" ? <>
+        <section className="mt-8">
+          <div className="mb-3 max-w-4xl">
+            <h2 className="text-2xl font-semibold tracking-tight">What Do Waymos Do Between Rides?</h2>
+            <p className="mt-1 text-sm leading-relaxed text-neutral-600">
+              CPUC reporting lets us separate the miles and time between passenger trips. Period 1 covers the interval after a drop-off and before the next trip is accepted; Period 2 covers travel to the next pickup. Together, they show how much Waymo activity occurs without a passenger aboard.
+            </p>
+          </div>
+          <div className="mt-5"><ActivityWaitingTime rows={selectedRows} /></div>
+          <div className="mt-6"><ActivityVmtUtilization rows={selectedRows} /></div>
+          <div className="mt-6"><ActivityParkingEstimate rows={selectedRows} /></div>
+        </section>
+      </> : <>
+        <section className="mt-7"><h2 className="text-xl font-semibold tracking-tight mb-2">Waiting Time</h2><ActivityWaitingTime rows={selectedRows} /></section>
+        <section className="mt-7"><h2 className="text-xl font-semibold tracking-tight mb-2">VMT and Utilization</h2><ActivityVmtUtilization rows={selectedRows} /></section>
+        <section className="mt-7"><h2 className="text-xl font-semibold tracking-tight mb-2">Estimated Stationary Time</h2><ActivityParkingEstimate rows={selectedRows} /></section>
+      </>}
     </>}
     <div className="mt-5 text-sm text-neutral-500 max-w-4xl leading-relaxed">
       CPUC Periods: P1 = unassigned after a trip and before accepting the next trip; P2 = en route to pickup after accepting a trip; P3 = passenger aboard.
