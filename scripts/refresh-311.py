@@ -32,13 +32,13 @@ def build_sf(rows):
         date = raw.get("requested_datetime", "")[:10]
         if not ident or len(date) != 10: raise ValueError("311 record missing ID or date")
         records[ident] = {"id": "SF-" + ident, "source_id": ident, "state": "CA", "market": "San Francisco",
-            "requested_date": date, "month": date[:7], "type": raw.get("service_subtype") or "Unspecified",
+            "requested_datetime": raw.get("requested_datetime") or "", "requested_date": date, "month": date[:7], "type": raw.get("service_subtype") or "Unspecified",
             "status": raw.get("status_description") or "Unknown", "agency": raw.get("agency_responsible") or "",
             "source_url": SOURCE + "?" + urlencode({"service_request_id": ident})}
     records = sorted(records.values(), key=lambda row: (row["requested_date"], row["source_id"]))
     monthly = [{"month": month, "market": "San Francisco", "state": "CA", "complaints": count}
         for month, count in sorted(Counter(row["month"] for row in records).items())]
-    return {"schema_version": "1.0.0", "dataset": "San Francisco AV-identifiable 311 service requests",
+    return {"schema_version": "1.1.0", "dataset": "San Francisco AV-identifiable 311 service requests",
         "source_url": "https://data.sf.gov/d/vw6y-z8j6", "source_api": SOURCE,
         "selection": "Exact service_name match: Autonomous Vehicle Complaints. Other city request types and unclassified AV mentions are excluded.",
         "limitations": "These are public 311 requests, not verified incidents. The published subtypes describe how SF311 classified a request, not the specific behavior alleged. Operator identity is unavailable; the AV category begins in April 2025.",
