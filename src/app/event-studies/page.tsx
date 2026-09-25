@@ -321,10 +321,26 @@ function EventStudy({event}:{event:EventDef}){
     </div>
 
     <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-5">
-      <div className="rounded-lg border border-[#dbe4ed] p-3"><div className="text-xs text-neutral-500">Event-window requests</div><div className="text-2xl font-semibold mt-1 tabular-nums">{s.eventCount}</div></div>
-      <div className="rounded-lg border border-[#dbe4ed] p-3"><div className="text-xs text-neutral-500">Expected from baseline</div><div className="text-2xl font-semibold mt-1 tabular-nums">{s.expectedEvent.toFixed(1)}</div></div>
-      <div className="rounded-lg border border-[#dbe4ed] p-3"><div className="text-xs text-neutral-500">Observed / expected</div><div className="text-2xl font-semibold mt-1 tabular-nums">{s.ratio?.toFixed(2)??"—"}×</div></div>
-      <div className="rounded-lg border border-[#dbe4ed] p-3"><div className="text-xs text-neutral-500">Primary analysis window</div><div className="text-sm font-semibold mt-1">{event.analysisWindow.replace("Primary window: ","").replace("Target window: ","")}</div></div>
+      <div className="rounded-lg border border-[#dbe4ed] p-3">
+        <div className="text-xs text-neutral-500">Observed AV complaints</div>
+        <div className="text-2xl font-semibold mt-1 tabular-nums">{s.eventCount}</div>
+        <div className="text-[11px] text-neutral-500 mt-1">SF311 complaints on event date</div>
+      </div>
+      <div className="rounded-lg border border-[#dbe4ed] p-3">
+        <div className="text-xs text-neutral-500">Baseline expected</div>
+        <div className="text-2xl font-semibold mt-1 tabular-nums">{s.expectedEvent.toFixed(1)}</div>
+        <div className="text-[11px] text-neutral-500 mt-1">28-day pre-event daily mean</div>
+      </div>
+      <div className="rounded-lg border border-[#dbe4ed] p-3">
+        <div className="text-xs text-neutral-500">Observed / expected</div>
+        <div className="text-2xl font-semibold mt-1 tabular-nums">{s.ratio?.toFixed(2)??"—"}×</div>
+        <div className="text-[11px] text-neutral-500 mt-1">Event-date count ÷ baseline expected</div>
+      </div>
+      <div className="rounded-lg border border-[#dbe4ed] p-3">
+        <div className="text-xs text-neutral-500">Exact p-value</div>
+        <div className="text-2xl font-semibold mt-1 tabular-nums">{fmtP(s.exactP)}</div>
+        <div className="text-[11px] text-neutral-500 mt-1">Same conditional exact test</div>
+      </div>
     </div>
 
     <div className="mt-4 rounded-lg bg-[#fff8ed] border border-[#ead9b8] p-3">
@@ -337,12 +353,12 @@ function EventStudy({event}:{event:EventDef}){
     <div className="mt-5 rounded-lg border border-[#cddbea] bg-[#f6f9fc] p-4">
       <div className="flex flex-wrap items-baseline justify-between gap-2">
         <h3 className="font-semibold">Statistical evidence</h3>
-        <span className="text-xs text-neutral-500">Event-specific window vs preceding 28 days</span>
+        <span className="text-xs text-neutral-500">Same definitions and 28-day baseline for both studies</span>
       </div>
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-3">
-        <div><div className="text-xs text-neutral-500">Rate ratio</div><div className="text-xl font-semibold tabular-nums">{s.ratio?.toFixed(2)??"—"}×</div></div>
-        <div><div className="text-xs text-neutral-500">95% interval</div><div className="text-xl font-semibold tabular-nums">{s.rrLow!==null&&s.rrHigh!==null?`${s.rrLow.toFixed(2)}–${s.rrHigh.toFixed(2)}`:"—"}</div></div>
-        <div><div className="text-xs text-neutral-500">Exact p-value</div><div className="text-xl font-semibold tabular-nums">{fmtP(s.exactP)}</div></div>
+        <div><div className="text-xs text-neutral-500">Rate ratio</div><div className="text-xl font-semibold tabular-nums">{s.ratio?.toFixed(2)??"—"}×</div><div className="text-[11px] text-neutral-500">Observed ÷ baseline expected</div></div>
+        <div><div className="text-xs text-neutral-500">95% interval</div><div className="text-xl font-semibold tabular-nums">{s.rrLow!==null&&s.rrHigh!==null?`${s.rrLow.toFixed(2)}–${s.rrHigh.toFixed(2)}`:"—"}</div><div className="text-[11px] text-neutral-500">Approximate rate-ratio interval</div></div>
+        <div><div className="text-xs text-neutral-500">Exact p-value</div><div className="text-xl font-semibold tabular-nums">{fmtP(s.exactP)}</div><div className="text-[11px] text-neutral-500">Conditional binomial test</div></div>
         <div><div className="text-xs text-neutral-500">Daily rarity</div><div className="text-xl font-semibold tabular-nums">{s.rollingTail!==null?`${(s.rollingTail*100).toFixed(1)}%`:"—"}</div><div className="text-[11px] text-neutral-500">{s.rollingAtLeast} of {s.rollingWindows} observed days ≥ event count</div></div>
       </div>
       <p className="text-xs leading-relaxed text-neutral-500 mt-3">The rate ratio compares the event-specific SF311 AV-request rate with the preceding 28-day baseline. The exact test conditions on the combined event-plus-baseline count. The rarity statistic asks how often an observed day in the available SF311 series had at least as many requests. For July 4, the current day-level statistic is explicitly provisional until the intended 6 p.m.–2 a.m. timestamp analysis is available. These tests identify an unusual temporal association; they do not establish causation or operator-specific responsibility.</p>
