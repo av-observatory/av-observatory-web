@@ -10,7 +10,7 @@ const GROUPS = [
     ["/policy/state-legislation", "State Legislation"],
     ["/policy/cities", "City Policy"],
   ] },
-  { title: "Reporting", items: [["/safety", "National Crash Data"], ["/activity", "CA Trip Data"], ["/complaints", "Citizen Complaints"]] },
+  { title: "Reporting", items: [["/safety", "National Crash Data"], ["/activity", "CA Trip Data"], ["/complaints", "Citizen Complaints"], ["/event-studies", "Event Studies"]] },
   { title: "Operations", items: [["/manufacturers", "Manufacturers Tracker"], ["/waymo-activity", "Waymo Activity"]] },
   { title: "Explore", items: [["/downloads", "Downloads"], ["/about", "About"]] },
 ] as const;
