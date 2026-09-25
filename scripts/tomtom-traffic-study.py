@@ -7,6 +7,7 @@ The key is never written to output.
 import gzip, io, json, os, time
 from pathlib import Path
 from urllib.request import Request, urlopen
+from urllib.error import HTTPError
 from urllib.parse import urlencode
 
 API="https://api.tomtom.com/traffic/trafficstats"
@@ -30,8 +31,12 @@ NORTH_POLY={
 def call(url, method="GET", body=None):
     data=None if body is None else json.dumps(body).encode()
     req=Request(url, data=data, method=method, headers={"Content-Type":"application/json","User-Agent":"AV-Observatory/1.0"})
-    with urlopen(req, timeout=120) as r:
-        return r.read(), r.headers
+    try:
+        with urlopen(req, timeout=120) as r:
+            return r.read(), r.headers
+    except HTTPError as e:
+        detail=e.read().decode("utf-8","replace")
+        raise RuntimeError(f"TomTom HTTP {e.code}: {detail[:1000]}") from None
 
 def hourly_sets(hours, day):
     out=[]
