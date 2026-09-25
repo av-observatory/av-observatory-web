@@ -45,7 +45,8 @@ const EVENTS:EventDef[] = [
       {value:"1,593",label:"Waymo stalls ≥2 minutes",detail:"Waymo-reported figure cited by SFCTA for Dec. 20.",source:"https://www.sfcta.org/sites/default/files/2026-02/SFCTA_Feedback_on_DMV_2nd_Modified_Regulatory_Text_for_the_Testing_and_Deployment_of_AVs.pdf",sourceLabel:"SFCTA"},
       {value:"829",label:"Waymo AVs in outage area",detail:"Operating in the outage area between noon and 11 p.m.",source:"https://www.sfmta.com/media/44577/download?inline=",sourceLabel:"SFMTA"},
       {value:"63",label:"Vehicles manually retrieved",detail:"Waymo-reported peak-outage figure cited by SFCTA.",source:"https://www.sfcta.org/sites/default/files/2026-02/SFCTA_Feedback_on_DMV_2nd_Modified_Regulatory_Text_for_the_Testing_and_Deployment_of_AVs.pdf",sourceLabel:"SFCTA"},
-      {value:"31",label:"City calls to Waymo hotline",detail:"Calls placed by dispatchers between roughly 3 and 8 p.m.; one hold reportedly lasted 53 minutes.",source:"https://sanfrancisco.granicus.com/TranscriptViewer.php?clip_id=51902&view_id=177",sourceLabel:"SF Board of Supervisors hearing"}
+      {value:"31",label:"City calls to Waymo hotline",detail:"Calls placed by dispatchers between roughly 3 and 8 p.m.; one hold reportedly lasted 53 minutes.",source:"https://sanfrancisco.granicus.com/TranscriptViewer.php?clip_id=51902&view_id=177",sourceLabel:"SF Board of Supervisors hearing"},
+      {value:"123%",label:"Congestion at 5 p.m.",detail:"TomTom identifies Dec. 20 as San Francisco's worst traffic day of 2025; average daily congestion was 72%.",source:"https://www.tomtom.com/traffic-index/city/san-francisco-ca/",sourceLabel:"TomTom Traffic Index"}
     ]
   },
   {
