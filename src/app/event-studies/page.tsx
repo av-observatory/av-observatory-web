@@ -17,6 +17,8 @@ type EventDef = {
   description:string;
   context:string;
   evidence:Array<{value:string;label:string;detail?:string;source:string;sourceLabel:string}>;
+  analysisWindow:string;
+  analysisNote:string;
 };
 
 const sf = sfRaw as { records:Complaint[]; source_url:string; source_data_as_of:string; limitations:string };
@@ -36,7 +38,9 @@ const EVENTS:EventDef[] = [
     date:"2025-12-20",
     kicker:"Infrastructure disruption",
     description:"A widespread San Francisco power outage disabled traffic signals across the city and disrupted roadway operations.",
-    context:"This view asks whether AV-related 311 reporting changed during and immediately after the outage.",
+    context:"This view asks whether AV-related 311 reporting changed during the outage.",
+    analysisWindow:"Primary window: Dec. 20, 2025 (single calendar day)",
+    analysisNote:"The outage was a one-day shock. The primary statistical test therefore compares Dec. 20 with the preceding 28 calendar days; subsequent days are shown only as descriptive context.",
     evidence:[
       {value:"1,593",label:"Waymo stalls ≥2 minutes",detail:"Waymo-reported figure cited by SFCTA for Dec. 20.",source:"https://www.sfcta.org/sites/default/files/2026-02/SFCTA_Feedback_on_DMV_2nd_Modified_Regulatory_Text_for_the_Testing_and_Deployment_of_AVs.pdf",sourceLabel:"SFCTA"},
       {value:"829",label:"Waymo AVs in outage area",detail:"Operating in the outage area between noon and 11 p.m.",source:"https://www.sfmta.com/media/44577/download?inline=",sourceLabel:"SFMTA"},
@@ -51,6 +55,8 @@ const EVENTS:EventDef[] = [
     kicker:"Major-event disruption",
     description:"Heavy event traffic, road closures, pedestrians, and stalled vehicles created severe congestion around the Presidio and northern waterfront.",
     context:"This view tests whether the highly visible disruption produced a corresponding change in SF311 AV complaints.",
+    analysisWindow:"Target window: Jul. 4, 2026, 6 p.m.–Jul. 5, 2 a.m.",
+    analysisNote:"The disruption was concentrated in the evening and overnight. The current published Observatory extract retains only the request date, so the statistical panel temporarily uses Jul. 4 as a coarse proxy. The collection pipeline is being updated to preserve SF311 request timestamps for the intended 8-hour analysis.",
     evidence:[
       {value:"27%",label:"Uber trip completion in Presidio",detail:"Between 9 and 10 p.m.; Uber reported about 80% citywide.",source:"https://www.sfchronicle.com/sf/article/july-4-traffic-fireworks-waymo-uber-22343683.php",sourceLabel:"San Francisco Chronicle / Uber analysis"},
       {value:"66%",label:"Uber drivers under 10 mph",detail:"In the Presidio at 9 p.m.; Uber compared this with 37% at peak Fleet Week traffic.",source:"https://www.sfchronicle.com/sf/article/july-4-traffic-fireworks-waymo-uber-22343683.php",sourceLabel:"San Francisco Chronicle / Uber analysis"},
@@ -89,19 +95,18 @@ function eventStats(event:EventDef){
   const baselineDays=Array.from({length:28},(_,i)=>addDays(event.date,-28+i));
   const baselineTotal=baselineDays.reduce((sum,d)=>sum+(dailyCounts[d]??0),0);
   const baselineDaily=baselineTotal/28;
-  const eventDays=[0,1,2].map(n=>addDays(event.date,n));
-  const threeDay=eventDays.reduce((sum,d)=>sum+(dailyCounts[d]??0),0);
-  const expected3=baselineDaily*3;
-  const ratio=expected3>0?threeDay/expected3:null;
+  const eventCount=dailyCounts[event.date]??0;
+  const expectedEvent=baselineDaily;
+  const ratio=expectedEvent>0?eventCount/expectedEvent:null;
   const window=Array.from({length:29},(_,i)=>{
     const offset=i-14;
     const date=addDays(event.date,offset);
     return {date,offset,count:dailyCounts[date]??0};
   });
   const baselineVariance=baselineDays.reduce((acc,d)=>acc+Math.pow((dailyCounts[d]??0)-baselineDaily,2),0)/Math.max(1,baselineDays.length-1);
-  const combined=baselineTotal+threeDay;
-  const exactP=combined>0?binomialUpperTail(combined,3/31,threeDay):1;
-  const rrSe=threeDay>0&&baselineTotal>0?Math.sqrt(1/threeDay+1/baselineTotal):null;
+  const combined=baselineTotal+eventCount;
+  const exactP=combined>0?binomialUpperTail(combined,1/29,eventCount):1;
+  const rrSe=eventCount>0&&baselineTotal>0?Math.sqrt(1/eventCount+1/baselineTotal):null;
   const rrLow=ratio&&rrSe!==null?Math.exp(Math.log(ratio)-1.96*rrSe):null;
   const rrHigh=ratio&&rrSe!==null?Math.exp(Math.log(ratio)+1.96*rrSe):null;
   const allDates=sf.records.map(r=>r.requested_date).sort();
@@ -110,17 +115,17 @@ function eventStats(event:EventDef){
   if(first&&last){
     for(let d=new Date(first+"T00:00:00Z"),end=new Date(last+"T00:00:00Z");d<=end;d.setUTCDate(d.getUTCDate()+1)){
       const start=dayKey(d);
-      const total=[0,1,2].reduce((sum,n)=>sum+(dailyCounts[addDays(start,n)]??0),0);
+      const total=dailyCounts[start]??0;
       rollingWindows++;
-      if(total>=threeDay)rollingAtLeast++;
+      if(total>=eventCount)rollingAtLeast++;
     }
   }
   return {
     baselineDaily,
     baselineVariance,
     eventDay:dailyCounts[event.date]??0,
-    threeDay,
-    expected3,
+    eventCount,
+    expectedEvent,
     ratio,
     exactP,
     rrLow,
@@ -263,31 +268,35 @@ function EventStudy({event}:{event:EventDef}){
     </div>
 
     <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-5">
-      <div className="rounded-lg border border-[#dbe4ed] p-3"><div className="text-xs text-neutral-500">Event-day requests</div><div className="text-2xl font-semibold mt-1 tabular-nums">{s.eventDay}</div></div>
-      <div className="rounded-lg border border-[#dbe4ed] p-3"><div className="text-xs text-neutral-500">3-day event window</div><div className="text-2xl font-semibold mt-1 tabular-nums">{s.threeDay}</div></div>
-      <div className="rounded-lg border border-[#dbe4ed] p-3"><div className="text-xs text-neutral-500">Expected from baseline</div><div className="text-2xl font-semibold mt-1 tabular-nums">{s.expected3.toFixed(1)}</div></div>
+      <div className="rounded-lg border border-[#dbe4ed] p-3"><div className="text-xs text-neutral-500">Event-window requests</div><div className="text-2xl font-semibold mt-1 tabular-nums">{s.eventCount}</div></div>
+      <div className="rounded-lg border border-[#dbe4ed] p-3"><div className="text-xs text-neutral-500">Expected from baseline</div><div className="text-2xl font-semibold mt-1 tabular-nums">{s.expectedEvent.toFixed(1)}</div></div>
       <div className="rounded-lg border border-[#dbe4ed] p-3"><div className="text-xs text-neutral-500">Observed / expected</div><div className="text-2xl font-semibold mt-1 tabular-nums">{s.ratio?.toFixed(2)??"—"}×</div></div>
+      <div className="rounded-lg border border-[#dbe4ed] p-3"><div className="text-xs text-neutral-500">Primary analysis window</div><div className="text-sm font-semibold mt-1">{event.analysisWindow.replace("Primary window: ","").replace("Target window: ","")}</div></div>
     </div>
 
+    <div className="mt-4 rounded-lg bg-[#fff8ed] border border-[#ead9b8] p-3">
+      <div className="text-sm font-semibold">{event.analysisWindow}</div>
+      <div className="text-xs leading-relaxed text-neutral-600 mt-1">{event.analysisNote}</div>
+    </div>
     <MiniSeries event={event}/>
 
     <div className="mt-5 rounded-lg border border-[#cddbea] bg-[#f6f9fc] p-4">
       <div className="flex flex-wrap items-baseline justify-between gap-2">
         <h3 className="font-semibold">Statistical evidence</h3>
-        <span className="text-xs text-neutral-500">3-day event window vs preceding 28 days</span>
+        <span className="text-xs text-neutral-500">Event-specific window vs preceding 28 days</span>
       </div>
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-3">
         <div><div className="text-xs text-neutral-500">Rate ratio</div><div className="text-xl font-semibold tabular-nums">{s.ratio?.toFixed(2)??"—"}×</div></div>
         <div><div className="text-xs text-neutral-500">95% interval</div><div className="text-xl font-semibold tabular-nums">{s.rrLow!==null&&s.rrHigh!==null?`${s.rrLow.toFixed(2)}–${s.rrHigh.toFixed(2)}`:"—"}</div></div>
         <div><div className="text-xs text-neutral-500">Exact p-value</div><div className="text-xl font-semibold tabular-nums">{fmtP(s.exactP)}</div></div>
-        <div><div className="text-xs text-neutral-500">Rolling 3-day rarity</div><div className="text-xl font-semibold tabular-nums">{s.rollingTail!==null?`${(s.rollingTail*100).toFixed(1)}%`:"—"}</div><div className="text-[11px] text-neutral-500">{s.rollingAtLeast} of {s.rollingWindows} windows ≥ event total</div></div>
+        <div><div className="text-xs text-neutral-500">Daily rarity</div><div className="text-xl font-semibold tabular-nums">{s.rollingTail!==null?`${(s.rollingTail*100).toFixed(1)}%`:"—"}</div><div className="text-[11px] text-neutral-500">{s.rollingAtLeast} of {s.rollingWindows} observed days ≥ event count</div></div>
       </div>
-      <p className="text-xs leading-relaxed text-neutral-500 mt-3">The rate ratio compares daily SF311 AV-request rates in the event window with the preceding 28 days. The exact test conditions on the combined event-plus-baseline count. The rolling-window statistic asks how often any three-day period in the available SF311 series had at least as many requests. These tests identify an unusual temporal association; they do not establish causation or operator-specific responsibility.</p>
+      <p className="text-xs leading-relaxed text-neutral-500 mt-3">The rate ratio compares the event-specific SF311 AV-request rate with the preceding 28-day baseline. The exact test conditions on the combined event-plus-baseline count. The rarity statistic asks how often an observed day in the available SF311 series had at least as many requests. For July 4, the current day-level statistic is explicitly provisional until the intended 6 p.m.–2 a.m. timestamp analysis is available. These tests identify an unusual temporal association; they do not establish causation or operator-specific responsibility.</p>
     </div>
     <MonthlyBars event={event}/>
 
     <div className="mt-5 rounded-lg bg-[#f7f9fb] p-4 text-sm leading-relaxed text-neutral-700">
-      In the three days beginning {fmtDate(event.date)}, SF311 recorded <strong>{s.threeDay} AV requests</strong>, compared with <strong>{s.expected3.toFixed(1)}</strong> expected from the preceding 28-day daily average. That is {signal} baseline{pct!==null?<> ({pct>=0?"+":""}{pct.toFixed(0)}%)</>:null}. This is a descriptive event comparison, not a causal estimate.
+      In the primary day-level event window, SF311 recorded <strong>{s.eventCount} AV requests</strong>, compared with <strong>{s.expectedEvent.toFixed(1)}</strong> expected from the preceding 28-day daily average. That is {signal} baseline{pct!==null?<> ({pct>=0?"+":""}{pct.toFixed(0)}%)</>:null}. {event.slug==="july-4"?"This daily result is a temporary proxy for the narrower evening treatment window. ":""}This is a descriptive event comparison, not a causal estimate.
     </div>
   </article>;
 }
@@ -315,7 +324,7 @@ export default function EventStudiesPage(){
     <section className="viz-card p-5 mt-6">
       <h2 className="text-xl font-semibold">How to read these studies</h2>
       <p className="text-sm leading-relaxed text-neutral-600 mt-2 max-w-4xl">
-        The benchmark is the mean number of SF311 Autonomous Vehicle Complaint requests per day during the 28 days immediately before each event. The event window is the event date plus the following two calendar days. The observed/expected ratio compares those three observed days with three days at the pre-event daily rate.
+        The benchmark is the mean number of SF311 Autonomous Vehicle Complaint requests per day during the 28 days immediately before each event. Treatment windows are defined from the actual event mechanism rather than imposed uniformly: Dec. 20 is treated as a one-day infrastructure shock, while July 4 is defined as an evening/overnight disruption (target window 6 p.m.–2 a.m.). Until request timestamps are carried through the Observatory pipeline, the July 4 statistical panel uses the calendar day as a clearly labeled proxy.
       </p>
       <p className="text-sm leading-relaxed text-neutral-600 mt-2 max-w-4xl">
         SF311 requests are public reports, not verified incidents, and the dataset does not identify the AV operator. A spike can indicate increased public reporting during a disruption, but it cannot by itself establish the cause, operator, severity, or prevalence of the underlying behavior. Monthly CPUC trip and VMT totals are California-wide and much coarser than the event window, so they provide operational context rather than a causal estimate of an event&apos;s impact. Conversely, the absence of a spike does not mean an event had no operational impact.
