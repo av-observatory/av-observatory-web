@@ -16,6 +16,7 @@ type EventDef = {
   kicker:string;
   description:string;
   context:string;
+  evidence:Array<{value:string;label:string;detail?:string;source:string;sourceLabel:string}>;
 };
 
 const sf = sfRaw as { records:Complaint[]; source_url:string; source_data_as_of:string; limitations:string };
@@ -35,7 +36,13 @@ const EVENTS:EventDef[] = [
     date:"2025-12-20",
     kicker:"Infrastructure disruption",
     description:"A widespread San Francisco power outage disabled traffic signals across the city and disrupted roadway operations.",
-    context:"This view asks whether AV-related 311 reporting changed during and immediately after the outage."
+    context:"This view asks whether AV-related 311 reporting changed during and immediately after the outage.",
+    evidence:[
+      {value:"1,593",label:"Waymo stalls ≥2 minutes",detail:"Waymo-reported figure cited by SFCTA for Dec. 20.",source:"https://www.sfcta.org/sites/default/files/2026-02/SFCTA_Feedback_on_DMV_2nd_Modified_Regulatory_Text_for_the_Testing_and_Deployment_of_AVs.pdf",sourceLabel:"SFCTA"},
+      {value:"829",label:"Waymo AVs in outage area",detail:"Operating in the outage area between noon and 11 p.m.",source:"https://www.sfmta.com/media/44577/download?inline=",sourceLabel:"SFMTA"},
+      {value:"63",label:"Vehicles manually retrieved",detail:"Waymo-reported peak-outage figure cited by SFCTA.",source:"https://www.sfcta.org/sites/default/files/2026-02/SFCTA_Feedback_on_DMV_2nd_Modified_Regulatory_Text_for_the_Testing_and_Deployment_of_AVs.pdf",sourceLabel:"SFCTA"},
+      {value:"31",label:"City calls to Waymo hotline",detail:"Calls placed by dispatchers between roughly 3 and 8 p.m.; one hold reportedly lasted 53 minutes.",source:"https://sanfrancisco.granicus.com/TranscriptViewer.php?clip_id=51902&view_id=177",sourceLabel:"SF Board of Supervisors hearing"}
+    ]
   },
   {
     slug:"july-4",
@@ -43,7 +50,13 @@ const EVENTS:EventDef[] = [
     date:"2026-07-04",
     kicker:"Major-event disruption",
     description:"Heavy event traffic, road closures, pedestrians, and stalled vehicles created severe congestion around the Presidio and northern waterfront.",
-    context:"This view tests whether the highly visible disruption produced a corresponding change in SF311 AV complaints."
+    context:"This view tests whether the highly visible disruption produced a corresponding change in SF311 AV complaints.",
+    evidence:[
+      {value:"27%",label:"Uber trip completion in Presidio",detail:"Between 9 and 10 p.m.; Uber reported about 80% citywide.",source:"https://www.sfchronicle.com/sf/article/july-4-traffic-fireworks-waymo-uber-22343683.php",sourceLabel:"San Francisco Chronicle / Uber analysis"},
+      {value:"66%",label:"Uber drivers under 10 mph",detail:"In the Presidio at 9 p.m.; Uber compared this with 37% at peak Fleet Week traffic.",source:"https://www.sfchronicle.com/sf/article/july-4-traffic-fireworks-waymo-uber-22343683.php",sourceLabel:"San Francisco Chronicle / Uber analysis"},
+      {value:"~90 min",label:"Marina-to-Market city shuttle",detail:"Reported by San Francisco's emergency-management director in records released after the event.",source:"https://www.sfchronicle.com/sf/article/top-sf-officials-slams-waymo-over-july-4-22349916.php",sourceLabel:"San Francisco Chronicle / city records"},
+      {value:"Dozens",label:"Waymos stranded in heavy traffic",detail:"Some vehicles ran out of power and required towing; this is a reported count, not a comprehensive fleet total.",source:"https://abc7news.com/post/waymo-fleet-clogs-presidio-july-4-fireworks-leaving-vehicles-stranded-towed/19455862/",sourceLabel:"ABC7"}
+    ]
   }
 ];
 
@@ -55,6 +68,22 @@ const dailyCounts = sf.records.reduce((m:Record<string,number>,r)=>{
   m[r.requested_date]=(m[r.requested_date]??0)+1;
   return m;
 },{});
+
+function choose(n:number,k:number){
+  if(k<0||k>n)return 0;
+  let r=1;
+  for(let i=1;i<=k;i++)r*= (n-k+i)/i;
+  return r;
+}
+function binomialUpperTail(n:number,p:number,k:number){
+  let total=0;
+  for(let x=k;x<=n;x++) total+=choose(n,x)*Math.pow(p,x)*Math.pow(1-p,n-x);
+  return total;
+}
+function fmtP(p:number){
+  if(p<0.0001)return "<0.0001";
+  return p.toFixed(3);
+}
 
 function eventStats(event:EventDef){
   const baselineDays=Array.from({length:28},(_,i)=>addDays(event.date,-28+i));
@@ -69,12 +98,36 @@ function eventStats(event:EventDef){
     const date=addDays(event.date,offset);
     return {date,offset,count:dailyCounts[date]??0};
   });
+  const baselineVariance=baselineDays.reduce((acc,d)=>acc+Math.pow((dailyCounts[d]??0)-baselineDaily,2),0)/Math.max(1,baselineDays.length-1);
+  const combined=baselineTotal+threeDay;
+  const exactP=combined>0?binomialUpperTail(combined,3/31,threeDay):1;
+  const rrSe=threeDay>0&&baselineTotal>0?Math.sqrt(1/threeDay+1/baselineTotal):null;
+  const rrLow=ratio&&rrSe!==null?Math.exp(Math.log(ratio)-1.96*rrSe):null;
+  const rrHigh=ratio&&rrSe!==null?Math.exp(Math.log(ratio)+1.96*rrSe):null;
+  const allDates=sf.records.map(r=>r.requested_date).sort();
+  const first=allDates[0], last=allDates.at(-1);
+  let rollingWindows=0, rollingAtLeast=0;
+  if(first&&last){
+    for(let d=new Date(first+"T00:00:00Z"),end=new Date(last+"T00:00:00Z");d<=end;d.setUTCDate(d.getUTCDate()+1)){
+      const start=dayKey(d);
+      const total=[0,1,2].reduce((sum,n)=>sum+(dailyCounts[addDays(start,n)]??0),0);
+      rollingWindows++;
+      if(total>=threeDay)rollingAtLeast++;
+    }
+  }
   return {
     baselineDaily,
+    baselineVariance,
     eventDay:dailyCounts[event.date]??0,
     threeDay,
     expected3,
     ratio,
+    exactP,
+    rrLow,
+    rrHigh,
+    rollingWindows,
+    rollingAtLeast,
+    rollingTail:rollingWindows?rollingAtLeast/rollingWindows:null,
     window,
   };
 }
@@ -196,6 +249,19 @@ function EventStudy({event}:{event:EventDef}){
       <div className="rounded-md bg-[#eef4fb] px-3 py-2 text-sm font-medium text-[#184f95]">{fmtDate(event.date)}</div>
     </div>
 
+    <div className="mt-5">
+      <h3 className="text-sm font-semibold uppercase tracking-wide text-neutral-500">Event context from other reporting</h3>
+      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-2">
+        {event.evidence.map(item=><div key={item.label} className="rounded-lg border border-[#dbe4ed] bg-[#fafbfc] p-3">
+          <div className="text-2xl font-semibold tabular-nums text-[#123b69]">{item.value}</div>
+          <div className="text-sm font-medium mt-1">{item.label}</div>
+          {item.detail&&<div className="text-xs leading-relaxed text-neutral-500 mt-1">{item.detail}</div>}
+          <a href={item.source} className="inline-block mt-2 text-xs text-[#184f95] underline">{item.sourceLabel} ↗</a>
+        </div>)}
+      </div>
+      <p className="text-xs leading-relaxed text-neutral-500 mt-2">These figures come from company disclosures, city records, agency filings, or contemporaneous reporting and provide scale and operational context. They are not derived from SF311 and should not be treated as directly comparable measures.</p>
+    </div>
+
     <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-5">
       <div className="rounded-lg border border-[#dbe4ed] p-3"><div className="text-xs text-neutral-500">Event-day requests</div><div className="text-2xl font-semibold mt-1 tabular-nums">{s.eventDay}</div></div>
       <div className="rounded-lg border border-[#dbe4ed] p-3"><div className="text-xs text-neutral-500">3-day event window</div><div className="text-2xl font-semibold mt-1 tabular-nums">{s.threeDay}</div></div>
@@ -204,6 +270,20 @@ function EventStudy({event}:{event:EventDef}){
     </div>
 
     <MiniSeries event={event}/>
+
+    <div className="mt-5 rounded-lg border border-[#cddbea] bg-[#f6f9fc] p-4">
+      <div className="flex flex-wrap items-baseline justify-between gap-2">
+        <h3 className="font-semibold">Statistical evidence</h3>
+        <span className="text-xs text-neutral-500">3-day event window vs preceding 28 days</span>
+      </div>
+      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-3">
+        <div><div className="text-xs text-neutral-500">Rate ratio</div><div className="text-xl font-semibold tabular-nums">{s.ratio?.toFixed(2)??"—"}×</div></div>
+        <div><div className="text-xs text-neutral-500">95% interval</div><div className="text-xl font-semibold tabular-nums">{s.rrLow!==null&&s.rrHigh!==null?`${s.rrLow.toFixed(2)}–${s.rrHigh.toFixed(2)}`:"—"}</div></div>
+        <div><div className="text-xs text-neutral-500">Exact p-value</div><div className="text-xl font-semibold tabular-nums">{fmtP(s.exactP)}</div></div>
+        <div><div className="text-xs text-neutral-500">Rolling 3-day rarity</div><div className="text-xl font-semibold tabular-nums">{s.rollingTail!==null?`${(s.rollingTail*100).toFixed(1)}%`:"—"}</div><div className="text-[11px] text-neutral-500">{s.rollingAtLeast} of {s.rollingWindows} windows ≥ event total</div></div>
+      </div>
+      <p className="text-xs leading-relaxed text-neutral-500 mt-3">The rate ratio compares daily SF311 AV-request rates in the event window with the preceding 28 days. The exact test conditions on the combined event-plus-baseline count. The rolling-window statistic asks how often any three-day period in the available SF311 series had at least as many requests. These tests identify an unusual temporal association; they do not establish causation or operator-specific responsibility.</p>
+    </div>
     <MonthlyBars event={event}/>
 
     <div className="mt-5 rounded-lg bg-[#f7f9fb] p-4 text-sm leading-relaxed text-neutral-700">
