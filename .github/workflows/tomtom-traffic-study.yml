@@ -1,0 +1,37 @@
+name: Run TomTom Traffic Study
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - ".github/workflows/tomtom-traffic-study.yml"
+      - "scripts/tomtom-traffic-study.py"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: tomtom-traffic-study
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      TOMTOM_API_KEY: ${{ secrets.TOMTOM_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify TomTom key is configured
+        run: test -n "$TOMTOM_API_KEY"
+      - name: Run event traffic extraction
+        run: python3 scripts/tomtom-traffic-study.py
+      - name: Commit results
+        run: |
+          git add public/data/tomtom_event_traffic.json
+          if ! git diff --cached --quiet; then
+            git config user.name "AV Observatory Data Bot"
+            git config user.email "actions@users.noreply.github.com"
+            git commit -m "Add TomTom event traffic results"
+            git push
+          fi
