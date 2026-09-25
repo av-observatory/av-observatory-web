@@ -1,4 +1,5 @@
 import sfRaw from "../../../public/data/av_311_complaints.json";
+import activityRaw from "../../../public/data/cpuc_activity_monthly.json";
 
 type Complaint = {
   id:string;
@@ -18,6 +19,14 @@ type EventDef = {
 };
 
 const sf = sfRaw as { records:Complaint[]; source_url:string; source_data_as_of:string; limitations:string };
+const activity = activityRaw as { data:Array<{
+  operator_tcpid:string;
+  program:string;
+  calendar_year:number;
+  calendar_month:number;
+  total_trips:number|null;
+  total_vmt_all_periods:number|null;
+}> };
 
 const EVENTS:EventDef[] = [
   {
@@ -68,6 +77,80 @@ function eventStats(event:EventDef){
     ratio,
     window,
   };
+}
+
+const waymoMonthly = activity.data
+  .filter(r=>r.operator_tcpid==="PSG0038152"&&r.program==="driverless"&&r.total_trips!==null&&r.total_vmt_all_periods!==null)
+  .sort((a,b)=>a.calendar_year-b.calendar_year||a.calendar_month-b.calendar_month);
+
+function monthIndex(y:number,m:number){return y*12+(m-1);}
+function monthLabelShort(y:number,m:number){return new Date(Date.UTC(y,m-1,1)).toLocaleDateString("en-US",{month:"short",year:"2-digit",timeZone:"UTC"});}
+
+function monthlyContext(event:EventDef){
+  const d=new Date(event.date+"T00:00:00Z");
+  const ey=d.getUTCFullYear(), em=d.getUTCMonth()+1, ei=monthIndex(ey,em);
+  const rows=waymoMonthly
+    .filter(r=>Math.abs(monthIndex(r.calendar_year,r.calendar_month)-ei)<=3)
+    .map(r=>({
+      ...r,
+      label:monthLabelShort(r.calendar_year,r.calendar_month),
+      isEventMonth:r.calendar_year===ey&&r.calendar_month===em,
+    }));
+  const eventRow=rows.find(r=>r.isEventMonth)??null;
+  const prior=eventRow ? waymoMonthly.find(r=>monthIndex(r.calendar_year,r.calendar_month)===ei-1)??null : null;
+  return {rows,eventRow,prior};
+}
+
+function fmtCompact(n:number){return Intl.NumberFormat("en-US",{notation:"compact",maximumFractionDigits:1}).format(n);}
+
+function MonthlyBars({event}:{event:EventDef}){
+  const {rows,eventRow,prior}=monthlyContext(event);
+  if(rows.length===0 || !eventRow){
+    const latest=waymoMonthly.at(-1);
+    return <div className="mt-5 rounded-lg border border-[#dbe4ed] bg-[#fafbfc] p-4">
+      <h3 className="font-semibold">Monthly Trips and VMT</h3>
+      <p className="text-sm text-neutral-600 mt-1">
+        CPUC monthly Waymo driverless deployment data do not yet cover {fmtDate(event.date)}. The latest month currently available is {latest?monthLabelShort(latest.calendar_year,latest.calendar_month):"not available"}.
+      </p>
+    </div>;
+  }
+  const maxTrips=Math.max(...rows.map(r=>Number(r.total_trips||0)),1);
+  const maxVmt=Math.max(...rows.map(r=>Number(r.total_vmt_all_periods||0)),1);
+  const tripChange=prior&&prior.total_trips?((Number(eventRow.total_trips)-Number(prior.total_trips))/Number(prior.total_trips))*100:null;
+  const vmtChange=prior&&prior.total_vmt_all_periods?((Number(eventRow.total_vmt_all_periods)-Number(prior.total_vmt_all_periods))/Number(prior.total_vmt_all_periods))*100:null;
+  return <div className="mt-5 rounded-lg border border-[#dbe4ed] p-4">
+    <div className="flex flex-wrap items-end justify-between gap-2">
+      <div>
+        <h3 className="font-semibold">Monthly Trips and VMT</h3>
+        <p className="text-sm text-neutral-600 mt-1">California-wide Waymo driverless deployment activity reported to CPUC. Event month highlighted.</p>
+      </div>
+      <div className="text-xs text-neutral-500">Monthly data cannot isolate the event&apos;s causal effect.</div>
+    </div>
+    <div className="grid lg:grid-cols-2 gap-5 mt-4">
+      <div>
+        <div className="text-sm font-medium mb-2">Passenger trips</div>
+        <div className="flex h-36 items-end gap-2 border-b border-[#d9e2ec]">
+          {rows.map(r=><div key={r.label} className="flex-1 flex flex-col justify-end h-full">
+            <div className={`w-full rounded-t-sm ${r.isEventMonth?"bg-[#d8643f]":"bg-[#6d9fd1]"}`} style={{height:`${Math.max(3,Number(r.total_trips||0)/maxTrips*100)}%`}} title={`${r.label}: ${Number(r.total_trips||0).toLocaleString()} trips`}/>
+          </div>)}
+        </div>
+        <div className="flex gap-2 mt-1">{rows.map(r=><div key={r.label} className={`flex-1 text-center text-[10px] ${r.isEventMonth?"font-semibold text-[#a34d32]":"text-neutral-500"}`}>{r.label}</div>)}</div>
+      </div>
+      <div>
+        <div className="text-sm font-medium mb-2">Vehicle miles traveled</div>
+        <div className="flex h-36 items-end gap-2 border-b border-[#d9e2ec]">
+          {rows.map(r=><div key={r.label} className="flex-1 flex flex-col justify-end h-full">
+            <div className={`w-full rounded-t-sm ${r.isEventMonth?"bg-[#d8643f]":"bg-[#79a98c]"}`} style={{height:`${Math.max(3,Number(r.total_vmt_all_periods||0)/maxVmt*100)}%`}} title={`${r.label}: ${Number(r.total_vmt_all_periods||0).toLocaleString()} miles`}/>
+          </div>)}
+        </div>
+        <div className="flex gap-2 mt-1">{rows.map(r=><div key={r.label} className={`flex-1 text-center text-[10px] ${r.isEventMonth?"font-semibold text-[#a34d32]":"text-neutral-500"}`}>{r.label}</div>)}</div>
+      </div>
+    </div>
+    <div className="grid sm:grid-cols-2 gap-3 mt-4 text-sm">
+      <div className="rounded-md bg-[#f7f9fb] p-3"><strong>{fmtCompact(Number(eventRow.total_trips||0))}</strong> trips in the event month{tripChange!==null?<> · <span className={tripChange>=0?"text-[#236b4b]":"text-[#a34d32]"}>{tripChange>=0?"+":""}{tripChange.toFixed(1)}%</span> vs prior month</>:null}</div>
+      <div className="rounded-md bg-[#f7f9fb] p-3"><strong>{fmtCompact(Number(eventRow.total_vmt_all_periods||0))}</strong> VMT in the event month{vmtChange!==null?<> · <span className={vmtChange>=0?"text-[#236b4b]":"text-[#a34d32]"}>{vmtChange>=0?"+":""}{vmtChange.toFixed(1)}%</span> vs prior month</>:null}</div>
+    </div>
+  </div>;
 }
 
 function MiniSeries({event}:{event:EventDef}){
@@ -121,6 +204,7 @@ function EventStudy({event}:{event:EventDef}){
     </div>
 
     <MiniSeries event={event}/>
+    <MonthlyBars event={event}/>
 
     <div className="mt-5 rounded-lg bg-[#f7f9fb] p-4 text-sm leading-relaxed text-neutral-700">
       In the three days beginning {fmtDate(event.date)}, SF311 recorded <strong>{s.threeDay} AV requests</strong>, compared with <strong>{s.expected3.toFixed(1)}</strong> expected from the preceding 28-day daily average. That is {signal} baseline{pct!==null?<> ({pct>=0?"+":""}{pct.toFixed(0)}%)</>:null}. This is a descriptive event comparison, not a causal estimate.
@@ -154,7 +238,7 @@ export default function EventStudiesPage(){
         The benchmark is the mean number of SF311 Autonomous Vehicle Complaint requests per day during the 28 days immediately before each event. The event window is the event date plus the following two calendar days. The observed/expected ratio compares those three observed days with three days at the pre-event daily rate.
       </p>
       <p className="text-sm leading-relaxed text-neutral-600 mt-2 max-w-4xl">
-        SF311 requests are public reports, not verified incidents, and the dataset does not identify the AV operator. A spike can indicate increased public reporting during a disruption, but it cannot by itself establish the cause, operator, severity, or prevalence of the underlying behavior. Conversely, the absence of a spike does not mean an event had no operational impact.
+        SF311 requests are public reports, not verified incidents, and the dataset does not identify the AV operator. A spike can indicate increased public reporting during a disruption, but it cannot by itself establish the cause, operator, severity, or prevalence of the underlying behavior. Monthly CPUC trip and VMT totals are California-wide and much coarser than the event window, so they provide operational context rather than a causal estimate of an event&apos;s impact. Conversely, the absence of a spike does not mean an event had no operational impact.
       </p>
       <a href={sf.source_url} className="inline-block mt-3 text-sm text-[#184f95] underline">Official SF311 dataset ↗</a>
     </section>
