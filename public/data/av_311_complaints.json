@@ -5,13 +5,13 @@
   "source_api": "https://data.sf.gov/resource/vw6y-z8j6.json",
   "selection": "Exact service_name match: Autonomous Vehicle Complaints. Other city request types and unclassified AV mentions are excluded.",
   "limitations": "These are public 311 requests, not verified incidents. The published subtypes describe how SF311 classified a request, not the specific behavior alleged. Operator identity is unavailable; the AV category begins in April 2025.",
-  "source_data_as_of": "2026-09-24T01:00:00.000",
-  "total_records": 967,
+  "source_data_as_of": "2026-09-25T01:00:00.000",
+  "total_records": 968,
   "markets": [
     {
       "market": "San Francisco",
       "state": "CA",
-      "complaints": 967
+      "complaints": 968
     }
   ],
   "monthly": [
@@ -121,7 +121,7 @@
       "month": "2026-09",
       "market": "San Francisco",
       "state": "CA",
-      "complaints": 54
+      "complaints": 55
     }
   ],
   "records": [
@@ -11728,6 +11728,18 @@
       "status": "Open",
       "agency": "MTA - Autonomous Vehicles Complaints",
       "source_url": "https://data.sf.gov/resource/vw6y-z8j6.json?service_request_id=202000099492"
+    },
+    {
+      "id": "SF-202000101780",
+      "source_id": "202000101780",
+      "state": "CA",
+      "market": "San Francisco",
+      "requested_date": "2026-09-24",
+      "month": "2026-09",
+      "type": "incident_report",
+      "status": "Open",
+      "agency": "MTA - Autonomous Vehicles Complaints",
+      "source_url": "https://data.sf.gov/resource/vw6y-z8j6.json?service_request_id=202000101780"
     }
   ]
 }
