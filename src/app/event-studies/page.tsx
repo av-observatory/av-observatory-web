@@ -19,6 +19,13 @@ type EventDef = {
   evidence:Array<{value:string;label:string;detail?:string;source:string;sourceLabel:string}>;
   analysisWindow:string;
   analysisNote:string;
+  traffic:{
+    sourceLabel:string;
+    sourceUrl:string;
+    geography:string;
+    note:string;
+    metrics:Array<{value:string;label:string;detail?:string}>;
+  };
 };
 
 const sf = sfRaw as { records:Complaint[]; source_url:string; source_data_as_of:string; limitations:string };
@@ -41,6 +48,18 @@ const EVENTS:EventDef[] = [
     context:"This view asks whether AV-related 311 reporting changed during the outage.",
     analysisWindow:"Primary window: Dec. 20, 2025 (single calendar day)",
     analysisNote:"The outage was a one-day shock. The primary statistical test therefore compares Dec. 20 with the preceding 28 calendar days; subsequent days are shown only as descriptive context.",
+    traffic:{
+      sourceLabel:"TomTom Traffic Index",
+      sourceUrl:"https://www.tomtom.com/traffic-index/city/san-francisco-ca/",
+      geography:"San Francisco city network",
+      note:"TomTom identifies Dec. 20 as San Francisco's worst traffic day of 2025. These are citywide traffic measures, not AV-specific outcomes.",
+      metrics:[
+        {value:"72%",label:"Average congestion",detail:"Dec. 20, 2025"},
+        {value:"123%",label:"Congestion at 5 p.m.",detail:"Peak reported by TomTom"},
+        {value:"3.1 km",label:"Distance in 15 minutes",detail:"At 5 p.m."},
+        {value:"49.7%",label:"2025 city average",detail:"Annual average congestion for context"}
+      ]
+    },
     evidence:[
       {value:"1,593",label:"Waymo stalls ≥2 minutes",detail:"Waymo-reported figure cited by SFCTA for Dec. 20.",source:"https://www.sfcta.org/sites/default/files/2026-02/SFCTA_Feedback_on_DMV_2nd_Modified_Regulatory_Text_for_the_Testing_and_Deployment_of_AVs.pdf",sourceLabel:"SFCTA"},
       {value:"829",label:"Waymo AVs in outage area",detail:"Operating in the outage area between noon and 11 p.m.",source:"https://www.sfmta.com/media/44577/download?inline=",sourceLabel:"SFMTA"},
@@ -58,6 +77,18 @@ const EVENTS:EventDef[] = [
     context:"This view tests whether the highly visible disruption produced a corresponding change in SF311 AV complaints.",
     analysisWindow:"Target window: Jul. 4, 2026, 6 p.m.–Jul. 5, 2 a.m.",
     analysisNote:"The disruption was concentrated in the evening and overnight. The current published Observatory extract retains only the request date, so the statistical panel temporarily uses Jul. 4 as a coarse proxy. The collection pipeline is being updated to preserve SF311 request timestamps for the intended 8-hour analysis.",
+    traffic:{
+      sourceLabel:"Uber analysis reported by San Francisco Chronicle",
+      sourceUrl:"https://www.sfchronicle.com/sf/article/july-4-traffic-fireworks-waymo-uber-22343683.php",
+      geography:"Presidio / northern waterfront",
+      note:"For July 4, the available event-specific traffic evidence is from Uber rather than TomTom. The measures capture severe localized congestion during the evening disruption and are not directly comparable to TomTom's citywide congestion percentage.",
+      metrics:[
+        {value:"27%",label:"Trip completion",detail:"Presidio, 9–10 p.m."},
+        {value:"~80%",label:"Citywide completion",detail:"Uber comparison for the same period"},
+        {value:"66%",label:"Drivers under 10 mph",detail:"Presidio at 9 p.m."},
+        {value:"37%",label:"Under 10 mph at Fleet Week",detail:"Uber's comparison benchmark"}
+      ]
+    },
     evidence:[
       {value:"27%",label:"Uber trip completion in Presidio",detail:"Between 9 and 10 p.m.; Uber reported about 80% citywide.",source:"https://www.sfchronicle.com/sf/article/july-4-traffic-fireworks-waymo-uber-22343683.php",sourceLabel:"San Francisco Chronicle / Uber analysis"},
       {value:"66%",label:"Uber drivers under 10 mph",detail:"In the Presidio at 9 p.m.; Uber compared this with 37% at peak Fleet Week traffic.",source:"https://www.sfchronicle.com/sf/article/july-4-traffic-fireworks-waymo-uber-22343683.php",sourceLabel:"San Francisco Chronicle / Uber analysis"},
@@ -241,6 +272,27 @@ function MiniSeries({event}:{event:EventDef}){
   </div>;
 }
 
+function TrafficConditions({event}:{event:EventDef}){
+  const t=event.traffic;
+  return <div className="mt-5 rounded-lg border border-[#dbe4ed] p-4">
+    <div className="flex flex-wrap items-start justify-between gap-3">
+      <div>
+        <h3 className="font-semibold">Traffic conditions</h3>
+        <p className="text-sm text-neutral-600 mt-1">{t.geography}</p>
+      </div>
+      <a href={t.sourceUrl} className="text-xs text-[#184f95] underline">{t.sourceLabel} ↗</a>
+    </div>
+    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-4">
+      {t.metrics.map(m=><div key={m.label} className="rounded-md bg-[#f7f9fb] p-3">
+        <div className="text-2xl font-semibold tabular-nums text-[#123b69]">{m.value}</div>
+        <div className="text-sm font-medium mt-1">{m.label}</div>
+        {m.detail&&<div className="text-xs text-neutral-500 mt-1">{m.detail}</div>}
+      </div>)}
+    </div>
+    <p className="text-xs leading-relaxed text-neutral-500 mt-3">{t.note}</p>
+  </div>;
+}
+
 function EventStudy({event}:{event:EventDef}){
   const s=eventStats(event);
   const pct=s.ratio===null?null:(s.ratio-1)*100;
@@ -280,6 +332,7 @@ function EventStudy({event}:{event:EventDef}){
       <div className="text-xs leading-relaxed text-neutral-600 mt-1">{event.analysisNote}</div>
     </div>
     <MiniSeries event={event}/>
+    <TrafficConditions event={event}/>
 
     <div className="mt-5 rounded-lg border border-[#cddbea] bg-[#f6f9fc] p-4">
       <div className="flex flex-wrap items-baseline justify-between gap-2">
