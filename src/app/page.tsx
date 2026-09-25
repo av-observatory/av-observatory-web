@@ -26,13 +26,6 @@ const caseStudies = [
     lead:"An evening-focused study of AV complaints, localized congestion, stranded vehicles, and operating conditions around the Presidio and northern waterfront.",
     href:"/event-studies#july-4",
     status:"Live"
-  },
-  {
-    eyebrow:"Matched case-crossover",
-    title:"AV Complaints × Congestion",
-    lead:"A spatial-temporal study matching each SF AV complaint to nearby road conditions and comparable control periods at the same place and time.",
-    href:"",
-    status:"In development"
   }
 ] as const;
 
