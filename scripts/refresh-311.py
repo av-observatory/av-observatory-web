@@ -34,6 +34,9 @@ def build_sf(rows):
         records[ident] = {"id": "SF-" + ident, "source_id": ident, "state": "CA", "market": "San Francisco",
             "requested_datetime": raw.get("requested_datetime") or "", "requested_date": date, "month": date[:7], "type": raw.get("service_subtype") or "Unspecified",
             "status": raw.get("status_description") or "Unknown", "agency": raw.get("agency_responsible") or "",
+            "lat": float(raw["lat"]) if raw.get("lat") not in (None,"") else None,
+            "long": float(raw["long"]) if raw.get("long") not in (None,"") else None,
+            "neighborhood": raw.get("neighborhoods_sffind_boundaries") or raw.get("neighborhood") or "",
             "source_url": SOURCE + "?" + urlencode({"service_request_id": ident})}
     records = sorted(records.values(), key=lambda row: (row["requested_date"], row["source_id"]))
     monthly = [{"month": month, "market": "San Francisco", "state": "CA", "complaints": count}
