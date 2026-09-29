@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import snapshot from "../../public/data/legislation_tracker.json";
 
 export type BillDataset = typeof snapshot;
-export type Bill = BillDataset["federal"][number];
+export type Bill = BillDataset["federal"][number] | BillDataset["state_bills"][number];
 
 export function useLegislationData() {
   const [data, setData] = useState<BillDataset>(snapshot);
