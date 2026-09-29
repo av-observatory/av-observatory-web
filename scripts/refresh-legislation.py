@@ -19,7 +19,7 @@ if not KEY:
 
 API = "https://v3.openstates.org"
 LAST_REQUEST_AT = 0.0
-MIN_REQUEST_INTERVAL = 6.5
+MIN_REQUEST_INTERVAL = 1.25
 STATE_CODES = "AL AK AZ AR CA CO CT DE FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS MO MT NE NV NH NJ NM NY NC ND OH OK OR PA RI SC SD TN TX UT VT VA WA WV WI WY DC".split()
 STATE_NAMES = dict(zip(
     STATE_CODES,
@@ -92,32 +92,32 @@ def load_current_sessions():
         if code not in sessions:
             continue
         candidates = j.get("legislative_sessions") or []
-        active = [
-            str(x.get("identifier") or "")
-            for x in candidates
+        active_rows = [
+            x for x in candidates
             if x.get("identifier")
             and str(x.get("start_date") or "") <= today
             and (not x.get("end_date") or today <= str(x.get("end_date")))
         ]
-        if not active:
+        if not active_rows:
             # Prefer sessions that overlap the current calendar year; otherwise newest.
             yr = str(date.today().year)
-            active = [
-                str(x.get("identifier") or "")
-                for x in candidates
+            active_rows = [
+                x for x in candidates
                 if x.get("identifier") and (
                     str(x.get("start_date") or "").startswith(yr)
                     or str(x.get("end_date") or "").startswith(yr)
                 )
             ]
-        if not active:
-            ordered = sorted(
-                (x for x in candidates if x.get("identifier")),
-                key=lambda x: str(x.get("start_date") or ""),
-                reverse=True,
-            )
-            active = [str(ordered[0]["identifier"])] if ordered else []
-        sessions[code] = list(dict.fromkeys(active))
+        ordered = sorted(
+            active_rows or [x for x in candidates if x.get("identifier")],
+            key=lambda x: (str(x.get("start_date") or ""), str(x.get("end_date") or ""), str(x.get("identifier") or "")),
+            reverse=True,
+        )
+        # One current session per jurisdiction keeps the national daily scan
+        # safely below Open States' 250-request/day quota. Special/parallel
+        # sessions are still discoverable on subsequent runs when they become
+        # the newest active session; historical rows remain in R2.
+        sessions[code] = [str(ordered[0]["identifier"])] if ordered else []
     return sessions
 
 def bill_text(item):
