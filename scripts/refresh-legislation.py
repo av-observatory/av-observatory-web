@@ -261,6 +261,36 @@ def observatory_summary(title: str, abstract: str) -> str:
     summary = " ".join(out).strip()
     return summary or title.strip()
 
+def is_substantive_summary(title: str, summary: str) -> bool:
+    """Reject metadata boilerplate and title restatements masquerading as summaries."""
+    text = re.sub(r"\s+", " ", (summary or "").strip())
+    if not text:
+        return False
+    if re.match(r"^(?:By\s+(?:Mr\.|Ms\.|Mrs\.|Representative|Representatives|Senator|Senators)|A petition\b)", text, re.I):
+        return False
+    def norm(value: str) -> str:
+        return re.sub(r"[^a-z0-9]+", " ", value.lower()).strip()
+    nt, ns = norm(title), norm(text)
+    if ns == nt or ns in {f"an act {nt}", f"act {nt}"}:
+        return False
+    # A useful policy summary should say more than the title and contain a
+    # substantive legislative action/effect.
+    action = re.search(
+        r"\b(?:require|requires|required|prohibit|prohibits|allow|allows|authorize|authorizes|"
+        r"establish|establishes|create|creates|limit|limits|mandate|mandates|regulate|regulates|"
+        r"permit|permits|direct|directs|exempt|exempts|define|defines|must|shall|would)\b",
+        text,
+        re.I,
+    )
+    return bool(action) and len(ns.split()) >= 8
+
+
+base = json.loads((ROOT / "public/data/legislation_tracker.json").read_text())
+reviewed_summaries = {
+    str(row.get("id")): row
+    for row in base.get("state_bills", [])
+    if row.get("summary_reviewed_at") and is_substantive_summary(str(row.get("title") or ""), str(row.get("summary") or ""))
+}
 
 bills = []
 for item in seen.values():
@@ -283,6 +313,14 @@ for item in seen.values():
             source_summary = str(value).strip()
             break
     summary = observatory_summary(title, source_summary)
+    summary_quality = "source_abstract"
+    prior_reviewed = reviewed_summaries.get(f"{code.lower()}-{re.sub(r'[^a-z0-9]+', '-', identifier.lower()).strip('-')}-{re.sub(r'[^0-9a-z]+', '-', session.lower()).strip('-')}")
+    if prior_reviewed:
+        summary = str(prior_reviewed["summary"])
+        summary_quality = "reviewed_substantive"
+    elif not is_substantive_summary(title, summary):
+        summary = "Substantive summary unavailable in the source feed; review the official bill record for the bill text."
+        summary_quality = "source_summary_insufficient"
     stage_dates = {}
     for action in ordered_actions:
         adate = str(action.get("date") or "")[:10]
@@ -304,7 +342,8 @@ for item in seen.values():
         "summary": summary,
         "takeaway": summary,
         "source_summary": source_summary,
-        "summary_method": "Observatory whole-abstract condensation; operative provisions prioritized over existing-law background",
+        "summary_method": "Substantive-effect summary only; sponsor/petition boilerplate and title restatements are rejected",
+        "summary_quality": summary_quality,
         "status": status,
         "measure_type": "resolution" if any("resolution" in str(x).lower() for x in (item.get("classification") or [])) else "bill",
         "last_action_date": action_date,
@@ -316,12 +355,11 @@ for item in seen.values():
         "source_url": source_url,
         "repository_url": openstates_url,
         "reviewed_at": date.today().isoformat(),
-        "summary_reviewed_at": None,
+        "summary_reviewed_at": prior_reviewed.get("summary_reviewed_at") if prior_reviewed else None,
         "openstates_id": item.get("id"),
         "openstates_updated_at": item.get("updated_at"),
     })
 
-base = json.loads((ROOT / "public/data/legislation_tracker.json").read_text())
 states = [{
     "code": code,
     "name": STATE_NAMES[code],
