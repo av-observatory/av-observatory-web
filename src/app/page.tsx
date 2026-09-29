@@ -12,7 +12,13 @@ const chapters = [
   { id: "04", title: "Manufacturers Tracker", lead: "Compare operators, partnerships, and documented locations.", href: "/manufacturers", accent: "#bd9ae4", links: [["Explore manufacturers", "/manufacturers"], ["Waymo S2 activity", "/waymo-activity"]] },
 ] as const;
 
-const caseStudies = [
+const caseStudies: ReadonlyArray<{
+  eyebrow: string;
+  title: string;
+  lead: string;
+  href?: string;
+  status: string;
+}> = [
   {
     eyebrow:"Infrastructure disruption",
     title:"December 2025 PG&E Outage",
@@ -27,7 +33,7 @@ const caseStudies = [
     href:"/event-studies#july-4",
     status:"Live"
   }
-] as const;
+];
 
 function NetworkGraphic() { return <svg viewBox="0 0 600 480" className="w-full h-full" aria-hidden="true"><defs><linearGradient id="mesh" x1="0" x2="1" y1="0" y2="1"><stop stopColor="#2975ba" /><stop offset="1" stopColor="#74bad0" /></linearGradient></defs><path d="M0 375Q112 288 221 312T445 201T660 95M-70 168Q51 189 151 109T340 143T620 10M-30 440Q70 332 167 394T381 293T620 261" fill="none" stroke="#91b9d7" strokeWidth="1.5" opacity=".28"/><path d="M74 -20Q144 81 136 178T255 338T345 520M357 -20Q300 140 377 220T518 520M542 -20Q442 112 491 215T640 440" fill="none" stroke="#91b9d7" strokeWidth="1.5" opacity=".24"/>{[[136,178],[221,312],[377,220],[445,201],[491,215],[167,394],[345,338],[151,109]].map(([x,y],i)=><g key={i}><circle cx={x} cy={y} r="16" fill="#6ab6da" opacity=".12"/><circle cx={x} cy={y} r="5" fill="url(#mesh)"/></g>)}<path d="M136 178L221 312L345 338L377 220L445 201L491 215M151 109L136 178L377 220" fill="none" stroke="url(#mesh)" strokeWidth="2" opacity=".7"/></svg>; }
 
