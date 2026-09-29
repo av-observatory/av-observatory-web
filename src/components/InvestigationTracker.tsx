@@ -8,6 +8,18 @@ type Inv={
 
 const investigations:Inv[]=[
   {
+    id:"PE26001",company:"Waymo",status:"Open",action:"Preliminary Evaluation",opened:"2026-01-28",
+    subject:"Child pedestrian struck near elementary school",product:"Waymo 5th Generation ADS",population:"3,067 estimated",
+    summary:"ODI opened this evaluation after a Waymo AV struck a child near a Santa Monica elementary school during normal drop-off hours. NHTSA is examining whether the ADS exercised appropriate caution around young pedestrians and school-zone conditions, including speed behavior, as well as Waymo's post-impact response.",
+    source:"https://static.nhtsa.gov/odi/inv/2026/INOA-PE26001-10005.pdf",sourceLabel:"ODI opening resume"
+  },
+  {
+    id:"PE25013",company:"Waymo",status:"Open",action:"Preliminary Evaluation",opened:"2025-10-17",
+    subject:"Passing stopped school buses",product:"Waymo 5th Generation ADS",population:"2,000 estimated",
+    summary:"ODI opened this evaluation after a Waymo AV drove around a stopped school bus with red lights flashing and its stop arm and crossing control arm deployed. NHTSA is examining the ADS's performance around stopped school buses and compliance with school-bus traffic safety laws. Waymo later reported a related software recall and 12 citations associated with the behavior.",
+    source:"https://static.nhtsa.gov/odi/inv/2025/INOA-PE25013-23069.pdf",sourceLabel:"ODI opening resume"
+  },
+  {
     id:"AQ-2026-Cybercab",company:"Tesla",status:"Open",action:"Audit Query",opened:"2026-09-04",
     subject:"Cybercab self-certification",product:"Tesla Cybercab",population:"Not stated",
     summary:"NHTSA opened an Audit Query to examine the basis for Tesla's self-certification that Cybercab complies with applicable FMVSS, including requirements written around vehicles with traditional human controls.",
