@@ -1,6 +1,10 @@
 name: Refresh Citizen AV Complaints
 
 on:
+  push:
+    branches: ["main"]
+    paths:
+      - ".github/workflows/refresh-311.yml"
   schedule:
     - cron: "17 10 * * *"
   workflow_dispatch:
