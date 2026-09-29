@@ -277,8 +277,8 @@ function TrafficConditions({event}:{event:EventDef}){
   return <div className="mt-5 rounded-lg border border-[#dbe4ed] p-4">
     <div className="flex flex-wrap items-start justify-between gap-3">
       <div>
-        <div className="text-[11px] font-bold uppercase tracking-wide text-[#8a6422]">External context</div><h3 className="font-semibold text-[#5e4518] mt-1">Traffic conditions</h3>
-        <p className="text-sm text-neutral-600 mt-1">{t.geography}</p>
+        <div className="text-[11px] font-bold uppercase tracking-wide text-[#8a6422]">External context</div><h3 className="text-xl font-semibold text-[#5e4518] mt-2">Traffic conditions</h3>
+        <p className="text-sm text-neutral-600 mt-2">{t.geography}</p>
       </div>
       <a href={t.sourceUrl} className="text-xs text-[#184f95] underline">{t.sourceLabel} ↗</a>
     </div>
@@ -344,11 +344,11 @@ function EventStudy({event}:{event:EventDef}){
       </div>
     </div>
 
-    {["july-4","pge-outage"].includes(event.slug) && <div className="mt-5 rounded-xl border border-[#bfd5ea] bg-[#eef6fd] p-4"><div className="flex items-center gap-2"><span className="rounded-full bg-[#d7e9f8] px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-[#245b86]">SF311 data</span><span className="text-xs text-[#55758f]">Administrative complaint records</span></div><div className="font-semibold text-[#173f61] mt-3">Complaint-rate analysis withheld</div><p className="text-sm leading-relaxed text-[#35556e] mt-1">The dedicated SF311 AV service category records only a subset of complaints about AV activity. The Observatory is rebuilding both event extracts across relevant SF311 categories and request-detail fields before publishing rate comparisons, expected counts, or p-values.</p></div>}
+    {["july-4","pge-outage"].includes(event.slug) && <div className="mt-5 rounded-xl border border-[#bfd5ea] bg-[#eef6fd] p-4"><div className="flex items-center gap-2"><span className="rounded-full bg-[#d7e9f8] px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-[#245b86]">SF311 data</span><span className="text-xs text-[#55758f]">Administrative complaint records</span></div><div className="text-xl font-semibold text-[#173f61] mt-3">Complaint-rate analysis withheld</div><p className="text-sm leading-relaxed text-[#35556e] mt-2">The dedicated SF311 AV service category records only a subset of complaints about AV activity. The Observatory is rebuilding both event extracts across relevant SF311 categories and request-detail fields before publishing rate comparisons, expected counts, or p-values.</p></div>}
 
     <div className="mt-3 rounded-lg bg-[#f5f9fd] border border-[#cddfea] p-3">
-      <div className="text-sm font-semibold">{event.analysisWindow}</div>
-      <div className="text-xs leading-relaxed text-neutral-600 mt-1">{event.analysisNote}</div>
+      <div className="text-base font-semibold text-[#173f61]">{event.analysisWindow}</div>
+      <div className="text-sm leading-relaxed text-neutral-600 mt-2">{event.analysisNote}</div>
     </div>
     {!["july-4","pge-outage"].includes(event.slug) && <MiniSeries event={event}/>}
     <TrafficConditions event={event}/>
