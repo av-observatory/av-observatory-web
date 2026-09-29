@@ -7,6 +7,7 @@ watcher prevents silent source changes from being missed.
 """
 from __future__ import annotations
 import hashlib,json,os,re
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime,timezone
 from pathlib import Path
 from urllib.request import Request,urlopen
@@ -44,20 +45,27 @@ def main():
   urls(json.loads((DATA/name).read_text()),found)
  latest=get_json(s3,"database/source_watch/latest_hashes.json",{}) or {}
  changes=[]; now=datetime.now(timezone.utc).isoformat(); next_latest=dict(latest)
- for url in sorted(found):
-  try:
-   req=Request(url,headers={"User-Agent":"AV-Observatory/1.0 public research"})
-   with urlopen(req,timeout=45) as resp:
-    body=resp.read(); content_type=resp.headers.get("Content-Type","application/octet-stream")
-   h=hashlib.sha256(body).hexdigest(); prior=latest.get(url)
-   raw_key=f"raw/source-watch/{h}"
-   try:s3.head_object(Bucket=BUCKET,Key=raw_key)
-   except Exception:s3.put_object(Bucket=BUCKET,Key=raw_key,Body=body,ContentType=content_type.split(";")[0])
-   if prior!=h:
-    changes.append({"url":url,"observed_at":now,"content_hash":h,"previous_hash":prior,"raw_key":raw_key,"bytes":len(body),"content_type":content_type})
-    next_latest[url]=h
-  except Exception as e:
-   changes.append({"url":url,"observed_at":now,"error":str(e)[:500]})
+ def fetch_one(url):
+  req=Request(url,headers={"User-Agent":"AV-Observatory/1.0 public research"})
+  with urlopen(req,timeout=20) as resp:
+   body=resp.read(); content_type=resp.headers.get("Content-Type","application/octet-stream")
+  return url,body,content_type
+
+ with ThreadPoolExecutor(max_workers=12) as pool:
+  futures={pool.submit(fetch_one,url):url for url in sorted(found)}
+  for future in as_completed(futures):
+   url=futures[future]
+   try:
+    _,body,content_type=future.result()
+    h=hashlib.sha256(body).hexdigest(); prior=latest.get(url)
+    raw_key=f"raw/source-watch/{h}"
+    try:s3.head_object(Bucket=BUCKET,Key=raw_key)
+    except Exception:s3.put_object(Bucket=BUCKET,Key=raw_key,Body=body,ContentType=content_type.split(";")[0])
+    if prior!=h:
+     changes.append({"url":url,"observed_at":now,"content_hash":h,"previous_hash":prior,"raw_key":raw_key,"bytes":len(body),"content_type":content_type})
+     next_latest[url]=h
+   except Exception as e:
+    changes.append({"url":url,"observed_at":now,"error":str(e)[:500]})
  if changes:
   body="".join(json.dumps(x,sort_keys=True,separators=(",",":"))+"\n" for x in changes).encode()
   h=hashlib.sha256(body).hexdigest(); stamp=now.replace("-","").replace(":","").replace("+00:00","Z").replace(".","")
