@@ -5,13 +5,13 @@
   "source_api": "https://data.sf.gov/resource/vw6y-z8j6.json",
   "selection": "Exact service_name match: Autonomous Vehicle Complaints. Other city request types and unclassified AV mentions are excluded.",
   "limitations": "These are public 311 requests, not verified incidents. The published subtypes describe how SF311 classified a request, not the specific behavior alleged. Operator identity is unavailable; the AV category begins in April 2025.",
-  "source_data_as_of": "2026-09-28T01:00:00.000",
-  "total_records": 974,
+  "source_data_as_of": "2026-09-29T01:00:00.000",
+  "total_records": 979,
   "markets": [
     {
       "market": "San Francisco",
       "state": "CA",
-      "complaints": 974
+      "complaints": 979
     }
   ],
   "monthly": [
@@ -121,7 +121,7 @@
       "month": "2026-09",
       "market": "San Francisco",
       "state": "CA",
-      "complaints": 61
+      "complaints": 66
     }
   ],
   "records": [
@@ -15478,7 +15478,7 @@
       "requested_date": "2026-09-20",
       "month": "2026-09",
       "type": "incident_report",
-      "status": "Open",
+      "status": "Closed",
       "agency": "MTA - Autonomous Vehicles Complaints",
       "lat": 37.7636694998,
       "long": -122.4524000483,
@@ -15494,7 +15494,7 @@
       "requested_date": "2026-09-21",
       "month": "2026-09",
       "type": "incident_report",
-      "status": "Open",
+      "status": "Closed",
       "agency": "MTA - Autonomous Vehicles Complaints",
       "lat": 37.77060551,
       "long": -122.42542179,
@@ -15510,7 +15510,7 @@
       "requested_date": "2026-09-21",
       "month": "2026-09",
       "type": "incident_report",
-      "status": "Open",
+      "status": "Closed",
       "agency": "MTA - Autonomous Vehicles Complaints",
       "lat": 37.76541646,
       "long": -122.47721664,
@@ -15708,6 +15708,86 @@
       "long": -122.4124608516,
       "neighborhood": "Nob Hill",
       "source_url": "https://data.sf.gov/resource/vw6y-z8j6.json?service_request_id=202000109724"
+    },
+    {
+      "id": "SF-202000114361",
+      "source_id": "202000114361",
+      "state": "CA",
+      "market": "San Francisco",
+      "requested_datetime": "2026-09-28T11:21:22.000",
+      "requested_date": "2026-09-28",
+      "month": "2026-09",
+      "type": "other",
+      "status": "Open",
+      "agency": "MTA - Autonomous Vehicles Complaints",
+      "lat": null,
+      "long": null,
+      "neighborhood": "",
+      "source_url": "https://data.sf.gov/resource/vw6y-z8j6.json?service_request_id=202000114361"
+    },
+    {
+      "id": "SF-202000114986",
+      "source_id": "202000114986",
+      "state": "CA",
+      "market": "San Francisco",
+      "requested_datetime": "2026-09-28T13:44:47.000",
+      "requested_date": "2026-09-28",
+      "month": "2026-09",
+      "type": "other",
+      "status": "Open",
+      "agency": "MTA - Autonomous Vehicles Complaints",
+      "lat": null,
+      "long": null,
+      "neighborhood": "",
+      "source_url": "https://data.sf.gov/resource/vw6y-z8j6.json?service_request_id=202000114986"
+    },
+    {
+      "id": "SF-202000116046",
+      "source_id": "202000116046",
+      "state": "CA",
+      "market": "San Francisco",
+      "requested_datetime": "2026-09-28T18:23:29.000",
+      "requested_date": "2026-09-28",
+      "month": "2026-09",
+      "type": "other",
+      "status": "Open",
+      "agency": "MTA - Autonomous Vehicles Complaints",
+      "lat": null,
+      "long": null,
+      "neighborhood": "",
+      "source_url": "https://data.sf.gov/resource/vw6y-z8j6.json?service_request_id=202000116046"
+    },
+    {
+      "id": "SF-202000116396",
+      "source_id": "202000116396",
+      "state": "CA",
+      "market": "San Francisco",
+      "requested_datetime": "2026-09-28T20:59:03.000",
+      "requested_date": "2026-09-28",
+      "month": "2026-09",
+      "type": "incident_report",
+      "status": "Open",
+      "agency": "MTA - Autonomous Vehicles Complaints",
+      "lat": 37.8005798245,
+      "long": -122.4538590187,
+      "neighborhood": "Presidio National Park",
+      "source_url": "https://data.sf.gov/resource/vw6y-z8j6.json?service_request_id=202000116396"
+    },
+    {
+      "id": "SF-202000116511",
+      "source_id": "202000116511",
+      "state": "CA",
+      "market": "San Francisco",
+      "requested_datetime": "2026-09-28T22:31:56.000",
+      "requested_date": "2026-09-28",
+      "month": "2026-09",
+      "type": "incident_report",
+      "status": "Open",
+      "agency": "MTA - Autonomous Vehicles Complaints",
+      "lat": 37.7916905426,
+      "long": -122.4042197427,
+      "neighborhood": "Chinatown",
+      "source_url": "https://data.sf.gov/resource/vw6y-z8j6.json?service_request_id=202000116511"
     }
   ]
 }
