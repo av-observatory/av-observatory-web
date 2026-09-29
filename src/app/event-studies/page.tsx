@@ -382,9 +382,7 @@ export default function EventStudiesPage(){
       How does AV-related public reporting change when the operating environment changes suddenly? These studies use the Observatory&apos;s existing datasets to compare short event windows with the immediately preceding baseline.
     </p>
 
-    <div className="flex flex-wrap gap-2 mt-5 text-xs"><span className="rounded-full border border-[#bfd5ea] bg-[#eef6fd] px-3 py-1.5 font-semibold text-[#245b86]">Blue = SF311 data</span><span className="rounded-full border border-[#e6c98e] bg-[#fff8e8] px-3 py-1.5 font-semibold text-[#7a5718]">Amber = external context</span></div>
-
-    <div className="grid sm:grid-cols-2 gap-3 mt-4">
+    <div className="grid sm:grid-cols-2 gap-3 mt-6">
       {EVENTS.map(e=><a key={e.slug} href={`#${e.slug}`} className="viz-card p-4 block hover:border-[#2c76bf]">
         <p className="text-xs uppercase tracking-wide text-neutral-500">{e.kicker}</p>
         <strong className="block text-lg mt-1">{e.title}</strong>
