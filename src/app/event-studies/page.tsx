@@ -47,7 +47,7 @@ const EVENTS:EventDef[] = [
     description:"A widespread San Francisco power outage disabled traffic signals across the city and disrupted roadway operations.",
     context:"This view documents the outage and related AV reporting. The complaint-rate analysis is temporarily withheld because the dedicated SF311 AV category is not a complete measure of all Waymo/AV-related 311 reporting.",
     analysisWindow:"Primary window: Dec. 20, 2025 (single calendar day)",
-    analysisNote:"The dedicated SF311 service category \"Autonomous Vehicle Complaints\" captures only a subset of AV-related 311 reporting. Relevant Waymo/AV requests can be filed under other SF311 service categories and request-detail fields, so the Observatory is withholding the outage complaint-rate comparison until the extraction is broadened consistently across the full 311 dataset.",
+    analysisNote:"The outage is treated as a one-day infrastructure shock centered on Dec. 20, 2025.",
     traffic:{
       sourceLabel:"TomTom Traffic Index",
       sourceUrl:"https://www.tomtom.com/traffic-index/city/san-francisco-ca/",
@@ -65,7 +65,6 @@ const EVENTS:EventDef[] = [
       {value:"829",label:"Waymo AVs in outage area",detail:"Operating in the outage area between noon and 11 p.m.",source:"https://www.sfmta.com/media/44577/download?inline=",sourceLabel:"SFMTA"},
       {value:"63",label:"Vehicles manually retrieved",detail:"Waymo-reported peak-outage figure cited by SFCTA.",source:"https://www.sfcta.org/sites/default/files/2026-02/SFCTA_Feedback_on_DMV_2nd_Modified_Regulatory_Text_for_the_Testing_and_Deployment_of_AVs.pdf",sourceLabel:"SFCTA"},
       {value:"31",label:"City calls to Waymo hotline",detail:"Calls placed by dispatchers between roughly 3 and 8 p.m.; one hold reportedly lasted 53 minutes.",source:"https://sanfrancisco.granicus.com/TranscriptViewer.php?clip_id=51902&view_id=177",sourceLabel:"SF Board of Supervisors hearing"},
-      {value:"123%",label:"Congestion at 5 p.m.",detail:"TomTom identifies Dec. 20 as San Francisco's worst traffic day of 2025; average daily congestion was 72%.",source:"https://www.tomtom.com/traffic-index/city/san-francisco-ca/",sourceLabel:"TomTom Traffic Index"}
     ]
   },
   {
@@ -76,7 +75,7 @@ const EVENTS:EventDef[] = [
     description:"Heavy event traffic, road closures, pedestrians, and stalled vehicles created severe congestion around the Presidio and northern waterfront.",
     context:"This view documents the July 4 disruption. The complaint-rate analysis is temporarily withheld because the dedicated SF311 AV category is not a complete measure of all Waymo/AV-related 311 reporting.",
     analysisWindow:"Target window: Jul. 4, 2026, 6 p.m.–Jul. 5, 2 a.m.",
-    analysisNote:"The Observatory extract does preserve request timestamps. Within the dedicated SF311 service category \"Autonomous Vehicle Complaints,\" there are 2 requests in the 6 p.m.–2 a.m. target window (3 on Jul. 4 as a calendar day). That category is too narrow to represent all complaints about Waymo or AV activity because relevant requests can be filed under other SF311 service categories. The inferential complaint panel is therefore withheld while the extraction is broadened across relevant SF311 fields and categories.",
+    analysisNote:"The event window is 6 p.m. on Jul. 4 through 2 a.m. on Jul. 5; request timestamps are preserved in the source extract.",
     traffic:{
       sourceLabel:"Uber analysis reported by San Francisco Chronicle",
       sourceUrl:"https://www.sfchronicle.com/sf/article/july-4-traffic-fireworks-waymo-uber-22343683.php",
@@ -90,8 +89,6 @@ const EVENTS:EventDef[] = [
       ]
     },
     evidence:[
-      {value:"27%",label:"Uber trip completion in Presidio",detail:"Between 9 and 10 p.m.; Uber reported about 80% citywide.",source:"https://www.sfchronicle.com/sf/article/july-4-traffic-fireworks-waymo-uber-22343683.php",sourceLabel:"San Francisco Chronicle / Uber analysis"},
-      {value:"66%",label:"Uber drivers under 10 mph",detail:"In the Presidio at 9 p.m.; Uber compared this with 37% at peak Fleet Week traffic.",source:"https://www.sfchronicle.com/sf/article/july-4-traffic-fireworks-waymo-uber-22343683.php",sourceLabel:"San Francisco Chronicle / Uber analysis"},
       {value:"~90 min",label:"Marina-to-Market city shuttle",detail:"Reported by San Francisco's emergency-management director in records released after the event.",source:"https://www.sfchronicle.com/sf/article/top-sf-officials-slams-waymo-over-july-4-22349916.php",sourceLabel:"San Francisco Chronicle / city records"},
       {value:"Dozens",label:"Waymos stranded in heavy traffic",detail:"Some vehicles ran out of power and required towing; this is a reported count, not a comprehensive fleet total.",source:"https://abc7news.com/post/waymo-fleet-clogs-presidio-july-4-fireworks-leaving-vehicles-stranded-towed/19455862/",sourceLabel:"ABC7"}
     ]
@@ -308,7 +305,7 @@ function EventStudy({event}:{event:EventDef}){
     </div>
 
     <div className="mt-5 rounded-xl border border-[#dbe4ed] bg-white p-4">
-      <div className="flex flex-wrap items-start justify-between gap-3"><div><div className="text-[11px] font-bold uppercase tracking-wide text-[#8a6422]">External context</div><h3 className="text-xl font-semibold text-[#5e4518] mt-2">Event evidence</h3><p className="text-sm text-neutral-600 mt-2">Agency, company, and contemporaneous reporting</p></div></div>
+      <div className="flex flex-wrap items-start justify-between gap-3"><div><div className="text-[11px] font-bold uppercase tracking-wide text-[#8a6422]">External context</div><h3 className="text-xl font-semibold text-[#5e4518] mt-2">Operational evidence</h3><p className="text-sm text-neutral-600 mt-2">Agency, company, and contemporaneous reporting not captured by SF311</p></div></div>
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-2">
         {event.evidence.map(item=><div key={item.label} className="rounded-lg bg-[#f7f9fb] p-3">
           <div className="text-2xl font-semibold tabular-nums text-[#123b69]">{item.value}</div>
@@ -317,7 +314,7 @@ function EventStudy({event}:{event:EventDef}){
           <a href={item.source} className="inline-block mt-2 text-xs text-[#184f95] underline">{item.sourceLabel} ↗</a>
         </div>)}
       </div>
-      <p className="text-xs leading-relaxed text-neutral-500 mt-3">These figures come from company disclosures, city records, agency filings, traffic analysis, or contemporaneous reporting. They are external context, not SF311 complaint records, and are not used as the complaint numerator.</p>
+      <p className="text-xs leading-relaxed text-neutral-500 mt-3">External context only; these figures are not used as the SF311 complaint numerator.</p>
     </div>
 
     <div className={`${["july-4","pge-outage"].includes(event.slug)?"hidden ":""}grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-5`}>
@@ -343,7 +340,7 @@ function EventStudy({event}:{event:EventDef}){
       </div>
     </div>
 
-    {["july-4","pge-outage"].includes(event.slug) && <div className="mt-5 rounded-xl border border-[#bfd5ea] bg-[#eef6fd] p-4"><div className="flex items-center gap-2"><span className="rounded-full bg-[#d7e9f8] px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-[#245b86]">SF311 data</span><span className="text-xs text-[#55758f]">Administrative complaint records</span></div><div className="text-xl font-semibold text-[#173f61] mt-3">Complaint-rate analysis withheld</div><p className="text-sm leading-relaxed text-[#35556e] mt-2">The dedicated SF311 AV service category records only a subset of complaints about AV activity. The Observatory is rebuilding both event extracts across relevant SF311 categories and request-detail fields before publishing rate comparisons, expected counts, or p-values.</p></div>}
+    {["july-4","pge-outage"].includes(event.slug) && <div className="mt-5 rounded-xl border border-[#bfd5ea] bg-[#eef6fd] p-4"><div className="flex items-center gap-2"><span className="rounded-full bg-[#d7e9f8] px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-[#245b86]">SF311 data</span><span className="text-xs text-[#55758f]">Administrative complaint records</span></div><div className="text-xl font-semibold text-[#173f61] mt-3">Complaint-rate analysis withheld</div><p className="text-sm leading-relaxed text-[#35556e] mt-2">The dedicated SF311 AV category captures only a subset of AV-related 311 reporting. Rate comparisons, expected counts, and p-values are withheld until the extraction is broadened across relevant SF311 categories and request-detail fields.</p></div>}
 
     <div className="mt-3 rounded-lg bg-[#f5f9fd] border border-[#cddfea] p-3">
       <div className="text-base font-semibold text-[#173f61]">{event.analysisWindow}</div>
@@ -396,7 +393,7 @@ export default function EventStudiesPage(){
     <section className="viz-card p-5 mt-6">
       <h2 className="text-xl font-semibold">How to read these studies</h2>
       <p className="text-sm leading-relaxed text-neutral-600 mt-2 max-w-4xl">
-        The benchmark is the mean number of SF311 Autonomous Vehicle Complaint requests per day during the 28 days immediately before each event. Treatment windows are defined from the actual event mechanism rather than imposed uniformly: Dec. 20 is treated as a one-day infrastructure shock, while July 4 is defined as an evening/overnight disruption (target window 6 p.m.–2 a.m.). Complaint-rate panels for both event studies are withheld while the Observatory broadens the SF311 extraction beyond the dedicated AV service category. Timestamps are already preserved in the source extract.
+        Treatment windows follow the event mechanism: Dec. 20 is treated as a one-day infrastructure shock, while July 4 uses the 6 p.m.–2 a.m. evening/overnight window. Quantitative SF311 comparisons will return once the broader AV-related extraction is complete.
       </p>
       <p className="text-sm leading-relaxed text-neutral-600 mt-2 max-w-4xl">
         SF311 requests are public reports, not verified incidents, and the dataset does not identify the AV operator. A spike can indicate increased public reporting during a disruption, but it cannot by itself establish the cause, operator, severity, or prevalence of the underlying behavior. Monthly CPUC trip and VMT totals are California-wide and much coarser than the event window, so they provide operational context rather than a causal estimate of an event&apos;s impact. Conversely, the absence of a spike does not mean an event had no operational impact.
