@@ -15,7 +15,8 @@ const GROUPS = [
 ] as const;
 
 export function Sidebar() {
-  const path = usePathname();
+  const rawPath = usePathname();
+  const path = rawPath !== "/" ? rawPath.replace(/\/+$/, "") : rawPath;
   return <aside className="w-60 shrink-0 bg-[#0b1d33] text-white flex flex-col min-h-screen">
     <Link href="/" className="px-5 pt-7 pb-6 text-[15px] font-semibold tracking-tight flex items-center gap-2"><span className="inline-block w-2.5 h-2.5 rounded-full bg-[#6fbbe9]" />AV Observatory</Link>
     <nav className="flex-1 px-3 pb-5 space-y-5" aria-label="Main navigation">
