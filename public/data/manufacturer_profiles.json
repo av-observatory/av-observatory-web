@@ -233,6 +233,62 @@
           "kind": "announcement"
         }
       ]
+    },
+    "Wayve": {
+      "service": "Automated-driving software under supervised public-road testing in the United States.",
+      "approach": "Develops a general-purpose embodied-AI driving system intended to transfer across vehicle platforms and markets rather than relying on a single geofenced robotaxi stack.",
+      "partnerships": "Wayve has announced collaborations with automakers and technology partners including Nissan, Uber, NVIDIA, Qualcomm, and Stellantis; announced future robotaxi pilots are distinct from current U.S. testing.",
+      "source": "https://wayve.ai/north-america-global-roadtrip/",
+      "developments": [
+        {
+          "date": "2026-03-16",
+          "headline": "Wayve and Nissan show robotaxi prototype for future Uber trials",
+          "summary": "The prototype previews a future Tokyo pilot and does not represent current U.S. commercial deployment.",
+          "source": "https://wayve.ai/press/wayve-nissan-robotaxi-gtc/",
+          "publisher": "Wayve",
+          "kind": "announcement"
+        },
+        {
+          "date": "2026-03-10",
+          "headline": "Wayve and Qualcomm announce ADAS and automated-driving collaboration",
+          "summary": "The companies announced integration work spanning hands-off assistance through higher automation.",
+          "source": "https://wayve.ai/press/qualcomm-wayve-collaboration/",
+          "publisher": "Wayve",
+          "kind": "announcement"
+        }
+      ]
+    },
+    "Vueron": {
+      "service": "LiDAR-based autonomous-driving and perception technology under supervised public-road testing.",
+      "approach": "Develops LiDAR-centric perception and autonomous-driving software, including a stack designed to operate with a single LiDAR sensor.",
+      "partnerships": "Vueron works with automotive and technology partners on perception and autonomy; the Observatory does not currently identify a U.S. commercial ridehail deployment.",
+      "source": "https://www.vueron.com/vueron-copilot",
+      "developments": [
+        {
+          "date": "2026-09-17",
+          "headline": "California DMV lists Vueron as a current testing-with-driver permit holder",
+          "summary": "The permit authorizes supervised public-road AV testing in California; it does not establish driverless deployment.",
+          "source": "https://www.dmv.ca.gov/portal/vehicle-industry-services/autonomous-vehicles/autonomous-vehicle-testing-permit-holders/",
+          "publisher": "California DMV",
+          "kind": "regulatory action"
+        }
+      ]
+    },
+    "Stack AV": {
+      "service": "Autonomous trucking development and commercial pilot operations.",
+      "approach": "Develops autonomous truck technology and operates supervised development fleets that test while hauling commercial freight.",
+      "partnerships": "Stack's public materials emphasize freight-customer pilot operations; specific customer relationships are not summarized here without a current primary-source profile.",
+      "source": "https://stackav.com/",
+      "developments": [
+        {
+          "date": "2026-09-29",
+          "headline": "Current fleet operations span multiple U.S. testing hubs",
+          "summary": "Stack's current operations postings describe daily autonomous-truck testing and commercial pilot operations in Phoenix, Oklahoma City, Atlanta, and New Stanton.",
+          "source": "https://stackav.com/join",
+          "publisher": "Stack AV",
+          "kind": "activity evidence"
+        }
+      ]
     }
   }
 }
