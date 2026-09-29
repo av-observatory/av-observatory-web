@@ -1,52 +1,52 @@
-code,name,repository_url
-AL,Alabama,https://open.pluralpolicy.com/
-AK,Alaska,https://open.pluralpolicy.com/
-AZ,Arizona,https://open.pluralpolicy.com/
-AR,Arkansas,https://open.pluralpolicy.com/
-CA,California,https://open.pluralpolicy.com/
-CO,Colorado,https://open.pluralpolicy.com/
-CT,Connecticut,https://open.pluralpolicy.com/
-DE,Delaware,https://open.pluralpolicy.com/
-FL,Florida,https://open.pluralpolicy.com/
-GA,Georgia,https://open.pluralpolicy.com/
-HI,Hawaii,https://open.pluralpolicy.com/
-ID,Idaho,https://open.pluralpolicy.com/
-IL,Illinois,https://open.pluralpolicy.com/
-IN,Indiana,https://open.pluralpolicy.com/
-IA,Iowa,https://open.pluralpolicy.com/
-KS,Kansas,https://open.pluralpolicy.com/
-KY,Kentucky,https://open.pluralpolicy.com/
-LA,Louisiana,https://open.pluralpolicy.com/
-ME,Maine,https://open.pluralpolicy.com/
-MD,Maryland,https://open.pluralpolicy.com/
-MA,Massachusetts,https://open.pluralpolicy.com/
-MI,Michigan,https://open.pluralpolicy.com/
-MN,Minnesota,https://open.pluralpolicy.com/
-MS,Mississippi,https://open.pluralpolicy.com/
-MO,Missouri,https://open.pluralpolicy.com/
-MT,Montana,https://open.pluralpolicy.com/
-NE,Nebraska,https://open.pluralpolicy.com/
-NV,Nevada,https://open.pluralpolicy.com/
-NH,New Hampshire,https://open.pluralpolicy.com/
-NJ,New Jersey,https://open.pluralpolicy.com/
-NM,New Mexico,https://open.pluralpolicy.com/
-NY,New York,https://open.pluralpolicy.com/
-NC,North Carolina,https://open.pluralpolicy.com/
-ND,North Dakota,https://open.pluralpolicy.com/
-OH,Ohio,https://open.pluralpolicy.com/
-OK,Oklahoma,https://open.pluralpolicy.com/
-OR,Oregon,https://open.pluralpolicy.com/
-PA,Pennsylvania,https://open.pluralpolicy.com/
-RI,Rhode Island,https://open.pluralpolicy.com/
-SC,South Carolina,https://open.pluralpolicy.com/
-SD,South Dakota,https://open.pluralpolicy.com/
-TN,Tennessee,https://open.pluralpolicy.com/
-TX,Texas,https://open.pluralpolicy.com/
-UT,Utah,https://open.pluralpolicy.com/
-VT,Vermont,https://open.pluralpolicy.com/
-VA,Virginia,https://open.pluralpolicy.com/
-WA,Washington,https://open.pluralpolicy.com/
-WV,West Virginia,https://open.pluralpolicy.com/
-WI,Wisconsin,https://open.pluralpolicy.com/
-WY,Wyoming,https://open.pluralpolicy.com/
-DC,District of Columbia,https://open.pluralpolicy.com/
+code,name,repository_url,sessions
+AL,Alabama,https://open.pluralpolicy.com/,"[""2026rs""]"
+AK,Alaska,https://open.pluralpolicy.com/,"[""27""]"
+AZ,Arizona,https://open.pluralpolicy.com/,"[""57th-2nd-regular""]"
+AR,Arkansas,https://open.pluralpolicy.com/,"[""2026F"",""2026S1""]"
+CA,California,https://open.pluralpolicy.com/,"[""20252026""]"
+CO,Colorado,https://open.pluralpolicy.com/,"[""2026A""]"
+CT,Connecticut,https://open.pluralpolicy.com/,"[""2026""]"
+DE,Delaware,https://open.pluralpolicy.com/,"[""153""]"
+FL,Florida,https://open.pluralpolicy.com/,"[""2026"",""2026D"",""2026E"",""2026F""]"
+GA,Georgia,https://open.pluralpolicy.com/,"[""2026_ss""]"
+HI,Hawaii,https://open.pluralpolicy.com/,"[""2026""]"
+ID,Idaho,https://open.pluralpolicy.com/,"[""2026""]"
+IL,Illinois,https://open.pluralpolicy.com/,"[""104th""]"
+IN,Indiana,https://open.pluralpolicy.com/,"[""2026""]"
+IA,Iowa,https://open.pluralpolicy.com/,"[""2025-2026""]"
+KS,Kansas,https://open.pluralpolicy.com/,"[""2025-2026""]"
+KY,Kentucky,https://open.pluralpolicy.com/,"[""2026RS""]"
+LA,Louisiana,https://open.pluralpolicy.com/,"[""2026""]"
+ME,Maine,https://open.pluralpolicy.com/,"[""132""]"
+MD,Maryland,https://open.pluralpolicy.com/,"[""2026""]"
+MA,Massachusetts,https://open.pluralpolicy.com/,"[""194th""]"
+MI,Michigan,https://open.pluralpolicy.com/,"[""2025-2026""]"
+MN,Minnesota,https://open.pluralpolicy.com/,"[""2025-2026""]"
+MS,Mississippi,https://open.pluralpolicy.com/,"[""20261E""]"
+MO,Missouri,https://open.pluralpolicy.com/,"[""2017S1"",""2017S2"",""2018"",""2018S1"",""2018S2""]"
+MT,Montana,https://open.pluralpolicy.com/,"[""2025""]"
+NE,Nebraska,https://open.pluralpolicy.com/,"[""109""]"
+NV,Nevada,https://open.pluralpolicy.com/,"[""2025Special36""]"
+NH,New Hampshire,https://open.pluralpolicy.com/,"[""2026""]"
+NJ,New Jersey,https://open.pluralpolicy.com/,"[""222""]"
+NM,New Mexico,https://open.pluralpolicy.com/,"[""2026""]"
+NY,New York,https://open.pluralpolicy.com/,"[""2025-2026""]"
+NC,North Carolina,https://open.pluralpolicy.com/,"[""2025""]"
+ND,North Dakota,https://open.pluralpolicy.com/,"[""70""]"
+OH,Ohio,https://open.pluralpolicy.com/,"[""136""]"
+OK,Oklahoma,https://open.pluralpolicy.com/,"[""2026""]"
+OR,Oregon,https://open.pluralpolicy.com/,"[""2026R1""]"
+PA,Pennsylvania,https://open.pluralpolicy.com/,"[""2025-2026""]"
+RI,Rhode Island,https://open.pluralpolicy.com/,"[""2026""]"
+SC,South Carolina,https://open.pluralpolicy.com/,"[""2025-2026""]"
+SD,South Dakota,https://open.pluralpolicy.com/,"[""2026""]"
+TN,Tennessee,https://open.pluralpolicy.com/,"[""106""]"
+TX,Texas,https://open.pluralpolicy.com/,"[""892""]"
+UT,Utah,https://open.pluralpolicy.com/,"[""2026""]"
+VT,Vermont,https://open.pluralpolicy.com/,"[""2025-2026""]"
+VA,Virginia,https://open.pluralpolicy.com/,"[""2026"",""2026S1""]"
+WA,Washington,https://open.pluralpolicy.com/,[]
+WV,West Virginia,https://open.pluralpolicy.com/,[]
+WI,Wisconsin,https://open.pluralpolicy.com/,[]
+WY,Wyoming,https://open.pluralpolicy.com/,[]
+DC,District of Columbia,https://open.pluralpolicy.com/,"[""26""]"

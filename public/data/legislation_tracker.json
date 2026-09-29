@@ -1,9 +1,9 @@
 {
   "schema_version": "1.1.0",
-  "as_of": "2026-09-23",
-  "state_index_reviewed": "2026-09-15",
-  "methodology": "State AV legislation is being migrated to an Open States API v3 national discovery pipeline across all 50 states and D.C. The tracker is no longer sourced from or linked to NCSL. Current-session records are matched to official legislature sources where available; the linked official bill record is the authority.",
-  "source": "Open States migration snapshot",
+  "as_of": "2026-09-29",
+  "state_index_reviewed": "2026-09-29",
+  "methodology": "Current-session AV legislation is independently discovered across all 50 states and D.C. with Open States API v3. One full-text AV query is run for each active legislative session, results are deduplicated, and normalized Open States actions are used to derive progress status. Official legislature source URLs supplied by Open States are retained where available; Open States bill URLs are stored separately for source inspection.",
+  "source": "Open States API v3 national AV bill discovery",
   "federal": [
     {
       "id": "us-hr7390-119t",
@@ -126,585 +126,2548 @@
       "summary_reviewed_at": "2026-09-23"
     }
   ],
+  "state_bills": [
+    {
+      "id": "al-sb-222-2026rs",
+      "jurisdiction": "AL",
+      "number": "SB 222",
+      "title": "Motor vehicles; operation of oversized vehicles operated by automated driving systems, prohibited",
+      "summary": "Motor Vehicles & Traffic",
+      "takeaway": "Motor Vehicles & Traffic",
+      "status": "passed",
+      "measure_type": "bill",
+      "last_action_date": "2026-04-01",
+      "last_action": "Transportation, Utilities and Infrastructure 1st Substitute (Transportation, Utilities and Infrastructure)",
+      "session": "2026rs",
+      "progress_stage": "passed_legislature",
+      "stage_dates": {
+        "committee": "2026-02-24",
+        "passed_legislature": "2026-02-24"
+      },
+      "hearings": [],
+      "source_url": "https://alison.legislature.state.al.us/bill-search",
+      "repository_url": "https://openstates.org/al/bills/2026rs/SB222/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/15108415-5983-4ee4-9a30-ddb22a9903c2",
+      "openstates_updated_at": "2026-07-09T22:32:17.309868+00:00"
+    },
+    {
+      "id": "az-sb-1417-57th-2nd-regular",
+      "jurisdiction": "AZ",
+      "number": "SB 1417",
+      "title": "autonomous vehicles; safety; data",
+      "summary": "autonomous vehicles; safety; data",
+      "takeaway": "autonomous vehicles; safety; data",
+      "status": "introduced",
+      "measure_type": "bill",
+      "last_action_date": "2026-01-28",
+      "last_action": "Senate Second Reading",
+      "session": "57th-2nd-regular",
+      "progress_stage": "introduced",
+      "stage_dates": {},
+      "hearings": [],
+      "source_url": "https://apps.azleg.gov/BillStatus/BillOverview/84971?SessionId=130",
+      "repository_url": "https://openstates.org/az/bills/57th-2nd-regular/SB1417/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/f4535e95-c26a-4b33-8eb4-c4da2b62e04b",
+      "openstates_updated_at": "2026-03-18T01:18:38.574357+00:00"
+    },
+    {
+      "id": "ca-ab-2193-20252026",
+      "jurisdiction": "CA",
+      "number": "AB 2193",
+      "title": "Autonomous vehicles.",
+      "summary": "Existing law authorizes the operation of an autonomous vehicle on public roads for testing purposes by a driver who possesses the proper class of license for the type of vehicle operated if specified requirements are satisfied. Existing law prohibits the operation of an autonomous vehicle on public roads until the manufacturer submits an application to the Department of Motor Vehicles, as specified, and that application is approved. Existing law requires the department to adopt regulations setting forth requirements for the submission and approval of an application, including, among other things, any testing, equipment, and performance standards the department concludes are necessary to ensu",
+      "takeaway": "Existing law authorizes the operation of an autonomous vehicle on public roads for testing purposes by a driver who possesses the proper class of license for the type of vehicle operated if specified requirements are satisfied",
+      "status": "engrossed",
+      "measure_type": "bill",
+      "last_action_date": "2026-05-14",
+      "last_action": "In committee: Held under submission.",
+      "session": "20252026",
+      "progress_stage": "floor",
+      "stage_dates": {
+        "committee": "2026-05-13"
+      },
+      "hearings": [],
+      "source_url": "https://openstates.org/ca/bills/20252026/AB2193/",
+      "repository_url": "https://openstates.org/ca/bills/20252026/AB2193/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/8bb84568-51be-40f7-a292-2aa23cfe1c26",
+      "openstates_updated_at": "2026-07-09T04:51:21.856958+00:00"
+    },
+    {
+      "id": "ca-ab-33-20252026",
+      "jurisdiction": "CA",
+      "number": "AB 33",
+      "title": "Autonomous vehicles.",
+      "summary": "Existing law authorizes the operation of an autonomous vehicle on public roads for testing purposes by a driver who possesses the proper class of license for the type of vehicle operated if specified requirements are satisfied. Existing law prohibits the operation of an autonomous vehicle on public roads until the manufacturer submits an application to the Department of Motor Vehicles, as specified, and that application is approved. A violation of the Vehicle Code or a local ordinance adopted pursuant to that code is an infraction.\n\nThis bill would prohibit the delivery of commercial goods, as defined, directly to a residence or to a business for its use or retail sale through the operation ",
+      "takeaway": "Existing law authorizes the operation of an autonomous vehicle on public roads for testing purposes by a driver who possesses the proper class of license for the type of vehicle operated if specified requirements are satisfied",
+      "status": "passed",
+      "measure_type": "bill",
+      "last_action_date": "2025-09-09",
+      "last_action": "Ordered to inactive file at the request of Senator Gonzalez.",
+      "session": "20252026",
+      "progress_stage": "passed_legislature",
+      "stage_dates": {
+        "committee": "2025-08-29",
+        "passed_legislature": "2025-05-29"
+      },
+      "hearings": [],
+      "source_url": "https://openstates.org/ca/bills/20252026/AB33/",
+      "repository_url": "https://openstates.org/ca/bills/20252026/AB33/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/b040b593-f8fd-4869-a6cb-530f780c6559",
+      "openstates_updated_at": "2026-07-09T04:58:31.470169+00:00"
+    },
+    {
+      "id": "ca-sb-1246-20252026",
+      "jurisdiction": "CA",
+      "number": "SB 1246",
+      "title": "Autonomous vehicles.",
+      "summary": "(1) Existing law authorizes the operation of an autonomous vehicle on public roads for testing purposes by a driver who possesses the proper class of license for the type of vehicle operated if specified requirements are satisfied. Existing law prohibits the operation of an autonomous vehicle on public roads until the manufacturer submits an application to the Department of Motor Vehicles (department) , as specified, and that application is approved. Existing law requires the department to adopt regulations setting forth requirements for the submission and approval of an application, including, among other things, any testing, equipment, and performance standards the department concludes are",
+      "takeaway": "(1) Existing law authorizes the operation of an autonomous vehicle on public roads for testing purposes by a driver who possesses the proper class of license for the type of vehicle operated if specified requirements are satisfied",
+      "status": "passed",
+      "measure_type": "bill",
+      "last_action_date": "2026-09-09",
+      "last_action": "Enrolled and presented to the Governor at 2 p.m.",
+      "session": "20252026",
+      "progress_stage": "passed_legislature",
+      "stage_dates": {
+        "introduced": "2026-02-19",
+        "committee": "2026-08-31",
+        "passed_legislature": "2026-08-30"
+      },
+      "hearings": [],
+      "source_url": "https://openstates.org/ca/bills/20252026/SB1246/",
+      "repository_url": "https://openstates.org/ca/bills/20252026/SB1246/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/84856a8a-5cff-41ee-9237-9f569454b676",
+      "openstates_updated_at": "2026-09-29T09:25:39.927458+00:00"
+    },
+    {
+      "id": "ca-sb-480-20252026",
+      "jurisdiction": "CA",
+      "number": "SB 480",
+      "title": "Autonomous vehicles.",
+      "summary": "Existing law authorizes the operation of an autonomous vehicle on public roads for testing purposes by a driver who possesses the proper class of license for the type of vehicle operated if specified requirements are satisfied. Existing law prohibits the operation of an autonomous vehicle on public roads until the manufacturer submits an application to the Department of Motor Vehicles, as specified, and that application is approved. Existing law requires the department to adopt regulations setting forth requirements for the submission and approval of an application, including, among other things, any testing, equipment, and performance standards the department concludes are necessary to ensu",
+      "takeaway": "Existing law authorizes the operation of an autonomous vehicle on public roads for testing purposes by a driver who possesses the proper class of license for the type of vehicle operated if specified requirements are satisfied",
+      "status": "enacted",
+      "measure_type": "bill",
+      "last_action_date": "2025-10-06",
+      "last_action": "Chaptered by Secretary of State. Chapter 415, Statutes of 2025.",
+      "session": "20252026",
+      "progress_stage": "law",
+      "stage_dates": {
+        "introduced": "2025-02-19",
+        "committee": "2025-09-03",
+        "passed_legislature": "2025-08-28",
+        "executive": "2025-10-06",
+        "law": "2025-10-06"
+      },
+      "hearings": [],
+      "source_url": "https://openstates.org/ca/bills/20252026/SB480/",
+      "repository_url": "https://openstates.org/ca/bills/20252026/SB480/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/f9108655-2446-4579-a74e-8edc20fa103e",
+      "openstates_updated_at": "2026-07-09T05:07:12.397648+00:00"
+    },
+    {
+      "id": "ca-sb-572-20252026",
+      "jurisdiction": "CA",
+      "number": "SB 572",
+      "title": "Vehicles: advanced driver assistance system: crash reports.",
+      "summary": "Existing law regulates vehicles, including autonomous vehicles and autonomous technology in vehicles. Under existing federal statute and regulation, the National Highway Traffic Safety Administration (NHTSA) issued the Third Amended Standing General Order 2021-01, effective June 16, 2025, that requires specified vehicle and equipment manufacturers and operators of autonomous driving systems and Level 2 advanced driver assistance system (ADAS) vehicles to report crashes to NHTSA, as specified. A violation of the Vehicle Code is an infraction.\n\nThis bill would require a manufacturer of a Level 2 ADAS vehicle to report a crash involving its Level 2 ADAS vehicle to the Department of Motor Vehicl",
+      "takeaway": "Existing law regulates vehicles, including autonomous vehicles and autonomous technology in vehicles",
+      "status": "passed",
+      "measure_type": "bill",
+      "last_action_date": "2025-08-29",
+      "last_action": "August 29 hearing: Held in committee and under submission.",
+      "session": "20252026",
+      "progress_stage": "passed_legislature",
+      "stage_dates": {
+        "introduced": "2025-02-20",
+        "committee": "2025-07-15",
+        "passed_legislature": "2025-05-28"
+      },
+      "hearings": [],
+      "source_url": "https://openstates.org/ca/bills/20252026/SB572/",
+      "repository_url": "https://openstates.org/ca/bills/20252026/SB572/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/2941438a-0630-45ee-88aa-7c3a286f7bdc",
+      "openstates_updated_at": "2026-07-09T05:53:12.621276+00:00"
+    },
+    {
+      "id": "co-hb-1071-2026a",
+      "jurisdiction": "CO",
+      "number": "HB 1071",
+      "title": "Local Government Vehicle Identification System on Interstate Highways",
+      "summary": "Current law allows the state to locate an automated vehicle identification system (AVIS) on a highway that is part of the federal interstate highway system but prohibits a county, city and county, or municipality (local government) from doing so. The bill authorizes a local government city and county or municipality to locate an AVIS on a highway that is part of the federal interstate highway system.(Note: Italicized words indicate new material added to the original summary; dashes through words indicate deletions from the original summary.)(Note: This summary applies to the reengrossed version of this bill as introduced in the second house.)",
+      "takeaway": "Current law allows the state to locate an automated vehicle identification system (AVIS) on a highway that is part of the federal interstate highway system but prohibits a county, city and county, or municipality (local government) from doing so",
+      "status": "passed",
+      "measure_type": "bill",
+      "last_action_date": "2026-04-21",
+      "last_action": "Senate Third Reading Laid Over to 05/14/2026 - No Amendments",
+      "session": "2026A",
+      "progress_stage": "passed_legislature",
+      "stage_dates": {
+        "introduced": "2026-02-26",
+        "committee": "2026-03-19",
+        "passed_legislature": "2026-02-23"
+      },
+      "hearings": [],
+      "source_url": "https://leg.colorado.gov/bills/HB26-1071",
+      "repository_url": "https://openstates.org/co/bills/2026A/HB1071/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/be91d205-d05f-49eb-a595-c086edda0dde",
+      "openstates_updated_at": "2026-07-28T18:15:25.388128+00:00"
+    },
+    {
+      "id": "co-hb-1286-2026a",
+      "jurisdiction": "CO",
+      "number": "HB 1286",
+      "title": "Automated Driving System Commercial Vehicles",
+      "summary": "The act prohibits using an automated driving system to drive a commercial motor vehicle unless an individual who holds a commercial driver's license is in the vehicle, monitors the vehicle's driving, and intervenes, if necessary, to avoid illegal or unsafe driving. The individual must be in the driver's seat if hazardous materials are being transported. The penalty is $1,000 for a first offense, is $2,000 for a second offense, and doubles for each subsequent offense.     The act does not apply to a light-duty vehicle or a truck-mounted attenuator.     The prohibition is repealed September 1, 2031. The chief of the Colorado state patrol will analyze the act's effects on commercial vehicle saf",
+      "takeaway": "The act prohibits using an automated driving system to drive a commercial motor vehicle unless an individual who holds a commercial driver's license is in the vehicle, monitors the vehicle's driving, and intervenes, if necessary, to avoid illegal or unsafe driving",
+      "status": "vetoed",
+      "measure_type": "bill",
+      "last_action_date": "2026-05-28",
+      "last_action": "Governor Vetoed",
+      "session": "2026A",
+      "progress_stage": "executive",
+      "stage_dates": {
+        "introduced": "2026-05-11",
+        "committee": "2026-05-11",
+        "passed_legislature": "2026-05-21",
+        "executive": "2026-05-28"
+      },
+      "hearings": [],
+      "source_url": "https://leg.colorado.gov/bills/HB26-1286",
+      "repository_url": "https://openstates.org/co/bills/2026A/HB1286/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/0c5607ff-a283-4172-b8bc-3a021fa34ac9",
+      "openstates_updated_at": "2026-08-03T18:12:45.474864+00:00"
+    },
+    {
+      "id": "co-sb-152-2026a",
+      "jurisdiction": "CO",
+      "number": "SB 152",
+      "title": "Changes Automated Vehicle Identification System Usage",
+      "summary": "The act makes changes to the use of automated vehicle identification systems (AVIS), including:Modifying the public notice requirements that the state, a county, a city and county, a municipality, or an agency responsible for placing a new AVIS must provide before utilizing the new AVIS;Making the registered owner of a motor vehicle responsible for all civil penalties associated with violations committed with the vehicle unless the vehicle was sold, leased, or stolen;Creating a procedure through which the registered owner of a motor vehicle may prove that the vehicle was sold, leased, or stolen at the time when a violation was detected by an AVIS and, thereby, under certain circumstances, re",
+      "takeaway": "The act makes changes to the use of automated vehicle identification systems (AVIS), including:Modifying the public notice requirements that the state, a county, a city and county, a municipality, or an agency responsible for placing a new AVIS must provide before utilizing the new AVIS;Making the registered owner of a motor vehicle responsible for",
+      "status": "enacted",
+      "measure_type": "bill",
+      "last_action_date": "2026-06-02",
+      "last_action": "Governor Signed",
+      "session": "2026A",
+      "progress_stage": "law",
+      "stage_dates": {
+        "introduced": "2026-05-05",
+        "committee": "2026-05-08",
+        "passed_legislature": "2026-05-26",
+        "executive": "2026-06-02"
+      },
+      "hearings": [],
+      "source_url": "https://leg.colorado.gov/bills/SB26-152",
+      "repository_url": "https://openstates.org/co/bills/2026A/SB152/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/e3980ff5-7ca9-4999-925e-3850d84e3681",
+      "openstates_updated_at": "2026-08-20T01:35:33.403639+00:00"
+    },
+    {
+      "id": "de-sb-46-153",
+      "jurisdiction": "DE",
+      "number": "SB 46",
+      "title": "AN ACT TO AMEND TITLE 21 OF THE DELAWARE CODE RELATING TO AUTONOMOUS VEHICLES.",
+      "summary": "This Act prohibits any autonomous vehicle that requires a Class A commercial driver license without an O restriction from being operated on a Delaware highway for testing purposes, transporting goods, or transporting passengers without a human safety operator being physically present within the autonomous vehicle. A two-thirds vote requirement is required under Section 28 of Article IV of the Delaware Constitution.",
+      "takeaway": "This Act prohibits any autonomous vehicle that requires a Class A commercial driver license without an O restriction from being operated on a Delaware highway for testing purposes, transporting goods, or transporting passengers without a human safety operator being physically present within the autonomous vehicle",
+      "status": "passed",
+      "measure_type": "bill",
+      "last_action_date": "2025-05-14",
+      "last_action": "Reported Out of Committee (Transportation) in House with 1 Favorable, 5 On Its Merits",
+      "session": "153",
+      "progress_stage": "passed_legislature",
+      "stage_dates": {
+        "introduced": "2025-03-25",
+        "committee": "2025-05-14",
+        "passed_legislature": "2025-03-20"
+      },
+      "hearings": [],
+      "source_url": "https://legis.delaware.gov/BillDetail?LegislationId=141797",
+      "repository_url": "https://openstates.org/de/bills/153/SB46/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/b39e2abb-6c51-43f1-8142-96a8876b99b9",
+      "openstates_updated_at": "2026-08-26T07:20:11.829857+00:00"
+    },
+    {
+      "id": "fl-hb-1233-2026",
+      "jurisdiction": "FL",
+      "number": "HB 1233",
+      "title": "Transportation",
+      "summary": "Transportation;  Revises membership of Florida Transportation Research Institute; requires Florida Greenways & Trails Council to meet within specified timeframe to update specified recommendations; requires seaports to include critical infrastructure resource strategies in specified plan; revises provisions relating to personal delivery devices & mobile carriers; increases certain speed limits; modifies terms for elections to attend basic driver improvement course; authorizes certain rental trucks to elect permanent registration period; requires motor vehicle registration renewal to be recorded electronically; removes provisions relating to validation stickers; revises provisions relating to",
+      "takeaway": "Transportation;  Revises membership of Florida Transportation Research Institute; requires Florida Greenways & Trails Council to meet within specified timeframe to update specified recommendations; requires seaports to include critical infrastructure resource strategies in specified plan; revises provisions relating to personal delivery devices & m",
+      "status": "engrossed",
+      "measure_type": "bill",
+      "last_action_date": "2026-03-11",
+      "last_action": "Laid on Table",
+      "session": "2026",
+      "progress_stage": "floor",
+      "stage_dates": {
+        "committee": "2026-02-24"
+      },
+      "hearings": [],
+      "source_url": "https://flsenate.gov/Session/Bill/2026/1233/ByCategory",
+      "repository_url": "https://openstates.org/fl/bills/2026/HB1233/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/552c798b-54cc-4dba-a1c8-82bd2ee91b3d",
+      "openstates_updated_at": "2026-07-31T12:18:57.443411+00:00"
+    },
+    {
+      "id": "fl-hb-1469-2026",
+      "jurisdiction": "FL",
+      "number": "HB 1469",
+      "title": "Autonomous Vehicle Safety",
+      "summary": "Autonomous Vehicle Safety;  Requires autonomous vehicle registered in this state to comply with certain standards, regulations, & laws; prohibits autonomous vehicle from engaging in certain activities unless licensed human operator is physically present in vehicle; requires such operator to comply with certain standards, regulations, & laws.",
+      "takeaway": "Autonomous Vehicle Safety;  Requires autonomous vehicle registered in this state to comply with certain standards, regulations, & laws; prohibits autonomous vehicle from engaging in certain activities unless licensed human operator is physically present in vehicle; requires such operator to comply with certain standards, regulations, & laws",
+      "status": "introduced",
+      "measure_type": "bill",
+      "last_action_date": "2026-03-13",
+      "last_action": "Died in Government Operations Subcommittee",
+      "session": "2026",
+      "progress_stage": "committee",
+      "stage_dates": {
+        "committee": "2026-01-15"
+      },
+      "hearings": [],
+      "source_url": "https://flsenate.gov/Session/Bill/2026/1469/ByCategory",
+      "repository_url": "https://openstates.org/fl/bills/2026/HB1469/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/6da1bee9-f9cb-4fde-93c8-d1ebfcc57560",
+      "openstates_updated_at": "2026-03-18T19:28:00.351523+00:00"
+    },
+    {
+      "id": "fl-sb-1258-2026",
+      "jurisdiction": "FL",
+      "number": "SB 1258",
+      "title": "Delivery of Commercial Goods by Autonomous Vehicles",
+      "summary": "Delivery of Commercial Goods by Autonomous Vehicles;  Prohibiting the use of an autonomous vehicle to deliver commercial goods directly to a residence or business for use or retail sale unless a licensed human operator is physically present in the autonomous vehicle; requiring the Department of Highway Safety and Motor Vehicles to submit to the Legislature a report evaluating the use of certain autonomous vehicle technology and its impacts on public safety and employment in the transportation sector by a certain date, etc.",
+      "takeaway": "Delivery of Commercial Goods by Autonomous Vehicles;  Prohibiting the use of an autonomous vehicle to deliver commercial goods directly to a residence or business for use or retail sale unless a licensed human operator is physically present in the autonomous vehicle; requiring the Department of Highway Safety and Motor Vehicles to submit to the Leg",
+      "status": "introduced",
+      "measure_type": "bill",
+      "last_action_date": "2026-03-13",
+      "last_action": "Died in Transportation",
+      "session": "2026",
+      "progress_stage": "committee",
+      "stage_dates": {
+        "committee": "2026-01-12",
+        "introduced": "2026-01-13"
+      },
+      "hearings": [],
+      "source_url": "https://flsenate.gov/Session/Bill/2026/1258/ByCategory",
+      "repository_url": "https://openstates.org/fl/bills/2026/SB1258/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/c59ac9b6-602b-48fa-8f85-12a743ad9298",
+      "openstates_updated_at": "2026-06-30T15:57:31.534853+00:00"
+    },
+    {
+      "id": "hi-hb-1797-2026",
+      "jurisdiction": "HI",
+      "number": "HB 1797",
+      "title": "RELATING TO AUTONOMOUS VEHICLES.",
+      "summary": "Requires an automated vehicle used by a motor carrier to transport passengers commercially to have a human supervisor present in the vehicle.  Establishes an income tax credit to incentivize the training of supervisors for autonomous vehicles.  Sunsets 12/31/2036.  Applies to taxable years beginning after 12/31/2026.  Effective 7/1/3000.  (HD1)",
+      "takeaway": "Requires an automated vehicle used by a motor carrier to transport passengers commercially to have a human supervisor present in the vehicle",
+      "status": "engrossed",
+      "measure_type": "bill",
+      "last_action_date": "2026-02-10",
+      "last_action": "Passed Second Reading as amended in HD 1 and referred to the committee(s) on CPC with none voting aye with reservations; none voting no (0) and none excused (0).",
+      "session": "2026",
+      "progress_stage": "floor",
+      "stage_dates": {
+        "introduced": "2026-01-23",
+        "committee": "2026-02-10"
+      },
+      "hearings": [],
+      "source_url": "https://capitol.hawaii.gov/session/measure_indiv.aspx?billtype=HB&billnumber=1797&year=2026",
+      "repository_url": "https://openstates.org/hi/bills/2026/HB1797/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/0d43893c-264f-4691-b034-28e2756b3cd3",
+      "openstates_updated_at": "2026-07-15T06:43:52.768339+00:00"
+    },
+    {
+      "id": "ia-hsb-598-2025-2026",
+      "jurisdiction": "IA",
+      "number": "HSB 598",
+      "title": "A bill for an act relating to the operation of driverless-capable vehicles, including associated civil and criminal liability, and making penalties applicable.",
+      "summary": "A bill for an act relating to the operation of driverless-capable vehicles, including associated civil and criminal liability, and making penalties applicable.",
+      "takeaway": "A bill for an act relating to the operation of driverless-capable vehicles, including associated civil and criminal liability, and making penalties applicable",
+      "status": "engrossed",
+      "measure_type": "bill",
+      "last_action_date": "2026-02-23",
+      "last_action": "Committee report approving bill, renumbered as HF 2673.",
+      "session": "2025-2026",
+      "progress_stage": "floor",
+      "stage_dates": {
+        "introduced": "2026-01-21",
+        "committee": "2026-02-16"
+      },
+      "hearings": [],
+      "source_url": "https://www.legis.iowa.gov/legislation/billTracking/billHistory?billName=HSB 598&ga=91",
+      "repository_url": "https://openstates.org/ia/bills/2025-2026/HSB598/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/5d2a3780-6cf3-4c0b-aef9-f926b1368674",
+      "openstates_updated_at": "2026-03-18T09:27:36.154307+00:00"
+    },
+    {
+      "id": "ia-sf-2034-2025-2026",
+      "jurisdiction": "IA",
+      "number": "SF 2034",
+      "title": "A bill for an act relating to the use of automated vehicle noise enforcement systems.",
+      "summary": "A bill for an act relating to the use of automated vehicle noise enforcement systems.",
+      "takeaway": "A bill for an act relating to the use of automated vehicle noise enforcement systems",
+      "status": "engrossed",
+      "measure_type": "bill",
+      "last_action_date": "2026-02-11",
+      "last_action": "Committee report approving bill, renumbered as SF 2284.",
+      "session": "2025-2026",
+      "progress_stage": "floor",
+      "stage_dates": {
+        "introduced": "2026-01-12",
+        "committee": "2026-01-28"
+      },
+      "hearings": [],
+      "source_url": "https://www.legis.iowa.gov/legislation/billTracking/billHistory?billName=SF 2034&ga=91",
+      "repository_url": "https://openstates.org/ia/bills/2025-2026/SF2034/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/4650dedc-9e40-4a83-87fb-70ed1af8c7ce",
+      "openstates_updated_at": "2026-03-18T09:23:17.931245+00:00"
+    },
+    {
+      "id": "ia-sf-2384-2025-2026",
+      "jurisdiction": "IA",
+      "number": "SF 2384",
+      "title": "A bill for an act relating to the operation of driverless-capable vehicles, including associated civil and criminal liability, and making penalties applicable.",
+      "summary": "A bill for an act relating to the operation of driverless-capable vehicles, including associated civil and criminal liability, and making penalties applicable.",
+      "takeaway": "A bill for an act relating to the operation of driverless-capable vehicles, including associated civil and criminal liability, and making penalties applicable",
+      "status": "introduced",
+      "measure_type": "bill",
+      "last_action_date": "2026-03-19",
+      "last_action": "Placed on calendar under unfinished business.",
+      "session": "2025-2026",
+      "progress_stage": "committee",
+      "stage_dates": {
+        "introduced": "2026-02-19"
+      },
+      "hearings": [],
+      "source_url": "https://www.legis.iowa.gov/legislation/billTracking/billHistory?billName=SF 2384&ga=91",
+      "repository_url": "https://openstates.org/ia/bills/2025-2026/SF2384/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/63ca3153-e04c-4e02-b650-0561308c10cd",
+      "openstates_updated_at": "2026-03-20T07:17:51.459528+00:00"
+    },
+    {
+      "id": "ia-ssb-3052-2025-2026",
+      "jurisdiction": "IA",
+      "number": "SSB 3052",
+      "title": "A bill for an act relating to the operation of driverless-capable vehicles, including associated civil and criminal liability, and making penalties applicable.",
+      "summary": "A bill for an act relating to the operation of driverless-capable vehicles, including associated civil and criminal liability, and making penalties applicable.",
+      "takeaway": "A bill for an act relating to the operation of driverless-capable vehicles, including associated civil and criminal liability, and making penalties applicable",
+      "status": "introduced",
+      "measure_type": "bill",
+      "last_action_date": "2026-02-18",
+      "last_action": "Committee report approving bill, renumbered as SF 2384.",
+      "session": "2025-2026",
+      "progress_stage": "committee",
+      "stage_dates": {
+        "introduced": "2026-01-21",
+        "committee": "2026-01-21"
+      },
+      "hearings": [],
+      "source_url": "https://www.legis.iowa.gov/legislation/billTracking/billHistory?billName=SSB 3052&ga=91",
+      "repository_url": "https://openstates.org/ia/bills/2025-2026/SSB3052/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/7c26a04e-4eae-495c-97b2-97087386e7db",
+      "openstates_updated_at": "2026-03-18T09:38:48.219205+00:00"
+    },
+    {
+      "id": "il-hb-1839-104th",
+      "jurisdiction": "IL",
+      "number": "HB 1839",
+      "title": "SAFE AUTONOMOUS VEHICLE ACT",
+      "summary": "SAFE AUTONOMOUS VEHICLE ACT",
+      "takeaway": "SAFE AUTONOMOUS VEHICLE ACT",
+      "status": "introduced",
+      "measure_type": "bill",
+      "last_action_date": "2026-03-27",
+      "last_action": "Rule 19(a) / Re-referred to Rules Committee",
+      "session": "104th",
+      "progress_stage": "committee",
+      "stage_dates": {
+        "committee": "2026-02-11"
+      },
+      "hearings": [],
+      "source_url": "https://ilga.gov/Legislation/BillStatus?DocNum=1839&GAID=18&DocTypeID=HB&LegId=159329&SessionID=114",
+      "repository_url": "https://openstates.org/il/bills/104th/HB1839/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/1889326a-280f-4152-8452-9cba5f522b54",
+      "openstates_updated_at": "2026-07-11T08:44:11.137312+00:00"
+    },
+    {
+      "id": "il-hb-2974-104th",
+      "jurisdiction": "IL",
+      "number": "HB 2974",
+      "title": "AUTONOMOUS VEHICLE TESTING",
+      "summary": "AUTONOMOUS VEHICLE TESTING",
+      "takeaway": "AUTONOMOUS VEHICLE TESTING",
+      "status": "introduced",
+      "measure_type": "bill",
+      "last_action_date": "2025-02-06",
+      "last_action": "Referred to Rules Committee",
+      "session": "104th",
+      "progress_stage": "introduced",
+      "stage_dates": {},
+      "hearings": [],
+      "source_url": "https://ilga.gov/Legislation/BillStatus?DocNum=2974&GAID=18&DocTypeID=HB&LegId=161217&SessionID=114",
+      "repository_url": "https://openstates.org/il/bills/104th/HB2974/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/a5430b0b-419d-41ae-951c-e965bcf8e3ef",
+      "openstates_updated_at": "2026-07-11T09:08:24.633480+00:00"
+    },
+    {
+      "id": "il-hb-4663-104th",
+      "jurisdiction": "IL",
+      "number": "HB 4663",
+      "title": "AUTONOMOUS VEHICLE PILOT PROJ",
+      "summary": "AUTONOMOUS VEHICLE PILOT PROJ",
+      "takeaway": "AUTONOMOUS VEHICLE PILOT PROJ",
+      "status": "introduced",
+      "measure_type": "bill",
+      "last_action_date": "2026-03-27",
+      "last_action": "Rule 19(a) / Re-referred to Rules Committee",
+      "session": "104th",
+      "progress_stage": "committee",
+      "stage_dates": {
+        "committee": "2026-03-24"
+      },
+      "hearings": [],
+      "source_url": "https://ilga.gov/Legislation/BillStatus?DocNum=4663&GAID=18&DocTypeID=HB&LegId=165621&SessionID=114",
+      "repository_url": "https://openstates.org/il/bills/104th/HB4663/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/4941dae8-bef1-47b7-9a1c-5b233cbedc55",
+      "openstates_updated_at": "2026-07-11T09:28:19.436103+00:00"
+    },
+    {
+      "id": "il-hb-4789-104th",
+      "jurisdiction": "IL",
+      "number": "HB 4789",
+      "title": "AUTOMATED DRIVING SYSTEMS",
+      "summary": "AUTOMATED DRIVING SYSTEMS",
+      "takeaway": "AUTOMATED DRIVING SYSTEMS",
+      "status": "introduced",
+      "measure_type": "bill",
+      "last_action_date": "2026-03-27",
+      "last_action": "Rule 19(a) / Re-referred to Rules Committee",
+      "session": "104th",
+      "progress_stage": "committee",
+      "stage_dates": {
+        "committee": "2026-03-18"
+      },
+      "hearings": [],
+      "source_url": "https://ilga.gov/Legislation/BillStatus?DocNum=4789&GAID=18&DocTypeID=HB&LegId=165946&SessionID=114",
+      "repository_url": "https://openstates.org/il/bills/104th/HB4789/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/95da6ef1-56de-4ffc-96a1-f24aa0221a8c",
+      "openstates_updated_at": "2026-07-11T08:31:07.502437+00:00"
+    },
+    {
+      "id": "il-hb-5103-104th",
+      "jurisdiction": "IL",
+      "number": "HB 5103",
+      "title": "AUTOMATED DRIVING SYSTEMS",
+      "summary": "AUTOMATED DRIVING SYSTEMS",
+      "takeaway": "AUTOMATED DRIVING SYSTEMS",
+      "status": "introduced",
+      "measure_type": "bill",
+      "last_action_date": "2026-03-27",
+      "last_action": "Rule 19(a) / Re-referred to Rules Committee",
+      "session": "104th",
+      "progress_stage": "committee",
+      "stage_dates": {
+        "committee": "2026-03-18"
+      },
+      "hearings": [],
+      "source_url": "https://ilga.gov/Legislation/BillStatus?DocNum=5103&GAID=18&DocTypeID=HB&LegId=166661&SessionID=114",
+      "repository_url": "https://openstates.org/il/bills/104th/HB5103/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/da40057a-8727-4ec0-a0b1-a6f18c65e667",
+      "openstates_updated_at": "2026-07-11T08:38:34.630857+00:00"
+    },
+    {
+      "id": "il-hb-5220-104th",
+      "jurisdiction": "IL",
+      "number": "HB 5220",
+      "title": "AUTONOMOUS VEHICLES",
+      "summary": "AUTONOMOUS VEHICLES",
+      "takeaway": "AUTONOMOUS VEHICLES",
+      "status": "introduced",
+      "measure_type": "bill",
+      "last_action_date": "2026-03-27",
+      "last_action": "Rule 19(a) / Re-referred to Rules Committee",
+      "session": "104th",
+      "progress_stage": "committee",
+      "stage_dates": {
+        "committee": "2026-03-04"
+      },
+      "hearings": [],
+      "source_url": "https://ilga.gov/Legislation/BillStatus?DocNum=5220&GAID=18&DocTypeID=HB&LegId=166893&SessionID=114",
+      "repository_url": "https://openstates.org/il/bills/104th/HB5220/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/967b1f12-7d37-4718-b44b-3341e8452d77",
+      "openstates_updated_at": "2026-07-11T09:09:47.169857+00:00"
+    },
+    {
+      "id": "il-sb-3308-104th",
+      "jurisdiction": "IL",
+      "number": "SB 3308",
+      "title": "AUTOMATED DRIVING SYSTEMS",
+      "summary": "AUTOMATED DRIVING SYSTEMS",
+      "takeaway": "AUTOMATED DRIVING SYSTEMS",
+      "status": "introduced",
+      "measure_type": "bill",
+      "last_action_date": "2026-05-13",
+      "last_action": "Added as Co-Sponsor Sen. Mark L. Walker",
+      "session": "104th",
+      "progress_stage": "committee",
+      "stage_dates": {
+        "committee": "2026-02-17"
+      },
+      "hearings": [],
+      "source_url": "https://ilga.gov/Legislation/BillStatus?DocNum=3308&GAID=18&DocTypeID=SB&LegId=166113&SessionID=114",
+      "repository_url": "https://openstates.org/il/bills/104th/SB3308/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/6a8f79e4-0617-423d-beb3-1dc0ca8de7ce",
+      "openstates_updated_at": "2026-07-11T03:37:16.251716+00:00"
+    },
+    {
+      "id": "il-sb-3392-104th",
+      "jurisdiction": "IL",
+      "number": "SB 3392",
+      "title": "AUTONOMOUS VEHICLE PILOT PROJ",
+      "summary": "AUTONOMOUS VEHICLE PILOT PROJ",
+      "takeaway": "AUTONOMOUS VEHICLE PILOT PROJ",
+      "status": "introduced",
+      "measure_type": "bill",
+      "last_action_date": "2026-05-30",
+      "last_action": "Added as Co-Sponsor Sen. Donald P. DeWitte",
+      "session": "104th",
+      "progress_stage": "committee",
+      "stage_dates": {
+        "committee": "2026-02-17"
+      },
+      "hearings": [],
+      "source_url": "https://ilga.gov/Legislation/BillStatus?DocNum=3392&GAID=18&DocTypeID=SB&LegId=166310&SessionID=114",
+      "repository_url": "https://openstates.org/il/bills/104th/SB3392/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/78ab0b02-7956-4236-a846-cb23660c9a73",
+      "openstates_updated_at": "2026-07-11T03:55:39.828458+00:00"
+    },
+    {
+      "id": "ky-hb-223-2026rs",
+      "jurisdiction": "KY",
+      "number": "HB 223",
+      "title": "AN ACT relating to autonomous vehicles.",
+      "summary": "Amend KRS 186.763 to prohibit a school district from operating a fully autonomous vehicle as a school bus or for transporting students; prohibit the operation of a fully autonomous vehicle if that vehicle requires an operator with a commercial driver's license; amend KRS 281.764 to conform.",
+      "takeaway": "Amend KRS 186.763 to prohibit a school district from operating a fully autonomous vehicle as a school bus or for transporting students; prohibit the operation of a fully autonomous vehicle if that vehicle requires an operator with a commercial driver's license; amend KRS 281.764 to conform",
+      "status": "introduced",
+      "measure_type": "bill",
+      "last_action_date": "2026-01-14",
+      "last_action": "to Transportation (H)",
+      "session": "2026RS",
+      "progress_stage": "committee",
+      "stage_dates": {
+        "introduced": "2026-01-07",
+        "committee": "2026-01-14"
+      },
+      "hearings": [],
+      "source_url": "https://apps.legislature.ky.gov/record/26RS/hb223.html",
+      "repository_url": "https://openstates.org/ky/bills/2026RS/HB223/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/f55e5aef-1e13-4bfb-b20f-521810d4626d",
+      "openstates_updated_at": "2026-08-20T01:19:42.748166+00:00"
+    },
+    {
+      "id": "ky-sb-110-2026rs",
+      "jurisdiction": "KY",
+      "number": "SB 110",
+      "title": "AN ACT relating to motor vehicles and declaring an emergency.",
+      "summary": "Create a new section of KRS Chapter 186A to require that beginning July 1, 2027, lienholders and motor vehicle dealers use the electronic title application and registration system to submit title, registration, and lien documents; provide exemptions; require the Transportation Cabinet to ensure the electronic title application and registration system and the centralized lien management system are operational by January 1, 2027; create a new section of KRS Chapter 186A to provide that beginning July 1, 2027, titles will not automatically be printed and mailed to the vehicle owner, but kept electronically in the automated vehicle information system; establish procedures to obtain a printed tit",
+      "takeaway": "Create a new section of KRS Chapter 186A to require that beginning July 1, 2027, lienholders and motor vehicle dealers use the electronic title application and registration system to submit title, registration, and lien documents; provide exemptions; require the Transportation Cabinet to ensure the electronic title application and registration syst",
+      "status": "enacted",
+      "measure_type": "bill",
+      "last_action_date": "2026-04-13",
+      "last_action": "signed by Governor (Acts Ch. 135)",
+      "session": "2026RS",
+      "progress_stage": "law",
+      "stage_dates": {
+        "introduced": "2026-01-20",
+        "committee": "2026-04-01",
+        "passed_legislature": "2026-04-01",
+        "executive": "2026-04-13"
+      },
+      "hearings": [],
+      "source_url": "https://apps.legislature.ky.gov/record/26RS/sb110.html",
+      "repository_url": "https://openstates.org/ky/bills/2026RS/SB110/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/4f98aa75-2311-4b5d-8dc5-425d39cdcd12",
+      "openstates_updated_at": "2026-08-20T01:17:09.672266+00:00"
+    },
+    {
+      "id": "ma-h-1280-194th",
+      "jurisdiction": "MA",
+      "number": "H 1280",
+      "title": "An Act regulating insurance coverage for testing and deployment of autonomous vehicles and establishing school zone safety protocol",
+      "summary": "By Representative Paulino of Methuen, a petition (accompanied by bill, House, No. 1280) of Francisco E. Paulino relative to insurance coverage for testing and deployment of and school zone safety protocol for autonomous vehicles.  Financial Services.",
+      "takeaway": "By Representative Paulino of Methuen, a petition (accompanied by bill, House, No",
+      "status": "introduced",
+      "measure_type": "bill",
+      "last_action_date": "2025-12-01",
+      "last_action": "Accompanied a study order, see H4777",
+      "session": "194th",
+      "progress_stage": "committee",
+      "stage_dates": {
+        "committee": "2025-02-27"
+      },
+      "hearings": [],
+      "source_url": "https://malegislature.gov/Bills/194/H1280",
+      "repository_url": "https://openstates.org/ma/bills/194th/H1280/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/7ffec788-6cc4-485e-83f7-610381c530a4",
+      "openstates_updated_at": "2026-07-09T06:00:20.099851+00:00"
+    },
+    {
+      "id": "ma-h-3634-194th",
+      "jurisdiction": "MA",
+      "number": "H 3634",
+      "title": "An Act relative to providing multimodal transportation technologies",
+      "summary": "By Representatives Cahill of Lynn and Blais of Deerfield, a petition (accompanied by bill, House, No. 3634) of Daniel Cahill and Natalie M. Blais relative to autonomous vehicles.  Transportation.",
+      "takeaway": "By Representatives Cahill of Lynn and Blais of Deerfield, a petition (accompanied by bill, House, No",
+      "status": "introduced",
+      "measure_type": "bill",
+      "last_action_date": "2026-04-06",
+      "last_action": "Accompanied a study order, see H5326",
+      "session": "194th",
+      "progress_stage": "committee",
+      "stage_dates": {
+        "committee": "2025-02-27"
+      },
+      "hearings": [],
+      "source_url": "https://malegislature.gov/Bills/194/H3634",
+      "repository_url": "https://openstates.org/ma/bills/194th/H3634/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/e0c1505f-5e0b-46ab-965c-31d7394f417d",
+      "openstates_updated_at": "2026-07-09T07:47:50.897617+00:00"
+    },
+    {
+      "id": "ma-h-3649-194th",
+      "jurisdiction": "MA",
+      "number": "H 3649",
+      "title": "An Act limiting autonomous driving capabilities to zero emission and electric vehicles",
+      "summary": "By Representative Day of Stoneham, a petition (accompanied by bill, House, No. 3649) of Michael S. Day relative to limiting autonomous driving capabilities to zero emission and electric vehicles.  Transportation.",
+      "takeaway": "By Representative Day of Stoneham, a petition (accompanied by bill, House, No",
+      "status": "introduced",
+      "measure_type": "bill",
+      "last_action_date": "2025-11-24",
+      "last_action": "Accompanied a study order, see H4775",
+      "session": "194th",
+      "progress_stage": "committee",
+      "stage_dates": {
+        "committee": "2025-02-27"
+      },
+      "hearings": [],
+      "source_url": "https://malegislature.gov/Bills/194/H3649",
+      "repository_url": "https://openstates.org/ma/bills/194th/H3649/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/f31da09d-d215-40d1-a348-f158a9f7ca41",
+      "openstates_updated_at": "2026-07-09T02:52:26.544405+00:00"
+    },
+    {
+      "id": "ma-h-3669-194th",
+      "jurisdiction": "MA",
+      "number": "H 3669",
+      "title": "An Act relative to the safety of autonomous vehicles",
+      "summary": "By Representative Giannino of Revere, a petition (accompanied by bill, House, No. 3669) of Jessica Ann Giannino for legislation to further regulate the operation of autonomous vehicles.  Transportation.",
+      "takeaway": "By Representative Giannino of Revere, a petition (accompanied by bill, House, No",
+      "status": "introduced",
+      "measure_type": "bill",
+      "last_action_date": "2026-04-09",
+      "last_action": "Accompanied a study order, see H5328",
+      "session": "194th",
+      "progress_stage": "committee",
+      "stage_dates": {
+        "committee": "2025-02-27"
+      },
+      "hearings": [],
+      "source_url": "https://malegislature.gov/Bills/194/H3669",
+      "repository_url": "https://openstates.org/ma/bills/194th/H3669/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/31d4c363-cbbf-48ca-a954-52c2f6bdfe89",
+      "openstates_updated_at": "2026-07-09T02:49:05.141271+00:00"
+    },
+    {
+      "id": "ma-hd-1848-194th",
+      "jurisdiction": "MA",
+      "number": "HD 1848",
+      "title": "An Act relative to the safety of autonomous vehicles",
+      "summary": "An Act relative to the safety of autonomous vehicles",
+      "takeaway": "An Act relative to the safety of autonomous vehicles",
+      "status": "introduced",
+      "measure_type": "bill",
+      "last_action_date": "2025-01-15",
+      "last_action": "No action text available",
+      "session": "194th",
+      "progress_stage": "introduced",
+      "stage_dates": {},
+      "hearings": [],
+      "source_url": "https://malegislature.gov/Bills/194/HD1848",
+      "repository_url": "https://openstates.org/ma/bills/194th/HD1848/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/406d04c6-c714-4373-8354-b612cf398726",
+      "openstates_updated_at": "2025-01-15T23:13:05.006180+00:00"
+    },
+    {
+      "id": "ma-hd-2268-194th",
+      "jurisdiction": "MA",
+      "number": "HD 2268",
+      "title": "An Act regulating insurance coverage for testing and deployment of autonomous vehicles and establishing school zone safety protocol",
+      "summary": "An Act regulating insurance coverage for testing and deployment of autonomous vehicles and establishing school zone safety protocol",
+      "takeaway": "An Act regulating insurance coverage for testing and deployment of autonomous vehicles and establishing school zone safety protocol",
+      "status": "introduced",
+      "measure_type": "bill",
+      "last_action_date": "2025-01-16",
+      "last_action": "No action text available",
+      "session": "194th",
+      "progress_stage": "introduced",
+      "stage_dates": {},
+      "hearings": [],
+      "source_url": "https://malegislature.gov/Bills/194/HD2268",
+      "repository_url": "https://openstates.org/ma/bills/194th/HD2268/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/c10548d2-cda3-4aa9-9f6c-7009ac106207",
+      "openstates_updated_at": "2025-01-16T01:35:46.863306+00:00"
+    },
+    {
+      "id": "ma-hd-3325-194th",
+      "jurisdiction": "MA",
+      "number": "HD 3325",
+      "title": "An Act limiting autonomous driving capabilities to zero emission and electric vehicles",
+      "summary": "An Act limiting autonomous driving capabilities to zero emission and electric vehicles",
+      "takeaway": "An Act limiting autonomous driving capabilities to zero emission and electric vehicles",
+      "status": "introduced",
+      "measure_type": "bill",
+      "last_action_date": "2025-01-17",
+      "last_action": "No action text available",
+      "session": "194th",
+      "progress_stage": "introduced",
+      "stage_dates": {},
+      "hearings": [],
+      "source_url": "https://malegislature.gov/Bills/194/HD3325",
+      "repository_url": "https://openstates.org/ma/bills/194th/HD3325/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/11e55480-96ad-4b95-a385-dc559c6d08d2",
+      "openstates_updated_at": "2025-01-17T17:31:04.313578+00:00"
+    },
+    {
+      "id": "ma-s-2379-194th",
+      "jurisdiction": "MA",
+      "number": "S 2379",
+      "title": "An Act relative to providing multimodal transportation technologies",
+      "summary": "By Mr. Driscoll, a petition (accompanied by bill, Senate, No. 2379) of William J. Driscoll, Jr. for legislation relative to fully autonomous vehicle and human drivers.  Transportation.",
+      "takeaway": "By Mr",
+      "status": "introduced",
+      "measure_type": "bill",
+      "last_action_date": "2026-07-31",
+      "last_action": "Accompanied a study order, see S3245",
+      "session": "194th",
+      "progress_stage": "committee",
+      "stage_dates": {
+        "committee": "2025-02-27"
+      },
+      "hearings": [],
+      "source_url": "https://malegislature.gov/Bills/194/S2379",
+      "repository_url": "https://openstates.org/ma/bills/194th/S2379/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/7fd29cd1-f49b-4ff4-a443-d16f62423eba",
+      "openstates_updated_at": "2026-08-01T18:57:08.154116+00:00"
+    },
+    {
+      "id": "ma-s-2393-194th",
+      "jurisdiction": "MA",
+      "number": "S 2393",
+      "title": "An Act relative to the safety of autonomous vehicles",
+      "summary": "By Mr. Feeney, a petition (accompanied by bill, Senate, No. 2393) of Paul R. Feeney for legislation relative to the safety and standards of autonomous vehicles.  Transportation.",
+      "takeaway": "By Mr",
+      "status": "introduced",
+      "measure_type": "bill",
+      "last_action_date": "2026-07-31",
+      "last_action": "Accompanied a study order, see S3245",
+      "session": "194th",
+      "progress_stage": "committee",
+      "stage_dates": {
+        "committee": "2025-02-27"
+      },
+      "hearings": [],
+      "source_url": "https://malegislature.gov/Bills/194/S2393",
+      "repository_url": "https://openstates.org/ma/bills/194th/S2393/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/2ecf2de5-bd85-46e3-8f34-b4022b165220",
+      "openstates_updated_at": "2026-08-01T18:56:57.200613+00:00"
+    },
+    {
+      "id": "ma-sd-2531-194th",
+      "jurisdiction": "MA",
+      "number": "SD 2531",
+      "title": "An Act relative to the safety of autonomous vehicles",
+      "summary": "An Act relative to the safety of autonomous vehicles",
+      "takeaway": "An Act relative to the safety of autonomous vehicles",
+      "status": "introduced",
+      "measure_type": "bill",
+      "last_action_date": "2025-01-20",
+      "last_action": "No action text available",
+      "session": "194th",
+      "progress_stage": "introduced",
+      "stage_dates": {},
+      "hearings": [],
+      "source_url": "https://malegislature.gov/Bills/194/SD2531",
+      "repository_url": "https://openstates.org/ma/bills/194th/SD2531/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/f7edbe38-e245-4f25-a8f6-76fcbeabdfd5",
+      "openstates_updated_at": "2025-01-20T22:17:26.453299+00:00"
+    },
+    {
+      "id": "md-hb-1295-2026",
+      "jurisdiction": "MD",
+      "number": "HB 1295",
+      "title": "Vehicle Laws - Fully Autonomous Vehicles",
+      "summary": "Vehicle Laws - Fully Autonomous Vehicles",
+      "takeaway": "Vehicle Laws - Fully Autonomous Vehicles",
+      "status": "introduced",
+      "measure_type": "bill",
+      "last_action_date": "2026-02-13",
+      "last_action": "Hearing 3/05 at 1:00 p.m.",
+      "session": "2026",
+      "progress_stage": "committee",
+      "stage_dates": {
+        "committee": "2026-02-12"
+      },
+      "hearings": [],
+      "source_url": "https://openstates.org/md/bills/2026/HB1295/",
+      "repository_url": "https://openstates.org/md/bills/2026/HB1295/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/247fdb75-3555-40d3-85f6-ad4c7c13688b",
+      "openstates_updated_at": "2026-03-17T21:48:05.800982+00:00"
+    },
+    {
+      "id": "md-sb-909-2026",
+      "jurisdiction": "MD",
+      "number": "SB 909",
+      "title": "Vehicle Laws - Fully Autonomous Vehicles",
+      "summary": "Vehicle Laws - Fully Autonomous Vehicles",
+      "takeaway": "Vehicle Laws - Fully Autonomous Vehicles",
+      "status": "introduced",
+      "measure_type": "bill",
+      "last_action_date": "2026-02-12",
+      "last_action": "Hearing 3/04 at 1:00 p.m.",
+      "session": "2026",
+      "progress_stage": "committee",
+      "stage_dates": {
+        "committee": "2026-02-06"
+      },
+      "hearings": [],
+      "source_url": "https://openstates.org/md/bills/2026/SB909/",
+      "repository_url": "https://openstates.org/md/bills/2026/SB909/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/1253dbfd-d648-4291-afa7-3e2e608783fb",
+      "openstates_updated_at": "2026-03-17T21:38:04.208094+00:00"
+    },
+    {
+      "id": "mn-hf-3513-2025-2026",
+      "jurisdiction": "MN",
+      "number": "HF 3513",
+      "title": "Autonomous vehicles regulated.",
+      "summary": "Autonomous vehicles regulated.",
+      "takeaway": "Autonomous vehicles regulated",
+      "status": "introduced",
+      "measure_type": "bill",
+      "last_action_date": "2026-04-16",
+      "last_action": "Authors added Allen and Repinski",
+      "session": "2025-2026",
+      "progress_stage": "committee",
+      "stage_dates": {
+        "introduced": "2026-02-19",
+        "committee": "2026-02-19"
+      },
+      "hearings": [],
+      "source_url": "https://www.revisor.mn.gov/bills/94/2026/0/HF/3513?body=House",
+      "repository_url": "https://openstates.org/mn/bills/2025-2026/HF3513/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/799ae13e-1cf0-4efe-9ff9-f0d7ab691862",
+      "openstates_updated_at": "2026-09-21T17:19:26.277823+00:00"
+    },
+    {
+      "id": "mn-hf-3810-2025-2026",
+      "jurisdiction": "MN",
+      "number": "HF 3810",
+      "title": "Natural person required to be present when a commercial motor vehicle is operated by an automated driving system, and criminal penalties established.",
+      "summary": "Natural person required to be present when a commercial motor vehicle is operated by an automated driving system, and criminal penalties established.",
+      "takeaway": "Natural person required to be present when a commercial motor vehicle is operated by an automated driving system, and criminal penalties established",
+      "status": "introduced",
+      "measure_type": "bill",
+      "last_action_date": "2026-03-12",
+      "last_action": "Authors added Mekeland and Rehrauer",
+      "session": "2025-2026",
+      "progress_stage": "committee",
+      "stage_dates": {
+        "introduced": "2026-02-26",
+        "committee": "2026-02-26"
+      },
+      "hearings": [],
+      "source_url": "https://www.revisor.mn.gov/bills/94/2026/0/HF/3810?body=House",
+      "repository_url": "https://openstates.org/mn/bills/2025-2026/HF3810/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/febddebf-71e7-412d-a025-0d1cc259db55",
+      "openstates_updated_at": "2026-09-21T17:17:32.849486+00:00"
+    },
+    {
+      "id": "mn-hf-4112-2025-2026",
+      "jurisdiction": "MN",
+      "number": "HF 4112",
+      "title": "Autonomous vehicles regulated.",
+      "summary": "Autonomous vehicles regulated.",
+      "takeaway": "Autonomous vehicles regulated",
+      "status": "introduced",
+      "measure_type": "bill",
+      "last_action_date": "2026-03-09",
+      "last_action": "Introduction and first reading, referred to Commerce Finance and Policy",
+      "session": "2025-2026",
+      "progress_stage": "committee",
+      "stage_dates": {
+        "introduced": "2026-03-09",
+        "committee": "2026-03-09"
+      },
+      "hearings": [],
+      "source_url": "https://www.revisor.mn.gov/bills/94/2026/0/HF/4112?body=House",
+      "repository_url": "https://openstates.org/mn/bills/2025-2026/HF4112/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/a9ad25c8-cc55-48e0-880a-589f5d050f08",
+      "openstates_updated_at": "2026-09-21T17:21:21.828527+00:00"
+    },
+    {
+      "id": "mn-hf-4216-2025-2026",
+      "jurisdiction": "MN",
+      "number": "HF 4216",
+      "title": "Advisory board established to study impacts of commercial autonomous vehicle operations implementation, minimum requirements for operation of commercial autonomous vehicles established, and permit process for commercial autonomous vehicle operations required.",
+      "summary": "Advisory board established to study impacts of commercial autonomous vehicle operations implementation, minimum requirements for operation of commercial autonomous vehicles established, and permit process for commercial autonomous vehicle operations required.",
+      "takeaway": "Advisory board established to study impacts of commercial autonomous vehicle operations implementation, minimum requirements for operation of commercial autonomous vehicles established, and permit process for commercial autonomous vehicle operations required",
+      "status": "introduced",
+      "measure_type": "bill",
+      "last_action_date": "2026-03-16",
+      "last_action": "Authors added Lee, F.; Greenman, and Noor",
+      "session": "2025-2026",
+      "progress_stage": "committee",
+      "stage_dates": {
+        "introduced": "2026-03-12",
+        "committee": "2026-03-12"
+      },
+      "hearings": [],
+      "source_url": "https://www.revisor.mn.gov/bills/94/2026/0/HF/4216?body=House",
+      "repository_url": "https://openstates.org/mn/bills/2025-2026/HF4216/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/b4be4051-3a74-498f-acb7-718f60a97874",
+      "openstates_updated_at": "2026-09-21T17:30:57.660268+00:00"
+    },
+    {
+      "id": "mn-hf-4521-2025-2026",
+      "jurisdiction": "MN",
+      "number": "HF 4521",
+      "title": "Autonomous vehicles and on-demand autonomous vehicle networks operation authorized, and rulemaking authorized.",
+      "summary": "Autonomous vehicles and on-demand autonomous vehicle networks operation authorized, and rulemaking authorized.",
+      "takeaway": "Autonomous vehicles and on-demand autonomous vehicle networks operation authorized, and rulemaking authorized",
+      "status": "introduced",
+      "measure_type": "bill",
+      "last_action_date": "2026-03-23",
+      "last_action": "Introduction and first reading, referred to Transportation Finance and Policy",
+      "session": "2025-2026",
+      "progress_stage": "committee",
+      "stage_dates": {
+        "introduced": "2026-03-23",
+        "committee": "2026-03-23"
+      },
+      "hearings": [],
+      "source_url": "https://www.revisor.mn.gov/bills/94/2026/0/HF/4521?body=House",
+      "repository_url": "https://openstates.org/mn/bills/2025-2026/HF4521/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/963a6a19-3e53-450a-b3e8-f3f44d80a273",
+      "openstates_updated_at": "2026-09-21T17:18:01.719571+00:00"
+    },
+    {
+      "id": "mn-sf-4010-2025-2026",
+      "jurisdiction": "MN",
+      "number": "SF 4010",
+      "title": "Certain autonomous vehicles regulations provision",
+      "summary": "Certain autonomous vehicles regulations provision",
+      "takeaway": "Certain autonomous vehicles regulations provision",
+      "status": "introduced",
+      "measure_type": "bill",
+      "last_action_date": "2026-04-15",
+      "last_action": "Author added Westrom",
+      "session": "2025-2026",
+      "progress_stage": "committee",
+      "stage_dates": {
+        "introduced": "2026-03-02",
+        "committee": "2026-03-02"
+      },
+      "hearings": [],
+      "source_url": "https://www.revisor.mn.gov/bills/94/2026/0/SF/4010?body=Senate",
+      "repository_url": "https://openstates.org/mn/bills/2025-2026/SF4010/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/daa419f6-69cd-4d7f-91a7-ae6f5f941dce",
+      "openstates_updated_at": "2026-09-25T06:14:56.671959+00:00"
+    },
+    {
+      "id": "mn-sf-4014-2025-2026",
+      "jurisdiction": "MN",
+      "number": "SF 4014",
+      "title": "Natural person requirement to be present when a commercial motor vehicle is operated by an automated driving system",
+      "summary": "Natural person requirement to be present when a commercial motor vehicle is operated by an automated driving system",
+      "takeaway": "Natural person requirement to be present when a commercial motor vehicle is operated by an automated driving system",
+      "status": "introduced",
+      "measure_type": "bill",
+      "last_action_date": "2026-03-23",
+      "last_action": "Comm report: To pass as amended and re-refer to Judiciary and Public Safety",
+      "session": "2025-2026",
+      "progress_stage": "committee",
+      "stage_dates": {
+        "introduced": "2026-03-02",
+        "committee": "2026-03-23"
+      },
+      "hearings": [],
+      "source_url": "https://www.revisor.mn.gov/bills/94/2026/0/SF/4014?body=Senate",
+      "repository_url": "https://openstates.org/mn/bills/2025-2026/SF4014/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/c1e000a0-4ede-4de7-864c-a5230c05404e",
+      "openstates_updated_at": "2026-09-25T06:08:47.130635+00:00"
+    },
+    {
+      "id": "mn-sf-4381-2025-2026",
+      "jurisdiction": "MN",
+      "number": "SF 4381",
+      "title": "Advisory board establishment to study impacts of commercial autonomous vehicle operations implementation",
+      "summary": "Advisory board establishment to study impacts of commercial autonomous vehicle operations implementation",
+      "takeaway": "Advisory board establishment to study impacts of commercial autonomous vehicle operations implementation",
+      "status": "introduced",
+      "measure_type": "bill",
+      "last_action_date": "2026-03-23",
+      "last_action": "Author added Johnson Stewart",
+      "session": "2025-2026",
+      "progress_stage": "committee",
+      "stage_dates": {
+        "introduced": "2026-03-11",
+        "committee": "2026-03-11"
+      },
+      "hearings": [],
+      "source_url": "https://www.revisor.mn.gov/bills/94/2026/0/SF/4381?body=Senate",
+      "repository_url": "https://openstates.org/mn/bills/2025-2026/SF4381/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/ad2c4803-afff-411b-95d5-d125bf0f5622",
+      "openstates_updated_at": "2026-09-25T06:21:48.556511+00:00"
+    },
+    {
+      "id": "mn-sf-4618-2025-2026",
+      "jurisdiction": "MN",
+      "number": "SF 4618",
+      "title": "Operation of certain autonomous vehicles and on-demand autonomous vehicle networks authorization",
+      "summary": "Operation of certain autonomous vehicles and on-demand autonomous vehicle networks authorization",
+      "takeaway": "Operation of certain autonomous vehicles and on-demand autonomous vehicle networks authorization",
+      "status": "introduced",
+      "measure_type": "bill",
+      "last_action_date": "2026-04-07",
+      "last_action": "Comm report: To pass as amended and re-refer to Judiciary and Public Safety",
+      "session": "2025-2026",
+      "progress_stage": "committee",
+      "stage_dates": {
+        "introduced": "2026-03-18",
+        "committee": "2026-04-07"
+      },
+      "hearings": [],
+      "source_url": "https://www.revisor.mn.gov/bills/94/2026/0/SF/4618?body=Senate",
+      "repository_url": "https://openstates.org/mn/bills/2025-2026/SF4618/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/2b7c6916-b6b5-474d-b4e8-f78c8b4706c2",
+      "openstates_updated_at": "2026-09-25T06:21:15.398816+00:00"
+    },
+    {
+      "id": "mn-sf-4731-2025-2026",
+      "jurisdiction": "MN",
+      "number": "SF 4731",
+      "title": "Wheelchair accessibility for operators of autonomous vehicles requirement provision",
+      "summary": "Wheelchair accessibility for operators of autonomous vehicles requirement provision",
+      "takeaway": "Wheelchair accessibility for operators of autonomous vehicles requirement provision",
+      "status": "introduced",
+      "measure_type": "bill",
+      "last_action_date": "2026-03-23",
+      "last_action": "Referred to Transportation",
+      "session": "2025-2026",
+      "progress_stage": "committee",
+      "stage_dates": {
+        "introduced": "2026-03-23",
+        "committee": "2026-03-23"
+      },
+      "hearings": [],
+      "source_url": "https://www.revisor.mn.gov/bills/94/2026/0/SF/4731?body=Senate",
+      "repository_url": "https://openstates.org/mn/bills/2025-2026/SF4731/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/f85b570e-c1e1-44ac-96b4-0beed38e21e0",
+      "openstates_updated_at": "2026-09-25T05:49:09.358213+00:00"
+    },
+    {
+      "id": "mo-hb-2267-2018",
+      "jurisdiction": "MO",
+      "number": "HB 2267",
+      "title": "Enacts provisions relating to automated driving systems",
+      "summary": "Enacts provisions relating to automated driving systems",
+      "takeaway": "Enacts provisions relating to automated driving systems",
+      "status": "introduced",
+      "measure_type": "bill",
+      "last_action_date": "2018-05-18",
+      "last_action": "Referred: Transportation(H)",
+      "session": "2018",
+      "progress_stage": "committee",
+      "stage_dates": {
+        "introduced": "2018-01-25",
+        "committee": "2018-05-18"
+      },
+      "hearings": [],
+      "source_url": "https://openstates.org/mo/bills/2018/HB2267/",
+      "repository_url": "https://openstates.org/mo/bills/2018/HB2267/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/d17f7eb3-f360-4c6d-9a89-c7c2c4b969f6",
+      "openstates_updated_at": "2020-04-29T00:11:37.270177+00:00"
+    },
+    {
+      "id": "mo-hb-2271-2018",
+      "jurisdiction": "MO",
+      "number": "HB 2271",
+      "title": "Contains provisions relating to the operation of automated motor vehicles in the state and establishes the \"Automated Vehicle Safety Advisory Committee\"",
+      "summary": "Contains provisions relating to the operation of automated motor vehicles in the state and establishes the \"Automated Vehicle Safety Advisory Committee\"",
+      "takeaway": "Contains provisions relating to the operation of automated motor vehicles in the state and establishes the \"Automated Vehicle Safety Advisory Committee\"",
+      "status": "introduced",
+      "measure_type": "bill",
+      "last_action_date": "2018-05-18",
+      "last_action": "Referred: Transportation(H)",
+      "session": "2018",
+      "progress_stage": "committee",
+      "stage_dates": {
+        "introduced": "2018-01-25",
+        "committee": "2018-05-18"
+      },
+      "hearings": [],
+      "source_url": "https://openstates.org/mo/bills/2018/HB2271/",
+      "repository_url": "https://openstates.org/mo/bills/2018/HB2271/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/694b3b53-4c07-4ae1-8cc9-20de33ee0a78",
+      "openstates_updated_at": "2020-04-29T00:11:50.270258+00:00"
+    },
+    {
+      "id": "mo-sb-811-2018",
+      "jurisdiction": "MO",
+      "number": "SB 811",
+      "title": "Enacts provisions relating to automated driving systems",
+      "summary": "Enacts provisions relating to automated driving systems",
+      "takeaway": "Enacts provisions relating to automated driving systems",
+      "status": "introduced",
+      "measure_type": "bill",
+      "last_action_date": "2018-01-17",
+      "last_action": "Second Read and Referred S Transportation, Infrastructure and Public Safety Committee",
+      "session": "2018",
+      "progress_stage": "committee",
+      "stage_dates": {
+        "committee": "2018-01-17"
+      },
+      "hearings": [],
+      "source_url": "https://openstates.org/mo/bills/2018/SB811/",
+      "repository_url": "https://openstates.org/mo/bills/2018/SB811/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/8948fb15-cf54-4447-9e61-5d1f97c84317",
+      "openstates_updated_at": "2020-04-29T00:11:16.448790+00:00"
+    },
+    {
+      "id": "mt-lc-1344-2025",
+      "jurisdiction": "MT",
+      "number": "LC 1344",
+      "title": "Joint resolution on automated vehicles",
+      "summary": "Joint resolution on automated vehicles",
+      "takeaway": "Joint resolution on automated vehicles",
+      "status": "introduced",
+      "measure_type": "bill",
+      "last_action_date": "2025-02-18",
+      "last_action": "(LC) Draft Delivered to Requester",
+      "session": "2025",
+      "progress_stage": "introduced",
+      "stage_dates": {},
+      "hearings": [],
+      "source_url": "https://bills.legmt.gov/#/lc/bill/2/LC1344",
+      "repository_url": "https://openstates.org/mt/bills/2025/LC1344/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/c89b1538-496a-43b2-8412-8ce28bf15e60",
+      "openstates_updated_at": "2025-02-18T22:54:37.345118+00:00"
+    },
+    {
+      "id": "mt-lc-1679-2025",
+      "jurisdiction": "MT",
+      "number": "LC 1679",
+      "title": "Generally revise laws related to autonomous vehicles",
+      "summary": "Generally revise laws related to autonomous vehicles",
+      "takeaway": "Generally revise laws related to autonomous vehicles",
+      "status": "introduced",
+      "measure_type": "bill",
+      "last_action_date": "2025-05-26",
+      "last_action": "(LC) Draft Died in Process",
+      "session": "2025",
+      "progress_stage": "introduced",
+      "stage_dates": {},
+      "hearings": [],
+      "source_url": "https://bills.legmt.gov/#/lc/bill/2/LC1679",
+      "repository_url": "https://openstates.org/mt/bills/2025/LC1679/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/a49efcff-1b8b-4898-94ac-617a8dbb7b17",
+      "openstates_updated_at": "2026-06-10T11:50:00.920457+00:00"
+    },
+    {
+      "id": "mt-lc-179-2025",
+      "jurisdiction": "MT",
+      "number": "LC 179",
+      "title": "Provide for the use of autonomous vehicles",
+      "summary": "Provide for the use of autonomous vehicles",
+      "takeaway": "Provide for the use of autonomous vehicles",
+      "status": "introduced",
+      "measure_type": "bill",
+      "last_action_date": "2024-11-19",
+      "last_action": "(LC) Draft Ready for Delivery",
+      "session": "2025",
+      "progress_stage": "introduced",
+      "stage_dates": {},
+      "hearings": [],
+      "source_url": "https://bills.legmt.gov/#/lc/bill/2/LC0179",
+      "repository_url": "https://openstates.org/mt/bills/2025/LC179/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/f3f6f19e-f5c8-4d9f-bdee-3cd6f13beee3",
+      "openstates_updated_at": "2024-12-15T01:05:35.941193+00:00"
+    },
+    {
+      "id": "mt-sb-67-2025",
+      "jurisdiction": "MT",
+      "number": "SB 67",
+      "title": "Provide for the use of autonomous vehicles",
+      "summary": "Provide for the use of autonomous vehicles",
+      "takeaway": "Provide for the use of autonomous vehicles",
+      "status": "enacted",
+      "measure_type": "bill",
+      "last_action_date": "2025-05-08",
+      "last_action": "Chapter Number Assigned",
+      "session": "2025",
+      "progress_stage": "law",
+      "stage_dates": {
+        "committee": "2025-04-09",
+        "passed_legislature": "2025-04-25",
+        "executive": "2025-05-05",
+        "law": "2025-05-08"
+      },
+      "hearings": [],
+      "source_url": "https://bills.legmt.gov/#/laws/bill/2/LC0179?open_tab=sum",
+      "repository_url": "https://openstates.org/mt/bills/2025/SB67/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/13567927-580a-4dcf-9957-44448a3e232b",
+      "openstates_updated_at": "2026-08-10T11:50:17.301004+00:00"
+    },
+    {
+      "id": "mt-sj-16-2025",
+      "jurisdiction": "MT",
+      "number": "SJ 16",
+      "title": "Joint resolution on automated vehicles",
+      "summary": "Joint resolution on automated vehicles",
+      "takeaway": "Joint resolution on automated vehicles",
+      "status": "passed",
+      "measure_type": "resolution",
+      "last_action_date": "2025-05-05",
+      "last_action": "(S) Filed with Secretary of State",
+      "session": "2025",
+      "progress_stage": "passed_legislature",
+      "stage_dates": {
+        "committee": "2025-04-04",
+        "passed_legislature": "2025-05-02"
+      },
+      "hearings": [],
+      "source_url": "https://bills.legmt.gov/#/laws/bill/2/LC1344?open_tab=sum",
+      "repository_url": "https://openstates.org/mt/bills/2025/SJ16/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/6474efc4-59c5-404e-a66f-895d9b6e65f7",
+      "openstates_updated_at": "2026-08-10T12:21:27.565977+00:00"
+    },
+    {
+      "id": "nj-a-3968-222",
+      "jurisdiction": "NJ",
+      "number": "A 3968",
+      "title": "Establishes fully autonomous vehicle pilot program.*",
+      "summary": "Establishes fully autonomous vehicle pilot program.*",
+      "takeaway": "Establishes fully autonomous vehicle pilot program.*",
+      "status": "introduced",
+      "measure_type": "bill",
+      "last_action_date": "2026-06-01",
+      "last_action": "Reported as an Assembly Committee Substitute and Referred to Assembly Appropriations Committee",
+      "session": "222",
+      "progress_stage": "committee",
+      "stage_dates": {
+        "introduced": "2026-01-13",
+        "committee": "2026-06-01"
+      },
+      "hearings": [],
+      "source_url": "https://www.njleg.state.nj.us/bill-search/2026/A3968",
+      "repository_url": "https://openstates.org/nj/bills/222/A3968/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/a11c582f-0f3e-41fe-a6ee-643e7c59f29c",
+      "openstates_updated_at": "2026-09-11T09:46:48.993971+00:00"
+    },
+    {
+      "id": "nj-a-768-222",
+      "jurisdiction": "NJ",
+      "number": "A 768",
+      "title": "Permits testing and use of autonomous vehicles on State roadways under certain circumstances.",
+      "summary": "Permits testing and use of autonomous vehicles on State roadways under certain circumstances.",
+      "takeaway": "Permits testing and use of autonomous vehicles on State roadways under certain circumstances",
+      "status": "introduced",
+      "measure_type": "bill",
+      "last_action_date": "2026-01-13",
+      "last_action": "Introduced, Referred to Assembly Science, Innovation and Technology Committee",
+      "session": "222",
+      "progress_stage": "committee",
+      "stage_dates": {
+        "introduced": "2026-01-13",
+        "committee": "2026-01-13"
+      },
+      "hearings": [],
+      "source_url": "https://www.njleg.state.nj.us/bill-search/2026/A768",
+      "repository_url": "https://openstates.org/nj/bills/222/A768/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/d7804158-cc0c-4831-b5a4-11b2ecc3ecf2",
+      "openstates_updated_at": "2026-03-18T08:30:36.335973+00:00"
+    },
+    {
+      "id": "nj-a-958-222",
+      "jurisdiction": "NJ",
+      "number": "A 958",
+      "title": "Requires DLPS to establish training program to prepare law enforcement to interact with autonomous vehicles.",
+      "summary": "Requires DLPS to establish training program to prepare law enforcement to interact with autonomous vehicles.",
+      "takeaway": "Requires DLPS to establish training program to prepare law enforcement to interact with autonomous vehicles",
+      "status": "introduced",
+      "measure_type": "bill",
+      "last_action_date": "2026-01-13",
+      "last_action": "Introduced, Referred to Assembly Public Safety and Preparedness Committee",
+      "session": "222",
+      "progress_stage": "committee",
+      "stage_dates": {
+        "introduced": "2026-01-13",
+        "committee": "2026-01-13"
+      },
+      "hearings": [],
+      "source_url": "https://www.njleg.state.nj.us/bill-search/2026/A958",
+      "repository_url": "https://openstates.org/nj/bills/222/A958/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/85195e7d-c0ad-4dea-81ad-38942383a40e",
+      "openstates_updated_at": "2026-03-18T08:54:26.601224+00:00"
+    },
+    {
+      "id": "nj-s-1677-222",
+      "jurisdiction": "NJ",
+      "number": "S 1677",
+      "title": "Establishes fully autonomous vehicle pilot program.*",
+      "summary": "Establishes fully autonomous vehicle pilot program.*",
+      "takeaway": "Establishes fully autonomous vehicle pilot program.*",
+      "status": "introduced",
+      "measure_type": "bill",
+      "last_action_date": "2026-05-11",
+      "last_action": "Referred to Senate Budget and Appropriations Committee",
+      "session": "222",
+      "progress_stage": "committee",
+      "stage_dates": {
+        "introduced": "2026-01-13",
+        "committee": "2026-05-11"
+      },
+      "hearings": [],
+      "source_url": "https://www.njleg.state.nj.us/bill-search/2026/S1677",
+      "repository_url": "https://openstates.org/nj/bills/222/S1677/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/446a3177-7fce-496d-a08e-3903eeb8f7da",
+      "openstates_updated_at": "2026-09-29T11:31:53.787459+00:00"
+    },
+    {
+      "id": "ny-a-10008-2025-2026",
+      "jurisdiction": "NY",
+      "number": "A 10008",
+      "title": "Enacts into law major components of legislation necessary to implement the state transportation, economic development and environmental conservation budget for the 2026-2027 state fiscal year",
+      "summary": "Enacts into law major components of legislation necessary to implement the state transportation, economic development and environmental conservation budget for the 2026-2027 state fiscal year; extends provisions of law relating to increasing certain motor vehicle transaction fees (Part A); extends the accident prevention course internet technology pilot program (Part B); establishes a demonstration program in the city of New York for the installation and operation of intelligent speed assistance devices (Part D); extends provisions of law relating to motor vehicles equipped with autonomous vehicle technology (Part E); expands the automated work zone speed enforcement program utilizing photo ",
+      "takeaway": "Enacts into law major components of legislation necessary to implement the state transportation, economic development and environmental conservation budget for the 2026-2027 state fiscal year; extends provisions of law relating to increasing certain motor vehicle transaction fees (Part A); extends the accident prevention course internet technology ",
+      "status": "enacted",
+      "measure_type": "bill",
+      "last_action_date": "2026-05-26",
+      "last_action": "SIGNED CHAP.58",
+      "session": "2025-2026",
+      "progress_stage": "law",
+      "stage_dates": {
+        "committee": "2026-05-26",
+        "passed_legislature": "2026-05-26",
+        "executive": "2026-05-26"
+      },
+      "hearings": [],
+      "source_url": "https://legislation.nysenate.gov/api/3/bills/2025-2026/A10008?summary=&detail=",
+      "repository_url": "https://openstates.org/ny/bills/2025-2026/A10008/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/d56dce65-2200-40f9-91fb-88b69f290ba7",
+      "openstates_updated_at": "2026-05-28T00:28:31.851624+00:00"
+    },
+    {
+      "id": "ny-a-11500-2025-2026",
+      "jurisdiction": "NY",
+      "number": "A 11500",
+      "title": "Relates to fully autonomous vehicles",
+      "summary": "Authorizes the use of fully autonomous vehicles in Albany and Rensselaer counties until July 1, 2028; provides for operation, licensing, insurance, duties following crashes, on-demand autonomous vehicle networks, registration and titles, operation by human drivers, and related provisions.",
+      "takeaway": "Authorizes the use of fully autonomous vehicles in Albany and Rensselaer counties until July 1, 2028; provides for operation, licensing, insurance, duties following crashes, on-demand autonomous vehicle networks, registration and titles, operation by human drivers, and related provisions",
+      "status": "introduced",
+      "measure_type": "bill",
+      "last_action_date": "2026-05-28",
+      "last_action": "REFERRED TO TRANSPORTATION",
+      "session": "2025-2026",
+      "progress_stage": "committee",
+      "stage_dates": {
+        "committee": "2026-05-28"
+      },
+      "hearings": [],
+      "source_url": "https://legislation.nysenate.gov/api/3/bills/2025-2026/A11500?summary=&detail=",
+      "repository_url": "https://openstates.org/ny/bills/2025-2026/A11500/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/38e308ec-1f9e-45a8-96a9-5b6195249969",
+      "openstates_updated_at": "2026-05-29T14:28:44.677147+00:00"
+    },
+    {
+      "id": "ny-a-3650-2025-2026",
+      "jurisdiction": "NY",
+      "number": "A 3650",
+      "title": "Relates to autonomous vehicle driving",
+      "summary": "Provides that a person may operate a fully autonomous vehicle on the public roads of this state without a human driver provided that the automated driving system is engaged and the vehicle meets certain conditions; defines terms; requires insurance and that such vehicle is registered as a fully autonomous vehicle; makes related provisions.",
+      "takeaway": "Provides that a person may operate a fully autonomous vehicle on the public roads of this state without a human driver provided that the automated driving system is engaged and the vehicle meets certain conditions; defines terms; requires insurance and that such vehicle is registered as a fully autonomous vehicle; makes related provisions",
+      "status": "introduced",
+      "measure_type": "bill",
+      "last_action_date": "2025-02-05",
+      "last_action": "ENACTING CLAUSE STRICKEN",
+      "session": "2025-2026",
+      "progress_stage": "committee",
+      "stage_dates": {
+        "committee": "2025-01-29"
+      },
+      "hearings": [],
+      "source_url": "https://legislation.nysenate.gov/api/3/bills/2025-2026/A3650?summary=&detail=",
+      "repository_url": "https://openstates.org/ny/bills/2025-2026/A3650/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/f3418e5d-4e57-4b37-be2e-c2478804bc57",
+      "openstates_updated_at": "2026-03-18T10:58:37.753311+00:00"
+    },
+    {
+      "id": "ny-a-4901-2025-2026",
+      "jurisdiction": "NY",
+      "number": "A 4901",
+      "title": "Relates to autonomous vehicle driving",
+      "summary": "Provides that a person may operate a fully autonomous vehicle on the public roads of this state without a human driver provided that the automated driving system is engaged and the vehicle meets certain conditions; defines terms; requires insurance and that such vehicle is registered as a fully autonomous vehicle; makes related provisions.",
+      "takeaway": "Provides that a person may operate a fully autonomous vehicle on the public roads of this state without a human driver provided that the automated driving system is engaged and the vehicle meets certain conditions; defines terms; requires insurance and that such vehicle is registered as a fully autonomous vehicle; makes related provisions",
+      "status": "introduced",
+      "measure_type": "bill",
+      "last_action_date": "2026-04-24",
+      "last_action": "PRINT NUMBER 4901B",
+      "session": "2025-2026",
+      "progress_stage": "committee",
+      "stage_dates": {
+        "committee": "2026-04-24"
+      },
+      "hearings": [],
+      "source_url": "https://legislation.nysenate.gov/api/3/bills/2025-2026/A4901?summary=&detail=",
+      "repository_url": "https://openstates.org/ny/bills/2025-2026/A4901/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/acb10ba4-826e-46d8-9f29-749bfc985157",
+      "openstates_updated_at": "2026-05-07T02:52:08.850632+00:00"
+    },
+    {
+      "id": "ny-a-6180-2025-2026",
+      "jurisdiction": "NY",
+      "number": "A 6180",
+      "title": "Excludes a production using artificial intelligence or autonomous vehicles in a manner which results in the displacement of employees from the definition of qualified film",
+      "summary": "Excludes a production using artificial intelligence or autonomous vehicles in a manner which results in the displacement of employees whose salaries are qualified expenses from the definition of qualified film for the purposes of the empire state film production credit.",
+      "takeaway": "Excludes a production using artificial intelligence or autonomous vehicles in a manner which results in the displacement of employees whose salaries are qualified expenses from the definition of qualified film for the purposes of the empire state film production credit",
+      "status": "introduced",
+      "measure_type": "bill",
+      "last_action_date": "2026-01-07",
+      "last_action": "REFERRED TO WAYS AND MEANS",
+      "session": "2025-2026",
+      "progress_stage": "committee",
+      "stage_dates": {
+        "committee": "2026-01-07"
+      },
+      "hearings": [],
+      "source_url": "https://legislation.nysenate.gov/api/3/bills/2025-2026/A6180?summary=&detail=",
+      "repository_url": "https://openstates.org/ny/bills/2025-2026/A6180/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/853fc0c8-dd75-4bce-8cb3-4252321031c6",
+      "openstates_updated_at": "2026-03-18T10:34:21.080543+00:00"
+    },
+    {
+      "id": "ny-a-728-2025-2026",
+      "jurisdiction": "NY",
+      "number": "A 728",
+      "title": "Relates to requiring the department of labor to conduct a study on the potential impact of driverless vehicles",
+      "summary": "Requires the department of labor to conduct a study on the potential impact of driverless vehicles on occupations and employment.",
+      "takeaway": "Requires the department of labor to conduct a study on the potential impact of driverless vehicles on occupations and employment",
+      "status": "introduced",
+      "measure_type": "bill",
+      "last_action_date": "2026-01-07",
+      "last_action": "REFERRED TO LABOR",
+      "session": "2025-2026",
+      "progress_stage": "committee",
+      "stage_dates": {
+        "committee": "2026-01-07"
+      },
+      "hearings": [],
+      "source_url": "https://legislation.nysenate.gov/api/3/bills/2025-2026/A728?summary=&detail=",
+      "repository_url": "https://openstates.org/ny/bills/2025-2026/A728/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/43e44588-6ba7-44b3-9b55-d44636d905b7",
+      "openstates_updated_at": "2026-03-18T09:21:56.997484+00:00"
+    },
+    {
+      "id": "ny-a-793-2025-2026",
+      "jurisdiction": "NY",
+      "number": "A 793",
+      "title": "Relates to the operation of autonomous taxicabs in N.Y. city",
+      "summary": "Provides that no autonomous vehicle may be used for taxi, livery or transportation network company vehicle services in any city with a population of one million or more without first being licensed by the New York City taxi and limousine commission; requires the New York City taxi and limousine commission to establish a license for use of an autonomous vehicle as a taxicab and to promulgate rules regarding such license and the operation of autonomous taxicabs.",
+      "takeaway": "Provides that no autonomous vehicle may be used for taxi, livery or transportation network company vehicle services in any city with a population of one million or more without first being licensed by the New York City taxi and limousine commission; requires the New York City taxi and limousine commission to establish a license for use of an autono",
+      "status": "introduced",
+      "measure_type": "bill",
+      "last_action_date": "2026-01-07",
+      "last_action": "REFERRED TO TRANSPORTATION",
+      "session": "2025-2026",
+      "progress_stage": "committee",
+      "stage_dates": {
+        "committee": "2026-01-07"
+      },
+      "hearings": [],
+      "source_url": "https://legislation.nysenate.gov/api/3/bills/2025-2026/A793?summary=&detail=",
+      "repository_url": "https://openstates.org/ny/bills/2025-2026/A793/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/2f06951b-d649-4c2f-91bb-8d65389cc442",
+      "openstates_updated_at": "2026-05-16T05:50:49.029583+00:00"
+    },
+    {
+      "id": "ny-a-8109-2025-2026",
+      "jurisdiction": "NY",
+      "number": "A 8109",
+      "title": "Establishes the New York state autonomous vehicle task force",
+      "summary": "Establishes the New York state autonomous vehicle task force to study autonomous vehicle usage on the roads located within the state of New York.",
+      "takeaway": "Establishes the New York state autonomous vehicle task force to study autonomous vehicle usage on the roads located within the state of New York",
+      "status": "introduced",
+      "measure_type": "bill",
+      "last_action_date": "2026-01-07",
+      "last_action": "REFERRED TO TRANSPORTATION",
+      "session": "2025-2026",
+      "progress_stage": "committee",
+      "stage_dates": {
+        "committee": "2026-01-07"
+      },
+      "hearings": [],
+      "source_url": "https://legislation.nysenate.gov/api/3/bills/2025-2026/A8109?summary=&detail=",
+      "repository_url": "https://openstates.org/ny/bills/2025-2026/A8109/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/13cfdb6e-b7eb-4d6e-bd42-41307e4be8a3",
+      "openstates_updated_at": "2026-03-18T09:51:23.635517+00:00"
+    },
+    {
+      "id": "ny-s-10413-2025-2026",
+      "jurisdiction": "NY",
+      "number": "S 10413",
+      "title": "Relates to the operation of autonomous taxicabs in a city having a population of one million or more",
+      "summary": "Provides that no autonomous vehicle may be used for taxi, livery or transportation network company vehicle services in any city with a population of one million or more without first being licensed by the New York City taxi and limousine commission; requires the New York City taxi and limousine commission to establish a license for use of an autonomous vehicle as a taxicab and to promulgate rules regarding such license and the operation of autonomous taxicabs.",
+      "takeaway": "Provides that no autonomous vehicle may be used for taxi, livery or transportation network company vehicle services in any city with a population of one million or more without first being licensed by the New York City taxi and limousine commission; requires the New York City taxi and limousine commission to establish a license for use of an autono",
+      "status": "introduced",
+      "measure_type": "bill",
+      "last_action_date": "2026-05-15",
+      "last_action": "REFERRED TO TRANSPORTATION",
+      "session": "2025-2026",
+      "progress_stage": "committee",
+      "stage_dates": {
+        "committee": "2026-05-15"
+      },
+      "hearings": [],
+      "source_url": "https://legislation.nysenate.gov/api/3/bills/2025-2026/S10413?summary=&detail=",
+      "repository_url": "https://openstates.org/ny/bills/2025-2026/S10413/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/d73295c2-887f-4676-b802-2e1d9432e649",
+      "openstates_updated_at": "2026-05-16T06:58:13.550388+00:00"
+    },
+    {
+      "id": "ny-s-10473-2025-2026",
+      "jurisdiction": "NY",
+      "number": "S 10473",
+      "title": "Relates to fully autonomous vehicles",
+      "summary": "Authorizes the use of fully autonomous vehicles in Albany and Rensselaer counties until July 1, 2028; provides for operation, licensing, insurance, duties following crashes, on-demand autonomous vehicle networks, registration and titles, operation by human drivers, and related provisions.",
+      "takeaway": "Authorizes the use of fully autonomous vehicles in Albany and Rensselaer counties until July 1, 2028; provides for operation, licensing, insurance, duties following crashes, on-demand autonomous vehicle networks, registration and titles, operation by human drivers, and related provisions",
+      "status": "introduced",
+      "measure_type": "bill",
+      "last_action_date": "2026-05-15",
+      "last_action": "REFERRED TO TRANSPORTATION",
+      "session": "2025-2026",
+      "progress_stage": "committee",
+      "stage_dates": {
+        "committee": "2026-05-15"
+      },
+      "hearings": [],
+      "source_url": "https://legislation.nysenate.gov/api/3/bills/2025-2026/S10473?summary=&detail=",
+      "repository_url": "https://openstates.org/ny/bills/2025-2026/S10473/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/b9086856-b880-4e26-beb1-7fdf764dc6ab",
+      "openstates_updated_at": "2026-05-29T14:15:56.844512+00:00"
+    },
+    {
+      "id": "ny-s-2688-2025-2026",
+      "jurisdiction": "NY",
+      "number": "S 2688",
+      "title": "Relates to the operation of autonomous taxicabs in a city having a population of one million or more",
+      "summary": "Provides that no autonomous vehicle may be used for taxi, livery or transportation network company vehicle services in any city with a population of one million or more without first being licensed by the New York City taxi and limousine commission; requires the New York City taxi and limousine commission to establish a license for use of an autonomous vehicle as a taxicab and to promulgate rules regarding such license and the operation of autonomous taxicabs.",
+      "takeaway": "Provides that no autonomous vehicle may be used for taxi, livery or transportation network company vehicle services in any city with a population of one million or more without first being licensed by the New York City taxi and limousine commission; requires the New York City taxi and limousine commission to establish a license for use of an autono",
+      "status": "introduced",
+      "measure_type": "bill",
+      "last_action_date": "2025-01-22",
+      "last_action": "REFERRED TO TRANSPORTATION",
+      "session": "2025-2026",
+      "progress_stage": "committee",
+      "stage_dates": {
+        "committee": "2025-01-22"
+      },
+      "hearings": [],
+      "source_url": "https://legislation.nysenate.gov/api/3/bills/2025-2026/S2688?summary=&detail=",
+      "repository_url": "https://openstates.org/ny/bills/2025-2026/S2688/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/ca660689-6862-45c6-b88f-67a95ccb19fe",
+      "openstates_updated_at": "2026-03-18T09:35:25.968566+00:00"
+    },
+    {
+      "id": "ny-s-344-2025-2026",
+      "jurisdiction": "NY",
+      "number": "S 344",
+      "title": "Relates to autonomous vehicle driving",
+      "summary": "Provides that a person may operate a fully autonomous vehicle on the public roads of this state without a human driver provided that the automated driving system is engaged and the vehicle meets certain conditions; defines terms; requires insurance and that such vehicle is registered as a fully autonomous vehicle; makes related provisions.",
+      "takeaway": "Provides that a person may operate a fully autonomous vehicle on the public roads of this state without a human driver provided that the automated driving system is engaged and the vehicle meets certain conditions; defines terms; requires insurance and that such vehicle is registered as a fully autonomous vehicle; makes related provisions",
+      "status": "introduced",
+      "measure_type": "bill",
+      "last_action_date": "2026-05-06",
+      "last_action": "PRINT NUMBER 344B",
+      "session": "2025-2026",
+      "progress_stage": "committee",
+      "stage_dates": {
+        "committee": "2026-05-06"
+      },
+      "hearings": [],
+      "source_url": "https://legislation.nysenate.gov/api/3/bills/2025-2026/S344?summary=&detail=",
+      "repository_url": "https://openstates.org/ny/bills/2025-2026/S344/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/5bc6e3eb-604a-4328-a017-1b0bb39a29ef",
+      "openstates_updated_at": "2026-05-15T07:13:10.604800+00:00"
+    },
+    {
+      "id": "ny-s-6751-2025-2026",
+      "jurisdiction": "NY",
+      "number": "S 6751",
+      "title": "Excludes a production using artificial intelligence or autonomous vehicles in a manner which results in the displacement of employees from the definition of qualified film",
+      "summary": "Excludes a production using artificial intelligence or autonomous vehicles in a manner which results in the displacement of employees whose salaries are qualified expenses from the definition of qualified film for the purposes of the empire state film production credit.",
+      "takeaway": "Excludes a production using artificial intelligence or autonomous vehicles in a manner which results in the displacement of employees whose salaries are qualified expenses from the definition of qualified film for the purposes of the empire state film production credit",
+      "status": "introduced",
+      "measure_type": "bill",
+      "last_action_date": "2026-01-07",
+      "last_action": "REFERRED TO INVESTIGATIONS AND GOVERNMENT OPERATIONS",
+      "session": "2025-2026",
+      "progress_stage": "committee",
+      "stage_dates": {
+        "committee": "2026-01-07"
+      },
+      "hearings": [],
+      "source_url": "https://legislation.nysenate.gov/api/3/bills/2025-2026/S6751?summary=&detail=",
+      "repository_url": "https://openstates.org/ny/bills/2025-2026/S6751/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/43a93e40-f598-486e-8812-434135cc3306",
+      "openstates_updated_at": "2026-03-18T11:24:16.715416+00:00"
+    },
+    {
+      "id": "ny-s-7956-2025-2026",
+      "jurisdiction": "NY",
+      "number": "S 7956",
+      "title": "Requires human safety operators for certain autonomous vehicles",
+      "summary": "Prohibits any motor vehicle with a manufacturers' gross vehicle weight rating of ten thousand one pounds or more which utilizes autonomous vehicle technology from being operated on public highways unless a natural person holding a valid license for the operation of the motor vehicle's class is present within such vehicle.",
+      "takeaway": "Prohibits any motor vehicle with a manufacturers' gross vehicle weight rating of ten thousand one pounds or more which utilizes autonomous vehicle technology from being operated on public highways unless a natural person holding a valid license for the operation of the motor vehicle's class is present within such vehicle",
+      "status": "introduced",
+      "measure_type": "bill",
+      "last_action_date": "2026-01-07",
+      "last_action": "REFERRED TO TRANSPORTATION",
+      "session": "2025-2026",
+      "progress_stage": "committee",
+      "stage_dates": {
+        "committee": "2026-01-07"
+      },
+      "hearings": [],
+      "source_url": "https://legislation.nysenate.gov/api/3/bills/2025-2026/S7956?summary=&detail=",
+      "repository_url": "https://openstates.org/ny/bills/2025-2026/S7956/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/9f52f0f7-48f8-47bf-84c2-baf3d6f44d13",
+      "openstates_updated_at": "2026-03-18T09:08:44.729630+00:00"
+    },
+    {
+      "id": "ny-s-9008-2025-2026",
+      "jurisdiction": "NY",
+      "number": "S 9008",
+      "title": "Enacts into law major components of legislation necessary to implement the state transportation, economic development and environmental conservation budget for the 2026-2027 state fiscal year",
+      "summary": "Enacts into law major components of legislation necessary to implement the state transportation, economic development and environmental conservation budget for the 2026-2027 state fiscal year; extends provisions of law relating to increasing certain motor vehicle transaction fees (Part A); extends the accident prevention course internet technology pilot program (Part B); establishes a demonstration program in the city of New York for the installation and operation of intelligent speed assistance devices (Part D); extends provisions of law relating to motor vehicles equipped with autonomous vehicle technology (Part E); expands the automated work zone speed enforcement program utilizing photo ",
+      "takeaway": "Enacts into law major components of legislation necessary to implement the state transportation, economic development and environmental conservation budget for the 2026-2027 state fiscal year; extends provisions of law relating to increasing certain motor vehicle transaction fees (Part A); extends the accident prevention course internet technology ",
+      "status": "introduced",
+      "measure_type": "bill",
+      "last_action_date": "2026-05-26",
+      "last_action": "SUBSTITUTED BY A10008C",
+      "session": "2025-2026",
+      "progress_stage": "committee",
+      "stage_dates": {
+        "committee": "2026-05-25"
+      },
+      "hearings": [],
+      "source_url": "https://legislation.nysenate.gov/api/3/bills/2025-2026/S9008?summary=&detail=",
+      "repository_url": "https://openstates.org/ny/bills/2025-2026/S9008/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/d395b3d7-36c8-4fa8-b0e8-031f41dc306b",
+      "openstates_updated_at": "2026-05-26T23:52:52.803038+00:00"
+    },
+    {
+      "id": "or-hb-4085-2026r1",
+      "jurisdiction": "OR",
+      "number": "HB 4085",
+      "title": "Relating to autonomous vehicles.",
+      "summary": "Allows a person to operate an autonomous vehicle with the automated driving system engaged without a grant of driving privileges if certain conditions are met. Requires an automated driving system to be able to achieve a minimal risk condition or issue a request to intervene. Requires an autonomous vehicle to operate in compliance with state vehicle laws and comply with federal safety standards. Provides for exemptions. Allows the Department of Transportation to grant an autonomous vehicle that operates exclusively by an automated driving system and without an onboard driver an exemption to any state equipment requirement. Requires a person operating an autonomous vehicle that is involved in",
+      "takeaway": "Allows a person to operate an autonomous vehicle with the automated driving system engaged without a grant of driving privileges if certain conditions are met",
+      "status": "introduced",
+      "measure_type": "bill",
+      "last_action_date": "2026-03-07",
+      "last_action": "In committee upon adjournment.",
+      "session": "2026R1",
+      "progress_stage": "committee",
+      "stage_dates": {
+        "introduced": "2026-02-02",
+        "committee": "2026-02-02"
+      },
+      "hearings": [],
+      "source_url": "https://olis.oregonlegislature.gov/liz/2026R1/Measures/Overview/HB4085",
+      "repository_url": "https://openstates.org/or/bills/2026R1/HB4085/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/58ef7376-d690-42f7-bf20-600cd6a0073e",
+      "openstates_updated_at": "2026-03-17T20:53:57.400581+00:00"
+    },
+    {
+      "id": "pa-hb-1639-2025-2026",
+      "jurisdiction": "PA",
+      "number": "HB 1639",
+      "title": "An Act amending Title 75 (Vehicles) of the Pennsylvania Consolidated Statutes, in highly automated vehicles, further providing for certificate of compliance required.",
+      "summary": "An Act amending Title 75 (Vehicles) of the Pennsylvania Consolidated Statutes, in highly automated vehicles, further providing for certificate of compliance required.",
+      "takeaway": "An Act amending Title 75 (Vehicles) of the Pennsylvania Consolidated Statutes, in highly automated vehicles, further providing for certificate of compliance required",
+      "status": "introduced",
+      "measure_type": "bill",
+      "last_action_date": "2025-06-23",
+      "last_action": "Referred to Transportation",
+      "session": "2025-2026",
+      "progress_stage": "committee",
+      "stage_dates": {
+        "committee": "2025-06-23"
+      },
+      "hearings": [],
+      "source_url": "https://www.palegis.us/legislation/bills/2025/hb1639",
+      "repository_url": "https://openstates.org/pa/bills/2025-2026/HB1639/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/e448f2f6-1c79-4aff-94ed-ab59d4f74617",
+      "openstates_updated_at": "2026-03-18T14:57:16.519681+00:00"
+    },
+    {
+      "id": "pa-hb-2069-2025-2026",
+      "jurisdiction": "PA",
+      "number": "HB 2069",
+      "title": "An Act amending Title 75 (Vehicles) of the Pennsylvania Consolidated Statutes, in general provisions relating to operation of vehicles, providing for automated vehicle noise enforcement systems; and imposing penalties.",
+      "summary": "An Act amending Title 75 (Vehicles) of the Pennsylvania Consolidated Statutes, in general provisions relating to operation of vehicles, providing for automated vehicle noise enforcement systems; and imposing penalties.",
+      "takeaway": "An Act amending Title 75 (Vehicles) of the Pennsylvania Consolidated Statutes, in general provisions relating to operation of vehicles, providing for automated vehicle noise enforcement systems; and imposing penalties",
+      "status": "introduced",
+      "measure_type": "bill",
+      "last_action_date": "2025-12-03",
+      "last_action": "Referred to Transportation",
+      "session": "2025-2026",
+      "progress_stage": "committee",
+      "stage_dates": {
+        "committee": "2025-12-03"
+      },
+      "hearings": [],
+      "source_url": "https://www.palegis.us/legislation/bills/2025/hb2069",
+      "repository_url": "https://openstates.org/pa/bills/2025-2026/HB2069/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/a3079520-d610-4f17-9322-e372af5fc87f",
+      "openstates_updated_at": "2026-03-18T14:38:15.734946+00:00"
+    },
+    {
+      "id": "pa-hr-563-2025-2026",
+      "jurisdiction": "PA",
+      "number": "HR 563",
+      "title": "A Resolution directing the Joint State Government Commission to conduct a study and issue a report on the impact driverless vehicles have on safety and the workforce.",
+      "summary": "A Resolution directing the Joint State Government Commission to conduct a study and issue a report on the impact driverless vehicles have on safety and the workforce.",
+      "takeaway": "A Resolution directing the Joint State Government Commission to conduct a study and issue a report on the impact driverless vehicles have on safety and the workforce",
+      "status": "introduced",
+      "measure_type": "resolution",
+      "last_action_date": "2026-06-10",
+      "last_action": "Referred to Communications & Technology",
+      "session": "2025-2026",
+      "progress_stage": "committee",
+      "stage_dates": {
+        "committee": "2026-06-10"
+      },
+      "hearings": [],
+      "source_url": "https://www.palegis.us/legislation/bills/2025/hr563",
+      "repository_url": "https://openstates.org/pa/bills/2025-2026/HR563/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/3f084599-49a4-419a-9097-40cffb8f77cb",
+      "openstates_updated_at": "2026-06-11T01:46:59.119795+00:00"
+    },
+    {
+      "id": "ut-hb-581-2026",
+      "jurisdiction": "UT",
+      "number": "HB 581",
+      "title": "Autonomous Vehicle Amendments",
+      "summary": "Autonomous Vehicle Amendments",
+      "takeaway": "Autonomous Vehicle Amendments",
+      "status": "passed",
+      "measure_type": "bill",
+      "last_action_date": "2026-03-07",
+      "last_action": "House/ filed",
+      "session": "2026",
+      "progress_stage": "passed_legislature",
+      "stage_dates": {
+        "committee": "2026-03-02",
+        "passed_legislature": "2026-03-04"
+      },
+      "hearings": [],
+      "source_url": "https://le.utah.gov/~2026/bills/static/HB0581.html",
+      "repository_url": "https://openstates.org/ut/bills/2026/HB581/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/282b7aed-0f65-40c7-a120-9c2a559e67ab",
+      "openstates_updated_at": "2026-07-09T15:24:35.575309+00:00"
+    },
+    {
+      "id": "ut-sb-292-2026",
+      "jurisdiction": "UT",
+      "number": "SB 292",
+      "title": "Autonomous Systems Amendments",
+      "summary": "Autonomous Systems Amendments",
+      "takeaway": "Autonomous Systems Amendments",
+      "status": "enacted",
+      "measure_type": "bill",
+      "last_action_date": "2026-03-23",
+      "last_action": "Governor Signed",
+      "session": "2026",
+      "progress_stage": "law",
+      "stage_dates": {
+        "committee": "2026-03-04",
+        "passed_legislature": "2026-03-07",
+        "executive": "2026-03-23"
+      },
+      "hearings": [],
+      "source_url": "https://le.utah.gov/~2026/bills/static/SB0292.html",
+      "repository_url": "https://openstates.org/ut/bills/2026/SB292/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/beab47ee-fa53-4916-85e1-e4b25d9d52ec",
+      "openstates_updated_at": "2026-07-09T15:13:48.232873+00:00"
+    },
+    {
+      "id": "va-hb-1124-2026",
+      "jurisdiction": "VA",
+      "number": "HB 1124",
+      "title": "Autonomous vehicles; work group to conduct and assessment of workforce impacts, etc.",
+      "summary": "Autonomous driving systems; work group convened by the Secretary of Transportation; certain assessments and stakeholders. Directs the existing work group convened by the Secretary of Transportation regarding autonomous driving systems to (i) conduct an assessment of the workforce impacts created by autonomous vehicles, including an overview of job losses and gains; (ii) identify and include stakeholders and representatives from the auto manufacturing industry and labor representatives from the passenger and product carrier business; and (iii) conduct an assessment of labor impacts created by autonomous vehicles no later than November 1, 2026.",
+      "takeaway": "Autonomous driving systems; work group convened by the Secretary of Transportation; certain assessments and stakeholders",
+      "status": "enacted",
+      "measure_type": "bill",
+      "last_action_date": "2026-04-13",
+      "last_action": "Approved by Governor-Chapter 738 (effective 7/1/2026)",
+      "session": "2026",
+      "progress_stage": "law",
+      "stage_dates": {
+        "introduced": "2026-01-14",
+        "committee": "2026-02-17",
+        "passed_legislature": "2026-03-31",
+        "executive": "2026-04-13"
+      },
+      "hearings": [],
+      "source_url": "https://lis.virginia.gov/bill-details/20261/HB1124",
+      "repository_url": "https://openstates.org/va/bills/2026/HB1124/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/ba6cf3ea-99d0-4e29-a453-2dd201b24204",
+      "openstates_updated_at": "2026-04-14T20:29:27.255169+00:00"
+    },
+    {
+      "id": "va-hb-1125-2026",
+      "jurisdiction": "VA",
+      "number": "HB 1125",
+      "title": "Automated driving systems; requirements for operation, civil penalties, report.",
+      "summary": "Automated driving systems; civil penalties; work group; report. Provides requirements for the  operation of fully autonomous vehicles and motor vehicles operated with an  automated driving system engaged. The bill requires fully autonomous vehicles  and automated driving systems operated in the Commonwealth to receive  autonomous operation licenses prior to being operated in the Commonwealth. The  bill provides requirements regarding geofences and requirements for providers,  as those terms are defined in the bill. The bill also prohibits localities from  prohibiting the operation of fully autonomous vehicles or motor vehicles  operated with an automated driving system. The bill establishes ",
+      "takeaway": "Automated driving systems; civil penalties; work group; report",
+      "status": "introduced",
+      "measure_type": "bill",
+      "last_action_date": "2026-02-18",
+      "last_action": "Left in Committee Transportation",
+      "session": "2026",
+      "progress_stage": "committee",
+      "stage_dates": {
+        "introduced": "2026-01-14",
+        "committee": "2026-01-29"
+      },
+      "hearings": [],
+      "source_url": "https://lis.virginia.gov/bill-details/20261/HB1125",
+      "repository_url": "https://openstates.org/va/bills/2026/HB1125/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/0e880753-08af-48c3-ac7e-e824aa023b42",
+      "openstates_updated_at": "2026-03-18T08:35:37.974953+00:00"
+    },
+    {
+      "id": "va-sb-670-2026",
+      "jurisdiction": "VA",
+      "number": "SB 670",
+      "title": "Fully autonomous vehicles; commercial use, civil penalty.",
+      "summary": "Commercial use of fully autonomous vehicles. Provides requirements for the operation of fully autonomous vehicles operated to transport property or passengers in furtherance of a commercial enterprise. The bill requires persons operating such fully autonomous vehicles to receive autonomous operation licenses prior to such operation in the Commonwealth.",
+      "takeaway": "Commercial use of fully autonomous vehicles",
+      "status": "passed",
+      "measure_type": "bill",
+      "last_action_date": "2026-03-09",
+      "last_action": "Fiscal Impact statement From VCSC (3/9/2026 10:38 am)",
+      "session": "2026",
+      "progress_stage": "passed_legislature",
+      "stage_dates": {
+        "introduced": "2026-01-14",
+        "committee": "2026-02-20",
+        "passed_legislature": "2026-02-12"
+      },
+      "hearings": [],
+      "source_url": "https://lis.virginia.gov/bill-details/20261/SB670",
+      "repository_url": "https://openstates.org/va/bills/2026/SB670/",
+      "reviewed_at": "2026-09-29",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/c1f332fa-a8a1-4bea-9521-80b75f26f867",
+      "openstates_updated_at": "2026-03-17T22:15:33.564702+00:00"
+    }
+  ],
   "states": [
     {
       "code": "AL",
       "name": "Alabama",
-      "repository_url": "https://open.pluralpolicy.com/"
+      "repository_url": "https://open.pluralpolicy.com/",
+      "sessions": [
+        "2026rs"
+      ]
     },
     {
       "code": "AK",
       "name": "Alaska",
-      "repository_url": "https://open.pluralpolicy.com/"
+      "repository_url": "https://open.pluralpolicy.com/",
+      "sessions": [
+        "27"
+      ]
     },
     {
       "code": "AZ",
       "name": "Arizona",
-      "repository_url": "https://open.pluralpolicy.com/"
+      "repository_url": "https://open.pluralpolicy.com/",
+      "sessions": [
+        "57th-2nd-regular"
+      ]
     },
     {
       "code": "AR",
       "name": "Arkansas",
-      "repository_url": "https://open.pluralpolicy.com/"
+      "repository_url": "https://open.pluralpolicy.com/",
+      "sessions": [
+        "2026F",
+        "2026S1"
+      ]
     },
     {
       "code": "CA",
       "name": "California",
-      "repository_url": "https://open.pluralpolicy.com/"
+      "repository_url": "https://open.pluralpolicy.com/",
+      "sessions": [
+        "20252026"
+      ]
     },
     {
       "code": "CO",
       "name": "Colorado",
-      "repository_url": "https://open.pluralpolicy.com/"
+      "repository_url": "https://open.pluralpolicy.com/",
+      "sessions": [
+        "2026A"
+      ]
     },
     {
       "code": "CT",
       "name": "Connecticut",
-      "repository_url": "https://open.pluralpolicy.com/"
+      "repository_url": "https://open.pluralpolicy.com/",
+      "sessions": [
+        "2026"
+      ]
     },
     {
       "code": "DE",
       "name": "Delaware",
-      "repository_url": "https://open.pluralpolicy.com/"
+      "repository_url": "https://open.pluralpolicy.com/",
+      "sessions": [
+        "153"
+      ]
     },
     {
       "code": "FL",
       "name": "Florida",
-      "repository_url": "https://open.pluralpolicy.com/"
+      "repository_url": "https://open.pluralpolicy.com/",
+      "sessions": [
+        "2026",
+        "2026D",
+        "2026E",
+        "2026F"
+      ]
     },
     {
       "code": "GA",
       "name": "Georgia",
-      "repository_url": "https://open.pluralpolicy.com/"
+      "repository_url": "https://open.pluralpolicy.com/",
+      "sessions": [
+        "2026_ss"
+      ]
     },
     {
       "code": "HI",
       "name": "Hawaii",
-      "repository_url": "https://open.pluralpolicy.com/"
+      "repository_url": "https://open.pluralpolicy.com/",
+      "sessions": [
+        "2026"
+      ]
     },
     {
       "code": "ID",
       "name": "Idaho",
-      "repository_url": "https://open.pluralpolicy.com/"
+      "repository_url": "https://open.pluralpolicy.com/",
+      "sessions": [
+        "2026"
+      ]
     },
     {
       "code": "IL",
       "name": "Illinois",
-      "repository_url": "https://open.pluralpolicy.com/"
+      "repository_url": "https://open.pluralpolicy.com/",
+      "sessions": [
+        "104th"
+      ]
     },
     {
       "code": "IN",
       "name": "Indiana",
-      "repository_url": "https://open.pluralpolicy.com/"
+      "repository_url": "https://open.pluralpolicy.com/",
+      "sessions": [
+        "2026"
+      ]
     },
     {
       "code": "IA",
       "name": "Iowa",
-      "repository_url": "https://open.pluralpolicy.com/"
+      "repository_url": "https://open.pluralpolicy.com/",
+      "sessions": [
+        "2025-2026"
+      ]
     },
     {
       "code": "KS",
       "name": "Kansas",
-      "repository_url": "https://open.pluralpolicy.com/"
+      "repository_url": "https://open.pluralpolicy.com/",
+      "sessions": [
+        "2025-2026"
+      ]
     },
     {
       "code": "KY",
       "name": "Kentucky",
-      "repository_url": "https://open.pluralpolicy.com/"
+      "repository_url": "https://open.pluralpolicy.com/",
+      "sessions": [
+        "2026RS"
+      ]
     },
     {
       "code": "LA",
       "name": "Louisiana",
-      "repository_url": "https://open.pluralpolicy.com/"
+      "repository_url": "https://open.pluralpolicy.com/",
+      "sessions": [
+        "2026"
+      ]
     },
     {
       "code": "ME",
       "name": "Maine",
-      "repository_url": "https://open.pluralpolicy.com/"
+      "repository_url": "https://open.pluralpolicy.com/",
+      "sessions": [
+        "132"
+      ]
     },
     {
       "code": "MD",
       "name": "Maryland",
-      "repository_url": "https://open.pluralpolicy.com/"
+      "repository_url": "https://open.pluralpolicy.com/",
+      "sessions": [
+        "2026"
+      ]
     },
     {
       "code": "MA",
       "name": "Massachusetts",
-      "repository_url": "https://open.pluralpolicy.com/"
+      "repository_url": "https://open.pluralpolicy.com/",
+      "sessions": [
+        "194th"
+      ]
     },
     {
       "code": "MI",
       "name": "Michigan",
-      "repository_url": "https://open.pluralpolicy.com/"
+      "repository_url": "https://open.pluralpolicy.com/",
+      "sessions": [
+        "2025-2026"
+      ]
     },
     {
       "code": "MN",
       "name": "Minnesota",
-      "repository_url": "https://open.pluralpolicy.com/"
+      "repository_url": "https://open.pluralpolicy.com/",
+      "sessions": [
+        "2025-2026"
+      ]
     },
     {
       "code": "MS",
       "name": "Mississippi",
-      "repository_url": "https://open.pluralpolicy.com/"
+      "repository_url": "https://open.pluralpolicy.com/",
+      "sessions": [
+        "20261E"
+      ]
     },
     {
       "code": "MO",
       "name": "Missouri",
-      "repository_url": "https://open.pluralpolicy.com/"
+      "repository_url": "https://open.pluralpolicy.com/",
+      "sessions": [
+        "2017S1",
+        "2017S2",
+        "2018",
+        "2018S1",
+        "2018S2"
+      ]
     },
     {
       "code": "MT",
       "name": "Montana",
-      "repository_url": "https://open.pluralpolicy.com/"
+      "repository_url": "https://open.pluralpolicy.com/",
+      "sessions": [
+        "2025"
+      ]
     },
     {
       "code": "NE",
       "name": "Nebraska",
-      "repository_url": "https://open.pluralpolicy.com/"
+      "repository_url": "https://open.pluralpolicy.com/",
+      "sessions": [
+        "109"
+      ]
     },
     {
       "code": "NV",
       "name": "Nevada",
-      "repository_url": "https://open.pluralpolicy.com/"
+      "repository_url": "https://open.pluralpolicy.com/",
+      "sessions": [
+        "2025Special36"
+      ]
     },
     {
       "code": "NH",
       "name": "New Hampshire",
-      "repository_url": "https://open.pluralpolicy.com/"
+      "repository_url": "https://open.pluralpolicy.com/",
+      "sessions": [
+        "2026"
+      ]
     },
     {
       "code": "NJ",
       "name": "New Jersey",
-      "repository_url": "https://open.pluralpolicy.com/"
+      "repository_url": "https://open.pluralpolicy.com/",
+      "sessions": [
+        "222"
+      ]
     },
     {
       "code": "NM",
       "name": "New Mexico",
-      "repository_url": "https://open.pluralpolicy.com/"
+      "repository_url": "https://open.pluralpolicy.com/",
+      "sessions": [
+        "2026"
+      ]
     },
     {
       "code": "NY",
       "name": "New York",
-      "repository_url": "https://open.pluralpolicy.com/"
+      "repository_url": "https://open.pluralpolicy.com/",
+      "sessions": [
+        "2025-2026"
+      ]
     },
     {
       "code": "NC",
       "name": "North Carolina",
-      "repository_url": "https://open.pluralpolicy.com/"
+      "repository_url": "https://open.pluralpolicy.com/",
+      "sessions": [
+        "2025"
+      ]
     },
     {
       "code": "ND",
       "name": "North Dakota",
-      "repository_url": "https://open.pluralpolicy.com/"
+      "repository_url": "https://open.pluralpolicy.com/",
+      "sessions": [
+        "70"
+      ]
     },
     {
       "code": "OH",
       "name": "Ohio",
-      "repository_url": "https://open.pluralpolicy.com/"
+      "repository_url": "https://open.pluralpolicy.com/",
+      "sessions": [
+        "136"
+      ]
     },
     {
       "code": "OK",
       "name": "Oklahoma",
-      "repository_url": "https://open.pluralpolicy.com/"
+      "repository_url": "https://open.pluralpolicy.com/",
+      "sessions": [
+        "2026"
+      ]
     },
     {
       "code": "OR",
       "name": "Oregon",
-      "repository_url": "https://open.pluralpolicy.com/"
+      "repository_url": "https://open.pluralpolicy.com/",
+      "sessions": [
+        "2026R1"
+      ]
     },
     {
       "code": "PA",
       "name": "Pennsylvania",
-      "repository_url": "https://open.pluralpolicy.com/"
+      "repository_url": "https://open.pluralpolicy.com/",
+      "sessions": [
+        "2025-2026"
+      ]
     },
     {
       "code": "RI",
       "name": "Rhode Island",
-      "repository_url": "https://open.pluralpolicy.com/"
+      "repository_url": "https://open.pluralpolicy.com/",
+      "sessions": [
+        "2026"
+      ]
     },
     {
       "code": "SC",
       "name": "South Carolina",
-      "repository_url": "https://open.pluralpolicy.com/"
+      "repository_url": "https://open.pluralpolicy.com/",
+      "sessions": [
+        "2025-2026"
+      ]
     },
     {
       "code": "SD",
       "name": "South Dakota",
-      "repository_url": "https://open.pluralpolicy.com/"
+      "repository_url": "https://open.pluralpolicy.com/",
+      "sessions": [
+        "2026"
+      ]
     },
     {
       "code": "TN",
       "name": "Tennessee",
-      "repository_url": "https://open.pluralpolicy.com/"
+      "repository_url": "https://open.pluralpolicy.com/",
+      "sessions": [
+        "106"
+      ]
     },
     {
       "code": "TX",
       "name": "Texas",
-      "repository_url": "https://open.pluralpolicy.com/"
+      "repository_url": "https://open.pluralpolicy.com/",
+      "sessions": [
+        "892"
+      ]
     },
     {
       "code": "UT",
       "name": "Utah",
-      "repository_url": "https://open.pluralpolicy.com/"
+      "repository_url": "https://open.pluralpolicy.com/",
+      "sessions": [
+        "2026"
+      ]
     },
     {
       "code": "VT",
       "name": "Vermont",
-      "repository_url": "https://open.pluralpolicy.com/"
+      "repository_url": "https://open.pluralpolicy.com/",
+      "sessions": [
+        "2025-2026"
+      ]
     },
     {
       "code": "VA",
       "name": "Virginia",
-      "repository_url": "https://open.pluralpolicy.com/"
+      "repository_url": "https://open.pluralpolicy.com/",
+      "sessions": [
+        "2026",
+        "2026S1"
+      ]
     },
     {
       "code": "WA",
       "name": "Washington",
-      "repository_url": "https://open.pluralpolicy.com/"
+      "repository_url": "https://open.pluralpolicy.com/",
+      "sessions": []
     },
     {
       "code": "WV",
       "name": "West Virginia",
-      "repository_url": "https://open.pluralpolicy.com/"
+      "repository_url": "https://open.pluralpolicy.com/",
+      "sessions": []
     },
     {
       "code": "WI",
       "name": "Wisconsin",
-      "repository_url": "https://open.pluralpolicy.com/"
+      "repository_url": "https://open.pluralpolicy.com/",
+      "sessions": []
     },
     {
       "code": "WY",
       "name": "Wyoming",
-      "repository_url": "https://open.pluralpolicy.com/"
+      "repository_url": "https://open.pluralpolicy.com/",
+      "sessions": []
     },
     {
       "code": "DC",
       "name": "District of Columbia",
-      "repository_url": "https://open.pluralpolicy.com/"
-    }
-  ],
-  "state_bills": [
-    {
-      "id": "ca-sb1246-2025",
-      "jurisdiction": "CA",
-      "number": "SB 1246",
-      "title": "Autonomous vehicles",
-      "summary": "Would require AV manufacturers to maintain remote assistance capacity and broaden emergency responder coordination.",
-      "takeaway": "Would require AV manufacturers to maintain remote assistance capacity and broaden emergency responder coordination.",
-      "status": "to_governor",
-      "measure_type": "bill",
-      "last_action_date": "2026-08-21",
-      "last_action": "Sent to governor.",
-      "session": "2025-2026",
-      "progress_stage": "executive",
-      "stage_dates": {
-        "executive": "2026-08-21"
-      },
-      "hearings": [],
-      "source_url": "https://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id=202520260SB1246",
-      "repository_url": "",
-      "reviewed_at": "2026-09-23",
-      "summary_reviewed_at": "2026-09-23"
-    },
-    {
-      "id": "dc-b26-0684-2025",
-      "jurisdiction": "DC",
-      "number": "B 26-0684",
-      "title": "AV deployment authorization",
-      "summary": "Would establish a DDOT commercial AV program with permits, safety plans and reporting.",
-      "takeaway": "Would establish a DDOT commercial AV program with permits, safety plans and reporting.",
-      "status": "pending",
-      "measure_type": "bill",
-      "last_action_date": "2026-05-01",
-      "last_action": "Referred to Transportation and the Environment Committee.",
-      "session": "2025-2026",
-      "progress_stage": "committee",
-      "stage_dates": {},
-      "hearings": [],
-      "source_url": "https://lims.dccouncil.gov/Legislation/B26-0684",
-      "repository_url": "",
-      "reviewed_at": "2026-09-23",
-      "summary_reviewed_at": "2026-09-23"
-    },
-    {
-      "id": "il-sb3308-2025",
-      "jurisdiction": "IL",
-      "number": "SB 3308",
-      "title": "Automated Driving Systems Development Act",
-      "summary": "Would establish eligibility, permits and review for AV pilot projects.",
-      "takeaway": "Would establish eligibility, permits and review for AV pilot projects.",
-      "status": "pending",
-      "measure_type": "bill",
-      "last_action_date": "2026-02-03",
-      "last_action": "Assigned to Senate Assignments Committee.",
-      "session": "2025-2026",
-      "progress_stage": "committee",
-      "stage_dates": {},
-      "hearings": [],
-      "source_url": "https://legiscan.com/IL/bill/SB3308/2025",
-      "repository_url": "",
-      "reviewed_at": "2026-09-23",
-      "summary_reviewed_at": "2026-09-23"
-    },
-    {
-      "id": "il-sb3392-2025",
-      "jurisdiction": "IL",
-      "number": "SB 3392",
-      "title": "Autonomous Vehicle Pilot Project Act",
-      "summary": "Would require a pilot's operational design domain and limit its geographic scope.",
-      "takeaway": "Would require a pilot's operational design domain and limit its geographic scope.",
-      "status": "pending",
-      "measure_type": "bill",
-      "last_action_date": "2026-02-04",
-      "last_action": "Assigned to Senate Assignments Committee.",
-      "session": "2025-2026",
-      "progress_stage": "committee",
-      "stage_dates": {},
-      "hearings": [],
-      "source_url": "https://legiscan.com/IL/bill/SB3392/2025",
-      "repository_url": "",
-      "reviewed_at": "2026-09-23",
-      "summary_reviewed_at": "2026-09-23"
-    },
-    {
-      "id": "il-hb4663-2025",
-      "jurisdiction": "IL",
-      "number": "HB 4663",
-      "title": "Autonomous Vehicle Pilot Project Act",
-      "summary": "House proposal for AV pilot authorization and operational design domain limits.",
-      "takeaway": "House proposal for AV pilot authorization and operational design domain limits.",
-      "status": "pending",
-      "measure_type": "bill",
-      "last_action_date": "2026-01-28",
-      "last_action": "Assigned to House Rules Committee.",
-      "session": "2025-2026",
-      "progress_stage": "committee",
-      "stage_dates": {},
-      "hearings": [],
-      "source_url": "https://legiscan.com/IL/bill/HB4663/2025",
-      "repository_url": "",
-      "reviewed_at": "2026-09-23",
-      "summary_reviewed_at": "2026-09-23"
-    },
-    {
-      "id": "il-hb4789-2025",
-      "jurisdiction": "IL",
-      "number": "HB 4789",
-      "title": "Automated Driving Systems Development Act",
-      "summary": "House proposal for a state AV pilot application and oversight framework.",
-      "takeaway": "House proposal for a state AV pilot application and oversight framework.",
-      "status": "pending",
-      "measure_type": "bill",
-      "last_action_date": "2026-02-02",
-      "last_action": "Assigned to House Rules Committee.",
-      "session": "2025-2026",
-      "progress_stage": "committee",
-      "stage_dates": {},
-      "hearings": [],
-      "source_url": "https://legiscan.com/IL/bill/HB4789/2025",
-      "repository_url": "",
-      "reviewed_at": "2026-09-23",
-      "summary_reviewed_at": "2026-09-23"
-    },
-    {
-      "id": "il-hb5103-2025",
-      "jurisdiction": "IL",
-      "number": "HB 5103",
-      "title": "Automated Driving Systems Development Act",
-      "summary": "Would establish a state AV pilot program and application process.",
-      "takeaway": "Would establish a state AV pilot program and application process.",
-      "status": "pending",
-      "measure_type": "bill",
-      "last_action_date": "2026-02-05",
-      "last_action": "Assigned to House Rules Committee.",
-      "session": "2025-2026",
-      "progress_stage": "committee",
-      "stage_dates": {},
-      "hearings": [],
-      "source_url": "https://legiscan.com/IL/bill/HB5103/2025",
-      "repository_url": "",
-      "reviewed_at": "2026-09-23",
-      "summary_reviewed_at": "2026-09-23"
-    },
-    {
-      "id": "il-hb5220-2025",
-      "jurisdiction": "IL",
-      "number": "HB 5220",
-      "title": "Autonomous Vehicles Article",
-      "summary": "Would set requirements for AV testing on public roads and authorize state rules.",
-      "takeaway": "Would set requirements for AV testing on public roads and authorize state rules.",
-      "status": "pending",
-      "measure_type": "bill",
-      "last_action_date": "2026-02-05",
-      "last_action": "Assigned to House Rules Committee.",
-      "session": "2025-2026",
-      "progress_stage": "committee",
-      "stage_dates": {},
-      "hearings": [],
-      "source_url": "https://legiscan.com/IL/bill/HB5220/2025",
-      "repository_url": "",
-      "reviewed_at": "2026-09-23",
-      "summary_reviewed_at": "2026-09-23"
-    },
-    {
-      "id": "nj-a768-2026",
-      "jurisdiction": "NJ",
-      "number": "A 768",
-      "title": "AV testing on state roadways",
-      "summary": "Would permit AV testing and use on New Jersey roads under specified conditions.",
-      "takeaway": "Would permit AV testing and use on New Jersey roads under specified conditions.",
-      "status": "pending",
-      "measure_type": "bill",
-      "last_action_date": "2026-01-13",
-      "last_action": "Assembly Science, Innovation and Technology Committee.",
-      "session": "2026-2027",
-      "progress_stage": "committee",
-      "stage_dates": {},
-      "hearings": [],
-      "source_url": "https://www.njleg.state.nj.us/bill-search/2026/A768",
-      "repository_url": "",
-      "reviewed_at": "2026-09-23",
-      "summary_reviewed_at": "2026-09-23"
-    },
-    {
-      "id": "nj-a958-2026",
-      "jurisdiction": "NJ",
-      "number": "A 958",
-      "title": "Law enforcement AV interaction training",
-      "summary": "Would require training for law enforcement interactions with AVs.",
-      "takeaway": "Would require training for law enforcement interactions with AVs.",
-      "status": "pending",
-      "measure_type": "bill",
-      "last_action_date": "2026-01-13",
-      "last_action": "Assembly Public Safety and Preparedness Committee.",
-      "session": "2026-2027",
-      "progress_stage": "committee",
-      "stage_dates": {},
-      "hearings": [],
-      "source_url": "https://www.njleg.state.nj.us/bill-search/2026/A958",
-      "repository_url": "",
-      "reviewed_at": "2026-09-23",
-      "summary_reviewed_at": "2026-09-23"
-    },
-    {
-      "id": "nj-s1677-2026",
-      "jurisdiction": "NJ",
-      "number": "S 1677",
-      "title": "Fully autonomous vehicle pilot",
-      "summary": "Would establish a state pilot program for fully autonomous vehicles.",
-      "takeaway": "Would establish a state pilot program for fully autonomous vehicles.",
-      "status": "pending",
-      "measure_type": "bill",
-      "last_action_date": "2026-05-11",
-      "last_action": "Senate Budget and Appropriations Committee.",
-      "session": "2026-2027",
-      "progress_stage": "committee",
-      "stage_dates": {},
-      "hearings": [],
-      "source_url": "https://www.njleg.state.nj.us/bill-search/2026/S1677",
-      "repository_url": "",
-      "reviewed_at": "2026-09-23",
-      "summary_reviewed_at": "2026-09-23"
-    },
-    {
-      "id": "nj-a3968-2026",
-      "jurisdiction": "NJ",
-      "number": "A 3968",
-      "title": "Fully autonomous vehicle pilot",
-      "summary": "Assembly companion proposal for an AV pilot program.",
-      "takeaway": "Assembly companion proposal for an AV pilot program.",
-      "status": "pending",
-      "measure_type": "bill",
-      "last_action_date": "2026-06-01",
-      "last_action": "Assembly Appropriations Committee.",
-      "session": "2026-2027",
-      "progress_stage": "committee",
-      "stage_dates": {},
-      "hearings": [],
-      "source_url": "https://www.njleg.state.nj.us/bill-search/2026/A3968",
-      "repository_url": "",
-      "reviewed_at": "2026-09-23",
-      "summary_reviewed_at": "2026-09-23"
-    },
-    {
-      "id": "ny-s10413-2025",
-      "jurisdiction": "NY",
-      "number": "S 10413",
-      "title": "Autonomous taxi licensing",
-      "summary": "Would require NYC Taxi and Limousine Commission licensing before AV taxi or ride-hail service in large cities.",
-      "takeaway": "Would require NYC Taxi and Limousine Commission licensing before AV taxi or ride-hail service in large cities.",
-      "status": "pending",
-      "measure_type": "bill",
-      "last_action_date": "2026-05-15",
-      "last_action": "Senate Transportation Committee.",
-      "session": "2025-2026",
-      "progress_stage": "committee",
-      "stage_dates": {},
-      "hearings": [],
-      "source_url": "https://www.nysenate.gov/legislation/bills/2025/S10413",
-      "repository_url": "",
-      "reviewed_at": "2026-09-23",
-      "summary_reviewed_at": "2026-09-23"
-    },
-    {
-      "id": "ny-a11500-2025",
-      "jurisdiction": "NY",
-      "number": "A 11500",
-      "title": "Albany-area driverless pilot",
-      "summary": "Would allow fully autonomous vehicle operation in Albany and Rensselaer counties for a limited term.",
-      "takeaway": "Would allow fully autonomous vehicle operation in Albany and Rensselaer counties for a limited term.",
-      "status": "pending",
-      "measure_type": "bill",
-      "last_action_date": "2026-05-28",
-      "last_action": "Assembly Transportation Committee.",
-      "session": "2025-2026",
-      "progress_stage": "committee",
-      "stage_dates": {},
-      "hearings": [],
-      "source_url": "https://assembly.state.ny.us/leg/?bn=A11500&term=2025",
-      "repository_url": "",
-      "reviewed_at": "2026-09-23",
-      "summary_reviewed_at": "2026-09-23"
-    },
-    {
-      "id": "pa-hr563-2025",
-      "jurisdiction": "PA",
-      "number": "HR 563",
-      "title": "Driverless vehicles study",
-      "summary": "Would direct a study of driverless vehicles' safety and workforce effects.",
-      "takeaway": "Would direct a study of driverless vehicles' safety and workforce effects.",
-      "status": "pending",
-      "measure_type": "resolution",
-      "last_action_date": "2026-06-10",
-      "last_action": "House Communications and Technology Committee.",
-      "session": "2025-2026",
-      "progress_stage": "committee",
-      "stage_dates": {},
-      "hearings": [],
-      "source_url": "https://www.legis.state.pa.us/cfdocs/billInfo/billInfo.cfm?syear=2025&sind=0&body=H&type=R&bn=563",
-      "repository_url": "",
-      "reviewed_at": "2026-09-23",
-      "summary_reviewed_at": "2026-09-23"
-    },
-    {
-      "id": "va-sb670-2026",
-      "jurisdiction": "VA",
-      "number": "SB 670",
-      "title": "Commercial automated driving systems",
-      "summary": "Would require licenses and conditions for commercial fully autonomous passenger and freight operation.",
-      "takeaway": "Would require licenses and conditions for commercial fully autonomous passenger and freight operation.",
-      "status": "pending_carryover",
-      "measure_type": "bill",
-      "last_action_date": "2026-02-11",
-      "last_action": "Carried over in House Transportation Committee.",
-      "session": "2026",
-      "progress_stage": "committee",
-      "stage_dates": {},
-      "hearings": [],
-      "source_url": "https://lis.virginia.gov/bill-details/20261/SB670",
-      "repository_url": "",
-      "reviewed_at": "2026-09-23",
-      "summary_reviewed_at": "2026-09-23"
+      "repository_url": "https://open.pluralpolicy.com/",
+      "sessions": [
+        "26"
+      ]
     }
   ]
 }
