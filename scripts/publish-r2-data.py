@@ -123,10 +123,8 @@ def main():
             for entry in files:
                 put(bucket, f"data/{entry['name']}", DATA / entry["name"], entry)
             put(bucket, "policy/policy_tracker.json", DATA / "policy_tracker.json", next(x for x in files if x["name"] == "policy_tracker.json"))
-            # A daily refresh owns this legacy key. Seed only if there is no live index yet.
-            if head(bucket, "policy/legislation_tracker.json") is None:
-                entry = next(x for x in files if x["name"] == "legislation_tracker.json")
-                put(bucket, "policy/legislation_tracker.json", DATA / entry["name"], entry)
+            entry = next(x for x in files if x["name"] == "legislation_tracker.json")
+            put(bucket, "policy/legislation_tracker.json", DATA / entry["name"], entry)
             put(bucket, "backups/site/latest.json", manifest_path, manifest_entry(manifest_path))
         else:
             put(bucket, "policy/legislation_tracker.json", args.file, files[0])
