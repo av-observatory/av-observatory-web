@@ -217,6 +217,51 @@ for code in STATE_CODES:
                 break
             page += 1
 
+def observatory_summary(title: str, abstract: str) -> str:
+    """Condense the whole source abstract into the bill's operative effect.
+
+    State abstracts often begin with long "Existing law..." background. The
+    Observatory summary should lead with what the measure would change.
+    """
+    text = re.sub(r"\s+", " ", (abstract or "").strip())
+    if not text:
+        return title.strip()
+    # Remove publisher/version notes that are not legislative substance.
+    text = re.sub(r"\(Note:.*?\)", " ", text, flags=re.I)
+    text = re.sub(r"\s+", " ", text).strip()
+    sentences = [s.strip() for s in re.split(r"(?<=[.!?])\s+(?=[A-Z(])", text) if s.strip()]
+    background = re.compile(r"^(?:\(?\d+\)?\s*)?(?:Existing|Current) law\b", re.I)
+    operative = re.compile(
+        r"^(?:\(?\d+\)?\s*)?(?:This (?:bill|act|measure)|The (?:bill|act|measure)|"
+        r"Would\b|Requires?\b|Prohibits?\b|Authorizes?\b|Permits?\b|Directs?\b|"
+        r"Establishes?\b|Creates?\b|Expands?\b|Limits?\b|Exempts?\b|Repeals?\b|"
+        r"Modifies?\b|Revises?\b|Provides?\b)",
+        re.I,
+    )
+    selected = [s for s in sentences if operative.search(s) and not background.search(s)]
+    if not selected:
+        selected = [s for s in sentences if not background.search(s)]
+    if not selected:
+        selected = sentences
+
+    out = []
+    total = 0
+    for sentence in selected:
+        sentence = re.sub(r"^\(?\d+\)?\s*", "", sentence).strip()
+        if not sentence:
+            continue
+        # Prefer up to two substantive sentences, but stop before becoming a
+        # pasted abstract. Preserve complete sentences rather than slicing.
+        if out and total + len(sentence) > 620:
+            break
+        out.append(sentence)
+        total += len(sentence) + 1
+        if len(out) >= 2:
+            break
+    summary = " ".join(out).strip()
+    return summary or title.strip()
+
+
 bills = []
 for item in seen.values():
     code = state_code_from_jurisdiction(item.get("jurisdiction"))
@@ -231,14 +276,13 @@ for item in seen.values():
     source_url, openstates_url = source_urls(item)
     session = str(item.get("session") or "")
     abstracts = item.get("abstracts") or []
-    summary = ""
+    source_summary = ""
     for abstract in abstracts:
         value = abstract.get("abstract") if isinstance(abstract, dict) else str(abstract)
         if value:
-            summary = str(value).strip()
+            source_summary = str(value).strip()
             break
-    if not summary:
-        summary = title
+    summary = observatory_summary(title, source_summary)
     stage_dates = {}
     for action in ordered_actions:
         adate = str(action.get("date") or "")[:10]
@@ -257,8 +301,10 @@ for item in seen.values():
         "jurisdiction": code,
         "number": identifier,
         "title": title,
-        "summary": summary[:700],
-        "takeaway": summary.split(". ")[0].rstrip(".")[:350],
+        "summary": summary,
+        "takeaway": summary,
+        "source_summary": source_summary,
+        "summary_method": "Observatory whole-abstract condensation; operative provisions prioritized over existing-law background",
         "status": status,
         "measure_type": "resolution" if any("resolution" in str(x).lower() for x in (item.get("classification") or [])) else "bill",
         "last_action_date": action_date,
@@ -287,7 +333,7 @@ out = {
     "schema_version": "1.1.0",
     "as_of": date.today().isoformat(),
     "state_index_reviewed": date.today().isoformat(),
-    "methodology": "Current-session AV legislation is independently discovered across all 50 states and D.C. with Open States API v3. One full-text AV query is run for each active legislative session, results are deduplicated, and normalized Open States actions are used to derive progress status. Official legislature source URLs supplied by Open States are retained where available; Open States bill URLs are stored separately for source inspection.",
+    "methodology": "Current-session AV legislation is independently discovered across all 50 states and D.C. with Open States API v3. One full-text AV query is run for each active legislative session, results are deduplicated, and normalized Open States actions are used to derive progress status. The Observatory condenses the full available source abstract to lead with operative provisions rather than existing-law boilerplate; the uncondensed source abstract is retained in source_summary. Official legislature source URLs supplied by Open States are retained where available; Open States bill URLs are stored separately for source inspection.",
     "source": "Open States API v3 national AV bill discovery",
     "federal": base.get("federal", []),
     "state_bills": sorted(bills, key=lambda x: (x["jurisdiction"], x["number"], x["session"])),
