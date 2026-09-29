@@ -285,6 +285,7 @@ export function SfComplaintHeatMap({ records, basePath = "" }: { records: Compla
           style:(feature:any)=>{
             const p=feature?.properties||{};
             const vmt=Number(p.matched_vmt||0);
+            const complaints=Number(p.complaints||0);
             const rate=p.rate_per_100m;
             if(complaints<MIN_COMPLAINTS || rate===null || !Number.isFinite(rate)){
               return {color:"#9aa7b5",weight:0.8,fillColor:"transparent",fillOpacity:0};
