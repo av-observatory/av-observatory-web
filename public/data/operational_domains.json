@@ -1,12 +1,12 @@
 {
   "dataset": "AV operational markets and ODD geometry registry",
-  "verified_through": "2026-09-22",
+  "verified_through": "2026-09-29",
   "methodology": "Current market records are independently verified from operator/platform sources. Activity type (testing vs deployment) is stored separately from evidence status (current vs announced). Announcements are not counted as current ODDs. Current market points do not imply a precise public ODD boundary. Historical AV Map polygons remain dated source evidence; Waymo S2 is a separate observed deployment-footprint layer.",
   "locations": [
     {
       "company": "Aurora",
       "state": "AZ",
-      "market": "El Paso\u2013Phoenix",
+      "market": "El Paso–Phoenix",
       "lat": 32.5,
       "lon": -108.5,
       "phase": "deployment",
@@ -18,12 +18,12 @@
       "source_url": "https://ir.aurora.tech/news-events/press-releases/detail/132/aurora-triples-driverless-network-to-10-routes-and-prepares-to-expand-across-u-s-sun-belt",
       "source_date": "2026-09-22",
       "verification_status": "source_verified_current",
-      "note": "Aurora identifies El Paso\u2013Phoenix as part of its driverless freight network."
+      "note": "Aurora identifies El Paso–Phoenix as part of its driverless freight network."
     },
     {
       "company": "Aurora",
       "state": "AZ",
-      "market": "Fort Worth\u2013Phoenix",
+      "market": "Fort Worth–Phoenix",
       "lat": 33,
       "lon": -109,
       "phase": "deployment",
@@ -40,7 +40,7 @@
     {
       "company": "Aurora",
       "state": "OK",
-      "market": "Dallas\u2013Oklahoma City",
+      "market": "Dallas–Oklahoma City",
       "lat": 34,
       "lon": -97.3,
       "phase": "testing",
@@ -52,12 +52,12 @@
       "source_url": "https://ir.aurora.tech/news-events/press-releases/detail/139/aurora-announces-first-quarter-2026-results",
       "source_date": "2026-09-22",
       "verification_status": "source_verified_current",
-      "note": "Aurora reports supervised autonomous operations on Dallas\u2013Oklahoma City ahead of driverless validation."
+      "note": "Aurora reports supervised autonomous operations on Dallas–Oklahoma City ahead of driverless validation."
     },
     {
       "company": "Aurora",
       "state": "TX",
-      "market": "Dallas\u2013Houston",
+      "market": "Dallas–Houston",
       "lat": 31.1,
       "lon": -96.05,
       "phase": "deployment",
@@ -74,7 +74,7 @@
     {
       "company": "Aurora",
       "state": "TX",
-      "market": "Dallas\u2013Laredo",
+      "market": "Dallas–Laredo",
       "lat": 30.3,
       "lon": -98.5,
       "phase": "deployment",
@@ -91,7 +91,7 @@
     {
       "company": "Aurora",
       "state": "TX",
-      "market": "Fort Worth\u2013El Paso",
+      "market": "Fort Worth–El Paso",
       "lat": 31.3,
       "lon": -101,
       "phase": "deployment",
@@ -103,7 +103,7 @@
       "source_url": "https://ir.aurora.tech/news-events/press-releases/detail/132/aurora-triples-driverless-network-to-10-routes-and-prepares-to-expand-across-u-s-sun-belt",
       "source_date": "2026-09-22",
       "verification_status": "source_verified_current",
-      "note": "Aurora identifies Fort Worth\u2013El Paso as part of its driverless freight network."
+      "note": "Aurora identifies Fort Worth–El Paso as part of its driverless freight network."
     },
     {
       "company": "AutoMo USA LLC",
@@ -261,7 +261,7 @@
     {
       "company": "Gatik",
       "state": "TX",
-      "market": "Dallas\u2013Fort Worth",
+      "market": "Dallas–Fort Worth",
       "lat": 32.7767,
       "lon": -96.797,
       "phase": "deployment",
@@ -273,7 +273,7 @@
       "source_url": "https://archive.gatik.ai/news/press-releases/gatik-becomes-first-us-company-to-operate-fully-driverless-trucks-at-scale-for-commercial-deliveries/",
       "source_date": "2026-09-22",
       "verification_status": "source_verified_current",
-      "note": "Gatik identifies the Dallas\u2013Fort Worth region as a current fully driverless commercial operating market. Exact route polygons are not public."
+      "note": "Gatik identifies the Dallas–Fort Worth region as a current fully driverless commercial operating market. Exact route polygons are not public."
     },
     {
       "company": "Glydways",
@@ -295,7 +295,7 @@
     {
       "company": "Kodiak AI",
       "state": "TX",
-      "market": "Dallas\u2013Houston",
+      "market": "Dallas–Houston",
       "lat": 31.1,
       "lon": -96.05,
       "phase": "deployment",
@@ -307,7 +307,7 @@
       "source_url": "https://kodiak.ai/news/roehl-transport-autonomous-freight",
       "source_date": "2026-09-22",
       "verification_status": "verified_current_market",
-      "note": "Kodiak reports autonomous commercial freight hauling on Dallas\u2013Houston. Driverless/supervised status is not inferred from this source."
+      "note": "Kodiak reports autonomous commercial freight hauling on Dallas–Houston. Driverless/supervised status is not inferred from this source."
     },
     {
       "company": "Kodiak AI",
@@ -822,7 +822,7 @@
     {
       "company": "Waabi",
       "state": "TX",
-      "market": "Dallas\u2013Houston",
+      "market": "Dallas–Houston",
       "lat": 31.1,
       "lon": -96.05,
       "phase": "deployment",
@@ -834,7 +834,7 @@
       "source_url": "https://waabi.ai/insights/80percent-growth-on-long-hauls-toughest-corridor",
       "source_date": "2026-09-22",
       "verification_status": "verified_current_market",
-      "note": "Waabi reports commercial autonomous freight operations on Dallas\u2013Houston. Driverless/supervised status is not inferred from this source."
+      "note": "Waabi reports commercial autonomous freight operations on Dallas–Houston. Driverless/supervised status is not inferred from this source."
     },
     {
       "company": "Waymo",
@@ -1702,6 +1702,108 @@
       "source_date": "2026-09-22",
       "verification_status": "verified_current_market",
       "note": "Zoox identifies this market in its current testing/operating footprint; precise public testing ODD boundary may be narrower."
+    },
+    {
+      "company": "Wayve",
+      "state": "CA",
+      "market": "San Francisco Bay Area",
+      "lat": 37.7749,
+      "lon": -122.4194,
+      "phase": "testing",
+      "activity_type": "testing",
+      "evidence_status": "current",
+      "status": "supervised_public_road_testing",
+      "mode": "passenger",
+      "geometry_basis": "city_point_only",
+      "source_url": "https://wayve.ai/north-america-global-roadtrip/",
+      "source_date": "2026-09-29",
+      "verification_status": "source_verified_current",
+      "note": "Wayve describes a U.S. launch with a San Francisco testing program and on-road testing of its AI Driver software. Point represents the documented market, not a precise testing boundary."
+    },
+    {
+      "company": "Vueron",
+      "state": "CA",
+      "market": "California public roads",
+      "lat": null,
+      "lon": null,
+      "phase": "testing",
+      "activity_type": "testing",
+      "evidence_status": "current",
+      "status": "supervised_public_road_testing",
+      "mode": "passenger",
+      "geometry_basis": "statewide_permit_and_company_activity",
+      "source_url": "https://www.vueron.com/vueron-copilot",
+      "source_date": "2026-09-29",
+      "verification_status": "source_verified_current",
+      "note": "Vueron states that it is actively testing its autonomous-driving technology on public roads in the United States. California DMV lists Vueron Technology USA as a current testing-with-driver permit holder; no narrower current California test geography is asserted here."
+    },
+    {
+      "company": "Stack AV",
+      "state": "AZ",
+      "market": "Phoenix",
+      "lat": 33.4484,
+      "lon": -112.074,
+      "phase": "testing",
+      "activity_type": "testing",
+      "evidence_status": "current",
+      "status": "supervised_autonomous_truck_testing",
+      "mode": "freight",
+      "geometry_basis": "city_point_only",
+      "source_url": "https://stackav.com/join",
+      "source_date": "2026-09-29",
+      "verification_status": "source_verified_current",
+      "note": "Stack's current fleet-operations postings describe daily autonomous-truck testing and commercial pilot operations in Phoenix."
+    },
+    {
+      "company": "Stack AV",
+      "state": "OK",
+      "market": "Oklahoma City",
+      "lat": 35.4676,
+      "lon": -97.5164,
+      "phase": "testing",
+      "activity_type": "testing",
+      "evidence_status": "current",
+      "status": "supervised_autonomous_truck_testing",
+      "mode": "freight",
+      "geometry_basis": "city_point_only",
+      "source_url": "https://stackav.com/join",
+      "source_date": "2026-09-29",
+      "verification_status": "source_verified_current",
+      "note": "Stack's current fleet-operations postings describe daily autonomous-truck testing and commercial pilot operations in Oklahoma City."
+    },
+    {
+      "company": "Stack AV",
+      "state": "GA",
+      "market": "Atlanta",
+      "lat": 33.749,
+      "lon": -84.388,
+      "phase": "testing",
+      "activity_type": "testing",
+      "evidence_status": "current",
+      "status": "supervised_autonomous_truck_testing",
+      "mode": "freight",
+      "geometry_basis": "city_point_only",
+      "source_url": "https://stackav.com/join",
+      "source_date": "2026-09-29",
+      "verification_status": "source_verified_current",
+      "note": "Stack's current fleet-operations postings describe daily autonomous-truck testing and commercial pilot operations in Atlanta."
+    },
+    {
+      "company": "Stack AV",
+      "state": "PA",
+      "market": "New Stanton",
+      "lat": 40.2198,
+      "lon": -79.6098,
+      "phase": "testing",
+      "activity_type": "testing",
+      "evidence_status": "current",
+      "status": "commercial_pilot_operations",
+      "mode": "freight",
+      "geometry_basis": "city_point_only",
+      "source_url": "https://stackav.com/join",
+      "source_date": "2026-09-29",
+      "verification_status": "source_verified_current",
+      "note": "Stack's current operations postings describe daily testing and commercial pilot operations in New Stanton, Pennsylvania."
     }
   ]
 }
