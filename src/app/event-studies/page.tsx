@@ -208,7 +208,7 @@ function MonthlyBars({event}:{event:EventDef}){
   const maxVmt=Math.max(...rows.map(r=>Number(r.total_vmt_all_periods||0)),1);
   const tripChange=prior&&prior.total_trips?((Number(eventRow.total_trips)-Number(prior.total_trips))/Number(prior.total_trips))*100:null;
   const vmtChange=prior&&prior.total_vmt_all_periods?((Number(eventRow.total_vmt_all_periods)-Number(prior.total_vmt_all_periods))/Number(prior.total_vmt_all_periods))*100:null;
-  return <div className="mt-5 rounded-lg border border-[#dbe4ed] p-4">
+  return <div className="mt-5 rounded-lg border border-[#e6c98e] bg-[#fffaf0] p-4">
     <div className="flex flex-wrap items-end justify-between gap-2">
       <div>
         <h3 className="font-semibold">Monthly Trips and VMT</h3>
@@ -277,7 +277,7 @@ function TrafficConditions({event}:{event:EventDef}){
   return <div className="mt-5 rounded-lg border border-[#dbe4ed] p-4">
     <div className="flex flex-wrap items-start justify-between gap-3">
       <div>
-        <h3 className="font-semibold">Traffic conditions</h3>
+        <div className="text-[11px] font-bold uppercase tracking-wide text-[#8a6422]">External context</div><h3 className="font-semibold text-[#5e4518] mt-1">Traffic conditions</h3>
         <p className="text-sm text-neutral-600 mt-1">{t.geography}</p>
       </div>
       <a href={t.sourceUrl} className="text-xs text-[#184f95] underline">{t.sourceLabel} ↗</a>
@@ -307,17 +307,18 @@ function EventStudy({event}:{event:EventDef}){
       <div className="rounded-md bg-[#eef4fb] px-3 py-2 text-sm font-medium text-[#184f95]">{fmtDate(event.date)}</div>
     </div>
 
-    <div className="mt-5">
-      <h3 className="text-sm font-semibold uppercase tracking-wide text-neutral-500">Event context from other reporting</h3>
+    <div className="mt-5 rounded-xl border border-[#e6c98e] bg-[#fff8e8] p-4">
+      <div className="flex items-center gap-2"><span className="rounded-full bg-[#f3dfb7] px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-[#7a5718]">External context</span><span className="text-xs text-[#7a6848]">Agency, company, traffic, and contemporaneous reporting</span></div>
+      <h3 className="text-lg font-semibold text-[#5e4518] mt-3">What happened around the event</h3>
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-2">
-        {event.evidence.map(item=><div key={item.label} className="rounded-lg border border-[#dbe4ed] bg-[#fafbfc] p-3">
+        {event.evidence.map(item=><div key={item.label} className="rounded-lg border border-[#e7d3a9] bg-white/70 p-3">
           <div className="text-2xl font-semibold tabular-nums text-[#123b69]">{item.value}</div>
           <div className="text-sm font-medium mt-1">{item.label}</div>
           {item.detail&&<div className="text-xs leading-relaxed text-neutral-500 mt-1">{item.detail}</div>}
           <a href={item.source} className="inline-block mt-2 text-xs text-[#184f95] underline">{item.sourceLabel} ↗</a>
         </div>)}
       </div>
-      <p className="text-xs leading-relaxed text-neutral-500 mt-2">These figures come from company disclosures, city records, agency filings, or contemporaneous reporting and provide scale and operational context. They are not derived from SF311 and should not be treated as directly comparable measures.</p>
+      <p className="text-xs leading-relaxed text-[#6f6248] mt-3"><strong>External context only.</strong> These figures come from company disclosures, city records, agency filings, traffic analysis, or contemporaneous reporting. They are not SF311 complaint records and are not used as the complaint numerator.</p>
     </div>
 
     <div className={`${["july-4","pge-outage"].includes(event.slug)?"hidden ":""}grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-5`}>
@@ -343,9 +344,9 @@ function EventStudy({event}:{event:EventDef}){
       </div>
     </div>
 
-    {["july-4","pge-outage"].includes(event.slug) && <div className="mt-5 rounded-lg border border-[#d8a25d] bg-[#fff8ed] p-4"><div className="font-semibold">Complaint-rate analysis withheld</div><p className="text-sm leading-relaxed text-neutral-700 mt-1">The dedicated SF311 AV service category records only a subset of complaints about AV activity. The Observatory is rebuilding both event extracts across relevant SF311 categories and request-detail fields before publishing rate comparisons, expected counts, or p-values.</p></div>}
+    {["july-4","pge-outage"].includes(event.slug) && <div className="mt-5 rounded-xl border border-[#bfd5ea] bg-[#eef6fd] p-4"><div className="flex items-center gap-2"><span className="rounded-full bg-[#d7e9f8] px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-[#245b86]">SF311 data</span><span className="text-xs text-[#55758f]">Administrative complaint records</span></div><div className="font-semibold text-[#173f61] mt-3">Complaint-rate analysis withheld</div><p className="text-sm leading-relaxed text-[#35556e] mt-1">The dedicated SF311 AV service category records only a subset of complaints about AV activity. The Observatory is rebuilding both event extracts across relevant SF311 categories and request-detail fields before publishing rate comparisons, expected counts, or p-values.</p></div>}
 
-    <div className="mt-4 rounded-lg bg-[#fff8ed] border border-[#ead9b8] p-3">
+    <div className="mt-3 rounded-lg bg-[#f5f9fd] border border-[#cddfea] p-3">
       <div className="text-sm font-semibold">{event.analysisWindow}</div>
       <div className="text-xs leading-relaxed text-neutral-600 mt-1">{event.analysisNote}</div>
     </div>
@@ -381,7 +382,9 @@ export default function EventStudiesPage(){
       How does AV-related public reporting change when the operating environment changes suddenly? These studies use the Observatory&apos;s existing datasets to compare short event windows with the immediately preceding baseline.
     </p>
 
-    <div className="grid sm:grid-cols-2 gap-3 mt-6">
+    <div className="flex flex-wrap gap-2 mt-5 text-xs"><span className="rounded-full border border-[#bfd5ea] bg-[#eef6fd] px-3 py-1.5 font-semibold text-[#245b86]">Blue = SF311 data</span><span className="rounded-full border border-[#e6c98e] bg-[#fff8e8] px-3 py-1.5 font-semibold text-[#7a5718]">Amber = external context</span></div>
+
+    <div className="grid sm:grid-cols-2 gap-3 mt-4">
       {EVENTS.map(e=><a key={e.slug} href={`#${e.slug}`} className="viz-card p-4 block hover:border-[#2c76bf]">
         <p className="text-xs uppercase tracking-wide text-neutral-500">{e.kicker}</p>
         <strong className="block text-lg mt-1">{e.title}</strong>
