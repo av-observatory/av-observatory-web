@@ -74,9 +74,9 @@ const EVENTS:EventDef[] = [
     date:"2026-07-04",
     kicker:"Major-event disruption",
     description:"Heavy event traffic, road closures, pedestrians, and stalled vehicles created severe congestion around the Presidio and northern waterfront.",
-    context:"This view tests whether the highly visible disruption produced a corresponding change in SF311 AV complaints.",
+    context:"This view documents the July 4 disruption. The complaint-rate analysis is temporarily withheld because the dedicated SF311 AV category is not a complete measure of all Waymo/AV-related 311 reporting.",
     analysisWindow:"Target window: Jul. 4, 2026, 6 p.m.–Jul. 5, 2 a.m.",
-    analysisNote:"The disruption was concentrated in the evening and overnight. The current published Observatory extract retains only the request date, so the statistical panel temporarily uses Jul. 4 as a coarse proxy. The collection pipeline is being updated to preserve SF311 request timestamps for the intended 8-hour analysis.",
+    analysisNote:"The Observatory extract does preserve request timestamps. Within the dedicated SF311 service category \"Autonomous Vehicle Complaints,\" there are 2 requests in the 6 p.m.–2 a.m. target window (3 on Jul. 4 as a calendar day). That category is too narrow to represent all complaints about Waymo or AV activity because relevant requests can be filed under other SF311 service categories. The inferential complaint panel is therefore withheld while the extraction is broadened across relevant SF311 fields and categories.",
     traffic:{
       sourceLabel:"Uber analysis reported by San Francisco Chronicle",
       sourceUrl:"https://www.sfchronicle.com/sf/article/july-4-traffic-fireworks-waymo-uber-22343683.php",
@@ -320,7 +320,7 @@ function EventStudy({event}:{event:EventDef}){
       <p className="text-xs leading-relaxed text-neutral-500 mt-2">These figures come from company disclosures, city records, agency filings, or contemporaneous reporting and provide scale and operational context. They are not derived from SF311 and should not be treated as directly comparable measures.</p>
     </div>
 
-    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-5">
+    <div className={`${event.slug==="july-4"?"hidden ":""}grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-5`}>
       <div className="rounded-lg border border-[#dbe4ed] p-3">
         <div className="text-xs text-neutral-500">Observed AV complaints</div>
         <div className="text-2xl font-semibold mt-1 tabular-nums">{s.eventCount}</div>
@@ -343,14 +343,16 @@ function EventStudy({event}:{event:EventDef}){
       </div>
     </div>
 
+    {event.slug==="july-4" && <div className="mt-5 rounded-lg border border-[#d8a25d] bg-[#fff8ed] p-4"><div className="font-semibold">Complaint-rate analysis withheld</div><p className="text-sm leading-relaxed text-neutral-700 mt-1">The dedicated SF311 AV service category records only a subset of complaints about AV activity and therefore understates July 4 reporting. The Observatory is rebuilding this event extract across relevant SF311 categories and request-detail fields before publishing a rate comparison or p-value.</p></div>}
+
     <div className="mt-4 rounded-lg bg-[#fff8ed] border border-[#ead9b8] p-3">
       <div className="text-sm font-semibold">{event.analysisWindow}</div>
       <div className="text-xs leading-relaxed text-neutral-600 mt-1">{event.analysisNote}</div>
     </div>
-    <MiniSeries event={event}/>
+    {event.slug!=="july-4" && <MiniSeries event={event}/>}
     <TrafficConditions event={event}/>
 
-    <div className="mt-5 rounded-lg border border-[#cddbea] bg-[#f6f9fc] p-4">
+    <div className={`${event.slug==="july-4"?"hidden ":""}mt-5 rounded-lg border border-[#cddbea] bg-[#f6f9fc] p-4`}>
       <div className="flex flex-wrap items-baseline justify-between gap-2">
         <h3 className="font-semibold">Statistical evidence</h3>
         <span className="text-xs text-neutral-500">Same definitions and 28-day baseline for both studies</span>
@@ -365,7 +367,7 @@ function EventStudy({event}:{event:EventDef}){
     </div>
     <MonthlyBars event={event}/>
 
-    <div className="mt-5 rounded-lg bg-[#f7f9fb] p-4 text-sm leading-relaxed text-neutral-700">
+    <div className={`${event.slug==="july-4"?"hidden ":""}mt-5 rounded-lg bg-[#f7f9fb] p-4 text-sm leading-relaxed text-neutral-700`}>
       In the primary day-level event window, SF311 recorded <strong>{s.eventCount} AV requests</strong>, compared with <strong>{s.expectedEvent.toFixed(1)}</strong> expected from the preceding 28-day daily average. That is {signal} baseline{pct!==null?<> ({pct>=0?"+":""}{pct.toFixed(0)}%)</>:null}. {event.slug==="july-4"?"This daily result is a temporary proxy for the narrower evening treatment window. ":""}This is a descriptive event comparison, not a causal estimate.
     </div>
   </article>;
@@ -394,7 +396,7 @@ export default function EventStudiesPage(){
     <section className="viz-card p-5 mt-6">
       <h2 className="text-xl font-semibold">How to read these studies</h2>
       <p className="text-sm leading-relaxed text-neutral-600 mt-2 max-w-4xl">
-        The benchmark is the mean number of SF311 Autonomous Vehicle Complaint requests per day during the 28 days immediately before each event. Treatment windows are defined from the actual event mechanism rather than imposed uniformly: Dec. 20 is treated as a one-day infrastructure shock, while July 4 is defined as an evening/overnight disruption (target window 6 p.m.–2 a.m.). Until request timestamps are carried through the Observatory pipeline, the July 4 statistical panel uses the calendar day as a clearly labeled proxy.
+        The benchmark is the mean number of SF311 Autonomous Vehicle Complaint requests per day during the 28 days immediately before each event. Treatment windows are defined from the actual event mechanism rather than imposed uniformly: Dec. 20 is treated as a one-day infrastructure shock, while July 4 is defined as an evening/overnight disruption (target window 6 p.m.–2 a.m.). The July 4 complaint-rate panel is withheld while the Observatory broadens the SF311 extraction beyond the dedicated AV service category; timestamps are already preserved in the source extract.
       </p>
       <p className="text-sm leading-relaxed text-neutral-600 mt-2 max-w-4xl">
         SF311 requests are public reports, not verified incidents, and the dataset does not identify the AV operator. A spike can indicate increased public reporting during a disruption, but it cannot by itself establish the cause, operator, severity, or prevalence of the underlying behavior. Monthly CPUC trip and VMT totals are California-wide and much coarser than the event window, so they provide operational context rather than a causal estimate of an event&apos;s impact. Conversely, the absence of a spike does not mean an event had no operational impact.
