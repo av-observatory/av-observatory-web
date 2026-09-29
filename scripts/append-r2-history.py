@@ -18,7 +18,7 @@ ENDPOINT=os.environ.get("R2_ENDPOINT_URL") or f"https://{os.environ['R2_ACCOUNT_
 SPECS={
   "policy":{
     "file":"policy_tracker.json",
-    "collections":["federal","federal_oversight","state_events","city_events"],
+    "collections":["federal","federal_oversight","states","state_events","city_events"],
     "key":lambda section,r:f"{section}|{r.get('id','')}"
   },
   "legislation":{
@@ -35,6 +35,21 @@ SPECS={
     "file":"odd_history.json",
     "collections":["historical_events","current_updates"],
     "key":lambda section,r:"|".join(str(r.get(k,"")) for k in ("date","event_type","company","state","market","source_url"))
+  },
+  "sf_311":{
+    "file":"av_311_complaints.json",
+    "collections":["records"],
+    "key":lambda section,r:f"{section}|{r.get('id','')}"
+  },
+  "austin_reports":{
+    "file":"austin_av_reports.json",
+    "collections":["records"],
+    "key":lambda section,r:f"{section}|{r.get('id','')}"
+  },
+  "sgo_media_context":{
+    "file":"sgo_media_context.json",
+    "collections":["records","reviewed_sources"],
+    "key":lambda section,r:f"{section}|{r.get('id',r.get('url',r.get('source_url','')))}"
   },
   "permits":{
     "file":"state_permit_registry.json",
@@ -56,8 +71,40 @@ def put_json(s3,key,value):
 def digest(row):
   return hashlib.sha256(json.dumps(row,sort_keys=True,separators=(",",":"),ensure_ascii=False).encode()).hexdigest()
 
+
+
+def append_manufacturer_history(s3, now):
+    path=DATA/"manufacturer_profiles.json"
+    payload=json.loads(path.read_text())
+    dataset="manufacturers"
+    idx_key=f"database/{dataset}/latest_hashes.json"
+    latest=get_json(s3,idx_key,{}) or {}
+    changed=[]; next_idx=dict(latest)
+    for company,profile in payload.get("profiles",{}).items():
+        base={k:v for k,v in profile.items() if k!="developments"}
+        key=f"profile|{company}"; h=digest(base)
+        if latest.get(key)!=h:
+            changed.append({"dataset":dataset,"collection":"profiles","natural_key":key,"observed_at":now,"record_hash":h,"record":{"company":company,**base}})
+            next_idx[key]=h
+        for event in profile.get("developments",[]):
+            key=f"development|{company}|{event.get('date','')}|{event.get('source','')}|{event.get('headline','')}"
+            h=digest(event)
+            if latest.get(key)!=h:
+                changed.append({"dataset":dataset,"collection":"developments","natural_key":key,"observed_at":now,"record_hash":h,"record":{"company":company,**event}})
+                next_idx[key]=h
+    if changed:
+        body="".join(json.dumps(r,sort_keys=True,ensure_ascii=False,separators=(",",":"))+"\\n" for r in changed).encode()
+        bh=hashlib.sha256(body).hexdigest(); stamp=now.replace("-","").replace(":","").replace("+00:00","Z").replace(".","")
+        key=f"database/{dataset}/observations/{stamp[:8]}/{stamp}-{bh[:16]}.jsonl"
+        try:s3.head_object(Bucket=BUCKET,Key=key)
+        except Exception:s3.put_object(Bucket=BUCKET,Key=key,Body=body,ContentType="application/x-ndjson")
+    put_json(s3,idx_key,next_idx)
+    print(f"{dataset}: {len(changed)} new/changed row observations")
+
+
 def main():
   s3=client(); now=datetime.now(timezone.utc).isoformat()
+  append_manufacturer_history(s3,now)
   for dataset,spec in SPECS.items():
     payload=json.loads((DATA/spec["file"]).read_text())
     idx_key=f"database/{dataset}/latest_hashes.json"
