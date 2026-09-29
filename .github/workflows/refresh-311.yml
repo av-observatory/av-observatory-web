@@ -9,7 +9,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: refresh-av-311
+  group: website-data-writers
   cancel-in-progress: false
 
 jobs:
@@ -30,5 +30,7 @@ jobs:
             git config user.name "AV Observatory Data Bot"
             git config user.email "actions@users.noreply.github.com"
             git commit -m "Refresh validated AV 311 requests"
-            git push
+            git fetch origin main
+            git rebase origin/main
+            git push origin HEAD:main
           fi
