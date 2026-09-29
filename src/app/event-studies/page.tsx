@@ -208,7 +208,7 @@ function MonthlyBars({event}:{event:EventDef}){
   const maxVmt=Math.max(...rows.map(r=>Number(r.total_vmt_all_periods||0)),1);
   const tripChange=prior&&prior.total_trips?((Number(eventRow.total_trips)-Number(prior.total_trips))/Number(prior.total_trips))*100:null;
   const vmtChange=prior&&prior.total_vmt_all_periods?((Number(eventRow.total_vmt_all_periods)-Number(prior.total_vmt_all_periods))/Number(prior.total_vmt_all_periods))*100:null;
-  return <div className="mt-5 rounded-lg border border-[#e6c98e] bg-[#fffaf0] p-4">
+  return <div className="mt-5 rounded-xl border border-[#dbe4ed] bg-white p-4">
     <div className="flex flex-wrap items-end justify-between gap-2">
       <div>
         <h3 className="font-semibold">Monthly Trips and VMT</h3>
@@ -283,7 +283,7 @@ function TrafficConditions({event}:{event:EventDef}){
       <a href={t.sourceUrl} className="text-xs text-[#184f95] underline">{t.sourceLabel} ↗</a>
     </div>
     <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-4">
-      {t.metrics.map(m=><div key={m.label} className="rounded-md bg-[#f7f9fb] p-3">
+      {t.metrics.map(m=><div key={m.label} className="rounded-lg bg-[#f7f9fb] p-3">
         <div className="text-2xl font-semibold tabular-nums text-[#123b69]">{m.value}</div>
         <div className="text-sm font-medium mt-1">{m.label}</div>
         {m.detail&&<div className="text-xs text-neutral-500 mt-1">{m.detail}</div>}
@@ -307,18 +307,17 @@ function EventStudy({event}:{event:EventDef}){
       <div className="rounded-md bg-[#eef4fb] px-3 py-2 text-sm font-medium text-[#184f95]">{fmtDate(event.date)}</div>
     </div>
 
-    <div className="mt-5 rounded-xl border border-[#e6c98e] bg-[#fff8e8] p-4">
-      <div className="flex items-center gap-2"><span className="rounded-full bg-[#f3dfb7] px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-[#7a5718]">External context</span><span className="text-xs text-[#7a6848]">Agency, company, traffic, and contemporaneous reporting</span></div>
-      <h3 className="text-lg font-semibold text-[#5e4518] mt-3">What happened around the event</h3>
+    <div className="mt-5 rounded-xl border border-[#dbe4ed] bg-white p-4">
+      <div className="flex flex-wrap items-start justify-between gap-3"><div><div className="text-[11px] font-bold uppercase tracking-wide text-[#8a6422]">External context</div><h3 className="text-xl font-semibold text-[#5e4518] mt-2">Event evidence</h3><p className="text-sm text-neutral-600 mt-2">Agency, company, and contemporaneous reporting</p></div></div>
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-2">
-        {event.evidence.map(item=><div key={item.label} className="rounded-lg border border-[#e7d3a9] bg-white/70 p-3">
+        {event.evidence.map(item=><div key={item.label} className="rounded-lg bg-[#f7f9fb] p-3">
           <div className="text-2xl font-semibold tabular-nums text-[#123b69]">{item.value}</div>
           <div className="text-sm font-medium mt-1">{item.label}</div>
           {item.detail&&<div className="text-xs leading-relaxed text-neutral-500 mt-1">{item.detail}</div>}
           <a href={item.source} className="inline-block mt-2 text-xs text-[#184f95] underline">{item.sourceLabel} ↗</a>
         </div>)}
       </div>
-      <p className="text-xs leading-relaxed text-[#6f6248] mt-3"><strong>External context only.</strong> These figures come from company disclosures, city records, agency filings, traffic analysis, or contemporaneous reporting. They are not SF311 complaint records and are not used as the complaint numerator.</p>
+      <p className="text-xs leading-relaxed text-neutral-500 mt-3">These figures come from company disclosures, city records, agency filings, traffic analysis, or contemporaneous reporting. They are external context, not SF311 complaint records, and are not used as the complaint numerator.</p>
     </div>
 
     <div className={`${["july-4","pge-outage"].includes(event.slug)?"hidden ":""}grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-5`}>
