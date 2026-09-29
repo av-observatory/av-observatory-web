@@ -14,6 +14,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: website-data-writers
+  cancel-in-progress: false
+
 jobs:
   refresh:
     runs-on: ubuntu-latest
@@ -26,9 +30,14 @@ jobs:
       R2_BUCKET: ${{ vars.POLICY_R2_BUCKET }}
     steps:
       - uses: actions/checkout@v4
-      - name: Report refresh configuration
-        if: ${{ env.R2_BUCKET == '' || env.R2_ACCOUNT_ID == '' || env.AWS_ACCESS_KEY_ID == '' || env.AWS_SECRET_ACCESS_KEY == '' || env.OPENSTATES_API_KEY == '' }}
-        run: echo '::warning::Legislation refresh skipped. Configure the OPENSTATES_API_KEY secret.'
+      - name: Check Open States configuration
+        if: ${{ env.OPENSTATES_API_KEY == '' }}
+        run: |
+          echo '::error::OPENSTATES_API_KEY is not configured.'
+          exit 1
+      - name: Report optional R2 configuration
+        if: ${{ env.R2_BUCKET == '' || env.R2_ACCOUNT_ID == '' || env.AWS_ACCESS_KEY_ID == '' || env.AWS_SECRET_ACCESS_KEY == '' }}
+        run: echo '::warning::Direct legislation R2 publish is not configured in this repository; the parent website R2 publisher will publish committed legislation data.'
       - name: Search current sessions and rebuild Open States bill database
         if: ${{ env.OPENSTATES_API_KEY != '' }}
         run: python3 scripts/refresh-legislation.py public/data/legislation_tracker.json
@@ -48,7 +57,9 @@ jobs:
             echo "No legislation changes to commit"
           else
             git commit -m "Refresh Open States state legislation database"
-            git push
+            git fetch origin main
+            git rebase origin/main
+            git push origin HEAD:main
           fi
       - name: Publish and verify versioned bill index
         if: ${{ env.R2_BUCKET != '' && env.R2_ACCOUNT_ID != '' && env.AWS_ACCESS_KEY_ID != '' && env.AWS_SECRET_ACCESS_KEY != '' && env.OPENSTATES_API_KEY != '' }}
