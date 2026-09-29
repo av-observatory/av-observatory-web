@@ -47,7 +47,7 @@ const LEAFLET_HEAT_JS = "https://unpkg.com/leaflet.heat@0.2.0/dist/leaflet-heat.
 
 const MATCH_START = "2025-07-01";
 const MATCH_END = "2026-06-30";
-const MIN_MATCHED_VMT = 5000;
+const MIN_COMPLAINTS = 10;
 const RATE_RAMP = ["#edf4fd","#d5e7fb","#a9cef6","#78afea","#438ad8","#2468b7","#174b8a","#0b2f5f"];
 
 function ensureCss() {
@@ -185,7 +185,7 @@ export function SfComplaintHeatMap({ records, basePath = "" }: { records: Compla
       const key=String(f.properties.s2_cell);
       const vmt=Number(f.properties.waymo_ro_miles||0)-Number(baseline.get(key)||0);
       const complaints=counts.get(key)||0;
-      const rate=vmt>=MIN_MATCHED_VMT ? complaints/vmt*100_000_000 : null;
+      const rate=complaints>=MIN_COMPLAINTS && vmt>0 ? complaints/vmt*100_000_000 : null;
       return {
         ...f,
         properties:{...f.properties,matched_vmt:vmt,complaints,rate_per_100m:rate}
@@ -286,8 +286,8 @@ export function SfComplaintHeatMap({ records, basePath = "" }: { records: Compla
             const p=feature?.properties||{};
             const vmt=Number(p.matched_vmt||0);
             const rate=p.rate_per_100m;
-            if(vmt<MIN_MATCHED_VMT || rate===null || !Number.isFinite(rate)){
-              return {color:"rgba(255,255,255,.9)",weight:0.6,fillColor:"#d9dde1",fillOpacity:0.5};
+            if(complaints<MIN_COMPLAINTS || rate===null || !Number.isFinite(rate)){
+              return {color:"#9aa7b5",weight:0.8,fillColor:"transparent",fillOpacity:0};
             }
             return {color:"rgba(255,255,255,.95)",weight:0.6,fillColor:RATE_RAMP[rampIndex(Number(rate),breaks)],fillOpacity:0.86};
           },
@@ -302,7 +302,7 @@ export function SfComplaintHeatMap({ records, basePath = "" }: { records: Compla
                 <div style="margin-top:5px"><strong>${complaints.toLocaleString()}</strong> matched SF311 AV complaint${complaints===1?"":"s"}</div>
                 <div><strong>${Math.max(0,vmt).toLocaleString(undefined,{maximumFractionDigits:0})}</strong> Waymo RO miles</div>
                 <div><strong>${rate===null||!Number.isFinite(rate)?"Not rated":Number(rate).toLocaleString(undefined,{maximumFractionDigits:1})}</strong> complaints / 100M Waymo miles</div>
-                ${vmt<MIN_MATCHED_VMT?'<div style="margin-top:5px;color:#666">Below 5,000 matched-period Waymo miles; rate suppressed.</div>':""}
+                ${complaints<MIN_COMPLAINTS?'<div style="margin-top:5px;color:#666">Fewer than 10 matched complaints; rate suppressed.</div>':""}
               </div>`
             );
           }
@@ -355,7 +355,7 @@ export function SfComplaintHeatMap({ records, basePath = "" }: { records: Compla
     <p className="text-sm text-neutral-600 mt-3">
       {mode==="density"
         ? "The heat layer shows complaint density from records with published coordinates. Individual dots are clickable and link back to the underlying SF311 record. Records without coordinates remain in citywide totals but are not shown on the map."
-        : "Each S2 cell shows matched-period SF311 AV complaints divided by Waymo rider-only miles in that cell. Cells with fewer than 5,000 matched-period Waymo miles are shown gray to avoid unstable rates. Click a cell for its complaint count, VMT, and rate."}
+        : "Each S2 cell shows matched-period SF311 AV complaints divided by Waymo rider-only miles in that cell. Cells with fewer than 10 matched complaints are shown as outlines only, with no fill, to avoid visually emphasizing unstable rates. Click a cell for its complaint count, VMT, and rate."}
     </p>
   </div>;
 }
