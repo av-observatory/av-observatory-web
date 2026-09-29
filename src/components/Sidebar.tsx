@@ -8,7 +8,6 @@ const GROUPS = [
     ["/policy/federal-legislation", "Federal Legislation"],
     ["/policy/states", "State Regulations"],
     ["/policy/state-legislation", "State Legislation"],
-    ["/policy/cities", "City Policy"],
   ] },
   { title: "Reporting", items: [["/safety", "National Crash Data"], ["/investigations", "NHTSA Investigations"], ["/activity", "CA Trip Data"], ["/complaints", "Citizen Complaints"], ["/event-studies", "Event Studies"]] },
   { title: "Operations", items: [["/manufacturers", "Manufacturers Tracker"], ["/waymo-activity", "Waymo Activity"]] },
