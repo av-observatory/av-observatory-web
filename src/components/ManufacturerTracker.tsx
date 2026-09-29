@@ -6,8 +6,8 @@ import { CityBackdrop } from "@/components/CityBackdrop";
 import type { Location, Geojson } from "@/components/CompanyDeploymentExplorer";
 import type { CompanyProfile } from "@/lib/manufacturers";
 
-const freight = new Set(["Aurora","Gatik","Kodiak AI","PlusAI","Torc","Waabi"]);
-const domains: Record<string,string> = {Waymo:"waymo.com",Zoox:"zoox.com",Tesla:"tesla.com",Motional:"motional.com",Avride:"avride.ai",Beep:"ridebeep.com","May Mobility":"maymobility.com",Aurora:"aurora.tech",Gatik:"gatik.ai","Kodiak AI":"kodiak.ai",Waabi:"waabi.ai",Nuro:"nuro.ai",WeRide:"weride.ai",Mobileye:"mobileye.com",PlusAI:"plus.ai",Torc:"torc.ai"};
+const freight = new Set(["Aurora","Gatik","Kodiak AI","PlusAI","Stack AV","Torc","Waabi"]);
+const domains: Record<string,string> = {Waymo:"waymo.com",Wayve:"wayve.ai",Vueron:"vueron.com",Zoox:"zoox.com",Tesla:"tesla.com",Motional:"motional.com",Avride:"avride.ai",Beep:"ridebeep.com","May Mobility":"maymobility.com",Aurora:"aurora.tech",Gatik:"gatik.ai","Kodiak AI":"kodiak.ai","Stack AV":"stackav.com",Waabi:"waabi.ai",Nuro:"nuro.ai",WeRide:"weride.ai",Mobileye:"mobileye.com",PlusAI:"plus.ai",Torc:"torc.ai"};
 const phase = (row: Location) => row.activity_type ?? row.phase;
 const isCurrent = (row: Location) => (row.evidence_status ?? "current") === "current" && ["testing","deployment"].includes(phase(row)) && !/planned|permit|authorized/i.test(row.status);
 const id = (market: string, state: string) => `${market.replace(/\s*\(I-\d+\)$/, "")}|${state}`;
