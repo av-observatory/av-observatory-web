@@ -170,19 +170,25 @@ def derive_stage(actions, status):
     return "introduced"
 
 def source_urls(item):
+    # The published schema requires HTTPS source URLs. Prefer an official
+    # legislature HTTPS source and fall back to the Open States/Plural page.
     urls = []
     for source in item.get("sources") or []:
         u = source.get("url") if isinstance(source, dict) else source
-        if isinstance(u, str) and u.startswith(("https://", "http://")):
+        if isinstance(u, str) and u.startswith("https://"):
             urls.append(u)
     openstates = item.get("openstates_url")
-    if not isinstance(openstates, str) or not openstates.startswith(("https://", "http://")):
+    if not isinstance(openstates, str) or not openstates.startswith("https://"):
         openstates = ""
     official = next(
         (u for u in urls if "openstates.org" not in u and "pluralpolicy.com" not in u),
         ""
     )
-    return official or openstates, openstates
+    fallback = openstates or next(
+        (u for u in urls if "openstates.org" in u or "pluralpolicy.com" in u),
+        ""
+    )
+    return official or fallback, fallback
 
 sessions_by_state = load_current_sessions()
 seen = {}
