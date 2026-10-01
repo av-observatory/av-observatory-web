@@ -6,7 +6,7 @@ from PIL import Image, ImageDraw
 ROOT = Path(__file__).resolve().parents[1]
 TOPO = ROOT / "public" / "maps" / "us-states-10m.json"
 POLICY = ROOT / "public" / "data" / "policy_tracker.json"
-OUT = ROOT / "public" / "social-preview-v3.png"
+OUT = ROOT / "public" / "social-preview-v4.png"
 
 S = 2
 W, H = 1200 * S, 627 * S

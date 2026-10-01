@@ -18,18 +18,18 @@ const siteDescription =
   "Independent evidence on autonomous vehicles, including federal and state policy, safety reporting, investigations, deployment, and operations.";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://av-observatory.com"),
+  metadataBase: new URL("https://www.av-observatory.com"),
   title: "AV Observatory",
   description: siteDescription,
   openGraph: {
     title: "AV Observatory",
     description: siteDescription,
-    url: "https://av-observatory.com/",
+    url: "https://www.av-observatory.com/",
     siteName: "AV Observatory",
     type: "website",
     images: [
       {
-        url: "https://av-observatory.com/social-preview-v3.png",
+        url: "https://www.av-observatory.com/social-preview-v4.png",
         width: 2400,
         height: 1254,
         alt: "AV Observatory U.S. autonomous vehicle policy map",
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "AV Observatory",
     description: siteDescription,
-    images: ["https://av-observatory.com/social-preview-v3.png"],
+    images: ["https://www.av-observatory.com/social-preview-v4.png"],
   },
 };
 
