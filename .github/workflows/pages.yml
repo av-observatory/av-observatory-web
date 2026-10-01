@@ -55,6 +55,11 @@ jobs:
       - name: Validate CSV companions
         run: python3 scripts/export-data-csv.py --check
 
+      - name: Generate social preview
+        run: |
+          python3 -m pip install --quiet pillow
+          python3 scripts/build-social-preview.py
+
       - name: Build static site
         env:
           NEXT_PUBLIC_CONTACT_FORM_URL: ${{ vars.CONTACT_FORM_URL }}
