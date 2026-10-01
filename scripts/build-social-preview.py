@@ -80,10 +80,10 @@ def project(name, lon, lat):
     if name == "Hawaii":
         x = 900 + (lon + 161) / 7 * 115
         y = 450 + (23 - lat) / 5 * 66
-        return x, y
+        return x * S, y * S
     x = 470 + (lon + 125) / 59 * 680
     y = 92 + (50 - lat) / 26 * 365
-    return x, y
+    return x * S, y * S
 
 def main():
     topo = json.loads(TOPO.read_text())
