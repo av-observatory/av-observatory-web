@@ -322,3 +322,4 @@ ATX-355,355,Austin,TX,2026-09-09,2026-09,Resident Feedback,Nuisance,Waymo,https:
 ATX-354,354,Austin,TX,2026-09-11,2026-09,Resident Feedback,Nuisance,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/354
 ATX-346,346,Austin,TX,2026-09-12,2026-09,APD,Ignore APD Direction,Tesla,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/346
 ATX-347,347,Austin,TX,2026-09-12,2026-09,Resident Feedback,Near Miss,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/347
+ATX-356,356,Austin,TX,2026-09-26,2026-09,APD,Blocking Traffic,Tesla,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/356
