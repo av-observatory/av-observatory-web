@@ -14,9 +14,34 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const siteDescription =
+  "Independent evidence on autonomous vehicles, including federal and state policy, safety reporting, investigations, deployment, and operations.";
+
 export const metadata: Metadata = {
+  metadataBase: new URL("https://av-observatory.com"),
   title: "AV Observatory",
-  description: "Independent evidence on autonomous vehicles and their impacts.",
+  description: siteDescription,
+  openGraph: {
+    title: "AV Observatory",
+    description: siteDescription,
+    url: "https://av-observatory.com/",
+    siteName: "AV Observatory",
+    type: "website",
+    images: [
+      {
+        url: "/social-preview.png",
+        width: 1200,
+        height: 627,
+        alt: "AV Observatory U.S. autonomous vehicle policy map",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AV Observatory",
+    description: siteDescription,
+    images: ["/social-preview.png"],
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
