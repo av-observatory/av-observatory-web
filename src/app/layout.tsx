@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://av-observatory.com/social-preview-v2.png",
+        url: "https://av-observatory.com/social-preview-v3.png",
         width: 2400,
         height: 1254,
         alt: "AV Observatory U.S. autonomous vehicle policy map",
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "AV Observatory",
     description: siteDescription,
-    images: ["https://av-observatory.com/social-preview-v2.png"],
+    images: ["https://av-observatory.com/social-preview-v3.png"],
   },
 };
 
