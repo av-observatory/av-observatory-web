@@ -6,9 +6,10 @@ from PIL import Image, ImageDraw, ImageFont
 ROOT = Path(__file__).resolve().parents[1]
 TOPO = ROOT / "public" / "maps" / "us-states-10m.json"
 POLICY = ROOT / "public" / "data" / "policy_tracker.json"
-OUT = ROOT / "public" / "social-preview.png"
+OUT = ROOT / "public" / "social-preview-v2.png"
 
-W, H = 1200, 627
+S = 2
+W, H = 1200 * S, 627 * S
 BG = "#f7f9fb"
 NAVY = "#0b1d33"
 BLUE = "#2b77bc"
@@ -30,7 +31,7 @@ def font(size, bold=False):
     ]
     for p in candidates:
         if os.path.exists(p):
-            return ImageFont.truetype(p, size=size)
+            return ImageFont.truetype(p, size=size * S)
     return ImageFont.load_default()
 
 def decode_topology(topo):
@@ -75,7 +76,7 @@ def project(name, lon, lat):
             lon -= 360
         x = 676 + (lon + 180) / 50 * 205
         y = 397 + (72 - lat) / 21 * 110
-        return x, y
+        return x * S, y * S
     if name == "Hawaii":
         x = 900 + (lon + 161) / 7 * 115
         y = 450 + (23 - lat) / 5 * 66
@@ -90,25 +91,26 @@ def main():
     state_by_name = {s["name"]: s for s in policy["states"]}
 
     img = Image.new("RGB", (W, H), BG)
+    sc = lambda v: int(round(v * S))
     d = ImageDraw.Draw(img)
 
     # Left text block.
-    d.text((56, 72), "A PUBLIC EVIDENCE PLATFORM", fill=BLUE, font=font(18, True))
-    d.text((56, 122), "AV Observatory", fill=NAVY, font=font(60, True))
+    d.text((sc(56), sc(72)), "A PUBLIC EVIDENCE PLATFORM", fill=BLUE, font=font(18, True))
+    d.text((sc(56), sc(122)), "AV Observatory", fill=NAVY, font=font(60, True))
     d.multiline_text(
-        (56, 210),
+        (sc(56), sc(210)),
         "Autonomous vehicle policy,\nsafety, and operations in one place.",
         fill=MUTED,
         font=font(27),
-        spacing=9,
+        spacing=sc(9),
     )
-    d.text((56, 475), "av-observatory.com", fill=MUTED, font=font(19))
+    d.text((sc(56), sc(475)), "av-observatory.com", fill=MUTED, font=font(19))
 
     # Map card.
-    card = (438, 42, 1155, 585)
-    d.rounded_rectangle(card, radius=22, fill=WHITE, outline=BORDER, width=2)
-    d.text((470, 66), "U.S. AV Policy Map", fill="#173f61", font=font(22, True))
-    d.text((470, 100), "50 states + D.C. · legislation and executive-order history", fill=MUTED, font=font(15))
+    card = tuple(sc(v) for v in (438, 42, 1155, 585))
+    d.rounded_rectangle(card, radius=sc(22), fill=WHITE, outline=BORDER, width=sc(2))
+    d.text((sc(470), sc(66)), "U.S. AV Policy Map", fill="#173f61", font=font(22, True))
+    d.text((sc(470), sc(100)), "50 states + D.C. · legislation and executive-order history", fill=MUTED, font=font(15))
 
     for name, polygons in decode_topology(topo):
         state = state_by_name.get(name)
@@ -127,17 +129,17 @@ def main():
                 # Exterior polygons are what matter visually for the social card.
                 if idx == 0:
                     d.polygon(pts, fill=fill)
-                    d.line(pts + [pts[0]], fill=WHITE, width=2)
+                    d.line(pts + [pts[0]], fill=WHITE, width=sc(2))
 
     # Legend.
-    x, y = 470, 526
+    x, y = sc(470), sc(526)
     for i, (key, (label, color)) in enumerate(CATEGORIES.items()):
         col = i % 2
         row = i // 2
-        xx = x + col * 330
-        yy = y + row * 28
-        d.rounded_rectangle((xx, yy, xx+13, yy+13), radius=2, fill=color)
-        d.text((xx+21, yy-3), label, fill=MUTED, font=font(13))
+        xx = x + col * sc(330)
+        yy = y + row * sc(28)
+        d.rounded_rectangle((xx, yy, xx+sc(13), yy+sc(13)), radius=sc(2), fill=color)
+        d.text((xx+sc(21), yy-sc(3)), label, fill=MUTED, font=font(13))
 
     OUT.parent.mkdir(parents=True, exist_ok=True)
     img.save(OUT, "PNG", optimize=True)
