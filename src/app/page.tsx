@@ -74,5 +74,16 @@ export default function HomePage() {
       <div className="mt-6 text-sm text-neutral-600">Current bills indexed: {bills.federal.length} federal and {bills.state_bills.length} state records · Reviewed {policy.as_of}. <Link href="/downloads" className="text-[#184f95] underline">Download data →</Link></div>
     </section>
 
+    <section className="max-w-6xl px-8 mx-auto pb-12">
+      <div className="rounded-xl bg-[#0b1d33] text-white p-6 sm:p-7 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5">
+        <div>
+          <p className="text-xs font-bold uppercase tracking-[.16em] text-[#8fc2e8]">AV Observatory Brief</p>
+          <h2 className="text-2xl font-semibold mt-2">Get the Observatory in your inbox.</h2>
+          <p className="text-sm text-slate-300 mt-2 max-w-2xl">A concise digest of important policy changes, safety evidence, operating data, and new Observatory releases.</p>
+        </div>
+        <Link href="/newsletter" className="shrink-0 rounded-md bg-[#83c6e3] text-[#082039] px-5 py-3 text-sm font-bold hover:bg-white">Join the newsletter →</Link>
+      </div>
+    </section>
+
   </main>;
 }
