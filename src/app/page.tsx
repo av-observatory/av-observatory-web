@@ -61,7 +61,14 @@ export default function HomePage() {
           <h2 className="text-2xl font-semibold mt-2">Get AV Observatory updates.</h2>
           <p className="text-sm text-slate-300 mt-2 max-w-2xl">Occasional email updates when important policy, safety, operating-data, or Observatory changes are published.</p>
         </div>
-        <a href="mailto:support@av-observatory.com?subject=AV%20Observatory%20updates&body=Please%20add%20this%20email%20address%20to%20AV%20Observatory%20updates." className="shrink-0 rounded-md bg-[#83c6e3] text-[#082039] px-5 py-3 text-sm font-bold hover:bg-white">Get updates →</a>
+        <form action="https://buttondown.com/api/emails/embed-subscribe/av-observatory" method="post" className="w-full sm:w-auto sm:min-w-[360px]">
+          <label htmlFor="bd-email" className="sr-only">Enter your email</label>
+          <div className="flex flex-col sm:flex-row gap-2">
+            <input id="bd-email" name="email" type="email" required placeholder="you@example.com" className="min-w-0 flex-1 rounded-md border border-white/20 bg-white px-3.5 py-3 text-sm text-[#0b1d33] placeholder:text-neutral-400 outline-none focus:ring-2 focus:ring-[#83c6e3]" />
+            <button type="submit" className="shrink-0 rounded-md bg-[#83c6e3] text-[#082039] px-5 py-3 text-sm font-bold hover:bg-white">Get updates →</button>
+          </div>
+          <p className="mt-2 text-[11px] text-slate-400">Occasional updates. Unsubscribe anytime.</p>
+        </form>
       </div>
     </section>
 
