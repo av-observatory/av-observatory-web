@@ -57,11 +57,11 @@ export default function HomePage() {
     <section className="max-w-6xl px-8 mx-auto py-6">
       <div className="rounded-xl bg-[#0b1d33] text-white p-6 sm:p-7 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5">
         <div>
-          <p className="text-xs font-bold uppercase tracking-[.16em] text-[#8fc2e8]">AV Observatory Brief</p>
-          <h2 className="text-2xl font-semibold mt-2">Get the Observatory in your inbox.</h2>
-          <p className="text-sm text-slate-300 mt-2 max-w-2xl">A concise digest of important policy changes, safety evidence, operating data, and new Observatory releases.</p>
+          <p className="text-xs font-bold uppercase tracking-[.16em] text-[#8fc2e8]">AV Observatory Updates</p>
+          <h2 className="text-2xl font-semibold mt-2">Get AV Observatory updates.</h2>
+          <p className="text-sm text-slate-300 mt-2 max-w-2xl">Occasional email updates when important policy, safety, operating-data, or Observatory changes are published.</p>
         </div>
-        <a href="https://avobservatory.substack.com/subscribe" target="_blank" rel="noreferrer" className="shrink-0 rounded-md bg-[#83c6e3] text-[#082039] px-5 py-3 text-sm font-bold hover:bg-white">Join the newsletter →</a>
+        <a href="mailto:support@av-observatory.com?subject=AV%20Observatory%20updates&body=Please%20add%20this%20email%20address%20to%20AV%20Observatory%20updates." className="shrink-0 rounded-md bg-[#83c6e3] text-[#082039] px-5 py-3 text-sm font-bold hover:bg-white">Get updates →</a>
       </div>
     </section>
 
