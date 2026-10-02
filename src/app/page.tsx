@@ -61,7 +61,7 @@ export default function HomePage() {
           <h2 className="text-2xl font-semibold mt-2">Get the Observatory in your inbox.</h2>
           <p className="text-sm text-slate-300 mt-2 max-w-2xl">A concise digest of important policy changes, safety evidence, operating data, and new Observatory releases.</p>
         </div>
-        <a href="https://avobservatorybrief.substack.com/subscribe" target="_blank" rel="noreferrer" className="shrink-0 rounded-md bg-[#83c6e3] text-[#082039] px-5 py-3 text-sm font-bold hover:bg-white">Join the newsletter →</a>
+        <a href="https://avobservatory.substack.com/" target="_blank" rel="noreferrer" className="shrink-0 rounded-md bg-[#83c6e3] text-[#082039] px-5 py-3 text-sm font-bold hover:bg-white">Join the newsletter →</a>
       </div>
     </section>
 
