@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const subscribeHref = "https://avobservatory.substack.com/";
+const subscribeHref = "https://avobservatory.substack.com/subscribe";
 
 export default function NewsletterPage() {
   return <main className="max-w-4xl px-5 sm:px-8 py-9">
