@@ -54,7 +54,7 @@ export default function HomePage() {
   return <main className="bg-[#f7f9fb] min-h-screen">
     <section className="relative overflow-hidden bg-[#0b1d33] text-white min-h-[420px] flex items-center"><div className="absolute inset-y-0 right-0 w-[58%] opacity-75 hidden md:block"><NetworkGraphic /></div><div className="relative max-w-6xl px-8 py-16 w-full"><p className="text-xs font-bold uppercase tracking-[.2em] text-[#89bfec]">A Public Evidence Platform</p><h1 className="mt-5 text-5xl sm:text-6xl font-semibold tracking-tight max-w-3xl leading-[1.08]">The <span className="text-[#9bd5e4]">Autonomous</span><br/><span className="text-[#9bd5e4]">Vehicle</span> Observatory.</h1><p className="mt-6 text-lg text-slate-200 max-w-xl leading-relaxed">Follow the policies, the companies, and the evidence behind the deployment of autonomous vehicles in the United States.</p><div className="flex flex-wrap gap-3 mt-8"><Link href="/policy/states" className="rounded bg-[#83c6e3] text-[#082039] px-5 py-3 text-sm font-bold hover:bg-white">Explore Policy Map →</Link><Link href="/safety" className="rounded border border-white/40 px-5 py-3 text-sm font-semibold hover:bg-white/10">AV Crashes →</Link><a href="#explore" className="rounded border border-white/40 px-5 py-3 text-sm font-semibold hover:bg-white/10">Explore Data ↓</a></div></div></section>
     <div className="max-w-6xl px-8 mx-auto -mt-8 relative"><div className="bg-white shadow-sm border border-[#dce5ec] rounded-xl grid sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-[#dce5ec] overflow-hidden">{[[stateActions,"States + D.C. With AVs Authorized","/policy/states"],[policy.federal.length,"Federal FMVSS Records and Milestones","/policy/federal"],[activeInvestigations,"Active NHTSA Investigations","/investigations"]].map(([number,label,href])=><Link key={String(label)} href={String(href)} className="p-5 hover:bg-[#f5f9fc]"><span className="block text-3xl font-semibold text-[#123b69]">{number}</span><span className="block text-sm text-neutral-600 mt-1">{label}</span></Link>)}</div></div>
-    <section className="max-w-6xl px-8 mx-auto pb-12">
+    <section className="max-w-6xl px-8 mx-auto pt-2 pb-5">
       <div className="rounded-xl bg-[#0b1d33] text-white p-6 sm:p-7 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5">
         <div>
           <p className="text-xs font-bold uppercase tracking-[.16em] text-[#8fc2e8]">AV Observatory Brief</p>
@@ -65,7 +65,7 @@ export default function HomePage() {
       </div>
     </section>
 
-    <section id="explore" className="max-w-6xl px-8 mx-auto py-9 scroll-mt-6">
+    <section id="explore" className="max-w-6xl px-8 mx-auto pt-4 pb-9 scroll-mt-6">
       <div className="mb-5"><p className="eyebrow">Explore the Observatory</p><h2 className="text-3xl font-semibold text-[#0b1d33] mt-2">Explore the Observatory</h2></div>
       <div className="grid lg:grid-cols-3 gap-4 items-stretch">{sections.map(section=><article key={section.id} className="viz-card overflow-hidden flex flex-col">
         <div className="p-5 flex-1" style={{background:section.tint}}>
