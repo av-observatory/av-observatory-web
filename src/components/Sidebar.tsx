@@ -12,7 +12,7 @@ const GROUPS = [
   ] },
   { title: "Safety Reporting", icon: "safety" as const, items: [["/safety", "National Crash Data"], ["/investigations", "NHTSA Investigations"], ["/complaints", "Resident Complaints"]] },
   { title: "Operations", icon: "operations" as const, items: [["/activity", "CA Trip Data"], ["/waymo-activity", "Waymo Activity"]] },
-  { title: "Explore", icon: null, items: [["/newsletter", "Newsletter"], ["/downloads", "Downloads"], ["/about", "About"]] },
+  { title: "Explore", icon: null, items: [["/downloads", "Downloads"], ["/about", "About"]] },
 ] as const;
 
 export function Sidebar() {
