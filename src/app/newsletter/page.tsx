@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const subscribeHref = "https://avobservatorybrief.substack.com/subscribe";
+const subscribeHref = "https://avobservatory.substack.com/";
 
 export default function NewsletterPage() {
   return <main className="max-w-4xl px-5 sm:px-8 py-9">
@@ -26,7 +26,7 @@ export default function NewsletterPage() {
         <p className="text-xs font-bold uppercase tracking-[.14em] text-[#8fc2e8]">Join the list</p>
         <h2 className="text-2xl font-semibold mt-2">Get the Brief by email.</h2>
         <p className="text-sm leading-relaxed text-slate-300 mt-3">
-          Subscription is free. This button currently points to a temporary Substack address and can be swapped to the final publication URL later.
+          Subscription is free. Subscribe on the AV Observatory Substack.
         </p>
         <a href={subscribeHref} target="_blank" rel="noreferrer" className="inline-block mt-5 rounded-md bg-[#83c6e3] text-[#082039] px-4 py-2.5 text-sm font-bold hover:bg-white">
           Join the newsletter →
