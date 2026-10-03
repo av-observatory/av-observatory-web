@@ -7,10 +7,10 @@
   "source_api": "https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/query",
   "selection": "Austin's public TPW AV incident feature layer. Resident complaints are exactly Type=Resident Feedback (case-insensitive); other Type values are city department or responder reports and are kept separate.",
   "limitations": "Austin compiles unvalidated reports received from residents, City departments, and other sources, including 311. The Resident Feedback label does not prove every record entered via 311. This series differs from San Francisco's dedicated 311 AV category and their raw counts should not be compared as rates. Public narrative and precise location are omitted from Observatory exports.",
-  "total_city_reports": 324,
+  "total_city_reports": 329,
   "blank_source_rows_excluded": 1,
   "resident_feedback_count": 150,
-  "latest_reported_date": "2026-09-26",
+  "latest_reported_date": "2026-10-02",
   "reporter_types": [
     {
       "type": "Resident Feedback",
@@ -18,7 +18,7 @@
     },
     {
       "type": "APD",
-      "reports": 66
+      "reports": 70
     },
     {
       "type": "City Employee",
@@ -26,7 +26,7 @@
     },
     {
       "type": "AFD",
-      "reports": 33
+      "reports": 34
     },
     {
       "type": "AISD Police",
@@ -4083,6 +4083,42 @@
       "source_url": "https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/347"
     },
     {
+      "id": "ATX-359",
+      "source_id": "359",
+      "market": "Austin",
+      "state": "TX",
+      "reported_date": "2026-09-14",
+      "month": "2026-09",
+      "reporter_type": "AFD",
+      "issue": "Near Miss",
+      "operator": "Waymo",
+      "source_url": "https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/359"
+    },
+    {
+      "id": "ATX-357",
+      "source_id": "357",
+      "market": "Austin",
+      "state": "TX",
+      "reported_date": "2026-09-18",
+      "month": "2026-09",
+      "reporter_type": "APD",
+      "issue": "Ignore APD Direction",
+      "operator": "Tesla",
+      "source_url": "https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/357"
+    },
+    {
+      "id": "ATX-358",
+      "source_id": "358",
+      "market": "Austin",
+      "state": "TX",
+      "reported_date": "2026-09-18",
+      "month": "2026-09",
+      "reporter_type": "APD",
+      "issue": "Safety Concern",
+      "operator": "Waymo",
+      "source_url": "https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/358"
+    },
+    {
       "id": "ATX-356",
       "source_id": "356",
       "market": "Austin",
@@ -4093,6 +4129,30 @@
       "issue": "Blocking Traffic",
       "operator": "Tesla",
       "source_url": "https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/356"
+    },
+    {
+      "id": "ATX-360",
+      "source_id": "360",
+      "market": "Austin",
+      "state": "TX",
+      "reported_date": "2026-10-02",
+      "month": "2026-10",
+      "reporter_type": "APD",
+      "issue": "Safety Concern",
+      "operator": "Tesla",
+      "source_url": "https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/360"
+    },
+    {
+      "id": "ATX-361",
+      "source_id": "361",
+      "market": "Austin",
+      "state": "TX",
+      "reported_date": "2026-10-02",
+      "month": "2026-10",
+      "reporter_type": "APD",
+      "issue": "Blocking Traffic",
+      "operator": "Tesla",
+      "source_url": "https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/361"
     }
   ]
 }
