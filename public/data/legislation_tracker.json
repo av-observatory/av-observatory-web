@@ -1,7 +1,7 @@
 {
   "schema_version": "1.1.0",
-  "as_of": "2026-10-03",
-  "state_index_reviewed": "2026-10-03",
+  "as_of": "2026-10-04",
+  "state_index_reviewed": "2026-10-04",
   "methodology": "Current-session AV legislation is independently discovered across all 50 states and D.C. with Open States API v3. One full-text AV query is run for each active legislative session, results are deduplicated, and normalized Open States actions are used to derive progress status. The Observatory condenses the full available source abstract to lead with operative provisions rather than existing-law boilerplate; the uncondensed source abstract is retained in source_summary. Official legislature source URLs supplied by Open States are retained where available; Open States bill URLs are stored separately for source inspection.",
   "source": "Open States API v3 national AV bill discovery",
   "federal": [
@@ -150,7 +150,7 @@
       "hearings": [],
       "source_url": "https://alison.legislature.state.al.us/bill-search",
       "repository_url": "https://openstates.org/al/bills/2026rs/SB222/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/15108415-5983-4ee4-9a30-ddb22a9903c2",
       "openstates_updated_at": "2026-07-09T22:32:17.309868+00:00"
@@ -175,7 +175,7 @@
       "hearings": [],
       "source_url": "https://apps.azleg.gov/BillStatus/BillOverview/84971?SessionId=130",
       "repository_url": "https://openstates.org/az/bills/57th-2nd-regular/SB1417/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/f4535e95-c26a-4b33-8eb4-c4da2b62e04b",
       "openstates_updated_at": "2026-03-18T01:18:38.574357+00:00"
@@ -202,7 +202,7 @@
       "hearings": [],
       "source_url": "https://openstates.org/ca/bills/20252026/AB2193/",
       "repository_url": "https://openstates.org/ca/bills/20252026/AB2193/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/8bb84568-51be-40f7-a292-2aa23cfe1c26",
       "openstates_updated_at": "2026-07-09T04:51:21.856958+00:00"
@@ -230,7 +230,7 @@
       "hearings": [],
       "source_url": "https://openstates.org/ca/bills/20252026/AB33/",
       "repository_url": "https://openstates.org/ca/bills/20252026/AB33/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/b040b593-f8fd-4869-a6cb-530f780c6559",
       "openstates_updated_at": "2026-07-09T04:58:31.470169+00:00"
@@ -261,7 +261,7 @@
       "hearings": [],
       "source_url": "https://openstates.org/ca/bills/20252026/SB1246/",
       "repository_url": "https://openstates.org/ca/bills/20252026/SB1246/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/84856a8a-5cff-41ee-9237-9f569454b676",
       "openstates_updated_at": "2026-10-02T09:03:22.251281+00:00"
@@ -292,7 +292,7 @@
       "hearings": [],
       "source_url": "https://openstates.org/ca/bills/20252026/SB480/",
       "repository_url": "https://openstates.org/ca/bills/20252026/SB480/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/f9108655-2446-4579-a74e-8edc20fa103e",
       "openstates_updated_at": "2026-07-09T05:07:12.397648+00:00"
@@ -321,7 +321,7 @@
       "hearings": [],
       "source_url": "https://openstates.org/ca/bills/20252026/SB572/",
       "repository_url": "https://openstates.org/ca/bills/20252026/SB572/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/2941438a-0630-45ee-88aa-7c3a286f7bdc",
       "openstates_updated_at": "2026-07-09T05:53:12.621276+00:00"
@@ -350,7 +350,7 @@
       "hearings": [],
       "source_url": "https://leg.colorado.gov/bills/HB26-1071",
       "repository_url": "https://openstates.org/co/bills/2026A/HB1071/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/be91d205-d05f-49eb-a595-c086edda0dde",
       "openstates_updated_at": "2026-07-28T18:15:25.388128+00:00"
@@ -380,7 +380,7 @@
       "hearings": [],
       "source_url": "https://leg.colorado.gov/bills/HB26-1286",
       "repository_url": "https://openstates.org/co/bills/2026A/HB1286/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/0c5607ff-a283-4172-b8bc-3a021fa34ac9",
       "openstates_updated_at": "2026-08-03T18:12:45.474864+00:00"
@@ -410,7 +410,7 @@
       "hearings": [],
       "source_url": "https://leg.colorado.gov/bills/SB26-152",
       "repository_url": "https://openstates.org/co/bills/2026A/SB152/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/e3980ff5-7ca9-4999-925e-3850d84e3681",
       "openstates_updated_at": "2026-08-20T01:35:33.403639+00:00"
@@ -439,7 +439,7 @@
       "hearings": [],
       "source_url": "https://legis.delaware.gov/BillDetail?LegislationId=141797",
       "repository_url": "https://openstates.org/de/bills/153/SB46/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/b39e2abb-6c51-43f1-8142-96a8876b99b9",
       "openstates_updated_at": "2026-08-26T07:20:11.829857+00:00"
@@ -467,7 +467,7 @@
       "hearings": [],
       "source_url": "https://capitol.hawaii.gov/session/measure_indiv.aspx?billtype=HB&billnumber=1797&year=2026",
       "repository_url": "https://openstates.org/hi/bills/2026/HB1797/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/0d43893c-264f-4691-b034-28e2756b3cd3",
       "openstates_updated_at": "2026-07-15T06:43:52.768339+00:00"
@@ -495,7 +495,7 @@
       "hearings": [],
       "source_url": "https://www.legis.iowa.gov/legislation/billTracking/billHistory?billName=HSB 598&ga=91",
       "repository_url": "https://openstates.org/ia/bills/2025-2026/HSB598/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/5d2a3780-6cf3-4c0b-aef9-f926b1368674",
       "openstates_updated_at": "2026-03-18T09:27:36.154307+00:00"
@@ -523,7 +523,7 @@
       "hearings": [],
       "source_url": "https://www.legis.iowa.gov/legislation/billTracking/billHistory?billName=SF 2034&ga=91",
       "repository_url": "https://openstates.org/ia/bills/2025-2026/SF2034/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/4650dedc-9e40-4a83-87fb-70ed1af8c7ce",
       "openstates_updated_at": "2026-03-18T09:23:17.931245+00:00"
@@ -550,7 +550,7 @@
       "hearings": [],
       "source_url": "https://www.legis.iowa.gov/legislation/billTracking/billHistory?billName=SF 2384&ga=91",
       "repository_url": "https://openstates.org/ia/bills/2025-2026/SF2384/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/63ca3153-e04c-4e02-b650-0561308c10cd",
       "openstates_updated_at": "2026-03-20T07:17:51.459528+00:00"
@@ -578,7 +578,7 @@
       "hearings": [],
       "source_url": "https://www.legis.iowa.gov/legislation/billTracking/billHistory?billName=SSB 3052&ga=91",
       "repository_url": "https://openstates.org/ia/bills/2025-2026/SSB3052/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/7c26a04e-4eae-495c-97b2-97087386e7db",
       "openstates_updated_at": "2026-03-18T09:38:48.219205+00:00"
@@ -605,7 +605,7 @@
       "hearings": [],
       "source_url": "https://ilga.gov/Legislation/BillStatus?DocNum=1839&GAID=18&DocTypeID=HB&LegId=159329&SessionID=114",
       "repository_url": "https://openstates.org/il/bills/104th/HB1839/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/1889326a-280f-4152-8452-9cba5f522b54",
       "openstates_updated_at": "2026-07-11T08:44:11.137312+00:00"
@@ -630,7 +630,7 @@
       "hearings": [],
       "source_url": "https://ilga.gov/Legislation/BillStatus?DocNum=2974&GAID=18&DocTypeID=HB&LegId=161217&SessionID=114",
       "repository_url": "https://openstates.org/il/bills/104th/HB2974/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/a5430b0b-419d-41ae-951c-e965bcf8e3ef",
       "openstates_updated_at": "2026-07-11T09:08:24.633480+00:00"
@@ -657,7 +657,7 @@
       "hearings": [],
       "source_url": "https://ilga.gov/Legislation/BillStatus?DocNum=4663&GAID=18&DocTypeID=HB&LegId=165621&SessionID=114",
       "repository_url": "https://openstates.org/il/bills/104th/HB4663/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/4941dae8-bef1-47b7-9a1c-5b233cbedc55",
       "openstates_updated_at": "2026-07-11T09:28:19.436103+00:00"
@@ -684,7 +684,7 @@
       "hearings": [],
       "source_url": "https://ilga.gov/Legislation/BillStatus?DocNum=4789&GAID=18&DocTypeID=HB&LegId=165946&SessionID=114",
       "repository_url": "https://openstates.org/il/bills/104th/HB4789/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/95da6ef1-56de-4ffc-96a1-f24aa0221a8c",
       "openstates_updated_at": "2026-07-11T08:31:07.502437+00:00"
@@ -711,7 +711,7 @@
       "hearings": [],
       "source_url": "https://ilga.gov/Legislation/BillStatus?DocNum=5103&GAID=18&DocTypeID=HB&LegId=166661&SessionID=114",
       "repository_url": "https://openstates.org/il/bills/104th/HB5103/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/da40057a-8727-4ec0-a0b1-a6f18c65e667",
       "openstates_updated_at": "2026-07-11T08:38:34.630857+00:00"
@@ -738,7 +738,7 @@
       "hearings": [],
       "source_url": "https://ilga.gov/Legislation/BillStatus?DocNum=5220&GAID=18&DocTypeID=HB&LegId=166893&SessionID=114",
       "repository_url": "https://openstates.org/il/bills/104th/HB5220/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/967b1f12-7d37-4718-b44b-3341e8452d77",
       "openstates_updated_at": "2026-07-11T09:09:47.169857+00:00"
@@ -765,7 +765,7 @@
       "hearings": [],
       "source_url": "https://ilga.gov/Legislation/BillStatus?DocNum=3308&GAID=18&DocTypeID=SB&LegId=166113&SessionID=114",
       "repository_url": "https://openstates.org/il/bills/104th/SB3308/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/6a8f79e4-0617-423d-beb3-1dc0ca8de7ce",
       "openstates_updated_at": "2026-07-11T03:37:16.251716+00:00"
@@ -792,7 +792,7 @@
       "hearings": [],
       "source_url": "https://ilga.gov/Legislation/BillStatus?DocNum=3392&GAID=18&DocTypeID=SB&LegId=166310&SessionID=114",
       "repository_url": "https://openstates.org/il/bills/104th/SB3392/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/78ab0b02-7956-4236-a846-cb23660c9a73",
       "openstates_updated_at": "2026-07-11T03:55:39.828458+00:00"
@@ -820,7 +820,7 @@
       "hearings": [],
       "source_url": "https://apps.legislature.ky.gov/record/26RS/hb223.html",
       "repository_url": "https://openstates.org/ky/bills/2026RS/HB223/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/f55e5aef-1e13-4bfb-b20f-521810d4626d",
       "openstates_updated_at": "2026-08-20T01:19:42.748166+00:00"
@@ -850,7 +850,7 @@
       "hearings": [],
       "source_url": "https://apps.legislature.ky.gov/record/26RS/sb110.html",
       "repository_url": "https://openstates.org/ky/bills/2026RS/SB110/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/4f98aa75-2311-4b5d-8dc5-425d39cdcd12",
       "openstates_updated_at": "2026-08-20T01:17:09.672266+00:00"
@@ -877,7 +877,7 @@
       "hearings": [],
       "source_url": "https://malegislature.gov/Bills/194/H1280",
       "repository_url": "https://openstates.org/ma/bills/194th/H1280/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": "2026-09-29",
       "openstates_id": "ocd-bill/7ffec788-6cc4-485e-83f7-610381c530a4",
       "openstates_updated_at": "2026-07-09T06:00:20.099851+00:00"
@@ -904,7 +904,7 @@
       "hearings": [],
       "source_url": "https://malegislature.gov/Bills/194/H3634",
       "repository_url": "https://openstates.org/ma/bills/194th/H3634/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": "2026-09-29",
       "openstates_id": "ocd-bill/e0c1505f-5e0b-46ab-965c-31d7394f417d",
       "openstates_updated_at": "2026-07-09T07:47:50.897617+00:00"
@@ -931,7 +931,7 @@
       "hearings": [],
       "source_url": "https://malegislature.gov/Bills/194/H3649",
       "repository_url": "https://openstates.org/ma/bills/194th/H3649/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": "2026-09-29",
       "openstates_id": "ocd-bill/f31da09d-d215-40d1-a348-f158a9f7ca41",
       "openstates_updated_at": "2026-07-09T02:52:26.544405+00:00"
@@ -958,7 +958,7 @@
       "hearings": [],
       "source_url": "https://malegislature.gov/Bills/194/H3669",
       "repository_url": "https://openstates.org/ma/bills/194th/H3669/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": "2026-09-29",
       "openstates_id": "ocd-bill/31d4c363-cbbf-48ca-a954-52c2f6bdfe89",
       "openstates_updated_at": "2026-07-09T02:49:05.141271+00:00"
@@ -983,7 +983,7 @@
       "hearings": [],
       "source_url": "https://malegislature.gov/Bills/194/HD1848",
       "repository_url": "https://openstates.org/ma/bills/194th/HD1848/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/406d04c6-c714-4373-8354-b612cf398726",
       "openstates_updated_at": "2025-01-15T23:13:05.006180+00:00"
@@ -1008,7 +1008,7 @@
       "hearings": [],
       "source_url": "https://malegislature.gov/Bills/194/HD2268",
       "repository_url": "https://openstates.org/ma/bills/194th/HD2268/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/c10548d2-cda3-4aa9-9f6c-7009ac106207",
       "openstates_updated_at": "2025-01-16T01:35:46.863306+00:00"
@@ -1033,7 +1033,7 @@
       "hearings": [],
       "source_url": "https://malegislature.gov/Bills/194/HD3325",
       "repository_url": "https://openstates.org/ma/bills/194th/HD3325/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/11e55480-96ad-4b95-a385-dc559c6d08d2",
       "openstates_updated_at": "2025-01-17T17:31:04.313578+00:00"
@@ -1060,7 +1060,7 @@
       "hearings": [],
       "source_url": "https://malegislature.gov/Bills/194/S2379",
       "repository_url": "https://openstates.org/ma/bills/194th/S2379/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": "2026-09-29",
       "openstates_id": "ocd-bill/7fd29cd1-f49b-4ff4-a443-d16f62423eba",
       "openstates_updated_at": "2026-08-01T18:57:08.154116+00:00"
@@ -1087,7 +1087,7 @@
       "hearings": [],
       "source_url": "https://malegislature.gov/Bills/194/S2393",
       "repository_url": "https://openstates.org/ma/bills/194th/S2393/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": "2026-09-29",
       "openstates_id": "ocd-bill/2ecf2de5-bd85-46e3-8f34-b4022b165220",
       "openstates_updated_at": "2026-08-01T18:56:57.200613+00:00"
@@ -1112,7 +1112,7 @@
       "hearings": [],
       "source_url": "https://malegislature.gov/Bills/194/SD2531",
       "repository_url": "https://openstates.org/ma/bills/194th/SD2531/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/f7edbe38-e245-4f25-a8f6-76fcbeabdfd5",
       "openstates_updated_at": "2025-01-20T22:17:26.453299+00:00"
@@ -1139,7 +1139,7 @@
       "hearings": [],
       "source_url": "https://openstates.org/md/bills/2026/HB1295/",
       "repository_url": "https://openstates.org/md/bills/2026/HB1295/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/247fdb75-3555-40d3-85f6-ad4c7c13688b",
       "openstates_updated_at": "2026-03-17T21:48:05.800982+00:00"
@@ -1166,7 +1166,7 @@
       "hearings": [],
       "source_url": "https://openstates.org/md/bills/2026/SB909/",
       "repository_url": "https://openstates.org/md/bills/2026/SB909/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/1253dbfd-d648-4291-afa7-3e2e608783fb",
       "openstates_updated_at": "2026-03-17T21:38:04.208094+00:00"
@@ -1194,7 +1194,7 @@
       "hearings": [],
       "source_url": "https://www.revisor.mn.gov/bills/94/2026/0/HF/3513?body=House",
       "repository_url": "https://openstates.org/mn/bills/2025-2026/HF3513/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/799ae13e-1cf0-4efe-9ff9-f0d7ab691862",
       "openstates_updated_at": "2026-09-21T17:19:26.277823+00:00"
@@ -1222,7 +1222,7 @@
       "hearings": [],
       "source_url": "https://www.revisor.mn.gov/bills/94/2026/0/HF/3810?body=House",
       "repository_url": "https://openstates.org/mn/bills/2025-2026/HF3810/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/febddebf-71e7-412d-a025-0d1cc259db55",
       "openstates_updated_at": "2026-09-21T17:17:32.849486+00:00"
@@ -1250,7 +1250,7 @@
       "hearings": [],
       "source_url": "https://www.revisor.mn.gov/bills/94/2026/0/HF/4112?body=House",
       "repository_url": "https://openstates.org/mn/bills/2025-2026/HF4112/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/a9ad25c8-cc55-48e0-880a-589f5d050f08",
       "openstates_updated_at": "2026-09-21T17:21:21.828527+00:00"
@@ -1278,7 +1278,7 @@
       "hearings": [],
       "source_url": "https://www.revisor.mn.gov/bills/94/2026/0/HF/4216?body=House",
       "repository_url": "https://openstates.org/mn/bills/2025-2026/HF4216/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/b4be4051-3a74-498f-acb7-718f60a97874",
       "openstates_updated_at": "2026-09-21T17:30:57.660268+00:00"
@@ -1306,7 +1306,7 @@
       "hearings": [],
       "source_url": "https://www.revisor.mn.gov/bills/94/2026/0/HF/4521?body=House",
       "repository_url": "https://openstates.org/mn/bills/2025-2026/HF4521/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/963a6a19-3e53-450a-b3e8-f3f44d80a273",
       "openstates_updated_at": "2026-09-21T17:18:01.719571+00:00"
@@ -1334,7 +1334,7 @@
       "hearings": [],
       "source_url": "https://www.revisor.mn.gov/bills/94/2026/0/SF/4010?body=Senate",
       "repository_url": "https://openstates.org/mn/bills/2025-2026/SF4010/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/daa419f6-69cd-4d7f-91a7-ae6f5f941dce",
       "openstates_updated_at": "2026-09-25T06:14:56.671959+00:00"
@@ -1362,7 +1362,7 @@
       "hearings": [],
       "source_url": "https://www.revisor.mn.gov/bills/94/2026/0/SF/4014?body=Senate",
       "repository_url": "https://openstates.org/mn/bills/2025-2026/SF4014/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/c1e000a0-4ede-4de7-864c-a5230c05404e",
       "openstates_updated_at": "2026-09-25T06:08:47.130635+00:00"
@@ -1390,7 +1390,7 @@
       "hearings": [],
       "source_url": "https://www.revisor.mn.gov/bills/94/2026/0/SF/4381?body=Senate",
       "repository_url": "https://openstates.org/mn/bills/2025-2026/SF4381/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/ad2c4803-afff-411b-95d5-d125bf0f5622",
       "openstates_updated_at": "2026-09-25T06:21:48.556511+00:00"
@@ -1418,7 +1418,7 @@
       "hearings": [],
       "source_url": "https://www.revisor.mn.gov/bills/94/2026/0/SF/4618?body=Senate",
       "repository_url": "https://openstates.org/mn/bills/2025-2026/SF4618/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/2b7c6916-b6b5-474d-b4e8-f78c8b4706c2",
       "openstates_updated_at": "2026-09-25T06:21:15.398816+00:00"
@@ -1446,7 +1446,7 @@
       "hearings": [],
       "source_url": "https://www.revisor.mn.gov/bills/94/2026/0/SF/4731?body=Senate",
       "repository_url": "https://openstates.org/mn/bills/2025-2026/SF4731/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/f85b570e-c1e1-44ac-96b4-0beed38e21e0",
       "openstates_updated_at": "2026-09-25T05:49:09.358213+00:00"
@@ -1471,7 +1471,7 @@
       "hearings": [],
       "source_url": "https://bills.legmt.gov/#/lc/bill/2/LC1344",
       "repository_url": "https://openstates.org/mt/bills/2025/LC1344/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/c89b1538-496a-43b2-8412-8ce28bf15e60",
       "openstates_updated_at": "2025-02-18T22:54:37.345118+00:00"
@@ -1496,7 +1496,7 @@
       "hearings": [],
       "source_url": "https://bills.legmt.gov/#/lc/bill/2/LC1679",
       "repository_url": "https://openstates.org/mt/bills/2025/LC1679/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/a49efcff-1b8b-4898-94ac-617a8dbb7b17",
       "openstates_updated_at": "2026-06-10T11:50:00.920457+00:00"
@@ -1521,7 +1521,7 @@
       "hearings": [],
       "source_url": "https://bills.legmt.gov/#/lc/bill/2/LC0179",
       "repository_url": "https://openstates.org/mt/bills/2025/LC179/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/f3f6f19e-f5c8-4d9f-bdee-3cd6f13beee3",
       "openstates_updated_at": "2024-12-15T01:05:35.941193+00:00"
@@ -1551,7 +1551,7 @@
       "hearings": [],
       "source_url": "https://bills.legmt.gov/#/laws/bill/2/LC0179?open_tab=sum",
       "repository_url": "https://openstates.org/mt/bills/2025/SB67/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/13567927-580a-4dcf-9957-44448a3e232b",
       "openstates_updated_at": "2026-08-10T11:50:17.301004+00:00"
@@ -1579,7 +1579,7 @@
       "hearings": [],
       "source_url": "https://bills.legmt.gov/#/laws/bill/2/LC1344?open_tab=sum",
       "repository_url": "https://openstates.org/mt/bills/2025/SJ16/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/6474efc4-59c5-404e-a66f-895d9b6e65f7",
       "openstates_updated_at": "2026-08-10T12:21:27.565977+00:00"
@@ -1607,7 +1607,7 @@
       "hearings": [],
       "source_url": "https://www.njleg.state.nj.us/bill-search/2026/A3968",
       "repository_url": "https://openstates.org/nj/bills/222/A3968/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/a11c582f-0f3e-41fe-a6ee-643e7c59f29c",
       "openstates_updated_at": "2026-09-11T09:46:48.993971+00:00"
@@ -1635,7 +1635,7 @@
       "hearings": [],
       "source_url": "https://www.njleg.state.nj.us/bill-search/2026/A768",
       "repository_url": "https://openstates.org/nj/bills/222/A768/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/d7804158-cc0c-4831-b5a4-11b2ecc3ecf2",
       "openstates_updated_at": "2026-03-18T08:30:36.335973+00:00"
@@ -1663,7 +1663,7 @@
       "hearings": [],
       "source_url": "https://www.njleg.state.nj.us/bill-search/2026/A958",
       "repository_url": "https://openstates.org/nj/bills/222/A958/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/85195e7d-c0ad-4dea-81ad-38942383a40e",
       "openstates_updated_at": "2026-03-18T08:54:26.601224+00:00"
@@ -1691,7 +1691,7 @@
       "hearings": [],
       "source_url": "https://www.njleg.state.nj.us/bill-search/2026/S1677",
       "repository_url": "https://openstates.org/nj/bills/222/S1677/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/446a3177-7fce-496d-a08e-3903eeb8f7da",
       "openstates_updated_at": "2026-09-29T11:31:53.787459+00:00"
@@ -1720,7 +1720,7 @@
       "hearings": [],
       "source_url": "https://legislation.nysenate.gov/api/3/bills/2025-2026/A10008?summary=&detail=",
       "repository_url": "https://openstates.org/ny/bills/2025-2026/A10008/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/d56dce65-2200-40f9-91fb-88b69f290ba7",
       "openstates_updated_at": "2026-05-28T00:28:31.851624+00:00"
@@ -1747,7 +1747,7 @@
       "hearings": [],
       "source_url": "https://legislation.nysenate.gov/api/3/bills/2025-2026/A11500?summary=&detail=",
       "repository_url": "https://openstates.org/ny/bills/2025-2026/A11500/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/38e308ec-1f9e-45a8-96a9-5b6195249969",
       "openstates_updated_at": "2026-05-29T14:28:44.677147+00:00"
@@ -1774,7 +1774,7 @@
       "hearings": [],
       "source_url": "https://legislation.nysenate.gov/api/3/bills/2025-2026/A3650?summary=&detail=",
       "repository_url": "https://openstates.org/ny/bills/2025-2026/A3650/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/f3418e5d-4e57-4b37-be2e-c2478804bc57",
       "openstates_updated_at": "2026-03-18T10:58:37.753311+00:00"
@@ -1801,7 +1801,7 @@
       "hearings": [],
       "source_url": "https://legislation.nysenate.gov/api/3/bills/2025-2026/A4901?summary=&detail=",
       "repository_url": "https://openstates.org/ny/bills/2025-2026/A4901/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/acb10ba4-826e-46d8-9f29-749bfc985157",
       "openstates_updated_at": "2026-05-07T02:52:08.850632+00:00"
@@ -1828,7 +1828,7 @@
       "hearings": [],
       "source_url": "https://legislation.nysenate.gov/api/3/bills/2025-2026/A6180?summary=&detail=",
       "repository_url": "https://openstates.org/ny/bills/2025-2026/A6180/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/853fc0c8-dd75-4bce-8cb3-4252321031c6",
       "openstates_updated_at": "2026-03-18T10:34:21.080543+00:00"
@@ -1855,7 +1855,7 @@
       "hearings": [],
       "source_url": "https://legislation.nysenate.gov/api/3/bills/2025-2026/A728?summary=&detail=",
       "repository_url": "https://openstates.org/ny/bills/2025-2026/A728/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/43e44588-6ba7-44b3-9b55-d44636d905b7",
       "openstates_updated_at": "2026-03-18T09:21:56.997484+00:00"
@@ -1882,7 +1882,7 @@
       "hearings": [],
       "source_url": "https://legislation.nysenate.gov/api/3/bills/2025-2026/A793?summary=&detail=",
       "repository_url": "https://openstates.org/ny/bills/2025-2026/A793/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/2f06951b-d649-4c2f-91bb-8d65389cc442",
       "openstates_updated_at": "2026-05-16T05:50:49.029583+00:00"
@@ -1909,7 +1909,7 @@
       "hearings": [],
       "source_url": "https://legislation.nysenate.gov/api/3/bills/2025-2026/A8109?summary=&detail=",
       "repository_url": "https://openstates.org/ny/bills/2025-2026/A8109/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/13cfdb6e-b7eb-4d6e-bd42-41307e4be8a3",
       "openstates_updated_at": "2026-03-18T09:51:23.635517+00:00"
@@ -1936,7 +1936,7 @@
       "hearings": [],
       "source_url": "https://legislation.nysenate.gov/api/3/bills/2025-2026/S10413?summary=&detail=",
       "repository_url": "https://openstates.org/ny/bills/2025-2026/S10413/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/d73295c2-887f-4676-b802-2e1d9432e649",
       "openstates_updated_at": "2026-05-16T06:58:13.550388+00:00"
@@ -1963,7 +1963,7 @@
       "hearings": [],
       "source_url": "https://legislation.nysenate.gov/api/3/bills/2025-2026/S10473?summary=&detail=",
       "repository_url": "https://openstates.org/ny/bills/2025-2026/S10473/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/b9086856-b880-4e26-beb1-7fdf764dc6ab",
       "openstates_updated_at": "2026-05-29T14:15:56.844512+00:00"
@@ -1990,7 +1990,7 @@
       "hearings": [],
       "source_url": "https://legislation.nysenate.gov/api/3/bills/2025-2026/S2688?summary=&detail=",
       "repository_url": "https://openstates.org/ny/bills/2025-2026/S2688/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/ca660689-6862-45c6-b88f-67a95ccb19fe",
       "openstates_updated_at": "2026-03-18T09:35:25.968566+00:00"
@@ -2017,7 +2017,7 @@
       "hearings": [],
       "source_url": "https://legislation.nysenate.gov/api/3/bills/2025-2026/S344?summary=&detail=",
       "repository_url": "https://openstates.org/ny/bills/2025-2026/S344/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/5bc6e3eb-604a-4328-a017-1b0bb39a29ef",
       "openstates_updated_at": "2026-05-15T07:13:10.604800+00:00"
@@ -2044,7 +2044,7 @@
       "hearings": [],
       "source_url": "https://legislation.nysenate.gov/api/3/bills/2025-2026/S6751?summary=&detail=",
       "repository_url": "https://openstates.org/ny/bills/2025-2026/S6751/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/43a93e40-f598-486e-8812-434135cc3306",
       "openstates_updated_at": "2026-03-18T11:24:16.715416+00:00"
@@ -2071,7 +2071,7 @@
       "hearings": [],
       "source_url": "https://legislation.nysenate.gov/api/3/bills/2025-2026/S7956?summary=&detail=",
       "repository_url": "https://openstates.org/ny/bills/2025-2026/S7956/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/9f52f0f7-48f8-47bf-84c2-baf3d6f44d13",
       "openstates_updated_at": "2026-03-18T09:08:44.729630+00:00"
@@ -2098,7 +2098,7 @@
       "hearings": [],
       "source_url": "https://legislation.nysenate.gov/api/3/bills/2025-2026/S9008?summary=&detail=",
       "repository_url": "https://openstates.org/ny/bills/2025-2026/S9008/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/d395b3d7-36c8-4fa8-b0e8-031f41dc306b",
       "openstates_updated_at": "2026-05-26T23:52:52.803038+00:00"
@@ -2126,7 +2126,7 @@
       "hearings": [],
       "source_url": "https://olis.oregonlegislature.gov/liz/2026R1/Measures/Overview/HB4085",
       "repository_url": "https://openstates.org/or/bills/2026R1/HB4085/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/58ef7376-d690-42f7-bf20-600cd6a0073e",
       "openstates_updated_at": "2026-03-17T20:53:57.400581+00:00"
@@ -2153,7 +2153,7 @@
       "hearings": [],
       "source_url": "https://www.palegis.us/legislation/bills/2025/hb1639",
       "repository_url": "https://openstates.org/pa/bills/2025-2026/HB1639/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/e448f2f6-1c79-4aff-94ed-ab59d4f74617",
       "openstates_updated_at": "2026-03-18T14:57:16.519681+00:00"
@@ -2180,7 +2180,7 @@
       "hearings": [],
       "source_url": "https://www.palegis.us/legislation/bills/2025/hb2069",
       "repository_url": "https://openstates.org/pa/bills/2025-2026/HB2069/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/a3079520-d610-4f17-9322-e372af5fc87f",
       "openstates_updated_at": "2026-03-18T14:38:15.734946+00:00"
@@ -2207,7 +2207,7 @@
       "hearings": [],
       "source_url": "https://www.palegis.us/house/committees/roll-call-votes/vote-list/vote-summary?committeecode=68&rollcallid=2900&sessYr=2025&sessInd=0",
       "repository_url": "https://openstates.org/pa/bills/2025-2026/HR563/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/3f084599-49a4-419a-9097-40cffb8f77cb",
       "openstates_updated_at": "2026-10-01T02:13:18.795947+00:00"
@@ -2235,7 +2235,7 @@
       "hearings": [],
       "source_url": "https://le.utah.gov/~2026/bills/static/HB0581.html",
       "repository_url": "https://openstates.org/ut/bills/2026/HB581/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/282b7aed-0f65-40c7-a120-9c2a559e67ab",
       "openstates_updated_at": "2026-07-09T15:24:35.575309+00:00"
@@ -2264,7 +2264,7 @@
       "hearings": [],
       "source_url": "https://le.utah.gov/~2026/bills/static/SB0292.html",
       "repository_url": "https://openstates.org/ut/bills/2026/SB292/",
-      "reviewed_at": "2026-10-03",
+      "reviewed_at": "2026-10-04",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/beab47ee-fa53-4916-85e1-e4b25d9d52ec",
       "openstates_updated_at": "2026-07-09T15:13:48.232873+00:00"
