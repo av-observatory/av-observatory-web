@@ -5,13 +5,13 @@
   "source_api": "https://data.sf.gov/resource/vw6y-z8j6.json",
   "selection": "Exact service_name match: Autonomous Vehicle Complaints. Other city request types and unclassified AV mentions are excluded.",
   "limitations": "These are public 311 requests, not verified incidents. The published subtypes describe how SF311 classified a request, not the specific behavior alleged. Operator identity is unavailable; the AV category begins in April 2025.",
-  "source_data_as_of": "2026-10-06T01:06:00.000",
-  "total_records": 993,
+  "source_data_as_of": "2026-10-07T01:05:00.000",
+  "total_records": 995,
   "markets": [
     {
       "market": "San Francisco",
       "state": "CA",
-      "complaints": 993
+      "complaints": 995
     }
   ],
   "monthly": [
@@ -127,7 +127,7 @@
       "month": "2026-10",
       "market": "San Francisco",
       "state": "CA",
-      "complaints": 10
+      "complaints": 12
     }
   ],
   "records": [
@@ -16018,6 +16018,38 @@
       "long": -122.389590786,
       "neighborhood": "South Beach",
       "source_url": "https://data.sf.gov/resource/vw6y-z8j6.json?service_request_id=202000144742"
+    },
+    {
+      "id": "SF-202000150904",
+      "source_id": "202000150904",
+      "state": "CA",
+      "market": "San Francisco",
+      "requested_datetime": "2026-10-06T20:11:19.000",
+      "requested_date": "2026-10-06",
+      "month": "2026-10",
+      "type": "incident_report",
+      "status": "Open",
+      "agency": "MTA - Autonomous Vehicles Complaints",
+      "lat": 37.75701625,
+      "long": -122.4767399,
+      "neighborhood": "Outer Sunset",
+      "source_url": "https://data.sf.gov/resource/vw6y-z8j6.json?service_request_id=202000150904"
+    },
+    {
+      "id": "SF-202000150982",
+      "source_id": "202000150982",
+      "state": "CA",
+      "market": "San Francisco",
+      "requested_datetime": "2026-10-06T20:50:08.000",
+      "requested_date": "2026-10-06",
+      "month": "2026-10",
+      "type": "other",
+      "status": "Open",
+      "agency": "MTA - Autonomous Vehicles Complaints",
+      "lat": null,
+      "long": null,
+      "neighborhood": "",
+      "source_url": "https://data.sf.gov/resource/vw6y-z8j6.json?service_request_id=202000150982"
     }
   ]
 }

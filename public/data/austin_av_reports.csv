@@ -331,3 +331,5 @@ ATX-360,360,Austin,TX,2026-10-02,2026-10,APD,Safety Concern,Tesla,https://servic
 ATX-361,361,Austin,TX,2026-10-02,2026-10,APD,Blocking Traffic,Tesla,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/361
 ATX-363,363,Austin,TX,2026-10-03,2026-10,APD,Ignore APD Direction,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/363
 ATX-365,365,Austin,TX,2026-10-03,2026-10,APD,Blocking Traffic,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/365
+ATX-366,366,Austin,TX,2026-10-03,2026-10,APD,Blocking Traffic,Tesla,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/366
+ATX-367,367,Austin,TX,2026-10-06,2026-10,City Employee,Safety Concern,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/367
