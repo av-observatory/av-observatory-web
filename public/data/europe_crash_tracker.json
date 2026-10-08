@@ -2,10 +2,10 @@
   "schema_version": "1.0.0",
   "dataset": "Europe AV Crash Tracker (Beta)",
   "updated_at": "2026-10-08",
-  "geography": "Europe (EU and non-EU European countries)",
+  "geography": "Europe",
   "status": "beta",
-  "methodology": "One row per real-world crash, not per article. Historical discovery searches cover all European countries, including EU member states and non-EU countries such as the United Kingdom, Norway and Switzerland. Media reports, operator statements, police/public-agency material, European project reports and academic evaluations describing the same event are merged into one canonical incident using compatible date/period, location, operator/manufacturer, vehicle, automation status and collision sequence. Exact dates and outcomes are left unknown when public sources do not establish them.",
-  "limitations": "This is a historical-search seed, not a guarantee of complete European coverage. Europe has no single public incident-level ADS crash feed comparable to the U.S. NHTSA SGO. Reporting regimes differ across the EU/EEA, United Kingdom, Switzerland and other countries, and public availability varies substantially by country and language.",
+  "methodology": "One row per real-world crash, not per article. Historical discovery searches cover European countries across the continent, including the United Kingdom, Norway and Switzerland. Media reports, operator statements, police/public-agency material, European project reports and academic evaluations describing the same event are merged into one canonical incident using compatible date/period, location, operator/manufacturer, vehicle, automation status and collision sequence. Exact dates and outcomes are left unknown when public sources do not establish them.",
+  "limitations": "This is a historical-search seed, not a guarantee of complete European coverage. Europe has no single public incident-level ADS crash feed comparable to the U.S. NHTSA SGO. Reporting regimes differ across European countries, and public availability varies substantially by country and language.",
   "incidents": [
     {
       "incident_id": "eu-nl-rivium-2005-12-06-parkshuttle",
