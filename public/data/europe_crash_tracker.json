@@ -276,5 +276,263 @@
         "https://www.suraaa.at/wp-content/uploads/sites/6/2023/08/PM_SURAAA_10_08_23.pdf"
       ]
     }
-  ]
+  ],
+  "countries": [
+    {
+      "country": "Albania",
+      "verified_incidents": 0,
+      "status": "No verified incidents currently in tracker"
+    },
+    {
+      "country": "Andorra",
+      "verified_incidents": 0,
+      "status": "No verified incidents currently in tracker"
+    },
+    {
+      "country": "Armenia",
+      "verified_incidents": 0,
+      "status": "No verified incidents currently in tracker"
+    },
+    {
+      "country": "Austria",
+      "verified_incidents": 2,
+      "status": "Verified incident(s) in tracker"
+    },
+    {
+      "country": "Azerbaijan",
+      "verified_incidents": 0,
+      "status": "No verified incidents currently in tracker"
+    },
+    {
+      "country": "Belarus",
+      "verified_incidents": 0,
+      "status": "No verified incidents currently in tracker"
+    },
+    {
+      "country": "Belgium",
+      "verified_incidents": 0,
+      "status": "No verified incidents currently in tracker"
+    },
+    {
+      "country": "Bosnia and Herzegovina",
+      "verified_incidents": 0,
+      "status": "No verified incidents currently in tracker"
+    },
+    {
+      "country": "Bulgaria",
+      "verified_incidents": 0,
+      "status": "No verified incidents currently in tracker"
+    },
+    {
+      "country": "Croatia",
+      "verified_incidents": 0,
+      "status": "No verified incidents currently in tracker"
+    },
+    {
+      "country": "Cyprus",
+      "verified_incidents": 0,
+      "status": "No verified incidents currently in tracker"
+    },
+    {
+      "country": "Czechia",
+      "verified_incidents": 0,
+      "status": "No verified incidents currently in tracker"
+    },
+    {
+      "country": "Denmark",
+      "verified_incidents": 0,
+      "status": "No verified incidents currently in tracker"
+    },
+    {
+      "country": "Estonia",
+      "verified_incidents": 1,
+      "status": "Verified incident(s) in tracker"
+    },
+    {
+      "country": "Finland",
+      "verified_incidents": 1,
+      "status": "Verified incident(s) in tracker"
+    },
+    {
+      "country": "France",
+      "verified_incidents": 0,
+      "status": "No verified incidents currently in tracker"
+    },
+    {
+      "country": "Georgia",
+      "verified_incidents": 0,
+      "status": "No verified incidents currently in tracker"
+    },
+    {
+      "country": "Germany",
+      "verified_incidents": 2,
+      "status": "Verified incident(s) in tracker"
+    },
+    {
+      "country": "Greece",
+      "verified_incidents": 0,
+      "status": "No verified incidents currently in tracker"
+    },
+    {
+      "country": "Hungary",
+      "verified_incidents": 0,
+      "status": "No verified incidents currently in tracker"
+    },
+    {
+      "country": "Iceland",
+      "verified_incidents": 0,
+      "status": "No verified incidents currently in tracker"
+    },
+    {
+      "country": "Ireland",
+      "verified_incidents": 0,
+      "status": "No verified incidents currently in tracker"
+    },
+    {
+      "country": "Italy",
+      "verified_incidents": 0,
+      "status": "No verified incidents currently in tracker"
+    },
+    {
+      "country": "Kazakhstan",
+      "verified_incidents": 0,
+      "status": "No verified incidents currently in tracker"
+    },
+    {
+      "country": "Kosovo",
+      "verified_incidents": 0,
+      "status": "No verified incidents currently in tracker"
+    },
+    {
+      "country": "Latvia",
+      "verified_incidents": 0,
+      "status": "No verified incidents currently in tracker"
+    },
+    {
+      "country": "Liechtenstein",
+      "verified_incidents": 0,
+      "status": "No verified incidents currently in tracker"
+    },
+    {
+      "country": "Lithuania",
+      "verified_incidents": 0,
+      "status": "No verified incidents currently in tracker"
+    },
+    {
+      "country": "Luxembourg",
+      "verified_incidents": 0,
+      "status": "No verified incidents currently in tracker"
+    },
+    {
+      "country": "Malta",
+      "verified_incidents": 0,
+      "status": "No verified incidents currently in tracker"
+    },
+    {
+      "country": "Moldova",
+      "verified_incidents": 0,
+      "status": "No verified incidents currently in tracker"
+    },
+    {
+      "country": "Monaco",
+      "verified_incidents": 0,
+      "status": "No verified incidents currently in tracker"
+    },
+    {
+      "country": "Montenegro",
+      "verified_incidents": 0,
+      "status": "No verified incidents currently in tracker"
+    },
+    {
+      "country": "Netherlands",
+      "verified_incidents": 1,
+      "status": "Verified incident(s) in tracker"
+    },
+    {
+      "country": "North Macedonia",
+      "verified_incidents": 0,
+      "status": "No verified incidents currently in tracker"
+    },
+    {
+      "country": "Norway",
+      "verified_incidents": 0,
+      "status": "No verified incidents currently in tracker"
+    },
+    {
+      "country": "Poland",
+      "verified_incidents": 0,
+      "status": "No verified incidents currently in tracker"
+    },
+    {
+      "country": "Portugal",
+      "verified_incidents": 0,
+      "status": "No verified incidents currently in tracker"
+    },
+    {
+      "country": "Romania",
+      "verified_incidents": 0,
+      "status": "No verified incidents currently in tracker"
+    },
+    {
+      "country": "Russia",
+      "verified_incidents": 0,
+      "status": "No verified incidents currently in tracker"
+    },
+    {
+      "country": "San Marino",
+      "verified_incidents": 0,
+      "status": "No verified incidents currently in tracker"
+    },
+    {
+      "country": "Serbia",
+      "verified_incidents": 0,
+      "status": "No verified incidents currently in tracker"
+    },
+    {
+      "country": "Slovakia",
+      "verified_incidents": 0,
+      "status": "No verified incidents currently in tracker"
+    },
+    {
+      "country": "Slovenia",
+      "verified_incidents": 0,
+      "status": "No verified incidents currently in tracker"
+    },
+    {
+      "country": "Spain",
+      "verified_incidents": 0,
+      "status": "No verified incidents currently in tracker"
+    },
+    {
+      "country": "Sweden",
+      "verified_incidents": 1,
+      "status": "Verified incident(s) in tracker"
+    },
+    {
+      "country": "Switzerland",
+      "verified_incidents": 1,
+      "status": "Verified incident(s) in tracker"
+    },
+    {
+      "country": "Turkey",
+      "verified_incidents": 0,
+      "status": "No verified incidents currently in tracker"
+    },
+    {
+      "country": "Ukraine",
+      "verified_incidents": 0,
+      "status": "No verified incidents currently in tracker"
+    },
+    {
+      "country": "United Kingdom",
+      "verified_incidents": 0,
+      "status": "No verified incidents currently in tracker"
+    },
+    {
+      "country": "Vatican City",
+      "verified_incidents": 0,
+      "status": "No verified incidents currently in tracker"
+    }
+  ],
+  "country_scope_note": "Coverage registry includes sovereign states conventionally treated as wholly or partly European, plus Kosovo. Inclusion in the registry is geographic/editorial and does not imply EU membership or a position on political status."
 }
