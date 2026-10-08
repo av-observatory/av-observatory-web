@@ -45,7 +45,7 @@ async function loadData():Promise<EuropeCrashDataset>{
 export default async function EuropeSafetyPage(){
   const data=await loadData();
   const countries=data.countries;
-  const fatal=data.incidents.filter(x=>x.fatalities>0).length;
+  const fatal=data.incidents.filter(x=>Number(x.fatalities)>0).length;
   return <div className="max-w-6xl px-8 py-6">
     <div className="flex flex-wrap items-center gap-2 mb-3">
       <p className="eyebrow">Europe · Crash Reporting</p>
@@ -72,6 +72,7 @@ export default async function EuropeSafetyPage(){
           <a href="/data/europe_crash_tracker.csv" className="text-[#184f95] underline">Download CSV ↗</a>
           <a href="/data/europe_crash_tracker.json" className="text-[#184f95] underline">Download JSON ↗</a>
           <a href="/data/europe_crash_tracker_unresolved_leads.csv" className="text-[#184f95] underline">Download unresolved leads ↗</a>
+          <a href="/data/europe_crash_tracker_countries.csv" className="text-[#184f95] underline">Download country coverage ↗</a>
         </div>
       </div>
       <div className="mt-4"><EuropeCrashTracker incidents={data.incidents} countries={data.countries}/></div>
