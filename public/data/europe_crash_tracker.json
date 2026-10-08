@@ -1,0 +1,280 @@
+{
+  "schema_version": "1.0.0",
+  "dataset": "Europe AV Crash Tracker (Beta)",
+  "updated_at": "2026-10-08",
+  "geography": "Europe (EU and non-EU European countries)",
+  "status": "beta",
+  "methodology": "One row per real-world crash, not per article. Historical discovery searches cover all European countries, including EU member states and non-EU countries such as the United Kingdom, Norway and Switzerland. Media reports, operator statements, police/public-agency material, European project reports and academic evaluations describing the same event are merged into one canonical incident using compatible date/period, location, operator/manufacturer, vehicle, automation status and collision sequence. Exact dates and outcomes are left unknown when public sources do not establish them.",
+  "limitations": "This is a historical-search seed, not a guarantee of complete European coverage. Europe has no single public incident-level ADS crash feed comparable to the U.S. NHTSA SGO. Reporting regimes differ across the EU/EEA, United Kingdom, Switzerland and other countries, and public availability varies substantially by country and language.",
+  "incidents": [
+    {
+      "incident_id": "eu-nl-rivium-2005-12-06-parkshuttle",
+      "date": "2005-12-06",
+      "date_precision": "day",
+      "country": "Netherlands",
+      "city": "Capelle aan den IJssel / Rotterdam",
+      "operator": "Connexxion",
+      "manufacturer": "2getthere",
+      "vehicle": "ParkShuttle",
+      "automation": "Unmanned automated people mover on dedicated guideway",
+      "crash_with": "Another ParkShuttle vehicle",
+      "injury_severity": "No injuries reported",
+      "fatalities": 0,
+      "injuries": 0,
+      "narrative": "Two unmanned ParkShuttle vehicles collided head-on near a bridge after a communications problem and a supervisory release error allowed both vehicles into the same single-lane section. Connexxion's investigation said the obstacle-detection system reacted but the stopping distance was insufficient for two vehicles approaching one another. No passengers were aboard.",
+      "source_class": "Contemporary media + operator investigation",
+      "verification": "Multiple-source match",
+      "sources": [
+        "https://tweakers.net/nieuws/40212/computergestuurde-bussen-aan-de-ketting-na-botsing.html",
+        "https://tweakers.net/nieuws/40306/connexxion-handelingsfout-oorzaak-botsing-parkshuttles.html"
+      ]
+    },
+    {
+      "incident_id": "europe-ch-sion-2016-09-21-navya-van",
+      "date": "2016-09-21",
+      "date_precision": "day",
+      "country": "Switzerland",
+      "city": "Sion",
+      "operator": "PostBus Switzerland",
+      "manufacturer": "Navya",
+      "vehicle": "Autonomous shuttle",
+      "automation": "Driverless shuttle pilot with trained attendant onboard",
+      "crash_with": "Open rear door of parked delivery van",
+      "injury_severity": "No injuries reported",
+      "fatalities": 0,
+      "injuries": 0,
+      "narrative": "A PostBus autonomous shuttle carrying three passengers struck the open rear door of a parked delivery van in Sion. Both vehicles sustained light damage and nobody was injured. PostBus temporarily suspended the trial while the project team and manufacturer analyzed the cause, then later resumed and expanded the service.",
+      "source_class": "Media + operator statement",
+      "verification": "Multiple-source match",
+      "sources": [
+        "https://www.thelocal.ch/20160923/swiss-driverless-bus-trial-suspended-after-crash",
+        "https://www.postauto.ch/en/about-us-and-news/media/press-releases/2017/self-driving-shuttles-soon-to-link-old-town-with-sion-train-station"
+      ]
+    },
+    {
+      "incident_id": "eu-de-bad-birnbach-2017-2018-easymile-car",
+      "date": "2018",
+      "date_precision": "within first operating year ending Oct 2018",
+      "country": "Germany",
+      "city": "Bad Birnbach",
+      "operator": "DB Regio Bus / Regionalbus Ostbayern",
+      "manufacturer": "EasyMile",
+      "vehicle": "EZ10",
+      "automation": "Automated shuttle with onboard safety operator",
+      "crash_with": "Passenger car pulling out / parking maneuver",
+      "injury_severity": "Property damage only",
+      "fatalities": 0,
+      "injuries": 0,
+      "narrative": "Research evaluating the Bad Birnbach automated-shuttle deployment records one real-world crash during the first operating year: a car pulling out struck the front of the shuttle. The authors state the shuttle was not at fault and note that the collision was difficult to avoid once the other vehicle entered its path. Contemporary summaries describe only sheet-metal/property damage.",
+      "source_class": "Academic evaluation + project history",
+      "verification": "Confirmed event; exact day not public in sources reviewed",
+      "sources": [
+        "https://link.springer.com/chapter/10.1007/978-3-662-59406-3_5",
+        "https://de.wikipedia.org/wiki/Autonomer_Bus_(Bad_Birnbach)"
+      ]
+    },
+    {
+      "incident_id": "eu-at-vienna-2019-07-18-navya-pedestrian",
+      "date": "2019-07-18",
+      "date_precision": "day",
+      "country": "Austria",
+      "city": "Vienna",
+      "operator": "Wiener Linien",
+      "manufacturer": "Navya",
+      "vehicle": "Autonom Shuttle",
+      "automation": "Automated shuttle pilot with onboard attendant",
+      "crash_with": "Pedestrian",
+      "injury_severity": "Minor scratches reported",
+      "fatalities": 0,
+      "injuries": 1,
+      "narrative": "A Navya shuttle in Vienna's Seestadt pilot was involved in a low-speed collision with a pedestrian. Wiener Linien said witnesses reported that the pedestrian, wearing headphones and looking at a phone, moved into the side of the bus. She sustained minor scratches. Operations were suspended while vehicle data were reviewed and later resumed.",
+      "source_class": "Media + operator account",
+      "verification": "Multiple-source match",
+      "sources": [
+        "https://www.theregister.com/software/2019/07/19/literally_braking_news_two_people_hurt_as_not_one_but_two_selfdriving_spaceage_buses_go_awry/1342013",
+        "https://www.toronto.ca/wp-content/uploads/2019/10/9014-TS_CAVCOE_City_Tor_AV_Trials_final_rpt.pdf"
+      ]
+    },
+    {
+      "incident_id": "eu-ee-tallinn-2020-ulemiste-auve-car",
+      "date": "2020",
+      "date_precision": "during 18 Jun–Sep 2020 pilot",
+      "country": "Estonia",
+      "city": "Tallinn",
+      "operator": "FABULOS / Ülemiste City pilot",
+      "manufacturer": "Auve Tech",
+      "vehicle": "ISEAUTO autonomous shuttle",
+      "automation": "Automated shuttle in mixed traffic; onboard/remote supervision",
+      "crash_with": "Passenger car",
+      "injury_severity": "Not reported",
+      "fatalities": null,
+      "injuries": null,
+      "narrative": "During the 2020 Ülemiste City autonomous-shuttle pilot, an Auve Tech bus collided with a passenger car. A later academic review of Baltic autonomous-bus pilots records the collision and states that the passenger-car driver was at fault. Auve Tech personnel separately described an early Tallinn collision in which a human driver failed to give way and accepted responsibility.",
+      "source_class": "Academic review + manufacturer interview",
+      "verification": "Multiple-source match; exact day not public",
+      "sources": [
+        "https://www.mdpi.com/2413-8851/10/3/172",
+        "https://www.abc.net.au/listen/programs/scienceshow/strange-frontiers-04-autonomous-minibus-ready-for-passengers/101988978"
+      ]
+    },
+    {
+      "incident_id": "eu-fi-helsinki-2021-11-08-auve-parked-car",
+      "date": "2021-11-08",
+      "date_precision": "day",
+      "country": "Finland",
+      "city": "Helsinki",
+      "operator": "Roboride / Helsinki pilot",
+      "manufacturer": "Auve Tech",
+      "vehicle": "Autonomous hydrogen shuttle",
+      "automation": "Manual takeover by safety operator during automated-shuttle service",
+      "crash_with": "Parked passenger car",
+      "injury_severity": "No injuries reported",
+      "fatalities": 0,
+      "injuries": 0,
+      "narrative": "An Auve Tech shuttle in Helsinki's Vuosaari district scratched a parked car while passing a garbage truck. Auve Tech said the safety operator had taken manual control and described the collision as human error. Nobody was injured. The record is retained because it occurred during an automated-shuttle deployment, but the vehicle was under manual control at impact.",
+      "source_class": "Media + manufacturer statement",
+      "verification": "Exact event confirmed",
+      "sources": [
+        "https://news.err.ee/1608396146/autonomous-bus-created-in-estonia-involved-in-minor-collision-in-finland",
+        "https://www.baltictimes.com/autonomous_bus_created_in_estonia_involved_in_minor_collision_in_finland/"
+      ]
+    },
+    {
+      "incident_id": "eu-de-berlin-2021-12-07-bvg-car",
+      "date": "2021-12-07",
+      "date_precision": "day",
+      "country": "Germany",
+      "city": "Berlin",
+      "operator": "BVG / Shuttles & Co",
+      "manufacturer": "EasyMile",
+      "vehicle": "Automated shuttle",
+      "automation": "Automated shuttle; turning maneuver initiated by onboard operator",
+      "crash_with": "Passenger car",
+      "injury_severity": "Property damage only",
+      "fatalities": 0,
+      "injuries": 0,
+      "narrative": "A BVG automated minibus collided with a car while turning at its Tegel terminus. Berlin police said nobody was injured and treated the event as property damage. Police attributed responsibility to the onboard operator, who initiated the turning maneuver while another vehicle was passing; BVG said it would review vehicle data.",
+      "source_class": "Media + police/BVG statements",
+      "verification": "Exact event confirmed",
+      "sources": [
+        "https://www.tagesspiegel.de/berlin/autonomer-bvg-bus-stosst-mit-auto-zusammen-4295278.html"
+      ]
+    },
+    {
+      "incident_id": "eu-at-koppl-2023-evan-accident",
+      "date": "2023",
+      "date_precision": "shortly after EVAN deployment beginning Aug 2023",
+      "country": "Austria",
+      "city": "Koppl (Salzburg)",
+      "operator": "Salzburg Research / SHOW",
+      "manufacturer": "DigiTrans",
+      "vehicle": "eVAN / Digibus 2.0",
+      "automation": "Highly automated research shuttle with onboard safety driver",
+      "crash_with": "Not publicly specified in sources reviewed",
+      "injury_severity": "Not publicly specified",
+      "fatalities": null,
+      "injuries": null,
+      "narrative": "The EU-funded SHOW project's final business-model report states that the DigiTrans EVAN was involved in an accident shortly after deployment in Salzburg, after which the project reverted to the HEAT shuttle for the remaining period. The public project material reviewed does not specify the exact crash date, counterpart, injury outcome, or automation state at impact, so those fields remain unknown.",
+      "source_class": "EU project report",
+      "verification": "Official project confirmation; crash details incomplete",
+      "sources": [
+        "https://show-project.eu/wp-content/uploads/2024/11/D2.4-Final-validated-business-operating-models.pdf",
+        "https://www.digibus.at/en/"
+      ]
+    },
+    {
+      "incident_id": "eu-se-gothenburg-2026-05-25-karsan-tram",
+      "date": "2026-05-25",
+      "date_precision": "day",
+      "country": "Sweden",
+      "city": "Gothenburg",
+      "operator": "Västtrafik",
+      "manufacturer": "Karsan / ADASTEC",
+      "vehicle": "Autonomous e-ATAK",
+      "automation": "Automated bus service with safety driver onboard",
+      "crash_with": "Tram",
+      "injury_severity": "No injuries reported",
+      "fatalities": 0,
+      "injuries": 0,
+      "narrative": "On the first day carrying passengers, an autonomous e-ATAK bus braked and was struck from behind by a tram in Gothenburg. Västtrafik reported no injuries. Karsan said preliminary technical evaluation indicated that the automated-driving system functioned as designed and that the tram approached from behind.",
+      "source_class": "Media + operator/manufacturer statements",
+      "verification": "Multiple-source match",
+      "sources": [
+        "https://www.electrive.com/2026/05/27/autonomous-e-bus-by-karsan-collides-with-tram-in-gothenburg/",
+        "https://www.aa.com.tr/en/turkiye/turkish-ev-manufacturer-says-reports-on-sweden-autonomous-bus-incident-created-misleading-perception-/3949045"
+      ]
+    }
+  ],
+  "reporting_options": [
+    {
+      "source": "EU Regulation 2022/1426 in-service ADS reporting",
+      "scope": "EU member states and other jurisdictions applying the EU type-approval framework",
+      "access": "Reported to authorities; no centralized public incident-level feed identified",
+      "usefulness": "High",
+      "notes": "Manufacturers of covered fully automated vehicles must report safety-critical occurrences and periodic in-service monitoring information to type-approval/market-surveillance authorities and the European Commission.",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/ALL/?uri=celex%3A32022R1426"
+    },
+    {
+      "source": "United Kingdom automated-vehicle occurrence reporting",
+      "scope": "UK self-driving pilots and the Automated Vehicles Act framework",
+      "access": "Mandatory reporting to UK authorities; public incident-level publication remains limited",
+      "usefulness": "High",
+      "notes": "UK pilot guidance requires operators to report safety-relevant occurrences, including collisions and traffic infractions. This creates a separate official reporting pathway for the UK after Brexit.",
+      "url": "https://www.gov.uk/government/publications/self-driving-vehicle-pilot-scheme-information-for-applicants/self-driving-vehicle-pilot-scheme-information-for-applicants"
+    },
+    {
+      "source": "National road-safety and AV-testing authorities",
+      "scope": "All European countries",
+      "access": "Varies by country; may include public datasets, project reports, regulator releases or records-access requests",
+      "usefulness": "High",
+      "notes": "Examples include Sweden's STRADA, Norway's Statens vegvesen AV-testing permits and experience reports, Swiss FEDRO/cantonal records, and national type-approval authorities. These can corroborate or uncover crashes not visible in media searches.",
+      "url": "https://www.vegvesen.no/"
+    },
+    {
+      "source": "CARE road-accident database",
+      "scope": "EU road crashes involving death or injury",
+      "access": "European Commission road-safety database",
+      "usefulness": "Medium",
+      "notes": "Useful as a backstop for injury/fatal crashes, but standard public CARE fields do not directly identify ADS engagement, so matching requires external incident details.",
+      "url": "https://road-safety.transport.ec.europa.eu/european-road-safety-observatory/statistics-and-analysis-archive/about-care_en"
+    },
+    {
+      "source": "Media, operator and local-agency monitoring",
+      "scope": "Publicly reported automated-driving crashes across Europe",
+      "access": "Public web sources",
+      "usefulness": "High for discovery",
+      "notes": "Primary beta discovery layer. Multiple reports about one real-world event are merged into one canonical incident. Operator, police and public-agency statements are preferred when available.",
+      "url": ""
+    }
+  ],
+  "unresolved_leads": [
+    {
+      "lead_id": "eu-de-monheim-multiple-collisions-pre-2021",
+      "country": "Germany",
+      "city": "Monheim am Rhein",
+      "period": "By Dec 2021",
+      "operator": "Bahnen der Stadt Monheim",
+      "manufacturer": "EasyMile",
+      "vehicle": "EZ10 fleet",
+      "status": "Aggregate evidence only — individual crashes not yet separable",
+      "finding": "Operator reporting cited by Golem says the Monheim shuttle fleet had already been involved in multiple collisions, none attributed to the buses and none causing personal injury. The public article does not provide enough dates or event-level details to split these into defensible canonical records without further local-source research.",
+      "sources": [
+        "https://www.golem.de/news/autonome-busse-in-monheim-software-updates-sind-allergoesste-herausforderung-2112-162063-2.html"
+      ]
+    },
+    {
+      "lead_id": "eu-at-poertschach-2023-08-09-manual-only",
+      "country": "Austria",
+      "city": "Pörtschach am Wörthersee",
+      "period": "2023-08-09",
+      "operator": "SURAAA",
+      "manufacturer": "Not specified in reviewed source",
+      "vehicle": "Self-driving shuttle",
+      "status": "Excluded from canonical AV-crash count — manual operation",
+      "finding": "SURAAA's own statement confirms the shuttle damaged parked cars while being manually driven off the automated route during a routine parking maneuver. It explicitly attributes the event to human driving error and says no people were involved. Retained here for transparency, but not counted as an automated-driving crash.",
+      "sources": [
+        "https://www.suraaa.at/wp-content/uploads/sites/6/2023/08/PM_SURAAA_10_08_23.pdf"
+      ]
+    }
+  ]
+}
