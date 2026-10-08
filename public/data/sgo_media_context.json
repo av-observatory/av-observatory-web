@@ -100,35 +100,6 @@
         "https://static.nhtsa.gov/odi/inv/2022/INIM-PE22014-89878P.pdf",
         "https://static.nhtsa.gov/odi/inv/2022/INCLA-PE22014-10746.pdf"
       ]
-    },
-    {
-      "report_id": "13781-11459",
-      "match": "exact_nhtsa_report_id",
-      "narrative": "Tesla's updated NHTSA filing says the ADS stopped on the right side of an Austin street and did not proceed. A safety monitor requested assistance; a teleoperator took control, drove the vehicle up a curb, and struck a metal fence at low speed. The filing reports a minor injury without hospitalization and no passengers in the vehicle.",
-      "attribution": "Tesla NHTSA SGO filing; independently reported by TechCrunch and WIRED",
-      "sources": [
-        "https://techcrunch.com/2026/05/15/tesla-reveals-two-robotaxi-crashes-involving-teleoperators/",
-        "https://www.wired.com/story/tesla-reveals-new-details-about-robotaxi-crashes-and-the-humans-involved/"
-      ]
-    },
-    {
-      "report_id": "13781-11375",
-      "match": "exact_nhtsa_report_id",
-      "narrative": "Tesla's July 2025 Austin Robotaxi report was later updated to classify a minor injury with hospitalization. Public reporting on the NHTSA data describes the Model Y moving at very low speed during a right turn when it was struck by an SUV; the filing does not by itself establish fault.",
-      "attribution": "Tesla NHTSA SGO filing and reporting on the updated filing",
-      "sources": [
-        "https://www.cbsnews.com/news/tesla-robotaxi-austin-14-crashes-nhtsa/",
-        "https://electrek.co/2026/02/17/tesla-robotaxi-adds-5-more-crashes-austin-month-4x-worse-than-humans/"
-      ]
-    },
-    {
-      "report_id": "13781-15395",
-      "match": "exact_nhtsa_report_id",
-      "narrative": "Tesla reported that a Model Y on a dead-end residential road in Houston needed remote assistance. While a remote operator was recovering the vehicle, it entered a grassy slope and struck a hidden tree stump. The filing reports property damage only, no injuries, and a pre-crash speed of about 2 mph.",
-      "attribution": "Tesla NHTSA SGO filing as reported by Electrek",
-      "sources": [
-        "https://electrek.co/2026/07/20/tesla-robotaxi-remote-operator-crash-houston/"
-      ]
     }
   ],
   "reviewed_sources": [
