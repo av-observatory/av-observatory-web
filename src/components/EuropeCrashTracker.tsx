@@ -99,7 +99,7 @@ export function EuropeCrashTracker({incidents,countries}:{incidents:EuropeCrashI
                   default:{fill:selectedCountry?"#bfdcf4":n>0?"#d9eaf7":"#eef2f5",stroke:"#8fa6bb",strokeWidth:0.6,outline:"none",cursor:"pointer"},
                   hover:{fill:n>0?"#c8e0f2":"#e2e8ed",stroke:"#52779d",strokeWidth:0.8,outline:"none",cursor:"pointer"},
                   pressed:{fill:"#bfdcf4",stroke:"#173d65",strokeWidth:1,outline:"none"}
-                }}
+                } as any}
               />;
             })}
           </Geographies>
