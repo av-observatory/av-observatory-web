@@ -25,7 +25,7 @@ export function TopEntitiesChart({ data }: { data: SgoMonthlyDataset }) {
         <XAxis type="number" {...AXIS_PROPS} />
         <YAxis type="category" dataKey="entity" {...AXIS_PROPS} fontSize={11} width={180} />
         <Tooltip {...TOOLTIP_PROPS} formatter={(v) => Number(v).toLocaleString()} />
-        <Bar dataKey="count" name="Incident Reports" fill={SERIES.blue} radius={[0, 3, 3, 0]} maxBarSize={22} />
+        <Bar dataKey="count" name="Reported Crashes" fill={SERIES.blue} radius={[0, 3, 3, 0]} maxBarSize={22} />
       </BarChart>
     </ResponsiveContainer>
   );
@@ -60,7 +60,7 @@ export function NationalTrendChart({ data }: { data: SgoMonthlyDataset }) {
         <XAxis dataKey="label" {...AXIS_PROPS} interval="preserveStartEnd" />
         <YAxis {...AXIS_PROPS} />
         <Tooltip {...TOOLTIP_PROPS} formatter={(v) => Number(v).toLocaleString()} />
-        <Line type="monotone" dataKey="count" name="Incident Reports Filed" stroke={SERIES.blue} strokeWidth={2.5} dot={false} activeDot={{ r: 5 }} />
+        <Line type="monotone" dataKey="count" name="Reported Crashes" stroke={SERIES.blue} strokeWidth={2.5} dot={false} activeDot={{ r: 5 }} />
       </LineChart>
     </ResponsiveContainer>
   );
