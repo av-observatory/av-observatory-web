@@ -49,7 +49,7 @@ async function loadSgoRows(): Promise<SgoIncidentRow[]> {
   const idx = new Map(header.map((h,i)=>[h,i]));
   const fields: (keyof SgoIncidentRow)[] = [
     "report_id","report_version","reporting_entity","report_type","report_month","report_year",
-    "make","model","automation_system_engaged","engagement_status","operating_entity",
+    "make","model","automation_system_engaged","engagement_status","operating_entity","incident_date",
     "city","state","roadway_type","crash_with","highest_injury_severity","within_odd"
   ];
   return rows.filter(r=>r.length>1).map(r=>{
@@ -107,7 +107,32 @@ export default async function SafetyPage() {
         </div>
       </section>
 
-      <SgoSeriousCrashList crashes={seriousCrashes} media={mediaContext.records} reviewedSources={mediaContext.reviewed_sources} />
+      <SgoSeriousCrashList
+        crashes={[
+          ...seriousCrashes,
+          ...incidentRows
+            .filter(r => r.reporting_entity === "Tesla, Inc." && r.automation_system_engaged === "ADS")
+            .filter(r => !seriousCrashes.some(c => c.report_ids.split(";").map(id => id.trim()).includes(r.report_id)))
+            .map(r => ({
+              incident_key: `tesla-${r.report_id}`,
+              incident_date: r.incident_date,
+              city: r.city,
+              state: r.state,
+              reporting_entities: r.reporting_entity,
+              report_ids: r.report_id,
+              severity: r.highest_injury_severity,
+              make: r.make,
+              model: r.model,
+              crash_with: r.crash_with,
+              roadway_type: r.roadway_type,
+              engagement_status: r.engagement_status || r.automation_system_engaged,
+              air_bag_deployment: r.air_bag_deployment,
+              source_url: "https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv",
+            }))
+        ]}
+        media={mediaContext.records}
+        reviewedSources={mediaContext.reviewed_sources}
+      />
 
       <section className="mt-7">
         <div className="mb-2">
