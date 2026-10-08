@@ -1,7 +1,7 @@
 import { promises as fs } from "fs";
 import path from "path";
 import { StatTile } from "@/components/StatTile";
-import { EuropeCrashTracker, type EuropeCrashIncident, type EuropeCountry } from "@/components/EuCrashTracker";
+import { EuropeCrashTracker, type EuropeCrashIncident, type EuropeCountry } from "@/components/EuropeCrashTracker";
 
 type UnresolvedLead = {
   lead_id:string;
