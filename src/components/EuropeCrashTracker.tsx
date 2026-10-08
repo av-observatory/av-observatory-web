@@ -112,18 +112,6 @@ export function EuropeCrashTracker({incidents,countries}:{incidents:EuropeCrashI
       </div>
     </div>
 
-    <section className="mt-5">
-      <div className="flex items-end justify-between gap-3">
-        <div><h3 className="font-semibold text-[#152b45]">Country Coverage</h3><p className="text-sm text-neutral-600 mt-1">All in-scope European countries are listed, including those with zero verified crashes.</p></div>
-      </div>
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-2 mt-3">
-        {countries.map(item=><button key={item.country} type="button" onClick={()=>selectCountry(item.country)}
-          className={`flex items-center justify-between gap-3 rounded border px-3 py-2 text-left text-sm ${country===item.country?"border-[#173d65] bg-[#e8f2fb]":"border-[#dce5ec] bg-white hover:bg-[#f7fafc]"}`}>
-          <span>{item.country}</span><strong className="tabular-nums text-[#123b69]">{item.verified_incidents}</strong>
-        </button>)}
-      </div>
-    </section>
-
     <section className="mt-6">
       <h3 className="font-semibold text-[#152b45]">{country==="ALL"?"Verified Crash Records":`${country} · Verified Crash Records`}</h3>
       <div className="mt-3 grid gap-2.5">
