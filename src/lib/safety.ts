@@ -5,7 +5,11 @@ export interface SgoMonthlyDataset {
   source: string;
   coverage: string;
   notes: string;
-  row_count: number;
+  row_count?: number;
+  report_row_count?: number;
+  crash_count?: number;
+  same_incident_id_crash_count?: number;
+  report_id_fallback_crash_count?: number;
   states_represented: string[];
   entities_represented: string[];
   vehicle_class_and_program_type_note?: string;
