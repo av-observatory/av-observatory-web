@@ -111,7 +111,8 @@ def main():
             export(stem + "_reviewed_sources.csv", data["reviewed_sources"], output)
         elif stem in ("eu_crash_tracker", "europe_crash_tracker"):
             export(stem + ".csv", data["incidents"], output)
-            export(stem + "_countries.csv", data.get("countries", []), output)
+            if data.get("countries"):
+                export(stem + "_countries.csv", data["countries"], output)
             export(stem + "_reporting_options.csv", data["reporting_options"], output)
             export(stem + "_unresolved_leads.csv", data["unresolved_leads"], output)
         elif stem == "av_311_source_registry":
