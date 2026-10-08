@@ -19,6 +19,7 @@ export type SgoIncidentRow = {
   automation_system_engaged: string;
   engagement_status: string;
   operating_entity: string;
+  incident_date: string;
   city: string;
   state: string;
   roadway_type: string;
