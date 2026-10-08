@@ -50,7 +50,7 @@ export function SafetyExplorer({ data }: { data: SgoMonthlyDataset }) {
         </label>}
         <div className="ml-auto text-right">
           <div className="text-2xl font-semibold tabular-nums">{total.toLocaleString()}</div>
-          <div className="text-xs text-neutral-500">reports in selected series</div>
+          <div className="text-xs text-neutral-500">crashes in selected series</div>
         </div>
       </div>
       <div className="text-xs text-neutral-500 mb-2">Complete through {monthLabel(SGO_COMPLETE_THROUGH.year, SGO_COMPLETE_THROUGH.month)}; Aug 2026 is excluded because the SGO extract is incomplete.</div>
@@ -60,7 +60,7 @@ export function SafetyExplorer({ data }: { data: SgoMonthlyDataset }) {
           <XAxis dataKey="label" {...AXIS_PROPS} interval="preserveStartEnd" />
           <YAxis {...AXIS_PROPS} allowDecimals={false} />
           <Tooltip {...TOOLTIP_PROPS} formatter={(v)=>Number(v).toLocaleString()} />
-          <Line type="monotone" dataKey="count" name="Incident reports" stroke={SERIES.blue} strokeWidth={2.75} dot={false} activeDot={{r:5}} />
+          <Line type="monotone" dataKey="count" name="Reported crashes" stroke={SERIES.blue} strokeWidth={2.75} dot={false} activeDot={{r:5}} />
         </LineChart>
       </ResponsiveContainer>
     </div>
