@@ -109,7 +109,7 @@ def main():
         elif stem == "sgo_media_context":
             export(stem + ".csv", data["records"], output)
             export(stem + "_reviewed_sources.csv", data["reviewed_sources"], output)
-        elif stem in ("eu_crash_tracker", "europe_crash_tracker"):
+        elif stem == "europe_crash_tracker":
             export(stem + ".csv", data["incidents"], output)
             if data.get("countries"):
                 export(stem + "_countries.csv", data["countries"], output)
