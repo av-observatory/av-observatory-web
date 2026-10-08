@@ -53,7 +53,7 @@ export default async function EuropeSafetyPage(){
     </div>
     <h1 className="text-4xl font-semibold tracking-tight max-w-3xl">Europe Crash Tracker</h1>
     <p className="mt-2 text-sm text-neutral-600 max-w-3xl">
-      A deduplicated record of publicly reported crashes involving automated-driving systems across Europe, including EU and non-EU countries. Unlike the US NHTSA SGO tracker, this beta is discovery-based: one real-world crash is counted once even when multiple media, operator or agency sources report it.
+      A deduplicated record of publicly reported crashes involving automated-driving systems across Europe. Unlike the US NHTSA SGO tracker, this beta is discovery-based: one real-world crash is counted once even when multiple media, operator or agency sources report it.
     </p>
 
     <div className="mt-5 grid sm:grid-cols-3 gap-2.5">
