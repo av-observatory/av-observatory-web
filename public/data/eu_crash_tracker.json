@@ -1,0 +1,89 @@
+{
+  "schema_version": "1.0.0",
+  "dataset": "EU AV Crash Tracker (Beta)",
+  "updated_at": "2026-10-08",
+  "geography": "European Union",
+  "status": "beta",
+  "methodology": "One row per real-world crash, not per article. Media, operator, regulator and research references describing the same event are merged into a canonical incident record. A match requires a compatible event date, location and vehicle/operator; ambiguous reports remain separate until verified.",
+  "limitations": "This is a discovery-based tracker, not an exhaustive census. Unlike the U.S. NHTSA SGO, the EU does not currently publish a centralized incident-level ADS crash feed. Coverage depends on public reporting and may miss unreported incidents.",
+  "incidents": [
+    {
+      "incident_id": "eu-at-vienna-2019-07-18-navya-pedestrian",
+      "date": "2019-07-18",
+      "country": "Austria",
+      "city": "Vienna",
+      "operator": "Wiener Linien",
+      "manufacturer": "Navya",
+      "vehicle": "Autonom Shuttle",
+      "automation": "Automated shuttle pilot; onboard operator",
+      "crash_with": "Pedestrian",
+      "injury_severity": "Minor injury",
+      "fatalities": 0,
+      "injuries": 1,
+      "narrative": "A Navya autonomous shuttle operating in Vienna's Seestadt pilot collided with a 30-year-old pedestrian at low speed. Wiener Linien said witnesses reported that the pedestrian, wearing headphones and looking at a phone, crossed into the side of the bus. The pedestrian was treated for minor scratches and the pilot was temporarily suspended while logs were reviewed.",
+      "source_class": "Media + operator statement",
+      "verification": "Multiple-source match",
+      "sources": [
+        "https://www.theregister.com/2019/07/19/literally_braking_news_two_people_hurt_as_not_one_but_two_selfdriving_spaceage_buses_go_awry/",
+        "https://www.maakindustrie.nl/en/articles/autonomous-navy-shuttle-collides-with-pedestrian-in-vienen",
+        "https://museum.wienerlinien.at/web/guest/auto-bus-seestadt"
+      ]
+    },
+    {
+      "incident_id": "eu-se-gothenburg-2026-05-25-karsan-tram",
+      "date": "2026-05-25",
+      "country": "Sweden",
+      "city": "Gothenburg",
+      "operator": "Västtrafik",
+      "manufacturer": "Karsan / ADASTEC",
+      "vehicle": "Autonomous e-ATAK",
+      "automation": "Automated bus trial; safety driver onboard",
+      "crash_with": "Tram",
+      "injury_severity": "No injuries reported",
+      "fatalities": 0,
+      "injuries": 0,
+      "narrative": "On the first day carrying passengers, an autonomous e-ATAK bus braked and was struck from behind by a tram in Gothenburg. A small number of passengers were onboard. Västtrafik reported no casualties or personal injuries; both vehicles sustained damage and the bus was removed from service for inspection.",
+      "source_class": "Media + operator statement",
+      "verification": "Multiple-source match",
+      "sources": [
+        "https://www.thelocal.se/20260525/self-driving-bus-in-gothenburg-crashes-with-tram-on-first-day",
+        "https://www.electrive.com/2026/05/27/autonomous-e-bus-by-karsan-collides-with-tram-in-gothenburg/",
+        "https://www.aa.com.tr/en/turkiye/turkish-ev-manufacturer-says-reports-on-sweden-autonomous-bus-incident-created-misleading-perception-/3949045"
+      ]
+    }
+  ],
+  "reporting_options": [
+    {
+      "source": "EU Regulation 2022/1426 in-service ADS reporting",
+      "scope": "EU/EEA fully automated vehicles covered by the type-approval framework",
+      "access": "Reported to authorities; no public incident-level feed identified",
+      "usefulness": "High",
+      "notes": "Manufacturers must notify safety-critical occurrences and provide short-term and annual in-service occurrence reporting to type-approval/market-surveillance authorities and the European Commission.",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/ALL/?uri=celex%3A32022R1426"
+    },
+    {
+      "source": "CARE road-accident database",
+      "scope": "EU road crashes involving death or injury",
+      "access": "European Commission road-safety database; detailed national crash records",
+      "usefulness": "Medium",
+      "notes": "Potential backstop for injury/fatal crashes, but the standard public CARE description does not identify ADS engagement, so matching would require country/date/location/vehicle information.",
+      "url": "https://road-safety.transport.ec.europa.eu/european-road-safety-observatory/statistics-and-analysis-archive/about-care_en"
+    },
+    {
+      "source": "National crash databases and transport authorities",
+      "scope": "Member-state police/hospital crash records and AV trial permits",
+      "access": "Varies by country; some datasets require access requests",
+      "usefulness": "High",
+      "notes": "Example: Sweden's STRADA combines police and hospital injury-crash information. National transport/type-approval agencies may also hold ADS occurrence reports that are not centrally published.",
+      "url": "https://www.transportstyrelsen.se/strada"
+    },
+    {
+      "source": "Media, operator and local-agency monitoring",
+      "scope": "Publicly reported EU automated-driving crashes",
+      "access": "Public web sources",
+      "usefulness": "High for discovery",
+      "notes": "Current beta source. Multiple articles about one crash are merged into one canonical incident. Operator and public-agency statements are preferred when available.",
+      "url": ""
+    }
+  ]
+}
