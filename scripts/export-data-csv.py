@@ -112,6 +112,7 @@ def main():
         elif stem == "eu_crash_tracker":
             export(stem + ".csv", data["incidents"], output)
             export(stem + "_reporting_options.csv", data["reporting_options"], output)
+            export(stem + "_unresolved_leads.csv", data["unresolved_leads"], output)
         elif stem == "av_311_source_registry":
             export(stem + ".csv", data["states"], output)
         elif stem == "ca_waymo_sgo_rates":
