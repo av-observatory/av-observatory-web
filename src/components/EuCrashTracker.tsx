@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { ComposableMap, Geographies, Geography } from "react-simple-maps";
+import { ComposableMap, Geographies, Geography, ZoomableGroup } from "react-simple-maps";
 
 export type EuropeCrashIncident = {
   incident_id:string;
@@ -78,6 +78,7 @@ export function EuropeCrashTracker({incidents,countries}:{incidents:EuropeCrashI
 
       <div className="mt-4 rounded-lg border border-[#dce5ec] bg-[#f8fbfd] overflow-hidden">
         <ComposableMap projection="geoAzimuthalEqualArea" projectionConfig={{rotate:[-15,-52,0],scale:700}} width={900} height={620} style={{width:"100%",height:"auto"}}>
+          <ZoomableGroup center={[15,52]} zoom={1} minZoom={1} maxZoom={5}>
           <Geographies geography={GEO_URL}>
             {({geographies})=>geographies.map(geo=>{
               const raw=String(geo.properties?.name??"");
@@ -102,6 +103,7 @@ export function EuropeCrashTracker({incidents,countries}:{incidents:EuropeCrashI
               />;
             })}
           </Geographies>
+          </ZoomableGroup>
         </ComposableMap>
       </div>
       <div className="flex flex-wrap gap-4 text-xs text-neutral-600 mt-2">
