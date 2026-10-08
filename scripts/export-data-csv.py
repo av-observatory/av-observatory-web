@@ -82,7 +82,7 @@ def main():
                 for bill in bills for hearing in bill.get("hearings", [])]
             if hearings:
                 export(stem + "_hearings.csv", hearings, output)
-        elif stem == "sgo_incidents_monthly":
+        elif stem in ("sgo_incidents_monthly", "sgo_crashes_monthly"):
             for key in ("monthly_national_total", "monthly_by_state", "monthly_by_entity", "monthly_by_vehicle_class", "monthly_by_program_type"):
                 export(stem + "_" + key + ".csv", data[key], output)
         elif stem == "odd_history":
