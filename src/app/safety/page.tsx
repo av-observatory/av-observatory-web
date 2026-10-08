@@ -111,7 +111,7 @@ export default async function SafetyPage() {
         crashes={[
           ...seriousCrashes,
           ...incidentRows
-            .filter(r => r.reporting_entity === "Tesla, Inc." && r.automation_system_engaged === "ADS")
+            .filter(r => r.reporting_entity === "Tesla, Inc." && r.automation_system_engaged === "ADS" && (/^Serious/i.test(r.highest_injury_severity) || /^Fatal/i.test(r.highest_injury_severity)))
             .filter(r => !seriousCrashes.some(c => c.report_ids.split(";").map(id => id.trim()).includes(r.report_id)))
             .map(r => ({
               incident_key: `tesla-${r.report_id}`,
