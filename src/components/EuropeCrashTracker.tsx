@@ -30,6 +30,18 @@ export type EuropeCountry = {
 
 const GEO_URL="https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/countries-50m.json";
 
+const ISO_NUMERIC_TO_COUNTRY:Record<string,string>={
+  "008":"Albania","020":"Andorra","051":"Armenia","040":"Austria","031":"Azerbaijan",
+  "112":"Belarus","056":"Belgium","070":"Bosnia and Herzegovina","100":"Bulgaria","191":"Croatia",
+  "196":"Cyprus","203":"Czechia","208":"Denmark","233":"Estonia","246":"Finland","250":"France",
+  "268":"Georgia","276":"Germany","300":"Greece","348":"Hungary","352":"Iceland","372":"Ireland",
+  "380":"Italy","398":"Kazakhstan","383":"Kosovo","428":"Latvia","438":"Liechtenstein","440":"Lithuania",
+  "442":"Luxembourg","470":"Malta","498":"Moldova","492":"Monaco","499":"Montenegro","528":"Netherlands",
+  "807":"North Macedonia","578":"Norway","616":"Poland","620":"Portugal","642":"Romania","643":"Russia",
+  "674":"San Marino","688":"Serbia","703":"Slovakia","705":"Slovenia","724":"Spain","752":"Sweden",
+  "756":"Switzerland","792":"Turkey","804":"Ukraine","826":"United Kingdom","336":"Vatican City"
+};
+
 const MAP_NAME_ALIASES:Record<string,string>={
   "Bosnia and Herz.":"Bosnia and Herzegovina",
   "Czech Republic":"Czechia",
@@ -82,7 +94,8 @@ export function EuropeCrashTracker({incidents,countries}:{incidents:EuropeCrashI
           <Geographies geography={GEO_URL}>
             {({geographies})=>geographies.map(geo=>{
               const raw=String(geo.properties?.name??"");
-              const name=MAP_NAME_ALIASES[raw]??raw;
+              const id=String(geo.id??"").padStart(3,"0");
+              const name=ISO_NUMERIC_TO_COUNTRY[id]??MAP_NAME_ALIASES[raw]??raw;
               const inScope=allowed.has(name);
               if(!inScope) return null;
               const n=counts.get(name)??0;
