@@ -107,10 +107,13 @@ export function EuropeCrashTracker({incidents,countries}:{incidents:EuropeCrashI
                 tabIndex={0}
                 onKeyDown={e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();selectCountry(name);}}}
                 aria-label={`${name}: ${n} verified crash${n===1?"":"es"}`}
+                fill={selectedCountry?"#bfdcf4":n>0?"#d9eaf7":"#eef2f5"}
+                stroke={selectedCountry?"#173d65":"#8fa6bb"}
+                strokeWidth={selectedCountry?1.2:0.6}
                 style={{
-                  default:{fill:selectedCountry?"#bfdcf4":n>0?"#d9eaf7":"#eef2f5",stroke:"#8fa6bb",strokeWidth:0.6,outline:"none",cursor:"pointer"},
-                  hover:{fill:n>0?"#c8e0f2":"#e2e8ed",stroke:"#52779d",strokeWidth:0.8,outline:"none",cursor:"pointer"},
-                  pressed:{fill:"#bfdcf4",stroke:"#173d65",strokeWidth:1,outline:"none"}
+                  default:{outline:"none",cursor:"pointer"},
+                  hover:{outline:"none",cursor:"pointer",opacity:0.82},
+                  pressed:{outline:"none",cursor:"pointer",opacity:0.72}
                 } as any}
               />;
             })}
