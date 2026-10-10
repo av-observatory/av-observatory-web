@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "dataset": "Europe AV Crash Tracker (Beta)",
-  "updated_at": "2026-10-08",
+  "updated_at": "2026-10-10",
   "geography": "Europe",
   "status": "beta",
   "methodology": "One row per real-world crash, not per article. Historical discovery searches cover European countries across the continent, including the United Kingdom, Norway and Switzerland. Media reports, operator statements, police/public-agency material, European project reports and academic evaluations describing the same event are merged into one canonical incident using compatible date/period, location, operator/manufacturer, vehicle, automation status and collision sequence. Exact dates and outcomes are left unknown when public sources do not establish them.",
@@ -203,6 +203,29 @@
         "https://www.electrive.com/2026/05/27/autonomous-e-bus-by-karsan-collides-with-tram-in-gothenburg/",
         "https://www.aa.com.tr/en/turkiye/turkish-ev-manufacturer-says-reports-on-sweden-autonomous-bus-incident-created-misleading-perception-/3949045"
       ]
+    },
+    {
+      "incident_id": "europe-uk-london-2026-09-03-wayve-tesla",
+      "date": "2026-09-03",
+      "date_precision": "day",
+      "country": "United Kingdom",
+      "city": "London",
+      "operator": "Uber / Wayve",
+      "manufacturer": "Ford / Wayve",
+      "vehicle": "Mustang Mach-E with Wayve AI Driver",
+      "automation": "Supervised autonomous service; public reporting does not establish whether the Wayve AI Driver or the onboard safety driver was controlling the vehicle at impact",
+      "crash_with": "Tesla Model Y",
+      "injury_severity": "No injuries publicly reported",
+      "fatalities": 0,
+      "injuries": null,
+      "narrative": "A Wayve-equipped Ford Mustang Mach-E operating as part of Uber and Wayve's newly launched supervised autonomous ride service was reported in a collision with a Tesla Model Y near Tower Bridge on the day the service launched. Public reporting does not establish fault and does not confirm whether the Wayve AI Driver was engaged or whether the onboard safety driver had taken control at the moment of impact.",
+      "source_class": "Media report + operator launch documentation",
+      "verification": "Single crash report corroborated by service/vehicle documentation; automation state unconfirmed",
+      "sources": [
+        "https://dmnews.co.uk/uber-wayve-robotaxi-seen-in-crash-near-tower-bridge-hours-after-london-launch/",
+        "https://wayve.ai/press/wayve-uber-launch-autonomous-rides/",
+        "https://www.uber.com/gb/en/newsroom/wayve-on-uber/"
+      ]
     }
   ],
   "reporting_options": [
@@ -274,6 +297,21 @@
       "finding": "SURAAA's own statement confirms the shuttle damaged parked cars while being manually driven off the automated route during a routine parking maneuver. It explicitly attributes the event to human driving error and says no people were involved. Retained here for transparency, but not counted as an automated-driving crash.",
       "sources": [
         "https://www.suraaa.at/wp-content/uploads/sites/6/2023/08/PM_SURAAA_10_08_23.pdf"
+      ]
+    },
+    {
+      "lead_id": "europe-uk-london-2026-04-22-waymo-police-cordon",
+      "country": "United Kingdom",
+      "city": "London (Harlesden)",
+      "period": "2026-04-22",
+      "operator": "Waymo",
+      "manufacturer": "Waymo / Jaguar",
+      "vehicle": "Waymo test vehicle",
+      "status": "Not counted as a crash — manual mode; no collision reported",
+      "finding": "A Waymo test vehicle drove through a police cordon on Harlesden High Street. Waymo said the vehicle was in manual mode with a validation driver in full control. The driver was suspended pending investigation. No collision was reported, so this is retained as a reviewed safety-related incident rather than counted in the crash tracker.",
+      "sources": [
+        "https://www.bbc.com/news/articles/c30rgpd2n14o",
+        "https://www.london.gov.uk/who-we-are/what-london-assembly-does/questions-mayor/find-an-answer/police-operation-harlesden-disrupted-autonomous-vehicle"
       ]
     }
   ],
@@ -525,8 +563,8 @@
     },
     {
       "country": "United Kingdom",
-      "verified_incidents": 0,
-      "status": "No verified incidents currently in tracker"
+      "verified_incidents": 1,
+      "status": "Verified incident(s) in tracker"
     },
     {
       "country": "Vatican City",
