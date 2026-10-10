@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { ComposableMap, Geographies, Geography, ZoomableGroup } from "react-simple-maps";
+import { ComposableMap, Geographies, Geography } from "react-simple-maps";
 
 export type EuropeCrashIncident = {
   incident_id:string;
@@ -89,8 +89,7 @@ export function EuropeCrashTracker({incidents,countries}:{incidents:EuropeCrashI
       </div>
 
       <div className="mt-4 rounded-lg border border-[#dce5ec] bg-[#f8fbfd] overflow-hidden">
-        <ComposableMap projection="geoAzimuthalEqualArea" projectionConfig={{rotate:[-15,-52,0],scale:700}} width={900} height={620} style={{width:"100%",height:"auto"}}>
-          <ZoomableGroup center={[15,52]} zoom={1} minZoom={1} maxZoom={5}>
+        <ComposableMap projection="geoMercator" projectionConfig={{center:[15,54],scale:520}} width={900} height={560} style={{width:"100%",height:"auto"}}>
           <Geographies geography={GEO_URL}>
             {({geographies})=>geographies.map(geo=>{
               const raw=String(geo.properties?.name??"");
@@ -116,7 +115,6 @@ export function EuropeCrashTracker({incidents,countries}:{incidents:EuropeCrashI
               />;
             })}
           </Geographies>
-          </ZoomableGroup>
         </ComposableMap>
       </div>
       <div className="flex flex-wrap gap-4 text-xs text-neutral-600 mt-2">
@@ -130,10 +128,11 @@ export function EuropeCrashTracker({incidents,countries}:{incidents:EuropeCrashI
       <div className="mt-3 grid gap-2.5">
         {rows.map(item=>{
           const isOpen=selected===item.incident_id;
-          return <div key={item.incident_id}>
+          return <div key={item.incident_id}
+            className={`rounded-lg border transition-colors overflow-hidden ${isOpen?"border-[#173d65] bg-[#e8f2fb]":"border-[#dce5ec] bg-white hover:bg-[#f4f8fc]"}`}>
             <button type="button" onClick={()=>setSelected(isOpen?"":item.incident_id)}
               aria-expanded={isOpen}
-              className={`w-full text-left rounded-lg border p-4 transition-colors ${isOpen?"border-[#173d65] bg-[#e8f2fb]":"border-[#dce5ec] bg-white hover:bg-[#f4f8fc]"}`}>
+              className="w-full text-left p-4">
               <div className="flex flex-wrap items-start justify-between gap-2">
                 <div>
                   <div className="text-sm font-semibold text-[#123b69]">{niceDate(item.date)} · {item.city}, {item.country}</div>
@@ -147,22 +146,24 @@ export function EuropeCrashTracker({incidents,countries}:{incidents:EuropeCrashI
               <div className="mt-2 text-sm text-neutral-600">{item.crash_with} · {item.automation}</div>
             </button>
 
-            {isOpen&&<article className="viz-card p-5 mt-2 border-l-4 border-[#173d65]">
-              <div className="flex flex-wrap items-start justify-between gap-3">
-                <div><p className="eyebrow">Crash Details</p><h4 className="text-lg font-semibold text-[#152b45] mt-1">{item.city}, {item.country} · {item.operator}</h4></div>
-                <span className="text-sm font-semibold text-[#123b69]">{item.verification}</span>
+            {isOpen&&<div className="px-4 pb-5">
+              <div className="border-t border-[#bfd2e5] pt-4">
+                <div className="flex flex-wrap items-start justify-between gap-3">
+                  <p className="eyebrow">Crash Details</p>
+                  <span className="text-sm font-semibold text-[#123b69]">{item.verification}</span>
+                </div>
+                <p className="text-sm leading-relaxed mt-3">{item.narrative}</p>
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-3 text-sm mt-4 pt-4 border-t border-[#bfd2e5]">
+                  <div><span className="block text-neutral-500">Date</span>{niceDate(item.date)}</div>
+                  <div><span className="block text-neutral-500">Vehicle</span>{item.manufacturer} · {item.vehicle}</div>
+                  <div><span className="block text-neutral-500">Collision With</span>{item.crash_with}</div>
+                  <div><span className="block text-neutral-500">Injury Outcome</span>{item.injury_severity}</div>
+                  <div><span className="block text-neutral-500">Automation</span>{item.automation}</div>
+                  <div><span className="block text-neutral-500">Source Class</span>{item.source_class}</div>
+                </div>
+                <div className="flex flex-wrap gap-3 mt-4">{item.sources.map((url,i)=><a key={url} href={url} className="text-sm text-[#184f95] underline" target="_blank" rel="noreferrer">Source {i+1} ↗</a>)}</div>
               </div>
-              <p className="text-sm leading-relaxed mt-4">{item.narrative}</p>
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-3 text-sm mt-4 pt-4 border-t border-[#dce5ec]">
-                <div><span className="block text-neutral-500">Date</span>{niceDate(item.date)}</div>
-                <div><span className="block text-neutral-500">Vehicle</span>{item.manufacturer} · {item.vehicle}</div>
-                <div><span className="block text-neutral-500">Collision With</span>{item.crash_with}</div>
-                <div><span className="block text-neutral-500">Injury Outcome</span>{item.injury_severity}</div>
-                <div><span className="block text-neutral-500">Automation</span>{item.automation}</div>
-                <div><span className="block text-neutral-500">Source Class</span>{item.source_class}</div>
-              </div>
-              <div className="flex flex-wrap gap-3 mt-4">{item.sources.map((url,i)=><a key={url} href={url} className="text-sm text-[#184f95] underline" target="_blank" rel="noreferrer">Source {i+1} ↗</a>)}</div>
-            </article>}
+            </div>}
           </div>;
         })}
         {rows.length===0&&<div className="viz-card p-8 text-sm text-neutral-500">No verified crashes currently in the tracker for {country}. This does not mean no crashes occurred.</div>}
