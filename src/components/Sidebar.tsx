@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import { useState } from "react";
 import { usePathname } from "next/navigation";
 import { SectionIcon } from "@/components/SectionIcon";
 
@@ -18,12 +19,20 @@ const GROUPS = [
 export function Sidebar() {
   const rawPath = usePathname();
   const path = rawPath !== "/" ? rawPath.replace(/\/+$/, "") : rawPath;
-  return <aside className="w-60 shrink-0 bg-[#0b1d33] text-white flex flex-col min-h-screen">
+  const [open, setOpen] = useState(false);
+  return <>
+    <div className="md:hidden sticky top-0 z-[1000] flex items-center justify-between bg-[#0b1d33] text-white px-4 py-3 shadow-sm">
+      <Link href="/" onClick={() => setOpen(false)} className="text-[15px] font-semibold flex items-center gap-2"><span className="w-2.5 h-2.5 rounded-full bg-[#6fbbe9]" />AV Observatory</Link>
+      <button type="button" aria-label={open ? "Close navigation" : "Open navigation"} aria-expanded={open} aria-controls="mobile-site-navigation" onClick={() => setOpen(v => !v)} className="min-h-11 min-w-11 rounded-md border border-white/25 px-3 text-sm font-semibold">{open ? "Close" : "Menu"}</button>
+    </div>
+    {open && <button className="md:hidden fixed inset-0 z-[998] bg-black/40" aria-label="Close navigation overlay" onClick={() => setOpen(false)} />}
+    <aside id="mobile-site-navigation" className={`${open ? "flex" : "hidden"} md:flex fixed md:static top-[68px] bottom-0 left-0 z-[999] w-72 max-w-[85vw] md:w-60 shrink-0 bg-[#0b1d33] text-white flex-col min-h-0 md:min-h-screen overflow-y-auto`}>
     <Link href="/" className="px-5 pt-7 pb-6 text-[15px] font-semibold tracking-tight flex items-center gap-2"><span className="inline-block w-2.5 h-2.5 rounded-full bg-[#6fbbe9]" />AV Observatory</Link>
-    <nav className="flex-1 px-3 pb-5 space-y-5" aria-label="Main navigation">
+    <nav onClick={(event) => { if ((event.target as HTMLElement).closest("a")) setOpen(false); }} className="flex-1 px-3 pb-5 space-y-5" aria-label="Main navigation">
       <Link href="/" className={`block rounded-md px-3 py-2 text-sm ${path === "/" ? "bg-white/15 text-white font-semibold" : "text-white/70 hover:text-white hover:bg-white/10"}`}>Overview</Link>
       {GROUPS.map(group => <section key={group.title}><h2 className="px-3 mb-1 flex items-center gap-2 text-[13px] font-bold uppercase tracking-[.12em] text-[#8bb1d5]">{group.icon && <SectionIcon name={group.icon} className="w-4 h-4 shrink-0" />}{group.title}</h2><div className="space-y-0.5">{group.items.map(([href,label]) => <Link key={href} href={href} aria-current={path === href ? "page" : undefined} className={`block rounded-md px-3 py-2 text-[14px] leading-snug transition-colors ${path === href ? "bg-[#3987e5]/25 text-white font-semibold border-l-[3px] border-[#6fbbe9]" : "text-white/70 hover:text-white hover:bg-white/10"}`}>{label}</Link>)}</div></section>)}
     </nav>
     <div className="px-5 py-5 text-xs text-white/50 border-t border-white/10 leading-relaxed">Independent evidence on autonomous vehicles in the United States.</div>
-  </aside>;
+  </aside>
+  </>;
 }
