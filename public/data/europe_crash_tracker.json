@@ -4,7 +4,7 @@
   "updated_at": "2026-10-10",
   "geography": "Europe",
   "status": "beta",
-  "methodology": "One row per real-world crash, not per article. Historical discovery searches cover European countries across the continent, including the United Kingdom, Norway and Switzerland. Media reports, operator statements, police/public-agency material, European project reports and academic evaluations describing the same event are merged into one canonical incident using compatible date/period, location, operator/manufacturer, vehicle, automation status and collision sequence. Exact dates and outcomes are left unknown when public sources do not establish them.",
+  "methodology": "Events are de-duplicated. When multiple media, operator, regulator, public-agency, project or research sources describe the same real-world crash, they are consolidated into a single event using the date or period, location, operator/manufacturer, vehicle, automation status and collision sequence. Source links are retained on the event record, and uncertain dates, outcomes or automation states remain explicitly unknown rather than inferred.",
   "limitations": "This is a historical-search seed, not a guarantee of complete European coverage. Europe has no single public incident-level ADS crash feed comparable to the U.S. NHTSA SGO. Reporting regimes differ across European countries, and public availability varies substantially by country and language.",
   "incidents": [
     {
@@ -266,7 +266,7 @@
       "scope": "Publicly reported automated-driving crashes across Europe",
       "access": "Public web sources",
       "usefulness": "High for discovery",
-      "notes": "Primary beta discovery layer. Multiple reports about one real-world event are merged into one canonical incident. Operator, police and public-agency statements are preferred when available.",
+      "notes": "Primary beta discovery layer. Operator, police and public-agency statements are preferred when available.",
       "url": ""
     }
   ],
@@ -280,7 +280,7 @@
       "manufacturer": "EasyMile",
       "vehicle": "EZ10 fleet",
       "status": "Aggregate evidence only — individual crashes not yet separable",
-      "finding": "Operator reporting cited by Golem says the Monheim shuttle fleet had already been involved in multiple collisions, none attributed to the buses and none causing personal injury. The public article does not provide enough dates or event-level details to split these into defensible canonical records without further local-source research.",
+      "finding": "Operator reporting cited by Golem says the Monheim shuttle fleet had already been involved in multiple collisions, none attributed to the buses and none causing personal injury. The public article does not provide enough dates or event-level details to split these into defensible individual crash records without further local-source research.",
       "sources": [
         "https://www.golem.de/news/autonome-busse-in-monheim-software-updates-sind-allergoesste-herausforderung-2112-162063-2.html"
       ]
@@ -293,8 +293,8 @@
       "operator": "SURAAA",
       "manufacturer": "Not specified in reviewed source",
       "vehicle": "Self-driving shuttle",
-      "status": "Excluded from canonical AV-crash count — manual operation",
-      "finding": "SURAAA's own statement confirms the shuttle damaged parked cars while being manually driven off the automated route during a routine parking maneuver. It explicitly attributes the event to human driving error and says no people were involved. Retained here for transparency, but not counted as an automated-driving crash.",
+      "status": "Excluded from crash count — manual operation",
+      "finding": "SURAAA's own statement confirms the shuttle damaged parked cars while being manually driven off the automated route during a routine parking maneuver. It explicitly attributes the event to human driving error and says no people were involved. Retained here for transparency, but not counted in the crash tracker.",
       "sources": [
         "https://www.suraaa.at/wp-content/uploads/sites/6/2023/08/PM_SURAAA_10_08_23.pdf"
       ]
