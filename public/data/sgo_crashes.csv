@@ -49,10 +49,9 @@ fe051bc946e7741,NHTSA Same Incident ID,APR-2023,San Francisco,CA,Waymo LLC,30270
 534bef0e0babf42,NHTSA Same Incident ID,APR-2024,Phoenix,AZ,Waymo LLC,30270-7720,9df799516bace2a,No Injuries Reported,Jaguar,I-Pace,Pickup Truck,Intersection,ADS,Yes,1
 6cc2c65c334671d,NHTSA Same Incident ID,APR-2024,Miami,FL,May Mobility,30413-7704,edae6220ea28192,No Injuries Reported,Toyota,Sienna,Van,Intersection,ADS,Yes,1
 6e2942581c16d45,NHTSA Same Incident ID,APR-2024,San Francisco,CA,Waymo LLC,30270-7728,374eec2914ce79c,No Injuries Reported,Jaguar,I-Pace,SUV,Parking Lot,ADS,Yes,1
-747a10541edff5d,NHTSA Same Incident ID,APR-2024,Austin,TX,"Volkswagen Group of America, Inc.",1420-7671,fe576f7e0cb214e,No Injuries Reported,Volkswagen,ID.Buzz,Passenger Car,Street,ADS,Yes,1
+747a10541edff5d,NHTSA Same Incident ID,APR-2024,Austin,TX,"Mobileye Vision Technologies;Volkswagen Group of America, Inc.",1420-7671;33175-9305,fe576f7e0cb214e,No Injuries Reported,Volkswagen,ID.Buzz,Passenger Car,Street,ADS,Yes,2
 82ecf2521cd5c8e,NHTSA Same Incident ID,APR-2024,San Francisco,CA,"Zoox, Inc.",30610-7589,31d0b50db6b4597,Minor,Toyota,Highlander,Motorcycle,Intersection,ADS,Yes,1
 8894cbcbca3e974,NHTSA Same Incident ID,APR-2024,San Francisco,CA,Waymo LLC,30270-7726,658c7c13f13b1e7,No Injuries Reported,Jaguar,I-Pace,Passenger Car,Intersection,ADS,Yes,1
-REPORT:33175-9305,Report ID fallback,APR-2024,Austin,TX,Mobileye Vision Technologies,33175-9305,,No Injuries Reported,Volkswagen,ID.Buzz,Passenger Car,Street,ADS,"Unknown, see Narrative",1
 a673fcc54f6f312,NHTSA Same Incident ID,APR-2024,San Francisco,CA,Waymo LLC,30270-7722,8d2c8e1b95ad195,Minor,Jaguar,I-Pace,Passenger Car,Street,ADS,Yes,1
 a94ca9b253c5105,NHTSA Same Incident ID,APR-2024,San Francisco,CA,Waymo LLC,30270-7573,778fffc33261129,No Injuries Reported,Jaguar,I-Pace,Passenger Car,Intersection,ADS,Yes,1
 bbc64d97c10bd0b,NHTSA Same Incident ID,APR-2024,San Francisco,CA,Waymo LLC,30270-7724,d4e22689b56b6e4,No Injuries Reported,Jaguar,I-Pace,Pickup Truck,Street,ADS,Yes,1
@@ -775,10 +774,9 @@ f3593eb7f389b3f,NHTSA Same Incident ID,FEB-2023,San Francisco,CA,"Zoox, Inc.",30
 9256227b26b1d3e,NHTSA Same Incident ID,FEB-2024,San Francisco,CA,Waymo LLC,30270-7315,e99629229709aa3,No Injuries Reported,Jaguar,I-Pace,Heavy Truck,Street,ADS,Yes,1
 9c0c60f2cb1f322,NHTSA Same Incident ID,FEB-2024,Austin,TX,Transdev Alternative Services;Waymo LLC,30270-7164;30531-7177,9a0d14f335c1aa1,No Injuries Reported,Jaguar,I-Pace,Passenger Car,Intersection,ADS,Yes,2
 9efe939f0ad5856,NHTSA Same Incident ID,FEB-2024,San Francisco,CA,Waymo LLC,30270-7190,0f48fa1f53d41b1,No Injuries Reported,Jaguar,I-Pace,Motorcycle,Intersection,ADS,Yes,1
-REPORT:33175-9306,Report ID fallback,FEB-2024,Austin,TX,Mobileye Vision Technologies,33175-9306,,No Injuries Reported,Volkswagen,ID.Buzz,Passenger Car,Intersection,ADS,"Unknown, see Narrative",1
 a055db2eae8befa,NHTSA Same Incident ID,FEB-2024,Tempe,AZ,Waymo LLC,30270-7309,8d461142a6059de,No Injuries Reported,Jaguar,I-Pace,SUV,Intersection,ADS,Yes,1
 a0818b37309e9c3,NHTSA Same Incident ID,FEB-2024,Tempe,AZ,Waymo LLC,30270-9169,2bea63531bd865d,No Injuries Reported,Jaguar,I-Pace,Other Fixed Object,Street,ADS,Yes,1
-ab7ab6695e48c80,NHTSA Same Incident ID,FEB-2024,Austin,TX,"Volkswagen Group of America, Inc.",1420-7244,c12327ee8569aa1,No Injuries Reported,Volkswagen,ID.Buzz,Passenger Car,Intersection,ADS,Yes,1
+ab7ab6695e48c80,NHTSA Same Incident ID,FEB-2024,Austin,TX,"Mobileye Vision Technologies;Volkswagen Group of America, Inc.",1420-7244;33175-9306,c12327ee8569aa1,No Injuries Reported,Volkswagen,ID.Buzz,Passenger Car,Intersection,ADS,Yes,2
 b25e800c82afada,NHTSA Same Incident ID,FEB-2024,Los Angeles,CA,Waymo LLC,30270-7308,92a927b3f78eb22,No Injuries Reported,Jaguar,I-Pace,Other Fixed Object,Street,ADS,Yes,1
 bcd03512755eab2,NHTSA Same Incident ID,FEB-2024,Chandler,AZ,Waymo LLC,30270-7316,03a8719f5e6a313,Unknown,Jaguar,I-Pace,Passenger Car,Intersection,ADS,Yes,1
 e41b32d53ecba3c,NHTSA Same Incident ID,FEB-2024,Phoenix,AZ,Waymo LLC,30270-7318,91d45c9bac07dec,No Injuries Reported,Jaguar,I-Pace,Passenger Car,Street,ADS,Yes,1
@@ -988,8 +986,7 @@ fa6f0b9dcf1eda3,NHTSA Same Incident ID,JAN-2023,Las Vegas,NV,"Zoox, Inc.",30610-
 824979b8339ba57,NHTSA Same Incident ID,JAN-2024,Tempe,AZ,Waymo LLC,30270-7159,198cbd52b165ea7,No Injuries Reported,Jaguar,I-Pace,SUV,Intersection,ADAS,Yes,1
 8288654b083d6f8,NHTSA Same Incident ID,JAN-2024,Scottsdale,AZ,Waymo LLC,30270-7160,2bea63531bd865d,Unknown,Jaguar,I-Pace,"Other, see Narrative",Intersection,ADS,Yes,1
 85bb308f7801ee8,NHTSA Same Incident ID,JAN-2024,San Francisco,CA,Waymo LLC,30270-6981,b0a4fbd86419a15,No Injuries Reported,Jaguar,I-PACE,Motorcycle,Intersection,ADS,Yes,1
-REPORT:33175-9307,Report ID fallback,JAN-2024,Austin,TX,Mobileye Vision Technologies,33175-9307,,No Injuries Reported,Volkswagen,ID.Buzz,Passenger Car,Intersection,ADS,"Unknown, see Narrative",1
-a05277be2462827,NHTSA Same Incident ID,JAN-2024,Austin,TX,"Volkswagen Group of America, Inc.",1420-7081,356ed66f2e167f3,No Injuries Reported,Volkswagen,ID.Buzz,Passenger Car,Intersection,ADS,Yes,1
+a05277be2462827,NHTSA Same Incident ID,JAN-2024,Austin,TX,"Mobileye Vision Technologies;Volkswagen Group of America, Inc.",1420-7081;33175-9307,356ed66f2e167f3,No Injuries Reported,Volkswagen,ID.Buzz,Passenger Car,Intersection,ADS,Yes,2
 a0a1657627490ce,NHTSA Same Incident ID,JAN-2024,San Francisco,CA,"Zoox, Inc.",30610-7110,b1784ffeed4c799,No Injuries Reported,Toyota,Highlander,Passenger Car,Street,ADS,Yes,1
 e57b604ec513988,NHTSA Same Incident ID,JAN-2024,Mountain View,CA,Nuro,30291-7106,00d4592400ec7eb,No Injuries Reported,Toyota,Prius,Passenger Car,Intersection,ADS,Yes,1
 e5834db4d946bfa,NHTSA Same Incident ID,JAN-2024,Gilbert,AZ,Waymo LLC,30270-7048,c5c7ecbcc216f2e,No Injuries Reported,Jaguar,I-Pace,"Other, see Narrative",Parking Lot,ADS,Yes,1
@@ -1198,8 +1195,7 @@ feeed20edf67b7d,NHTSA Same Incident ID,JAN-2026,San Francisco,CA,Waymo LLC,30270
 3bcb829bf72a6f6,NHTSA Same Incident ID,JUL-2021,Las Vegas,NV,"Zoox, Inc.",30610-1080,a473192087e29b3,No Injuries Reported,Toyota,Highlander,Passenger Car,Street,ADS,Yes,1
 7e6339198926ba7,NHTSA Same Incident ID,JUL-2021,San Jose,CA,WeRide Corp,30792-1031,1e795dcf422a758,No Injuries Reported,Lincoln,MKZ,SUV,Street,ADS,Yes,1
 9b9546584c36817,NHTSA Same Incident ID,JUL-2021,Las Vegas,NV,"Zoox, Inc.",30610-1083,1db0801a222a5aa,No Injuries Reported,Toyota,Highlander,Passenger Car,Street,ADS,Yes,1
-REPORT:30531-2,Report ID fallback,JUL-2021,San Francisco,CA,Transdev Alternative Services,30531-2,,No Injuries Reported,Chrysler,Pacifica,Van,Intersection,ADS,Yes,1
-c26d492ac568c12,NHTSA Same Incident ID,JUL-2021,San Francisco,CA,Waymo LLC,30270-1,27a8308e4525a57,No Injuries Reported,Chrysler,Pacifica,Van,Intersection,ADS,Yes,1
+c26d492ac568c12,NHTSA Same Incident ID,JUL-2021,San Francisco,CA,Transdev Alternative Services;Waymo LLC,30270-1;30531-2,27a8308e4525a57,No Injuries Reported,Chrysler,Pacifica,Van,Intersection,ADS,Yes,2
 d0d33333ba895d5,NHTSA Same Incident ID,JUL-2021,Indianapolis,IN,May Mobility;Toyota Motor Engineering & Manufacturing,1306-1065;30413-1130,0eecc7fa6ddc4ad,No Injuries Reported,Lexus,RX450H,SUV,Street,ADS,Yes,2
 dfa7cebb30de052,NHTSA Same Incident ID,JUL-2021,San Francisco,CA,Cruise LLC,30412-1089,0e07360d9d38851,No Injuries Reported,Chevrolet,Bolt,Passenger Car,Street,ADS,"[REDACTED, MAY CONTAIN CONFIDENTIAL BUSINESS INFORMATION]",1
 f700288ccb3ad35,NHTSA Same Incident ID,JUL-2021,Washington DC,DC,Argo AI;Ford Motor Company,30290-15;502-18,2ad07e63259f51d,Minor,Ford,Fusion,Pickup Truck,Street,ADS,"[REDACTED, MAY CONTAIN CONFIDENTIAL BUSINESS INFORMATION]",2
@@ -1531,8 +1527,7 @@ fdceba88754ba36,NHTSA Same Incident ID,JUN-2023,Las Vegas,NV,Hyundai Motor Ameri
 937b4d4b37c47c1,NHTSA Same Incident ID,JUN-2024,San Francisco,CA,Waymo LLC,30270-7855,d6215a1693f2a48,No Injuries Reported,Jaguar,I-Pace,Passenger Car,Street,ADS,Yes,1
 953c721f42601fc,NHTSA Same Incident ID,JUN-2024,San Francisco,CA,Waymo LLC,30270-8127,54438cbdb57334f,No Injuries Reported,Jaguar,I-Pace,Passenger Car,Street,ADS,Yes,1
 95bda79c9ba41b5,NHTSA Same Incident ID,JUN-2024,Scottsdale,AZ,Waymo LLC,30270-7842,e94c3b2fa53af4e,No Injuries Reported,Jaguar,I-Pace,Motorcycle,Intersection,ADS,Yes,1
-98395fc467339a6,NHTSA Same Incident ID,JUN-2024,Austin,TX,"Volkswagen Group of America, Inc.",1420-7995,356ed66f2e167f3,No Injuries Reported,Volkswagen,ID.Buzz,SUV,Street,ADS,Yes,1
-REPORT:33175-9303,Report ID fallback,JUN-2024,Austin,TX,Mobileye Vision Technologies,33175-9303,,No Injuries Reported,Volkswagen,ID.Buzz,SUV,Street,ADS,"Unknown, see Narrative",1
+98395fc467339a6,NHTSA Same Incident ID,JUN-2024,Austin,TX,"Mobileye Vision Technologies;Volkswagen Group of America, Inc.",1420-7995;33175-9303,356ed66f2e167f3,No Injuries Reported,Volkswagen,ID.Buzz,SUV,Street,ADS,Yes,2
 a44514c80a6c2d2,NHTSA Same Incident ID,JUN-2024,San Francisco,CA,Waymo LLC,30270-8139,c01ea2068860b0f,No Injuries Reported,Jaguar,I-Pace,Passenger Car,Intersection,ADS,Yes,1
 a95a53d3d5c107d,NHTSA Same Incident ID,JUN-2024,San Francisco,CA,Waymo LLC,30270-8141,cf47330bf588a9a,No Injuries Reported,Jaguar,I-Pace,Pickup Truck,Street,ADS,Yes,1
 ab92f55b1bd5c9b,NHTSA Same Incident ID,JUN-2024,Los Angeles,CA,Waymo LLC,30270-8144,f5bb635090c4b1a,No Injuries Reported,Jaguar,I-Pace,SUV,Intersection,ADS,Yes,1
@@ -2076,7 +2071,7 @@ eba897229a84611,NHTSA Same Incident ID,MAY-2023,San Francisco,CA,"Cruise LLC;Gen
 0b53c07a7e98af2,NHTSA Same Incident ID,MAY-2024,San Francisco,CA,Waymo LLC,30270-7939,8079d1ff0101ee3,No Injuries Reported,Jaguar,I-Pace,Van,Street,ADS,Yes,1
 16eb59076e0f085,NHTSA Same Incident ID,MAY-2024,Miami,FL,May Mobility,30413-7880,ab0fa81ec7387bb,No Injuries Reported,Toyota,Sienna,Motorcycle,Street,ADS,Yes,1
 1bf0008f0ae5e02,NHTSA Same Incident ID,MAY-2024,Tempe,AZ,Waymo LLC,30270-7941,380f141e3688fe0,No Injuries Reported,Jaguar,I-Pace,Passenger Car,Parking Lot,ADS,Yes,1
-291b94613158d04,NHTSA Same Incident ID,MAY-2024,Austin,TX,"Volkswagen Group of America, Inc.",1420-7914,fe576f7e0cb214e,No Injuries Reported,Volkswagen,ID.Buzz,Passenger Car,Parking Lot,ADS,Yes,1
+291b94613158d04,NHTSA Same Incident ID,MAY-2024,Austin,TX,"Mobileye Vision Technologies;Volkswagen Group of America, Inc.",1420-7914;33175-9304,fe576f7e0cb214e,No Injuries Reported,Volkswagen,ID.Buzz,Passenger Car,Parking Lot,ADS,Yes,2
 293f1c3457530d0,NHTSA Same Incident ID,MAY-2024,Tempe,AZ,Waymo LLC,30270-7943,82ca7b5717c14e4,No Injuries Reported,Jaguar,I-Pace,Passenger Car,Street,ADS,Yes,1
 2f3e786bc04b92b,NHTSA Same Incident ID,MAY-2024,Tempe,AZ,Waymo LLC,30270-7952,16e0623c0edc3e1,No Injuries Reported,Jaguar,I-Pace,Pickup Truck,Street,ADS,Yes,1
 312e30a55809d67,NHTSA Same Incident ID,MAY-2024,San Francisco,CA,Waymo LLC,30270-7647,9dfadc4748614b2,No Injuries Reported,Jaguar,I-Pace,Heavy Truck,Street,ADS,Yes,1
@@ -2101,7 +2096,6 @@ eba897229a84611,NHTSA Same Incident ID,MAY-2023,San Francisco,CA,"Cruise LLC;Gen
 8e246bfad5628fa,NHTSA Same Incident ID,MAY-2024,Scottsdale,AZ,Waymo LLC,30270-7730,db8ad4169cf7e4c,No Injuries Reported,Jaguar,I-Pace,Passenger Car,Parking Lot,ADS,Yes,1
 8ef453320969f45,NHTSA Same Incident ID,MAY-2024,San Francisco,CA,Waymo LLC,30270-7631,5f975470bb11f2c,No Injuries Reported,Jaguar,I-Pace,Passenger Car,Intersection,ADS,Yes,1
 95a8632c506fca0,NHTSA Same Incident ID,MAY-2024,San Francisco,CA,Waymo LLC,30270-7942,5e2e75bef42b5a4,No Injuries Reported,Jaguar,I-Pace,Pickup Truck,Intersection,ADS,Yes,1
-REPORT:33175-9304,Report ID fallback,MAY-2024,Austin,TX,Mobileye Vision Technologies,33175-9304,,No Injuries Reported,Volkswagen,ID.Buzz,Passenger Car,Parking Lot,ADS,"Unknown, see Narrative",1
 acc8936090bcd7f,NHTSA Same Incident ID,MAY-2024,Tempe,AZ,Waymo LLC,30270-7945,0c7b648d5dfb9f3,Unknown,Jaguar,I-Pace,Passenger Car,Intersection,ADS,Yes,1
 afaee27656544e4,NHTSA Same Incident ID,MAY-2024,Tempe,AZ,Waymo LLC,30270-7733,2c7a9a00277e615,Moderate,Jaguar,I-Pace,SUV,Intersection,ADS,Yes,1
 b113cc9f72a966e,NHTSA Same Incident ID,MAY-2024,Fremont,CA,Pony.ai,30711-7848,a91a58bb751afbb,No Injuries Reported,Lincoln,MKZ,Other Fixed Object,Street,ADAS,Yes,1
