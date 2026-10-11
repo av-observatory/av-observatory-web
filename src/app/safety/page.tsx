@@ -121,6 +121,31 @@ export default async function SafetyPage() {
     incidentsByState[r.state] = (incidentsByState[r.state] ?? 0) + r.incident_count;
   }
 
+  // Serious/fatal cases share the canonical incident population; curated narratives
+  // are annotations, never a second source of crash counts.
+  const seriousCases: SeriousCrash[] = completedCrashRows
+    .filter(r => r.automation_system_engaged === "ADS" && /^(Serious|Fatal)/i.test(r.highest_injury_severity))
+    .map(r => {
+      const ids = new Set((r.report_ids || "").split(";").map(x => x.trim()));
+      const reviewed = seriousCrashes.find(c => c.report_ids.split(";").some(id => ids.has(id.trim())));
+      return {
+        incident_key: r.incident_id || r.report_id,
+        incident_date: r.incident_date,
+        city: r.city,
+        state: r.state,
+        reporting_entities: r.reporting_entities || r.reporting_entity,
+        report_ids: r.report_ids || r.report_id,
+        severity: r.highest_injury_severity,
+        make: r.make,
+        model: r.model,
+        crash_with: r.crash_with,
+        roadway_type: r.roadway_type,
+        engagement_status: r.automation_system_engaged,
+        air_bag_deployment: reviewed?.air_bag_deployment ?? r.air_bag_deployment,
+        source_url: reviewed?.source_url ?? "https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv",
+      };
+    });
+
   return (
     <div className="max-w-6xl px-8 py-6">
       <p className="eyebrow mb-3">United States · Crash Reporting</p>
@@ -152,28 +177,7 @@ export default async function SafetyPage() {
       </section>
 
       <SgoSeriousCrashList
-        crashes={[
-          ...seriousCrashes,
-          ...incidentRows
-            .filter(r => r.reporting_entity === "Tesla, Inc." && r.automation_system_engaged === "ADS" && (/^Serious/i.test(r.highest_injury_severity) || /^Fatal/i.test(r.highest_injury_severity)))
-            .filter(r => !seriousCrashes.some(c => c.report_ids.split(";").map(id => id.trim()).includes(r.report_id)))
-            .map(r => ({
-              incident_key: `tesla-${r.report_id}`,
-              incident_date: r.incident_date,
-              city: r.city,
-              state: r.state,
-              reporting_entities: r.reporting_entity,
-              report_ids: r.report_id,
-              severity: r.highest_injury_severity,
-              make: r.make,
-              model: r.model,
-              crash_with: r.crash_with,
-              roadway_type: r.roadway_type,
-              engagement_status: r.engagement_status || r.automation_system_engaged,
-              air_bag_deployment: r.air_bag_deployment,
-              source_url: "https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv",
-            }))
-        ]}
+        crashes={seriousCases}
         media={mediaContext.records}
         reviewedSources={mediaContext.reviewed_sources}
       />
