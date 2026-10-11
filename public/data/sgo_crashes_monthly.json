@@ -1,12 +1,12 @@
 {
-  "dataset": "NHTSA Standing General Order (ADS) Deduplicated Crashes \u2014 Monthly Summary",
+  "dataset": "NHTSA Standing General Order (ADS) Deduplicated Crashes — Monthly Summary",
   "source": "NHTSA Standing General Order 2021-01 ADS incident reports",
-  "coverage": "United States \u2014 ADS reports under SGO 2021-01",
-  "notes": "One crash per NHTSA Same Incident ID. Multiple Report IDs for the same real-world crash are counted once. Counts are grouped by incident month, not filing month. Records without a Same Incident ID fall back to Report ID and are explicitly counted below.",
+  "coverage": "United States — ADS reports under SGO 2021-01",
+  "notes": "One crash per NHTSA Same Incident ID, including six independently verified cross-entity matches with missing IDs. Other missing IDs use Report ID fallback. Monthly trends use incident month; undated crashes remain in the overall dataset but are excluded from dated analyses.",
   "report_row_count": 3336,
-  "crash_count": 2956,
+  "crash_count": 2950,
   "same_incident_id_crash_count": 2944,
-  "report_id_fallback_crash_count": 12,
+  "report_id_fallback_crash_count": 6,
   "states_represented": [
     "AR",
     "AZ",
@@ -87,7 +87,7 @@
     {
       "year": 2021,
       "month": 7,
-      "incident_count": 12
+      "incident_count": 11
     },
     {
       "year": 2021,
@@ -237,12 +237,12 @@
     {
       "year": 2024,
       "month": 1,
-      "incident_count": 24
+      "incident_count": 23
     },
     {
       "year": 2024,
       "month": 2,
-      "incident_count": 23
+      "incident_count": 22
     },
     {
       "year": 2024,
@@ -252,17 +252,17 @@
     {
       "year": 2024,
       "month": 4,
-      "incident_count": 22
+      "incident_count": 21
     },
     {
       "year": 2024,
       "month": 5,
-      "incident_count": 41
+      "incident_count": 40
     },
     {
       "year": 2024,
       "month": 6,
-      "incident_count": 42
+      "incident_count": 41
     },
     {
       "year": 2024,
@@ -399,7 +399,7 @@
     {
       "year": 2021,
       "month": 7,
-      "incident_count": 6,
+      "incident_count": 5,
       "state": "CA"
     },
     {
@@ -1143,7 +1143,7 @@
     {
       "year": 2024,
       "month": 1,
-      "incident_count": 3,
+      "incident_count": 2,
       "state": "TX"
     },
     {
@@ -1173,7 +1173,7 @@
     {
       "year": 2024,
       "month": 2,
-      "incident_count": 4,
+      "incident_count": 3,
       "state": "TX"
     },
     {
@@ -1233,7 +1233,7 @@
     {
       "year": 2024,
       "month": 4,
-      "incident_count": 3,
+      "incident_count": 2,
       "state": "TX"
     },
     {
@@ -1257,7 +1257,7 @@
     {
       "year": 2024,
       "month": 5,
-      "incident_count": 4,
+      "incident_count": 3,
       "state": "TX"
     },
     {
@@ -1281,7 +1281,7 @@
     {
       "year": 2024,
       "month": 6,
-      "incident_count": 5,
+      "incident_count": 4,
       "state": "TX"
     },
     {
@@ -5027,14 +5027,14 @@
     {
       "year": 2026,
       "month": 7,
-      "incident_count": 1,
-      "reporting_entity": "MOIA America LLC"
+      "incident_count": 2,
+      "reporting_entity": "May Mobility"
     },
     {
       "year": 2026,
       "month": 7,
-      "incident_count": 2,
-      "reporting_entity": "May Mobility"
+      "incident_count": 1,
+      "reporting_entity": "MOIA America LLC"
     },
     {
       "year": 2026,
@@ -5077,7 +5077,7 @@
     {
       "year": 2021,
       "month": 7,
-      "incident_count": 12,
+      "incident_count": 11,
       "vehicle_class": "light_duty"
     },
     {
@@ -5323,13 +5323,13 @@
     {
       "year": 2024,
       "month": 1,
-      "incident_count": 24,
+      "incident_count": 23,
       "vehicle_class": "light_duty"
     },
     {
       "year": 2024,
       "month": 2,
-      "incident_count": 22,
+      "incident_count": 21,
       "vehicle_class": "light_duty"
     },
     {
@@ -5353,7 +5353,7 @@
     {
       "year": 2024,
       "month": 4,
-      "incident_count": 21,
+      "incident_count": 20,
       "vehicle_class": "light_duty"
     },
     {
@@ -5365,7 +5365,7 @@
     {
       "year": 2024,
       "month": 5,
-      "incident_count": 40,
+      "incident_count": 39,
       "vehicle_class": "light_duty"
     },
     {
@@ -5377,7 +5377,7 @@
     {
       "year": 2024,
       "month": 6,
-      "incident_count": 40,
+      "incident_count": 39,
       "vehicle_class": "light_duty"
     },
     {
@@ -5637,7 +5637,7 @@
     {
       "year": 2021,
       "month": 7,
-      "incident_count": 6,
+      "incident_count": 5,
       "program_type": "commercial"
     },
     {
@@ -6177,7 +6177,7 @@
     {
       "year": 2024,
       "month": 1,
-      "incident_count": 9,
+      "incident_count": 8,
       "program_type": "testing"
     },
     {
@@ -6195,7 +6195,7 @@
     {
       "year": 2024,
       "month": 2,
-      "incident_count": 6,
+      "incident_count": 5,
       "program_type": "testing"
     },
     {
@@ -6231,7 +6231,7 @@
     {
       "year": 2024,
       "month": 4,
-      "incident_count": 5,
+      "incident_count": 4,
       "program_type": "testing"
     },
     {
@@ -6255,7 +6255,7 @@
     {
       "year": 2024,
       "month": 5,
-      "incident_count": 5,
+      "incident_count": 4,
       "program_type": "testing"
     },
     {
@@ -6273,7 +6273,7 @@
     {
       "year": 2024,
       "month": 6,
-      "incident_count": 3,
+      "incident_count": 2,
       "program_type": "testing"
     },
     {
@@ -6624,5 +6624,6 @@
       "incident_count": 11,
       "program_type": "commercial"
     }
-  ]
+  ],
+  "confirmed_cross_entity_matches": 6
 }
