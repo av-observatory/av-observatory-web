@@ -60,10 +60,48 @@ async function loadSgoRows(): Promise<SgoIncidentRow[]> {
   });
 }
 
+async function loadCanonicalCrashes(): Promise<SgoIncidentRow[]> {
+  const raw = await fs.readFile(path.join(process.cwd(), "public", "data", "sgo_crashes.csv"), "utf-8");
+  const table = parseCsv(raw);
+  const headers = table.shift() ?? [];
+  const idx = new Map(headers.map((h, i) => [h, i]));
+  const details = parseCsv(await fs.readFile(path.join(process.cwd(), "public", "data", "sgo_crash_details.csv"), "utf-8"));
+  const detailHeader = details.shift() ?? [];
+  const detailIdx = new Map(detailHeader.map((h, i) => [h, i]));
+  const airBags = new Map(details.map(r => [r[detailIdx.get("report_id") ?? -1], r[detailIdx.get("air_bag_deployment") ?? -1]]));
+  const read = (r: string[], key: string) => r[idx.get(key) ?? -1] ?? "";
+  return table.filter(r => r.length > 1).map(r => {
+    const reportIds = read(r, "report_ids");
+    const entities = read(r, "reporting_entities");
+    const bags = reportIds.split(";").map(id => airBags.get(id)).filter(Boolean) as string[];
+    return {
+      incident_id: read(r, "incident_id"),
+      report_ids: reportIds,
+      report_id: reportIds.split(";")[0] || "",
+      reporting_entities: entities,
+      reporting_entity: entities,
+      incident_date: read(r, "incident_date"),
+      city: read(r, "city"),
+      state: read(r, "state"),
+      make: read(r, "make"),
+      model: read(r, "model"),
+      crash_with: read(r, "crash_with"),
+      roadway_type: read(r, "roadway_type"),
+      highest_injury_severity: read(r, "severity"),
+      within_odd: read(r, "within_odd"),
+      automation_system_engaged: read(r, "automation_system_engaged"),
+      air_bag_deployment: bags.find(v => !/^(unknown|not reported)$/i.test(v)) ?? bags[0] ?? "Unknown",
+      report_version: "", report_type: "", report_month: "", report_year: "",
+      engagement_status: "", operating_entity: "",
+    } as SgoIncidentRow;
+  });
+}
+
 export default async function SafetyPage() {
-  const [sgo, incidentRows, seriousCrashes, mediaContext] = await Promise.all([
+  const [sgo, incidentRows, canonicalCrashes, seriousCrashes, mediaContext] = await Promise.all([
     loadJson<SgoMonthlyDataset>("sgo_crashes_monthly.json"),
     loadSgoRows(),
+    loadCanonicalCrashes(),
     fs.readFile(path.join(process.cwd(), "public", "data", "sgo_serious_fatal_crashes.csv"), "utf-8").then(raw => {
       const rows = parseCsv(raw); const header = rows.shift() ?? [];
       return rows.filter(r => r.length > 1).map(r => Object.fromEntries(header.map((key, i) => [key, r[i] ?? ""])) as SeriousCrash);
@@ -71,6 +109,12 @@ export default async function SafetyPage() {
     loadJson<{records:MediaContext[];reviewed_sources:ReviewedSource[]}>("sgo_media_context.json"),
   ]);
 
+  const completedCrashRows = canonicalCrashes.filter(r => {
+    const match = /^(JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)-(\\d{4})$/i.exec(r.incident_date);
+    if (!match) return false;
+    const month = ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"].indexOf(match[1].toUpperCase()) + 1;
+    return isCompleteSgoMonth(Number(match[2]), month);
+  });
   const incidentsByState: Record<string, number> = {};
   for (const r of sgo.monthly_by_state) {
     if (!isCompleteSgoMonth(r.year, r.month)) continue;
@@ -84,9 +128,9 @@ export default async function SafetyPage() {
       <p className="mt-2 text-sm text-neutral-600 max-w-3xl">NHTSA SGO incident reports by reporting entity, geography, vehicle, roadway, collision counterpart, injury severity, and reported ODD status. August 2026 is currently incomplete and excluded.</p>
 
       <div className="mt-5 grid sm:grid-cols-3 gap-2.5">
-        <StatTile label="Deduplicated Crashes" value={(sgo.crash_count ?? sgo.row_count ?? 0).toLocaleString()} caption="One crash per NHTSA Same Incident ID where available" />
-        <StatTile label="States Represented" value={sgo.states_represented.length.toString()} caption="States appearing in reported incidents" />
-        <StatTile label="Reporting Entities" value={sgo.entities_represented.length.toString()} caption="ADS reporting entities represented" />
+        <StatTile label="Deduplicated Crashes" value={completedCrashRows.length.toLocaleString()} caption="Unique dated crashes through July 2026; cross-entity filings merged" />
+        <StatTile label="States Represented" value={new Set(completedCrashRows.map(r => r.state).filter(Boolean)).size.toString()} caption="States appearing in reported incidents" />
+        <StatTile label="Reporting Entities" value={new Set(completedCrashRows.flatMap(r => (r.reporting_entities ?? "").split(";").filter(Boolean))).size.toString()} caption="ADS reporting entities represented" />
       </div>
 
       <section id="trends" className="mt-7">
@@ -138,10 +182,10 @@ export default async function SafetyPage() {
         <div className="mb-2">
           <h2 className="text-xl font-semibold tracking-tight">Inside the SGO Reports</h2>
           <p className="text-sm text-neutral-600 mt-1">
-            Filter the incident-level database and inspect how report characteristics differ across manufacturers, states, road environments, crash counterparts, and alleged injury severity.
+            Filter the deduplicated crash database and inspect how incident characteristics differ across manufacturers, states, road environments, crash counterparts, and alleged injury severity.
           </p>
         </div>
-        <SgoDeepDive rows={incidentRows} />
+        <SgoDeepDive rows={canonicalCrashes} />
       </section>
 
     </div>
