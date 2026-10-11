@@ -110,7 +110,7 @@ export default async function SafetyPage() {
   ]);
 
   const completedCrashRows = canonicalCrashes.filter(r => {
-    const match = /^(JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)-(\\d{4})$/i.exec(r.incident_date);
+    const match = /^(JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)-(\d{4})$/i.exec(r.incident_date);
     if (!match) return false;
     const month = ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"].indexOf(match[1].toUpperCase()) + 1;
     return isCompleteSgoMonth(Number(match[2]), month);
