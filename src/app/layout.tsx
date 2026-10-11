@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Sidebar } from "@/components/Sidebar";
 import Link from "next/link";
+import Script from "next/script";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -13,6 +14,8 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
+
+const cloudflareAnalyticsToken = process.env.NEXT_PUBLIC_CF_WEB_ANALYTICS_TOKEN;
 
 const siteDescription =
   "Independent evidence on autonomous vehicles, including federal and state policy, safety reporting, investigations, deployment, and operations.";
@@ -52,6 +55,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col md:flex-row bg-neutral-50 text-neutral-900">
+        {cloudflareAnalyticsToken && (
+          <Script
+            src="https://static.cloudflareinsights.com/beacon.min.js"
+            strategy="afterInteractive"
+            data-cf-beacon={JSON.stringify({ token: cloudflareAnalyticsToken, spa: true })}
+          />
+        )}
         <Sidebar />
         <div className="w-full md:w-auto flex-1 min-w-0 flex flex-col">
           <div className="border-b border-[#cbddef] bg-[#edf5ff] px-4 sm:px-8 py-2.5 text-sm text-[#23436a] leading-snug">We publish early and update often. Spot missing information or an error? Or have a suggestion? <Link href="/contact" className="font-semibold text-[#184f95] underline underline-offset-2">Get in Touch →</Link></div>
