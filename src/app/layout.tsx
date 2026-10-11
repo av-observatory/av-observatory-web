@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const cloudflareAnalyticsToken = process.env.NEXT_PUBLIC_CF_WEB_ANALYTICS_TOKEN;
+const cloudflareAnalyticsToken = process.env.NEXT_PUBLIC_CF_WEB_ANALYTICS_TOKEN || "ba975803df5347f7a46445b9afe039cf";
 
 const siteDescription =
   "Independent evidence on autonomous vehicles, including federal and state policy, safety reporting, investigations, deployment, and operations.";
