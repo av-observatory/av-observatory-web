@@ -9,6 +9,9 @@ import { GRID_PROPS, AXIS_PROPS, TOOLTIP_PROPS, SERIES } from "@/lib/chartTheme"
 
 export type SgoIncidentRow = {
   report_id: string;
+  report_ids?: string;
+  reporting_entities?: string;
+  incident_id?: string;
   report_version: string;
   reporting_entity: string;
   report_type: string;
@@ -29,17 +32,11 @@ export type SgoIncidentRow = {
   air_bag_deployment: string;
 };
 
-function hasValidFilingMonth(r:SgoIncidentRow) {
-  const yearText = (r.report_year ?? "").trim();
-  const monthText = (r.report_month ?? "").trim();
-  if (!yearText || !monthText) return false;
-  const y = Number(yearText), m = Number(monthText);
-  return Number.isInteger(y) && y >= 2021 && Number.isInteger(m) && m >= 1 && m <= 12;
-}
 function complete(r:SgoIncidentRow) {
-  if (!hasValidFilingMonth(r)) return true;
-  const y=Number(r.report_year), m=Number(r.report_month);
-  return y<2026 || (y===2026 && m<=7);
+  const match = /^(JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)-(\\d{4})$/i.exec(r.incident_date || "");
+  if (!match) return false; // Undated events remain in canonical source, not in dated analyses.
+  const month = ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"].indexOf(match[1].toUpperCase())+1;
+  return Number(match[2]) < 2026 || (Number(match[2])===2026 && month<=7);
 }
 function countBy(rows:SgoIncidentRow[], key:keyof SgoIncidentRow, limit=12, label=(s:string)=>s) {
   const m=new Map<string,number>();
@@ -62,28 +59,17 @@ function vehicleLabel(make:string,model:string) {
   if (normalizedMake.toLowerCase() === normalizedModel.toLowerCase()) return normalizedMake;
   return [normalizedMake,normalizedModel].filter(Boolean).join(" ") || "Unknown";
 }
-function ym(r:SgoIncidentRow){return `${r.report_year}-${String(r.report_month).padStart(2,"0")}`;}
-
 export function SgoDeepDive({ rows }: { rows:SgoIncidentRow[] }) {
   const completeRows=useMemo(()=>rows.filter(complete),[rows]);
-  const entities=useMemo(()=>Array.from(new Set(completeRows.map(r=>r.reporting_entity).filter(Boolean))).sort(),[completeRows]);
+  const entities=useMemo(()=>Array.from(new Set(completeRows.flatMap(r=>(r.reporting_entities || r.reporting_entity || "").split(";").filter(Boolean))).sort(),[completeRows]);
   const states=useMemo(()=>Array.from(new Set(completeRows.map(r=>r.state).filter(Boolean))).sort(),[completeRows]);
   const [entity,setEntity]=useState("ALL");
   const [state,setState]=useState("ALL");
 
   const filtered=useMemo(()=>completeRows.filter(r=>
-    (entity==="ALL"||r.reporting_entity===entity) &&
+    (entity==="ALL"||(r.reporting_entities || r.reporting_entity || "").split(";").includes(entity)) &&
     (state==="ALL"||r.state===state)
   ),[completeRows,entity,state]);
-
-  const datedFiltered = useMemo(() => filtered.filter(hasValidFilingMonth), [filtered]);
-  const undatedCount = filtered.length - datedFiltered.length;
-
-  const monthly=useMemo(()=>{
-    const m=new Map<string,number>();
-    for(const r of datedFiltered){const k=ym(r);m.set(k,(m.get(k)||0)+1);}
-    return Array.from(m,([month,count])=>({month,count})).sort((a,b)=>a.month.localeCompare(b.month));
-  },[datedFiltered]);
 
   const crashWith=useMemo(()=>countBy(filtered,"crash_with",10),[filtered]);
   const severity=useMemo(()=>countBy(filtered,"highest_injury_severity",50,severityLabel),[filtered]);
@@ -118,24 +104,10 @@ export function SgoDeepDive({ rows }: { rows:SgoIncidentRow[] }) {
     </div>
 
     <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5 mt-3">
-      <div className="viz-card p-3"><div className="text-xs text-neutral-500">Reports in View</div><div className="text-2xl font-semibold mt-1 tabular-nums">{filtered.length.toLocaleString()}</div></div>
-      <div className="viz-card p-3"><div className="text-xs text-neutral-500">Entities</div><div className="text-2xl font-semibold mt-1 tabular-nums">{new Set(filtered.map(r=>r.reporting_entity)).size}</div></div>
+      <div className="viz-card p-3"><div className="text-xs text-neutral-500">Deduplicated Crashes</div><div className="text-2xl font-semibold mt-1 tabular-nums">{filtered.length.toLocaleString()}</div></div>
+      <div className="viz-card p-3"><div className="text-xs text-neutral-500">Entities</div><div className="text-2xl font-semibold mt-1 tabular-nums">{new Set(filtered.flatMap(r=>(r.reporting_entities || r.reporting_entity || "").split(";").filter(Boolean))).size}</div></div>
       <div className="viz-card p-3"><div className="text-xs text-neutral-500">States</div><div className="text-2xl font-semibold mt-1 tabular-nums">{new Set(filtered.map(r=>r.state).filter(Boolean)).size}</div></div>
       <div className="viz-card p-3"><div className="text-xs text-neutral-500">Vehicle Make/Models</div><div className="text-2xl font-semibold mt-1 tabular-nums">{new Set(filtered.map(r=>[r.make,r.model].join("|"))).size}</div></div>
-    </div>
-
-    <div className="viz-card p-4 mt-3">
-      <div className="font-semibold">Reports Over Time</div>
-      <div className="text-sm text-neutral-500">
-        Filing month for records with a valid filing month/year. August 2026 is excluded as incomplete.
-        {undatedCount > 0 && ` ${undatedCount.toLocaleString()} records in this view lack filing month/year and are excluded from this trend only.`}
-      </div>
-      <ResponsiveContainer width="100%" height={300}>
-        <LineChart data={monthly} margin={{top:14,right:12,bottom:5,left:0}}>
-          <CartesianGrid {...GRID_PROPS}/><XAxis dataKey="month" {...AXIS_PROPS} interval="preserveStartEnd"/><YAxis {...AXIS_PROPS} allowDecimals={false}/>
-          <Tooltip {...TOOLTIP_PROPS}/><Line dataKey="count" name="Incident reports" stroke={SERIES.red} strokeWidth={2.5} dot={false}/>
-        </LineChart>
-      </ResponsiveContainer>
     </div>
 
     <div className="grid lg:grid-cols-2 gap-3 mt-3">
@@ -144,7 +116,7 @@ export function SgoDeepDive({ rows }: { rows:SgoIncidentRow[] }) {
       <Breakdown title="Roadway type" subtitle="Reported roadway classification" data={roadway} />
       <Breakdown title="Within reported ODD?" subtitle="Reporting entity's Within ODD field" data={withinOdd} />
       <Breakdown title="Air Bag Deployment" subtitle="Subject vehicle or crash partner; Unknown includes incomplete reports" data={airBags} />
-      <Breakdown title="Vehicle make / model" subtitle="Most frequently represented vehicles in filtered reports" data={models} />
+      <Breakdown title="Vehicle make / model" subtitle="Most frequently represented vehicles in filtered crashes" data={models} />
     </div>
   </div>;
 }
@@ -161,8 +133,8 @@ function Breakdown({title,subtitle,data}:{title:string;subtitle:string;data:{nam
         <XAxis type="number" {...AXIS_PROPS} domain={[0,100]} tickFormatter={(v)=>`${v}%`}/>
         <YAxis type="category" dataKey="name" {...AXIS_PROPS} width={135} tick={{fontSize:11}}/>
         <Tooltip {...TOOLTIP_PROPS} formatter={(v,name,item)=>[
-          `${Number(v).toFixed(1)}% (${Number(item.payload.count).toLocaleString()} reports)`,
-          "Share of reports"
+          `${Number(v).toFixed(1)}% (${Number(item.payload.count).toLocaleString()} crashes)`,
+          "Share of crashes"
         ]}/>
         <Bar dataKey="pct" name="Share of reports" fill={SERIES.blue}>
           <LabelList dataKey="pct" position="right" formatter={(v)=>`${Number(v).toFixed(1)}%`} style={{fontSize:11,fill:"#5f5f5f"}} />
