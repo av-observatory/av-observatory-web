@@ -53,11 +53,11 @@ export default async function EuropeSafetyPage(){
     </div>
     <h1 className="text-4xl font-semibold tracking-tight max-w-3xl">Europe Crash Tracker</h1>
     <p className="mt-2 text-sm text-neutral-600 max-w-3xl">
-      A deduplicated record of publicly reported crashes involving automated-driving systems across Europe. Unlike the US NHTSA SGO tracker, this beta is discovery-based: one real-world crash is counted once even when multiple media, operator or agency sources report it.
+      Publicly reported crashes involving automated-driving vehicles and systems across Europe, compiled from media, operator, regulator, public-agency, project and research sources.
     </p>
 
     <div className="mt-5 grid sm:grid-cols-3 gap-2.5">
-      <StatTile label="Verified Incidents" value={data.incidents.length.toString()} caption="One canonical record per crash" />
+      <StatTile label="Verified Incidents" value={data.incidents.length.toString()} caption="Publicly documented crashes in the tracker" />
       <StatTile label="Countries in Scope" value={countries.length.toString()} caption="Including countries with zero verified crashes" />
       <StatTile label="Fatal Incidents" value={fatal.toString()} caption="Based on public reporting" />
     </div>
@@ -66,7 +66,7 @@ export default async function EuropeSafetyPage(){
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
           <h2 className="text-xl font-semibold tracking-tight">Crash Records</h2>
-          <p className="text-sm text-neutral-600 mt-1 max-w-4xl">Coverage is not yet exhaustive. Records are added only when the event, automated-driving involvement, date/location and source trail can be verified well enough to avoid double counting.</p>
+          <p className="text-sm text-neutral-600 mt-1 max-w-4xl">Coverage is not yet exhaustive. Records are added when the crash and its connection to an automated-driving test, pilot or deployment can be supported by public sources.</p>
         </div>
         <div className="flex gap-3 text-sm">
           <a href="/data/europe_crash_tracker.csv" className="text-[#184f95] underline">Download CSV ↗</a>
@@ -79,15 +79,7 @@ export default async function EuropeSafetyPage(){
     </section>
 
     <section className="mt-8">
-      <h2 className="text-xl font-semibold tracking-tight">Deduplication Method</h2>
-      <div className="viz-card p-5 mt-2 text-sm leading-relaxed text-neutral-700">
-        <p>{data.methodology}</p>
-        <p className="mt-3"><strong>Beta limitation:</strong> {data.limitations}</p>
-      </div>
-    </section>
-
-    <section className="mt-8">
-      <h2 className="text-xl font-semibold tracking-tight">Historical Leads Not Counted as Canonical Crashes</h2>
+      <h2 className="text-xl font-semibold tracking-tight">Historical Leads Not Counted as Crashes</h2>
       <p className="text-sm text-neutral-600 mt-1 max-w-4xl">Historical search also finds reports that cannot yet be separated into individual incidents, or events that occurred while the vehicle was clearly in manual operation. They stay visible here so the research trail is not lost, but they are excluded from the incident count above.</p>
       <div className="grid md:grid-cols-2 gap-3 mt-4">
         {data.unresolved_leads.map(row=><article key={row.lead_id} className="viz-card p-4">
@@ -112,6 +104,14 @@ export default async function EuropeSafetyPage(){
           <dl className="text-sm mt-3 space-y-1"><div><dt className="inline text-neutral-500">Scope: </dt><dd className="inline">{row.scope}</dd></div><div><dt className="inline text-neutral-500">Access: </dt><dd className="inline">{row.access}</dd></div></dl>
           {row.url&&<a href={row.url} target="_blank" rel="noreferrer" className="inline-block text-sm text-[#184f95] underline mt-3">Source / documentation ↗</a>}
         </article>)}
+      </div>
+    </section>
+
+    <section className="mt-8 mb-10">
+      <h2 className="text-xl font-semibold tracking-tight">Methodology</h2>
+      <div className="viz-card p-5 mt-2 text-sm leading-relaxed text-neutral-700">
+        <p>{data.methodology}</p>
+        <p className="mt-3"><strong>Coverage limitation:</strong> {data.limitations}</p>
       </div>
     </section>
   </div>;
