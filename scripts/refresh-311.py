@@ -86,6 +86,7 @@ def main():
     parser.add_argument('--fixture', type=Path, help='Read an archived San Francisco API response')
     parser.add_argument('--austin-fixture', type=Path, help='Read an archived Austin ArcGIS feature response')
     parser.add_argument('--check', action='store_true', help='Check stored JSON without network access')
+    parser.add_argument('--sf-only', action='store_true', help='Refresh San Francisco AV 311 without querying or changing Austin')
     args = parser.parse_args()
     if args.check:
         sf = json.loads((DATA / 'av_311_complaints.json').read_text())
@@ -105,8 +106,17 @@ def main():
         if deployed - tracked: raise ValueError('Missing deployment state review: ' + ', '.join(sorted(deployed - tracked)))
         print(f"Validated {sf['total_records']} SF requests, {atx['resident_feedback_count']} Austin resident reports, and {len(tracked)} states")
         return
-    sf_rows = json.loads(args.fixture.read_text()) if args.fixture else fetch(SOURCE + '?' + urlencode({'service_name': CATEGORY, '$limit': LIMIT}))
+    sf_rows = json.loads(args.fixture.read_text()) if args.fixture else fetch(SOURCE + '?' + urlencode({
+        'service_name': CATEGORY,
+        '$limit': LIMIT,
+        '$order': 'requested_datetime ASC, service_request_id ASC'
+    }))
     if len(sf_rows) >= LIMIT: raise ValueError('SF 311 reached request page limit; paginate first')
+    if args.sf_only:
+        sf = build_sf(sf_rows)
+        (DATA / 'av_311_complaints.json').write_text(json.dumps(sf, ensure_ascii=False, indent=2)+'\n')
+        print(f"Refreshed {sf['total_records']} SF AV 311 requests; source as of {sf['source_data_as_of']}, latest {max((r['requested_date'] for r in sf['records']), default='none')}")
+        return
     query = AUSTIN_LAYER + '/query?' + urlencode({'where':'1=1','outFields':'OBJECTID,Type,AV_Company,Date,Incident_No,Issue','returnGeometry':'false','f':'json','resultRecordCount':'2000'})
     atx_raw = json.loads(args.austin_fixture.read_text()) if args.austin_fixture else fetch(query)
     if atx_raw.get('error') or atx_raw.get('exceededTransferLimit') or len(atx_raw.get('features', [])) >= 2000:
