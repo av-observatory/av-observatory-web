@@ -193,15 +193,39 @@
       "vehicle": "Autonomous e-ATAK",
       "automation": "Automated bus service with safety driver onboard",
       "crash_with": "Tram",
-      "injury_severity": "No injuries reported",
+      "injury_severity": "Whiplash injury reported",
       "fatalities": 0,
-      "injuries": 0,
-      "narrative": "On the first day carrying passengers, an autonomous e-ATAK bus braked and was struck from behind by a tram in Gothenburg. Västtrafik reported no injuries. Karsan said preliminary technical evaluation indicated that the automated-driving system functioned as designed and that the tram approached from behind.",
+      "injuries": 1,
+      "narrative": "On the first day carrying passengers, an autonomous e-ATAK bus braked and was struck from behind by a tram in Gothenburg. Initial reporting from Västtrafik said there were no injuries. Later Swedish reporting documented that passenger Gabriel Pettersson suffered whiplash injuries, was placed on sick leave, and continued to report symptoms. Karsan said its preliminary technical evaluation indicated the automated-driving system functioned as designed and that the tram approached from behind.",
       "source_class": "Media + operator/manufacturer statements",
       "verification": "Multiple-source match",
       "sources": [
         "https://www.electrive.com/2026/05/27/autonomous-e-bus-by-karsan-collides-with-tram-in-gothenburg/",
-        "https://www.aa.com.tr/en/turkiye/turkish-ev-manufacturer-says-reports-on-sweden-autonomous-bus-incident-created-misleading-perception-/3949045"
+        "https://www.aa.com.tr/en/turkiye/turkish-ev-manufacturer-says-reports-on-sweden-autonomous-bus-incident-created-misleading-perception-/3949045",
+        "https://www.sverigesradio.se/artikel/vasttrafiks-sjalvkorande-buss-krockade-gabriel-skadad"
+      ]
+    },
+    {
+      "incident_id": "europe-uk-london-2026-07-15-waymo-a13",
+      "date": "2026-07-15",
+      "date_precision": "day",
+      "country": "United Kingdom",
+      "city": "London",
+      "operator": "Waymo",
+      "manufacturer": "Waymo",
+      "vehicle": "Waymo test vehicle",
+      "automation": "Manual mode; test driver in control at impact",
+      "crash_with": "Multi-vehicle collision involving two other cars",
+      "injury_severity": "Four people injured",
+      "fatalities": 0,
+      "injuries": 4,
+      "narrative": "A Waymo test vehicle was involved in a multi-vehicle collision on the A13 in East London at about 2:00 a.m. Waymo said its autonomous driving system was not controlling the vehicle and a test driver was driving in manual mode while changing lanes. According to Waymo, another vehicle approached from behind at 93 mph in a 50 mph zone, swerved into an adjacent lane, struck another vehicle and then made contact with the Waymo vehicle. London Ambulance Service treated four people; media reporting said three were taken to hospital.",
+      "source_class": "Media reporting + Waymo statement",
+      "verification": "Multiple-source match; manual mode confirmed by Waymo",
+      "sources": [
+        "https://www.ratednews.com/article/self-driving-waymo-car-involved-in-crash-with-two-vehicles-i-812f2d2b",
+        "https://linxtechnews.com/2026/07/17/waymo-car-involved-in-crash-with-two-vehicles-in-london/",
+        "https://www.thesun.co.uk/motors/39784660/self-driving-car-in-2am-dual-carriageway-smash-leaving-four-hurt-as-fears-grow-over-introduction-on-uk-roads/"
       ]
     },
     {
@@ -268,6 +292,14 @@
       "usefulness": "High for discovery",
       "notes": "Primary beta discovery layer. Operator, police and public-agency statements are preferred when available.",
       "url": ""
+    },
+    {
+      "source": "Spain DGT automated-vehicle testing registry",
+      "scope": "Authorized automated-vehicle tests in Spain",
+      "access": "Public DGT table with authorization holder, vehicles, use case, dates, location, automation level, kilometers and serious incidents reported",
+      "usefulness": "High",
+      "notes": "Spain's DGT publishes an official testing registry that includes a field for the number of serious incidents reported. This can provide regulator-level corroboration and a systematic check for Spanish Level 4 testing programs.",
+      "url": "https://www.dgt.es/muevete-con-seguridad/vehiculos-seguros/conduccion-automatizada/marco-pruebas-vehiculos-automatizados/"
     }
   ],
   "unresolved_leads": [
@@ -563,7 +595,7 @@
     },
     {
       "country": "United Kingdom",
-      "verified_incidents": 1,
+      "verified_incidents": 2,
       "status": "Verified incident(s) in tracker"
     },
     {
