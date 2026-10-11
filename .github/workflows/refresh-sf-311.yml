@@ -1,0 +1,64 @@
+name: Refresh SF AV 311 data
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "35 14 * * *"
+  push:
+    branches: [main]
+    paths:
+      - "scripts/refresh-311.py"
+      - ".github/workflows/refresh-sf-311.yml"
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: sf-311-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Fetch current SF 311 AV requests
+        run: python scripts/refresh-311.py --sf-only
+      - name: Validate SF record IDs and monthly totals
+        run: |
+          python - <<'PY'
+          import json
+          from collections import Counter
+          from pathlib import Path
+          sf = json.loads(Path('public/data/av_311_complaints.json').read_text())
+          rows = sf['records']
+          assert len(rows) == sf['total_records']
+          assert len(set(r['source_id'] for r in rows)) == len(rows)
+          assert dict(Counter(r['month'] for r in rows)) == {r['month']: r['complaints'] for r in sf['monthly']}
+          print(f"Validated {len(rows)} unique San Francisco AV 311 records")
+          PY
+      - name: Commit updated SF 311 snapshot
+        id: commit
+        run: |
+          git config user.name "av-observatory-bot"
+          git config user.email "bot@av-observatory.org"
+          git add public/data/av_311_complaints.json
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "SF 311 snapshot already current"
+          else
+            git commit -m "data: refresh SF AV 311 requests"
+            git pull --rebase origin main
+            git push origin HEAD:main
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Deploy updated site
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run pages.yml --ref main
