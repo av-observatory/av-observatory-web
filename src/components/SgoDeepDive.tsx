@@ -61,7 +61,12 @@ function vehicleLabel(make:string,model:string) {
 }
 export function SgoDeepDive({ rows }: { rows:SgoIncidentRow[] }) {
   const completeRows=useMemo(()=>rows.filter(complete),[rows]);
-  const entities=useMemo(()=>Array.from(new Set(completeRows.flatMap(r=>(r.reporting_entities || r.reporting_entity || "").split(";").filter(Boolean))).sort(),[completeRows]);
+  const entities = useMemo(() => {
+    const names = completeRows.flatMap(r =>
+      (r.reporting_entities || r.reporting_entity || "").split(";").filter(Boolean)
+    );
+    return Array.from(new Set(names)).sort();
+  }, [completeRows]);
   const states=useMemo(()=>Array.from(new Set(completeRows.map(r=>r.state).filter(Boolean))).sort(),[completeRows]);
   const [entity,setEntity]=useState("ALL");
   const [state,setState]=useState("ALL");
