@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import {
-  BarChart, Bar, LabelList, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip,
+  BarChart, Bar, LabelList, XAxis, YAxis, CartesianGrid, Tooltip,
   ResponsiveContainer,
 } from "recharts";
 import { GRID_PROPS, AXIS_PROPS, TOOLTIP_PROPS, SERIES } from "@/lib/chartTheme";
@@ -33,7 +33,7 @@ export type SgoIncidentRow = {
 };
 
 function complete(r:SgoIncidentRow) {
-  const match = /^(JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)-(\\d{4})$/i.exec(r.incident_date || "");
+  const match = /^(JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)-(\d{4})$/i.exec(r.incident_date || "");
   if (!match) return false; // Undated events remain in canonical source, not in dated analyses.
   const month = ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"].indexOf(match[1].toUpperCase())+1;
   return Number(match[2]) < 2026 || (Number(match[2])===2026 && month<=7);
@@ -136,7 +136,7 @@ function Breakdown({title,subtitle,data}:{title:string;subtitle:string;data:{nam
           `${Number(v).toFixed(1)}% (${Number(item.payload.count).toLocaleString()} crashes)`,
           "Share of crashes"
         ]}/>
-        <Bar dataKey="pct" name="Share of reports" fill={SERIES.blue}>
+        <Bar dataKey="pct" name="Share of crashes" fill={SERIES.blue}>
           <LabelList dataKey="pct" position="right" formatter={(v)=>`${Number(v).toFixed(1)}%`} style={{fontSize:11,fill:"#5f5f5f"}} />
         </Bar>
       </BarChart>
