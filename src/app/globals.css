@@ -214,3 +214,18 @@ select:focus, input:focus { outline: 2px solid rgba(42,120,214,.25); outline-off
 @media (max-width: 700px) {
   .waymo-market-facet-map { height: 460px; min-height: 380px; }
 }
+
+/* Mobile-only usability; desktop layout and visual styling remain unchanged. */
+@media (max-width: 767px) {
+  html, body { max-width: 100%; overflow-x: clip; }
+  main { min-width: 0; }
+  main > * { min-width: 0; }
+  main img, main svg, main canvas { max-width: 100%; }
+  main table { font-size: 0.8125rem; }
+  main :is(button, select, input) { touch-action: manipulation; }
+  main :is(input, select, textarea) { max-width: 100%; }
+  .viz-card { min-width: 0; }
+  .odd-leaflet-map { height: 360px; min-height: 300px; }
+  .waymo-s2-leaflet-map { height: 380px; min-height: 300px; }
+  .waymo-market-facet-map { height: 380px; min-height: 300px; }
+}
