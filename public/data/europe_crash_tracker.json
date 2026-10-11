@@ -74,6 +74,27 @@
       ]
     },
     {
+      "incident_id": "europe-ch-sion-2018-09-20-smartshuttle-car",
+      "date": "2018-09-20",
+      "date_precision": "day",
+      "country": "Switzerland",
+      "city": "Sion",
+      "operator": "PostBus Switzerland",
+      "manufacturer": "Navya",
+      "vehicle": "SmartShuttle",
+      "automation": "Autonomous shuttle under onboard safety-attendant supervision; control mode at impact not further specified in the source",
+      "crash_with": "Passenger car",
+      "injury_severity": "No injuries reported",
+      "fatalities": 0,
+      "injuries": 0,
+      "narrative": "A passenger car turning slowly at the railway-station square in Sion struck the front-left fender of a PostBus SmartShuttle. PostBus said no passengers were onboard and nobody was injured. The shuttle was travelling at about 2 km/h under the usual safety-attendant supervision and stopped immediately. PostBus temporarily withdrew both shuttles while the vehicle's black-box data were reviewed.",
+      "source_class": "Swiss media report quoting PostBus",
+      "verification": "Exact event confirmed; operator statement reported",
+      "sources": [
+        "https://www.swissinfo.ch/fre/un-accident-suspend-la-circulation-des-navettes-autonomes-%C3%A0-sion/44414370"
+      ]
+    },
+    {
       "incident_id": "eu-at-vienna-2019-07-18-navya-pedestrian",
       "date": "2019-07-18",
       "date_precision": "day",
@@ -580,7 +601,7 @@
     },
     {
       "country": "Switzerland",
-      "verified_incidents": 1,
+      "verified_incidents": 2,
       "status": "Verified incident(s) in tracker"
     },
     {
