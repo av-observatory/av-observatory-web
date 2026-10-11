@@ -88,8 +88,8 @@ export function EuropeCrashTracker({incidents,countries}:{incidents:EuropeCrashI
         <button type="button" className="text-sm text-[#184f95] underline" onClick={()=>{setCountry("ALL");setSelected("");}}>Reset map</button>
       </div>
 
-      <div className="mt-4 rounded-lg border border-[#dce5ec] bg-[#f8fbfd] overflow-hidden">
-        <ComposableMap projection="geoMercator" projectionConfig={{center:[15,54],scale:520}} width={900} height={560} style={{width:"100%",height:"auto"}}>
+      <div className="mt-4 rounded-lg border border-[#dce5ec] bg-[#f8fbfd] overflow-x-auto">
+        <div className="min-w-[560px] md:min-w-0"><ComposableMap projection="geoMercator" projectionConfig={{center:[15,54],scale:520}} width={900} height={560} style={{width:"100%",height:"auto"}}>
           <Geographies geography={GEO_URL}>
             {({geographies})=>geographies.map(geo=>{
               const raw=String(geo.properties?.name??"");
@@ -118,8 +118,9 @@ export function EuropeCrashTracker({incidents,countries}:{incidents:EuropeCrashI
               />;
             })}
           </Geographies>
-        </ComposableMap>
+        </ComposableMap></div>
       </div>
+      <p className="md:hidden mt-2 text-xs text-neutral-500">Swipe sideways to explore the full map, or choose a country above.</p>
       <div className="flex flex-wrap gap-4 text-xs text-neutral-600 mt-2">
         <span><span className="inline-block w-3 h-3 rounded-sm bg-[#d9eaf7] border border-[#8fa6bb] mr-1 align-[-1px]"/>Verified crash(es)</span>
         <span><span className="inline-block w-3 h-3 rounded-sm bg-[#eef2f5] border border-[#8fa6bb] mr-1 align-[-1px]"/>No verified crashes currently in tracker</span>
