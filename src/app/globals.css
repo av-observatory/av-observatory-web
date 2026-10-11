@@ -229,3 +229,18 @@ select:focus, input:focus { outline: 2px solid rgba(42,120,214,.25); outline-off
   .waymo-s2-leaflet-map { height: 380px; min-height: 300px; }
   .waymo-market-facet-map { height: 380px; min-height: 300px; }
 }
+
+/* Responsive dashboard typography and containment; desktop styles untouched. */
+@media (max-width: 767px) {
+  main .px-8 { padding-left: 1rem; padding-right: 1rem; }
+  main .text-4xl { font-size: 1.875rem; line-height: 2.25rem; }
+  main .text-3xl { font-size: 1.5rem; line-height: 2rem; }
+  main .viz-card.p-5, main .viz-card.p-6, main .viz-card.p-7 { padding: 1rem; }
+  main .grid > *, main .flex > * { min-width: 0; }
+  main .viz-card:has(table) { overflow-x: auto; }
+  main table { min-width: max-content; }
+  main .recharts-responsive-container { min-width: 0; }
+  main .filter-select { font-size: 1rem; }
+  main a, main button { overflow-wrap: anywhere; }
+  main :is(button, select, input, textarea):focus-visible { outline-offset: 2px; }
+}
