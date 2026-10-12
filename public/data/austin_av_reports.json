@@ -7,22 +7,22 @@
   "source_api": "https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/query",
   "selection": "Austin's public TPW AV incident feature layer. Resident complaints are exactly Type=Resident Feedback (case-insensitive); other Type values are city department or responder reports and are kept separate.",
   "limitations": "Austin compiles unvalidated reports received from residents, City departments, and other sources, including 311. The Resident Feedback label does not prove every record entered via 311. This series differs from San Francisco's dedicated 311 AV category and their raw counts should not be compared as rates. Public narrative and precise location are omitted from Observatory exports.",
-  "total_city_reports": 334,
+  "total_city_reports": 339,
   "blank_source_rows_excluded": 1,
-  "resident_feedback_count": 150,
-  "latest_reported_date": "2026-10-06",
+  "resident_feedback_count": 152,
+  "latest_reported_date": "2026-10-10",
   "reporter_types": [
     {
       "type": "Resident Feedback",
-      "reports": 149
+      "reports": 151
     },
     {
       "type": "APD",
-      "reports": 73
+      "reports": 75
     },
     {
       "type": "City Employee",
-      "reports": 39
+      "reports": 40
     },
     {
       "type": "AFD",
@@ -173,6 +173,10 @@
     {
       "month": "2026-09",
       "resident_feedback": 9
+    },
+    {
+      "month": "2026-10",
+      "resident_feedback": 2
     }
   ],
   "resident_issues": [
@@ -190,7 +194,7 @@
     },
     {
       "issue": "Blocking Traffic",
-      "resident_feedback": 15
+      "resident_feedback": 17
     },
     {
       "issue": "Collision",
@@ -4203,6 +4207,18 @@
       "source_url": "https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/366"
     },
     {
+      "id": "ATX-372",
+      "source_id": "372",
+      "market": "Austin",
+      "state": "TX",
+      "reported_date": "2026-10-04",
+      "month": "2026-10",
+      "reporter_type": "APD",
+      "issue": "Safety Concern",
+      "operator": "Waymo",
+      "source_url": "https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/372"
+    },
+    {
       "id": "ATX-367",
       "source_id": "367",
       "market": "Austin",
@@ -4213,6 +4229,54 @@
       "issue": "Safety Concern",
       "operator": "Waymo",
       "source_url": "https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/367"
+    },
+    {
+      "id": "ATX-368",
+      "source_id": "368",
+      "market": "Austin",
+      "state": "TX",
+      "reported_date": "2026-10-09",
+      "month": "2026-10",
+      "reporter_type": "City Employee",
+      "issue": "Nuisance",
+      "operator": "Waymo",
+      "source_url": "https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/368"
+    },
+    {
+      "id": "ATX-369",
+      "source_id": "369",
+      "market": "Austin",
+      "state": "TX",
+      "reported_date": "2026-10-09",
+      "month": "2026-10",
+      "reporter_type": "APD",
+      "issue": "Ignore APD Direction",
+      "operator": "Tesla",
+      "source_url": "https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/369"
+    },
+    {
+      "id": "ATX-370",
+      "source_id": "370",
+      "market": "Austin",
+      "state": "TX",
+      "reported_date": "2026-10-10",
+      "month": "2026-10",
+      "reporter_type": "Resident Feedback",
+      "issue": "Blocking Traffic",
+      "operator": "Waymo",
+      "source_url": "https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/370"
+    },
+    {
+      "id": "ATX-371",
+      "source_id": "371",
+      "market": "Austin",
+      "state": "TX",
+      "reported_date": "2026-10-10",
+      "month": "2026-10",
+      "reporter_type": "Resident Feedback",
+      "issue": "Blocking Traffic",
+      "operator": "Tesla",
+      "source_url": "https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/371"
     }
   ]
 }
