@@ -29,7 +29,7 @@ jobs:
       R2_ACCOUNT_ID: ${{ vars.POLICY_R2_ACCOUNT_ID }}
       R2_BUCKET: ${{ vars.POLICY_R2_BUCKET }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
       - name: Check Open States configuration
         if: ${{ env.OPENSTATES_API_KEY == '' }}
         run: |
