@@ -127,26 +127,6 @@ export function EuropePolicyExplorer({data}:{data:Dataset}) {
       </div>
     </div>
 
-    <div className="viz-card mt-3 overflow-hidden">
-      <div className="px-4 py-3 border-b border-neutral-200">
-        <h3 className="font-semibold">Reporting-requirement matrix</h3>
-        <p className="text-xs text-neutral-500 mt-1">1 = established by the current review. 0 = not established by the review; do not read 0 as proof that no obligation exists.</p>
-      </div>
-      <div className="overflow-x-auto max-h-[560px]">
-        <table className="w-full text-xs">
-          <thead className="sticky top-0 bg-[#fcfcfb] z-10">
-            <tr className="text-left text-neutral-500">
-              <th>Country</th><th>Evidence</th><th>Scope</th>
-              {data.dimensions.map(d=><th key={d.key} className="text-center whitespace-nowrap">{d.label}</th>)}
-            </tr>
-          </thead>
-          <tbody>{data.countries.map(c=><tr key={c.iso2} className="border-t border-neutral-100 hover:bg-neutral-50 cursor-pointer" onClick={()=>setSelected(c)}>
-            <td className="font-medium whitespace-nowrap">{c.country}</td><td>{c.evidence}</td><td className="text-neutral-500 whitespace-nowrap">{c.scope}</td>
-            {data.dimensions.map(d=><td key={d.key} className="text-center font-semibold">{Number(c[d.key as keyof CountryRow])===1?"1":"0"}</td>)}
-          </tr>)}</tbody>
-        </table>
-      </div>
-    </div>
   </div>;
 }
 
