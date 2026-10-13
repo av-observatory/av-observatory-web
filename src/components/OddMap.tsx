@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { safeHttpUrl } from "@/lib/security";
 
 declare global {
   interface Window {
@@ -50,8 +51,9 @@ export type S2CellFeature = {
   geometry: any;
 };
 
-const LEAFLET_JS = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.js";
-const LEAFLET_CSS = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.css";
+const VENDOR = `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/vendor`;
+const LEAFLET_JS = `${VENDOR}/leaflet-1.9.4/leaflet.js`;
+const LEAFLET_CSS = `${VENDOR}/leaflet-1.9.4/leaflet.css`;
 
 function ensureLeafletCss() {
   if (document.querySelector('link[data-av-odd-leaflet="1"]')) return;
@@ -193,10 +195,10 @@ export function OddMap({
         const routeBasis = props.route_basis ? `<div style="margin-top:4px">${escapeHtml(props.route_basis)}</div>` : "";
         const regulatory = props.regulatory_basis ? `<div style="margin-top:4px;color:#666">${escapeHtml(props.regulatory_basis)}</div>` : "";
         const source = p.source_url
-          ? `<a href="${escapeHtml(p.source_url)}" target="_blank" rel="noreferrer">status / route source</a>`
+          ? `<a href="${escapeHtml(safeHttpUrl(p.source_url))}" target="_blank" rel="noreferrer">status / route source</a>`
           : "";
         const geometrySource = props.geometry_source_url
-          ? `<a href="${escapeHtml(props.geometry_source_url)}" target="_blank" rel="noreferrer">geometry source</a>`
+          ? `<a href="${escapeHtml(safeHttpUrl(props.geometry_source_url))}" target="_blank" rel="noreferrer">geometry source</a>`
           : "";
         const links = [source, geometrySource].filter(Boolean).join(" · ");
         layer.bindPopup(

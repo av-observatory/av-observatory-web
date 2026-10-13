@@ -110,8 +110,9 @@ type Metric = "cumulative" | "incremental" | "miles_per_1000" | "interaction";
 type ResidentCharacteristic = "hispanic" | "black" | "asian" | "white" | "income";
 type DemographicView = "race" | "income";
 
-const LEAFLET_JS = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.js";
-const LEAFLET_CSS = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.css";
+const VENDOR = `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/vendor`;
+const LEAFLET_JS = `${VENDOR}/leaflet-1.9.4/leaflet.js`;
+const LEAFLET_CSS = `${VENDOR}/leaflet-1.9.4/leaflet.css`;
 const BLUE_RAMP = ["#edf4fd","#d5e7fb","#a9cef6","#78afea","#438ad8","#2468b7","#174b8a","#0b2f5f"];
 const ORANGE_RAMP = ["#fff3e8","#fddfc6","#f8bd8e","#f29356","#df6c28","#b94b15","#8d3510","#63240c"];
 const GREEN_RAMP = ["#eef7f0","#d6eadb","#b5d7bf","#8fc09e","#65a57a","#42875c","#286943","#15482d"];

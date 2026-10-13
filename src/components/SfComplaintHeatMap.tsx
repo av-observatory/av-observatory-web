@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import { safeHttpUrl } from "@/lib/security";
 
 declare global {
   interface Window {
@@ -41,9 +42,10 @@ type S2GeoJSON = {
 
 type Mode = "density" | "rate";
 
-const LEAFLET_JS = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.js";
-const LEAFLET_CSS = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.css";
-const LEAFLET_HEAT_JS = "https://unpkg.com/leaflet.heat@0.2.0/dist/leaflet-heat.js";
+const VENDOR = `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/vendor`;
+const LEAFLET_JS = `${VENDOR}/leaflet-1.9.4/leaflet.js`;
+const LEAFLET_CSS = `${VENDOR}/leaflet-1.9.4/leaflet.css`;
+const LEAFLET_HEAT_JS = `${VENDOR}/leaflet.heat-0.2.0/leaflet-heat.js`;
 
 const MATCH_START = "2025-07-01";
 const MATCH_END = "2026-06-30";
@@ -260,7 +262,7 @@ export function SfComplaintHeatMap({ records, basePath = "" }: { records: Compla
             `<div style="font:13px/1.4 system-ui,-apple-system,Segoe UI,sans-serif;min-width:200px">
               <div style="font-weight:700">${escapeHtml(r.requested_date)} · ${escapeHtml((r.neighborhood || "San Francisco"))}</div>
               <div style="margin-top:3px">${escapeHtml(r.type.replaceAll("_"," "))} · ${escapeHtml(r.status)}</div>
-              <div style="margin-top:6px"><a href="${escapeHtml(r.source_url)}" target="_blank" rel="noreferrer">Open SF311 record ↗</a></div>
+              <div style="margin-top:6px"><a href="${escapeHtml(safeHttpUrl(r.source_url))}" target="_blank" rel="noreferrer">Open SF311 record ↗</a></div>
             </div>`
           );
           marker.addTo(markers);
