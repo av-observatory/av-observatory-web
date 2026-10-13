@@ -1,10 +1,10 @@
-key,label
-incident_reporting,Incident report
-periodic_reporting,Periodic report
-exposure_reporting,Exposure / distance
-event_data,Event data / logs
-regulator_access,Regulator access
-public_access,Public / research access
-fixed_deadline,Fixed deadline
-permit_specific,Permit / approval specific
-eu_type_approval_layer,EU ADS approval layer
+key,label,description
+incident_reporting,Incident reports,Reports of crashes or other safety incidents submitted to an authority.
+periodic_reporting,Regular reports,"Recurring safety or operating reports, such as monthly or annual submissions."
+exposure_reporting,Driving activity,Reported mileage or other operating-activity information used to understand exposure.
+event_data,Stored event data,Requirements to record or retain data about safety events. This does not necessarily mean submitting a report.
+regulator_access,Authority access,"Authorities can obtain company or vehicle data, including on request."
+public_access,Public access,A route to published reports or public/research access. This does not necessarily mean an open crash database.
+fixed_deadline,Reporting deadlines,A specified time limit for submitting a report.
+permit_specific,Permit conditions,Requirements depend on the particular testing permit or operating approval.
+eu_type_approval_layer,EU approval rules,The shared EU manufacturer-reporting framework applies when the vehicle uses the covered approval route.

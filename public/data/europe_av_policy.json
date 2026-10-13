@@ -14,39 +14,48 @@
   "dimensions": [
     {
       "key": "incident_reporting",
-      "label": "Incident report"
+      "label": "Incident reports",
+      "description": "Reports of crashes or other safety incidents submitted to an authority."
     },
     {
       "key": "periodic_reporting",
-      "label": "Periodic report"
+      "label": "Regular reports",
+      "description": "Recurring safety or operating reports, such as monthly or annual submissions."
     },
     {
       "key": "exposure_reporting",
-      "label": "Exposure / distance"
+      "label": "Driving activity",
+      "description": "Reported mileage or other operating-activity information used to understand exposure."
     },
     {
       "key": "event_data",
-      "label": "Event data / logs"
+      "label": "Stored event data",
+      "description": "Requirements to record or retain data about safety events. This does not necessarily mean submitting a report."
     },
     {
       "key": "regulator_access",
-      "label": "Regulator access"
+      "label": "Authority access",
+      "description": "Authorities can obtain company or vehicle data, including on request."
     },
     {
       "key": "public_access",
-      "label": "Public / research access"
+      "label": "Public access",
+      "description": "A route to published reports or public/research access. This does not necessarily mean an open crash database."
     },
     {
       "key": "fixed_deadline",
-      "label": "Fixed deadline"
+      "label": "Reporting deadlines",
+      "description": "A specified time limit for submitting a report."
     },
     {
       "key": "permit_specific",
-      "label": "Permit / approval specific"
+      "label": "Permit conditions",
+      "description": "Requirements depend on the particular testing permit or operating approval."
     },
     {
       "key": "eu_type_approval_layer",
-      "label": "EU ADS approval layer"
+      "label": "EU approval rules",
+      "description": "The shared EU manufacturer-reporting framework applies when the vehicle uses the covered approval route."
     }
   ],
   "countries": [

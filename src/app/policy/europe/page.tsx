@@ -1,4 +1,6 @@
 import { promises as fs } from "fs";
+import type { Metadata } from "next";
+export const metadata: Metadata = { title: "Europe Policy Tracker | AV Observatory", description: "Country-level testing, deployment, incident, periodic-reporting and data-access requirements." };
 import path from "path";
 import { EuropePolicyExplorer } from "@/components/EuropePolicyExplorer";
 
@@ -27,11 +29,11 @@ export default async function EuropePolicyPage(){
   const periodic=data.countries.filter(c=>c.periodic_reporting===1).length;
   const exposure=data.countries.filter(c=>c.exposure_reporting===1).length;
 
-  return <div className="max-w-6xl px-8 py-6">
+  return <div className="max-w-7xl px-4 sm:px-8 py-6">
     <p className="eyebrow mb-3">Europe · Policy tracker</p>
-    <h1 className="text-4xl font-semibold tracking-tight max-w-4xl">Autonomous-vehicle reporting requirements across Europe</h1>
+    <h1 className="text-4xl font-semibold tracking-tight max-w-4xl">Europe Policy Tracker</h1>
     <p className="mt-2 text-sm text-neutral-600 max-w-4xl">
-      Country-level testing, deployment, incident, periodic-reporting and data-access requirements, plus the common EU ADS type-approval layer. The tracker keeps unresolved jurisdictions visible instead of treating missing evidence as no regulation.
+      Country-level testing, deployment, incident, periodic-reporting and data-access requirements.
     </p>
 
     <div className="mt-5 grid grid-cols-2 md:grid-cols-4 gap-2.5">
