@@ -10,7 +10,6 @@ const GROUPS = [
     ["/policy/federal-legislation", "Federal Legislation"],
     ["/policy/states", "State Regulations"],
     ["/policy/state-legislation", "State Legislation"],
-    ["/policy/europe", "Europe Policy · Beta"],
   ] },
   { title: "Safety Reporting", icon: "safety" as const, items: [["/safety", "US Crash Tracker"], ["/safety/europe", "Europe Crash Tracker · Beta"], ["/investigations", "NHTSA Investigations"], ["/complaints", "Resident Complaints"]] },
   { title: "Operations", icon: "operations" as const, items: [["/activity", "CA Trip Data"], ["/waymo-activity", "Waymo Activity"]] },
