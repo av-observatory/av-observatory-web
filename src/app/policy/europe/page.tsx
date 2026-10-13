@@ -14,11 +14,13 @@ type CountryRow={
   incident_reporting:number; periodic_reporting:number; exposure_reporting:number; event_data:number;
   regulator_access:number; public_access:number; fixed_deadline:number; permit_specific:number; eu_type_approval_layer:number;
   sources:string[];
+  open_data:number|null; avs_authorized:number|null; authorization_evidence:string; authorization_note:string; open_data_note:string;
 };
 type Dataset={
   dataset:string; research_cutoff:string; methodology:string;
   common_eu_layer:{source:string;[key:string]:string|number};
-  dimensions:{key:string;label:string}[];
+  dimensions:{key:string;label:string;description?:string}[];
+  policy_elements:{key:string;label:string;description?:string}[];
   countries:CountryRow[];
 };
 
@@ -26,7 +28,6 @@ export default async function EuropePolicyPage(){
   const data=await loadJson<Dataset>("europe_av_policy.json");
   const primary=data.countries.filter(c=>c.evidence.startsWith("A")).length;
   const incident=data.countries.filter(c=>c.incident_reporting===1).length;
-  const periodic=data.countries.filter(c=>c.periodic_reporting===1).length;
   const exposure=data.countries.filter(c=>c.exposure_reporting===1).length;
 
   return <div className="max-w-7xl px-4 sm:px-8 py-6">
@@ -47,7 +48,7 @@ export default async function EuropePolicyPage(){
       <EuropePolicyExplorer data={data}/>
     </section>
 
-    <section className="mt-5 grid lg:grid-cols-2 gap-3">
+    <section className="mt-5">
       <div className="viz-card p-4">
         <div className="eyebrow">Common EU layer</div>
         <h2 className="text-xl font-semibold mt-1">Regulation (EU) 2022/1426</h2>
@@ -56,14 +57,7 @@ export default async function EuropePolicyPage(){
         </p>
         <a href={data.common_eu_layer.source} target="_blank" rel="noreferrer" className="inline-block mt-3 text-sm underline">EU regulation source →</a>
       </div>
-      <div className="viz-card p-4">
-        <div className="eyebrow">Interpretation</div>
-        <h2 className="text-xl font-semibold mt-1">What the 1/0 matrix means</h2>
-        <p className="text-sm text-neutral-600 mt-2 leading-relaxed">
-          A 1 means the review established that reporting or access feature for the described national regime. A 0 means it was not established by the current review. It must not be interpreted as proof that no obligation exists, especially where requirements are set in individual permits.
-        </p>
-        <div className="mt-3 text-xs text-neutral-500">Research cutoff: {data.research_cutoff}. Periodic-reporting feature established in {periodic} jurisdictions in the current review.</div>
-      </div>
+
     </section>
   </div>;
 }

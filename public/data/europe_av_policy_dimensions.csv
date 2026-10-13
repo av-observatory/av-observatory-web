@@ -1,10 +1,12 @@
 key,label,description
-incident_reporting,Incident reports,Reports of crashes or other safety incidents submitted to an authority.
+incident_reporting,Mandatory Incident Reporting,Reports of crashes or other safety incidents submitted to an authority.
 periodic_reporting,Regular reports,"Recurring safety or operating reports, such as monthly or annual submissions."
-exposure_reporting,Driving activity,Reported mileage or other operating-activity information used to understand exposure.
+exposure_reporting,Mandatory VMT Reporting,Reported mileage or other operating-activity information used to understand exposure.
 event_data,Stored event data,Requirements to record or retain data about safety events. This does not necessarily mean submitting a report.
 regulator_access,Authority access,"Authorities can obtain company or vehicle data, including on request."
-public_access,Public access,A route to published reports or public/research access. This does not necessarily mean an open crash database.
+public_access,Public / Research Access,A route to published reports or public/research access. This does not necessarily mean an open crash database.
 fixed_deadline,Reporting deadlines,A specified time limit for submitting a report.
 permit_specific,Permit conditions,Requirements depend on the particular testing permit or operating approval.
 eu_type_approval_layer,EU approval rules,The shared EU manufacturer-reporting framework applies when the vehicle uses the covered approval route.
+open_data,Open Data,"AV safety or operating data are openly available for public download. Reports obtainable only by request, confidential research access and public summaries are shown separately in country details."
+avs_authorized,AVs Authorized,"A legal route permits AV testing or operation, subject to approval and operating conditions. This does not mean every AV company is authorized or unrestricted driverless service is allowed."
