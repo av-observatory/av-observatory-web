@@ -1,0 +1,10 @@
+key,label
+incident_reporting,Incident report
+periodic_reporting,Periodic report
+exposure_reporting,Exposure / distance
+event_data,Event data / logs
+regulator_access,Regulator access
+public_access,Public / research access
+fixed_deadline,Fixed deadline
+permit_specific,Permit / approval specific
+eu_type_approval_layer,EU ADS approval layer
