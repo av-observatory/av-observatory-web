@@ -109,6 +109,11 @@ def main():
         elif stem == "sgo_media_context":
             export(stem + ".csv", data["records"], output)
             export(stem + "_reviewed_sources.csv", data["reviewed_sources"], output)
+        elif stem == "europe_av_policy":
+            export(stem + ".csv", data["countries"], output)
+            export(stem + "_dimensions.csv", data["dimensions"], output)
+        elif stem == "europe_av_policy_source_status":
+            export(stem + ".csv", data["sources"], output)
         elif stem == "europe_crash_tracker":
             export(stem + ".csv", data["incidents"], output)
             if data.get("countries"):
