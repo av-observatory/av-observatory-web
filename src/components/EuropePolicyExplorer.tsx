@@ -5,7 +5,9 @@ import { ComposableMap, Geographies, Geography, ZoomableGroup } from "react-simp
 
 const WORLD_URL = "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json";
 
-type CountryRow = {
+export type IncidentDetail = {title:string;who:string;trigger:string;deadline:string;recipient:string;contents:string;source:string;source_label:string;note:string;basis:string;reviewed:string};
+export type CountryRow = {
+  incident_detail?:IncidentDetail; incident_primary:boolean; requirement_details:Record<string,string>; reviewed_at:string;
   country:string; iso2:string; eu:boolean; evidence:string; scope:string; summary:string;
   incident_reporting:number; periodic_reporting:number; exposure_reporting:number; event_data:number;
   regulator_access:number; public_access:number; fixed_deadline:number; permit_specific:number; eu_type_approval_layer:number;
@@ -27,23 +29,21 @@ const NAME_ALIASES: Record<string,string> = {
   "United Kingdom":"United Kingdom",
 };
 
-function isProvisional(row:CountryRow,key:string) {
-  if(Number(row[key as keyof CountryRow])!==1)return false;
-  if(key==="avs_authorized")return row.authorization_evidence!=="A";
-  if(key==="eu_type_approval_layer")return false;
-  if(row.country==="Austria"&&key==="incident_reporting")return false;
-  return row.evidence!=="A";
+function highlighted(row:CountryRow,key:string) {
+  if(key==="incident_reporting")return row.incident_reporting===1&&row.incident_primary;
+  if(key==="avs_authorized")return row.avs_authorized===1&&row.authorization_evidence==="A";
+  return Number(row[key as keyof CountryRow])===1;
 }
-function policyValue(row:CountryRow,key:string) {
-  if(Number(row[key as keyof CountryRow])!==1)return "Not confirmed";
-  const values:Record<string,string>={open_data:"Available",avs_authorized:"Permitted with approval",public_access:"Access route available",regulator_access:"Authority can obtain data",fixed_deadline:"Deadline specified",permit_specific:"Set by permit / approval",eu_type_approval_layer:"Applies to covered approvals"};
-  return values[key]??"Required";
+function mapStatus(row:CountryRow,key:string) {
+  if(key==="incident_reporting")return row.incident_detail?.title??"See country reporting terms";
+  if(key==="exposure_reporting"&&row.exposure_reporting===1)return "Distance reporting required — see schedule";
+  if(key==="avs_authorized"&&row.avs_authorized===1)return "Conditional testing / operating route";
+  return "See country details";
 }
-function mapStatus(row:CountryRow,key:string) {return Number(row[key as keyof CountryRow])!==1?"Not confirmed":isProvisional(row,key)?`${policyValue(row,key)} · provisional`:policyValue(row,key);}
 
 export function EuropePolicyExplorer({data}:{data:Dataset}) {
   const [metric,setMetric]=useState("incident_reporting");
-  const [selected,setSelected]=useState<CountryRow|null>(null);
+  const [selected,setSelected]=useState<CountryRow|null>(data.countries.find(c=>c.country==="Spain")??null);
   const [zoom,setZoom]=useState(1);
   const [center,setCenter]=useState<[number,number]>([12,54]);
   const [hover,setHover]=useState<{text:string;x:number;y:number}|null>(null);
@@ -54,16 +54,16 @@ export function EuropePolicyExplorer({data}:{data:Dataset}) {
   function fill(name:string){
     const row=byName.get(NAME_ALIASES[name]??name);
     if(!row) return "#efeee9";
-    return Number(row[metric as keyof CountryRow])===1 ? (isProvisional(row,metric)?"#d5ac65":"#2a78d6") : "#deddd8";
+    return highlighted(row,metric) ? "#2a78d6" : "#deddd8";
   }
 
-  const yesCount=data.countries.filter(c=>Number(c[metric as keyof CountryRow])===1).length;
+  const yesCount=data.countries.filter(c=>highlighted(c,metric)).length;
 
   return <div>
     <div className="viz-card p-4">
       <div className="flex flex-wrap items-baseline justify-between gap-2 mb-3">
         <h2 className="text-sm font-semibold">Select a Policy Element</h2>
-        <span className="text-xs text-neutral-500">{yesCount} of {data.countries.length} jurisdictions · includes provisional findings</span>
+        <span className="text-xs text-neutral-500">{data.countries.length} jurisdictions · country-specific rules and sources</span>
       </div>
       <div className="flex flex-wrap gap-2" aria-label="Map layers">
         {data.policy_elements.map(d=><button key={d.key} type="button" aria-pressed={metric===d.key}
@@ -81,12 +81,17 @@ export function EuropePolicyExplorer({data}:{data:Dataset}) {
           <div>
             <h2 className="text-xl font-semibold">{selectedDim?.label}</h2>
             <p className="text-sm text-neutral-500">
-              Blue: confirmed · Gold: provisional · Grey: not confirmed.
+              Blue: {yesCount} with a sourced national requirement or route. Grey: read country terms; no assumption of exemption.
             </p>
           </div>
           <span className="text-xs text-neutral-500">Research cutoff {data.research_cutoff}</span>
         </div>
 
+        <label className="block text-xs text-neutral-600 mb-3">Select a country
+          <select className="block w-full mt-1 border border-neutral-300 rounded-md bg-white px-3 py-2 text-sm" value={selected?.country??""} onChange={e=>setSelected(byName.get(e.target.value)??null)}>
+            <option value="">Choose country</option>{data.countries.map(c=><option key={c.iso2} value={c.country}>{c.country}</option>)}
+          </select>
+        </label>
         <div className="relative">
           <div className="absolute right-2 top-2 z-[2] flex gap-1">
             <button className="map-control" onClick={()=>setZoom(z=>Math.min(8,z*1.4))}>+</button>
@@ -127,7 +132,7 @@ export function EuropePolicyExplorer({data}:{data:Dataset}) {
       </div>
 
       <div className="viz-card p-4 sm:p-5 min-w-0 min-h-[360px]">
-        {selected ? <CountryDetail row={selected} dimensions={data.dimensions}/> :
+        {selected ? <CountryDetail row={selected} dimensions={data.dimensions} metric={metric}/> :
           <div>
             <div className="eyebrow">Country detail</div>
             <h3 className="text-xl font-semibold mt-1">Select a country</h3>
@@ -139,30 +144,47 @@ export function EuropePolicyExplorer({data}:{data:Dataset}) {
   </div>;
 }
 
-function CountryDetail({row,dimensions}:{row:CountryRow;dimensions:Dim[]}) {
-  return <div>
-    <div className="flex items-start justify-between gap-3">
-      <div><div className="eyebrow">Country detail</div><h3 className="text-2xl font-semibold mt-1">{row.country}</h3></div>
-      <span className="badge">Evidence {row.evidence}</span>
+function CountryDetail({row,dimensions,metric}:{row:CountryRow;dimensions:Dim[];metric:string}) {
+  const mainKeys=[metric,...["incident_reporting","exposure_reporting","open_data","avs_authorized"].filter(k=>k!==metric)];
+  const incident=row.incident_detail;
+  const detail=(key:string)=>row.requirement_details[key]??({
+    incident_reporting:"A country-specific AV incident-report specification is not established in the available sources. This is a coverage gap, not an exemption from ordinary accident duties or applicable EU reporting.",
+    periodic_reporting:"No common national schedule is established in the linked material. Additional reporting may be imposed by the individual permission.",
+    event_data:"A separate national recording specification is not established in the linked material; consult the applicable vehicle approval and test permission.",
+    regulator_access:incident?`Reporting recipient: ${incident.recipient}`:"The linked material does not establish a separate national data-demand specification.",
+    public_access:"No specific release procedure is established in the linked material. Submission to a regulator does not make the records open data.",
+    fixed_deadline:incident?.deadline??"No uniform national AV filing deadline is established in the linked material.",
+    permit_specific:row.requirement_details.avs_authorized,
+  } as Record<string,string>)[key];
+  return <div className="break-words">
+    <div className="eyebrow">Country requirements</div>
+    <h3 className="text-2xl font-semibold mt-1">{row.country}</h3>
+    <p className="text-xs text-neutral-500 mt-1">Scope: {row.scope} · Reviewed {row.reviewed_at}</p>
+    <div className="space-y-4 mt-5">
+      {mainKeys.map(key=><section key={key} className={`rounded-lg border p-4 ${key===metric?"border-blue-200 bg-blue-50/40":"border-neutral-200"}`}>
+        <h4 className="text-sm font-semibold text-[#244a6b]">{dimensions.find(d=>d.key===key)?.label}</h4>
+        {key==="incident_reporting"&&incident?<>
+          <p className="font-semibold text-base mt-2 leading-relaxed">{incident.title}</p>
+          <dl className="space-y-3 mt-3 text-sm leading-relaxed">
+            {[["Who reports",incident.who],["When it applies",incident.trigger],["Deadline",incident.deadline],["Report to",incident.recipient],["What to submit",incident.contents]].map(([label,value])=><div key={label}><dt className="font-medium text-neutral-700">{label}</dt><dd className="text-neutral-600 mt-0.5">{value}</dd></div>)}
+          </dl>
+          {incident.note&&<p className="text-xs leading-relaxed text-neutral-600 mt-3">{incident.note}</p>}
+          <a className="block underline text-xs leading-relaxed mt-3" href={incident.source} target="_blank" rel="noreferrer">{incident.source_label} ↗</a>
+          <p className="text-xs text-neutral-500 mt-1">Source: {incident.basis}</p>
+        </>:<><p className="text-sm leading-relaxed text-neutral-700 mt-2">{detail(key)}</p>
+          {row.sources[0]&&<a href={row.sources[0]} target="_blank" rel="noreferrer" className="inline-block underline text-xs mt-3">Country source ↗</a>}
+        </>}
+      </section>)}
     </div>
-    <div className="text-xs text-neutral-500 mt-1">{row.scope}</div>
-    <p className="text-sm text-neutral-700 mt-3 leading-relaxed">{row.summary}</p>
-    <dl className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4">
-      {dimensions.map(d=><div key={d.key} className="min-w-0 rounded-md border border-neutral-200 bg-neutral-50/70 px-3 py-3">
-        <dt className="text-xs font-medium text-neutral-600 leading-snug break-words">{d.label}</dt>
-        <dd className={`mt-1.5 text-sm font-semibold leading-snug ${Number(row[d.key as keyof CountryRow])===1?"text-[#184f95]":"text-neutral-500"}`}>
-          {policyValue(row,d.key)}
-        </dd>
-        {isProvisional(row,d.key)&&<p className="mt-1 text-xs text-amber-800">Provisional — current terms need confirmation</p>}
-        {d.key==="avs_authorized"&&<p className="mt-2 text-xs text-neutral-600 leading-relaxed">{row.authorization_note}</p>}
-        {d.key==="open_data"&&<p className="mt-2 text-xs text-neutral-600 leading-relaxed">{row.open_data_note}</p>}
-      </div>)}
-    </dl>
-    <div className="mt-4">
-      <div className="text-xs font-semibold uppercase tracking-wide text-neutral-500">Sources</div>
-      <div className="mt-1 space-y-1">
-        {row.sources.length?row.sources.map((u,i)=><a key={u} href={u} target="_blank" rel="noreferrer" className="block text-xs underline break-all">Source {i+1}</a>):<span className="text-xs text-neutral-500">No primary source linked in current review.</span>}
-      </div>
-    </div>
+    <details className="mt-4 border-t pt-4">
+      <summary className="cursor-pointer text-sm font-semibold">More reporting, records and access requirements</summary>
+      <dl className="space-y-4 mt-4 text-sm leading-relaxed">
+        {dimensions.filter(d=>!mainKeys.includes(d.key)).map(d=><div key={d.key}><dt className="font-semibold">{d.label}</dt><dd className="mt-1 text-neutral-600">{detail(d.key)}</dd></div>)}
+      </dl>
+    </details>
+    {row.eu&&<p className="mt-4 rounded-md bg-neutral-50 p-3 text-sm leading-relaxed">EU vehicle approval and local operating permission are separate. <a className="underline" href="#eu-authorization">How the EU layer works ↓</a></p>}
+    <details className="mt-4 border-t pt-4"><summary className="cursor-pointer text-sm font-semibold">All country sources</summary>
+      <div className="mt-2 space-y-2">{row.sources.length?row.sources.map((u,i)=><a key={u} href={u} target="_blank" rel="noreferrer" className="block text-xs underline break-words">{i+1}. {new URL(u).hostname.replace(/^www\./,"")} ↗</a>):<p className="text-sm text-neutral-500">No country-specific primary source is linked yet.</p>}</div>
+    </details>
   </div>;
 }
