@@ -338,3 +338,4 @@ ATX-368,368,Austin,TX,2026-10-09,2026-10,City Employee,Nuisance,Waymo,https://se
 ATX-369,369,Austin,TX,2026-10-09,2026-10,APD,Ignore APD Direction,Tesla,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/369
 ATX-370,370,Austin,TX,2026-10-10,2026-10,Resident Feedback,Blocking Traffic,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/370
 ATX-371,371,Austin,TX,2026-10-10,2026-10,Resident Feedback,Blocking Traffic,Tesla,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/371
+ATX-373,373,Austin,TX,2026-10-10,2026-10,AFD,Safety Concern,Tesla,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/373

@@ -5,13 +5,13 @@
   "source_api": "https://data.sf.gov/resource/vw6y-z8j6.json",
   "selection": "Exact service_name match: Autonomous Vehicle Complaints. Other city request types and unclassified AV mentions are excluded.",
   "limitations": "These are public 311 requests, not verified incidents. The published subtypes describe how SF311 classified a request, not the specific behavior alleged. Operator identity is unavailable; the AV category begins in April 2025.",
-  "source_data_as_of": "2026-10-12T01:00:00.000",
-  "total_records": 1006,
+  "source_data_as_of": "2026-10-13T01:00:00.000",
+  "total_records": 1008,
   "markets": [
     {
       "market": "San Francisco",
       "state": "CA",
-      "complaints": 1006
+      "complaints": 1008
     }
   ],
   "monthly": [
@@ -127,7 +127,7 @@
       "month": "2026-10",
       "market": "San Francisco",
       "state": "CA",
-      "complaints": 23
+      "complaints": 25
     }
   ],
   "records": [
@@ -16226,6 +16226,38 @@
       "long": null,
       "neighborhood": "",
       "source_url": "https://data.sf.gov/resource/vw6y-z8j6.json?service_request_id=202000167993"
+    },
+    {
+      "id": "SF-202000175569",
+      "source_id": "202000175569",
+      "state": "CA",
+      "market": "San Francisco",
+      "requested_datetime": "2026-10-12T13:50:19.000",
+      "requested_date": "2026-10-12",
+      "month": "2026-10",
+      "type": "incident_report",
+      "status": "Open",
+      "agency": "MTA - Autonomous Vehicles Complaints",
+      "lat": 37.7897624997,
+      "long": -122.3975743472,
+      "neighborhood": "Financial District",
+      "source_url": "https://data.sf.gov/resource/vw6y-z8j6.json?service_request_id=202000175569"
+    },
+    {
+      "id": "SF-202000177032",
+      "source_id": "202000177032",
+      "state": "CA",
+      "market": "San Francisco",
+      "requested_datetime": "2026-10-12T21:42:14.000",
+      "requested_date": "2026-10-12",
+      "month": "2026-10",
+      "type": "incident_report",
+      "status": "Open",
+      "agency": "MTA - Autonomous Vehicles Complaints",
+      "lat": 37.7572427802,
+      "long": -122.3999073857,
+      "neighborhood": "Potrero Hill",
+      "source_url": "https://data.sf.gov/resource/vw6y-z8j6.json?service_request_id=202000177032"
     }
   ]
 }
