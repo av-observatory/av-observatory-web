@@ -1,38 +1,54 @@
 "use client";
-import Link from "next/link";
-import { useState } from "react";
-import { usePathname } from "next/navigation";
-import { SectionIcon } from "@/components/SectionIcon";
 
-const GROUPS = [
-  { title: "Policy Trackers", icon: "policy" as const, items: [
-    ["/policy/federal", "Federal Regs and Rules"],
-    ["/policy/federal-legislation", "Federal Legislation"],
-    ["/policy/states", "State Regulations"],
-    ["/policy/state-legislation", "State Legislation"],
-  ] },
-  { title: "Safety Reporting", icon: "safety" as const, items: [["/safety", "US Crash Tracker"], ["/safety/europe", "Europe Crash Tracker · Beta"], ["/investigations", "NHTSA Investigations"], ["/complaints", "Resident Complaints"]] },
-  { title: "Operations", icon: "operations" as const, items: [["/activity", "CA Trip Data"], ["/waymo-activity", "Waymo Activity"]] },
-  { title: "Explore", icon: null, items: [["/downloads", "Downloads"], ["/about", "About"]] },
-] as const;
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+
+const NAV_ITEMS = [
+  { href: "/", label: "U.S. Overview" },
+  { href: "/deployment", label: "Deployment" },
+  { href: "/policy/europe", label: "Europe Policy" },
+  { href: "/safety", label: "Safety" },
+  { href: "/activity", label: "Activity Data" },
+  { href: "/downloads", label: "Downloads" },
+  { href: "/about", label: "About" },
+];
 
 export function Sidebar() {
-  const rawPath = usePathname();
-  const path = rawPath !== "/" ? rawPath.replace(/\/+$/, "") : rawPath;
-  const [open, setOpen] = useState(false);
-  return <>
-    <div className="md:hidden sticky top-0 z-[1000] flex items-center justify-between bg-[#0b1d33] text-white px-4 py-3 shadow-sm">
-      <Link href="/" onClick={() => setOpen(false)} className="text-[15px] font-semibold flex items-center gap-2"><span className="w-2.5 h-2.5 rounded-full bg-[#6fbbe9]" />AV Observatory</Link>
-      <button type="button" aria-label={open ? "Close navigation" : "Open navigation"} aria-expanded={open} aria-controls="mobile-site-navigation" onClick={() => setOpen(v => !v)} className="min-h-11 min-w-11 rounded-md border border-white/25 px-3 text-sm font-semibold">{open ? "Close" : "Menu"}</button>
-    </div>
-    {open && <button className="md:hidden fixed inset-0 z-[998] bg-black/40" aria-label="Close navigation overlay" onClick={() => setOpen(false)} />}
-    <aside id="mobile-site-navigation" className={`${open ? "flex" : "hidden"} md:flex fixed md:static top-[68px] bottom-0 left-0 z-[999] w-72 max-w-[85vw] md:w-60 shrink-0 bg-[#0b1d33] text-white flex-col min-h-0 md:min-h-screen overflow-y-auto`}>
-    <Link href="/" className="px-5 pt-7 pb-6 text-[15px] font-semibold tracking-tight flex items-center gap-2"><span className="inline-block w-2.5 h-2.5 rounded-full bg-[#6fbbe9]" />AV Observatory</Link>
-    <nav onClick={(event) => { if ((event.target as HTMLElement).closest("a")) setOpen(false); }} className="flex-1 px-3 pb-5 space-y-5" aria-label="Main navigation">
-      <Link href="/" className={`block rounded-md px-3 py-2 text-sm ${path === "/" ? "bg-white/15 text-white font-semibold" : "text-white/70 hover:text-white hover:bg-white/10"}`}>Overview</Link>
-      {GROUPS.map(group => <section key={group.title}><h2 className="px-3 mb-1 flex items-center gap-2 text-[13px] font-bold uppercase tracking-[.12em] text-[#8bb1d5]">{group.icon && <SectionIcon name={group.icon} className="w-4 h-4 shrink-0" />}{group.title}</h2><div className="space-y-0.5">{group.items.map(([href,label]) => <Link key={href} href={href} aria-current={path === href ? "page" : undefined} className={`block rounded-md px-3 py-2 text-[14px] leading-snug transition-colors ${path === href ? "bg-[#3987e5]/25 text-white font-semibold border-l-[3px] border-[#6fbbe9]" : "text-white/70 hover:text-white hover:bg-white/10"}`}>{label}</Link>)}</div></section>)}
-    </nav>
-    <div className="px-5 py-5 text-xs text-white/50 border-t border-white/10 leading-relaxed">Independent evidence on autonomous vehicles in the United States.</div>
-  </aside>
-  </>;
+  const pathname = usePathname();
+
+  return (
+    <aside className="w-60 shrink-0 bg-[#0b1d33] text-white flex flex-col">
+      <div className="px-5 pt-7 pb-5">
+        <Link href="/" className="text-[15px] font-semibold tracking-tight flex items-center gap-2">
+          <span className="inline-block w-2 h-2 rounded-full bg-[#3987e5]" />
+          AV Observatory
+        </Link>
+      </div>
+      <nav className="flex-1 px-3 space-y-0.5">
+        {NAV_ITEMS.map((item) => {
+          const active = item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
+          return (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="relative block rounded-md px-3 py-2 text-[13.5px] transition-colors"
+              style={{
+                color: active ? "#ffffff" : "rgba(255,255,255,0.62)",
+                background: active ? "rgba(57,135,229,0.16)" : "transparent",
+                fontWeight: active ? 600 : 400,
+              }}
+            >
+              {active && (
+                <span className="absolute left-0 top-1.5 bottom-1.5 w-[3px] rounded-full bg-[#3987e5]" />
+              )}
+              {item.label}
+            </Link>
+          );
+        })}
+      </nav>
+      <div className="px-5 py-5 text-xs text-white/45 border-t border-white/10 leading-relaxed">
+        Independent national evidence on autonomous vehicles and their impacts.
+      </div>
+    </aside>
+  );
 }
