@@ -38,34 +38,14 @@ RELEVANT = re.compile(
 )
 EXCLUDE = re.compile(r"\b(?:autonomous region|autonomous university|autonomous drone|unmanned aircraft)\b", re.I)
 
+from openstates_rate import open_json
+
 def api_get(path, params=None, retries=5):
-    global LAST_REQUEST_AT
-    elapsed = time.monotonic() - LAST_REQUEST_AT
-    if elapsed < MIN_REQUEST_INTERVAL:
-        time.sleep(MIN_REQUEST_INTERVAL - elapsed)
     url = API + path
     if params:
         url += "?" + urlencode(params, doseq=True)
     req = Request(url, headers={"X-API-KEY": KEY, "User-Agent": "AV-Observatory/1.0"})
-    for attempt in range(retries):
-        try:
-            with urlopen(req, timeout=55) as response:
-                LAST_REQUEST_AT = time.monotonic()
-                return json.load(response)
-        except HTTPError as exc:
-            body = exc.read().decode("utf-8", "replace")
-            LAST_REQUEST_AT = time.monotonic()
-            if exc.code == 429 and attempt < retries - 1:
-                retry_after = exc.headers.get("Retry-After")
-                time.sleep(float(retry_after) if retry_after and retry_after.replace(".","",1).isdigit() else 12.0)
-                continue
-            if exc.code < 500 or attempt == retries - 1:
-                safe_url = url.split("apikey=", 1)[0]
-                raise RuntimeError(f"Open States HTTP {exc.code} for {safe_url}: {body[:500]}") from exc
-        except Exception:
-            if attempt == retries - 1:
-                raise
-        time.sleep(2 ** attempt)
+    return open_json(req, timeout=55, max_attempts=retries)
 
 def state_code_from_jurisdiction(j):
     if isinstance(j, dict):
