@@ -96,6 +96,8 @@ export function StateLegislationPage() {
   const {data:legislation,source} = useLegislationData();
   const {data:policy} = usePolicyData();
   const [selected,setSelected] = useState<string|null>(null);
+  const [mapExpanded,setMapExpanded] = useState(true);
+  const selectState = (code:string|null) => { setSelected(code); setMapExpanded(code===null); };
 
   const names = useMemo(()=>Object.fromEntries(legislation.states.map(s=>[s.code,s.name])),[legislation.states]);
   const currentBills = useMemo(()=>legislation.state_bills
@@ -117,40 +119,25 @@ export function StateLegislationPage() {
   return <main className="max-w-7xl px-5 sm:px-8 py-8">
     <p className="eyebrow">Policy Trackers / State</p>
     <h1 className="text-4xl font-semibold mt-3 text-[#0b1d33]">State Legislation</h1>
-    <p className="mt-3 text-base text-neutral-600 max-w-3xl">Current-session autonomous-vehicle legislation discovered through Open States, with enacted state AV laws shown when a state is selected.</p>
-    <section className="viz-card p-4">
-      <div className="grid gap-5 lg:grid-cols-[3fr_2fr] lg:items-start">
-        <div className="min-w-0">
-          <div className="eyebrow">Legislation Tile Map · 50 States + D.C.</div>
-          <div className="mt-3"><StateTileMap selected={selected} onSelect={setSelected} counts={counts} names={names}/></div>
+    <p className="mt-3 text-base text-neutral-600 max-w-3xl">Explore proposed and enacted AV legislation by state. Select a state to view its bills and collapse the map.</p>
+    {selected ? <section className="viz-card p-4 mt-4">
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <div>
+          <div className="eyebrow">Selected State</div>
+          <h2 className="text-xl font-semibold text-[#0b1d33] mt-1">{names[selected]}</h2>
         </div>
-        <div className="min-w-0 border-t border-neutral-200 pt-4 lg:border-l lg:border-t-0 lg:pl-5 lg:pt-0">
-          <div className="eyebrow">{selected ? names[selected] : "National View"}</div>
-          <h2 className="text-2xl font-semibold mt-2 text-[#0b1d33]">{selected ? names[selected] : "All States"}</h2>
-          <p className="text-sm leading-relaxed text-neutral-600 mt-2">{selected ? "Showing enacted AV legislation and current-session proposals for this state. Select the same state again to return to all states." : "Select a state on the tile map to filter enacted and proposed AV legislation."}</p>
-          <div className="grid grid-cols-2 gap-3 mt-5">
-            <div className="rounded-lg border border-neutral-200 bg-white p-3">
-              <div className="text-2xl font-semibold text-[#0b1d33]">{selected ? currentBills.filter(b=>b.jurisdiction===selected).length : currentBills.length}</div>
-              <div className="text-xs text-neutral-500 mt-1">Current-session measures</div>
-            </div>
-            <div className="rounded-lg border border-neutral-200 bg-white p-3">
-              <div className="text-2xl font-semibold text-[#0b1d33]">{selected ? (counts[selected] ?? 0) : Object.values(counts).filter(Boolean).length}</div>
-              <div className="text-xs text-neutral-500 mt-1">{selected ? "Indexed in this state" : "States with active measures"}</div>
-            </div>
-          </div>
-          <a href={`${process.env.NEXT_PUBLIC_BASE_PATH??""}/data/legislation_tracker.json`} className="inline-block mt-5 text-sm text-[#184f95] underline">Download legislation data ↗</a>
+        <div className="flex flex-wrap gap-2">
+          <button type="button" aria-expanded={mapExpanded} aria-controls="legislation-state-map" onClick={()=>setMapExpanded(open=>!open)} className="rounded-lg border border-[#cbd5e1] px-3 py-2 text-sm font-semibold text-[#123b69] hover:bg-[#edf3f9]">{mapExpanded?"Hide map":"Change state / Show map"} {mapExpanded?"▲":"▼"}</button>
+          <button type="button" onClick={()=>selectState(null)} className="rounded-lg border border-neutral-200 px-3 py-2 text-sm text-neutral-700 hover:bg-neutral-100">All states</button>
         </div>
       </div>
-    </section>
-
-    {selected && <section className="viz-card p-5 mt-5">
-      <div className="eyebrow">{names[selected]} · Enacted</div>
-      <h2 className="text-xl font-semibold mt-2">Current AV Legislation</h2>
-      {enacted.length ? <div className="mt-3 divide-y divide-neutral-200">{enacted.map(item=><article key={item.id} className="py-4">
-        <div className="flex flex-wrap justify-between gap-2"><h3 className="font-semibold text-[#0b1d33]">{item.title}</h3><span className="text-xs rounded-full bg-[#dcefe9] text-[#145c48] px-2.5 py-1 font-semibold">In Effect</span></div>
-        <p className="text-sm text-neutral-700 mt-2 leading-relaxed">{item.takeaway ?? item.summary}</p>
-        <div className="text-sm mt-2"><AutoCollectedNote entry={item} /> <a href={item.source_url} target="_blank" rel="noreferrer" className="text-[#184f95] underline">Primary source ↗</a></div>
-      </article>)}</div> : <p className="text-sm text-neutral-600 mt-3">No current enacted AV-specific statute is identified in the reviewed state-law dataset.</p>}
+      {mapExpanded && <div id="legislation-state-map" className="mt-4 border-t border-neutral-200 pt-4"><StateTileMap selected={selected} onSelect={selectState} counts={counts} names={names}/></div>}
+    </section> : <section className="viz-card p-4 mt-4">
+      <div className="flex flex-wrap justify-between gap-2 items-center">
+        <h2 className="font-semibold text-[#0b1d33]">Select a state</h2>
+        <a href={`${process.env.NEXT_PUBLIC_BASE_PATH??""}/data/legislation_tracker.json`} className="text-sm text-[#184f95] underline">Download data ↗</a>
+      </div>
+      <div className="mt-3"><StateTileMap selected={selected} onSelect={selectState} counts={counts} names={names}/></div>
     </section>}
 
     <section className="viz-card p-5 mt-5">
@@ -164,6 +151,16 @@ export function StateLegislationPage() {
       </div>
       {visibleBills.length ? <div className="mt-3">{visibleBills.map(bill=><BillRow key={bill.id} bill={bill}/>)}</div> : <p className="text-sm text-neutral-600 mt-4">No current-session AV bill is indexed for this state.</p>}
     </section>
+
+    {selected && <section className="viz-card p-5 mt-5">
+      <div className="eyebrow">{names[selected]} · Enacted</div>
+      <h2 className="text-xl font-semibold mt-2">Current AV Legislation</h2>
+      {enacted.length ? <div className="mt-3 divide-y divide-neutral-200">{enacted.map(item=><article key={item.id} className="py-4">
+        <div className="flex flex-wrap justify-between gap-2"><h3 className="font-semibold text-[#0b1d33]">{item.title}</h3><span className="text-xs rounded-full bg-[#dcefe9] text-[#145c48] px-2.5 py-1 font-semibold">In Effect</span></div>
+        <p className="text-sm text-neutral-700 mt-2 leading-relaxed">{item.takeaway ?? item.summary}</p>
+        <div className="text-sm mt-2"><AutoCollectedNote entry={item} /> <a href={item.source_url} target="_blank" rel="noreferrer" className="text-[#184f95] underline">Primary source ↗</a></div>
+      </article>)}</div> : <p className="text-sm text-neutral-600 mt-3">No current enacted AV-specific statute is identified in the reviewed state-law dataset.</p>}
+    </section>}
 
     <p className="mt-5 text-xs text-neutral-500">Bill discovery uses Open States API v3 across all 50 states and D.C. Bill status and actions are machine-indexed, while linked official legislature records remain the authority. Enacted-law summaries come from the separately reviewed state policy dataset.</p>
   </main>;
