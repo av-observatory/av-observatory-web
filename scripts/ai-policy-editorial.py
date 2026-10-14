@@ -216,14 +216,24 @@ def main():
                     counts["deferred_due_to_limit"]=counts.get("deferred_due_to_limit",0)+1
                     continue
                 # Existing verified records are reconsidered to detect changed sources.
-                result=summarize(row,actual_kind)
+                try:
+                    result=summarize(row,actual_kind)
+                except Exception as exc:
+                    # One unavailable jurisdiction or throttled source must not
+                    # prevent verified corrections for other records being saved.
+                    result="error"
+                    row["editorial_status"]="needs_review"
+                    row["editorial_failure_reason"]=f"{type(exc).__name__}: {str(exc)[:160]}"
                 counts[result]=counts.get(result,0)+1
                 print(f"Editorial progress: {filename} {field} {row.get('id') or row.get('code')} -> {result}",flush=True)
-                if result in ("updated","rejected"):used+=1
+                if result in ("updated","rejected","error"):used+=1
+                # Durable checkpoint for long nationwide retrospective audits.
+                if sum(counts.values())%10==0:
+                    path.write_text(json.dumps(data,ensure_ascii=False,indent=2)+"\n")
         path.write_text(json.dumps(data,ensure_ascii=False,indent=2)+"\n")
     print("Policy editorial results:",counts)
     # Missing source or failed verification is marked, not silently invented.
     # Any failure remains visible as a coverage gap, never a successful editorial run.
-    return 1 if any(counts.get(k,0) for k in ("missing","rejected","deferred_due_to_limit","awaiting_review")) else 0
+    return 1 if any(counts.get(k,0) for k in ("missing","rejected","deferred_due_to_limit","awaiting_review","error")) else 0
 
 if __name__=="__main__":raise SystemExit(main())
