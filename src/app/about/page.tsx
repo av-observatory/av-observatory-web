@@ -33,10 +33,10 @@ export default function AboutPage() {
 
       <section className="mt-14 border-t border-[#dce3e9] pt-8" aria-labelledby="what-we-track">
         <h2 id="what-we-track" className="text-2xl font-semibold tracking-tight text-[#0b1d33]">What we track</h2>
-        <div className="mt-7 grid gap-0 md:grid-cols-3 md:gap-8">
+        <div className="mt-7 grid gap-3 md:grid-cols-3 md:gap-0">
           {focusAreas.map((area) => (
-            <div key={area.number} className="border-t border-[#e1e6eb] py-5 md:py-0 md:border-t-0">
-              <h3 className="mt-3 text-lg font-semibold tracking-tight text-[#102c46]">{area.title}</h3>
+            <div key={area.number} className="min-w-0 border-t border-[#e1e6eb] py-5 md:border-t-0 md:border-l md:border-[#e1e6eb] md:px-7 md:py-0 md:first:border-l-0 md:first:pl-0 md:last:pr-0">
+              <h3 className="text-lg font-semibold tracking-tight leading-snug text-[#102c46]">{area.title}</h3>
               <p className="mt-2 text-[15px] leading-[1.75] text-[#52606b]">{area.description}</p>
             </div>
           ))}
