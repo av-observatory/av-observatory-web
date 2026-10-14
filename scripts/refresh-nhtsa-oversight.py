@@ -77,6 +77,9 @@ def load_seeds():
 def main():
     today = datetime.now(timezone.utc).date().isoformat()
     seed = load_seeds()
+    recall_seed_path = DIR/"nhtsa_av_recalls.json"
+    recall_seed = ({item["id"]: item for item in json.loads(recall_seed_path.read_text(encoding="utf-8"))["recalls"]}
+                   if recall_seed_path.exists() else {})
     investigations = {}
     recall_links = {}
     inv_rows = 0
@@ -141,10 +144,11 @@ def main():
             if model and model not in current["products"]:
                 current["products"].append(model)
             continue
+        curated = recall_seed.get(campaign, {})
         recalls[campaign] = {
             "id": campaign, "company": company, "reported": date(reported),
-            "subject": defect[:140].strip() or component,
-            "summary": defect.strip(),
+            "subject": curated.get("subject") or defect[:140].strip() or component,
+            "summary": curated.get("summary") or defect.strip(),
             "consequence": consequence.strip(),
             "remedy": remedy.strip(),
             "products": [model] if model else [],
