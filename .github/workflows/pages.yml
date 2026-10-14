@@ -19,7 +19,7 @@ permissions:
 
 concurrency:
   group: pages
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   build:
@@ -37,6 +37,33 @@ jobs:
       - name: Install
         run: npm ci
 
+      - name: Build static site
+        env:
+          NEXT_PUBLIC_CONTACT_FORM_URL: ${{ vars.CONTACT_FORM_URL }}
+          NEXT_PUBLIC_CF_WEB_ANALYTICS_TOKEN: ${{ vars.CF_WEB_ANALYTICS_TOKEN }}
+          NEXT_PUBLIC_POLICY_R2_URL: ${{ vars.POLICY_R2_PUBLIC_URL }}
+          NEXT_PUBLIC_LEGISLATION_R2_URL: ${{ vars.LEGISLATION_R2_PUBLIC_URL }}
+        run: npm run build
+
+      # The parent data repository publishes the validated site snapshot to R2.
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3
+        with:
+          path: ./out
+
+  audit:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+      - name: Install
+        run: npm ci
       - name: Refresh primary-source NHTSA investigations and recalls
         run: |
           if python3 scripts/refresh-nhtsa-oversight.py; then
@@ -76,19 +103,6 @@ jobs:
           python3 -m pip install --quiet pillow
           python3 scripts/build-social-preview.py
 
-      - name: Build static site
-        env:
-          NEXT_PUBLIC_CONTACT_FORM_URL: ${{ vars.CONTACT_FORM_URL }}
-          NEXT_PUBLIC_CF_WEB_ANALYTICS_TOKEN: ${{ vars.CF_WEB_ANALYTICS_TOKEN }}
-          NEXT_PUBLIC_POLICY_R2_URL: ${{ vars.POLICY_R2_PUBLIC_URL }}
-          NEXT_PUBLIC_LEGISLATION_R2_URL: ${{ vars.LEGISLATION_R2_PUBLIC_URL }}
-        run: npm run build
-
-      # The parent data repository publishes the validated site snapshot to R2.
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3
-        with:
-          path: ./out
 
   deploy:
     environment:
