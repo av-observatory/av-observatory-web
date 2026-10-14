@@ -34,8 +34,24 @@ def invoke(messages):
 
 def quality(value):
     s=value.get("summary") if isinstance(value,dict) else None
-    return isinstance(s,str) and 25<=len(s.split())<=68 and len(s)<=500 and not re.search(
-      r"\b(?:ADS|ODI|FMVSS)\b|https?://|substantive summary unavailable",s,re.I)
+    if not isinstance(s,str) or not 24<=len(s.split())<=65 or len(s)>470:
+        return False
+    for abbr,expansion in (
+        ("ADS","automated driving system"),
+        ("FMVSS","federal motor vehicle safety standard"),
+        ("ODI","office of defects investigation")):
+        if re.search(r"\b"+abbr+r"\b",s,re.I) and expansion not in s.lower():
+            return False
+    return not re.search(r"https?://|substantive summary unavailable",s,re.I)
+
+def specific_to_record(row,kind,draft):
+    if kind!="fmvss" or not re.match(r"fmvss-\d{3}a?-",row.get("id","")):
+        return True
+    title_terms=set(re.findall(r"[a-z]{5,}",str(row.get("title") or "").lower()))
+    title_terms-=set(("federal","motor","vehicle","safety","standard","rulemaking"))
+    if not title_terms:return True
+    summary_terms=set(re.findall(r"[a-z]{5,}",str(draft.get("summary") or "").lower()))
+    return bool(title_terms&summary_terms)
 
 def get_source(row,kind):
     text,provenance,url=primary_text(row,kind)
@@ -87,12 +103,17 @@ def summarize(row,kind):
       "about 35–65 words, grounded EXCLUSIVELY in the supplied original bill text, official rule, or source abstract. "
       "Explain what it proposes or changes, which vehicles or actors it affects, and any important reporting duties, "
       "deadlines or authority where stated. Distinguish proposed and enacted measures. Explain abbreviations. "
-      "Never make up provisions, dates or status. If insufficient, return needs_review=true. "
+      "Do not restate the title or procedural history. Focus on a specific numbered standard rather than the entire rulemaking. Avoid unexplained acronyms. Never invent provisions, dates or status. If insufficient, return needs_review=true. "
       "Return JSON {summary:string,needs_review:boolean,reason:string}.")
     request=json.dumps({"kind":kind,"jurisdiction":row.get("jurisdiction"),"bill_or_rule":row.get("number") or row.get("title"),"title":row.get("title"),
         "status":row.get("status"),"evidence_type":source_type,"official_source_text":source})
     draft=invoke([{"role":"system","content":prompt},{"role":"user","content":request}])
-    if draft.get("needs_review") or not quality(draft):
+    if not draft.get("needs_review") and (not quality(draft) or not specific_to_record(row,kind,draft)):
+        draft=invoke([
+          {"role":"system","content":"Rewrite the draft accurately into exactly two sentences, 35–55 words, no more than 430 characters, using ONLY the supplied source text. Do not mention bill numbers or procedural history. Spell out acronyms. For a numbered federal vehicle safety standard, describe the change to THAT standard, not the general rulemaking. If not supported, return needs_review true. JSON: {summary:string,needs_review:boolean,reason:string}."},
+          {"role":"user","content":json.dumps({"record_title":row.get("title"),"status":row.get("status"),"source":source,"draft":draft.get("summary")})}
+        ])
+    if draft.get("needs_review") or not quality(draft) or not specific_to_record(row,kind,draft):
         row["editorial_status"]="needs_review"
         row["editorial_failure_reason"]=(str(draft.get("reason") or "")[:250]
             if draft.get("needs_review") else "Failed format: words="+str(len(str(draft.get("summary") or "").split()))
