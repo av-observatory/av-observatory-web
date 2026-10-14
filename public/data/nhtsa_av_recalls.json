@@ -6,6 +6,22 @@
   "coverage": "Partial verified fallback; scheduled bulk refresh replaces this with the full matched NHTSA recall dataset.",
   "recalls": [
     {
+      "id": "26E044000",
+      "company": "Zoox",
+      "reported": "2026-07-10",
+      "subject": "ADS may not detect heavy smoke in roadway",
+      "summary": "Zoox ADS software may fail to detect heavy smoke, allowing the vehicle to enter a low-visibility area, particularly an active emergency response scene.",
+      "consequence": "May increase collision risk in low-visibility emergency scenes.",
+      "remedy": "Software update; consult NHTSA campaign record for completion status.",
+      "status": "Recall reported",
+      "related_investigations": [],
+      "products": [
+        "Zoox automated driving system"
+      ],
+      "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=26E044000",
+      "source_label": "NHTSA campaign record"
+    },
+    {
       "id": "25E090000",
       "company": "Zoox",
       "reported": "2025-12-19",
