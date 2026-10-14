@@ -1769,8 +1769,8 @@
       "summary": "The bill would create temporary authorization, through July 1, 2028, for fully autonomous vehicles to operate in Albany and Rensselaer counties. It would regulate driverless operation, registration, insurance, post-crash obligations, and on-demand passenger and goods networks, rather than establishing unrestricted statewide deployment rights.",
       "takeaway": "The bill would create temporary authorization, through July 1, 2028, for fully autonomous vehicles to operate in Albany and Rensselaer counties. It would regulate driverless operation, registration, insurance, post-crash obligations, and on-demand passenger and goods networks, rather than establishing unrestricted statewide deployment rights.",
       "source_summary": "Authorizes the use of fully autonomous vehicles in Albany and Rensselaer counties until July 1, 2028; provides for operation, licensing, insurance, duties following crashes, on-demand autonomous vehicle networks, registration and titles, operation by human drivers, and related provisions.",
-      "summary_method": "AV_specific_bill_text_analysis",
-      "summary_quality": "reviewed_substantive",
+      "summary_method": "official_full_bill_text_review",
+      "summary_quality": "manual_primary_source_verified",
       "status": "introduced",
       "measure_type": "bill",
       "last_action_date": "2026-05-28",
@@ -1788,9 +1788,8 @@
       "openstates_id": "ocd-bill/38e308ec-1f9e-45a8-96a9-5b6195249969",
       "openstates_updated_at": "2026-05-29T14:28:44.677147+00:00",
       "editorial_source_url": "https://www.nysenate.gov/legislation/bills/2025/A11500",
-      "editorial_source_type": "official_bill_record",
-      "editorial_status": "needs_review",
-      "editorial_failure_reason": "Independent verification of current enrolled/amended version pending"
+      "editorial_source_type": "official_legislature_full_text",
+      "editorial_status": "verified"
     },
     {
       "id": "ny-a-3650-2025-2026",
@@ -1800,12 +1799,12 @@
       "summary": "The bill would permit Level 4 and 5 autonomous vehicles to operate without a human driver if they meet safety and fallback requirements. Operators would submit law-enforcement interaction plans, carry insurance, and register their vehicles. It would largely preempt local AV-specific restrictions while preserving New York City's authority over for-hire services.",
       "takeaway": "The bill would permit Level 4 and 5 autonomous vehicles to operate without a human driver if they meet safety and fallback requirements. Operators would submit law-enforcement interaction plans, carry insurance, and register their vehicles. It would largely preempt local AV-specific restrictions while preserving New York City's authority over for-hire services.",
       "source_summary": "Provides that a person may operate a fully autonomous vehicle on the public roads of this state without a human driver provided that the automated driving system is engaged and the vehicle meets certain conditions; defines terms; requires insurance and that such vehicle is registered as a fully autonomous vehicle; makes related provisions.",
-      "summary_method": "AV_specific_bill_text_analysis",
-      "summary_quality": "reviewed_substantive",
-      "status": "introduced",
+      "summary_method": "official_full_bill_text_review",
+      "summary_quality": "manual_primary_source_verified",
+      "status": "stricken",
       "measure_type": "bill",
       "last_action_date": "2025-02-05",
-      "last_action": "ENACTING CLAUSE STRICKEN",
+      "last_action": "Enacting clause stricken (Feb 5, 2025)",
       "session": "2025-2026",
       "progress_stage": "committee",
       "stage_dates": {
@@ -1819,9 +1818,8 @@
       "openstates_id": "ocd-bill/f3418e5d-4e57-4b37-be2e-c2478804bc57",
       "openstates_updated_at": "2026-03-18T10:58:37.753311+00:00",
       "editorial_source_url": "https://www.nysenate.gov/legislation/bills/2025/A3650",
-      "editorial_source_type": "official_bill_record",
-      "editorial_status": "needs_review",
-      "editorial_failure_reason": "Independent verification of current enrolled/amended version pending"
+      "editorial_source_type": "official_legislature_full_text",
+      "editorial_status": "verified"
     },
     {
       "id": "ny-a-4901-2025-2026",
@@ -1831,8 +1829,8 @@
       "summary": "The bill would permit Level 4 and 5 autonomous vehicles to operate without a human driver if they meet safety and fallback requirements. Operators would submit law-enforcement interaction plans, carry insurance, and register their vehicles. It would largely preempt local AV-specific restrictions while preserving New York City's authority over for-hire services.",
       "takeaway": "The bill would permit Level 4 and 5 autonomous vehicles to operate without a human driver if they meet safety and fallback requirements. Operators would submit law-enforcement interaction plans, carry insurance, and register their vehicles. It would largely preempt local AV-specific restrictions while preserving New York City's authority over for-hire services.",
       "source_summary": "Provides that a person may operate a fully autonomous vehicle on the public roads of this state without a human driver provided that the automated driving system is engaged and the vehicle meets certain conditions; defines terms; requires insurance and that such vehicle is registered as a fully autonomous vehicle; makes related provisions.",
-      "summary_method": "AV_specific_bill_text_analysis",
-      "summary_quality": "reviewed_substantive",
+      "summary_method": "official_amended_B_full_text_review",
+      "summary_quality": "manual_primary_source_verified",
       "status": "introduced",
       "measure_type": "bill",
       "last_action_date": "2026-04-24",
@@ -1850,9 +1848,8 @@
       "openstates_id": "ocd-bill/acb10ba4-826e-46d8-9f29-749bfc985157",
       "openstates_updated_at": "2026-05-07T02:52:08.850632+00:00",
       "editorial_source_url": "https://www.nysenate.gov/legislation/bills/2025/A4901",
-      "editorial_source_type": "official_bill_record",
-      "editorial_status": "needs_review",
-      "editorial_failure_reason": "Independent verification of current enrolled/amended version pending"
+      "editorial_source_type": "official_legislature_full_text",
+      "editorial_status": "verified"
     },
     {
       "id": "ny-a-728-2025-2026",
@@ -1893,8 +1890,8 @@
       "summary": "The bill would require autonomous taxi, livery, and ride-hail vehicles operating in New York City to obtain a Taxi and Limousine Commission license. The commission would set safety and insurance rules, issue licenses only to taxi-medallion owners, establish fleet limits, and require trip, revenue, accessibility, and emissions information.",
       "takeaway": "The bill would require autonomous taxi, livery, and ride-hail vehicles operating in New York City to obtain a Taxi and Limousine Commission license. The commission would set safety and insurance rules, issue licenses only to taxi-medallion owners, establish fleet limits, and require trip, revenue, accessibility, and emissions information.",
       "source_summary": "Provides that no autonomous vehicle may be used for taxi, livery or transportation network company vehicle services in any city with a population of one million or more without first being licensed by the New York City taxi and limousine commission; requires the New York City taxi and limousine commission to establish a license for use of an autonomous vehicle as a taxicab and to promulgate rules regarding such license and the operation of autonomous taxicabs.",
-      "summary_method": "AV_specific_bill_text_analysis",
-      "summary_quality": "reviewed_substantive",
+      "summary_method": "official_full_bill_text_review",
+      "summary_quality": "manual_primary_source_verified",
       "status": "introduced",
       "measure_type": "bill",
       "last_action_date": "2026-01-07",
@@ -1912,9 +1909,8 @@
       "openstates_id": "ocd-bill/2f06951b-d649-4c2f-91bb-8d65389cc442",
       "openstates_updated_at": "2026-05-16T05:50:49.029583+00:00",
       "editorial_source_url": "https://www.nysenate.gov/legislation/bills/2025/A793",
-      "editorial_source_type": "official_bill_record",
-      "editorial_status": "needs_review",
-      "editorial_failure_reason": "Independent verification of current enrolled/amended version pending"
+      "editorial_source_type": "official_legislature_full_text",
+      "editorial_status": "verified"
     },
     {
       "id": "ny-a-8109-2025-2026",
@@ -1955,8 +1951,8 @@
       "summary": "The bill would require autonomous taxi, livery, and ride-hail vehicles operating in New York City to obtain a Taxi and Limousine Commission license. The commission would set safety and insurance rules, issue licenses only to taxi-medallion owners, establish fleet limits, and require trip, revenue, accessibility, and emissions information.",
       "takeaway": "The bill would require autonomous taxi, livery, and ride-hail vehicles operating in New York City to obtain a Taxi and Limousine Commission license. The commission would set safety and insurance rules, issue licenses only to taxi-medallion owners, establish fleet limits, and require trip, revenue, accessibility, and emissions information.",
       "source_summary": "Provides that no autonomous vehicle may be used for taxi, livery or transportation network company vehicle services in any city with a population of one million or more without first being licensed by the New York City taxi and limousine commission; requires the New York City taxi and limousine commission to establish a license for use of an autonomous vehicle as a taxicab and to promulgate rules regarding such license and the operation of autonomous taxicabs.",
-      "summary_method": "AV_specific_bill_text_analysis",
-      "summary_quality": "reviewed_substantive",
+      "summary_method": "official_full_bill_text_review",
+      "summary_quality": "manual_primary_source_verified",
       "status": "introduced",
       "measure_type": "bill",
       "last_action_date": "2026-05-15",
@@ -1974,9 +1970,8 @@
       "openstates_id": "ocd-bill/d73295c2-887f-4676-b802-2e1d9432e649",
       "openstates_updated_at": "2026-05-16T06:58:13.550388+00:00",
       "editorial_source_url": "https://www.nysenate.gov/legislation/bills/2025/S10413",
-      "editorial_source_type": "official_bill_record",
-      "editorial_status": "needs_review",
-      "editorial_failure_reason": "Independent verification of current enrolled/amended version pending"
+      "editorial_source_type": "official_legislature_full_text",
+      "editorial_status": "verified"
     },
     {
       "id": "ny-s-10473-2025-2026",
@@ -2079,8 +2074,8 @@
       "summary": "The bill would prohibit autonomous operation of vehicles with a manufacturer's gross vehicle weight rating over 10,000 pounds unless a properly licensed human operator is physically present. It would constrain driverless heavy commercial-vehicle operations rather than establish a broader permit program for passenger robotaxis.",
       "takeaway": "The bill would prohibit autonomous operation of vehicles with a manufacturer's gross vehicle weight rating over 10,000 pounds unless a properly licensed human operator is physically present. It would constrain driverless heavy commercial-vehicle operations rather than establish a broader permit program for passenger robotaxis.",
       "source_summary": "Prohibits any motor vehicle with a manufacturers' gross vehicle weight rating of ten thousand one pounds or more which utilizes autonomous vehicle technology from being operated on public highways unless a natural person holding a valid license for the operation of the motor vehicle's class is present within such vehicle.",
-      "summary_method": "AV_specific_bill_text_analysis",
-      "summary_quality": "reviewed_substantive",
+      "summary_method": "official_full_bill_text_review",
+      "summary_quality": "manual_primary_source_verified",
       "status": "introduced",
       "measure_type": "bill",
       "last_action_date": "2026-01-07",
@@ -2098,9 +2093,8 @@
       "openstates_id": "ocd-bill/9f52f0f7-48f8-47bf-84c2-baf3d6f44d13",
       "openstates_updated_at": "2026-03-18T09:08:44.729630+00:00",
       "editorial_source_url": "https://www.nysenate.gov/legislation/bills/2025/S7956",
-      "editorial_source_type": "official_bill_record",
-      "editorial_status": "needs_review",
-      "editorial_failure_reason": "Independent verification of current enrolled/amended version pending"
+      "editorial_source_type": "official_legislature_full_text",
+      "editorial_status": "verified"
     },
     {
       "id": "ny-s-9008-2025-2026",
