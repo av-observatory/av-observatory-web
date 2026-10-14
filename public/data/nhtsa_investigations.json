@@ -3,7 +3,7 @@
   "dataset": "NHTSA AV / ADAS Defect Investigations",
   "source_url": "https://static.nhtsa.gov/odi/ffdd/inv/FLAT_INV.zip",
   "observed_at": "2026-09-29",
-  "storage": "Offline cache only; authoritative history/current view are stored in R2.",
+  "storage": "Fallback cache only. Open/closed classifications in the fallback are not certified current; NHTSA full-source refresh replaces them on deployment.",
   "investigations": [
     {
       "id": "PE26001",
@@ -93,8 +93,11 @@
       "subject": "Unexpected ADS braking",
       "product": "Zoox ADS-equipped passenger vehicles",
       "summary": "ODI opened the evaluation after two reported rear-end collisions in which Zoox ADS-equipped vehicles braked unexpectedly in response to nearby road users.",
-      "source": "https://static.nhtsa.gov/odi/inv/2024/INIM-PE24015-13296.pdf",
-      "source_label": "ODI information request"
+      "source": "https://static.nhtsa.gov/odi/inv/2024/INOA-PE24015-12348.pdf",
+      "source_label": "ODI information request",
+      "related_recalls": [
+        "25E019000"
+      ]
     },
     {
       "id": "AQ23001",

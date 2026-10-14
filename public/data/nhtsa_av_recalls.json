@@ -1,0 +1,91 @@
+{
+  "schema_version": "1.0.0",
+  "dataset": "NHTSA AV / ADAS Safety Recalls",
+  "source_url": "https://static.nhtsa.gov/odi/ffdd/rcl/FLAT_RCL_POST_2010.zip",
+  "observed_at": "2026-10-14",
+  "coverage": "Partial verified fallback; scheduled bulk refresh replaces this with the full matched NHTSA recall dataset.",
+  "recalls": [
+    {
+      "id": "26E044000",
+      "company": "Zoox",
+      "reported": "2026-07-10",
+      "subject": "ADS may not detect heavy smoke in roadway",
+      "summary": "Zoox ADS software may fail to detect heavy smoke, allowing the vehicle to enter a low-visibility area, particularly an active emergency response scene.",
+      "consequence": "May increase collision risk in low-visibility emergency scenes.",
+      "remedy": "Software update; consult NHTSA campaign record for completion status.",
+      "status": "Recall reported",
+      "related_investigations": [],
+      "products": [
+        "Zoox automated driving system"
+      ],
+      "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=26E044000",
+      "source_label": "NHTSA campaign record"
+    },
+    {
+      "id": "25E090000",
+      "company": "Zoox",
+      "reported": "2025-12-19",
+      "subject": "ADS software may cause lane-line crossings near intersections",
+      "summary": "Automated driving software could cause a vehicle to cross a center line or enter an oncoming path near intersections.",
+      "consequence": "Potential collision with oncoming traffic.",
+      "remedy": "Updated ADS software.",
+      "status": "Recall reported",
+      "related_investigations": [],
+      "products": [
+        "Zoox automated driving system"
+      ],
+      "source": "https://static.nhtsa.gov/odi/rcl/2025/RCLRPT-25E090-1680.pdf",
+      "source_label": "NHTSA recall report"
+    },
+    {
+      "id": "25E037000",
+      "company": "Zoox",
+      "reported": "2025-05-22",
+      "subject": "ADS may not detect people immediately next to the vehicle",
+      "summary": "ADS could allow vehicle movement after failing to detect a person very close to the vehicle.",
+      "consequence": "Risk of collision or injury.",
+      "remedy": "Zoox reported implementing the remedy on affected vehicles by May 21, 2025.",
+      "status": "Recall reported",
+      "related_investigations": [],
+      "products": [
+        "Zoox automated driving system"
+      ],
+      "source": "https://static.nhtsa.gov/odi/rcl/2025/RCLRPT-25E037-4912.pdf",
+      "source_label": "NHTSA recall report"
+    },
+    {
+      "id": "25E029000",
+      "company": "Zoox",
+      "reported": "2025-04-25",
+      "subject": "ADS prediction error may prevent avoiding a collision",
+      "summary": "A vehicle emerging from a perpendicular driveway could be incorrectly predicted to enter the driving lane.",
+      "consequence": "Increased collision risk.",
+      "remedy": "Zoox reported updating operating vehicles by April 17, 2025.",
+      "status": "Recall reported",
+      "related_investigations": [],
+      "products": [
+        "Zoox automated driving system"
+      ],
+      "source": "https://static.nhtsa.gov/odi/rcl/2025/RCLRPT-25E029-4731.PDF",
+      "source_label": "NHTSA recall report"
+    },
+    {
+      "id": "25E019000",
+      "company": "Zoox",
+      "reported": "2025-03-13",
+      "subject": "Unexpected hard braking",
+      "summary": "Zoox ADS may brake hard unexpectedly near certain motorcycles or cyclists.",
+      "consequence": "Increased rear-end collision risk.",
+      "remedy": "ADS software update.",
+      "status": "Recall reported",
+      "related_investigations": [
+        "PE24015"
+      ],
+      "products": [
+        "Zoox automated driving system"
+      ],
+      "source": "https://static.nhtsa.gov/odi/rcl/2025/RCLRPT-25E019-8103.PDF",
+      "source_label": "NHTSA recall report"
+    }
+  ]
+}

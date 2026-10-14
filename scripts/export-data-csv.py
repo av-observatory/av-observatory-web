@@ -44,6 +44,8 @@ def main():
                 for company, profile in data["profiles"].items()), output)
             export(stem + "_developments.csv", ({"company": company, **event}
                 for company, profile in data["profiles"].items() for event in profile.get("developments", [])), output)
+        elif stem == "nhtsa_av_recalls":
+            export(stem + ".csv", data["recalls"], output)
         elif stem == "nhtsa_investigations":
             export(stem + ".csv", data["investigations"], output)
         elif stem == "state_permit_registry":

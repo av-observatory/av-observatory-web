@@ -29,6 +29,9 @@ export function useInvestigationsData() {
       })
       .then((incoming: InvestigationDataset) => {
         if (!Array.isArray(incoming.investigations) || !incoming.investigations.length) throw Error("Invalid investigations dataset");
+        // An older R2 snapshot must never replace a larger, newer official-source site dataset.
+        if (incoming.investigations.length < snapshot.investigations.length ||
+            (incoming.observed_at && snapshot.observed_at && incoming.observed_at < snapshot.observed_at)) return;
         setData(incoming);
         setSource("R2");
       })

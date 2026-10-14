@@ -9,6 +9,7 @@ on:
   # so rebuild daily after the 10:17, 12:17 and 14:35 UTC refreshes to publish them.
   schedule:
     - cron: "50 15 * * *"
+    - cron: "23 */2 * * *"
   workflow_dispatch:
 
 permissions:
@@ -35,6 +36,14 @@ jobs:
 
       - name: Install
         run: npm ci
+
+      - name: Refresh primary-source NHTSA investigations and recalls
+        run: |
+          if python3 scripts/refresh-nhtsa-oversight.py; then
+            python3 scripts/export-data-csv.py
+          else
+            echo "::warning::Could not refresh NHTSA bulk data; publishing explicitly labeled fallback datasets."
+          fi
 
       - name: Validate policy snapshot
         run: node scripts/validate-policy-data.mjs
