@@ -14,7 +14,7 @@ from pathlib import Path
 import re
 import subprocess
 import tempfile
-from urllib.parse import urlparse
+from urllib.parse import urlparse, quote, parse_qs, unquote
 from urllib.request import Request,urlopen
 from openstates_rate import open_json
 
@@ -42,7 +42,9 @@ def fetch(url):
             data=response.read(2_500_000)
             kind=response.headers.get("Content-Type","").lower()
             actual=(response.url or urlparse(url).geturl())
-            if not actual.startswith("https://"):return "","redirect_non_https"
+            redirect_host=(urlparse(actual).hostname or "").lower()
+            if not actual.startswith("https://") or not (redirect_host.endswith(".gov") or redirect_host.endswith(".us")):
+                return "","redirect_outside_government"
         if "pdf" in kind or data.startswith(b"%PDF"):
             with tempfile.TemporaryDirectory() as tmp:
                 p=Path(tmp)/"bill.pdf";p.write_bytes(data)
@@ -194,12 +196,54 @@ def looks_like_bill_text(row,text):
     has_topic=bool(re.search(r"\b(?:autonomous|automated driving|driverless|self-driving|robotaxi)\b",text,re.I))
     return has_number and has_bill and has_topic
 
+
+def discover_official_bill_links(row):
+    """Recovery search by jurisdiction, session, identifier and title.
+
+    Search results are *candidates*, never evidence: fetch() enforces a government
+    host, and looks_like_bill_text() checks the identifier and AV relevance.
+    """
+    from xml.etree import ElementTree
+    from urllib.parse import urlencode
+    jurisdiction=str(row.get("jurisdiction") or "")
+    identifier=str(row.get("number") or "")
+    session=str(row.get("session") or "")
+    title=" ".join(str(row.get("title") or "").split())[:110]
+    if not identifier or not jurisdiction:
+        return []
+    queries=[
+        f'{jurisdiction} legislature "{identifier}" "{session}" autonomous vehicle bill text',
+        f'{jurisdiction} "{identifier}" "{title}" legislation',
+    ]
+    candidates=[]
+    seen=set()
+    for query in queries:
+        url="https://www.bing.com/search?"+urlencode({"q":query,"format":"rss"})
+        try:
+            req=Request(url,headers={"User-Agent":"Mozilla/5.0 AVObservatoryResearch/1.0"})
+            with urlopen(req,timeout=14) as response:
+                xml=response.read(180000)
+            root=ElementTree.fromstring(xml)
+            for link in root.findall(".//item/link"):
+                href=(link.text or "").strip()
+                host=(urlparse(href).hostname or "").lower()
+                if href.startswith("https://") and (host.endswith(".gov") or host.endswith(".us")) and href not in seen:
+                    seen.add(href)
+                    candidates.append(href)
+        except Exception as exc:
+            print(f"Official-record search failed for {row.get('id')}: {type(exc).__name__}")
+    return candidates[:10]
+
 def primary_text(row,kind):
     for url in sources(row,kind):
         text,provenance=fetch(url)
         if len(text)>=650 and (kind!="state_bill" or looks_like_bill_text(row,text)):
             return text,provenance,url
     if kind=="state_bill":
+        for url in discover_official_bill_links(row):
+            text,provenance=fetch(url)
+            if len(text)>=650 and looks_like_bill_text(row,text):
+                return text,provenance,url
         mirrored,mirror_url=legiscan_mirrored_text(row)
         if mirrored:return mirrored,"legiscan_mirrored_bill_text",mirror_url
     return "","official_text_unavailable",""
