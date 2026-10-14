@@ -1,0 +1,212 @@
+{
+ "pages": {
+  "https://apps.legislature.ky.gov/record/24rs/hb7.html": {
+   "checked": "2026-10-14",
+   "hash": "30bb4db273bb885756c140fff7777ca5a5ec98a786373cebb2c6cbcd14d11c63"
+  },
+  "https://archives.delaware.gov/executive-orders/governor-john-carney/": {
+   "checked": "2026-10-14",
+   "hash": "aeb3765c247366d160db3581c9a9ea4463eca226d8ada2d649248f00eb672220"
+  },
+  "https://code.wvlegislature.gov/17H-1/": {
+   "checked": "2026-10-14",
+   "hash": "6f0435843c68619b2580174ca7959e9d8b3fc34a8e1e41b8751bc0a4ed9e18cf"
+  },
+  "https://ddot.dc.gov/page/autonomous-vehicles": {
+   "checked": "2026-10-14",
+   "hash": "237c9d15999a7d8f7ede716f96ee85e3862a18cc5fdd8a92a45268f7ec4bf1ea"
+  },
+  "https://dmv.nv.gov/autonomous.htm": {
+   "checked": "2026-10-14",
+   "hash": "988cf7f211b40bf84adf201102336f1b77939740856b131496276bf4b15c8078"
+  },
+  "https://dol.wa.gov/vehicles-and-boats/vehicles/vehicle-registration/register-other-vehicles-and-other-services/registering-autonomous-vehicles": {
+   "checked": "2026-10-14",
+   "hash": "0f7c2ea57b314c3603e306ed6169f5df56137a0bc4daf3f5590314b503827906"
+  },
+  "https://gc.nh.gov/rsa/html/XX/242/242-1.htm": {
+   "checked": "2026-10-14",
+   "hash": "25a0c86d7e59a84b2095ff32789d33daa8f09147e8936b1eac48d1d8d7e1d54f"
+  },
+  "https://le.utah.gov/xcode/Title41/Chapter26/41-26.html": {
+   "checked": "2026-10-14",
+   "hash": "268719bfbe1ee733dd2f49df2a0870b03327d4920d20d0a66a2fe43f5c2b8f61"
+  },
+  "https://leg.colorado.gov/bills/sb17-213": {
+   "checked": "2026-10-14",
+   "hash": "8826bf6b3fd4c2ea48d03f706f2f166309557da91990b7cc8cd21618242a7d6e"
+  },
+  "https://legislature.vermont.gov/statutes/fullchapter/23/041": {
+   "checked": "2026-10-14",
+   "hash": "61a6afc617d0125c40091b709090a4347f7ef093ea777957c4eabcab616e3a28"
+  },
+  "https://mca.legmt.gov/bills/mca/title_0610/chapter_0060/part_0040/section_0090/0610-0060-0040-0090.html": {
+   "checked": "2026-10-14",
+   "hash": "51e0903dc863960931b04958e86fc875503825245cd1837cec1c1de53209ff47"
+  },
+  "https://mylrc.sdlegislature.gov/api/Documents/Bill/264493.pdf?Year=2024": {
+   "checked": "2026-10-14",
+   "hash": "d7d3ed727a2b1847c8fe142a7eb1eaa736573103f35e165ff830dc2c54dce37f"
+  },
+  "https://ndlegis.gov/cencode/t39c01.html": {
+   "checked": "2026-10-14",
+   "hash": "5261bc29189965a3bd239afcfc5f19a06ff92a351136151df50c4d58f4426f87"
+  },
+  "https://nebraskalegislature.gov/laws/statutes.php?statute=60-3302": {
+   "checked": "2026-10-14",
+   "hash": "098ba3e9d7ee27e6d094d995386c7050f72622fbe714c961038068ee07c4aebe"
+  },
+  "https://wapp.capitol.tn.gov/apps/BillInfo/Default?BillNumber=HB0381&ga=110": {
+   "checked": "2026-10-14",
+   "hash": "028ebe06b0f2d3f44887ce546590e7d43374dd21cbe3bfed3f261a575e41187b"
+  },
+  "https://www.arkleg.state.ar.us/Bills/Detail?ddBienniumSession=2019%2F2019R&id=HB1561": {
+   "checked": "2026-10-14",
+   "hash": "c096bcaf72899c6643e5ac8260b01548211232c48ae1f48234caef2d4de5850f"
+  },
+  "https://www.austintexas.gov/transportation-public-works/autonomous-vehicles": {
+   "checked": "2026-10-14",
+   "hash": "563ba65dd1b87ec02b91a667abaa4e77fe11be78798d720c242057d3e7d3dd8b"
+  },
+  "https://www.boston.gov/departments/new-urban-mechanics/autonomous-vehicles-bostons-approach": {
+   "checked": "2026-10-14",
+   "hash": "f0d337183c536961e55a3c3f98059626735110ceeb0a21348258161faf35b266"
+  },
+  "https://www.cpuc.ca.gov/regulatory-services/licensing/transportation-licensing-and-analysis-branch/autonomous-vehicle-programs": {
+   "checked": "2026-10-14",
+   "hash": "13765f3e4611bbb335c29029a1321e906becaa06ba4d0f73d7979456e1507b7a"
+  },
+  "https://www.dmv.ca.gov/portal/about-the-california-department-of-motor-vehicles/california-dmv-rulemaking-actions/": {
+   "checked": "2026-10-14",
+   "hash": "7e4f7024d9f7109bcf0064e75ac85d862d85864d64b56765cdfac7937371daa6"
+  },
+  "https://www.dmv.ca.gov/portal/vehicle-industry-services/autonomous-vehicles/": {
+   "checked": "2026-10-14",
+   "hash": "06393c5baf2c6723a179eadc1675c99bd06863be8fa7c34dc24dbb4ec41e5732"
+  },
+  "https://www.dmv.ca.gov/portal/vehicle-industry-services/autonomous-vehicles/california-autonomous-vehicle-regulations/": {
+   "checked": "2026-10-14",
+   "hash": "87c40a7bf3ce6a1f0f0e388eb1a94f2fe852aa5b72909408078777a08edc6608"
+  },
+  "https://www.dot.nm.gov/highway-operations-program/operations-support-division-director/intelligent-transportation-systems/": {
+   "checked": "2026-10-14",
+   "hash": "8df5458f3c0441beaba62ca77d6dc462511b05213e1675149edb15beab100717"
+  },
+  "https://www.federalregister.gov/d/2020-05886": {
+   "checked": "2026-10-14",
+   "hash": "abf8928c77f91efd8a145b40721f78d1dc86010a63b7041d078b796aed7ca256"
+  },
+  "https://www.federalregister.gov/d/2022-05426": {
+   "checked": "2026-10-14",
+   "hash": "abf8928c77f91efd8a145b40721f78d1dc86010a63b7041d078b796aed7ca256"
+  },
+  "https://www.federalregister.gov/d/2026-05023": {
+   "checked": "2026-10-14",
+   "hash": "abf8928c77f91efd8a145b40721f78d1dc86010a63b7041d078b796aed7ca256"
+  },
+  "https://www.federalregister.gov/d/2026-05024": {
+   "checked": "2026-10-14",
+   "hash": "abf8928c77f91efd8a145b40721f78d1dc86010a63b7041d078b796aed7ca256"
+  },
+  "https://www.federalregister.gov/d/2026-06254": {
+   "checked": "2026-10-14",
+   "hash": "abf8928c77f91efd8a145b40721f78d1dc86010a63b7041d078b796aed7ca256"
+  },
+  "https://www.federalregister.gov/d/2026-11080": {
+   "checked": "2026-10-14",
+   "hash": "abf8928c77f91efd8a145b40721f78d1dc86010a63b7041d078b796aed7ca256"
+  },
+  "https://www.federalregister.gov/d/2026-12981": {
+   "checked": "2026-10-14",
+   "hash": "abf8928c77f91efd8a145b40721f78d1dc86010a63b7041d078b796aed7ca256"
+  },
+  "https://www.federalregister.gov/documents/2018/01/18/2018-00671/removing-regulatory-barriers-for-vehicles-with-automated-driving-systems": {
+   "checked": "2026-10-14",
+   "hash": "abf8928c77f91efd8a145b40721f78d1dc86010a63b7041d078b796aed7ca256"
+  },
+  "https://www.federalregister.gov/documents/2019/05/28/2019-11032/removing-regulatory-barriers-for-vehicles-with-automated-driving-systems": {
+   "checked": "2026-10-14",
+   "hash": "abf8928c77f91efd8a145b40721f78d1dc86010a63b7041d078b796aed7ca256"
+  },
+  "https://www.federalregister.gov/documents/2025/01/15/2024-30854/ads-equipped-vehicle-safety-transparency-and-evaluation-program": {
+   "checked": "2026-10-14",
+   "hash": "abf8928c77f91efd8a145b40721f78d1dc86010a63b7041d078b796aed7ca256"
+  },
+  "https://www.federalregister.gov/documents/2026/06/26/2026-12980/ads-equipped-vehicle-safety-transparency-and-evaluation-program-withdrawal": {
+   "checked": "2026-10-14",
+   "hash": "abf8928c77f91efd8a145b40721f78d1dc86010a63b7041d078b796aed7ca256"
+  },
+  "https://www.flsenate.gov/Laws/Statutes/2025/316.85": {
+   "checked": "2026-10-14",
+   "hash": "2f209552ab51337ee64180b01d426e730678bf6842bd488f1d306f5c43088167"
+  },
+  "https://www.flsenate.gov/Session/Bill/2016/7027": {
+   "checked": "2026-10-14",
+   "hash": "688c50e07a96e8dac743d458cda772aa9c5755e7be03a6e6b85ffdb4ba65b9b3"
+  },
+  "https://www.flsenate.gov/Session/Bill/2019/311": {
+   "checked": "2026-10-14",
+   "hash": "5f1f2c0b266ce36fae1d8d5b2be5679119d998fda4fcf2f5714212dd0bde683a"
+  },
+  "https://www.illinois.gov/government/executive-orders/executive-order.executive-order-number-13.2018.html": {
+   "checked": "2026-10-14",
+   "hash": "affaff41415a6a23e2030fd58175e40abc959564cb620c328b89490e53434319"
+  },
+  "https://www.kslegislature.gov/b2025_26/laws/008_000_0000_chapter/008_029_0000_article/008_029_0002_section/008_029_0002_k/": {
+   "checked": "2026-10-14",
+   "hash": "95120fd6e1cfc438940fbda3ae901f7c8f8f0deb04084f8499d2a8b2273b5f16"
+  },
+  "https://www.leg.state.nv.us/Statutes/79th2017/Stats201724.html": {
+   "checked": "2026-10-14",
+   "hash": "7611d3390d6e91bf7f3a46cabb299603b46b7f404691f6d198d8dd6f26fae798"
+  },
+  "https://www.leginfo.ca.gov/pub/11-12/bill/sen/sb_1251-1300/sb_1298_bill_20120925_chaptered.html": {
+   "checked": "2026-10-14",
+   "hash": "b7c1589af1a6a769284a06864101bc6b57406fe34237493c2c8ebfa2c06ebdf1"
+  },
+  "https://www.legis.la.gov/legis/LawPrint.aspx?d=1148308": {
+   "checked": "2026-10-14",
+   "hash": "7c3cb87e9f3a7142276a984af32a5bb2be138943d313fb27d61eeb0be3583282"
+  },
+  "https://www.legis.state.pa.us/WU01/LI/LI/CT/HTM/75/75.HTM": {
+   "checked": "2026-10-14",
+   "hash": "2ca9541e4b56605eae8ebccfd59ecf7b8ad4cdf6514d38907c3b9f257a42b31f"
+  },
+  "https://www.legislature.maine.gov/legis/bills/bills_128th/chapters/RESOLVE46.asp": {
+   "checked": "2026-10-14",
+   "hash": "e221a6dd187cae3589d419faff43673912345c295aaaf28938ff7683fb03dd5b"
+  },
+  "https://www.maine.gov/governor/lepage/official-documents/executive-orders.html": {
+   "checked": "2026-10-14",
+   "hash": "e3eda69dd2710a4eb3cac2961fd2b2e852d3738577e5cb3ab08a1abd78326eda"
+  },
+  "https://www.ncleg.gov/EnactedLegislation/Statutes/HTML/ByArticle/Chapter_20/Article_18.html": {
+   "checked": "2026-10-14",
+   "hash": "57d4073eba28199b7fa4c50b8cada719cb7764e1e39b87d2f4b4e5ed734b2cc5"
+  },
+  "https://www.nyc.gov/html/dot/html/motorist/autonomous-vehicles.shtml": {
+   "checked": "2026-10-14",
+   "hash": "4a300ed320e7d896cafbf88a2bedffacd13b341b2f8586514d90c089fb5b34cf"
+  },
+  "https://www.oklegislature.gov/BillInfo.aspx?Bill=SB1541&Session=2200": {
+   "checked": "2026-10-14",
+   "hash": "416919aadc8c4ff6ae0ba22b2a9192af6908afdb42e1b6e60f6a9ab5742c9986"
+  },
+  "https://www.seattle.gov/transportation/projects-and-programs/programs/autonomous-vehicle-testing-permit": {
+   "checked": "2026-10-14",
+   "hash": "0795380455f83960020d0a07b6941446bb18e22a31b296cac76601997edfc59f"
+  },
+  "https://www.sfmta.com/notices/waymo-market-street-message-director-kirschbaum": {
+   "checked": "2026-10-14",
+   "hash": "51e913dc28cbc03c001cc67e62a657723597699459993d5729acb60438cdb1b6"
+  },
+  "https://www.sfmta.com/projects/autonomous-vehicles-avs-san-francisco": {
+   "checked": "2026-10-14",
+   "hash": "d008c933f9225599684b0d2a49e5b655df3bf027704c1ddd418049182cfdc1e7"
+  },
+  "https://www.txdmv.gov/AVprogram": {
+   "checked": "2026-10-14",
+   "hash": "709df2372e2e9886dc694d2c129b0507eb807d9e0f2e6cd011d2625dad6f1b0c"
+  }
+ }
+}
