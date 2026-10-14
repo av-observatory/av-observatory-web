@@ -65,6 +65,11 @@ jobs:
             exit 1
           fi
 
+      - name: Install fetch tools (headless browser, PDF text, Claude SDK)
+        run: |
+          pip install --quiet anthropic pypdf playwright
+          playwright install --with-deps chromium
+
       - name: Safety tests
         run: python3 scripts/test-policy-refresh.py
 
@@ -74,9 +79,7 @@ jobs:
 
       - name: Refresh policy tracker
         if: ${{ inputs.dry_run != true }}
-        run: |
-          pip install --quiet anthropic
-          python3 scripts/refresh-policy.py --open-issues
+        run: python3 scripts/refresh-policy.py --open-issues
 
       - name: Validate and rebuild CSV companions
         if: ${{ inputs.dry_run != true }}
