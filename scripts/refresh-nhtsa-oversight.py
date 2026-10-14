@@ -27,10 +27,10 @@ COMPANIES = {
     "NAVYA": "Navya", "PONY.AI": "Pony.ai", "WERIDE": "WeRide",
 }
 KEYWORDS = re.compile(
-    r"\\b(?:AUTONOMOUS|AUTOMATED DRIVING|SELF.DRIVING|FULL SELF.DRIVING|"
+    r"\b(?:AUTONOMOUS|AUTOMATED DRIVING|SELF.DRIVING|FULL SELF.DRIVING|"
     r"FSD|AUTOPILOT|ROBOTAXI|DRIVERLESS|"
     r"LEVEL [345] AUTOMATION|ADS.EQUIPPED|"
-    r"ADVANCED DRIVER ASSISTANCE|AUTOMATED LANE KEEPING)\\b",
+    r"ADVANCED DRIVER ASSISTANCE|AUTOMATED LANE KEEPING)\b",
     re.I,
 )
 ADS_COMP = re.compile(r"AUTONOMOUS/SELF DRIVING|AUTONOMOUS.*SOFTWARE", re.I)
@@ -45,12 +45,12 @@ def fetch_tab(url):
             raise ValueError("No tab-delimited text in "+url)
         with archive.open(filename) as handle:
             for raw in handle:
-                line = raw.decode("latin-1").rstrip("\\r\\n")
+                line = raw.decode("latin-1").rstrip("\r\n")
                 if line:
-                    yield [field.strip() for field in line.split("\\t")]
+                    yield [field.strip() for field in line.split("\t")]
 
 def date(text):
-    if not text or not re.fullmatch(r"\\d{8}", text):
+    if not text or not re.fullmatch(r"\d{8}", text):
         return None
     try:
         return datetime.strptime(text, "%Y%m%d").date().isoformat()
