@@ -140,7 +140,11 @@ def legiscan_mirrored_text(row):
     if not key:return "",""
     if not str(bill_id or "").isdigit():
         # Recover the LegiScan ID by exact bill number, state and session year.
-        identifier=re.sub(r"[^A-Z0-9]","",str(row.get("number") or "").upper())
+        def bill_key(value):
+            cleaned=re.sub(r"[^A-Z0-9]","",str(value or "").upper())
+            m=re.fullmatch(r"([A-Z]+)0*(\d+)",cleaned)
+            return m.group(1)+str(int(m.group(2))) if m else cleaned
+        identifier=bill_key(row.get("number"))
         state=str(row.get("jurisdiction") or "").upper()
         year_match=re.search(r"20\d{2}",str(row.get("session") or ""))
         year=int(year_match.group(0)) if year_match else 2
@@ -152,7 +156,7 @@ def legiscan_mirrored_text(row):
             matches=[]
             for hit in hits.values():
                 if not isinstance(hit,dict):continue
-                found=re.sub(r"[^A-Z0-9]","",str(hit.get("bill_number") or "").upper())
+                found=bill_key(hit.get("bill_number"))
                 if found==identifier and str(hit.get("state") or "").upper()==state:
                     if str(hit.get("bill_id") or "").isdigit():
                         matches.append(hit["bill_id"])
