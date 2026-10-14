@@ -142,7 +142,7 @@ def legiscan_mirrored_text(row):
         # Recover the LegiScan ID by exact bill number, state and session year.
         identifier=re.sub(r"[^A-Z0-9]","",str(row.get("number") or "").upper())
         state=str(row.get("jurisdiction") or "").upper()
-        year_match=re.search(r"20\\d{2}",str(row.get("session") or ""))
+        year_match=re.search(r"20\d{2}",str(row.get("session") or ""))
         year=int(year_match.group(0)) if year_match else 2
         if not identifier or not re.fullmatch(r"[A-Z]{2}",state):return "",""
         try:
