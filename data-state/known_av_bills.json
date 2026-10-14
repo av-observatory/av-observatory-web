@@ -1,0 +1,326 @@
+{
+ "note": "Autonomous-vehicle bills confirmed on OFFICIAL legislature sites (audit 2026-10-14). Each must appear in legislation_tracker.json; scripts/check-known-bills.py alerts if one is missing. Add a bill here whenever a gap is found. 'status_note' is informational, not used for matching.",
+ "audited": "2026-10-14",
+ "bills": [
+  {
+   "jurisdiction": "DC",
+   "number": "B26-0684",
+   "session": "26",
+   "status_note": "introduced; hearing 2026-07-13",
+   "official_url": "https://lims.dccouncil.gov/Legislation/B26-0684",
+   "note": "Verified on the official LIMS record"
+  },
+  {
+   "jurisdiction": "AK",
+   "number": "HB 217",
+   "session": "34 (2026)",
+   "status_note": "passed House May 2026; final status unclear",
+   "official_url": "https://www.akleg.gov/pdf/34/F/HB0217-1-2-032526-ADM-N.PDF",
+   "note": ""
+  },
+  {
+   "jurisdiction": "AL",
+   "number": "SB 222",
+   "session": "2026RS",
+   "status_note": "introduced",
+   "official_url": "https://alison.legislature.state.al.us/files/pdf/SearchableInstruments/2026RS/SB222-int.pdf",
+   "note": ""
+  },
+  {
+   "jurisdiction": "AZ",
+   "number": "SB 1417",
+   "session": "2026",
+   "status_note": "session ended 2026-06-13; outcome unconfirmed",
+   "official_url": null,
+   "note": ""
+  },
+  {
+   "jurisdiction": "CA",
+   "number": "SB 1246",
+   "session": "2025-26",
+   "status_note": "chaptered 2026-09-30, Chapter 1021",
+   "official_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260SB1246",
+   "note": ""
+  },
+  {
+   "jurisdiction": "CA",
+   "number": "SB 480",
+   "session": "2025-26",
+   "status_note": "signed 2025-10-06",
+   "official_url": "https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=202520260SB480",
+   "note": ""
+  },
+  {
+   "jurisdiction": "CO",
+   "number": "HB 1286",
+   "session": "2026",
+   "status_note": "passed both chambers; vetoed 2026-05-28 per digest",
+   "official_url": "https://leg.colorado.gov/bills/hb26-1286",
+   "note": "Official name HB26-1286; Open States lists it as HB 1286"
+  },
+  {
+   "jurisdiction": "DE",
+   "number": "SB 46",
+   "session": "153rd GA",
+   "status_note": "out of committee 2025-05-14",
+   "official_url": "https://legis.delaware.gov/BillDetail/141797",
+   "note": ""
+  },
+  {
+   "jurisdiction": "FL",
+   "number": "HB 1469",
+   "session": "2026",
+   "status_note": "died in subcommittee 2026-03-13",
+   "official_url": "https://www.flsenate.gov/Session/Bill/2026/1469",
+   "note": ""
+  },
+  {
+   "jurisdiction": "HI",
+   "number": "HB 1797",
+   "session": "2026",
+   "status_note": "referred to committees; hearing 2026-02-05",
+   "official_url": null,
+   "note": ""
+  },
+  {
+   "jurisdiction": "IL",
+   "number": "HB 4663",
+   "session": "104th GA",
+   "status_note": "re-referred to Rules 2026-03-27",
+   "official_url": "https://ilga.gov/Legislation/BillStatus?DocTypeID=HB&DocNum=4663&GAID=18&SessionID=114",
+   "note": ""
+  },
+  {
+   "jurisdiction": "IL",
+   "number": "HB 5103",
+   "session": "104th GA",
+   "status_note": "introduced 2026-02-10",
+   "official_url": null,
+   "note": ""
+  },
+  {
+   "jurisdiction": "IL",
+   "number": "HB 3044",
+   "session": "104th GA",
+   "status_note": "would prohibit Level 3-5 vehicles",
+   "official_url": null,
+   "note": ""
+  },
+  {
+   "jurisdiction": "KY",
+   "number": "HB 223",
+   "session": "2026RS",
+   "status_note": "to Transportation (H) 2026-01-14",
+   "official_url": "https://apps.legislature.ky.gov/record/26rs/hb223.html",
+   "note": ""
+  },
+  {
+   "jurisdiction": "LA",
+   "number": "SB 133",
+   "session": "2026",
+   "status_note": "enacted as Act 464, chaptered 2026-05-29",
+   "official_url": "",
+   "note": "Title concerns commercial vehicle parking; AV provisions are in the body, so keyword search on titles cannot find it"
+  },
+  {
+   "jurisdiction": "MA",
+   "number": "S 2379",
+   "session": "194th",
+   "status_note": "referred to Joint Committee on Transportation",
+   "official_url": "https://malegislature.gov/Bills/194/S2379",
+   "note": ""
+  },
+  {
+   "jurisdiction": "MD",
+   "number": "SB 909",
+   "session": "2026RS",
+   "status_note": "first reading 2026-02-06",
+   "official_url": "https://mgaleg.maryland.gov/mgawebsite/Legislation/Details/sb0909",
+   "note": ""
+  },
+  {
+   "jurisdiction": "MD",
+   "number": "HB 1295",
+   "session": "2026RS",
+   "status_note": "first reading 2026-02-12",
+   "official_url": "https://mgaleg.maryland.gov/mgawebsite/Legislation/Details/hb1295?ys=2026rs",
+   "note": ""
+  },
+  {
+   "jurisdiction": "MN",
+   "number": "HF 3513",
+   "session": "94th",
+   "status_note": "failed in committee 2026-03-04, laid over",
+   "official_url": "https://www.revisor.mn.gov/bills/94/2026/0/HF/3513/",
+   "note": ""
+  },
+  {
+   "jurisdiction": "MN",
+   "number": "HF 4216",
+   "session": "94th",
+   "status_note": "introduced",
+   "official_url": "https://www.revisor.mn.gov/bills/94/2026/0/HF/4216/versions/0/",
+   "note": ""
+  },
+  {
+   "jurisdiction": "MN",
+   "number": "SF 4010",
+   "session": "94th",
+   "status_note": "introduced",
+   "official_url": "https://www.revisor.mn.gov/bills/94/2026/0/SF/4010/versions/latest/",
+   "note": ""
+  },
+  {
+   "jurisdiction": "MO",
+   "number": "HB 2069",
+   "session": "2026",
+   "status_note": "passed House 96-48 on 2026-03-12; Senate committee do-pass 2026-04-20",
+   "official_url": "https://documents.house.mo.gov/billtracking/bills261/sumpdf/HB2069C.pdf",
+   "note": ""
+  },
+  {
+   "jurisdiction": "MO",
+   "number": "SB 1050",
+   "session": "2026",
+   "status_note": "companion bill",
+   "official_url": null,
+   "note": ""
+  },
+  {
+   "jurisdiction": "MS",
+   "number": "SB 2269",
+   "session": "2026",
+   "status_note": "signed by Governor 2026-03-13",
+   "official_url": "",
+   "note": "Extends the AV law-enforcement-plan repealer to 2029"
+  },
+  {
+   "jurisdiction": "NJ",
+   "number": "S 1677",
+   "session": "2026-27",
+   "status_note": "Senate Transportation substitute adopted 2026-05-11",
+   "official_url": "https://pub.njleg.gov/Bills/2026/S2000/1677_I1.HTM",
+   "note": ""
+  },
+  {
+   "jurisdiction": "NJ",
+   "number": "A 3968",
+   "session": "2026-27",
+   "status_note": "Assembly committee substitute adopted",
+   "official_url": "https://pub.njleg.gov/Bills/2026/A4000/3968_I1.HTM",
+   "note": ""
+  },
+  {
+   "jurisdiction": "NJ",
+   "number": "A 768",
+   "session": "2026-27",
+   "status_note": "introduced",
+   "official_url": "https://pub.njleg.gov/Bills/2026/A1000/768_I1.HTM",
+   "note": ""
+  },
+  {
+   "jurisdiction": "NY",
+   "number": "S 10473",
+   "session": "2025-26",
+   "status_note": "referred to Transportation 2026-05-15",
+   "official_url": "https://www.nysenate.gov/legislation/bills/2025/S10473",
+   "note": ""
+  },
+  {
+   "jurisdiction": "NY",
+   "number": "S 10413",
+   "session": "2025-26",
+   "status_note": "referred to Transportation 2026-05-15",
+   "official_url": "https://www.nysenate.gov/legislation/bills/2025/S10413",
+   "note": ""
+  },
+  {
+   "jurisdiction": "OR",
+   "number": "HB 4085",
+   "session": "2026R1",
+   "status_note": "in committee",
+   "official_url": "https://olis.oregonlegislature.gov/liz/2026R1/Measures/Overview/HB4085",
+   "note": ""
+  },
+  {
+   "jurisdiction": "PA",
+   "number": "HR 563",
+   "session": "2025-26",
+   "status_note": "reported as amended 2026-09-30 (study resolution)",
+   "official_url": "https://www.palegis.us/legislation/bills/bill-info?SessYr=2025&SessInd=0&BillBody=H&BillType=R&BillNum=563",
+   "note": ""
+  },
+  {
+   "jurisdiction": "TN",
+   "number": "SB 2231",
+   "session": "114th GA",
+   "status_note": "enacted 2026: traffic violations by autonomous vehicles",
+   "official_url": "https://capitol.tn.gov/Archives/Joint/publications/2026%20DRAFT.pdf",
+   "note": "Also HB 2535"
+  },
+  {
+   "jurisdiction": "TX",
+   "number": "SB 2807",
+   "session": "89R (2025)",
+   "status_note": "enacted 2025-06-20, effective 2025-09-01",
+   "official_url": "https://capitol.texas.gov/tlodocs/89R/billtext/pdf/SB02807F.pdf",
+   "note": "Texas has no 2026 regular session; 2025 is the latest"
+  },
+  {
+   "jurisdiction": "UT",
+   "number": "SB 292",
+   "session": "2026GS",
+   "status_note": "second substitute 2026-03-04",
+   "official_url": "https://le.utah.gov/billlist.jsp?session=2026GS",
+   "note": ""
+  },
+  {
+   "jurisdiction": "UT",
+   "number": "HB 581",
+   "session": "2026GS",
+   "status_note": "substitutes",
+   "official_url": "https://le.utah.gov/billlist.jsp?session=2026GS",
+   "note": ""
+  },
+  {
+   "jurisdiction": "VA",
+   "number": "HB 1124",
+   "session": "2026",
+   "status_note": "enacted, Chapter 738, approved 2026-04-13 (workforce-impact study)",
+   "official_url": "https://lis.virginia.gov/bill-details/20261/HB1124/text/CHAP0738",
+   "note": ""
+  },
+  {
+   "jurisdiction": "VA",
+   "number": "HB 1125",
+   "session": "2026",
+   "status_note": "commercial AV framework; fate unconfirmed",
+   "official_url": "https://lis.virginia.gov/bill-details/20261/HB1125/text/HB1125HC1",
+   "note": ""
+  },
+  {
+   "jurisdiction": "WA",
+   "number": "SB 6243",
+   "session": "2025-26",
+   "status_note": "referred to Transportation 2026-01-20",
+   "official_url": "https://app.leg.wa.gov/billsummary?Year=2025&BillNumber=6243",
+   "note": ""
+  },
+  {
+   "jurisdiction": "WI",
+   "number": "SB 831",
+   "session": "2025-26",
+   "status_note": "failed to pass 2026-03-23",
+   "official_url": "https://docs.legis.wisconsin.gov/2025/proposals/sb831",
+   "note": ""
+  },
+  {
+   "jurisdiction": "WI",
+   "number": "AB 848",
+   "session": "2025-26",
+   "status_note": "failed to pass 2026-03-23",
+   "official_url": "https://docs.legis.wisconsin.gov/2025/proposals/ab848",
+   "note": ""
+  }
+ ]
+}

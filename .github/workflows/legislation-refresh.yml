@@ -53,6 +53,12 @@ jobs:
         run: |
           python3 scripts/test-legislation-supplement.py
           python3 scripts/legislation-supplement.py --open-issues
+      - name: Known-bills check (alerts if an officially confirmed AV bill is missing from the index)
+        if: ${{ env.OPENSTATES_API_KEY != '' }}
+        run: |
+          python3 scripts/test-known-bills.py
+          python3 scripts/check-known-bills.py --open-issues
+
       - name: Validate refreshed index
         if: ${{ env.OPENSTATES_API_KEY != '' }}
         run: node scripts/validate-legislation-data.mjs public/data/legislation_tracker.json
