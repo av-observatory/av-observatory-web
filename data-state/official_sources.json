@@ -1,311 +1,311 @@
 {
- "note": "Official legislature entry points. Domain-level only; the docket sweep searches each for autonomous-vehicle bills. rotation_group (0-2) decides which day-of-year group a jurisdiction is swept on, so every jurisdiction is checked every 3 days.",
- "jurisdictions": [
-  {
-   "code": "AK",
-   "name": "Alaska",
-   "official_site": "https://www.akleg.gov/",
-   "rotation_group": 0
-  },
-  {
-   "code": "AL",
-   "name": "Alabama",
-   "official_site": "https://alison.legislature.state.al.us/",
-   "rotation_group": 1
-  },
-  {
-   "code": "AR",
-   "name": "Arkansas",
-   "official_site": "https://arkleg.state.ar.us/",
-   "rotation_group": 2
-  },
-  {
-   "code": "AZ",
-   "name": "Arizona",
-   "official_site": "https://www.azleg.gov/",
-   "rotation_group": 0
-  },
-  {
-   "code": "CA",
-   "name": "California",
-   "official_site": "https://leginfo.legislature.ca.gov/",
-   "rotation_group": 1
-  },
-  {
-   "code": "CO",
-   "name": "Colorado",
-   "official_site": "https://leg.colorado.gov/",
-   "rotation_group": 2
-  },
-  {
-   "code": "CT",
-   "name": "Connecticut",
-   "official_site": "https://www.cga.ct.gov/",
-   "rotation_group": 0
-  },
-  {
-   "code": "DC",
-   "name": "District of Columbia",
-   "official_site": "https://lims.dccouncil.gov/",
-   "rotation_group": 1
-  },
-  {
-   "code": "DE",
-   "name": "Delaware",
-   "official_site": "https://legis.delaware.gov/",
-   "rotation_group": 2
-  },
-  {
-   "code": "FL",
-   "name": "Florida",
-   "official_site": "https://www.flsenate.gov/",
-   "rotation_group": 0
-  },
-  {
-   "code": "GA",
-   "name": "Georgia",
-   "official_site": "https://www.legis.ga.gov/",
-   "rotation_group": 1
-  },
-  {
-   "code": "HI",
-   "name": "Hawaii",
-   "official_site": "https://www.capitol.hawaii.gov/",
-   "rotation_group": 2
-  },
-  {
-   "code": "IA",
-   "name": "Iowa",
-   "official_site": "https://www.legis.iowa.gov/",
-   "rotation_group": 0
-  },
-  {
-   "code": "ID",
-   "name": "Idaho",
-   "official_site": "https://legislature.idaho.gov/",
-   "rotation_group": 1
-  },
-  {
-   "code": "IL",
-   "name": "Illinois",
-   "official_site": "https://www.ilga.gov/",
-   "rotation_group": 2
-  },
-  {
-   "code": "IN",
-   "name": "Indiana",
-   "official_site": "https://iga.in.gov/",
-   "rotation_group": 0
-  },
-  {
-   "code": "KS",
-   "name": "Kansas",
-   "official_site": "https://www.kslegislature.gov/",
-   "rotation_group": 1
-  },
-  {
-   "code": "KY",
-   "name": "Kentucky",
-   "official_site": "https://legislature.ky.gov/",
-   "rotation_group": 2
-  },
-  {
-   "code": "LA",
-   "name": "Louisiana",
-   "official_site": "https://legis.la.gov/",
-   "rotation_group": 0
-  },
-  {
-   "code": "MA",
-   "name": "Massachusetts",
-   "official_site": "https://malegislature.gov/",
-   "rotation_group": 1
-  },
-  {
-   "code": "MD",
-   "name": "Maryland",
-   "official_site": "https://mgaleg.maryland.gov/",
-   "rotation_group": 2
-  },
-  {
-   "code": "ME",
-   "name": "Maine",
-   "official_site": "https://legislature.maine.gov/",
-   "rotation_group": 0
-  },
-  {
-   "code": "MI",
-   "name": "Michigan",
-   "official_site": "https://www.legislature.mi.gov/",
-   "rotation_group": 1
-  },
-  {
-   "code": "MN",
-   "name": "Minnesota",
-   "official_site": "https://www.revisor.mn.gov/",
-   "rotation_group": 2
-  },
-  {
-   "code": "MO",
-   "name": "Missouri",
-   "official_site": "https://www.house.mo.gov/",
-   "rotation_group": 0
-  },
-  {
-   "code": "MS",
-   "name": "Mississippi",
-   "official_site": "https://billstatus.ls.state.ms.us/",
-   "rotation_group": 1
-  },
-  {
-   "code": "MT",
-   "name": "Montana",
-   "official_site": "https://leg.mt.gov/",
-   "rotation_group": 2
-  },
-  {
-   "code": "NC",
-   "name": "North Carolina",
-   "official_site": "https://www.ncleg.gov/",
-   "rotation_group": 0
-  },
-  {
-   "code": "ND",
-   "name": "North Dakota",
-   "official_site": "https://ndlegis.gov/",
-   "rotation_group": 1
-  },
-  {
-   "code": "NE",
-   "name": "Nebraska",
-   "official_site": "https://nebraskalegislature.gov/",
-   "rotation_group": 2
-  },
-  {
-   "code": "NH",
-   "name": "New Hampshire",
-   "official_site": "https://gc.nh.gov/",
-   "rotation_group": 0
-  },
-  {
-   "code": "NJ",
-   "name": "New Jersey",
-   "official_site": "https://www.njleg.state.nj.us/",
-   "rotation_group": 1
-  },
-  {
-   "code": "NM",
-   "name": "New Mexico",
-   "official_site": "https://www.nmlegis.gov/",
-   "rotation_group": 2
-  },
-  {
-   "code": "NV",
-   "name": "Nevada",
-   "official_site": "https://www.leg.state.nv.us/",
-   "rotation_group": 0
-  },
-  {
-   "code": "NY",
-   "name": "New York",
-   "official_site": "https://www.nysenate.gov/",
-   "rotation_group": 1
-  },
-  {
-   "code": "OH",
-   "name": "Ohio",
-   "official_site": "https://www.legislature.ohio.gov/",
-   "rotation_group": 2
-  },
-  {
-   "code": "OK",
-   "name": "Oklahoma",
-   "official_site": "https://www.oklegislature.gov/",
-   "rotation_group": 0
-  },
-  {
-   "code": "OR",
-   "name": "Oregon",
-   "official_site": "https://olis.oregonlegislature.gov/",
-   "rotation_group": 1
-  },
-  {
-   "code": "PA",
-   "name": "Pennsylvania",
-   "official_site": "https://www.legis.state.pa.us/",
-   "rotation_group": 2
-  },
-  {
-   "code": "RI",
-   "name": "Rhode Island",
-   "official_site": "https://www.rilegislature.gov/",
-   "rotation_group": 0
-  },
-  {
-   "code": "SC",
-   "name": "South Carolina",
-   "official_site": "https://www.scstatehouse.gov/",
-   "rotation_group": 1
-  },
-  {
-   "code": "SD",
-   "name": "South Dakota",
-   "official_site": "https://sdlegislature.gov/",
-   "rotation_group": 2
-  },
-  {
-   "code": "TN",
-   "name": "Tennessee",
-   "official_site": "https://wapp.capitol.tn.gov/",
-   "rotation_group": 0
-  },
-  {
-   "code": "TX",
-   "name": "Texas",
-   "official_site": "https://capitol.texas.gov/",
-   "rotation_group": 1
-  },
-  {
-   "code": "UT",
-   "name": "Utah",
-   "official_site": "https://le.utah.gov/",
-   "rotation_group": 2
-  },
-  {
-   "code": "VA",
-   "name": "Virginia",
-   "official_site": "https://lis.virginia.gov/",
-   "rotation_group": 0
-  },
-  {
-   "code": "VT",
-   "name": "Vermont",
-   "official_site": "https://legislature.vermont.gov/",
-   "rotation_group": 1
-  },
-  {
-   "code": "WA",
-   "name": "Washington",
-   "official_site": "https://app.leg.wa.gov/",
-   "rotation_group": 2
-  },
-  {
-   "code": "WI",
-   "name": "Wisconsin",
-   "official_site": "https://docs.legis.wisconsin.gov/",
-   "rotation_group": 0
-  },
-  {
-   "code": "WV",
-   "name": "West Virginia",
-   "official_site": "https://www.wvlegislature.gov/",
-   "rotation_group": 1
-  },
-  {
-   "code": "WY",
-   "name": "Wyoming",
-   "official_site": "https://wyoleg.gov/",
-   "rotation_group": 2
-  }
- ]
+  "note": "Mandatory exhaustive official-source sweep: every run must independently search the official legislature of all 50 states and the District of Columbia (51 jurisdictions), covering current and most recent sessions, bill titles and full text. Aggregators such as Open States may suggest candidates but NEVER substitute for jurisdiction-by-jurisdiction official searches or count as a completed check. Record each jurisdiction as checked only after official sources have actually been searched; otherwise record attempted and an unreadable or incomplete reason, leaving checked unchanged. rotation_group is a legacy metadata field retained for compatibility and MUST NOT restrict the scope of any run.",
+  "jurisdictions": [
+    {
+      "code": "AK",
+      "name": "Alaska",
+      "official_site": "https://www.akleg.gov/",
+      "rotation_group": 0
+    },
+    {
+      "code": "AL",
+      "name": "Alabama",
+      "official_site": "https://alison.legislature.state.al.us/",
+      "rotation_group": 1
+    },
+    {
+      "code": "AR",
+      "name": "Arkansas",
+      "official_site": "https://arkleg.state.ar.us/",
+      "rotation_group": 2
+    },
+    {
+      "code": "AZ",
+      "name": "Arizona",
+      "official_site": "https://www.azleg.gov/",
+      "rotation_group": 0
+    },
+    {
+      "code": "CA",
+      "name": "California",
+      "official_site": "https://leginfo.legislature.ca.gov/",
+      "rotation_group": 1
+    },
+    {
+      "code": "CO",
+      "name": "Colorado",
+      "official_site": "https://leg.colorado.gov/",
+      "rotation_group": 2
+    },
+    {
+      "code": "CT",
+      "name": "Connecticut",
+      "official_site": "https://www.cga.ct.gov/",
+      "rotation_group": 0
+    },
+    {
+      "code": "DC",
+      "name": "District of Columbia",
+      "official_site": "https://lims.dccouncil.gov/",
+      "rotation_group": 1
+    },
+    {
+      "code": "DE",
+      "name": "Delaware",
+      "official_site": "https://legis.delaware.gov/",
+      "rotation_group": 2
+    },
+    {
+      "code": "FL",
+      "name": "Florida",
+      "official_site": "https://www.flsenate.gov/",
+      "rotation_group": 0
+    },
+    {
+      "code": "GA",
+      "name": "Georgia",
+      "official_site": "https://www.legis.ga.gov/",
+      "rotation_group": 1
+    },
+    {
+      "code": "HI",
+      "name": "Hawaii",
+      "official_site": "https://www.capitol.hawaii.gov/",
+      "rotation_group": 2
+    },
+    {
+      "code": "IA",
+      "name": "Iowa",
+      "official_site": "https://www.legis.iowa.gov/",
+      "rotation_group": 0
+    },
+    {
+      "code": "ID",
+      "name": "Idaho",
+      "official_site": "https://legislature.idaho.gov/",
+      "rotation_group": 1
+    },
+    {
+      "code": "IL",
+      "name": "Illinois",
+      "official_site": "https://www.ilga.gov/",
+      "rotation_group": 2
+    },
+    {
+      "code": "IN",
+      "name": "Indiana",
+      "official_site": "https://iga.in.gov/",
+      "rotation_group": 0
+    },
+    {
+      "code": "KS",
+      "name": "Kansas",
+      "official_site": "https://www.kslegislature.gov/",
+      "rotation_group": 1
+    },
+    {
+      "code": "KY",
+      "name": "Kentucky",
+      "official_site": "https://legislature.ky.gov/",
+      "rotation_group": 2
+    },
+    {
+      "code": "LA",
+      "name": "Louisiana",
+      "official_site": "https://legis.la.gov/",
+      "rotation_group": 0
+    },
+    {
+      "code": "MA",
+      "name": "Massachusetts",
+      "official_site": "https://malegislature.gov/",
+      "rotation_group": 1
+    },
+    {
+      "code": "MD",
+      "name": "Maryland",
+      "official_site": "https://mgaleg.maryland.gov/",
+      "rotation_group": 2
+    },
+    {
+      "code": "ME",
+      "name": "Maine",
+      "official_site": "https://legislature.maine.gov/",
+      "rotation_group": 0
+    },
+    {
+      "code": "MI",
+      "name": "Michigan",
+      "official_site": "https://www.legislature.mi.gov/",
+      "rotation_group": 1
+    },
+    {
+      "code": "MN",
+      "name": "Minnesota",
+      "official_site": "https://www.revisor.mn.gov/",
+      "rotation_group": 2
+    },
+    {
+      "code": "MO",
+      "name": "Missouri",
+      "official_site": "https://www.house.mo.gov/",
+      "rotation_group": 0
+    },
+    {
+      "code": "MS",
+      "name": "Mississippi",
+      "official_site": "https://billstatus.ls.state.ms.us/",
+      "rotation_group": 1
+    },
+    {
+      "code": "MT",
+      "name": "Montana",
+      "official_site": "https://leg.mt.gov/",
+      "rotation_group": 2
+    },
+    {
+      "code": "NC",
+      "name": "North Carolina",
+      "official_site": "https://www.ncleg.gov/",
+      "rotation_group": 0
+    },
+    {
+      "code": "ND",
+      "name": "North Dakota",
+      "official_site": "https://ndlegis.gov/",
+      "rotation_group": 1
+    },
+    {
+      "code": "NE",
+      "name": "Nebraska",
+      "official_site": "https://nebraskalegislature.gov/",
+      "rotation_group": 2
+    },
+    {
+      "code": "NH",
+      "name": "New Hampshire",
+      "official_site": "https://gc.nh.gov/",
+      "rotation_group": 0
+    },
+    {
+      "code": "NJ",
+      "name": "New Jersey",
+      "official_site": "https://www.njleg.state.nj.us/",
+      "rotation_group": 1
+    },
+    {
+      "code": "NM",
+      "name": "New Mexico",
+      "official_site": "https://www.nmlegis.gov/",
+      "rotation_group": 2
+    },
+    {
+      "code": "NV",
+      "name": "Nevada",
+      "official_site": "https://www.leg.state.nv.us/",
+      "rotation_group": 0
+    },
+    {
+      "code": "NY",
+      "name": "New York",
+      "official_site": "https://www.nysenate.gov/",
+      "rotation_group": 1
+    },
+    {
+      "code": "OH",
+      "name": "Ohio",
+      "official_site": "https://www.legislature.ohio.gov/",
+      "rotation_group": 2
+    },
+    {
+      "code": "OK",
+      "name": "Oklahoma",
+      "official_site": "https://www.oklegislature.gov/",
+      "rotation_group": 0
+    },
+    {
+      "code": "OR",
+      "name": "Oregon",
+      "official_site": "https://olis.oregonlegislature.gov/",
+      "rotation_group": 1
+    },
+    {
+      "code": "PA",
+      "name": "Pennsylvania",
+      "official_site": "https://www.legis.state.pa.us/",
+      "rotation_group": 2
+    },
+    {
+      "code": "RI",
+      "name": "Rhode Island",
+      "official_site": "https://www.rilegislature.gov/",
+      "rotation_group": 0
+    },
+    {
+      "code": "SC",
+      "name": "South Carolina",
+      "official_site": "https://www.scstatehouse.gov/",
+      "rotation_group": 1
+    },
+    {
+      "code": "SD",
+      "name": "South Dakota",
+      "official_site": "https://sdlegislature.gov/",
+      "rotation_group": 2
+    },
+    {
+      "code": "TN",
+      "name": "Tennessee",
+      "official_site": "https://wapp.capitol.tn.gov/",
+      "rotation_group": 0
+    },
+    {
+      "code": "TX",
+      "name": "Texas",
+      "official_site": "https://capitol.texas.gov/",
+      "rotation_group": 1
+    },
+    {
+      "code": "UT",
+      "name": "Utah",
+      "official_site": "https://le.utah.gov/",
+      "rotation_group": 2
+    },
+    {
+      "code": "VA",
+      "name": "Virginia",
+      "official_site": "https://lis.virginia.gov/",
+      "rotation_group": 0
+    },
+    {
+      "code": "VT",
+      "name": "Vermont",
+      "official_site": "https://legislature.vermont.gov/",
+      "rotation_group": 1
+    },
+    {
+      "code": "WA",
+      "name": "Washington",
+      "official_site": "https://app.leg.wa.gov/",
+      "rotation_group": 2
+    },
+    {
+      "code": "WI",
+      "name": "Wisconsin",
+      "official_site": "https://docs.legis.wisconsin.gov/",
+      "rotation_group": 0
+    },
+    {
+      "code": "WV",
+      "name": "West Virginia",
+      "official_site": "https://www.wvlegislature.gov/",
+      "rotation_group": 1
+    },
+    {
+      "code": "WY",
+      "name": "Wyoming",
+      "official_site": "https://wyoleg.gov/",
+      "rotation_group": 2
+    }
+  ]
 }
