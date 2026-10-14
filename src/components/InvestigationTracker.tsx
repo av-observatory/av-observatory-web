@@ -50,7 +50,7 @@ export default function InvestigationTracker(){
             <span className="text-xs text-neutral-500">{r.action}</span><span className="text-xs font-mono">{r.id}</span>
           </div>
           <h2 className="text-xl font-semibold text-[#0b1d33] mt-2">{r.company} · {r.subject}</h2>
-          <p className="text-sm text-neutral-700 mt-2 leading-relaxed">{r.summary}</p>
+          <p className="text-sm text-neutral-700 mt-2 leading-relaxed line-clamp-5">{r.summary}</p>
           </div><a className="text-sm text-[#184f95] underline" href={r.source} target="_blank" rel="noreferrer">{r.source_label??"NHTSA"} ↗</a>
         </div>
         <div className="grid sm:grid-cols-3 gap-3 mt-4 text-sm">
@@ -64,7 +64,7 @@ export default function InvestigationTracker(){
           <div><div className="flex flex-wrap gap-2 items-center"><span className="rounded-full bg-[#fff1d9] text-[#76500d] px-2 py-1 text-xs font-semibold">Safety Recall</span><span className="text-xs font-mono">{r.id}</span></div><h2 className="text-xl font-semibold text-[#0b1d33] mt-2">{r.company} · {r.subject}</h2></div>
           <a href={r.source} target="_blank" rel="noreferrer" className="text-sm text-[#184f95] underline">{r.source_label} ↗</a>
         </div>
-        <p className="text-sm text-neutral-700 mt-2">{r.summary}</p>
+        <p className="text-sm text-neutral-700 mt-2 leading-relaxed line-clamp-5">{r.summary}</p>
         <div className="grid sm:grid-cols-3 gap-3 mt-4 text-sm">
           <div><span className="text-xs text-neutral-500">Reported to NHTSA</span><div className="font-semibold">{formatDate(r.reported)}</div></div>
           <div><span className="text-xs text-neutral-500">Recall / remedy</span><div>{r.status}</div></div>
