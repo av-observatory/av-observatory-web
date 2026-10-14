@@ -25,6 +25,7 @@ function billStageLabel(bill:Bill) {
   if(["signed","enacted","chaptered"].includes(bill.status)) return "Enacted";
   if(bill.status === "to_governor") return "To Governor";
   if(bill.status === "passed") return "Passed Legislature";
+  if(bill.status === "engrossed") return "Passed First Chamber";
   return statusLabel(bill.status);
 }
 function billStatusTone(status:string) {
@@ -45,7 +46,7 @@ function StateTileMap({
   return <div>
     <div className="flex flex-wrap items-center justify-between gap-3 mb-3">
       <button type="button" onClick={()=>onSelect(null)} className={`rounded-full border px-3 py-1.5 text-sm font-semibold ${selected===null?"bg-[#123b69] border-[#123b69] text-white":"bg-white border-neutral-200 text-[#123b69]"}`}>All States</button>
-      <span className="text-xs text-neutral-500">Darker tiles = more current-session AV measures</span>
+      <span className="text-xs text-neutral-500">Darker tiles = more tracked AV bills</span>
     </div>
     <div className="overflow-x-auto pb-1">
       <div className="mx-auto grid w-max grid-cols-[repeat(12,44px)] grid-rows-[repeat(9,44px)] gap-1.5 px-1" aria-label="United States legislation tile map">
@@ -57,7 +58,7 @@ function StateTileMap({
             key={code}
             type="button"
             onClick={()=>onSelect(isSelected?null:code)}
-            title={`${names[code]??code}: ${count} current-session AV measure${count===1?"":"s"}`}
+            title={`${names[code]??code}: ${count} tracked AV bill${count===1?"":"s"}`}
             aria-pressed={isSelected}
             className={`h-11 w-11 rounded-md border text-[12px] font-bold leading-none transition hover:-translate-y-0.5 hover:shadow-sm ${isSelected?"ring-2 ring-[#0b1d33] ring-offset-1":""} ${count===0?"text-neutral-500":"text-[#0b1d33]"}`}
             style={{
@@ -116,9 +117,9 @@ export function StateLegislationPage() {
     .sort((a,b)=>(b.date??"").localeCompare(a.date??"")) : [];
 
   const featuredBills = visibleBills.slice(0,3);
-  const nationalStateCount = Object.values(counts).filter(Boolean).length;
-  const panelProposedCount = selected ? proposedBills.filter(b=>b.jurisdiction===selected).length : proposedBills.length;
-  const panelEnactedCount = selected ? enacted.length : policy.state_events.filter(e=>e.instrument==="legislation" && CURRENT_LAW_STATUSES.has(e.status)).length;
+  const panelTotalCount = selected ? (counts[selected] ?? 0) : currentBills.length;
+  const panelNotEnactedCount = selected ? proposedBills.filter(b=>b.jurisdiction===selected).length : proposedBills.length;
+  const panelEnactedCount = panelTotalCount - panelNotEnactedCount;
 
   return <main className="max-w-7xl px-5 sm:px-8 py-8">
     <p className="eyebrow">Policy Trackers / State</p>
@@ -133,9 +134,10 @@ export function StateLegislationPage() {
         <div className="min-w-0 border-t border-neutral-200 pt-4 lg:border-l lg:border-t-0 lg:pl-5 lg:pt-0" aria-live="polite">
           <div className="eyebrow">{selected ? "State overview" : "National overview"}</div>
           <h2 className="text-2xl font-semibold mt-2 text-[#0b1d33]">{selected ? names[selected] : "United States"}</h2>
-          <div className="grid grid-cols-2 gap-4 mt-5 pb-4 border-b border-neutral-200">
-            <div><div className="text-2xl font-semibold text-[#0b1d33] tabular-nums">{panelProposedCount}</div><div className="text-xs text-neutral-500 mt-1">Proposed measures</div></div>
-            <div><div className="text-2xl font-semibold text-[#0b1d33] tabular-nums">{selected ? panelEnactedCount : nationalStateCount}</div><div className="text-xs text-neutral-500 mt-1">{selected ? "Indexed enacted laws" : "States with measures"}</div></div>
+          <div className="grid grid-cols-3 gap-3 mt-5 pb-4 border-b border-neutral-200">
+            <div><div className="text-2xl font-semibold text-[#0b1d33] tabular-nums">{panelTotalCount}</div><div className="text-xs text-neutral-500 mt-1">Tracked bills</div></div>
+            <div><div className="text-2xl font-semibold text-[#0b1d33] tabular-nums">{panelNotEnactedCount}</div><div className="text-xs text-neutral-500 mt-1">Not enacted</div></div>
+            <div><div className="text-2xl font-semibold text-[#0b1d33] tabular-nums">{panelEnactedCount}</div><div className="text-xs text-neutral-500 mt-1">Enacted</div></div>
           </div>
           <div className="mt-4">
             <h3 className="text-sm font-semibold text-[#0b1d33]">Recent legislative activity</h3>
