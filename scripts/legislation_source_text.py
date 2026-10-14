@@ -81,7 +81,7 @@ def state_bill_version_links(row):
                         links.append(link)
         return links
     except Exception as exc:
-        print(f"Open States versions lookup failed for {row.get('id')}: {type(exc).__name__}")
+        print(f"Open States versions lookup failed for {row.get('id')}: {type(exc).__name__} {getattr(exc, 'code', '')}")
         return []
 
 def federal_register_text_url(row):
