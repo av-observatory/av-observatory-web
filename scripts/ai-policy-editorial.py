@@ -78,6 +78,8 @@ def specific_to_record(row,kind,draft):
     return bool(title_terms&summary_terms)
 
 def get_source(row,kind):
+    if kind.startswith("nhtsa_"):
+        row={**row,"source_url":row.get("source") or row.get("source_url")}
     text,provenance,url=primary_text(row,kind)
     if text:return text,provenance,url
     # A feed abstract is not a substitute for official bill text.
@@ -120,6 +122,10 @@ def summarize(row,kind):
     source=select_relevant_excerpt(source,row,kind)
     current_status=str(row.get("status") or "")
     status_note=("This is NOT enacted law. Describe ALL substantive provisions with conditional language such as would or proposes. Never claim this law already requires something." if kind.endswith("_bill") and current_status not in ("enacted","signed","chaptered") else "Clearly distinguish the measure's legal status.")
+    if kind=="nhtsa_investigation":
+        status_note="This is an NHTSA investigation, not a finding of defect or fault. State the alleged problem, vehicles affected, and the investigation's scope; distinguish reported events from verified conclusions."
+    elif kind=="nhtsa_recall":
+        status_note="This is an NHTSA recall record. Describe the specific reported defect, its potential safety consequence and the documented remedy, without implying a completion rate."
     prompt=(status_note+" You are an impartial legislative and regulatory researcher. Write a readable 2–3 sentence summary, "
       "about 35–65 words, grounded EXCLUSIVELY in the supplied original bill text or official rule. "
       "Explain what it proposes or changes, which vehicles or actors it affects, and any important reporting duties, "
@@ -182,7 +188,9 @@ def main():
     for filename,groups in [
         ("public/data/legislation_tracker.json",[("federal","federal_bill"),("state_bills","state_bill")]),
         ("public/data/policy_tracker.json",[("federal","policy_rule"),("federal_oversight","policy_rule"),
-            ("state_events","state_regulation"),("city_events","state_regulation"),("states","state_framework")])]:
+            ("state_events","state_regulation"),("city_events","state_regulation"),("states","state_framework")]),
+        ("public/data/nhtsa_investigations.json",[("investigations","nhtsa_investigation")]),
+        ("public/data/nhtsa_av_recalls.json",[("recalls","nhtsa_recall")])]:
         path=ROOT/filename
         data=json.loads(path.read_text())
         for field,kind in groups:
