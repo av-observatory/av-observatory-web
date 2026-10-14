@@ -37,7 +37,7 @@ RELEVANT = re.compile(
     re.I,
 )
 EXCLUDE = re.compile(r"\b(?:autonomous region|autonomous university|autonomous drone|unmanned aircraft)\b", re.I)
-NON_DRIVING_AVIS = re.compile(r"\b(?:automated vehicle identification systems?|automated vehicle information systems?|Kentucky Automated Vehicle Information System)\b", re.I)
+NON_DRIVING_AVIS = re.compile(r"\b(?:automated vehicle identification systems?|automated vehicle information systems?|automated vehicle noise enforcement systems?|Kentucky Automated Vehicle Information System)\b", re.I)
 
 def is_relevant_av_bill(text):
     # Automated Vehicle Identification Systems are traffic cameras / DMV IT,
