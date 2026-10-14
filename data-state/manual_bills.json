@@ -16,7 +16,10 @@
     "last_action": "Public hearing held by the Committee on Transportation and the Environment.",
     "session": "26",
     "progress_stage": "committee",
-    "stage_dates": {"introduced": "2026-05-01", "committee": "2026-05-05"},
+    "stage_dates": {
+      "introduced": "2026-05-01",
+      "committee": "2026-05-05"
+    },
     "hearings": [
       {
         "date": "2026-07-13",
@@ -26,5 +29,30 @@
     ],
     "source_url": "https://lims.dccouncil.gov/Legislation/B26-0684",
     "repository_url": "https://lims.dccouncil.gov/Legislation/B26-0684"
+  },
+  {
+    "id": "il-hb3044-104",
+    "jurisdiction": "IL",
+    "number": "HB 3044",
+    "title": "Autonomous Vehicle Requirements",
+    "summary": "As introduced, the bill would require manufacturer documentation and Department of Transportation review of automated driving capabilities, allow the sale and registration of vehicles classified at Level 2 subject to annual owner reporting, and prohibit the sale or public-road automated operation of vehicles classified at Levels 3, 4, or 5.",
+    "takeaway": "Would restrict higher-level automated driving systems in Illinois and introduce manufacturer review and owner reporting requirements.",
+    "source_summary": "Illinois General Assembly official HB3044 synopsis as introduced and bill status/actions.",
+    "summary_method": "Maintainer-written from official Illinois General Assembly synopsis and action history.",
+    "summary_quality": "reviewed_substantive",
+    "summary_reviewed_at": "2026-10-14",
+    "status": "introduced",
+    "measure_type": "bill",
+    "last_action_date": "2025-03-21",
+    "last_action": "House: Rule 19(a) / Re-referred to Rules Committee.",
+    "session": "104",
+    "progress_stage": "committee",
+    "stage_dates": {
+      "introduced": "2025-02-06",
+      "committee": "2025-03-04"
+    },
+    "hearings": [],
+    "source_url": "https://www.ilga.gov/Legislation/BillStatus?DocNum=3044&DocTypeID=HB&GAID=18&LegId=161321&SessionID=114",
+    "repository_url": "https://www.ilga.gov/Legislation/BillStatus?DocNum=3044&DocTypeID=HB&GAID=18&LegId=161321&SessionID=114"
   }
 ]
