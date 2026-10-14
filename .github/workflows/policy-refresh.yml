@@ -1,0 +1,78 @@
+name: Refresh policy tracker from official sources
+
+on:
+  schedule:
+    - cron: "23 8 */3 * *"   # every 3 days, so no dataset is older than 5 days
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "List candidates only; no model calls, no commits"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  issues: write
+  actions: write
+
+concurrency:
+  group: website-data-writers
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    env:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: "20"
+
+      - name: Check configuration
+        if: ${{ inputs.dry_run != true }}
+        run: |
+          if [ -z "$ANTHROPIC_API_KEY" ]; then
+            echo "::error::ANTHROPIC_API_KEY is not configured (gh secret set ANTHROPIC_API_KEY)."
+            exit 1
+          fi
+
+      - name: Safety tests
+        run: python3 scripts/test-policy-refresh.py
+
+      - name: Dry run (list candidates)
+        if: ${{ inputs.dry_run == true }}
+        run: python3 scripts/refresh-policy.py --dry-run
+
+      - name: Refresh policy tracker
+        if: ${{ inputs.dry_run != true }}
+        run: |
+          pip install --quiet anthropic
+          python3 scripts/refresh-policy.py --open-issues
+
+      - name: Validate and rebuild CSV companions
+        if: ${{ inputs.dry_run != true }}
+        run: |
+          node scripts/validate-policy-data.mjs
+          python3 scripts/export-data-csv.py
+          python3 scripts/export-data-csv.py --check
+
+      - name: Commit and deploy
+        if: ${{ inputs.dry_run != true }}
+        run: |
+          git config user.name "av-observatory-bot"
+          git config user.email "bot@av-observatory.org"
+          git add public/data data-state
+          if git diff --cached --quiet; then
+            echo "No policy changes."
+            exit 0
+          fi
+          git commit -m "data: refresh policy tracker from official sources"
+          git pull --rebase origin main
+          git push origin HEAD:main
+          gh workflow run pages.yml --ref main

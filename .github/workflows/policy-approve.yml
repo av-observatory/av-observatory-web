@@ -1,0 +1,59 @@
+name: Apply approved policy change
+
+on:
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: write
+  issues: write
+  actions: write
+
+concurrency:
+  group: website-data-writers
+  cancel-in-progress: false
+
+jobs:
+  approve:
+    # Only a "/approve" comment on a policy-review issue that the bot itself opened.
+    if: >-
+      github.event.issue.pull_request == null &&
+      github.event.issue.user.login == 'github-actions[bot]' &&
+      contains(github.event.issue.labels.*.name, 'policy-review') &&
+      github.event.comment.body == '/approve'
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      ISSUE: ${{ github.event.issue.number }}
+      COMMENTER: ${{ github.event.comment.user.login }}
+    steps:
+      - name: Require write access
+        run: |
+          perm=$(gh api "repos/$GITHUB_REPOSITORY/collaborators/$COMMENTER/permission" --jq .permission)
+          case "$perm" in admin|maintain|write) ;; *)
+            gh issue comment "$ISSUE" --body "Only maintainers can approve policy changes."
+            exit 1 ;; esac
+
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: "20"
+
+      - name: Apply, validate, publish
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+        run: |
+          printf '%s' "$ISSUE_BODY" > "$RUNNER_TEMP/issue.md"
+          python3 scripts/apply-policy-proposal.py "$RUNNER_TEMP/issue.md"
+          node scripts/validate-policy-data.mjs
+          python3 scripts/export-data-csv.py
+          python3 scripts/export-data-csv.py --check
+          git config user.name "av-observatory-bot"
+          git config user.email "bot@av-observatory.org"
+          git add public/data
+          git commit -m "data: apply maintainer-approved policy change (#$ISSUE)"
+          git pull --rebase origin main
+          git push origin HEAD:main
+          gh workflow run pages.yml --ref main
+          gh issue comment "$ISSUE" --body "Applied and deploying to the live site."
+          gh issue close "$ISSUE"
