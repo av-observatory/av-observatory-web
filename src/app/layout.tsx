@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Source_Sans_3, Geist_Mono } from "next/font/google";
 import { Sidebar } from "@/components/Sidebar";
 import Link from "next/link";
 import Script from "next/script";
 import "./globals.css";
 import { contentSecurityPolicy } from "@/lib/security";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const editorialSans = Source_Sans_3({
+  variable: "--font-editorial-sans",
   subsets: ["latin"],
 });
 
@@ -53,7 +53,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${editorialSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <head>
         <meta httpEquiv="Content-Security-Policy" content={contentSecurityPolicy()} />
