@@ -60,7 +60,7 @@ h1, h2, h3, h4 {
 h1 { line-height: 1.12; }
 h2 { line-height: 1.2; }
 body { line-height: 1.55; }
-button, input, select, textarea { font: inherit; }
+button, input, select, textarea { font-family: inherit; }
 
 /* Shared dashboard type scale: readable labels across cards, charts and controls. */
 .text-xs { font-size: 0.8125rem; line-height: 1.25rem; }
