@@ -32,7 +32,7 @@ def clean(raw):
 def fetch(url):
     if not url.startswith("https://"):return "","not_https"
     host=(urlparse(url).hostname or "").lower()
-    if not (host.endswith(".gov") or host in ("govinfo.gov","www.govinfo.gov","congress.gov","www.congress.gov")):
+    if not (host.endswith(".gov") or host.endswith(".us") or host in ("govinfo.gov","www.govinfo.gov","congress.gov","www.congress.gov")):
         return "","non_government_host"
     try:
         req=Request(url,headers={"User-Agent":"AVObservatory/1.0 (+https://av-observatory.com/)","Accept":"text/html,application/pdf,text/plain"})
