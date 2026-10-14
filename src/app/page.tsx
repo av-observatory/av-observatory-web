@@ -89,7 +89,7 @@ export default function HomePage() {
           {section.links.map(([label,href])=><Link key={href} href={href} className="flex items-center justify-between gap-3 px-5 py-3 text-sm font-semibold text-[#184f95] hover:bg-[#f5f9fc]"><span>{label}</span><span aria-hidden="true">→</span></Link>)}
         </div>
       </article>)}</div>
-      <div className="mt-6 text-sm text-neutral-600">Current bills indexed: {bills.federal.length} federal and {bills.state_bills.length} state records · Reviewed {policy.as_of}. <Link href="/downloads" className="text-[#184f95] underline">Download data →</Link></div>
+      <div className="mt-6 text-sm text-neutral-600">Current bills indexed: {bills.federal.length} federal and {bills.state_bills.length} state records · Legislation index updated {bills.as_of}. <Link href="/downloads" className="text-[#184f95] underline">Download data →</Link></div>
     </section>
 
 
