@@ -1,6 +1,6 @@
 export default function AboutPage() {
   return (
-    <div className="max-w-3xl px-8 py-8">
+    <div className="max-w-4xl px-5 sm:px-8 py-9">
       <h1 className="text-3xl font-semibold tracking-tight">About AV Observatory</h1>
       <p className="mt-6 text-neutral-700 leading-relaxed">
         AV Observatory is an independent national resource for understanding
@@ -9,14 +9,14 @@ export default function AboutPage() {
         into durable, reproducible measures of AV activity, deployment,
         safety, and community exposure.
       </p>
-      <p className="mt-4 text-neutral-700 leading-relaxed">
+      <p className="mt-5 text-neutral-700 leading-[1.75]">
         Coverage is designed to be national even when the underlying public
         data are not. Federal sources provide a common backbone; state-level
         systems add detail where reporting exists. California is currently
         the most data-rich state for passenger-service activity, while the
         Observatory's deployment and safety work spans the country.
       </p>
-      <p className="mt-4 text-neutral-700 leading-relaxed">
+      <p className="mt-5 text-neutral-700 leading-[1.75]">
         Every Observatory metric has a documented definition, formula, and
         source. Datasets are versioned and citable. Public government data is
         never gated — the Observatory's role is standardization,
@@ -31,21 +31,21 @@ export default function AboutPage() {
           <a href="/contact/" className="ml-1 font-semibold text-[#184f95] underline underline-offset-2">Get in touch.</a>
         </p>
       </section>
-      <section className="mt-9">
-        <p className="text-neutral-700 leading-relaxed">
+      <section className="mt-10 max-w-[68ch] border-t border-neutral-200 pt-7 text-[15px] sm:text-base leading-[1.75]">
+        <p className="text-neutral-700 leading-[1.75]">
           This site is managed by Dr. Matthew Raifman. Dr. Raifman is a multidisciplinary researcher and product manager working at the intersection of sustainable transportation, public health, and autonomous vehicle policy. He currently serves as the Research Lead for Policy and Autonomous Vehicles at UC Berkeley, where his research evaluates the real-world health and safety outcomes of emerging transportation technologies, infrastructure design, and infrastructure equity.
         </p>
-        <p className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm font-semibold">
+        <p className="mt-5 flex flex-wrap gap-x-6 gap-y-2 text-[14px] font-medium">
           <a href="https://www.linkedin.com/in/mraifman" target="_blank" rel="noopener noreferrer" className="text-[#184f95] underline underline-offset-2">LinkedIn ↗</a>
           <a href="https://curvesahead.substack.com/" target="_blank" rel="noopener noreferrer" className="text-[#184f95] underline underline-offset-2">Curves Ahead · Substack ↗</a>
         </p>
-        <p className="mt-4 text-neutral-700 leading-relaxed">
+        <p className="mt-5 text-neutral-700 leading-[1.75]">
           Prior to his time at UC Berkeley, his professional background bridged the gap between public policy, corporate technology, and international development. He served as a Senior Manager for City Solutions at Ford Smart Mobility, senior advisor at Johns Hopkins University, a Science and Technology Policy Fellow for the U.S. Department of Energy, the transportation lead within the Maryland Governor’s Office, and as a performance management lead in the President’s Office at the World Bank Group.
         </p>
-        <p className="mt-4 text-neutral-700 leading-relaxed">
+        <p className="mt-5 text-neutral-700 leading-[1.75]">
           Dr. Raifman holds a PhD in Environmental Health from the Boston University School of Public Health, a Master in Public Policy from the Harvard Kennedy School, and a Bachelor of Arts in Economics from Tufts University.
         </p>
-        <p className="mt-4 text-sm text-neutral-600 leading-relaxed font-semibold">
+        <p className="mt-8 border-t border-neutral-200 pt-4 text-xs leading-relaxed text-neutral-500 font-normal">
           This website is not affiliated with the University of California, and his title is used here only for identification purposes.
         </p>
       </section>
