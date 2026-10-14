@@ -30,7 +30,7 @@ function billStageLabel(bill:Bill) {
   if (status === "engrossed" || stage === "passed_first_chamber" || stage === "passed_chamber") return "Passed First Chamber";
   // Committee recommendations, amendments, hearings, study orders and
   // re-referrals do not constitute chamber passage.
-  if (stage === "committee" || stage === "referred" || Boolean(bill.stage_dates?.committee) ||
+  if (stage === "committee" || stage === "referred" || Boolean((bill.stage_dates as Record<string,string|undefined> | undefined)?.committee) ||
       /refer(?:red|ral)? to (?:the )?(?:committee|committees)|re-refer|committee report|comm report|study order/i.test(actions)) {
     return "Referred to Committee";
   }
