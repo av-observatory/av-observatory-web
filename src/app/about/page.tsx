@@ -32,8 +32,7 @@ export default function AboutPage() {
         </p>
       </section>
       <section className="mt-9">
-        <h2 className="text-xl font-semibold text-[#0b1d33]">About the Researcher</h2>
-        <p className="mt-4 text-neutral-700 leading-relaxed">
+        <p className="text-neutral-700 leading-relaxed">
           This site is managed by Dr. Matthew Raifman. Dr. Raifman is a multidisciplinary researcher and product manager working at the intersection of sustainable transportation, public health, and autonomous vehicle policy. He currently serves as the <strong>Research Lead for Policy and Autonomous Vehicles</strong> at UC Berkeley, where his research evaluates the real-world health and safety outcomes of emerging transportation technologies, infrastructure design, and infrastructure equity.
         </p>
         <p className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm font-semibold">
