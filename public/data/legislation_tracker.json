@@ -817,8 +817,8 @@
       "summary": "Kentucky's bill would prohibit fully autonomous vehicles from being used as school buses or to transport students and would bar driverless operation of vehicles requiring a commercial driver's license. It would also amend passenger-transportation rules governing autonomous vehicles, distinguishing such services from vehicles operated with a human driver.",
       "takeaway": "Kentucky's bill would prohibit fully autonomous vehicles from being used as school buses or to transport students and would bar driverless operation of vehicles requiring a commercial driver's license. It would also amend passenger-transportation rules governing autonomous vehicles, distinguishing such services from vehicles operated with a human driver.",
       "source_summary": "Amend KRS 186.763 to prohibit a school district from operating a fully autonomous vehicle as a school bus or for transporting students; prohibit the operation of a fully autonomous vehicle if that vehicle requires an operator with a commercial driver's license; amend KRS 281.764 to conform.",
-      "summary_method": "AV_specific_bill_text_analysis",
-      "summary_quality": "reviewed_substantive",
+      "summary_method": "official_legislative_bill_text_review",
+      "summary_quality": "manual_primary_source_verified",
       "status": "introduced",
       "measure_type": "bill",
       "last_action_date": "2026-01-14",
@@ -837,9 +837,8 @@
       "openstates_id": "ocd-bill/f55e5aef-1e13-4bfb-b20f-521810d4626d",
       "openstates_updated_at": "2026-08-20T01:19:42.748166+00:00",
       "editorial_source_url": "https://apps.legislature.ky.gov/record/26RS/hb223.html",
-      "editorial_source_type": "official_bill_record",
-      "editorial_status": "needs_review",
-      "editorial_failure_reason": "Independent verification of current enrolled/amended version pending"
+      "editorial_source_type": "official_legislative_text",
+      "editorial_status": "verified"
     },
     {
       "id": "ma-h-1280-194th",
@@ -1856,11 +1855,11 @@
       "jurisdiction": "NY",
       "number": "A 728",
       "title": "Relates to requiring the department of labor to conduct a study on the potential impact of driverless vehicles",
-      "summary": "The bill would direct New York's Department of Labor to investigate how driverless-vehicle deployment could affect occupations and employment, including transportation jobs. It proposes a labor-market study rather than authorizing autonomous vehicles, changing safety rules, or mandating operator reporting.",
-      "takeaway": "The bill would direct New York's Department of Labor to investigate how driverless-vehicle deployment could affect occupations and employment, including transportation jobs. It proposes a labor-market study rather than authorizing autonomous vehicles, changing safety rules, or mandating operator reporting.",
+      "summary": "The bill would direct New York's Department of Labor to examine the effects of driverless vehicles on transportation and delivery jobs, estimate potential employment losses, and report findings to the governor and legislative leaders by December 31, 2026. It proposes a study, not new authority to operate autonomous vehicles.",
+      "takeaway": "The bill would direct New York's Department of Labor to examine the effects of driverless vehicles on transportation and delivery jobs, estimate potential employment losses, and report findings to the governor and legislative leaders by December 31, 2026. It proposes a study, not new authority to operate autonomous vehicles.",
       "source_summary": "Requires the department of labor to conduct a study on the potential impact of driverless vehicles on occupations and employment.",
-      "summary_method": "AV_specific_bill_text_analysis",
-      "summary_quality": "reviewed_substantive",
+      "summary_method": "official_legislative_bill_text_review",
+      "summary_quality": "manual_primary_source_verified",
       "status": "introduced",
       "measure_type": "bill",
       "last_action_date": "2026-01-07",
@@ -1878,9 +1877,8 @@
       "openstates_id": "ocd-bill/43e44588-6ba7-44b3-9b55-d44636d905b7",
       "openstates_updated_at": "2026-03-18T09:21:56.997484+00:00",
       "editorial_source_url": "https://www.nysenate.gov/legislation/bills/2025/A728",
-      "editorial_source_type": "official_bill_record",
-      "editorial_status": "needs_review",
-      "editorial_failure_reason": "Independent verification of current enrolled/amended version pending"
+      "editorial_source_type": "official_legislative_text",
+      "editorial_status": "verified"
     },
     {
       "id": "ny-a-793-2025-2026",
@@ -1920,8 +1918,8 @@
       "summary": "The bill would create a New York State autonomous-vehicle task force to evaluate use of self-driving vehicles on public roads. Its purpose is to study deployment and recommend policy, rather than grant commercial operating authority or establish vehicle certification standards.",
       "takeaway": "The bill would create a New York State autonomous-vehicle task force to evaluate use of self-driving vehicles on public roads. Its purpose is to study deployment and recommend policy, rather than grant commercial operating authority or establish vehicle certification standards.",
       "source_summary": "Establishes the New York state autonomous vehicle task force to study autonomous vehicle usage on the roads located within the state of New York.",
-      "summary_method": "AV_specific_bill_text_analysis",
-      "summary_quality": "reviewed_substantive",
+      "summary_method": "official_legislative_bill_text_review",
+      "summary_quality": "manual_primary_source_verified",
       "status": "introduced",
       "measure_type": "bill",
       "last_action_date": "2026-01-07",
@@ -1939,9 +1937,8 @@
       "openstates_id": "ocd-bill/13cfdb6e-b7eb-4d6e-bd42-41307e4be8a3",
       "openstates_updated_at": "2026-03-18T09:51:23.635517+00:00",
       "editorial_source_url": "https://www.nysenate.gov/legislation/bills/2025/A8109",
-      "editorial_source_type": "official_bill_record",
-      "editorial_status": "needs_review",
-      "editorial_failure_reason": "Independent verification of current enrolled/amended version pending"
+      "editorial_source_type": "official_legislative_text",
+      "editorial_status": "verified"
     },
     {
       "id": "ny-s-10413-2025-2026",
@@ -1978,11 +1975,11 @@
       "jurisdiction": "NY",
       "number": "S 10473",
       "title": "Relates to fully autonomous vehicles",
-      "summary": "The bill would create temporary authorization, through July 1, 2028, for fully autonomous vehicles to operate in Albany and Rensselaer counties. It would regulate driverless operation, registration, insurance, post-crash obligations, and on-demand passenger and goods networks, rather than establishing unrestricted statewide deployment rights.",
-      "takeaway": "The bill would create temporary authorization, through July 1, 2028, for fully autonomous vehicles to operate in Albany and Rensselaer counties. It would regulate driverless operation, registration, insurance, post-crash obligations, and on-demand passenger and goods networks, rather than establishing unrestricted statewide deployment rights.",
+      "summary": "The bill would create a temporary autonomous-vehicle pilot in Albany and Rensselaer counties until July 1, 2028. It would permit qualified driverless vehicles, require a law-enforcement interaction plan, and regulate licensing, insurance, crash duties, vehicle registration, and on-demand passenger or goods networks.",
+      "takeaway": "The bill would create a temporary autonomous-vehicle pilot in Albany and Rensselaer counties until July 1, 2028. It would permit qualified driverless vehicles, require a law-enforcement interaction plan, and regulate licensing, insurance, crash duties, vehicle registration, and on-demand passenger or goods networks.",
       "source_summary": "Authorizes the use of fully autonomous vehicles in Albany and Rensselaer counties until July 1, 2028; provides for operation, licensing, insurance, duties following crashes, on-demand autonomous vehicle networks, registration and titles, operation by human drivers, and related provisions.",
-      "summary_method": "AV_specific_bill_text_analysis",
-      "summary_quality": "reviewed_substantive",
+      "summary_method": "official_legislative_bill_text_review",
+      "summary_quality": "manual_primary_source_verified",
       "status": "introduced",
       "measure_type": "bill",
       "last_action_date": "2026-05-15",
@@ -2000,9 +1997,8 @@
       "openstates_id": "ocd-bill/b9086856-b880-4e26-beb1-7fdf764dc6ab",
       "openstates_updated_at": "2026-05-29T14:15:56.844512+00:00",
       "editorial_source_url": "https://www.nysenate.gov/legislation/bills/2025/S10473",
-      "editorial_source_type": "official_bill_record",
-      "editorial_status": "needs_review",
-      "editorial_failure_reason": "Independent verification of current enrolled/amended version pending"
+      "editorial_source_type": "official_legislative_text",
+      "editorial_status": "verified"
     },
     {
       "id": "ny-s-2688-2025-2026",
@@ -2012,8 +2008,8 @@
       "summary": "The bill would require autonomous taxi, livery, and ride-hail vehicles operating in New York City to obtain a Taxi and Limousine Commission license. The commission would set safety and insurance rules, issue licenses only to taxi-medallion owners, establish fleet limits, and require trip, revenue, accessibility, and emissions information.",
       "takeaway": "The bill would require autonomous taxi, livery, and ride-hail vehicles operating in New York City to obtain a Taxi and Limousine Commission license. The commission would set safety and insurance rules, issue licenses only to taxi-medallion owners, establish fleet limits, and require trip, revenue, accessibility, and emissions information.",
       "source_summary": "Provides that no autonomous vehicle may be used for taxi, livery or transportation network company vehicle services in any city with a population of one million or more without first being licensed by the New York City taxi and limousine commission; requires the New York City taxi and limousine commission to establish a license for use of an autonomous vehicle as a taxicab and to promulgate rules regarding such license and the operation of autonomous taxicabs.",
-      "summary_method": "AV_specific_bill_text_analysis",
-      "summary_quality": "reviewed_substantive",
+      "summary_method": "official_legislative_bill_text_review",
+      "summary_quality": "manual_primary_source_verified",
       "status": "introduced",
       "measure_type": "bill",
       "last_action_date": "2025-01-22",
@@ -2031,9 +2027,8 @@
       "openstates_id": "ocd-bill/ca660689-6862-45c6-b88f-67a95ccb19fe",
       "openstates_updated_at": "2026-03-18T09:35:25.968566+00:00",
       "editorial_source_url": "https://www.nysenate.gov/legislation/bills/2025/S2688",
-      "editorial_source_type": "official_bill_record",
-      "editorial_status": "needs_review",
-      "editorial_failure_reason": "Independent verification of current enrolled/amended version pending"
+      "editorial_source_type": "official_legislative_text",
+      "editorial_status": "verified"
     },
     {
       "id": "ny-s-344-2025-2026",
@@ -2043,8 +2038,8 @@
       "summary": "The bill would permit Level 4 and 5 autonomous vehicles to operate without a human driver if they meet safety and fallback requirements. Operators would submit law-enforcement interaction plans, carry insurance, and register their vehicles. It would largely preempt local AV-specific restrictions while preserving New York City's authority over for-hire services.",
       "takeaway": "The bill would permit Level 4 and 5 autonomous vehicles to operate without a human driver if they meet safety and fallback requirements. Operators would submit law-enforcement interaction plans, carry insurance, and register their vehicles. It would largely preempt local AV-specific restrictions while preserving New York City's authority over for-hire services.",
       "source_summary": "Provides that a person may operate a fully autonomous vehicle on the public roads of this state without a human driver provided that the automated driving system is engaged and the vehicle meets certain conditions; defines terms; requires insurance and that such vehicle is registered as a fully autonomous vehicle; makes related provisions.",
-      "summary_method": "AV_specific_bill_text_analysis",
-      "summary_quality": "reviewed_substantive",
+      "summary_method": "official_amended_B_full_text_review",
+      "summary_quality": "manual_primary_source_verified",
       "status": "introduced",
       "measure_type": "bill",
       "last_action_date": "2026-05-06",
@@ -2062,9 +2057,8 @@
       "openstates_id": "ocd-bill/5bc6e3eb-604a-4328-a017-1b0bb39a29ef",
       "openstates_updated_at": "2026-05-15T07:13:10.604800+00:00",
       "editorial_source_url": "https://www.nysenate.gov/legislation/bills/2025/S344",
-      "editorial_source_type": "official_bill_record",
-      "editorial_status": "needs_review",
-      "editorial_failure_reason": "Independent verification of current enrolled/amended version pending"
+      "editorial_source_type": "official_legislative_text",
+      "editorial_status": "verified"
     },
     {
       "id": "ny-s-7956-2025-2026",
