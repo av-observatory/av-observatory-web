@@ -10,6 +10,11 @@ on:
   schedule:
     - cron: "17 12 * * *"
   workflow_dispatch:
+    inputs:
+      diagnose:
+        description: "Only print what Open States returns for a jurisdiction (no data changes)"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -19,7 +24,17 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  diagnose:
+    if: ${{ inputs.diagnose == true }}
+    runs-on: ubuntu-latest
+    env:
+      OPENSTATES_API_KEY: ${{ secrets.OPENSTATES_API_KEY }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - run: python3 scripts/diagnose-openstates.py DC
+
   refresh:
+    if: ${{ inputs.diagnose != true }}
     runs-on: ubuntu-latest
     env:
       OPENSTATES_API_KEY: ${{ secrets.OPENSTATES_API_KEY }}
