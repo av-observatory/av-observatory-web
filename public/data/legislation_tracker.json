@@ -475,34 +475,6 @@
       "openstates_updated_at": "2026-03-18T09:27:36.154307+00:00"
     },
     {
-      "id": "ia-sf-2034-2025-2026",
-      "jurisdiction": "IA",
-      "number": "SF 2034",
-      "title": "A bill for an act relating to the use of automated vehicle noise enforcement systems.",
-      "summary": "Substantive summary unavailable in the source feed; review the official bill record for the bill text.",
-      "takeaway": "Substantive summary unavailable in the source feed; review the official bill record for the bill text.",
-      "source_summary": "",
-      "summary_method": "Substantive-effect summary only; sponsor/petition boilerplate and title restatements are rejected",
-      "summary_quality": "source_summary_insufficient",
-      "status": "engrossed",
-      "measure_type": "bill",
-      "last_action_date": "2026-02-11",
-      "last_action": "Committee report approving bill, renumbered as SF 2284.",
-      "session": "2025-2026",
-      "progress_stage": "floor",
-      "stage_dates": {
-        "introduced": "2026-01-12",
-        "committee": "2026-01-28"
-      },
-      "hearings": [],
-      "source_url": "https://www.legis.iowa.gov/legislation/billTracking/billHistory?billName=SF 2034&ga=91",
-      "repository_url": "https://openstates.org/ia/bills/2025-2026/SF2034/",
-      "reviewed_at": "2026-10-14",
-      "summary_reviewed_at": null,
-      "openstates_id": "ocd-bill/4650dedc-9e40-4a83-87fb-70ed1af8c7ce",
-      "openstates_updated_at": "2026-03-18T09:23:17.931245+00:00"
-    },
-    {
       "id": "ia-sf-2384-2025-2026",
       "jurisdiction": "IA",
       "number": "SF 2384",
