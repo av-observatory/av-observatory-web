@@ -45,6 +45,9 @@ jobs:
             echo "::warning::Could not refresh NHTSA bulk data; publishing explicitly labeled fallback datasets."
           fi
 
+      - name: Validate NHTSA editorial summary quality
+        run: python3 scripts/test-nhtsa-editorial.py
+
       - name: Validate policy snapshot
         run: node scripts/validate-policy-data.mjs
 
