@@ -125,13 +125,12 @@ export function StateLegislationPage() {
     <p className="eyebrow">Policy Trackers / State</p>
     <h1 className="text-4xl font-semibold mt-3 text-[#0b1d33]">State Legislation</h1>
     <p className="mt-3 text-base text-neutral-600 max-w-3xl">Select a state on the map to explore current proposals, recent legislative activity, and enacted AV laws.</p>
-    <section className="viz-card p-4 mt-4">
-      <div className="grid gap-5 lg:grid-cols-[3fr_2fr] lg:items-start">
-        <div className="min-w-0">
+    <div className="grid gap-5 mt-4 lg:grid-cols-[3fr_2fr] lg:items-stretch">
+      <section className="viz-card p-5 min-w-0">
           <div className="eyebrow mb-3">Legislation by State · 50 States + D.C.</div>
           <StateTileMap selected={selected} onSelect={selectState} counts={counts} names={names}/>
-        </div>
-        <div className="min-w-0 border-t border-neutral-200 pt-4 lg:border-l lg:border-t-0 lg:pl-5 lg:pt-0" aria-live="polite">
+      </section>
+      <section className="viz-card p-5 min-w-0" aria-live="polite">
           <div className="eyebrow">{selected ? "State overview" : "National overview"}</div>
           <h2 className="text-2xl font-semibold mt-2 text-[#0b1d33]">{selected ? names[selected] : "United States"}</h2>
           <div className="grid grid-cols-3 gap-3 mt-5 pb-4 border-b border-neutral-200">
@@ -153,9 +152,8 @@ export function StateLegislationPage() {
             <span className="text-xs text-neutral-500">{source==="R2"?`Live index · ${legislation.as_of}`:`Site snapshot · ${legislation.as_of}`}</span>
             <a href={`${process.env.NEXT_PUBLIC_BASE_PATH??""}/data/legislation_tracker.json`} className="text-xs text-[#184f95] underline">Download data ↗</a>
           </div>
-        </div>
-      </div>
-    </section>
+      </section>
+    </div>
 
     <section className="viz-card p-5 mt-5">
       <div className="flex flex-wrap justify-between gap-3 items-end">
