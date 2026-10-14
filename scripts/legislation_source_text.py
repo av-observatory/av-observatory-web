@@ -166,10 +166,23 @@ def legiscan_mirrored_text(row):
         print(f"LegiScan bill text unavailable for {row.get('id')}: {type(exc).__name__}")
     return "",""
 
+def looks_like_bill_text(row,text):
+    """Reject state search portals and unrelated legislation as source evidence."""
+    identifier=str(row.get("number") or "")
+    numbers=re.findall(r"\d+",identifier)
+    if not numbers:return False
+    n=numbers[-1]
+    # Identifier plus bill language and AV subject indicates bill-specific text;
+    # bill text with 'Assembly Bill No. 2193' and 'HB 222' both qualify.
+    has_number=bool(re.search(r"(?<!\d)"+re.escape(n)+r"(?!\d)",text))
+    has_bill=bool(re.search(r"\b(?:senate|house|assembly|bill|act|legislature)\b",text,re.I))
+    has_topic=bool(re.search(r"\b(?:autonomous|automated driving|driverless|self-driving|robotaxi)\b",text,re.I))
+    return has_number and has_bill and has_topic
+
 def primary_text(row,kind):
     for url in sources(row,kind):
         text,provenance=fetch(url)
-        if len(text)>=650:
+        if len(text)>=650 and (kind!="state_bill" or looks_like_bill_text(row,text)):
             return text,provenance,url
     if kind=="state_bill":
         mirrored,mirror_url=legiscan_mirrored_text(row)
