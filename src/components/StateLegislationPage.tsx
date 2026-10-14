@@ -15,7 +15,7 @@ const TILE_POSITIONS: Record<string,[number,number]> = {
   TX:[8,4], FL:[8,9], AK:[9,1], HI:[9,2],
 };
 
-const ACTIVE_STATUSES = new Set(["introduced","engrossed","enrolled","pending","pending_carryover","to_governor","passed","signed","enacted","chaptered"]);
+const TRACKED_STATUSES = new Set(["introduced","engrossed","enrolled","pending","pending_carryover","to_governor","passed","signed","enacted","chaptered","vetoed"]);
 const CURRENT_LAW_STATUSES = new Set(["in_effect","current","in_effect_as_amended"]);
 
 function statusLabel(status:string) {
@@ -101,7 +101,7 @@ export function StateLegislationPage() {
 
   const names = useMemo(()=>Object.fromEntries(legislation.states.map(s=>[s.code,s.name])),[legislation.states]);
   const currentBills = useMemo(()=>legislation.state_bills
-    .filter(b=>ACTIVE_STATUSES.has(b.status))
+    .filter(b=>TRACKED_STATUSES.has(b.status))
     .sort((a,b)=>b.last_action_date.localeCompare(a.last_action_date)),[legislation.state_bills]);
   const proposedBills = useMemo(()=>currentBills.filter(b=>!["signed","enacted","chaptered"].includes(b.status)),[currentBills]);
 
@@ -146,7 +146,7 @@ export function StateLegislationPage() {
                 <a href={bill.source_url} target="_blank" rel="noreferrer" className="block mt-1 text-sm font-semibold text-[#184f95] hover:underline">{bill.number} · {bill.title} ↗</a>
                 <p className="text-xs text-neutral-600 mt-1 line-clamp-2">{bill.takeaway}</p>
               </div>)}
-            </div> : <p className="text-sm text-neutral-500 mt-2">No current-session proposals indexed for this state.</p>}
+            </div> : <p className="text-sm text-neutral-500 mt-2">No tracked bills indexed for this state.</p>}
           </div>
           <div className="mt-3 flex flex-wrap justify-between items-center gap-2">
             <span className="text-xs text-neutral-500">{source==="R2"?`Live index · ${legislation.as_of}`:`Site snapshot · ${legislation.as_of}`}</span>
