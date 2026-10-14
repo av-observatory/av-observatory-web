@@ -59,6 +59,17 @@ jobs:
           python3 scripts/test-known-bills.py
           python3 scripts/check-known-bills.py --open-issues
 
+      - name: AI review state and federal legislation plus FMVSS rules
+        if: ${{ env.OPENSTATES_API_KEY != '' }}
+        continue-on-error: true
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          POLICY_EDITORIAL_MODEL: gpt-4.1-mini
+          POLICY_EDITORIAL_MAX_NEW: 30
+        run: |
+          python3 scripts/ai-policy-editorial.py
+          python3 scripts/test-policy-editorial.py
+
       - name: Validate refreshed index
         if: ${{ env.OPENSTATES_API_KEY != '' }}
         run: node scripts/validate-legislation-data.mjs public/data/legislation_tracker.json
@@ -70,7 +81,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add public/data/legislation_tracker.json public/data/legislation_tracker_*.csv data-state
+          git add public/data/legislation_tracker.json public/data/policy_tracker.json public/data/legislation_tracker_*.csv data-state
           if git diff --cached --quiet; then
             echo "No legislation changes to commit"
           else
@@ -82,6 +93,10 @@ jobs:
       - name: Publish and verify versioned bill index
         if: ${{ env.R2_BUCKET != '' && env.R2_ACCOUNT_ID != '' && env.AWS_ACCESS_KEY_ID != '' && env.AWS_SECRET_ACCESS_KEY != '' && env.OPENSTATES_API_KEY != '' }}
         run: python3 scripts/publish-r2-data.py legislation --file public/data/legislation_tracker.json
+
+      - name: Publish verified FMVSS policy summaries to R2
+        if: ${{ env.R2_BUCKET != '' && env.R2_ACCOUNT_ID != '' && env.AWS_ACCESS_KEY_ID != '' && env.AWS_SECRET_ACCESS_KEY != '' && env.OPENSTATES_API_KEY != '' }}
+        run: python3 scripts/publish-r2-data.py policy --file public/data/policy_tracker.json
 
       - name: Deploy updated site
         if: always()

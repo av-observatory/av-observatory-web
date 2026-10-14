@@ -264,10 +264,11 @@ def is_substantive_summary(title: str, summary: str) -> bool:
 
 
 base = json.loads((ROOT / "public/data/legislation_tracker.json").read_text())
+prior_editorial = {str(row.get("id")): row for row in base.get("state_bills", []) if row.get("editorial_source_hash")}
 reviewed_summaries = {
     str(row.get("id")): row
     for row in base.get("state_bills", [])
-    if row.get("summary_reviewed_at") and is_substantive_summary(str(row.get("title") or ""), str(row.get("summary") or ""))
+    if (row.get("summary_reviewed_at") or row.get("editorial_status") == "verified") and is_substantive_summary(str(row.get("title") or ""), str(row.get("summary") or ""))
 }
 
 bills = []
@@ -295,7 +296,7 @@ for item in seen.values():
     prior_reviewed = reviewed_summaries.get(f"{code.lower()}-{re.sub(r'[^a-z0-9]+', '-', identifier.lower()).strip('-')}-{re.sub(r'[^0-9a-z]+', '-', session.lower()).strip('-')}")
     if prior_reviewed:
         summary = str(prior_reviewed["summary"])
-        summary_quality = "reviewed_substantive"
+        summary_quality = prior_reviewed.get("summary_quality", "reviewed_substantive")
     elif not is_substantive_summary(title, summary):
         summary = "Substantive summary unavailable in the source feed; review the official bill record for the bill text."
         summary_quality = "source_summary_insufficient"
@@ -312,7 +313,10 @@ for item in seen.values():
         action_date = str(item.get("updated_at") or "")[:10] or date.today().isoformat()
     bill_id = re.sub(r"[^a-z0-9]+", "-", identifier.lower()).strip("-")
     session_slug = re.sub(r"[^0-9a-z]+", "-", session.lower()).strip("-")
+    prior_cache = prior_editorial.get(f"{code.lower()}-{bill_id}-{session_slug}", {})
     bills.append({
+        **{k: v for k, v in prior_cache.items() if k.startswith("editorial_")},
+        **({k: v for k, v in prior_reviewed.items() if k.startswith("editorial_") or k == "summary_method"} if prior_reviewed else {}),
         "id": f"{code.lower()}-{bill_id}-{session_slug}",
         "jurisdiction": code,
         "number": identifier,
@@ -320,7 +324,7 @@ for item in seen.values():
         "summary": summary,
         "takeaway": summary,
         "source_summary": source_summary,
-        "summary_method": "Substantive-effect summary only; sponsor/petition boilerplate and title restatements are rejected",
+        "summary_method": prior_reviewed.get("summary_method", "Source abstract condensed for substantive legislative effect") if prior_reviewed else "Source abstract condensed for substantive legislative effect",
         "summary_quality": summary_quality,
         "status": status,
         "measure_type": "resolution" if any("resolution" in str(x).lower() for x in (item.get("classification") or [])) else "bill",
