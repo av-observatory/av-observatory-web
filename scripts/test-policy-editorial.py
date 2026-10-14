@@ -24,6 +24,7 @@ assert not mod["quality"]({"summary": "An ADS and FMVSS rule."})
 assert not mod["status_consistent"]({"status":"introduced"},"federal_bill",{"summary":"The law requires annual reports."})
 assert not mod["status_consistent"]({"status":"introduced"},"federal_bill",{"summary":"This act amends the motor vehicle code."})
 assert mod["status_consistent"]({"status":"introduced"},"federal_bill",{"summary":"The bill would require annual reports."})
+assert mod["status_consistent"]({"status":"introduced"},"federal_bill",{"summary":"The bill would amend Title 49 of the U.S. Code to establish safeguards. It would require reporting."})
 assert not mod["status_consistent"]({"status":"introduced"},"federal_bill",{"summary":"The bill would require reporting. Operators submit incident records."})
 assert mod["status_consistent"]({"status":"introduced"},"federal_bill",{"summary":"The bill would require reporting. Operators would submit incident records."})
 
