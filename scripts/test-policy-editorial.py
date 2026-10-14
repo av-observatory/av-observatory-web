@@ -24,6 +24,8 @@ assert not mod["quality"]({"summary": "An ADS and FMVSS rule."})
 assert not mod["status_consistent"]({"status":"introduced"},"federal_bill",{"summary":"The law requires annual reports."})
 assert not mod["status_consistent"]({"status":"introduced"},"federal_bill",{"summary":"This act amends the motor vehicle code."})
 assert mod["status_consistent"]({"status":"introduced"},"federal_bill",{"summary":"The bill would require annual reports."})
+assert not mod["status_consistent"]({"status":"introduced"},"federal_bill",{"summary":"The bill would require reporting. Operators submit incident records."})
+assert mod["status_consistent"]({"status":"introduced"},"federal_bill",{"summary":"The bill would require reporting. Operators would submit incident records."})
 
 lengthy=("Federal Motor Vehicle Safety Standard No. 208 requires occupant crash protection. "
        +"Additional regulatory background on separate matters. "*800
