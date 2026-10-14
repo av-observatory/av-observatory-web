@@ -13,6 +13,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
   group: website-data-writers
@@ -64,3 +65,15 @@ jobs:
       - name: Publish and verify versioned bill index
         if: ${{ env.R2_BUCKET != '' && env.R2_ACCOUNT_ID != '' && env.AWS_ACCESS_KEY_ID != '' && env.AWS_SECRET_ACCESS_KEY != '' && env.OPENSTATES_API_KEY != '' }}
         run: python3 scripts/publish-r2-data.py legislation --file public/data/legislation_tracker.json
+
+      - name: Deploy updated site
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # Pushes made with GITHUB_TOKEN do not trigger the push-based Pages deploy.
+          if [ "$(git rev-parse HEAD)" != "$GITHUB_SHA" ]; then
+            gh workflow run pages.yml --ref main
+          else
+            echo "No new data commit; no deploy needed"
+          fi
