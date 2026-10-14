@@ -137,7 +137,30 @@ def legiscan_mirrored_text(row):
     """
     key=os.getenv("LEGISCAN_API_KEY")
     bill_id=row.get("legiscan_bill_id")
-    if not key or not str(bill_id or "").isdigit():return "",""
+    if not key:return "",""
+    if not str(bill_id or "").isdigit():
+        # Recover the LegiScan ID by exact bill number, state and session year.
+        identifier=re.sub(r"[^A-Z0-9]","",str(row.get("number") or "").upper())
+        state=str(row.get("jurisdiction") or "").upper()
+        year_match=re.search(r"20\\d{2}",str(row.get("session") or ""))
+        year=int(year_match.group(0)) if year_match else 2
+        if not identifier or not re.fullmatch(r"[A-Z]{2}",state):return "",""
+        try:
+            payload=api_json("https://api.legiscan.com/?"+urlencode({
+                "key":key,"op":"getSearch","state":state,"query":identifier,"year":year}))
+            hits=payload.get("searchresult") or {}
+            matches=[]
+            for hit in hits.values():
+                if not isinstance(hit,dict):continue
+                found=re.sub(r"[^A-Z0-9]","",str(hit.get("bill_number") or "").upper())
+                if found==identifier and str(hit.get("state") or "").upper()==state:
+                    if str(hit.get("bill_id") or "").isdigit():
+                        matches.append(hit["bill_id"])
+            if len(set(matches))!=1:return "",""
+            bill_id=matches[0]
+        except Exception as exc:
+            print(f"LegiScan identifier recovery failed for {row.get('id')}: {type(exc).__name__}")
+            return "",""
     try:
         from urllib.parse import urlencode
         def call(op,identifier):
