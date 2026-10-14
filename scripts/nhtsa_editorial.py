@@ -23,16 +23,16 @@ BOILERPLATE = (
 MAX_WORDS = 58
 MAX_CHARS = 380
 def plain(value):
-    value = re.sub(r"https?://\\S+", "", value or "")
-    value = re.sub(r"\\b\\d{5}-\\d{4,}(?:-\\d+)*\\b", "", value)
+    value = re.sub(r"https?://\S+", "", value or "")
+    value = re.sub(r"\b\d{5}-\d{4,}(?:-\d+)*\b", "", value)
     for acronym, expansion in ACRONYMS.items():
-        value = re.sub(r"\\b"+re.escape(acronym)+r"\\b", expansion, value)
-    value = re.sub(r"\\s+", " ", value).strip(" ,;:-")
+        value = re.sub(r"\b"+re.escape(acronym)+r"\b", expansion, value)
+    value = re.sub(r"\s+", " ", value).strip(" ,;:-")
     return value
 
 def sentences(text):
     text = plain(text)
-    return [s.strip() for s in re.split(r"(?<=[.!?])\\s+(?=[A-Z])", text) if s.strip()]
+    return [s.strip() for s in re.split(r"(?<=[.!?])\s+(?=[A-Z])", text) if s.strip()]
 
 def editorial_brief(kind, subject, source_text, company):
     """Source-limited and deterministic, never a full regulatory-text dump."""
@@ -45,7 +45,7 @@ def editorial_brief(kind, subject, source_text, company):
             continue
         if len(sentence.split()) < 5 or len(sentence) > 380:
             continue
-        if re.search(r"\\b(?:NHTSA|investigat|recall|crash|collis|brak|struck|risk|fail|defect|injur|pedestrian|lane|vehicle|driver|software)\\b",low):
+        if re.search(r"\b(?:NHTSA|investigat|recall|crash|collis|brak|struck|risk|fail|defect|injur|pedestrian|lane|vehicle|driver|software)\b",low):
             candidates.append(sentence)
     prefix = "NHTSA is investigating reports involving " if kind=="investigation" else "The recall concerns "
     summary = candidates[0] if candidates else prefix+subject[:145].lower()+"."
@@ -61,8 +61,8 @@ def validate_summary(summary):
         return False
     if any(x in summary.lower() for x in BOILERPLATE):
         return False
-    if re.search(r"\\b(ADS|ODI|FMVSS|SGO)\\b",summary):
+    if re.search(r"\b(ADS|ODI|FMVSS|SGO)\b",summary):
         return False
-    if re.search(r"(?:\\d{5}-\\d{4,}){2,}",summary):
+    if re.search(r"(?:\d{5}-\d{4,}){2,}",summary):
         return False
     return True
