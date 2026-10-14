@@ -7,6 +7,7 @@ on:
       - "scripts/refresh-legislation.py"
       - "scripts/legislation-supplement.py"
       - "scripts/test-policy-editorial.py"
+      - "scripts/test-policy-live.py"
       - ".github/workflows/policy-editorial-tests.yml"
   workflow_dispatch:
 
@@ -19,6 +20,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Test Python syntax
-        run: python3 -m py_compile scripts/ai-policy-editorial.py scripts/legislation_source_text.py scripts/refresh-legislation.py scripts/legislation-supplement.py scripts/test-policy-editorial.py
+        run: python3 -m py_compile scripts/ai-policy-editorial.py scripts/legislation_source_text.py scripts/refresh-legislation.py scripts/legislation-supplement.py scripts/test-policy-editorial.py scripts/test-policy-live.py
       - name: Test bill source verification and AI stage
         run: python3 scripts/test-policy-editorial.py
+      - name: Bounded live AI and official-text test
+        if: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository }}
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENSTATES_API_KEY: ${{ secrets.OPENSTATES_API_KEY }}
+          LEGISCAN_API_KEY: ${{ secrets.LEGISCAN_API_KEY }}
+        run: python3 scripts/test-policy-live.py
