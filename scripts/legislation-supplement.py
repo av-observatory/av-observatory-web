@@ -127,6 +127,7 @@ def secondary_bill(code: str, hit: dict) -> dict | None:
         "session": session_name, "progress_stage": stage, "stage_dates": stage_dates, "hearings": [],
         "source_url": source_url, "repository_url": hit.get("url") or source_url,
         "reviewed_at": TODAY, "summary_reviewed_at": None, "source_feed": "legiscan",
+        "legiscan_bill_id": detail.get("bill_id") or hit.get("bill_id"),
     }
 
 
@@ -148,7 +149,7 @@ def merge_manual(tracker: dict, manual: list[dict]) -> tuple[list[str], list[str
 
 
 def merge_secondary(tracker: dict, codes: list[str], coverage: dict) -> None:
-    present = {key_of(b) for b in tracker["state_bills"]}
+    present = {key_of(b): b for b in tracker["state_bills"]}
     for code in codes:
         entry = coverage.setdefault(code, {})
         try:
@@ -158,7 +159,9 @@ def merge_secondary(tracker: dict, codes: list[str], coverage: dict) -> None:
             continue
         entry["legiscan"], entry["legiscan_hits"], entry["added_from_legiscan"] = "ok", len(hits), []
         for hit in hits:
-            if (code, norm_number(hit["bill_number"])) in present:
+            existing = present.get((code, norm_number(hit["bill_number"])))
+            if existing is not None:
+                existing["legiscan_bill_id"] = hit.get("bill_id")
                 continue
             try:
                 bill = secondary_bill(code, hit)
@@ -168,7 +171,7 @@ def merge_secondary(tracker: dict, codes: list[str], coverage: dict) -> None:
             if bill is None:
                 continue
             tracker["state_bills"].append(bill)
-            present.add(key_of(bill))
+            present[key_of(bill)] = bill
             entry["added_from_legiscan"].append(bill["number"])
 
 
