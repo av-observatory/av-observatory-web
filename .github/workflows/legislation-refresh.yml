@@ -42,6 +42,9 @@ jobs:
       - name: Report optional R2 configuration
         if: ${{ env.R2_BUCKET == '' || env.R2_ACCOUNT_ID == '' || env.AWS_ACCESS_KEY_ID == '' || env.AWS_SECRET_ACCESS_KEY == '' }}
         run: echo '::warning::Direct legislation R2 publish is not configured in this repository; the parent website R2 publisher will publish committed legislation data.'
+      - name: Session-selection tests
+        run: python3 scripts/test-legislation-sessions.py
+
       - name: Search current sessions and rebuild Open States bill database
         if: ${{ env.OPENSTATES_API_KEY != '' }}
         run: python3 scripts/refresh-legislation.py public/data/legislation_tracker.json

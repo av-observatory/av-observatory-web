@@ -17,6 +17,8 @@ KEY = os.environ.get("OPENSTATES_API_KEY")
 if not KEY:
     sys.exit("OPENSTATES_API_KEY is required")
 
+from legislation_sessions import select_sessions  # noqa: E402  (scripts/ is on sys.path)
+
 API = "https://v3.openstates.org"
 LAST_REQUEST_AT = 0.0
 MIN_REQUEST_INTERVAL = 1.25
@@ -91,33 +93,9 @@ def load_current_sessions():
         code = state_code_from_jurisdiction(j)
         if code not in sessions:
             continue
-        candidates = j.get("legislative_sessions") or []
-        active_rows = [
-            x for x in candidates
-            if x.get("identifier")
-            and str(x.get("start_date") or "") <= today
-            and (not x.get("end_date") or today <= str(x.get("end_date")))
-        ]
-        if not active_rows:
-            # Prefer sessions that overlap the current calendar year; otherwise newest.
-            yr = str(date.today().year)
-            active_rows = [
-                x for x in candidates
-                if x.get("identifier") and (
-                    str(x.get("start_date") or "").startswith(yr)
-                    or str(x.get("end_date") or "").startswith(yr)
-                )
-            ]
-        ordered = sorted(
-            active_rows or [x for x in candidates if x.get("identifier")],
-            key=lambda x: (str(x.get("start_date") or ""), str(x.get("end_date") or ""), str(x.get("identifier") or "")),
-            reverse=True,
-        )
-        # One current session per jurisdiction keeps the national daily scan
-        # safely below Open States' 250-request/day quota. Special/parallel
-        # sessions are still discoverable on subsequent runs when they become
-        # the newest active session; historical rows remain in R2.
-        sessions[code] = [str(ordered[0]["identifier"])] if ordered else []
+        # Up to three sessions per jurisdiction (see legislation_sessions.py): the two latest regular
+        # sessions plus recent specials. One-session-per-state silently missed bills in MO, AK, FL, MS.
+        sessions[code] = select_sessions(j.get("legislative_sessions") or [], date.today())
     return sessions
 
 def bill_text(item):
