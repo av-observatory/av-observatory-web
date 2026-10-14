@@ -24,13 +24,14 @@ def invoke(messages):
       "response_format":{"type":"json_object"},"messages":messages}).encode()
     request=Request("https://api.openai.com/v1/chat/completions",body,
         {"Content-Type":"application/json","Authorization":"Bearer "+KEY})
-    for i in range(3):
+    for i in range(4):
         try:
+            time.sleep(float(os.getenv('POLICY_EDITORIAL_REQUEST_GAP_SECONDS','1.25')))
             with urlopen(request,timeout=95) as response:
                 return json.loads(json.load(response)["choices"][0]["message"]["content"])
         except Exception:
-            if i==2:raise
-            time.sleep(2**i)
+            if i==3:raise
+            time.sleep(min(60,4**i))
 
 def quality(value):
     s=value.get("summary") if isinstance(value,dict) else None
@@ -59,6 +60,13 @@ def status_consistent(row,kind,draft):
         if not re.search(r"\b(?:would|propos(?:e|es|ed)|seeks?|requested|sought|invited|considering)\b",summary,re.I):
             return False
     return True
+
+def not_source_copy(row,draft):
+    """Reject feed descriptions merely copied into the new summary."""
+    value=" ".join(str(draft.get("summary") or "").lower().split())
+    source=" ".join(str(row.get("source_summary") or "").lower().split())
+    if not value or not source:return True
+    return value!=source and not (len(value)>100 and value in source)
 
 def specific_to_record(row,kind,draft):
     if kind!="fmvss" or not re.match(r"fmvss-\d{3}a?-",row.get("id","")):
@@ -122,7 +130,7 @@ def summarize(row,kind):
         "status":row.get("status"),"evidence_type":source_type,"official_source_text":source})
     draft=invoke([{"role":"system","content":prompt},{"role":"user","content":request}])
     for _attempt in range(2):
-        if draft.get("needs_review") or (quality(draft) and status_consistent(row,kind,draft) and specific_to_record(row,kind,draft)):
+        if draft.get("needs_review") or (quality(draft) and status_consistent(row,kind,draft) and specific_to_record(row,kind,draft) and not_source_copy(row,draft)):
             break
         strict_status=("This measure is NOT LAW. The final answer must begin exactly with 'The bill would' and EVERY sentence must use would or could when describing proposed legal obligations. Never use present-tense statements of unpassed requirements."
                        if kind.endswith("_bill") and row.get("status") not in ("enacted","signed","chaptered")
@@ -131,7 +139,7 @@ def summarize(row,kind):
           {"role":"system","content":strict_status+" Rewrite into exactly two clear sentences, 40–55 words, at most 440 characters. No unexplained abbreviations, especially ADS, ODI and FMVSS. Write out 'Federal Motor Vehicle Safety Standard' instead. State the specific substantive change supported by the source, not a general policy description. Respond JSON {summary:string,needs_review:boolean,reason:string}."},
           {"role":"user","content":json.dumps({"record_title":row.get("title"),"status":row.get("status"),"source":source,"draft":draft.get("summary")})}
         ])
-    if draft.get("needs_review") or not quality(draft) or not status_consistent(row,kind,draft):
+    if draft.get("needs_review") or not quality(draft) or not status_consistent(row,kind,draft) or not specific_to_record(row,kind,draft) or not not_source_copy(row,draft):
         row["editorial_status"]="needs_review"
         row["editorial_failure_reason"]=(str(draft.get("reason") or "")[:250]
             if draft.get("needs_review") else "Failed format: words="+str(len(str(draft.get("summary") or "").split()))
