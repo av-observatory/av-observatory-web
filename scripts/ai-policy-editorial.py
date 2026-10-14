@@ -94,12 +94,22 @@ def summarize(row,kind):
     draft=invoke([{"role":"system","content":prompt},{"role":"user","content":request}])
     if draft.get("needs_review") or not quality(draft):
         row["editorial_status"]="needs_review"
+        row["editorial_failure_reason"]=(str(draft.get("reason") or "")[:250]
+            if draft.get("needs_review") else "Failed format: words="+str(len(str(draft.get("summary") or "").split()))
+            +", chars="+str(len(str(draft.get("summary") or ""))))
+        if os.getenv("POLICY_EDITORIAL_DEBUG")=="1":
+            row["_debug_candidate"]=str(draft.get("summary") or "")[:500]
         return "rejected"
     check=invoke([{"role":"system","content":"Compare the candidate only with the provided source text. Reject invented, exaggerated or unsupported factual claims, incorrect bill status, or confusion of proposed and final rules. Respond JSON {supported:boolean,issues:string}."},
        {"role":"user","content":json.dumps({"text":source,"summary":draft["summary"],"status":row.get("status")})}])
     if check.get("supported") is not True:
         row["editorial_status"]="needs_review"
+        row["editorial_failure_reason"]=str(check.get("issues") or "Source fact-check failed")[:250]
+        if os.getenv("POLICY_EDITORIAL_DEBUG")=="1":
+            row["_debug_candidate"]=str(draft.get("summary") or "")[:500]
         return "rejected"
+    row.pop("editorial_failure_reason",None)
+    row.pop("_debug_candidate",None)
     row["summary"]=draft["summary"].strip()
     row["takeaway"]=row["summary"]
     row["summary_method"]="ai_verified_primary_source" if source_type.startswith("official_") else "ai_verified_source_abstract"
