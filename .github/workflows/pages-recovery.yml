@@ -2,6 +2,10 @@ name: Recover AV Observatory Pages deployment
 # Temporary independent deployment path: keeps UI releases publishing if the
 # primary scheduled data-refresh/validation workflow is blocked.
 on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/pages-recovery.yml"
   workflow_dispatch:
 
 permissions:
@@ -33,7 +37,7 @@ jobs:
           NEXT_PUBLIC_POLICY_R2_URL: ${{ vars.POLICY_R2_PUBLIC_URL }}
           NEXT_PUBLIC_LEGISLATION_R2_URL: ${{ vars.LEGISLATION_R2_PUBLIC_URL }}
         run: npm run build
-      - name: Confirm 60/40 legislation view in built output
+      - name: Confirm static output exists
         run: |
           test -f out/policy/state-legislation/index.html
           test -f out/deployment-check-2026-10-14.json
