@@ -94,6 +94,10 @@ jobs:
         if: ${{ env.R2_BUCKET != '' && env.R2_ACCOUNT_ID != '' && env.AWS_ACCESS_KEY_ID != '' && env.AWS_SECRET_ACCESS_KEY != '' && env.OPENSTATES_API_KEY != '' }}
         run: python3 scripts/publish-r2-data.py legislation --file public/data/legislation_tracker.json
 
+      - name: Publish verified FMVSS policy summaries to R2
+        if: ${{ env.R2_BUCKET != '' && env.R2_ACCOUNT_ID != '' && env.AWS_ACCESS_KEY_ID != '' && env.AWS_SECRET_ACCESS_KEY != '' && env.OPENSTATES_API_KEY != '' }}
+        run: python3 scripts/publish-r2-data.py policy --file public/data/policy_tracker.json
+
       - name: Deploy updated site
         if: always()
         env:
