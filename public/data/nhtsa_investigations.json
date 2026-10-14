@@ -32,17 +32,23 @@
       "source_label": "ODI opening resume"
     },
     {
-      "id": "AQ-2026-Cybercab",
+      "id": "AQ26002",
       "company": "Tesla",
       "status": "Open",
       "action": "Audit Query",
-      "opened": "2026-09-04",
+      "opened": "2026-09-03",
       "closed": null,
-      "subject": "Cybercab self-certification",
-      "product": "Tesla Cybercab",
-      "summary": "NHTSA is reviewing how Tesla certified the Cybercab as meeting federal vehicle safety standards, including requirements designed for vehicles with traditional steering and driver controls.",
+      "subject": "Tesla Cybercab federal safety certification audit",
+      "product": "2026 Tesla Robotaxi (Cybercab)",
+      "summary": "NHTSA opened an audit query into Tesla's certification of the Cybercab, which lacks conventional steering, braking, and accelerator controls. Investigators are examining the technical basis for Tesla's claim that the vehicle complies with federal motor vehicle safety standards, including whether Tesla considered certain standards inapplicable.",
       "source": "https://www.nhtsa.gov/press-releases/investigation-tesla-cybercab-self-certification",
-      "source_label": "NHTSA"
+      "source_label": "NHTSA",
+      "summary_method": "official_NHTSA_ODI_audit_query",
+      "summary_quality": "manual_primary_source_verified",
+      "editorial_status": "verified",
+      "editorial_source_url": "https://www.nhtsa.gov/press-releases/investigation-tesla-cybercab-self-certification",
+      "editorial_source_type": "official_NHTSA_press_release",
+      "summary_reviewed_at": "2026-10-14"
     },
     {
       "id": "PE25012",
