@@ -40,16 +40,27 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-editorial-sans);
   --font-mono: var(--font-geist-mono);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-geist-sans), system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-family: var(--font-editorial-sans), system-ui, -apple-system, "Segoe UI", sans-serif;
   -webkit-font-smoothing: antialiased;
 }
+
+/* Publication typography: humanist, restrained, and consistent across pages. */
+h1, h2, h3, h4 {
+  font-family: var(--font-editorial-sans), system-ui, sans-serif;
+  letter-spacing: -0.023em;
+  text-wrap: balance;
+}
+h1 { line-height: 1.12; }
+h2 { line-height: 1.2; }
+body { line-height: 1.55; }
+button, input, select, textarea { font: inherit; }
 
 /* Shared dashboard type scale: readable labels across cards, charts and controls. */
 .text-xs { font-size: 0.8125rem; line-height: 1.25rem; }
