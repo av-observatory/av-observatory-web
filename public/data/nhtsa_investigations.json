@@ -2,8 +2,8 @@
   "schema_version": "1.0.0",
   "dataset": "NHTSA AV / ADAS Defect Investigations",
   "source_url": "https://static.nhtsa.gov/odi/ffdd/inv/FLAT_INV.zip",
-  "observed_at": "2026-09-29",
-  "storage": "Offline cache only; authoritative history/current view are stored in R2.",
+  "observed_at": "2026-10-14",
+  "storage": "Checked-in fallback cache; complete official NHTSA bulk-file refresh runs during Pages build. R2 used only if at least as complete and as recent as the snapshot.",
   "investigations": [
     {
       "id": "PE26001",
@@ -73,28 +73,34 @@
     {
       "id": "PE24016",
       "company": "Waymo",
-      "status": "Open",
+      "status": "Closed",
       "action": "Preliminary Evaluation",
       "opened": "2024-05-13",
-      "closed": null,
+      "closed": "2025-07-22",
       "subject": "Unexpected ADS behavior",
       "product": "Waymo 5th Generation ADS",
       "summary": "ODI opened the evaluation after reports of single-party crashes and potential traffic-law violations, including collisions with stationary objects, driving into opposing lanes, and entering construction zones.",
       "source": "https://static.nhtsa.gov/odi/inv/2024/INOA-PE24016-12382.pdf",
-      "source_label": "ODI opening resume"
+      "source_label": "ODI opening resume",
+      "related_recalls": [
+        "24E049000"
+      ]
     },
     {
       "id": "PE24015",
       "company": "Zoox",
-      "status": "Open",
+      "status": "Closed",
       "action": "Preliminary Evaluation",
       "opened": "2024-05-10",
-      "closed": null,
+      "closed": "2025-03-31",
       "subject": "Unexpected ADS braking",
       "product": "Zoox ADS-equipped passenger vehicles",
       "summary": "ODI opened the evaluation after two reported rear-end collisions in which Zoox ADS-equipped vehicles braked unexpectedly in response to nearby road users.",
-      "source": "https://static.nhtsa.gov/odi/inv/2024/INIM-PE24015-13296.pdf",
-      "source_label": "ODI information request"
+      "source": "https://static.nhtsa.gov/odi/inv/2024/INOA-PE24015-12348.pdf",
+      "source_label": "ODI information request",
+      "related_recalls": [
+        "25E019000"
+      ]
     },
     {
       "id": "AQ23001",
