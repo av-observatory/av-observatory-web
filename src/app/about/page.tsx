@@ -45,7 +45,7 @@ export default function AboutPage() {
 
       <section className="mt-12 border-t border-[#dce3e9] pt-9" aria-labelledby="why-it-exists">
         <div className="grid gap-5 md:grid-cols-[220px_minmax(0,1fr)] md:gap-10">
-          <h2 id="why-it-exists" className="text-2xl font-semibold tracking-tight text-[#0b1d33]">Why it exists</h2>
+          <h2 id="why-it-exists" className="text-2xl font-semibold tracking-tight text-[#0b1d33]">Approach</h2>
           <div className="max-w-[66ch] space-y-5 text-[15px] sm:text-base leading-[1.8] text-[#46535e]">
             <p>
               Coverage is designed to be national even when the underlying public data are not. Federal sources provide a common backbone; state-level systems add detail where reporting exists. California is currently the most data-rich state for passenger-service activity, while the Observatory&apos;s deployment and safety work spans the country.
