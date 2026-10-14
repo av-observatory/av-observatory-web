@@ -32,7 +32,7 @@ export function Sidebar() {
       <Link href="/" className={`block rounded-md px-3 py-2 text-sm ${path === "/" ? "bg-white/15 text-white font-semibold" : "text-white/70 hover:text-white hover:bg-white/10"}`}>Overview</Link>
       {GROUPS.map(group => <section key={group.title}><h2 className="px-3 mb-1 flex items-center gap-2 text-[13px] font-bold uppercase tracking-[.12em] text-[#8bb1d5]">{group.icon && <SectionIcon name={group.icon} className="w-4 h-4 shrink-0" />}{group.title}</h2><div className="space-y-0.5">{group.items.map(([href,label]) => <Link key={href} href={href} aria-current={path === href ? "page" : undefined} className={`block rounded-md px-3 py-2 text-[14px] leading-snug transition-colors ${path === href ? "bg-[#3987e5]/25 text-white font-semibold border-l-[3px] border-[#6fbbe9]" : "text-white/70 hover:text-white hover:bg-white/10"}`}>{label}</Link>)}</div></section>)}
     </nav>
-    <div className="px-5 py-5 text-xs text-white/50 border-t border-white/10 leading-relaxed">Independent evidence on autonomous vehicles in the United States.</div>
+    {path !== "/about" && <div className="px-5 py-5 text-xs text-white/50 border-t border-white/10 leading-relaxed">Independent evidence on autonomous vehicles in the United States.</div>}
   </aside>
   </>;
 }
