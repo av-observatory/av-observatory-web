@@ -92,7 +92,7 @@ export default function AboutPage() {
       </section>
 
       <p className="mt-12 max-w-[66ch] border-t border-[#e1e6eb] pt-6 text-xs leading-[1.7] text-[#77848f]">
-        This website is not affiliated with the University of California, and his title is used here only for identification purposes.
+        The AV Observatory is completely independent of, and is not affiliated with, associated with, authorized by, sponsored by, or in any way officially connected to the University of California, Berkeley or University of California system.
       </p>
     </main>
   );
