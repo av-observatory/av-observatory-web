@@ -31,7 +31,7 @@ def main():
     errors=[]
     for filename,groups in [
         ("legislation_tracker.json",("federal","state_bills")),
-        ("policy_tracker.json",("federal","federal_oversight","state_events","city_events")),
+        ("policy_tracker.json",("federal","federal_oversight","state_events","city_events","states")),
         ("nhtsa_investigations.json",("investigations",)),
         ("nhtsa_av_recalls.json",("recalls",)),
     ]:
@@ -43,7 +43,7 @@ def main():
             if isinstance(rows,list):
                 errors+=audit(rows,filename+":"+group)
     for issue in errors:print("EDITORIAL BLOCKER:",issue,file=sys.stderr)
-    print(f"Editorial audit: {len(errors)} blockers")
+    print(f"Editorial audit: {len(errors)} blockers across the current policy, legislation and NHTSA snapshots")
     return 1 if errors else 0
 
 if __name__=="__main__":raise SystemExit(main())
