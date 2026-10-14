@@ -14,7 +14,7 @@
       "closed": null,
       "subject": "Child pedestrian struck near elementary school",
       "product": "Waymo 5th Generation ADS",
-      "summary": "ODI opened this evaluation after a Waymo AV struck a child near a Santa Monica elementary school during normal drop-off hours. NHTSA is examining whether the ADS exercised appropriate caution around young pedestrians and school-zone conditions, including speed behavior, as well as Waymo's post-impact response.",
+      "summary": "A Waymo vehicle struck a child near a Santa Monica elementary school during drop-off hours. NHTSA is examining its speed, precautions around children, and response after the collision.",
       "source": "https://static.nhtsa.gov/odi/inv/2026/INOA-PE26001-10005.pdf",
       "source_label": "ODI opening resume"
     },
@@ -27,7 +27,7 @@
       "closed": null,
       "subject": "Passing stopped school buses",
       "product": "Waymo 5th Generation ADS",
-      "summary": "ODI opened this evaluation after a Waymo AV drove around a stopped school bus with red lights flashing and its stop arm and crossing control arm deployed. NHTSA is examining the ADS's performance around stopped school buses and compliance with school-bus traffic safety laws.",
+      "summary": "A Waymo vehicle reportedly passed a stopped school bus with its red lights flashing and stop arm extended. NHTSA is investigating whether its automated driving system responds safely and legally to stopped buses.",
       "source": "https://static.nhtsa.gov/odi/inv/2025/INOA-PE25013-23069.pdf",
       "source_label": "ODI opening resume"
     },
@@ -40,7 +40,7 @@
       "closed": null,
       "subject": "Cybercab self-certification",
       "product": "Tesla Cybercab",
-      "summary": "NHTSA opened an Audit Query to examine the basis for Tesla's self-certification that Cybercab complies with applicable FMVSS, including requirements written around vehicles with traditional human controls.",
+      "summary": "NHTSA is reviewing how Tesla certified the Cybercab as meeting federal vehicle safety standards, including requirements designed for vehicles with traditional steering and driver controls.",
       "source": "https://www.nhtsa.gov/press-releases/investigation-tesla-cybercab-self-certification",
       "source_label": "NHTSA"
     },
@@ -53,7 +53,7 @@
       "closed": null,
       "subject": "Traffic-safety violations with FSD engaged",
       "product": "Tesla vehicles equipped with FSD (Supervised) or FSD (Beta)",
-      "summary": "ODI is examining reports of FSD-commanded traffic-law violations, including proceeding against red signals, entering opposing lanes, and using incorrect lanes at intersections.",
+      "summary": "NHTSA is investigating reports of Tesla Full Self-Driving driving through red lights, entering oncoming traffic lanes, and taking incorrect lanes at intersections.",
       "source": "https://static.nhtsa.gov/odi/inv/2025/INOA-PE25012-19171.pdf",
       "source_label": "ODI opening resume"
     },
@@ -66,7 +66,7 @@
       "closed": null,
       "subject": "FSD collisions in reduced roadway visibility",
       "product": "Tesla vehicles with FSD",
-      "summary": "ODI upgraded its reduced-visibility investigation to an Engineering Analysis focused on whether FSD detects degraded roadway-visibility conditions and warns drivers with sufficient time to respond.",
+      "summary": "NHTSA is examining Tesla Full Self-Driving crashes in fog, glare, or other poor-visibility conditions. The investigation focuses on whether the system recognizes reduced visibility and gives drivers enough warning.",
       "source": "https://static.nhtsa.gov/odi/inv/2026/INOA-EA26002-10023.pdf",
       "source_label": "ODI opening resume"
     },
@@ -79,7 +79,7 @@
       "closed": null,
       "subject": "Unexpected ADS behavior",
       "product": "Waymo 5th Generation ADS",
-      "summary": "ODI opened the evaluation after reports of single-party crashes and potential traffic-law violations, including collisions with stationary objects, driving into opposing lanes, and entering construction zones.",
+      "summary": "NHTSA reviewed reports of Waymo vehicles striking stationary objects, entering opposing lanes, and driving into construction areas. The concern is whether the automated driving system reliably handles unexpected road conditions.",
       "source": "https://static.nhtsa.gov/odi/inv/2024/INOA-PE24016-12382.pdf",
       "source_label": "ODI opening resume"
     },
@@ -92,7 +92,7 @@
       "closed": null,
       "subject": "Unexpected ADS braking",
       "product": "Zoox ADS-equipped passenger vehicles",
-      "summary": "ODI opened the evaluation after two reported rear-end collisions in which Zoox ADS-equipped vehicles braked unexpectedly in response to nearby road users.",
+      "summary": "Two Zoox vehicles were rear-ended after unexpectedly braking near other road users. NHTSA investigated whether the automated driving system could trigger unnecessary hard braking.",
       "source": "https://static.nhtsa.gov/odi/inv/2024/INOA-PE24015-12348.pdf",
       "source_label": "ODI information request",
       "related_recalls": [
@@ -108,7 +108,7 @@
       "closed": "2025-08-04",
       "subject": "Purpose-built vehicle certification",
       "product": "Zoox purpose-built vehicles",
-      "summary": "NHTSA examined the process and technical basis for Zoox's self-certification. The AQ closed after Zoox sought and received a demonstration exemption from applicable FMVSS for the subject vehicles.",
+      "summary": "NHTSA examined whether Zoox properly certified its purpose-built driverless vehicle against federal safety standards. The audit closed after Zoox obtained a demonstration exemption for the vehicles.",
       "source": "https://static.nhtsa.gov/odi/inv/2023/INCLA-AQ23001-11826.pdf",
       "source_label": "ODI closing resume"
     },
@@ -121,7 +121,7 @@
       "closed": null,
       "subject": "ADS behavior around pedestrians",
       "product": "Cruise ADS-equipped vehicles",
-      "summary": "ODI examined whether Cruise ADS-equipped vehicles exercised appropriate caution around pedestrians. The evaluation closed after a related recall and after Cruise ceased public-road ADS operations.",
+      "summary": "NHTSA examined Cruise vehicles' behavior near pedestrians, including whether they yielded and exercised appropriate caution. The case closed after a related recall and Cruise's suspension of public-road driverless operations.",
       "source": "https://static.nhtsa.gov/odi/inv/2023/INCLA-PE23018-11022.pdf",
       "source_label": "ODI closing resume"
     },
@@ -134,7 +134,7 @@
       "closed": "2024-08-20",
       "subject": "Hard braking and immobilizations",
       "product": "Cruise ADS",
-      "summary": "ODI assessed unexpected hard braking and vehicle immobilizations. The evaluation closed after Cruise filed recall 24E-067 and software remedies reduced hard-braking incidents.",
+      "summary": "NHTSA investigated reports of Cruise vehicles braking sharply or becoming immobilized in traffic. The case closed following a software recall intended to reduce unexpected braking.",
       "source": "https://static.nhtsa.gov/odi/inv/2022/INCLA-PE22014-10746.pdf",
       "source_label": "ODI closing resume"
     },
@@ -147,7 +147,7 @@
       "closed": "2024-04-25",
       "subject": "Autopilot driver engagement and misuse",
       "product": "Tesla vehicles equipped with Autopilot",
-      "summary": "ODI examined Autopilot crashes, driver-engagement controls, and foreseeable misuse. The analysis closed after Tesla recall 23V838.",
+      "summary": "NHTSA investigated whether Tesla Autopilot adequately monitored driver attention and prevented foreseeable misuse. The analysis closed following a recall intended to strengthen driver-engagement safeguards.",
       "source": "https://static.nhtsa.gov/odi/inv/2022/INCLA-EA22002-14498.pdf",
       "source_label": "ODI closing resume"
     }
