@@ -78,31 +78,118 @@ def norm(text: str) -> str:
     return re.sub(r"\s+", " ", text).strip().lower()
 
 
-def get(url: str, timeout: int = 30) -> str | None:
-    """Fetch a URL; return None on any failure (never treated as a change)."""
+BROWSER_UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) "
+              "Chrome/126.0 Safari/537.36")
+BLOCK_RE = re.compile(r"access denied|forbidden|captcha|verify you are human|just a moment|request blocked", re.I)
+CLIENT = None            # set in main() when the model is available (enables the last fetch tier)
+WEBFETCH_BUDGET = 10     # model-side fetches allowed per run
+
+
+def http_bytes(url: str, ua: str, timeout: int = 30):
     if not url.startswith("https://"):
-        return None
+        return None, "not-https"
     try:
-        req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": "text/html,application/json,*/*"})
+        req = urllib.request.Request(url, headers={"User-Agent": ua, "Accept": "text/html,application/pdf,*/*"})
         with urllib.request.urlopen(req, timeout=timeout) as resp:
-            raw = resp.read(2_000_000)
-            charset = resp.headers.get_content_charset() or "utf-8"
-            return raw.decode(charset, errors="replace")
-    except Exception as exc:  # network, TLS, HTTP errors: skip
-        print(f"  fetch failed ({exc.__class__.__name__}): {url}")
-        return None
+            return resp.read(3_000_000), None
+    except Exception as exc:
+        code = getattr(exc, "code", "")
+        return None, f"{exc.__class__.__name__}{':' + str(code) if code else ''}"
+
+
+def raw_to_text(raw: bytes) -> str | None:
+    if raw[:4] == b"%PDF":
+        try:
+            import io
+            from pypdf import PdfReader
+            text = " ".join((page.extract_text() or "") for page in PdfReader(io.BytesIO(raw)).pages[:40])
+        except Exception:
+            return None
+    else:
+        parser = _Text()
+        parser.feed(raw.decode("utf-8", errors="replace"))
+        text = " ".join(parser.out)
+    return re.sub(r"\s+", " ", text).strip()[:MAX_TEXT] or None
+
+
+def browser_text(url: str):
+    """Real headless browser: passes many bot checks that plain HTTP clients fail."""
+    try:
+        from playwright.sync_api import sync_playwright
+    except ImportError:
+        return None, "playwright-not-installed"
+    try:
+        with sync_playwright() as p:
+            browser = p.chromium.launch()
+            page = browser.new_context(user_agent=BROWSER_UA).new_page()
+            page.goto(url, wait_until="domcontentloaded", timeout=30000)
+            text = page.inner_text("body")
+            browser.close()
+        return re.sub(r"\s+", " ", text).strip()[:MAX_TEXT] or None, None
+    except Exception as exc:
+        return None, exc.__class__.__name__
+
+
+def _document_text(node):
+    """Find the fetched document text inside a web_fetch_tool_result block."""
+    if isinstance(node, dict):
+        src = node.get("source")
+        if isinstance(src, dict) and src.get("type") == "text" and isinstance(src.get("data"), str):
+            return src["data"]
+        for value in node.values():
+            found = _document_text(value)
+            if found:
+                return found
+    elif isinstance(node, list):
+        for value in node:
+            found = _document_text(value)
+            if found:
+                return found
+    return None
+
+
+def claude_fetch_text(url: str):
+    """Last resort: Anthropic's web-fetch tool fetches from different IP addresses than GitHub's."""
+    global WEBFETCH_BUDGET
+    if CLIENT is None or WEBFETCH_BUDGET <= 0:
+        return None, "model-fetch-unavailable"
+    WEBFETCH_BUDGET -= 1
+    try:
+        resp = CLIENT.messages.create(
+            model=MODEL, max_tokens=1000,
+            tools=[{"type": "web_fetch_20260209", "name": "web_fetch", "max_uses": 1}],
+            messages=[{"role": "user", "content": f"Fetch {url} and reply with the single word: done."}])
+        for block in resp.content:
+            if getattr(block, "type", "") == "web_fetch_tool_result":
+                text = _document_text(block.model_dump())
+                if text:
+                    return re.sub(r"\s+", " ", text).strip()[:MAX_TEXT], None
+        return None, "model-fetch-empty"
+    except Exception as exc:
+        return None, f"model-fetch:{exc.__class__.__name__}"
 
 
 @functools.lru_cache(maxsize=512)
+def fetch_ladder(url: str):
+    """Escalate until a page is readable. Returns (text, method, error). Never skips silently."""
+    errors = []
+    for method, ua in (("direct", UA), ("direct-browser-ua", BROWSER_UA)):
+        raw, err = http_bytes(url, ua)
+        text = raw_to_text(raw) if raw else None
+        if text and not BLOCK_RE.search(text[:500]):
+            return text, method, None
+        errors.append(f"{method}:{err or 'blocked-or-empty'}")
+    for method, fn in (("headless-browser", browser_text), ("model-web-fetch", claude_fetch_text)):
+        text, err = fn(url)
+        if text and not BLOCK_RE.search(text[:500]):
+            return text, method, None
+        errors.append(f"{method}:{err or 'blocked-or-empty'}")
+    print(f"::warning::cannot read source after all methods: {url} ({'; '.join(errors)})")
+    return None, None, "; ".join(errors)
+
+
 def page_text(url: str) -> str | None:
-    body = get(url)
-    if body is None:
-        return None
-    if body.lstrip().startswith("%PDF"):
-        return None  # PDFs are not parsed here
-    parser = _Text()
-    parser.feed(body)
-    return re.sub(r"\s+", " ", " ".join(parser.out)).strip()[:MAX_TEXT] or None
+    return fetch_ladder(url)[0]
 
 
 # --------------------------------------------------------------------------- candidates
@@ -177,21 +264,56 @@ def changed_source_candidates(policy, state, limit):
     todo = []
     for key, entry in all_entries(policy):
         url = entry["source_url"]
-        text = page_text(url)
+        text, method, err = fetch_ladder(url)
+        record = pages.setdefault(url, {"hash": None, "checked": ""})
         if not text:
-            continue  # fetch failure or PDF: leave state untouched
+            record["failures"] = record.get("failures", 0) + 1   # a blind spot, reported by blind_spots()
+            record["last_error"] = err
+            continue
+        record["failures"], record["last_error"] = 0, None
         digest = hashlib.sha256(norm(text).encode()).hexdigest()
-        previous = pages.get(url)
-        if previous is None:
-            pages[url] = {"hash": digest, "checked": TODAY}  # baseline, no model call
-        elif previous["hash"] != digest:
-            todo.append((previous.get("checked", ""), key, entry, text, digest))
+        if record.get("hash") is None or record.get("method") != method:
+            record.update(hash=digest, method=method, checked=TODAY)  # (re)baseline: no model call
+        elif record["hash"] != digest:
+            todo.append((record.get("checked", ""), key, entry, text, digest))
         else:
-            previous["checked"] = TODAY
+            record["checked"] = TODAY
     todo.sort(key=lambda item: item[0])
     return [{"kind": "review_existing", "list": key, "entry": entry, "text": text, "digest": digest,
              "source_url": entry["source_url"], "label": entry["title"]}
             for _, key, entry, text, digest in todo[:limit]]
+
+
+BLIND_AFTER = 2  # consecutive unreadable runs (about 6 days) before a standing alert
+
+
+def blind_spots(state):
+    return sorted((u, r.get("failures", 0), r.get("last_error")) for u, r in state.get("pages", {}).items()
+                  if r.get("failures", 0) >= BLIND_AFTER)
+
+
+def report_blind_spots(state, open_issues):
+    spots = blind_spots(state)
+    state["blind_spots"] = [u for u, _, _ in spots]
+    if not spots:
+        return
+    print(f"::warning::{len(spots)} policy source(s) unreadable by every method")
+    for url, n, err in spots:
+        print(f"  BLIND SPOT ({n} runs): {url} [{err}]")
+    if open_issues:
+        key = hashlib.sha256("|".join(u for u, _, _ in spots).encode()).hexdigest()[:12]
+        found = subprocess.run(["gh", "issue", "list", "--state", "open", "--label", "data-coverage", "--search",
+                                f"coverage-key:{key} in:body", "--json", "number"], capture_output=True, text=True)
+        if found.returncode == 0 and json.loads(found.stdout or "[]"):
+            return
+        rows = "\n".join(f"- {u} ({n} runs): `{err}`" for u, n, err in spots)
+        subprocess.run(["gh", "label", "create", "data-coverage", "--color", "fbca04", "--description",
+                        "A data source may be missing records"], capture_output=True)
+        subprocess.run(["gh", "issue", "create", "--label", "data-coverage",
+                        "--title", f"{len(spots)} policy source(s) cannot be monitored",
+                        "--body", "These cited sources could not be read by direct fetch, browser-style fetch, a headless "
+                                  "browser, or the model's web-fetch tool, so changes to them are NOT being detected:\n\n"
+                                  f"{rows}\n\ncoverage-key:{key}"], check=False)
 
 
 # --------------------------------------------------------------------------- model
@@ -326,6 +448,10 @@ def main() -> int:
     state = json.loads(STATE.read_text()) if STATE.exists() else {}
     state.setdefault("pages", {})
 
+    global CLIENT
+    if not args.dry_run:
+        import anthropic  # imported late so --dry-run needs no SDK
+        CLIENT = anthropic.Anthropic()
     candidates = (federal_register_candidates(policy)[: args.max_new]
                   + new_law_candidates(policy, legislation)[: args.max_new]
                   + changed_source_candidates(policy, state, args.max_review))
@@ -335,20 +461,23 @@ def main() -> int:
     if args.dry_run:
         return 0
     if not candidates:
+        report_blind_spots(state, args.open_issues)
         STATE.parent.mkdir(exist_ok=True)
         STATE.write_text(json.dumps(state, indent=1, sort_keys=True))
         return 0
 
-    import anthropic  # imported late so --dry-run needs no SDK
-    client = anthropic.Anthropic()
-    added, proposals, rejected, touched = [], [], 0, False
+    client = CLIENT
+    added, proposals, rejected, touched, errors, answered = [], [], 0, False, [], 0
     existing_ids = {e["id"] for _, e in all_entries(policy)}
     for c in candidates:
         try:
             result = ask(client, c)
-        except Exception as exc:  # API/parse error: skip, retry next run
-            print(f"  model error ({exc.__class__.__name__}): {c['label']}")
+        except Exception as exc:  # API/parse error: retried next run, but never silent
+            message = f"{exc.__class__.__name__}: {getattr(exc, 'message', str(exc))}"[:300]
+            errors.append(message)
+            print(f"::error::model error for {c['label']}: {message}")
             continue
+        answered += 1
         if result is None or result["decision"] == "not_applicable" or not result["relevant"]:
             if c["kind"] == "review_existing":
                 state["pages"][c["source_url"]] = {"hash": c["digest"], "checked": TODAY}
@@ -374,6 +503,12 @@ def main() -> int:
                     live["verified_at"] = TODAY
                     touched = True
 
+    if errors and not answered:
+        print(f"::error::every model call failed ({len(errors)}); nothing was classified. First error: {errors[0]}")
+        return 1  # fail the run so it is visible; state is not advanced
+    if errors:
+        print(f"::warning::{len(errors)} of {len(candidates)} model call(s) failed; they will be retried next run")
+    report_blind_spots(state, args.open_issues)
     if added or touched:
         policy["as_of"] = TODAY
     POLICY.write_text(json.dumps(policy, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")

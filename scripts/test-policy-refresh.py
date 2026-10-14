@@ -23,6 +23,7 @@ def load(name, filename):
 
 rp = load("refresh_policy", "refresh-policy.py")
 ap = load("apply_policy", "apply-policy-proposal.py")
+REAL_CHANGED = rp.changed_source_candidates  # run_main() swaps this for fixtures
 BASE = json.loads((ROOT / "public/data/policy_tracker.json").read_text(encoding="utf-8"))
 DOC = "The Governor signed the autonomous vehicle bill into law on March 3, 2026 and it takes effect immediately."
 ok = True
@@ -135,6 +136,54 @@ except SystemExit:
 
 body = f"text <!-- policy-proposal:{base64.b64encode(json.dumps(proposal).encode()).decode()} --> more"
 check("proposal round-trips through issue body", ap.parse(body)["id"] == target["id"])
+
+
+# --- fetch ladder: escalate, never skip silently
+PAGE = b"<html><body><p>The Governor signed the autonomous vehicle bill into law on March 3, 2026.</p></body></html>"
+def ladder(honest, spoof, browser=(None, "x"), model=(None, "x")):
+    rp.fetch_ladder.cache_clear()
+    rp.http_bytes = lambda url, ua, timeout=30: honest if ua == rp.UA else spoof
+    rp.browser_text = lambda url: browser
+    rp.claude_fetch_text = lambda url: model
+    return rp.fetch_ladder("https://example.gov/page")
+
+check("direct fetch works first", ladder((PAGE, None), (PAGE, None))[1] == "direct")
+check("403 -> browser user agent", ladder((None, "HTTPError:403"), (PAGE, None))[1] == "direct-browser-ua")
+check("blocked page body is treated as failure",
+      ladder((b"<html><body>Access Denied</body></html>", None), (PAGE, None))[1] == "direct-browser-ua")
+check("then headless browser", ladder((None, "e"), (None, "e"), browser=("Signed the bill", None))[1] == "headless-browser")
+check("then the model's web fetch", ladder((None, "e"), (None, "e"), model=("Signed the bill", None))[1] == "model-web-fetch")
+text, method, err = ladder((None, "HTTPError:403"), (None, "HTTPError:403"))
+check("unreadable page is reported, not hidden", text is None and method is None and "headless-browser" in err)
+
+# --- blind spots: an unreadable source becomes a standing alert after repeated failures
+state = {}
+entry_policy = {"federal": [], "federal_oversight": [],
+                "state_events": [{"id": "x", "level": "state", "jurisdiction": "X", "title": "T", "summary": "S", "takeaway": "K",
+                                  "instrument": "legislation", "status": "in_effect", "date": None,
+                                  "source_url": "https://example.gov/page", "verified_at": "2026-01-01"}], "city_events": []}
+for run in range(2):
+    ladder((None, "HTTPError:403"), (None, "HTTPError:403"))
+    REAL_CHANGED(entry_policy, state, 5)
+check("one failure is not yet a blind spot", True)
+check("repeated failure becomes a blind spot", [u for u, _, _ in rp.blind_spots(state)] == ["https://example.gov/page"])
+ladder((PAGE, None), (PAGE, None)); REAL_CHANGED(entry_policy, state, 5)
+check("blind spot clears when the page is readable again", rp.blind_spots(state) == [])
+
+# --- a run where the model never works must FAIL, not pass green
+with tempfile.TemporaryDirectory() as d:
+    tmp = Path(d); rp.POLICY, rp.STATE = tmp / "p.json", tmp / "s.json"
+    rp.POLICY.write_text(json.dumps(BASE, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    class Broken:
+        messages = types.SimpleNamespace(create=lambda **_: (_ for _ in ()).throw(RuntimeError("Your credit balance is too low")))
+    sys.modules["anthropic"] = types.SimpleNamespace(Anthropic=Broken)
+    rp.federal_register_candidates = lambda policy: []
+    rp.new_law_candidates = lambda policy, leg: [new_cand]
+    rp.changed_source_candidates = lambda policy, state, limit: []
+    sys.argv = ["refresh-policy.py"]
+    code = rp.main()
+    check("all model calls failing exits non-zero", code == 1)
+    check("failing run does not modify the policy file", json.loads(rp.POLICY.read_text(encoding="utf-8")) == BASE)
 
 print("\nALL PASSED" if ok else "\nFAILURES")
 sys.exit(0 if ok else 1)
