@@ -86,24 +86,38 @@ def get_source(row,kind):
     return "","missing_full_text_and_substantive_abstract",""
 
 def select_relevant_excerpt(text,row,kind):
-    """Ground summarization in the relevant provisions of long documents."""
+    """Rank substantive provisions throughout a long document, not just its preamble.
+
+    Budget omnibus bills can contain the relevant AV amendment thousands of
+    lines after the title. A first-N keyword approach misses that operative text.
+    """
     if len(text)<=24000:return text
-    snippets=[text[:3000]]
+    identifiers=[r"\bautonomous vehicles?\b",r"\bautomated driving systems?\b",
+        r"\bdriverless\b",r"\bself[- ]driving\b",r"\brobotaxi\b"]
     if kind=="fmvss":
-        m=re.match(r"fmvss-(\d{3}a?)-",str(row.get("id") or ""),re.I)
-        n=m.group(1) if m else None
-        targets=([rf"\bFMVSS\s*(?:No\.\s*)?{n}\b",rf"\b571\.{n}\b",
-                  rf"\bstandard\s*(?:No\.\s*)?{n}\b"] if n else
-                 [r"\bautomated driving\b",r"\bmanual driving controls\b"])
-    else:
-        targets=[r"\bautonomous vehicles?\b",r"\bautomated driving systems?\b",
-                 r"\bdriverless\b",r"\bself[- ]driving\b",r"\brobotaxi\b"]
-    offsets=sorted(set(m.start() for pattern in targets for m in re.finditer(pattern,text,re.I)))
-    for pos in offsets[:18]:
-        fragment=text[max(0,pos-600):min(len(text),pos+1450)]
-        if sum(len(x) for x in snippets)+len(fragment)>22000:break
-        snippets.append(fragment)
-    return "\n\n[Source excerpt]\n\n".join(snippets)[:24000]
+        match=re.match(r"fmvss-(\d{3}a?)-",str(row.get("id") or ""),re.I)
+        if match:
+            number=re.escape(match.group(1))
+            identifiers=[rf"\bFMVSS\s*(?:No\.\s*)?{number}\b",
+                rf"\b571\.{number}\b",rf"\bstandard\s*(?:No\.\s*)?{number}\b"]
+    positions=sorted(set(m.start() for pattern in identifiers
+        for m in re.finditer(pattern,text,re.I)))
+    ranked=[]
+    for pos in positions:
+        fragment=text[max(0,pos-700):min(len(text),pos+1750)]
+        score=(3*len(re.findall(r"\b(?:section|§|shall|amend(?:ed|s)?|requires?|expire|repeal|effective|submit|reporting|authorize)\b",fragment,re.I))
+            +len(re.findall(r"\b(?:vehicles?|motor|commission|agency|operator)\b",fragment,re.I)))
+        if pos<3500:score-=25
+        ranked.append((score,pos))
+    selected=[]
+    for _,pos in sorted(ranked,reverse=True):
+        if all(abs(pos-other)>1250 for other in selected):
+            selected.append(pos)
+        if len(selected)>=9:break
+    chunks=[text[:1200]]
+    for pos in sorted(selected):
+        chunks.append(text[max(0,pos-650):min(len(text),pos+1800)])
+    return "\n\n[Official text excerpt]\n\n".join(chunks)[:24000]
 
 
 def summarize(row,kind):
