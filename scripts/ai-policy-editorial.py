@@ -103,8 +103,6 @@ def summarize(row,kind):
     digest=hashlib.sha256((MODEL+"\n"+source+"\n"+str(row.get("status"))).encode()).hexdigest()
     if row.get("editorial_source_hash")==digest and row.get("editorial_status")=="verified":
         return "cached"
-    if row.get("editorial_source_hash")==digest and row.get("editorial_status")=="needs_review":
-        return "awaiting_review"
     if not KEY:raise RuntimeError("OPENAI_API_KEY not configured")
     row["editorial_source_hash"]=digest
     row["editorial_source_type"]=source_type
@@ -113,7 +111,7 @@ def summarize(row,kind):
     current_status=str(row.get("status") or "")
     status_note=("This is NOT enacted law. Describe ALL substantive provisions with conditional language such as would or proposes. Never claim this law already requires something." if kind.endswith("_bill") and current_status not in ("enacted","signed","chaptered") else "Clearly distinguish the measure's legal status.")
     prompt=(status_note+" You are an impartial legislative and regulatory researcher. Write a readable 2–3 sentence summary, "
-      "about 35–65 words, grounded EXCLUSIVELY in the supplied original bill text, official rule, or source abstract. "
+      "about 35–65 words, grounded EXCLUSIVELY in the supplied original bill text or official rule. "
       "Explain what it proposes or changes, which vehicles or actors it affects, and any important reporting duties, "
       "deadlines or authority where stated. Distinguish proposed and enacted measures. Explain abbreviations. "
       "Do not restate the title or procedural history. Focus on a specific numbered standard rather than the entire rulemaking. Avoid unexplained acronyms. Never invent provisions, dates or status. If insufficient, return needs_review=true. "
