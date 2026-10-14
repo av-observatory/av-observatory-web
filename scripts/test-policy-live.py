@@ -28,12 +28,19 @@ success=0
 for kind,seed in rows:
     row=copy.deepcopy(seed)
     try:
-        original,source_type,url=primary_text(row,kind)
-        if len(original)<650:
-            print(f"{kind} {row['id']}: FULL TEXT UNAVAILABLE")
+        original,source_type,url=ns["get_source"](row,kind)
+        if len(original)<180:
+            print(f"{kind} {row['id']}: NO SUBSTANTIVE SOURCE AVAILABLE")
             continue
-        # Run the same processing function used in production.
-        result=ns["summarize"](row,kind)
+        # Avoid fetching a primary source twice during the smoke test.
+        fn=ns["summarize"]
+        g=fn.__globals__
+        real_get_source=g["get_source"]
+        try:
+            g["get_source"]=lambda _row,_kind:(original,source_type,url)
+            result=fn(row,kind)
+        finally:
+            g["get_source"]=real_get_source
         print(f"{kind} {row['id']}: {result}, source={source_type}, chars={len(original)}")
         if result=="rejected":
             print("  Rejection:",row.get("editorial_failure_reason"),"Candidate:",row.get("_debug_candidate"))
