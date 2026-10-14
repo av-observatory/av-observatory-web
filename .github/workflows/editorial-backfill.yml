@@ -1,0 +1,91 @@
+name: Repair historical AV policy summaries
+on:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/ai-policy-editorial.py"
+      - "scripts/legislation_source_text.py"
+      - "scripts/audit-editorial-quality.py"
+      - ".github/workflows/editorial-backfill.yml"
+  schedule:
+    - cron: "41 9 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: website-data-writers
+  cancel-in-progress: false
+
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    timeout-minutes: 320
+    env:
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      OPENSTATES_API_KEY: ${{ secrets.OPENSTATES_API_KEY }}
+      LEGISCAN_API_KEY: ${{ secrets.LEGISCAN_API_KEY }}
+      POLICY_EDITORIAL_MODEL: gpt-4.1-mini
+      POLICY_EDITORIAL_MAX_NEW: 300
+      POLICY_EDITORIAL_REQUEST_GAP_SECONDS: "1.5"
+      GH_TOKEN: ${{ github.token }}
+      AWS_ACCESS_KEY_ID: ${{ secrets.POLICY_R2_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.POLICY_R2_SECRET_ACCESS_KEY }}
+      AWS_DEFAULT_REGION: auto
+      R2_ACCOUNT_ID: ${{ vars.POLICY_R2_ACCOUNT_ID }}
+      R2_BUCKET: ${{ vars.POLICY_R2_BUCKET }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Check AI configuration and editorial tests
+        run: |
+          test -n "$OPENAI_API_KEY" || { echo "::error::Missing OPENAI_API_KEY"; exit 1; }
+          python3 -m py_compile scripts/ai-policy-editorial.py scripts/legislation_source_text.py scripts/audit-editorial-quality.py
+          python3 scripts/test-policy-editorial.py
+          python3 scripts/test-nhtsa-editorial.py
+      - name: Research and correct historical records
+        run: |
+          # Exit 1 means individual records still need research. Retain verified corrections.
+          code=0
+          python3 scripts/ai-policy-editorial.py || code=$?
+          if [ "$code" -gt 1 ]; then
+            echo "::error::Editorial runtime failed (exit $code)"; exit "$code"
+          fi
+      - name: Produce explicit editorial quality report
+        run: |
+          mkdir -p data-state
+          python3 scripts/audit-editorial-quality.py > data-state/editorial-quality-report.txt 2>&1 || true
+          tail -60 data-state/editorial-quality-report.txt
+      - name: Validate JSON and update CSV companions
+        run: |
+          node scripts/validate-legislation-data.mjs
+          node scripts/validate-policy-data.mjs
+          python3 scripts/export-data-csv.py
+      - name: Commit independently verified improvements and recovery report
+        run: |
+          git config user.name "av-observatory-bot"
+          git config user.email "bot@av-observatory.org"
+          git add public/data/legislation_tracker.json public/data/policy_tracker.json public/data/nhtsa_investigations.json public/data/nhtsa_av_recalls.json data-state/editorial-quality-report.txt public/data/*.csv
+          if ! git diff --cached --quiet; then
+            git commit -m "data: retroactive official-source editorial corrections"
+            git fetch origin main
+            git rebase origin/main
+            git push origin HEAD:main
+            gh workflow run pages.yml --ref main
+          fi
+      - name: Publish only after cross-feed editorial audit passes
+        run: |
+          if ! python3 scripts/audit-editorial-quality.py; then
+            echo "::warning::Backfill remains incomplete; verified corrections committed but full R2 release deferred."
+            exit 0
+          fi
+          if [ -z "$R2_BUCKET" ] || [ -z "$R2_ACCOUNT_ID" ] || [ -z "$AWS_ACCESS_KEY_ID" ] || [ -z "$AWS_SECRET_ACCESS_KEY" ]; then
+            echo "::warning::R2 publication not configured."
+            exit 0
+          fi
+          python3 scripts/publish-r2-data.py legislation --file public/data/legislation_tracker.json
+          python3 scripts/publish-r2-data.py policy --file public/data/policy_tracker.json
