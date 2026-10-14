@@ -61,16 +61,15 @@ jobs:
 
       - name: AI review state and federal legislation plus FMVSS rules
         if: ${{ env.OPENSTATES_API_KEY != '' }}
-        continue-on-error: true
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           POLICY_EDITORIAL_MODEL: gpt-4.1-mini
-          POLICY_EDITORIAL_MAX_NEW: 30
+          POLICY_EDITORIAL_MAX_NEW: 10000
         run: |
           python3 scripts/ai-policy-editorial.py
           python3 scripts/test-policy-editorial.py
 
-      - name: Validate refreshed index
+      - name: Reject unverified editorial text before committing or publishing\n        run: python3 scripts/audit-editorial-quality.py\n      - name: Validate refreshed index
         if: ${{ env.OPENSTATES_API_KEY != '' }}
         run: node scripts/validate-legislation-data.mjs public/data/legislation_tracker.json
       - name: Refresh CSV companions
@@ -99,7 +98,6 @@ jobs:
         run: python3 scripts/publish-r2-data.py policy --file public/data/policy_tracker.json
 
       - name: Deploy updated site
-        if: always()
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
