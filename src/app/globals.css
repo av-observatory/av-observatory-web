@@ -262,3 +262,16 @@ select:focus, input:focus { outline: 2px solid rgba(42,120,214,.25); outline-off
 
 /* The About page carries its own legal closing note; avoid a second footer immediately below. */
 main:has(#about-observatory-page) + footer { display: none; }
+
+/* Equal-width About columns with dividers centered in uniform gutters. */
+@media (min-width: 768px) {
+  .about-track-grid > div + div::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -1rem;
+    width: 1px;
+    background: #e1e6eb;
+  }
+}
