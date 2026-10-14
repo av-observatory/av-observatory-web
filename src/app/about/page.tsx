@@ -71,6 +71,7 @@ export default function AboutPage() {
             <p>
               This site is managed by Dr. Matthew Raifman. Dr. Raifman is a multidisciplinary researcher and product manager working at the intersection of sustainable transportation, public health, and autonomous vehicle policy. He currently serves as the Research Lead for Policy and Autonomous Vehicles at UC Berkeley, where his research evaluates the real-world health and safety outcomes of emerging transportation technologies, infrastructure design, and infrastructure equity.
             </p>
+            <p>AV Observatory is independent of and not affiliated with the University of California.</p>
             <p>
               Prior to his time at UC Berkeley, his professional background bridged the gap between public policy, corporate technology, and international development. He served as a Senior Manager for City Solutions at Ford Smart Mobility, senior advisor at Johns Hopkins University, a Science and Technology Policy Fellow for the U.S. Department of Energy, the transportation lead within the Maryland Governor’s Office, and as a performance management lead in the President’s Office at the World Bank Group.
             </p>
@@ -91,9 +92,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <p className="mt-12 max-w-[66ch] border-t border-[#e1e6eb] pt-6 text-xs leading-[1.7] text-[#77848f]">
-        The AV Observatory is completely independent of, and is not affiliated with, associated with, authorized by, sponsored by, or in any way officially connected to the University of California, Berkeley or University of California system.
-      </p>
     </main>
   );
 }
