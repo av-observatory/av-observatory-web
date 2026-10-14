@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import { displayDate, usePolicyData } from "@/lib/policyTracker";
 import { useLegislationData, type Bill } from "@/lib/legislationTracker";
+import { AutoCollectedNote } from "@/components/AutoCollectedNote";
 
 const TILE_POSITIONS: Record<string,[number,number]> = {
   ME:[1,11], VT:[2,10], NH:[2,11],
@@ -148,7 +149,7 @@ export function StateLegislationPage() {
       {enacted.length ? <div className="mt-3 divide-y divide-neutral-200">{enacted.map(item=><article key={item.id} className="py-4">
         <div className="flex flex-wrap justify-between gap-2"><h3 className="font-semibold text-[#0b1d33]">{item.title}</h3><span className="text-xs rounded-full bg-[#dcefe9] text-[#145c48] px-2.5 py-1 font-semibold">In Effect</span></div>
         <p className="text-sm text-neutral-700 mt-2 leading-relaxed">{item.takeaway ?? item.summary}</p>
-        <div className="text-sm mt-2"><a href={item.source_url} target="_blank" rel="noreferrer" className="text-[#184f95] underline">Primary source ↗</a></div>
+        <div className="text-sm mt-2"><AutoCollectedNote entry={item} /> <a href={item.source_url} target="_blank" rel="noreferrer" className="text-[#184f95] underline">Primary source ↗</a></div>
       </article>)}</div> : <p className="text-sm text-neutral-600 mt-3">No current enacted AV-specific statute is identified in the reviewed state-law dataset.</p>}
     </section>}
 
