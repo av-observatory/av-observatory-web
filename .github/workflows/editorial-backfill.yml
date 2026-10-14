@@ -65,15 +65,22 @@ jobs:
           node scripts/validate-legislation-data.mjs
           node scripts/validate-policy-data.mjs
           python3 scripts/export-data-csv.py
-      - name: Commit independently verified improvements and recovery report
+      - name: Merge and commit verified corrections against latest main
         run: |
+          incoming="$(mktemp -d)"
+          cp public/data/legislation_tracker.json public/data/policy_tracker.json public/data/nhtsa_investigations.json public/data/nhtsa_av_recalls.json "$incoming/"
           git config user.name "av-observatory-bot"
           git config user.email "bot@av-observatory.org"
+          git fetch origin main
+          git reset --hard origin/main
+          python3 scripts/merge-editorial-updates.py "$incoming"
+          node scripts/validate-legislation-data.mjs
+          node scripts/validate-policy-data.mjs
+          python3 scripts/export-data-csv.py
+          python3 scripts/audit-editorial-quality.py > data-state/editorial-quality-report.txt 2>&1 || true
           git add public/data/legislation_tracker.json public/data/policy_tracker.json public/data/nhtsa_investigations.json public/data/nhtsa_av_recalls.json data-state/editorial-quality-report.txt public/data/*.csv
           if ! git diff --cached --quiet; then
             git commit -m "data: retroactive official-source editorial corrections"
-            git fetch origin main
-            git rebase origin/main
             git push origin HEAD:main
             gh workflow run pages.yml --ref main
           fi
