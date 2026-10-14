@@ -11,6 +11,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
   group: website-data-writers
@@ -37,4 +38,16 @@ jobs:
             git fetch origin main
             git rebase origin/main
             git push origin HEAD:main
+          fi
+
+      - name: Deploy updated site
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # Pushes made with GITHUB_TOKEN do not trigger the push-based Pages deploy.
+          if [ "$(git rev-parse HEAD)" != "$GITHUB_SHA" ]; then
+            gh workflow run pages.yml --ref main
+          else
+            echo "No new data commit; no deploy needed"
           fi
