@@ -259,3 +259,6 @@ select:focus, input:focus { outline: 2px solid rgba(42,120,214,.25); outline-off
   main a, main button { overflow-wrap: anywhere; }
   main :is(button, select, input, textarea):focus-visible { outline-offset: 2px; }
 }
+
+/* The About page carries its own legal closing note; avoid a second footer immediately below. */
+main:has(#about-observatory-page) + footer { display: none; }
