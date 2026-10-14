@@ -115,8 +115,8 @@
       "level": "federal",
       "jurisdiction": "US",
       "title": "Transmission displays · FMVSS 102",
-      "summary": "Proposed changes to requirements written around human-operated transmission controls in ADS-equipped vehicles.",
-      "takeaway": "Would adapt transmission-display rules for vehicles without manual controls",
+      "summary": "NHTSA proposes to exempt vehicles equipped with automated driving systems and no manual driving controls from the requirement to display transmission shift positions to a human driver. The proposal addresses human-facing transmission indicators, not the vehicle's underlying transmission safety or automated driving performance.",
+      "takeaway": "NHTSA proposes to exempt vehicles equipped with automated driving systems and no manual driving controls from the requirement to display transmission shift positions to a human driver. The proposal addresses human-facing transmission indicators, not the vehicle's underlying transmission safety or automated driving performance.",
       "instrument": "FMVSS rulemaking",
       "status": "under_review",
       "date": "2026-03-16",
@@ -125,15 +125,21 @@
       "fmvss": [
         "102"
       ],
-      "comment_deadline": "2026-04-15"
+      "comment_deadline": "2026-04-15",
+      "summary_quality": "manual_primary_source_verified",
+      "summary_method": "federal_register_nprm_specific_requirement_review",
+      "editorial_status": "verified",
+      "editorial_source_url": "https://www.federalregister.gov/d/2026-05024",
+      "editorial_source_type": "official_federal_register_proposed_rule",
+      "summary_reviewed_at": "2026-10-14"
     },
     {
       "id": "fmvss-103-104-2026",
       "level": "federal",
       "jurisdiction": "US",
       "title": "Defrosting and windshield wiping · FMVSS 103/104",
-      "summary": "Proposed changes to defrosting and wiping requirements for ADS vehicles without conventional driver controls.",
-      "takeaway": "Would adapt defrosting and wiper rules for driverless designs",
+      "summary": "NHTSA proposes to exempt vehicles designed for automated driving without conventional manual driving controls from selected windshield defrosting, defogging, wiping, and washing requirements intended to maintain a human driver's view. The proposal covers Federal Motor Vehicle Safety Standards 103 and 104; it is not yet an adopted exemption.",
+      "takeaway": "NHTSA proposes to exempt vehicles designed for automated driving without conventional manual driving controls from selected windshield defrosting, defogging, wiping, and washing requirements intended to maintain a human driver's view. The proposal covers Federal Motor Vehicle Safety Standards 103 and 104; it is not yet an adopted exemption.",
       "instrument": "FMVSS rulemaking",
       "status": "under_review",
       "date": "2026-03-16",
@@ -143,15 +149,21 @@
         "103",
         "104"
       ],
-      "comment_deadline": "2026-04-15"
+      "comment_deadline": "2026-04-15",
+      "summary_quality": "manual_primary_source_verified",
+      "summary_method": "federal_register_nprm_specific_requirement_review",
+      "editorial_status": "verified",
+      "editorial_source_url": "https://www.federalregister.gov/d/2026-05023",
+      "editorial_source_type": "official_federal_register_proposed_rule",
+      "summary_reviewed_at": "2026-10-14"
     },
     {
       "id": "fmvss-110-2026",
       "level": "federal",
       "jurisdiction": "US",
       "title": "Tire placards · FMVSS 110",
-      "summary": "Proposed adapting tire information placard requirements to ADS-equipped vehicle designs.",
-      "takeaway": "Would adapt tire-information placards for ADS vehicle designs",
+      "summary": "NHTSA proposes changing tire and loading information placard rules for vehicles without a conventional driver's side. Instead of requiring placement specifically on the driver's side, the proposed amendment would permit the placard on the left side of these vehicles. The proposal concerns vehicle labeling, not tire performance requirements.",
+      "takeaway": "NHTSA proposes changing tire and loading information placard rules for vehicles without a conventional driver's side. Instead of requiring placement specifically on the driver's side, the proposed amendment would permit the placard on the left side of these vehicles. The proposal concerns vehicle labeling, not tire performance requirements.",
       "instrument": "FMVSS rulemaking",
       "status": "under_review",
       "date": "2026-04-01",
@@ -160,15 +172,21 @@
       "fmvss": [
         "110"
       ],
-      "comment_deadline": "2026-05-01"
+      "comment_deadline": "2026-05-01",
+      "summary_quality": "manual_primary_source_verified",
+      "summary_method": "federal_register_nprm_specific_requirement_review",
+      "editorial_status": "verified",
+      "editorial_source_url": "https://www.federalregister.gov/d/2026-06254",
+      "editorial_source_type": "official_federal_register_proposed_rule",
+      "summary_reviewed_at": "2026-10-14"
     },
     {
       "id": "fmvss-135-2026",
       "level": "federal",
       "jurisdiction": "US",
       "title": "Brake controls · FMVSS 135",
-      "summary": "Proposed removing the manual brake pedal requirement for vehicles designed exclusively for ADS operation while retaining braking performance requirements.",
-      "takeaway": "Would remove the brake-pedal requirement for ADS-only vehicles; braking standards remain",
+      "summary": "NHTSA proposes removing requirements for hand- or foot-operated service-brake controls from vehicles designed to be driven exclusively by automated driving systems. It would also adapt brake warnings, parking-brake controls and test procedures for vehicles without a human driver's position, while retaining the standard's braking-performance protections.",
+      "takeaway": "NHTSA proposes removing requirements for hand- or foot-operated service-brake controls from vehicles designed to be driven exclusively by automated driving systems. It would also adapt brake warnings, parking-brake controls and test procedures for vehicles without a human driver's position, while retaining the standard's braking-performance protections.",
       "instrument": "FMVSS rulemaking",
       "status": "under_review",
       "date": "2026-06-26",
@@ -178,7 +196,13 @@
         "135"
       ],
       "comment_deadline": "2026-08-26",
-      "comment_extension_url": "https://www.federalregister.gov/d/2026-15231"
+      "comment_extension_url": "https://www.federalregister.gov/d/2026-15231",
+      "summary_quality": "manual_primary_source_verified",
+      "summary_method": "federal_register_nprm_specific_requirement_review",
+      "editorial_status": "verified",
+      "editorial_source_url": "https://www.federalregister.gov/d/2026-12981",
+      "editorial_source_type": "official_federal_register_proposed_rule",
+      "summary_reviewed_at": "2026-10-14"
     },
     {
       "id": "fmvss-201-2022",
