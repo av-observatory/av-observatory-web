@@ -46,7 +46,7 @@ def status_consistent(row,kind,draft):
     if kind.endswith("_bill") and status not in ("enacted","signed","chaptered"):
         if re.search(r"\b(?:the|this)\s+law\b",summary,re.I):
             return False
-        if not re.search(r"\b(?:would|propos(?:e|es)|seeks?|aims?\s+to|if enacted|could)\b",summary,re.I):
+        if not re.search(r"\bwould\b",summary[:85],re.I):
             return False
     if kind=="fmvss" and status in ("under_review","advance_notice","request_for_comment"):
         if not re.search(r"\b(?:would|propos(?:e|es|ed)|seeks?|requested|sought|invited|considering)\b",summary,re.I):
@@ -119,9 +119,14 @@ def summarize(row,kind):
     request=json.dumps({"kind":kind,"jurisdiction":row.get("jurisdiction"),"bill_or_rule":row.get("number") or row.get("title"),"title":row.get("title"),
         "status":row.get("status"),"evidence_type":source_type,"official_source_text":source})
     draft=invoke([{"role":"system","content":prompt},{"role":"user","content":request}])
-    if not draft.get("needs_review") and (not quality(draft) or not status_consistent(row,kind,draft) or not specific_to_record(row,kind,draft)):
+    for _attempt in range(2):
+        if draft.get("needs_review") or (quality(draft) and status_consistent(row,kind,draft) and specific_to_record(row,kind,draft)):
+            break
+        strict_status=("This measure is NOT LAW. The final answer must begin exactly with 'The bill would' and all operative provisions must remain conditional."
+                       if kind.endswith("_bill") and row.get("status") not in ("enacted","signed","chaptered")
+                       else "Preserve the official proposed-versus-effective status.")
         draft=invoke([
-          {"role":"system","content":"Rewrite the draft accurately into exactly two short sentences, 30–42 words, no more than 360 characters, using ONLY the supplied source text. Do not mention bill numbers or procedural history. Spell out acronyms. For a numbered federal vehicle safety standard, describe the change to THAT standard, not the general rulemaking. If not supported, return needs_review true. JSON: {summary:string,needs_review:boolean,reason:string}."},
+          {"role":"system","content":strict_status+" Rewrite into exactly two clear sentences, 40–55 words, at most 440 characters. No unexplained abbreviations, especially ADS, ODI and FMVSS. Write out 'Federal Motor Vehicle Safety Standard' instead. State the specific substantive change supported by the source, not a general policy description. Respond JSON {summary:string,needs_review:boolean,reason:string}."},
           {"role":"user","content":json.dumps({"record_title":row.get("title"),"status":row.get("status"),"source":source,"draft":draft.get("summary")})}
         ])
     if draft.get("needs_review") or not quality(draft) or not status_consistent(row,kind,draft):
