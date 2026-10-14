@@ -8,6 +8,14 @@ export type PolicyEvent = PolicyDataset["state_events"][number];
 export const policySnapshot = snapshot;
 
 /** Public R2 object is the live source. The checked-in JSON is an offline snapshot. */
+function editorialDefects(data: PolicyDataset) {
+  const events = [...data.federal, ...data.federal_oversight, ...data.state_events, ...data.city_events];
+  const textIsDefective = (value: string) => !value?.trim() || value.length > 550 ||
+    /substantive summary unavailable|review the official bill record/i.test(value);
+  return events.filter(event => textIsDefective(event.summary)).length +
+    data.states.filter(state => textIsDefective(state.analysis)).length;
+}
+
 export function usePolicyData() {
   const [data, setData] = useState<PolicyDataset>(snapshot);
   const [source, setSource] = useState<"snapshot" | "R2">("snapshot");
@@ -19,6 +27,7 @@ export function usePolicyData() {
       .then(response => { if (!response.ok) throw Error(`Policy data: ${response.status}`); return response.json(); })
       .then((incoming: PolicyDataset) => {
         if (incoming.schema_version !== snapshot.schema_version || !Array.isArray(incoming.states) || incoming.states.length !== 51 || !Array.isArray(incoming.federal) || !Array.isArray(incoming.city_events)) throw Error("Invalid policy dataset");
+        if (incoming.as_of < snapshot.as_of || editorialDefects(incoming) > editorialDefects(snapshot)) throw Error("R2 policy data is stale or has weaker editorial quality");
         setData(incoming); setSource("R2");
       })
       .catch(error => { if (error.name !== "AbortError") console.warn("Policy R2 unavailable; using reviewed snapshot", error); });
