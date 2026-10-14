@@ -1777,33 +1777,6 @@
       "openstates_updated_at": "2026-05-07T02:52:08.850632+00:00"
     },
     {
-      "id": "ny-a-6180-2025-2026",
-      "jurisdiction": "NY",
-      "number": "A 6180",
-      "title": "Excludes a production using artificial intelligence or autonomous vehicles in a manner which results in the displacement of employees from the definition of qualified film",
-      "summary": "Substantive summary unavailable in the source feed; review the official bill record for the bill text.",
-      "takeaway": "Substantive summary unavailable in the source feed; review the official bill record for the bill text.",
-      "source_summary": "Excludes a production using artificial intelligence or autonomous vehicles in a manner which results in the displacement of employees whose salaries are qualified expenses from the definition of qualified film for the purposes of the empire state film production credit.",
-      "summary_method": "Substantive-effect summary only; sponsor/petition boilerplate and title restatements are rejected",
-      "summary_quality": "source_summary_insufficient",
-      "status": "introduced",
-      "measure_type": "bill",
-      "last_action_date": "2026-01-07",
-      "last_action": "REFERRED TO WAYS AND MEANS",
-      "session": "2025-2026",
-      "progress_stage": "committee",
-      "stage_dates": {
-        "committee": "2026-01-07"
-      },
-      "hearings": [],
-      "source_url": "https://legislation.nysenate.gov/api/3/bills/2025-2026/A6180?summary=&detail=",
-      "repository_url": "https://openstates.org/ny/bills/2025-2026/A6180/",
-      "reviewed_at": "2026-10-14",
-      "summary_reviewed_at": null,
-      "openstates_id": "ocd-bill/853fc0c8-dd75-4bce-8cb3-4252321031c6",
-      "openstates_updated_at": "2026-03-18T10:34:21.080543+00:00"
-    },
-    {
       "id": "ny-a-728-2025-2026",
       "jurisdiction": "NY",
       "number": "A 728",
@@ -1993,33 +1966,6 @@
       "openstates_updated_at": "2026-05-15T07:13:10.604800+00:00"
     },
     {
-      "id": "ny-s-6751-2025-2026",
-      "jurisdiction": "NY",
-      "number": "S 6751",
-      "title": "Excludes a production using artificial intelligence or autonomous vehicles in a manner which results in the displacement of employees from the definition of qualified film",
-      "summary": "Substantive summary unavailable in the source feed; review the official bill record for the bill text.",
-      "takeaway": "Substantive summary unavailable in the source feed; review the official bill record for the bill text.",
-      "source_summary": "Excludes a production using artificial intelligence or autonomous vehicles in a manner which results in the displacement of employees whose salaries are qualified expenses from the definition of qualified film for the purposes of the empire state film production credit.",
-      "summary_method": "Substantive-effect summary only; sponsor/petition boilerplate and title restatements are rejected",
-      "summary_quality": "source_summary_insufficient",
-      "status": "introduced",
-      "measure_type": "bill",
-      "last_action_date": "2026-01-07",
-      "last_action": "REFERRED TO INVESTIGATIONS AND GOVERNMENT OPERATIONS",
-      "session": "2025-2026",
-      "progress_stage": "committee",
-      "stage_dates": {
-        "committee": "2026-01-07"
-      },
-      "hearings": [],
-      "source_url": "https://legislation.nysenate.gov/api/3/bills/2025-2026/S6751?summary=&detail=",
-      "repository_url": "https://openstates.org/ny/bills/2025-2026/S6751/",
-      "reviewed_at": "2026-10-14",
-      "summary_reviewed_at": null,
-      "openstates_id": "ocd-bill/43a93e40-f598-486e-8812-434135cc3306",
-      "openstates_updated_at": "2026-03-18T11:24:16.715416+00:00"
-    },
-    {
       "id": "ny-s-7956-2025-2026",
       "jurisdiction": "NY",
       "number": "S 7956",
@@ -2130,33 +2076,6 @@
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/e448f2f6-1c79-4aff-94ed-ab59d4f74617",
       "openstates_updated_at": "2026-03-18T14:57:16.519681+00:00"
-    },
-    {
-      "id": "pa-hb-2069-2025-2026",
-      "jurisdiction": "PA",
-      "number": "HB 2069",
-      "title": "An Act amending Title 75 (Vehicles) of the Pennsylvania Consolidated Statutes, in general provisions relating to operation of vehicles, providing for automated vehicle noise enforcement systems; and imposing penalties.",
-      "summary": "Substantive summary unavailable in the source feed; review the official bill record for the bill text.",
-      "takeaway": "Substantive summary unavailable in the source feed; review the official bill record for the bill text.",
-      "source_summary": "",
-      "summary_method": "Substantive-effect summary only; sponsor/petition boilerplate and title restatements are rejected",
-      "summary_quality": "source_summary_insufficient",
-      "status": "introduced",
-      "measure_type": "bill",
-      "last_action_date": "2025-12-03",
-      "last_action": "Referred to Transportation",
-      "session": "2025-2026",
-      "progress_stage": "committee",
-      "stage_dates": {
-        "committee": "2025-12-03"
-      },
-      "hearings": [],
-      "source_url": "https://www.palegis.us/legislation/bills/2025/hb2069",
-      "repository_url": "https://openstates.org/pa/bills/2025-2026/HB2069/",
-      "reviewed_at": "2026-10-14",
-      "summary_reviewed_at": null,
-      "openstates_id": "ocd-bill/a3079520-d610-4f17-9322-e372af5fc87f",
-      "openstates_updated_at": "2026-03-18T14:38:15.734946+00:00"
     },
     {
       "id": "pa-hr-563-2025-2026",
