@@ -75,7 +75,7 @@ def get_source(row,kind):
     # Official state-law abstracts are useful evidence when substantive, but
     # are explicitly NOT treated as the full bill.
     abstract=" ".join(str(row.get("source_summary") or "").split())
-    if kind=="state_bill" and len(abstract)>180 and not abstract.lower().startswith("substantive summary unavailable"):
+    if False and kind=="state_bill" and len(abstract)>180 and not abstract.lower().startswith("substantive summary unavailable"):
         return abstract,"openstates_abstract",row.get("repository_url") or row.get("source_url")
     return "","missing_full_text_and_substantive_abstract",""
 
@@ -192,6 +192,6 @@ def main():
     print("Policy editorial results:",counts)
     # Missing source or failed verification is marked, not silently invented.
     # Existing summaries remain in place until a verified replacement exists.
-    return 0
+    return 1 if any(counts.get(k,0) for k in ("missing","rejected","deferred_due_to_limit","awaiting_review")) else 0
 
 if __name__=="__main__":raise SystemExit(main())
