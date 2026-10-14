@@ -51,7 +51,8 @@ def status_consistent(row,kind,draft):
     if kind.endswith("_bill") and status not in ("enacted","signed","chaptered"):
         if re.search(r"\b(?:the|this)\s+law\b",summary,re.I):
             return False
-        sentences=re.split(r"(?<=[.!?])\s+(?=[A-Z])",summary)
+        safe=summary.replace("U.S.","US").replace("No.","No").replace("H.R.","HR").replace("S.B.","SB")
+        sentences=re.split(r"(?<=[.!?])\s+(?=[A-Z])",safe)
         if any(not re.search(r"\b(?:would|could|if enacted)\b",sentence,re.I) for sentence in sentences):
             return False
     if kind=="fmvss" and status in ("under_review","advance_notice","request_for_comment"):
