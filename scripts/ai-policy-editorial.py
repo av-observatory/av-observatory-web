@@ -17,7 +17,7 @@ from legislation_source_text import primary_text
 ROOT=Path(__file__).resolve().parents[1]
 KEY=os.getenv("OPENAI_API_KEY")
 MODEL=os.getenv("POLICY_EDITORIAL_MODEL","gpt-4.1-mini")
-MAX_NEW=int(os.getenv("POLICY_EDITORIAL_MAX_NEW","30"))
+MAX_NEW=int(os.getenv("POLICY_EDITORIAL_MAX_NEW","300"))
 
 def invoke(messages):
     body=json.dumps({"model":MODEL,"temperature":0,
@@ -102,7 +102,8 @@ def summarize(row,kind):
         row["editorial_status"]="needs_primary_source"
         return "missing"
     digest=hashlib.sha256((MODEL+"\n"+source+"\n"+str(row.get("status"))).encode()).hexdigest()
-    if row.get("editorial_source_hash")==digest and row.get("editorial_status")=="verified":
+    current_text=row.get("analysis") if kind=="state_framework" else row.get("summary")
+    if row.get("editorial_source_hash")==digest and row.get("editorial_status")=="verified" and quality({"summary":current_text}):
         return "cached"
     if not KEY:raise RuntimeError("OPENAI_API_KEY not configured")
     row["editorial_source_hash"]=digest
@@ -148,9 +149,12 @@ def summarize(row,kind):
         return "rejected"
     row.pop("editorial_failure_reason",None)
     row.pop("_debug_candidate",None)
-    row["summary"]=draft["summary"].strip()
-    row["takeaway"]=row["summary"]
-    row["summary_method"]="ai_verified_primary_source" if source_type.startswith("official_") else "ai_verified_source_abstract"
+    if kind=="state_framework":
+        row["analysis"]=draft["summary"].strip()
+    else:
+        row["summary"]=draft["summary"].strip()
+        row["takeaway"]=row["summary"]
+    row["summary_method"]="ai_verified_primary_source" if source_type.startswith("official_") else "ai_verified_mirrored_full_text"
     row["summary_quality"]="verified"
     row["editorial_status"]="verified"
     row["editorial_source_hash"]=digest
@@ -169,23 +173,24 @@ def main():
     used=0
     for filename,groups in [
         ("public/data/legislation_tracker.json",[("federal","federal_bill"),("state_bills","state_bill")]),
-        ("public/data/policy_tracker.json",[("federal","fmvss")])]:
+        ("public/data/policy_tracker.json",[("federal","policy_rule"),("federal_oversight","policy_rule"),
+            ("state_events","state_regulation"),("city_events","state_regulation"),("states","state_framework")])]:
         path=ROOT/filename
         data=json.loads(path.read_text())
         for field,kind in groups:
             for row in data[field]:
-                if kind=="fmvss" and "FMVSS" not in row.get("instrument",""):continue
+                actual_kind="fmvss" if kind=="policy_rule" and "FMVSS" in row.get("instrument","") else kind
                 if used>=MAX_NEW:
                     counts["deferred_due_to_limit"]=counts.get("deferred_due_to_limit",0)+1
                     continue
                 # Existing verified records are reconsidered to detect changed sources.
-                result=summarize(row,kind)
+                result=summarize(row,actual_kind)
                 counts[result]=counts.get(result,0)+1
                 if result in ("updated","rejected"):used+=1
         path.write_text(json.dumps(data,ensure_ascii=False,indent=2)+"\n")
     print("Policy editorial results:",counts)
     # Missing source or failed verification is marked, not silently invented.
-    # Existing summaries remain in place until a verified replacement exists.
+    # Any failure remains visible as a coverage gap, never a successful editorial run.
     return 1 if any(counts.get(k,0) for k in ("missing","rejected","deferred_due_to_limit","awaiting_review")) else 0
 
 if __name__=="__main__":raise SystemExit(main())
