@@ -21,6 +21,10 @@ os.environ["OPENAI_API_KEY"]="test-only-key"
 mod=runpy.run_path(str(Path(__file__).resolve().parent/"ai-policy-editorial.py"))
 assert mod["quality"]({"summary": "The bill would require autonomous vehicle operators to submit collision reports to a state agency within thirty days. It would also establish specified minimum reporting criteria and direct the agency to publish an annual summary of reported safety incidents."})
 assert not mod["quality"]({"summary": "An ADS and FMVSS rule."})
+assert not mod["status_consistent"]({"status":"introduced"},"federal_bill",{"summary":"The law requires annual reports."})
+assert not mod["status_consistent"]({"status":"introduced"},"federal_bill",{"summary":"This act amends the motor vehicle code."})
+assert mod["status_consistent"]({"status":"introduced"},"federal_bill",{"summary":"The bill would require annual reports."})
+
 lengthy=("Federal Motor Vehicle Safety Standard No. 208 requires occupant crash protection. "
        +"Additional regulatory background on separate matters. "*800
        +"The amendment to FMVSS No. 201 applies to vehicles without steering controls. ")
