@@ -78,7 +78,7 @@ def manifest_entry(path):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("mode", choices=("site", "legislation"))
+    parser.add_argument("mode", choices=("site", "legislation", "policy"))
     parser.add_argument("--file", type=Path, help="Refreshed bill JSON for legislation mode")
     parser.add_argument("--revision", help="Full Git commit SHA for site mode")
     parser.add_argument("--dry-run", action="store_true", help="Validate and print manifest without contacting R2")
@@ -95,16 +95,20 @@ def main():
         prefix = f"backups/site/{args.revision}"
     else:
         if not args.file:
-            parser.error("legislation mode requires --file")
+            parser.error("legislation or policy mode requires --file")
         record = json.loads(args.file.read_text(encoding="utf-8"))
-        if not isinstance(record, dict) or not isinstance(record.get("federal"), list) or not isinstance(record.get("state_bills"), list):
-            raise ValueError("Invalid legislative feed")
+        if args.mode == "legislation":
+            valid = isinstance(record, dict) and isinstance(record.get("federal"), list) and isinstance(record.get("state_bills"), list)
+        else:
+            valid = isinstance(record, dict) and isinstance(record.get("federal"), list) and isinstance(record.get("states"), list) and len(record["states"]) == 51
+        if not valid:
+            raise ValueError("Invalid "+args.mode+" feed")
         content = args.file.read_bytes()
         digest = hashlib.sha256(content).hexdigest()
-        files = [{"name": "legislation_tracker.json", "bytes": len(content), "sha256": digest, "content_type": "application/json"}]
+        files = [{"name": "legislation_tracker.json" if args.mode == "legislation" else "policy_tracker.json", "bytes": len(content), "sha256": digest, "content_type": "application/json"}]
         stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
-        manifest = {"schema_version": "1.0.0", "kind": "legislation_refresh", "created_at": datetime.now(timezone.utc).isoformat(), "files": files}
-        prefix = f"backups/legislation/{stamp}-{digest[:12]}"
+        manifest = {"schema_version": "1.0.0", "kind": args.mode+"_refresh", "created_at": datetime.now(timezone.utc).isoformat(), "files": files}
+        prefix = f"backups/{args.mode}/{stamp}-{digest[:12]}"
     print(json.dumps({"prefix": prefix, "manifest": manifest}, indent=2))
     if args.dry_run:
         return
@@ -127,8 +131,8 @@ def main():
             put(bucket, "policy/legislation_tracker.json", DATA / entry["name"], entry)
             put(bucket, "backups/site/latest.json", manifest_path, manifest_entry(manifest_path))
         else:
-            put(bucket, "policy/legislation_tracker.json", args.file, files[0])
-            put(bucket, "backups/legislation/latest.json", manifest_path, manifest_entry(manifest_path))
+            put(bucket, "policy/legislation_tracker.json" if args.mode == "legislation" else "policy/policy_tracker.json", args.file, files[0])
+            put(bucket, f"backups/{args.mode}/latest.json", manifest_path, manifest_entry(manifest_path))
     print(f"Verified R2 snapshot: {prefix}")
 
 
