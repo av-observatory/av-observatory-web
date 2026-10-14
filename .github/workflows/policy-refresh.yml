@@ -81,6 +81,17 @@ jobs:
         if: ${{ inputs.dry_run != true }}
         run: python3 scripts/refresh-policy.py --open-issues
 
+      - name: Restore source-verified summaries and research source gaps
+        if: ${{ inputs.dry_run != true }}
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENSTATES_API_KEY: ${{ secrets.OPENSTATES_API_KEY }}
+          LEGISCAN_API_KEY: ${{ secrets.LEGISCAN_API_KEY }}
+          POLICY_EDITORIAL_MAX_NEW: 300
+        run: |
+          python3 scripts/ai-policy-editorial.py
+          python3 scripts/audit-editorial-quality.py
+
       - name: Validate and rebuild CSV companions
         if: ${{ inputs.dry_run != true }}
         run: |
