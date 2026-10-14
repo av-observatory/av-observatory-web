@@ -70,7 +70,7 @@ export default function InvestigationTracker(){
           <div><span className="text-xs text-neutral-500">Recall / remedy</span><div>{r.status}</div></div>
           <div><span className="text-xs text-neutral-500">Remedy</span><div>{r.remedy||"See official record"}</div></div>
         </div>
-        {r.related_investigations?.length>0 && <div className="mt-3 border-t border-neutral-200 pt-3 text-sm"><strong>Related investigations:</strong> {r.related_investigations.map((id,i)=><span key={id}>{i?", ":""}{investigationIds.has(id)?<button type="button" onClick={()=>{setCategory("Investigations");setCompany("All");setStatus("All")}} className="text-[#184f95] underline">{id} (view investigations)</button>:id}</span>)}</div>}
+        {(r.related_investigations?.length??0)>0 && <div className="mt-3 border-t border-neutral-200 pt-3 text-sm"><strong>Related investigations:</strong> {r.related_investigations.map((id,i)=><span key={id}>{i?", ":""}{investigationIds.has(id)?<button type="button" onClick={()=>{setCategory("Investigations");setCompany("All");setStatus("All")}} className="text-[#184f95] underline">{id} (view investigations)</button>:id}</span>)}</div>}
       </article>)}
     </div>
     <p className="text-xs text-neutral-500 mt-4 leading-relaxed">
