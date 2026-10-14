@@ -13,13 +13,14 @@ import urllib.request
 import zipfile
 from datetime import datetime, timezone
 from pathlib import Path
+from nhtsa_editorial import editorial_brief, plain, validate_summary
 
 ROOT = Path(__file__).resolve().parents[1]
 DIR = ROOT / "public" / "data"
 URL_INV = "https://static.nhtsa.gov/odi/ffdd/inv/FLAT_INV.zip"
 URL_RCL = "https://static.nhtsa.gov/odi/ffdd/rcl/FLAT_RCL_POST_2010.zip"
 COMPANIES = {
-    "ZOOX": "Zoox", "WAYMO": "Waymo", "CRUISE": "Cruise",
+    "AVRIDE": "Avride", "ZOOX": "Zoox", "WAYMO": "Waymo", "CRUISE": "Cruise",
     "TESLA": "Tesla", "NURO": "Nuro", "MOTIONAL": "Motional",
     "AURORA": "Aurora", "ARGO AI": "Argo AI",
     "MAY MOBILITY": "May Mobility", "WAYVE": "Wayve",
@@ -96,6 +97,9 @@ def main():
         company = company or "Other AV / ADAS"
         prior = seed.get(number, {})
         campaign = campaign.strip().upper()
+        reviewed = prior.get("summary")
+        use_reviewed = bool(reviewed and validate_summary(plain(reviewed)))
+        brief = plain(reviewed) if use_reviewed else editorial_brief("investigation",subject,summary,company)
         item = {
             "id": number, "company": company,
             "status": "Closed" if date(closed) else "Open",
@@ -103,7 +107,9 @@ def main():
             "opened": date(opened), "closed": date(closed),
             "subject": prior.get("subject") or subject or "Automated driving safety investigation",
             "product": prior.get("product") or f"{make} {model}".strip(),
-            "summary": prior.get("summary") or summary or subject,
+            "summary": brief,
+            "summary_method": "reviewed" if use_reviewed else "automatic_source_extract",
+            "source_detail": summary,
             "source": prior.get("source") or "https://www.nhtsa.gov/search-safety-issues",
             "source_label": prior.get("source_label") or "NHTSA ODI",
             "related_recalls": [campaign] if campaign else [],
@@ -145,10 +151,15 @@ def main():
                 current["products"].append(model)
             continue
         curated = recall_seed.get(campaign, {})
+        reviewed = curated.get("summary")
+        use_reviewed = bool(reviewed and validate_summary(plain(reviewed)))
+        brief = plain(reviewed) if use_reviewed else editorial_brief("recall",defect,defect,company)
         recalls[campaign] = {
             "id": campaign, "company": company, "reported": date(reported),
             "subject": curated.get("subject") or defect[:140].strip() or component,
-            "summary": curated.get("summary") or defect.strip(),
+            "summary": brief,
+            "summary_method": "reviewed" if use_reviewed else "automatic_source_extract",
+            "source_detail": defect.strip(),
             "consequence": consequence.strip(),
             "remedy": remedy.strip(),
             "products": [model] if model else [],
@@ -171,6 +182,9 @@ def main():
         "coverage":"Primary-source NHTSA post-2010 recall campaigns, deduplicated across model rows.",
         "source_rows":recall_rows,
         "recalls":sorted(recalls.values(),key=lambda r:(r["reported"],r["id"]),reverse=True)}
+    for item in list(investigations.values())+list(recalls.values()):
+        if not validate_summary(item["summary"]):
+            raise ValueError("Invalid editorial brief for NHTSA record "+item["id"])
     (DIR/"nhtsa_investigations.json").write_text(json.dumps(data_inv,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     (DIR/"nhtsa_av_recalls.json").write_text(json.dumps(data_rcl,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     print(f"Audited {inv_rows} ODI source rows -> {len(investigations)} investigations; {recall_rows} recall rows -> {len(recalls)} campaigns")

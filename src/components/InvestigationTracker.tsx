@@ -2,6 +2,7 @@
 import {useMemo,useState} from "react";
 import {useInvestigationsData} from "@/lib/investigations";
 import recallSnapshot from "../../public/data/nhtsa_av_recalls.json";
+import {nhtsaCardSummary,nhtsaCompany} from "@/lib/nhtsaEditorial";
 
 type Recall = (typeof recallSnapshot.recalls)[number];
 type Investigation = ReturnType<typeof useInvestigationsData>["data"]["investigations"][number] & {related_recalls?:string[]};
@@ -11,8 +12,8 @@ function formatDate(value:string|null|undefined) {
 }
 export default function InvestigationTracker(){
   const {data,source}=useInvestigationsData();
-  const investigations:Investigation[] = data.investigations;
-  const recalls:Recall[] = recallSnapshot.recalls;
+  const investigations:Investigation[] = useMemo(()=>data.investigations.map(r=>({...r,company:nhtsaCompany(r.company,r.product,r.subject),summary:nhtsaCardSummary(r.summary,r.subject,"investigation")})),[data.investigations]);
+  const recalls:Recall[] = useMemo(()=>recallSnapshot.recalls.map(r=>({...r,summary:nhtsaCardSummary(r.summary,r.subject,"recall")})),[]);
   const [category,setCategory]=useState<"Investigations"|"Recalls">("Investigations");
   const [company,setCompany]=useState("All");
   const [status,setStatus]=useState("All");
