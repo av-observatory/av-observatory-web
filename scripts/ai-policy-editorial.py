@@ -36,13 +36,22 @@ def quality(value):
     s=value.get("summary") if isinstance(value,dict) else None
     if not isinstance(s,str) or not 24<=len(s.split())<=65 or len(s)>470:
         return False
-    for abbr,expansion in (
-        ("ADS","automated driving system"),
-        ("FMVSS","federal motor vehicle safety standard"),
-        ("ODI","office of defects investigation")):
-        if re.search(r"\b"+abbr+r"\b",s,re.I) and expansion not in s.lower():
-            return False
+    if re.search(r"\b(?:ADS|ODI|FMVSS|SGO)\b",s):
+        return False
     return not re.search(r"https?://|substantive summary unavailable",s,re.I)
+
+def status_consistent(row,kind,draft):
+    summary=str(draft.get("summary") or "")
+    status=str(row.get("status") or "").lower()
+    if kind.endswith("_bill") and status not in ("enacted","signed","chaptered"):
+        if re.search(r"\b(?:the|this)\s+law\b",summary,re.I):
+            return False
+        if not re.search(r"\b(?:would|propos(?:e|es)|seeks?|aims?\s+to|if enacted|could)\b",summary,re.I):
+            return False
+    if kind=="fmvss" and status in ("under_review","advance_notice","request_for_comment"):
+        if not re.search(r"\b(?:would|propos(?:e|es|ed)|seeks?|requested|sought|invited|considering)\b",summary,re.I):
+            return False
+    return True
 
 def specific_to_record(row,kind,draft):
     if kind!="fmvss" or not re.match(r"fmvss-\d{3}a?-",row.get("id","")):
@@ -99,7 +108,9 @@ def summarize(row,kind):
     row["editorial_source_type"]=source_type
     row["editorial_source_url"]=source_url
     source=select_relevant_excerpt(source,row,kind)
-    prompt=("You are an impartial legislative and regulatory researcher. Write a readable 2–3 sentence summary, "
+    current_status=str(row.get("status") or "")
+    status_note=("This is NOT enacted law. Describe ALL substantive provisions with conditional language such as would or proposes. Never claim this law already requires something." if kind.endswith("_bill") and current_status not in ("enacted","signed","chaptered") else "Clearly distinguish the measure's legal status.")
+    prompt=(status_note+" You are an impartial legislative and regulatory researcher. Write a readable 2–3 sentence summary, "
       "about 35–65 words, grounded EXCLUSIVELY in the supplied original bill text, official rule, or source abstract. "
       "Explain what it proposes or changes, which vehicles or actors it affects, and any important reporting duties, "
       "deadlines or authority where stated. Distinguish proposed and enacted measures. Explain abbreviations. "
@@ -108,12 +119,12 @@ def summarize(row,kind):
     request=json.dumps({"kind":kind,"jurisdiction":row.get("jurisdiction"),"bill_or_rule":row.get("number") or row.get("title"),"title":row.get("title"),
         "status":row.get("status"),"evidence_type":source_type,"official_source_text":source})
     draft=invoke([{"role":"system","content":prompt},{"role":"user","content":request}])
-    if not draft.get("needs_review") and (not quality(draft) or not specific_to_record(row,kind,draft)):
+    if not draft.get("needs_review") and (not quality(draft) or not status_consistent(row,kind,draft) or not specific_to_record(row,kind,draft)):
         draft=invoke([
-          {"role":"system","content":"Rewrite the draft accurately into exactly two short sentences, 35–43 words, no more than 370 characters, using ONLY the supplied source text. Do not mention bill numbers or procedural history. Spell out acronyms. For a numbered federal vehicle safety standard, describe the change to THAT standard, not the general rulemaking. If not supported, return needs_review true. JSON: {summary:string,needs_review:boolean,reason:string}."},
+          {"role":"system","content":"Rewrite the draft accurately into exactly two short sentences, 30–42 words, no more than 360 characters, using ONLY the supplied source text. Do not mention bill numbers or procedural history. Spell out acronyms. For a numbered federal vehicle safety standard, describe the change to THAT standard, not the general rulemaking. If not supported, return needs_review true. JSON: {summary:string,needs_review:boolean,reason:string}."},
           {"role":"user","content":json.dumps({"record_title":row.get("title"),"status":row.get("status"),"source":source,"draft":draft.get("summary")})}
         ])
-    if draft.get("needs_review") or not quality(draft):
+    if draft.get("needs_review") or not quality(draft) or not status_consistent(row,kind,draft):
         row["editorial_status"]="needs_review"
         row["editorial_failure_reason"]=(str(draft.get("reason") or "")[:250]
             if draft.get("needs_review") else "Failed format: words="+str(len(str(draft.get("summary") or "").split()))
