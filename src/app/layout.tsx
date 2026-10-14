@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
-import { Source_Sans_3, Geist_Mono } from "next/font/google";
+import { Inter, Geist_Mono } from "next/font/google";
 import { Sidebar } from "@/components/Sidebar";
 import Link from "next/link";
 import Script from "next/script";
 import "./globals.css";
 import { contentSecurityPolicy } from "@/lib/security";
 
-const editorialSans = Source_Sans_3({
+const editorialSans = Inter({
   variable: "--font-editorial-sans",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const geistMono = Geist_Mono({
@@ -69,7 +70,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         )}
         <Sidebar />
         <div className="w-full md:w-auto flex-1 min-w-0 flex flex-col">
-          <div className="border-b border-[#cbddef] bg-[#edf5ff] px-4 sm:px-8 py-2.5 text-sm text-[#23436a] leading-snug">We publish early and update often. Spot missing information or an error? Or have a suggestion? <Link href="/contact" className="font-semibold text-[#184f95] underline underline-offset-2">Get in Touch →</Link></div>
+          <div className="border-b border-[#dce5ed] bg-[#f1f5f8] px-4 sm:px-8 py-2.5 text-sm text-[#36516b] leading-snug">We publish early and update often. Spot missing information or an error? Or have a suggestion? <Link href="/contact" className="font-semibold text-[#184f95] underline underline-offset-2">Get in Touch →</Link></div>
           <main className="flex-1 min-w-0">{children}</main>
           <footer className="border-t border-neutral-200">
             <div className="px-4 sm:px-8 py-6 text-xs text-neutral-500">
