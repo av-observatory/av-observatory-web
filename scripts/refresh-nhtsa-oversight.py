@@ -65,6 +65,12 @@ def company_of(row):
             return label
     return None
 
+def accepted_editorial(row):
+    summary=str(row.get("summary") or "")
+    if row.get("editorial_status")=="verified" and row.get("summary_quality")=="verified":
+        return 24<=len(summary.split())<=75 and len(summary)<=550
+    return validate_summary(plain(summary))
+
 def relevant(company, make, component, subject, summary):
     if company and company != "Tesla":
         return True
@@ -98,7 +104,7 @@ def main():
         prior = seed.get(number, {})
         campaign = campaign.strip().upper()
         reviewed = prior.get("summary")
-        use_reviewed = bool(reviewed and validate_summary(plain(reviewed)))
+        use_reviewed = bool(reviewed and accepted_editorial(prior))
         brief = plain(reviewed) if use_reviewed else editorial_brief("investigation",subject,summary,company)
         item = {
             "id": number, "company": company,
@@ -108,7 +114,8 @@ def main():
             "subject": prior.get("subject") or subject or "Automated driving safety investigation",
             "product": prior.get("product") or f"{make} {model}".strip(),
             "summary": brief,
-            "summary_method": "reviewed" if use_reviewed else "automatic_source_extract",
+            "summary_method": prior.get("summary_method","reviewed") if use_reviewed else "automatic_source_extract",
+            **{k:v for k,v in prior.items() if k.startswith("editorial_") or k in ("summary_quality","summary_reviewed_at")},
             "source_detail": summary,
             "source": prior.get("source") or "https://www.nhtsa.gov/search-safety-issues",
             "source_label": prior.get("source_label") or "NHTSA ODI",
@@ -152,13 +159,14 @@ def main():
             continue
         curated = recall_seed.get(campaign, {})
         reviewed = curated.get("summary")
-        use_reviewed = bool(reviewed and validate_summary(plain(reviewed)))
+        use_reviewed = bool(reviewed and accepted_editorial(curated))
         brief = plain(reviewed) if use_reviewed else editorial_brief("recall",defect,defect,company)
         recalls[campaign] = {
             "id": campaign, "company": company, "reported": date(reported),
             "subject": curated.get("subject") or defect[:140].strip() or component,
             "summary": brief,
-            "summary_method": "reviewed" if use_reviewed else "automatic_source_extract",
+            "summary_method": curated.get("summary_method","reviewed") if use_reviewed else "automatic_source_extract",
+            **{k:v for k,v in curated.items() if k.startswith("editorial_") or k in ("summary_quality","summary_reviewed_at")},
             "source_detail": defect.strip(),
             "consequence": consequence.strip(),
             "remedy": remedy.strip(),
@@ -183,7 +191,7 @@ def main():
         "source_rows":recall_rows,
         "recalls":sorted(recalls.values(),key=lambda r:(r["reported"],r["id"]),reverse=True)}
     for item in list(investigations.values())+list(recalls.values()):
-        if not validate_summary(item["summary"]):
+        if not accepted_editorial(item):
             raise ValueError("Invalid editorial brief for NHTSA record "+item["id"])
     (DIR/"nhtsa_investigations.json").write_text(json.dumps(data_inv,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     (DIR/"nhtsa_av_recalls.json").write_text(json.dumps(data_rcl,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
