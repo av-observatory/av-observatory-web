@@ -2,8 +2,8 @@
   "schema_version": "1.0.0",
   "dataset": "NHTSA AV / ADAS Defect Investigations",
   "source_url": "https://static.nhtsa.gov/odi/ffdd/inv/FLAT_INV.zip",
-  "observed_at": "2026-10-14",
-  "storage": "Checked-in fallback cache; complete official NHTSA bulk-file refresh runs during Pages build. R2 used only if at least as complete and as recent as the snapshot.",
+  "observed_at": "2026-09-29",
+  "storage": "Fallback cache only. Open/closed classifications in the fallback are not certified current; NHTSA full-source refresh replaces them on deployment.",
   "investigations": [
     {
       "id": "PE26001",
@@ -73,26 +73,23 @@
     {
       "id": "PE24016",
       "company": "Waymo",
-      "status": "Closed",
+      "status": "Open",
       "action": "Preliminary Evaluation",
       "opened": "2024-05-13",
-      "closed": "2025-07-22",
+      "closed": null,
       "subject": "Unexpected ADS behavior",
       "product": "Waymo 5th Generation ADS",
       "summary": "ODI opened the evaluation after reports of single-party crashes and potential traffic-law violations, including collisions with stationary objects, driving into opposing lanes, and entering construction zones.",
       "source": "https://static.nhtsa.gov/odi/inv/2024/INOA-PE24016-12382.pdf",
-      "source_label": "ODI opening resume",
-      "related_recalls": [
-        "24E049000"
-      ]
+      "source_label": "ODI opening resume"
     },
     {
       "id": "PE24015",
       "company": "Zoox",
-      "status": "Closed",
+      "status": "Open",
       "action": "Preliminary Evaluation",
       "opened": "2024-05-10",
-      "closed": "2025-03-31",
+      "closed": null,
       "subject": "Unexpected ADS braking",
       "product": "Zoox ADS-equipped passenger vehicles",
       "summary": "ODI opened the evaluation after two reported rear-end collisions in which Zoox ADS-equipped vehicles braked unexpectedly in response to nearby road users.",
