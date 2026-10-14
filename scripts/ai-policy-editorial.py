@@ -72,12 +72,7 @@ def specific_to_record(row,kind,draft):
 def get_source(row,kind):
     text,provenance,url=primary_text(row,kind)
     if text:return text,provenance,url
-    # Official state-law abstracts are useful evidence when substantive, but
-    # are explicitly NOT treated as the full bill.
-    abstract=" ".join(str(row.get("source_summary") or "").split())
-    if False and kind=="state_bill" and len(abstract)>180 and not abstract.lower().startswith("substantive summary unavailable"):
-        return abstract,"openstates_abstract",row.get("repository_url") or row.get("source_url")
-    return "","missing_full_text_and_substantive_abstract",""
+    # A feed abstract is not a substitute for official bill text.\n    return "","missing_full_text_and_substantive_abstract",""
 
 def select_relevant_excerpt(text,row,kind):
     """Ground summarization in the relevant provisions of long documents."""
