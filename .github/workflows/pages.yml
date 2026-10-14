@@ -64,13 +64,14 @@ jobs:
           cache: npm
       - name: Install
         run: npm ci
-      - name: Refresh primary-source NHTSA investigations and recalls
+      - name: Refresh and editorially verify NHTSA oversight records
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          NHTSA_EDITORIAL_MODEL: gpt-4.1-mini
         run: |
-          if python3 scripts/refresh-nhtsa-oversight.py; then
-            python3 scripts/export-data-csv.py
-          else
-            echo "::warning::Could not refresh NHTSA bulk data; publishing explicitly labeled fallback datasets."
-          fi
+          python3 scripts/refresh-nhtsa-oversight.py
+          python3 scripts/ai-nhtsa-editorial.py
+          python3 scripts/export-data-csv.py
 
       - name: Validate NHTSA editorial summary quality
         run: python3 scripts/test-nhtsa-editorial.py
