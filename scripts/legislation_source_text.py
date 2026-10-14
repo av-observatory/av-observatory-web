@@ -56,6 +56,44 @@ def fetch(url):
     except Exception as e:
         return "",type(e).__name__
 
+def api_json(url,key=None):
+    headers={"User-Agent":"AVObservatory/1.0 (+https://av-observatory.com/)"}
+    if key:headers["X-API-KEY"]=key
+    with urlopen(Request(url,headers=headers),timeout=24) as response:
+        return json.load(response)
+
+def state_bill_version_links(row):
+    key=os.getenv("OPENSTATES_API_KEY")
+    oid=str(row.get("openstates_id") or "")
+    if not key or not oid.startswith("ocd-bill/"):return []
+    try:
+        from urllib.parse import urlencode
+        url="https://v3.openstates.org/bills/"+oid+"?"+urlencode({"include":["versions","documents"]},doseq=True)
+        bill=api_json(url,key)
+        links=[]
+        for category in ("versions","documents"):
+            versions=bill.get(category) or []
+            for document in reversed(versions):
+                for item in document.get("links") or []:
+                    link=item.get("url") if isinstance(item,dict) else item
+                    if isinstance(link,str) and link.startswith("https://"):
+                        links.append(link)
+        return links
+    except Exception as exc:
+        print(f"Open States versions lookup failed for {row.get('id')}: {type(exc).__name__}")
+        return []
+
+def federal_register_text_url(row):
+    url=row.get("source_url") or ""
+    m=re.search(r"([12][0-9]{3}-[0-9]{4,6})",url)
+    if not m:return ""
+    try:
+        doc=api_json("https://www.federalregister.gov/api/v1/documents/"+m.group(1)+".json")
+        return doc.get("raw_text_url") or doc.get("full_text_xml_url") or doc.get("html_url") or ""
+    except Exception as exc:
+        print(f"Federal Register text lookup failed for {row.get('id')}: {type(exc).__name__}")
+        return ""
+
 def sources(row,kind):
     url=row.get("source_url") or ""
     repository=row.get("repository_url") or ""
@@ -66,11 +104,11 @@ def sources(row,kind):
             yield f"https://www.govinfo.gov/content/pkg/{pkg}/html/{pkg}.htm"
         yield url
     elif kind=="fmvss":
-        m=re.search(r"/(?:d|documents/\\d{4}/\\d{2}/\\d{2})/([0-9]{4}-[0-9]+)",url)
-        if m:
-            yield "https://www.federalregister.gov/documents/full_text/html/"+m.group(1)+".html"
+        full=federal_register_text_url(row)
+        if full:yield full
         yield url
     else:
+        yield from state_bill_version_links(row)
         yield url
 
 def primary_text(row,kind):
