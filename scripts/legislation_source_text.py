@@ -16,6 +16,7 @@ import subprocess
 import tempfile
 from urllib.parse import urlparse
 from urllib.request import Request,urlopen
+from openstates_rate import open_json
 
 class Extract(HTMLParser):
     def __init__(self): super().__init__();self.words=[];self.skip=0
@@ -60,7 +61,10 @@ def fetch(url):
 def api_json(url,key=None):
     headers={"User-Agent":"AVObservatory/1.0 (+https://av-observatory.com/)"}
     if key:headers["X-API-KEY"]=key
-    with urlopen(Request(url,headers=headers),timeout=24) as response:
+    request=Request(url,headers=headers)
+    if (urlparse(url).hostname or "").lower()=="v3.openstates.org":
+        return open_json(request,timeout=24)
+    with urlopen(request,timeout=24) as response:
         return json.load(response)
 
 def state_bill_version_links(row):
