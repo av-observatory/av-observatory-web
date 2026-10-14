@@ -36,6 +36,12 @@ added2, retired2 = sup.merge_manual(t2, MANUAL)
 check("manual bill retired when a feed carries it", added2 == [] and retired2 == ["dc-b26-0684-26"])
 check("no duplicate when retired", len([b for b in t2["state_bills"] if b["jurisdiction"] == "DC"]) == 1)
 
+# re-running on an already-supplemented file must not report a false "retired"
+t_again = fresh(); sup.merge_manual(t_again, MANUAL)
+added_again, retired_again = sup.merge_manual(t_again, MANUAL)
+check("re-run keeps the manual bill without a false retire alert", added_again == ["dc-b26-0684-26"] and retired_again == [])
+check("re-run leaves exactly one DC bill", len([b for b in t_again["state_bills"] if b["jurisdiction"] == "DC"]) == 1)
+
 # second source: adds only what the primary lacks, skips failed bills and irrelevant ones
 HITS = {"DC": [{"bill_number": "B26-0684", "bill_id": 1, "title": "x", "url": "https://legiscan.com/DC/bill/B26-0684/2025", "last_action_date": "2026-07-13", "last_action": "Hearing"},
                {"bill_number": "B26-0001", "bill_id": 2, "title": "Dead AV bill", "url": "https://legiscan.com/DC/bill/B26-0001/2025", "last_action_date": "2026-01-01", "last_action": ""},

@@ -155,9 +155,9 @@
    "primary_bills": 0
   }
  },
- "manual_added": [],
- "manual_retired": [
+ "manual_added": [
   "dc-b26-0684-26"
  ],
+ "manual_retired": [],
  "second_source_configured": false
 }

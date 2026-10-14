@@ -132,6 +132,8 @@ def secondary_bill(code: str, hit: dict) -> dict | None:
 
 # ---------------------------------------------------------------- merge logic
 def merge_manual(tracker: dict, manual: list[dict]) -> tuple[list[str], list[str]]:
+    # Drop manual entries from an earlier run so only a real feed counts as "already present".
+    tracker["state_bills"] = [b for b in tracker["state_bills"] if b.get("source_feed") != "manual_official"]
     present = {key_of(b) for b in tracker["state_bills"]}
     added, retired = [], []
     for bill in manual:
