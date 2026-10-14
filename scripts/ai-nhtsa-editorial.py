@@ -40,8 +40,8 @@ def check_shape(value):
         return False
     summary=value["summary"].strip()
     if not (22<=len(summary.split())<=MAX_WORDS and len(summary)<=480): return False
-    if re.search(r"\\b(?:ADS|ODI|FMVSS|SGO)\\b",summary): return False
-    if re.search(r"https?://|\\b(?:report id|listed below|opening resume)\\b",summary,re.I): return False
+    if re.search(r"\b(?:ADS|ODI|FMVSS|SGO)\b",summary): return False
+    if re.search(r"https?://|\b(?:report id|listed below|opening resume)\b",summary,re.I): return False
     return True
 
 def process(path,key,kind):
