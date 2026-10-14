@@ -30,6 +30,7 @@ const sections = [
     lead: "Crash reports, federal investigations, and resident-reported issues.",
     links: [
       ["National Crash Data", "/safety"],
+      ["Europe Crash Tracker · Beta", "/safety/europe"],
       ["NHTSA Investigations", "/investigations"],
       ["Resident Complaints", "/complaints"],
     ],
