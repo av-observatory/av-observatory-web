@@ -4,6 +4,8 @@ on:
     paths:
       - "scripts/ai-policy-editorial.py"
       - "scripts/legislation_source_text.py"
+      - "scripts/openstates_rate.py"
+      - "scripts/test-openstates-rate.py"
       - "scripts/refresh-legislation.py"
       - "scripts/legislation-supplement.py"
       - "scripts/test-policy-editorial.py"
@@ -21,6 +23,8 @@ jobs:
       - uses: actions/checkout@v4
       - name: Test Python syntax
         run: python3 -m py_compile scripts/ai-policy-editorial.py scripts/legislation_source_text.py scripts/refresh-legislation.py scripts/legislation-supplement.py scripts/test-policy-editorial.py scripts/test-policy-live.py scripts/publish-r2-data.py
+      - name: Test rate limiting and HTTP 429 retries
+        run: python3 scripts/test-openstates-rate.py
       - name: Test bill source verification and AI stage
         run: python3 scripts/test-policy-editorial.py
       - name: Validate versioned R2 policy and legislation manifests (offline)
