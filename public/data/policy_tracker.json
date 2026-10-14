@@ -460,13 +460,19 @@
       "level": "federal",
       "jurisdiction": "US",
       "title": "Third amended Standing General Order",
-      "summary": "NHTSA revised ADS crash reporting requirements in April 2025. Review the current order and amendments for applicable thresholds and deadlines.",
-      "takeaway": "NHTSA revised ADS crash reporting requirements in April 2025",
+      "summary": "Effective June 16, 2025, NHTSA's third amended crash-reporting order requires covered operators and manufacturers to report serious automated-driving or Level 2 driver-assistance crashes within five days and qualifying less-serious crashes monthly. It differentiates reporting thresholds by automation type, reduces duplicate filings, and requires updates when new information becomes available.",
+      "takeaway": "Effective June 16, 2025, NHTSA's third amended crash-reporting order requires covered operators and manufacturers to report serious automated-driving or Level 2 driver-assistance crashes within five days and qualifying less-serious crashes monthly. It differentiates reporting thresholds by automation type, reduces duplicate filings, and requires updates when new information becomes available.",
       "instrument": "oversight order",
       "status": "in_effect",
       "date": "2025-04-24",
       "source_url": "https://www.nhtsa.gov/laws-regulations/standing-general-order-crash-reporting",
-      "verified_at": "2026-09-23"
+      "verified_at": "2026-09-23",
+      "summary_method": "official_third_amended_SGO_text_review",
+      "summary_quality": "manual_primary_source_verified",
+      "editorial_status": "verified",
+      "editorial_source_url": "https://www.nhtsa.gov/sites/nhtsa.gov/files/2025-04/third-amended-SGO-2021-01_2025.pdf",
+      "editorial_source_type": "official_nhtsa_order",
+      "summary_reviewed_at": "2026-10-14"
     },
     {
       "id": "nhtsa-av-step-2025",
