@@ -19,6 +19,8 @@ function editorialDefects(data: BillDataset) {
 function isAcceptableR2(incoming: BillDataset) {
   if (incoming.as_of < snapshot.as_of) return false;
   if (editorialDefects(incoming) > editorialDefects(snapshot)) return false;
+  // A same-day R2 snapshot may predate source corrections and bill exclusions.
+  if (incoming.as_of === snapshot.as_of && editorialDefects(incoming) >= editorialDefects(snapshot)) return false;
   const byId = new Map(incoming.state_bills.map(b => [b.id, b]));
   for (const local of snapshot.state_bills) {
     if (local.summary_quality !== "verified" && local.summary_quality !== "manual_primary_source_verified") continue;
