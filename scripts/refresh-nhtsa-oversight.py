@@ -136,6 +136,10 @@ def main():
     # Preserve NHTSA audit-query cases known to the prior curated dataset
     # even when absent from the public ODI defect-investigation flat file.
     for number, item in seed.items():
+        # Never carry forward fabricated or legacy free-form identifiers.
+        # NHTSA ODI actions use two-letter type plus five digits (e.g. AQ26002).
+        if not re.fullmatch(r"(?:AQ|PE|EA|RQ|DP)\d{5}",number):
+            continue
         if number not in investigations:
             investigations[number] = {**item, "related_recalls": []}
     recalls = {}
