@@ -17,6 +17,7 @@ from legislation_source_text import primary_text
 ROOT=Path(__file__).resolve().parents[1]
 KEY=os.getenv("OPENAI_API_KEY")
 MODEL=os.getenv("POLICY_EDITORIAL_MODEL","gpt-4.1-mini")
+EDITORIAL_VERSION="full-text-extract-v2"
 MAX_NEW=int(os.getenv("POLICY_EDITORIAL_MAX_NEW","300"))
 
 def invoke(messages):
@@ -124,8 +125,9 @@ def summarize(row,kind):
     source,source_type,source_url=get_source(row,kind)
     if not source:
         row["editorial_status"]="needs_primary_source"
+        row["editorial_failure_reason"]="Official text, bill-version discovery and independent bill-ID research yielded no verified substantive document"
         return "missing"
-    digest=hashlib.sha256((MODEL+"\n"+source+"\n"+str(row.get("status"))).encode()).hexdigest()
+    digest=hashlib.sha256((MODEL+"\n"+EDITORIAL_VERSION+"\n"+kind+"\n"+source+"\n"+str(row.get("status"))).encode()).hexdigest()
     current_text=row.get("analysis") if kind=="state_framework" else row.get("summary")
     if row.get("editorial_source_hash")==digest and row.get("editorial_status")=="verified" and quality({"summary":current_text}):
         return "cached"
@@ -146,7 +148,7 @@ def summarize(row,kind):
       "deadlines or authority where stated. Distinguish proposed and enacted measures. Explain abbreviations. "
       "Do not restate the title or procedural history. Focus on a specific numbered standard rather than the entire rulemaking. Avoid unexplained acronyms. Never invent provisions, dates or status. If insufficient, return needs_review=true. "
       "Return JSON {summary:string,needs_review:boolean,reason:string}.")
-    request=json.dumps({"kind":kind,"jurisdiction":row.get("jurisdiction"),"bill_or_rule":row.get("number") or row.get("title"),"title":row.get("title"),
+    request=json.dumps({"kind":kind,"jurisdiction":row.get("jurisdiction") or row.get("code"),"bill_or_rule":row.get("number") or row.get("framework") or row.get("title"),"title":row.get("title") or row.get("name"),
         "status":row.get("status"),"evidence_type":source_type,"official_source_text":source})
     draft=invoke([{"role":"system","content":prompt},{"role":"user","content":request}])
     for _attempt in range(2):
