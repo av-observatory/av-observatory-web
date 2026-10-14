@@ -61,7 +61,7 @@ export default function AboutPage() {
         <div className="grid gap-5 md:grid-cols-[220px_minmax(0,1fr)] md:gap-10">
           <div>
             <h2 id="site-management" className="text-2xl font-semibold tracking-tight text-[#0b1d33]">Matthew Raifman</h2>
-            <p className="mt-2 text-sm text-[#768492]">Site management</p>
+            
             <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-sm font-medium">
               <a href="https://www.linkedin.com/in/mraifman" target="_blank" rel="noopener noreferrer" className="text-[#184f95] hover:underline">LinkedIn ↗</a>
               <a href="https://curvesahead.substack.com/" target="_blank" rel="noopener noreferrer" className="text-[#184f95] hover:underline">Curves Ahead ↗</a>
