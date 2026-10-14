@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
-import { Source_Sans_3, Geist_Mono } from "next/font/google";
+import { Inter, Geist_Mono } from "next/font/google";
 import { Sidebar } from "@/components/Sidebar";
 import Link from "next/link";
 import Script from "next/script";
 import "./globals.css";
 import { contentSecurityPolicy } from "@/lib/security";
 
-const editorialSans = Source_Sans_3({
+const editorialSans = Inter({
   variable: "--font-editorial-sans",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const geistMono = Geist_Mono({
