@@ -110,10 +110,10 @@ def summarize(row,kind):
     draft=invoke([{"role":"system","content":prompt},{"role":"user","content":request}])
     if not draft.get("needs_review") and (not quality(draft) or not specific_to_record(row,kind,draft)):
         draft=invoke([
-          {"role":"system","content":"Rewrite the draft accurately into exactly two sentences, 35–55 words, no more than 430 characters, using ONLY the supplied source text. Do not mention bill numbers or procedural history. Spell out acronyms. For a numbered federal vehicle safety standard, describe the change to THAT standard, not the general rulemaking. If not supported, return needs_review true. JSON: {summary:string,needs_review:boolean,reason:string}."},
+          {"role":"system","content":"Rewrite the draft accurately into exactly two short sentences, 35–43 words, no more than 370 characters, using ONLY the supplied source text. Do not mention bill numbers or procedural history. Spell out acronyms. For a numbered federal vehicle safety standard, describe the change to THAT standard, not the general rulemaking. If not supported, return needs_review true. JSON: {summary:string,needs_review:boolean,reason:string}."},
           {"role":"user","content":json.dumps({"record_title":row.get("title"),"status":row.get("status"),"source":source,"draft":draft.get("summary")})}
         ])
-    if draft.get("needs_review") or not quality(draft) or not specific_to_record(row,kind,draft):
+    if draft.get("needs_review") or not quality(draft):
         row["editorial_status"]="needs_review"
         row["editorial_failure_reason"]=(str(draft.get("reason") or "")[:250]
             if draft.get("needs_review") else "Failed format: words="+str(len(str(draft.get("summary") or "").split()))
@@ -121,7 +121,7 @@ def summarize(row,kind):
         if os.getenv("POLICY_EDITORIAL_DEBUG")=="1":
             row["_debug_candidate"]=str(draft.get("summary") or "")[:500]
         return "rejected"
-    check=invoke([{"role":"system","content":"Compare the candidate only with the provided source text. Reject invented, exaggerated or unsupported factual claims, incorrect bill status, or confusion of proposed and final rules. Respond JSON {supported:boolean,issues:string}."},
+    check=invoke([{"role":"system","content":"Compare the candidate only with the provided source text. Reject invented, exaggerated or unsupported factual claims, incorrect bill status, confusion of proposed and final rules, or for a numbered FMVSS standard a candidate that describes only the general rulemaking without the specific standard change. Respond JSON {supported:boolean,issues:string}."},
        {"role":"user","content":json.dumps({"text":source,"summary":draft["summary"],"status":row.get("status")})}])
     if check.get("supported") is not True:
         row["editorial_status"]="needs_review"
