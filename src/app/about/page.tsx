@@ -20,7 +20,7 @@ const focusAreas = [
 
 export default function AboutPage() {
   return (
-    <main className="max-w-5xl px-5 sm:px-8 py-10 sm:py-14 pb-16">
+    <main id="about-observatory-page" className="max-w-5xl px-5 sm:px-8 py-10 sm:py-14 pb-16">
       <div className="max-w-[760px]">
         <p className="eyebrow">About AV Observatory</p>
         <h1 className="mt-5 max-w-[740px] text-[clamp(2.15rem,4.4vw,3.45rem)] leading-[1.14] font-semibold tracking-[-0.045em] text-[#0b1d33]">
@@ -92,7 +92,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <p className="mt-9 border-t border-[#e1e6eb] pt-5 text-xs leading-[1.7] text-[#78838d]">
+      <p className="mt-12 max-w-[66ch] border-t border-[#e1e6eb] pt-6 text-xs leading-[1.7] text-[#77848f]">
         This website is not affiliated with the University of California, and his title is used here only for identification purposes.
       </p>
     </main>
