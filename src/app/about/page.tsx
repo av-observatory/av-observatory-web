@@ -36,7 +36,6 @@ export default function AboutPage() {
         <div className="mt-7 grid gap-0 md:grid-cols-3 md:gap-8">
           {focusAreas.map((area) => (
             <div key={area.number} className="border-t border-[#e1e6eb] py-5 md:py-0 md:border-t-0">
-              <span className="text-xs font-medium tracking-[0.1em] text-[#768492]">{area.number}</span>
               <h3 className="mt-3 text-lg font-semibold tracking-tight text-[#102c46]">{area.title}</h3>
               <p className="mt-2 text-[15px] leading-[1.75] text-[#52606b]">{area.description}</p>
             </div>
