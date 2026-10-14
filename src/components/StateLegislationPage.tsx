@@ -120,25 +120,31 @@ export function StateLegislationPage() {
     <p className="eyebrow">Policy Trackers / State</p>
     <h1 className="text-4xl font-semibold mt-3 text-[#0b1d33]">State Legislation</h1>
     <p className="mt-3 text-base text-neutral-600 max-w-3xl">Explore proposed and enacted AV legislation by state. Select a state to view its bills and collapse the map.</p>
-    {selected ? <section className="viz-card p-4 mt-4">
-      <div className="flex flex-wrap items-center justify-between gap-3">
-        <div>
-          <div className="eyebrow">Selected State</div>
-          <h2 className="text-xl font-semibold text-[#0b1d33] mt-1">{names[selected]}</h2>
-        </div>
-        <div className="flex flex-wrap gap-2">
-          <button type="button" aria-expanded={mapExpanded} aria-controls="legislation-state-map" onClick={()=>setMapExpanded(open=>!open)} className="rounded-lg border border-[#cbd5e1] px-3 py-2 text-sm font-semibold text-[#123b69] hover:bg-[#edf3f9]">{mapExpanded?"Hide map":"Change state / Show map"} {mapExpanded?"▲":"▼"}</button>
-          <button type="button" onClick={()=>selectState(null)} className="rounded-lg border border-neutral-200 px-3 py-2 text-sm text-neutral-700 hover:bg-neutral-100">All states</button>
+    <section className="viz-card p-4 mt-4">
+      <div className={`grid gap-5 ${!selected || mapExpanded ? "lg:grid-cols-[3fr_2fr]" : ""} lg:items-start`}>
+        {(!selected || mapExpanded) && <div id="legislation-state-map" className="min-w-0">
+          <div className="eyebrow mb-3">Legislation Tile Map · 50 States + D.C.</div>
+          <StateTileMap selected={selected} onSelect={selectState} counts={counts} names={names}/>
+        </div>}
+        <div className={`min-w-0 ${!selected || mapExpanded ? "border-t border-neutral-200 pt-4 lg:border-l lg:border-t-0 lg:pl-5 lg:pt-0" : ""}`}>
+          <div className="flex flex-wrap justify-between items-start gap-3">
+            <div>
+              <div className="eyebrow">{selected ? "Selected State" : "National View"}</div>
+              <h2 className="text-2xl font-semibold mt-2 text-[#0b1d33]">{selected ? names[selected] : "All States"}</h2>
+            </div>
+            {selected && <div className="flex flex-wrap gap-2">
+              <button type="button" aria-expanded={mapExpanded} aria-controls="legislation-state-map" onClick={()=>setMapExpanded(open=>!open)} className="rounded-lg border border-[#cbd5e1] px-3 py-2 text-sm font-semibold text-[#123b69] hover:bg-[#edf3f9]">{mapExpanded?"Collapse map":"Show map"} {mapExpanded?"▲":"▼"}</button>
+              <button type="button" onClick={()=>selectState(null)} className="rounded-lg border border-neutral-200 px-3 py-2 text-sm text-neutral-700 hover:bg-neutral-100">All states</button>
+            </div>}
+          </div>
+          <p className="text-sm text-neutral-600 mt-2">{selected ? `${visibleBills.length} proposed AV measure${visibleBills.length===1?"":"s"} indexed for this state.` : "Select a state on the map to explore its bills and enacted laws."}</p>
+          <div className="mt-4 flex flex-wrap justify-between items-center gap-2">
+            <span className="text-xs text-neutral-500">{source==="R2"?`Live index · ${legislation.as_of}`:`Site snapshot · ${legislation.as_of}`}</span>
+            <a href={`${process.env.NEXT_PUBLIC_BASE_PATH??""}/data/legislation_tracker.json`} className="text-sm text-[#184f95] underline">Download legislation data ↗</a>
+          </div>
         </div>
       </div>
-      {mapExpanded && <div id="legislation-state-map" className="mt-4 border-t border-neutral-200 pt-4"><StateTileMap selected={selected} onSelect={selectState} counts={counts} names={names}/></div>}
-    </section> : <section className="viz-card p-4 mt-4">
-      <div className="flex flex-wrap justify-between gap-2 items-center">
-        <h2 className="font-semibold text-[#0b1d33]">Select a state</h2>
-        <a href={`${process.env.NEXT_PUBLIC_BASE_PATH??""}/data/legislation_tracker.json`} className="text-sm text-[#184f95] underline">Download data ↗</a>
-      </div>
-      <div className="mt-3"><StateTileMap selected={selected} onSelect={selectState} counts={counts} names={names}/></div>
-    </section>}
+    </section>
 
     <section className="viz-card p-5 mt-5">
       <div className="flex flex-wrap justify-between gap-3 items-end">
