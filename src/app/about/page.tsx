@@ -87,7 +87,7 @@ export default function AboutPage() {
           <p className="mt-3 text-[15px] sm:text-base leading-[1.75] text-[#46535e]">
             We are looking for funders and partners to expand AV Observatory in the areas of policy analysis, survey research, and data for action.
           </p>
-          <Link href="/contact/" className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[#184f95] underline underline-offset-4">Get in touch ↗</Link>
+          <a href="mailto:support@av-observatory.com" className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[#184f95] underline underline-offset-4">Get in touch ↗</a>
         </div>
       </section>
 
