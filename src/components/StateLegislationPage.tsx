@@ -22,11 +22,19 @@ function statusLabel(status:string) {
   return status.replaceAll("_"," ").replace(/\b\w/g, c => c.toUpperCase());
 }
 function billStageLabel(bill:Bill) {
-  if(["signed","enacted","chaptered"].includes(bill.status)) return "Enacted";
-  if(bill.status === "to_governor") return "To Governor";
-  if(bill.status === "passed") return "Passed Legislature";
-  if(bill.status === "engrossed") return "Passed First Chamber";
-  return statusLabel(bill.status);
+  const status = bill.status.toLowerCase();
+  const stage = bill.progress_stage?.toLowerCase() ?? "";
+  const actions = (bill.last_action ?? "").toLowerCase();
+  if (["signed","enacted","chaptered"].includes(status)) return "Enacted";
+  if (status === "to_governor" || status === "passed" || status === "enrolled" || stage === "passed_legislature") return "Passed Legislature";
+  if (status === "engrossed" || stage === "passed_first_chamber" || stage === "passed_chamber") return "Passed First Chamber";
+  // Committee recommendations, amendments, hearings, study orders and
+  // re-referrals do not constitute chamber passage.
+  if (stage === "committee" || stage === "referred" || Boolean(bill.stage_dates?.committee) ||
+      /refer(?:red|ral)? to (?:the )?(?:committee|committees)|re-refer|committee report|comm report|study order/i.test(actions)) {
+    return "Referred to Committee";
+  }
+  return "Introduced";
 }
 function billStatusTone(status:string) {
   if(["signed","enacted","chaptered"].includes(status)) return "bg-[#dcefe9] text-[#145c48]";
