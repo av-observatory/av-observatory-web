@@ -42,7 +42,7 @@ jobs:
           test -f out/policy/state-legislation/index.html
           test -f out/deployment-check-2026-10-14.json
       - name: Upload static site
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v5
         with:
           path: ./out
   deploy:
