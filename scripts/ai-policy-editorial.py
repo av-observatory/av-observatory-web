@@ -218,6 +218,7 @@ def main():
                 # Existing verified records are reconsidered to detect changed sources.
                 result=summarize(row,actual_kind)
                 counts[result]=counts.get(result,0)+1
+                print(f"Editorial progress: {filename} {field} {row.get('id') or row.get('code')} -> {result}",flush=True)
                 if result in ("updated","rejected"):used+=1
         path.write_text(json.dumps(data,ensure_ascii=False,indent=2)+"\n")
     print("Policy editorial results:",counts)
