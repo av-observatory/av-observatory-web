@@ -51,7 +51,8 @@ def status_consistent(row,kind,draft):
     if kind.endswith("_bill") and status not in ("enacted","signed","chaptered"):
         if re.search(r"\b(?:the|this)\s+law\b",summary,re.I):
             return False
-        if not re.search(r"\bwould\b",summary[:85],re.I):
+        sentences=re.split(r"(?<=[.!?])\s+(?=[A-Z])",summary)
+        if any(not re.search(r"\b(?:would|could|if enacted)\b",sentence,re.I) for sentence in sentences):
             return False
     if kind=="fmvss" and status in ("under_review","advance_notice","request_for_comment"):
         if not re.search(r"\b(?:would|propos(?:e|es|ed)|seeks?|requested|sought|invited|considering)\b",summary,re.I):
@@ -127,7 +128,7 @@ def summarize(row,kind):
     for _attempt in range(2):
         if draft.get("needs_review") or (quality(draft) and status_consistent(row,kind,draft) and specific_to_record(row,kind,draft)):
             break
-        strict_status=("This measure is NOT LAW. The final answer must begin exactly with 'The bill would' and all operative provisions must remain conditional."
+        strict_status=("This measure is NOT LAW. The final answer must begin exactly with 'The bill would' and EVERY sentence must use would or could when describing proposed legal obligations. Never use present-tense statements of unpassed requirements."
                        if kind.endswith("_bill") and row.get("status") not in ("enacted","signed","chaptered")
                        else "Preserve the official proposed-versus-effective status.")
         draft=invoke([
@@ -161,6 +162,8 @@ def summarize(row,kind):
     row["editorial_source_url"]=source_url
     row["editorial_source_type"]=source_type
     row["editorial_model"]=MODEL
+    from datetime import datetime, timezone
+    row["summary_reviewed_at"]=datetime.now(timezone.utc).date().isoformat()
     return "updated"
 
 def main():
