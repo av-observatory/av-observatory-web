@@ -96,8 +96,7 @@ export function StateLegislationPage() {
   const {data:legislation,source} = useLegislationData();
   const {data:policy} = usePolicyData();
   const [selected,setSelected] = useState<string|null>(null);
-  const [mapExpanded,setMapExpanded] = useState(true);
-  const selectState = (code:string|null) => { setSelected(code); setMapExpanded(code===null); };
+  const selectState = (code:string|null) => setSelected(code);
 
   const names = useMemo(()=>Object.fromEntries(legislation.states.map(s=>[s.code,s.name])),[legislation.states]);
   const currentBills = useMemo(()=>legislation.state_bills
@@ -116,31 +115,41 @@ export function StateLegislationPage() {
     .filter(e=>e.state===selected && e.instrument==="legislation" && CURRENT_LAW_STATUSES.has(e.status))
     .sort((a,b)=>(b.date??"").localeCompare(a.date??"")) : [];
 
+  const featuredBills = visibleBills.slice(0,3);
+  const nationalStateCount = Object.values(counts).filter(Boolean).length;
+  const panelProposedCount = selected ? proposedBills.filter(b=>b.jurisdiction===selected).length : proposedBills.length;
+  const panelEnactedCount = selected ? enacted.length : policy.state_events.filter(e=>e.instrument==="legislation" && CURRENT_LAW_STATUSES.has(e.status)).length;
+
   return <main className="max-w-7xl px-5 sm:px-8 py-8">
     <p className="eyebrow">Policy Trackers / State</p>
     <h1 className="text-4xl font-semibold mt-3 text-[#0b1d33]">State Legislation</h1>
-    <p className="mt-3 text-base text-neutral-600 max-w-3xl">Explore proposed and enacted AV legislation by state. Select a state to view its bills and collapse the map.</p>
+    <p className="mt-3 text-base text-neutral-600 max-w-3xl">Select a state on the map to explore current proposals, recent legislative activity, and enacted AV laws.</p>
     <section className="viz-card p-4 mt-4">
-      <div className={`grid gap-5 ${!selected || mapExpanded ? "lg:grid-cols-[3fr_2fr]" : ""} lg:items-start`}>
-        {(!selected || mapExpanded) && <div id="legislation-state-map" className="min-w-0">
-          <div className="eyebrow mb-3">Legislation Tile Map · 50 States + D.C.</div>
+      <div className="grid gap-5 lg:grid-cols-[3fr_2fr] lg:items-start">
+        <div className="min-w-0">
+          <div className="eyebrow mb-3">Legislation by State · 50 States + D.C.</div>
           <StateTileMap selected={selected} onSelect={selectState} counts={counts} names={names}/>
-        </div>}
-        <div className={`min-w-0 ${!selected || mapExpanded ? "border-t border-neutral-200 pt-4 lg:border-l lg:border-t-0 lg:pl-5 lg:pt-0" : ""}`}>
-          <div className="flex flex-wrap justify-between items-start gap-3">
-            <div>
-              <div className="eyebrow">{selected ? "Selected State" : "National View"}</div>
-              <h2 className="text-2xl font-semibold mt-2 text-[#0b1d33]">{selected ? names[selected] : "All States"}</h2>
-            </div>
-            {selected && <div className="flex flex-wrap gap-2">
-              <button type="button" aria-expanded={mapExpanded} aria-controls="legislation-state-map" onClick={()=>setMapExpanded(open=>!open)} className="rounded-lg border border-[#cbd5e1] px-3 py-2 text-sm font-semibold text-[#123b69] hover:bg-[#edf3f9]">{mapExpanded?"Collapse map":"Show map"} {mapExpanded?"▲":"▼"}</button>
-              <button type="button" onClick={()=>selectState(null)} className="rounded-lg border border-neutral-200 px-3 py-2 text-sm text-neutral-700 hover:bg-neutral-100">All states</button>
-            </div>}
+        </div>
+        <div className="min-w-0 border-t border-neutral-200 pt-4 lg:border-l lg:border-t-0 lg:pl-5 lg:pt-0" aria-live="polite">
+          <div className="eyebrow">{selected ? "State overview" : "National overview"}</div>
+          <h2 className="text-2xl font-semibold mt-2 text-[#0b1d33]">{selected ? names[selected] : "United States"}</h2>
+          <div className="grid grid-cols-2 gap-4 mt-5 pb-4 border-b border-neutral-200">
+            <div><div className="text-2xl font-semibold text-[#0b1d33] tabular-nums">{panelProposedCount}</div><div className="text-xs text-neutral-500 mt-1">Proposed measures</div></div>
+            <div><div className="text-2xl font-semibold text-[#0b1d33] tabular-nums">{selected ? panelEnactedCount : nationalStateCount}</div><div className="text-xs text-neutral-500 mt-1">{selected ? "Indexed enacted laws" : "States with measures"}</div></div>
           </div>
-          <p className="text-sm text-neutral-600 mt-2">{selected ? `${visibleBills.length} proposed AV measure${visibleBills.length===1?"":"s"} indexed for this state.` : "Select a state on the map to explore its bills and enacted laws."}</p>
-          <div className="mt-4 flex flex-wrap justify-between items-center gap-2">
+          <div className="mt-4">
+            <h3 className="text-sm font-semibold text-[#0b1d33]">Recent legislative activity</h3>
+            {featuredBills.length ? <div className="mt-2">
+              {featuredBills.map(bill=><div key={bill.id} className="py-3 border-b border-neutral-200 last:border-b-0">
+                <div className="text-xs text-neutral-500">{selected ? "" : `${names[bill.jurisdiction]??bill.jurisdiction} · `}{displayDate(bill.last_action_date)} · {billStageLabel(bill)}</div>
+                <a href={bill.source_url} target="_blank" rel="noreferrer" className="block mt-1 text-sm font-semibold text-[#184f95] hover:underline">{bill.number} · {bill.title} ↗</a>
+                <p className="text-xs text-neutral-600 mt-1 line-clamp-2">{bill.takeaway}</p>
+              </div>)}
+            </div> : <p className="text-sm text-neutral-500 mt-2">No current-session proposals indexed for this state.</p>}
+          </div>
+          <div className="mt-3 flex flex-wrap justify-between items-center gap-2">
             <span className="text-xs text-neutral-500">{source==="R2"?`Live index · ${legislation.as_of}`:`Site snapshot · ${legislation.as_of}`}</span>
-            <a href={`${process.env.NEXT_PUBLIC_BASE_PATH??""}/data/legislation_tracker.json`} className="text-sm text-[#184f95] underline">Download legislation data ↗</a>
+            <a href={`${process.env.NEXT_PUBLIC_BASE_PATH??""}/data/legislation_tracker.json`} className="text-xs text-[#184f95] underline">Download data ↗</a>
           </div>
         </div>
       </div>
