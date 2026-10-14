@@ -33,20 +33,20 @@ export default function AboutPage() {
       </section>
       <section className="mt-9">
         <p className="text-neutral-700 leading-relaxed">
-          This site is managed by Dr. Matthew Raifman. Dr. Raifman is a multidisciplinary researcher and product manager working at the intersection of sustainable transportation, public health, and autonomous vehicle policy. He currently serves as the <strong>Research Lead for Policy and Autonomous Vehicles</strong> at UC Berkeley, where his research evaluates the real-world health and safety outcomes of emerging transportation technologies, infrastructure design, and infrastructure equity.
+          This site is managed by Dr. Matthew Raifman. Dr. Raifman is a multidisciplinary researcher and product manager working at the intersection of sustainable transportation, public health, and autonomous vehicle policy. He currently serves as the Research Lead for Policy and Autonomous Vehicles at UC Berkeley, where his research evaluates the real-world health and safety outcomes of emerging transportation technologies, infrastructure design, and infrastructure equity.
         </p>
         <p className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm font-semibold">
           <a href="https://www.linkedin.com/in/mraifman" target="_blank" rel="noopener noreferrer" className="text-[#184f95] underline underline-offset-2">LinkedIn ↗</a>
           <a href="https://curvesahead.substack.com/" target="_blank" rel="noopener noreferrer" className="text-[#184f95] underline underline-offset-2">Curves Ahead · Substack ↗</a>
-        </p>
-        <p className="mt-4 text-sm text-neutral-600 leading-relaxed font-semibold">
-          This website is not affiliated with the University of California, and his title is used here only for identification purposes.
         </p>
         <p className="mt-4 text-neutral-700 leading-relaxed">
           Prior to his time at UC Berkeley, his professional background bridged the gap between public policy, corporate technology, and international development. He served as a Senior Manager for City Solutions at Ford Smart Mobility, senior advisor at Johns Hopkins University, a Science and Technology Policy Fellow for the U.S. Department of Energy, the transportation lead within the Maryland Governor’s Office, and as a performance management lead in the President’s Office at the World Bank Group.
         </p>
         <p className="mt-4 text-neutral-700 leading-relaxed">
           Dr. Raifman holds a PhD in Environmental Health from the Boston University School of Public Health, a Master in Public Policy from the Harvard Kennedy School, and a Bachelor of Arts in Economics from Tufts University.
+        </p>
+        <p className="mt-4 text-sm text-neutral-600 leading-relaxed font-semibold">
+          This website is not affiliated with the University of California, and his title is used here only for identification purposes.
         </p>
       </section>
     </div>
