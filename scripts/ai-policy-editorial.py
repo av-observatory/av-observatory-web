@@ -35,7 +35,7 @@ def invoke(messages):
 def quality(value):
     s=value.get("summary") if isinstance(value,dict) else None
     return isinstance(s,str) and 25<=len(s.split())<=68 and len(s)<=500 and not re.search(
-      r"\\b(?:ADS|ODI|FMVSS)\\b|https?://|substantive summary unavailable",s,re.I)
+      r"\b(?:ADS|ODI|FMVSS)\b|https?://|substantive summary unavailable",s,re.I)
 
 def get_source(row,kind):
     text,provenance,url=primary_text(row,kind)
@@ -47,6 +47,27 @@ def get_source(row,kind):
         return abstract,"openstates_abstract",row.get("repository_url") or row.get("source_url")
     return "","missing_full_text_and_substantive_abstract",""
 
+def select_relevant_excerpt(text,row,kind):
+    """Ground summarization in the relevant provisions of long documents."""
+    if len(text)<=24000:return text
+    snippets=[text[:3000]]
+    if kind=="fmvss":
+        m=re.match(r"fmvss-(\d{3}a?)-",str(row.get("id") or ""),re.I)
+        n=m.group(1) if m else None
+        targets=([rf"\bFMVSS\s*(?:No\.\s*)?{n}\b",rf"\b571\.{n}\b",
+                  rf"\bstandard\s*(?:No\.\s*)?{n}\b"] if n else
+                 [r"\bautomated driving\b",r"\bmanual driving controls\b"])
+    else:
+        targets=[r"\bautonomous vehicles?\b",r"\bautomated driving systems?\b",
+                 r"\bdriverless\b",r"\bself[- ]driving\b",r"\brobotaxi\b"]
+    offsets=sorted(set(m.start() for pattern in targets for m in re.finditer(pattern,text,re.I)))
+    for pos in offsets[:18]:
+        fragment=text[max(0,pos-600):min(len(text),pos+1450)]
+        if sum(len(x) for x in snippets)+len(fragment)>22000:break
+        snippets.append(fragment)
+    return "\n\n[Source excerpt]\n\n".join(snippets)[:24000]
+
+
 def summarize(row,kind):
     source,source_type,source_url=get_source(row,kind)
     if not source:
@@ -55,8 +76,13 @@ def summarize(row,kind):
     digest=hashlib.sha256((MODEL+"\n"+source+"\n"+str(row.get("status"))).encode()).hexdigest()
     if row.get("editorial_source_hash")==digest and row.get("editorial_status")=="verified":
         return "cached"
+    if row.get("editorial_source_hash")==digest and row.get("editorial_status")=="needs_review":
+        return "awaiting_review"
     if not KEY:raise RuntimeError("OPENAI_API_KEY not configured")
-    source=source[:24000]
+    row["editorial_source_hash"]=digest
+    row["editorial_source_type"]=source_type
+    row["editorial_source_url"]=source_url
+    source=select_relevant_excerpt(source,row,kind)
     prompt=("You are an impartial legislative and regulatory researcher. Write a readable 2–3 sentence summary, "
       "about 35–65 words, grounded EXCLUSIVELY in the supplied original bill text, official rule, or source abstract. "
       "Explain what it proposes or changes, which vehicles or actors it affects, and any important reporting duties, "
