@@ -85,7 +85,7 @@ export default function AboutPage() {
         <div className="max-w-[670px]">
           <h2 id="support-observatory" className="text-2xl font-semibold tracking-tight text-[#0b1d33]">Interested in funding this work?</h2>
           <p className="mt-3 text-[15px] sm:text-base leading-[1.75] text-[#46535e]">
-            We are looking for sponsors to expand AV Observatory into survey and research domains.
+            We are looking for funders and partners to expand AV Observatory in the areas of policy analysis, survey research, and data for action.
           </p>
           <Link href="/contact/" className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[#184f95] underline underline-offset-4">Get in touch ↗</Link>
         </div>
