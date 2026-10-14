@@ -12,6 +12,7 @@ import runpy
 import sys
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/"scripts"))
+os.environ["POLICY_EDITORIAL_DEBUG"]="1"
 if not os.environ.get("OPENAI_API_KEY"):
     raise SystemExit("OPENAI_API_KEY is not configured for this workflow")
 from legislation_source_text import primary_text
@@ -34,6 +35,8 @@ for kind,seed in rows:
         # Run the same processing function used in production.
         result=ns["summarize"](row,kind)
         print(f"{kind} {row['id']}: {result}, source={source_type}, chars={len(original)}")
+        if result=="rejected":
+            print("  Rejection:",row.get("editorial_failure_reason"),"Candidate:",row.get("_debug_candidate"))
         if result=="updated":
             print("  Sample summary:",row["summary"])
             success+=1
