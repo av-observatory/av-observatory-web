@@ -9,6 +9,7 @@ on:
   # so rebuild daily after the 10:17, 12:17 and 14:35 UTC refreshes to publish them.
   schedule:
     - cron: "50 15 * * *"
+    - cron: "23 */2 * * *"
   workflow_dispatch:
 
 permissions:
