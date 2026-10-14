@@ -33,7 +33,7 @@ jobs:
           python3 scripts/publish-r2-data.py policy --file public/data/policy_tracker.json --dry-run > /dev/null
 
       - name: Bounded live AI and official-text test
-        if: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository }}
+        if: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository && github.actor != 'dependabot[bot]' }}
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENSTATES_API_KEY: ${{ secrets.OPENSTATES_API_KEY }}
