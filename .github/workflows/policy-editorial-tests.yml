@@ -20,9 +20,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Test Python syntax
-        run: python3 -m py_compile scripts/ai-policy-editorial.py scripts/legislation_source_text.py scripts/refresh-legislation.py scripts/legislation-supplement.py scripts/test-policy-editorial.py scripts/test-policy-live.py
+        run: python3 -m py_compile scripts/ai-policy-editorial.py scripts/legislation_source_text.py scripts/refresh-legislation.py scripts/legislation-supplement.py scripts/test-policy-editorial.py scripts/test-policy-live.py scripts/publish-r2-data.py
       - name: Test bill source verification and AI stage
         run: python3 scripts/test-policy-editorial.py
+      - name: Validate versioned R2 policy and legislation manifests (offline)
+        run: |
+          python3 scripts/publish-r2-data.py legislation --file public/data/legislation_tracker.json --dry-run > /dev/null
+          python3 scripts/publish-r2-data.py policy --file public/data/policy_tracker.json --dry-run > /dev/null
+
       - name: Bounded live AI and official-text test
         if: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository }}
         env:
