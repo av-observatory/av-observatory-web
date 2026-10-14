@@ -13,7 +13,8 @@ export default function InvestigationTracker(){
   const [company,setCompany]=useState("All");
   const [status,setStatus]=useState("All");
   const companies=["All",...Array.from(new Set(investigations.map(x=>x.company))).sort()];
-  const rows=useMemo(()=>investigations.filter(x=>(company==="All"||x.company===company)&&(status==="All"||x.status===status)),[investigations,company,status]);
+  const [sortOrder,setSortOrder] = useState<"newest"|"oldest">("newest");
+  const rows=useMemo(()=>investigations.filter(x=>(company==="All"||x.company===company)&&(status==="All"||x.status===status)).sort((a,b)=>sortOrder==="newest"?b.opened.localeCompare(a.opened):a.opened.localeCompare(b.opened)),[investigations,company,status,sortOrder]);
   const open=investigations.filter(x=>x.status==="Open").length;
   const tesla=investigations.filter(x=>x.company==="Tesla").length;
 
@@ -27,6 +28,7 @@ export default function InvestigationTracker(){
     <div className="viz-card p-4 mt-4 flex flex-wrap gap-3 items-end">
       <label className="text-sm"><span className="block text-xs text-neutral-500 mb-1">Company</span><select value={company} onChange={e=>setCompany(e.target.value)} className="border border-[#cfd9e3] rounded px-3 py-2 bg-white">{companies.map(x=><option key={x}>{x}</option>)}</select></label>
       <label className="text-sm"><span className="block text-xs text-neutral-500 mb-1">Status</span><select value={status} onChange={e=>setStatus(e.target.value)} className="border border-[#cfd9e3] rounded px-3 py-2 bg-white">{["All","Open","Closed"].map(x=><option key={x}>{x}</option>)}</select></label>
+      <label className="text-sm"><span className="block text-xs text-neutral-500 mb-1">Order</span><select aria-label="Investigation ordering" value={sortOrder} onChange={e=>setSortOrder(e.target.value as "newest"|"oldest")} className="border border-[#cfd9e3] rounded px-3 py-2 bg-white"><option value="newest">Newest opened first</option><option value="oldest">Oldest opened first</option></select></label>
       <div className="text-xs text-neutral-500 pb-2">{rows.length} record{rows.length===1?"":"s"} shown · {source==="R2"?"live R2 feed":"site cache"}</div>
     </div>
 
