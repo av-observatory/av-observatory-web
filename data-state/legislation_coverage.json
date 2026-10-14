@@ -1,0 +1,163 @@
+{
+ "generated": "2026-10-13",
+ "jurisdictions": {
+  "AK": {
+   "primary_bills": 0
+  },
+  "AL": {
+   "primary_bills": 1
+  },
+  "AR": {
+   "primary_bills": 0
+  },
+  "AZ": {
+   "primary_bills": 1
+  },
+  "CA": {
+   "primary_bills": 5
+  },
+  "CO": {
+   "primary_bills": 3
+  },
+  "CT": {
+   "primary_bills": 0
+  },
+  "DC": {
+   "primary_bills": 0
+  },
+  "DE": {
+   "primary_bills": 1
+  },
+  "FL": {
+   "primary_bills": 0
+  },
+  "GA": {
+   "primary_bills": 0
+  },
+  "HI": {
+   "primary_bills": 1
+  },
+  "IA": {
+   "primary_bills": 4
+  },
+  "ID": {
+   "primary_bills": 0
+  },
+  "IL": {
+   "primary_bills": 8
+  },
+  "IN": {
+   "primary_bills": 0
+  },
+  "KS": {
+   "primary_bills": 0
+  },
+  "KY": {
+   "primary_bills": 2
+  },
+  "LA": {
+   "primary_bills": 0
+  },
+  "MA": {
+   "primary_bills": 10
+  },
+  "MD": {
+   "primary_bills": 2
+  },
+  "ME": {
+   "primary_bills": 0
+  },
+  "MI": {
+   "primary_bills": 0
+  },
+  "MN": {
+   "primary_bills": 10
+  },
+  "MO": {
+   "primary_bills": 0
+  },
+  "MS": {
+   "primary_bills": 0
+  },
+  "MT": {
+   "primary_bills": 5
+  },
+  "NC": {
+   "primary_bills": 0
+  },
+  "ND": {
+   "primary_bills": 0
+  },
+  "NE": {
+   "primary_bills": 0
+  },
+  "NH": {
+   "primary_bills": 0
+  },
+  "NJ": {
+   "primary_bills": 4
+  },
+  "NM": {
+   "primary_bills": 0
+  },
+  "NV": {
+   "primary_bills": 0
+  },
+  "NY": {
+   "primary_bills": 15
+  },
+  "OH": {
+   "primary_bills": 0
+  },
+  "OK": {
+   "primary_bills": 0
+  },
+  "OR": {
+   "primary_bills": 1
+  },
+  "PA": {
+   "primary_bills": 3
+  },
+  "RI": {
+   "primary_bills": 0
+  },
+  "SC": {
+   "primary_bills": 0
+  },
+  "SD": {
+   "primary_bills": 0
+  },
+  "TN": {
+   "primary_bills": 0
+  },
+  "TX": {
+   "primary_bills": 0
+  },
+  "UT": {
+   "primary_bills": 2
+  },
+  "VA": {
+   "primary_bills": 0
+  },
+  "VT": {
+   "primary_bills": 0
+  },
+  "WA": {
+   "primary_bills": 0
+  },
+  "WI": {
+   "primary_bills": 0
+  },
+  "WV": {
+   "primary_bills": 0
+  },
+  "WY": {
+   "primary_bills": 0
+  }
+ },
+ "manual_added": [
+  "dc-b26-0684-26"
+ ],
+ "manual_retired": [],
+ "second_source_configured": false
+}

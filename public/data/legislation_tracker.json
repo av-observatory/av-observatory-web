@@ -416,6 +416,39 @@
       "openstates_updated_at": "2026-08-20T01:35:33.403639+00:00"
     },
     {
+      "id": "dc-b26-0684-26",
+      "jurisdiction": "DC",
+      "number": "B26-0684",
+      "title": "Autonomous Vehicle Deployment Authorization Amendment Act of 2026",
+      "summary": "As introduced, the bill would establish a Commercial Autonomous Vehicles Program within the District Department of Transportation allowing certain autonomous vehicles to transport passengers and goods in the District. Applicants and permit recipients would have to submit planning documents, reports and data to DDOT.",
+      "takeaway": "Would establish a Commercial Autonomous Vehicles Program within the District Department of Transportation allowing certain autonomous vehicles to transport passengers and goods in the District.",
+      "source_summary": "Official D.C. Council LIMS bill summary (as introduced).",
+      "summary_method": "Maintainer-written from the official D.C. Council LIMS record; no figures taken from news coverage",
+      "summary_quality": "reviewed_substantive",
+      "summary_reviewed_at": "2026-10-14",
+      "status": "introduced",
+      "measure_type": "bill",
+      "last_action_date": "2026-07-13",
+      "last_action": "Public hearing held by the Committee on Transportation and the Environment.",
+      "session": "26",
+      "progress_stage": "committee",
+      "stage_dates": {
+        "introduced": "2026-05-01",
+        "committee": "2026-05-05"
+      },
+      "hearings": [
+        {
+          "date": "2026-07-13",
+          "description": "Public hearing, Committee on Transportation and the Environment",
+          "source_url": "https://lims.dccouncil.gov/Legislation/B26-0684"
+        }
+      ],
+      "source_url": "https://lims.dccouncil.gov/Legislation/B26-0684",
+      "repository_url": "https://lims.dccouncil.gov/Legislation/B26-0684",
+      "reviewed_at": "2026-10-13",
+      "source_feed": "manual_official"
+    },
+    {
       "id": "de-sb-46-153",
       "jurisdiction": "DE",
       "number": "SB 46",

@@ -13,6 +13,8 @@ on:
 
 permissions:
   contents: write
+  actions: write
+  issues: write
 
 concurrency:
   group: website-data-writers
@@ -23,6 +25,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       OPENSTATES_API_KEY: ${{ secrets.OPENSTATES_API_KEY }}
+      LEGISCAN_API_KEY: ${{ secrets.LEGISCAN_API_KEY }}
+      GH_TOKEN: ${{ github.token }}
       AWS_ACCESS_KEY_ID: ${{ secrets.POLICY_R2_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.POLICY_R2_SECRET_ACCESS_KEY }}
       AWS_DEFAULT_REGION: auto
@@ -41,6 +45,11 @@ jobs:
       - name: Search current sessions and rebuild Open States bill database
         if: ${{ env.OPENSTATES_API_KEY != '' }}
         run: python3 scripts/refresh-legislation.py public/data/legislation_tracker.json
+      - name: Cross-check a second source, apply manual overrides, report coverage gaps
+        if: ${{ env.OPENSTATES_API_KEY != '' }}
+        run: |
+          python3 scripts/test-legislation-supplement.py
+          python3 scripts/legislation-supplement.py --open-issues
       - name: Validate refreshed index
         if: ${{ env.OPENSTATES_API_KEY != '' }}
         run: node scripts/validate-legislation-data.mjs public/data/legislation_tracker.json
@@ -52,7 +61,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add public/data/legislation_tracker.json public/data/legislation_tracker_*.csv
+          git add public/data/legislation_tracker.json public/data/legislation_tracker_*.csv data-state
           if git diff --cached --quiet; then
             echo "No legislation changes to commit"
           else
