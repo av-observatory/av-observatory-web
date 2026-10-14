@@ -36,7 +36,14 @@ RELEVANT = re.compile(
     r"highly\s+automated\s+vehicle(?:s)?)\b",
     re.I,
 )
-EXCLUDE = re.compile(r"\b(?:autonomous region|autonomous university|autonomous drone|unmanned aircraft)\b", re.I)
+EXCLUDE = re.compile(r"\\b(?:autonomous region|autonomous university|autonomous drone|unmanned aircraft)\\b", re.I)
+NON_DRIVING_AVIS = re.compile(r"\\b(?:automated vehicle identification systems?|automated vehicle information systems?|Kentucky Automated Vehicle Information System)\\b", re.I)
+
+def is_relevant_av_bill(text):
+    # Automated Vehicle Identification Systems are traffic cameras / DMV IT,
+    # not automated driving systems. Remove that phrase before topic matching.
+    without_avis=NON_DRIVING_AVIS.sub("vehicle records",text)
+    return bool(RELEVANT.search(without_avis)) and not EXCLUDE.search(without_avis)
 
 from openstates_rate import open_json
 
@@ -167,7 +174,7 @@ for code in STATE_CODES:
             results = payload.get("results") or []
             for item in results:
                 text = bill_text(item)
-                if RELEVANT.search(text) and not EXCLUDE.search(text):
+                if is_relevant_av_bill(text):
                     seen[str(item.get("id") or f"{code}|{session}|{item.get('identifier')}")] = item
             pagination = payload.get("pagination") or {}
             max_page = int(pagination.get("max_page") or page)
