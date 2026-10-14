@@ -295,7 +295,7 @@ for item in seen.values():
     prior_reviewed = reviewed_summaries.get(f"{code.lower()}-{re.sub(r'[^a-z0-9]+', '-', identifier.lower()).strip('-')}-{re.sub(r'[^0-9a-z]+', '-', session.lower()).strip('-')}")
     if prior_reviewed:
         summary = str(prior_reviewed["summary"])
-        summary_quality = "reviewed_substantive"
+        summary_quality = prior_reviewed.get("summary_quality", "reviewed_substantive")
     elif not is_substantive_summary(title, summary):
         summary = "Substantive summary unavailable in the source feed; review the official bill record for the bill text."
         summary_quality = "source_summary_insufficient"
