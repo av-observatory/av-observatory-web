@@ -52,8 +52,8 @@ def fetch(url):
             parser=Extract();parser.feed(source)
             text=clean(" ".join(parser.words))
             # Do not accept a portal page, cookie notice, or navigation as bill text.
-            return (text[:32000],"official_html") if len(text)>=650 else ("","insufficient_official_html")
-        return (clean(source)[:32000],"official_plaintext") if len(source)>=500 else ("","insufficient_official_text")
+            return (text[:180000],"official_html") if len(text)>=650 else ("","insufficient_official_html")
+        return (clean(source)[:180000],"official_plaintext") if len(source)>=500 else ("","insufficient_official_text")
     except Exception as e:
         return "",type(e).__name__
 
@@ -95,6 +95,15 @@ def federal_register_text_url(row):
         print(f"Federal Register text lookup failed for {row.get('id')}: {type(exc).__name__}")
         return ""
 
+def california_bill_url(row):
+    if row.get("jurisdiction")!="CA":return ""
+    session=str(row.get("session") or "")
+    identifier=str(row.get("number") or "")
+    m=re.fullmatch(r"(AB|SB)\s*(\d{1,4})",identifier,re.I)
+    if not re.fullmatch(r"\d{8}",session) or not m:return ""
+    bill_id=session+"0"+m.group(1).upper()+m.group(2).zfill(4)
+    return "https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id="+bill_id
+
 def sources(row,kind):
     url=row.get("source_url") or ""
     repository=row.get("repository_url") or ""
@@ -109,6 +118,8 @@ def sources(row,kind):
         if full:yield full
         yield url
     else:
+        california=california_bill_url(row)
+        if california:yield california
         yield from state_bill_version_links(row)
         yield url
 
