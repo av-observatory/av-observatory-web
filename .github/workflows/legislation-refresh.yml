@@ -61,6 +61,7 @@ jobs:
 
       - name: AI review state and federal legislation plus FMVSS rules
         if: ${{ env.OPENSTATES_API_KEY != '' }}
+        continue-on-error: true
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           POLICY_EDITORIAL_MODEL: gpt-4.1-mini
