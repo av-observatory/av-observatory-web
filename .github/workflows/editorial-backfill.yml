@@ -6,6 +6,7 @@ on:
       - "scripts/ai-policy-editorial.py"
       - "scripts/legislation_source_text.py"
       - "scripts/audit-editorial-quality.py"
+      - "scripts/merge-editorial-updates.py"
       - ".github/workflows/editorial-backfill.yml"
   schedule:
     - cron: "41 9 * * *"
