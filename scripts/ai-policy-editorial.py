@@ -34,10 +34,15 @@ def invoke(messages):
 
 def quality(value):
     s=value.get("summary") if isinstance(value,dict) else None
-    if not isinstance(s,str) or not 24<=len(s.split())<=65 or len(s)>470:
+    if not isinstance(s,str) or not 24<=len(s.split())<=75 or len(s)>550:
         return False
-    if re.search(r"\b(?:ADS|ODI|FMVSS|SGO)\b",s):
-        return False
+    for acronym, expansion in (
+        ("ADS","automated driving system"),
+        ("FMVSS","federal motor vehicle safety standard"),
+        ("ODI","office of defects investigation"),
+        ("SGO","standing general order")):
+        if re.search(r"\b"+acronym+r"\b",s) and expansion not in s.lower():
+            return False
     return not re.search(r"https?://|substantive summary unavailable",s,re.I)
 
 def status_consistent(row,kind,draft):
