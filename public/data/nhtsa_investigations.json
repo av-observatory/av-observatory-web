@@ -14,9 +14,15 @@
       "closed": null,
       "subject": "Child pedestrian struck near elementary school",
       "product": "Waymo 5th Generation ADS",
-      "summary": "A Waymo vehicle struck a child near a Santa Monica elementary school during drop-off hours. NHTSA is examining its speed, precautions around children, and response after the collision.",
+      "summary": "NHTSA opened a preliminary evaluation after a driverless Waymo vehicle struck a child who ran from behind a double-parked SUV near a Santa Monica elementary school during drop-off on January 23, 2026; the child had minor injuries. NHTSA will examine whether the system showed appropriate caution, its school-zone behavior and speed-limit adherence, and its response after impact.",
       "source": "https://static.nhtsa.gov/odi/inv/2026/INOA-PE26001-10005.pdf",
-      "source_label": "ODI opening resume"
+      "source_label": "ODI opening resume",
+      "summary_method": "official_NHTSA_ODI_resume",
+      "summary_quality": "manual_primary_source_verified",
+      "editorial_status": "verified",
+      "editorial_source_url": "https://static.nhtsa.gov/odi/inv/2026/INOA-PE26001-10005.pdf",
+      "editorial_source_type": "official_NHTSA_ODI_open_resume",
+      "summary_reviewed_at": "2026-10-15"
     },
     {
       "id": "PE25013",
@@ -27,9 +33,15 @@
       "closed": null,
       "subject": "Passing stopped school buses",
       "product": "Waymo 5th Generation ADS",
-      "summary": "A Waymo vehicle reportedly passed a stopped school bus with its red lights flashing and stop arm extended. NHTSA is investigating whether its automated driving system responds safely and legally to stopped buses.",
+      "summary": "NHTSA opened a preliminary evaluation after a media report that a driverless Waymo vehicle drove around a stopped school bus in Atlanta on September 22, 2025, passing the bus's extended stop arm and crossing control arm near disembarking students. NHTSA is examining how Waymo's system is designed to obey school-bus laws and whether similar incidents occurred across about 2,000 vehicles.",
       "source": "https://static.nhtsa.gov/odi/inv/2025/INOA-PE25013-23069.pdf",
-      "source_label": "ODI opening resume"
+      "source_label": "ODI opening resume",
+      "summary_method": "official_NHTSA_ODI_resume",
+      "summary_quality": "manual_primary_source_verified",
+      "editorial_status": "verified",
+      "editorial_source_url": "https://static.nhtsa.gov/odi/inv/2025/INOA-PE25013-23069.pdf",
+      "editorial_source_type": "official_NHTSA_ODI_open_resume",
+      "summary_reviewed_at": "2026-10-15"
     },
     {
       "id": "AQ26002",
@@ -59,9 +71,15 @@
       "closed": null,
       "subject": "Traffic-safety violations with FSD engaged",
       "product": "Tesla vehicles equipped with FSD (Supervised) or FSD (Beta)",
-      "summary": "NHTSA is investigating reports of Tesla Full Self-Driving driving through red lights, entering oncoming traffic lanes, and taking incorrect lanes at intersections.",
+      "summary": "NHTSA opened a preliminary evaluation covering about 2.9 million Tesla vehicles with Full Self-Driving (Supervised or Beta) after complaints, crash reports and media reports alleging red-light running and entry into opposing lanes, including crashes with injuries. NHTSA will assess whether drivers received enough warning and time to supervise and intervene.",
       "source": "https://static.nhtsa.gov/odi/inv/2025/INOA-PE25012-19171.pdf",
-      "source_label": "ODI opening resume"
+      "source_label": "ODI opening resume",
+      "summary_method": "official_NHTSA_ODI_resume",
+      "summary_quality": "manual_primary_source_verified",
+      "editorial_status": "verified",
+      "editorial_source_url": "https://static.nhtsa.gov/odi/inv/2025/INOA-PE25012-19171.pdf",
+      "editorial_source_type": "official_NHTSA_ODI_open_resume",
+      "summary_reviewed_at": "2026-10-15"
     },
     {
       "id": "EA26002",
@@ -72,9 +90,15 @@
       "closed": null,
       "subject": "FSD collisions in reduced roadway visibility",
       "product": "Tesla vehicles with FSD",
-      "summary": "NHTSA is examining Tesla Full Self-Driving crashes in fog, glare, or other poor-visibility conditions. The investigation focuses on whether the system recognizes reduced visibility and gives drivers enough warning.",
+      "summary": "NHTSA upgraded its probe of Tesla Full Self-Driving in poor visibility to an engineering analysis covering about 3.2 million vehicles, citing nine crashes, one fatal, in glare and airborne obscurants. It will assess whether the system's degradation-detection feature recognizes reduced camera visibility and alerts drivers in time, including Tesla's later software update.",
       "source": "https://static.nhtsa.gov/odi/inv/2026/INOA-EA26002-10023.pdf",
-      "source_label": "ODI opening resume"
+      "source_label": "ODI opening resume",
+      "summary_method": "official_NHTSA_ODI_resume",
+      "summary_quality": "manual_primary_source_verified",
+      "editorial_status": "verified",
+      "editorial_source_url": "https://static.nhtsa.gov/odi/inv/2026/INOA-EA26002-10023.pdf",
+      "editorial_source_type": "official_NHTSA_ODI_open_resume",
+      "summary_reviewed_at": "2026-10-15"
     },
     {
       "id": "PE24016",
@@ -85,9 +109,15 @@
       "closed": null,
       "subject": "Unexpected ADS behavior",
       "product": "Waymo 5th Generation ADS",
-      "summary": "NHTSA reviewed reports of Waymo vehicles striking stationary objects, entering opposing lanes, and driving into construction areas. The concern is whether the automated driving system reliably handles unexpected road conditions.",
+      "summary": "NHTSA opened a preliminary evaluation of Waymo's fifth-generation driving system after 22 incidents, 17 of them crashes without injuries, in which vehicles struck gates, chains or parked cars, or appeared to disobey traffic control devices. It will evaluate how the system detects and responds to traffic controls and avoids stationary objects, across about 444 vehicles.",
       "source": "https://static.nhtsa.gov/odi/inv/2024/INOA-PE24016-12382.pdf",
-      "source_label": "ODI opening resume"
+      "source_label": "ODI opening resume",
+      "summary_method": "official_NHTSA_ODI_resume",
+      "summary_quality": "manual_primary_source_verified",
+      "editorial_status": "verified",
+      "editorial_source_url": "https://static.nhtsa.gov/odi/inv/2024/INOA-PE24016-12382.pdf",
+      "editorial_source_type": "official_NHTSA_ODI_open_resume",
+      "summary_reviewed_at": "2026-10-15"
     },
     {
       "id": "PE24015",
@@ -98,12 +128,18 @@
       "closed": null,
       "subject": "Unexpected ADS braking",
       "product": "Zoox ADS-equipped passenger vehicles",
-      "summary": "Two Zoox vehicles were rear-ended after unexpectedly braking near other road users. NHTSA investigated whether the automated driving system could trigger unnecessary hard braking.",
+      "summary": "NHTSA opened a preliminary evaluation after two incidents in which Zoox-operated Toyota Highlanders braked suddenly and were rear-ended by following motorcyclists, causing minor injuries. NHTSA is evaluating the Zoox driving system's performance in those collisions, around crosswalk pedestrians and other vulnerable road users, and in similar rear-end scenarios, covering about 500 vehicles.",
       "source": "https://static.nhtsa.gov/odi/inv/2024/INOA-PE24015-12348.pdf",
       "source_label": "ODI information request",
       "related_recalls": [
         "25E019000"
-      ]
+      ],
+      "summary_method": "official_NHTSA_ODI_resume",
+      "summary_quality": "manual_primary_source_verified",
+      "editorial_status": "verified",
+      "editorial_source_url": "https://static.nhtsa.gov/odi/inv/2024/INOA-PE24015-12348.pdf",
+      "editorial_source_type": "official_NHTSA_ODI_open_resume",
+      "summary_reviewed_at": "2026-10-15"
     },
     {
       "id": "AQ23001",
@@ -114,9 +150,15 @@
       "closed": "2025-08-04",
       "subject": "Purpose-built vehicle certification",
       "product": "Zoox purpose-built vehicles",
-      "summary": "NHTSA examined whether Zoox properly certified its purpose-built driverless vehicle against federal safety standards. The audit closed after Zoox obtained a demonstration exemption for the vehicles.",
+      "summary": "NHTSA's audit query examined whether Zoox properly self-certified its purpose-built, control-free vehicle as compliant with federal safety standards; a December 2024 inspection report found multiple apparent noncompliances. It closed August 4, 2025 after NHTSA granted Zoox a conditional demonstration exemption that requires it to remove claims of full compliance.",
       "source": "https://static.nhtsa.gov/odi/inv/2023/INCLA-AQ23001-11826.pdf",
-      "source_label": "ODI closing resume"
+      "source_label": "ODI closing resume",
+      "summary_method": "official_NHTSA_ODI_resume",
+      "summary_quality": "manual_primary_source_verified",
+      "editorial_status": "verified",
+      "editorial_source_url": "https://static.nhtsa.gov/odi/inv/2023/INCLA-AQ23001-11826.pdf",
+      "editorial_source_type": "official_NHTSA_ODI_close_resume",
+      "summary_reviewed_at": "2026-10-15"
     },
     {
       "id": "PE23018",
@@ -124,12 +166,18 @@
       "status": "Closed",
       "action": "Preliminary Evaluation",
       "opened": "2023-10-16",
-      "closed": null,
+      "closed": "2025-01-14",
       "subject": "ADS behavior around pedestrians",
       "product": "Cruise ADS-equipped vehicles",
-      "summary": "NHTSA examined Cruise vehicles' behavior near pedestrians, including whether they yielded and exercised appropriate caution. The case closed after a related recall and Cruise's suspension of public-road driverless operations.",
+      "summary": "NHTSA's preliminary evaluation examined whether Cruise's driverless vehicles took appropriate caution around pedestrians after two pedestrian crashes and public reports of vehicles encroaching on crosswalks. It closed January 14, 2025 after Cruise's recall 23E-086 of 950 vehicles, which fixed software that could pull over after striking a pedestrian, and after Cruise ceased operations.",
       "source": "https://static.nhtsa.gov/odi/inv/2023/INCLA-PE23018-11022.pdf",
-      "source_label": "ODI closing resume"
+      "source_label": "ODI closing resume",
+      "summary_method": "official_NHTSA_ODI_resume",
+      "summary_quality": "manual_primary_source_verified",
+      "editorial_status": "verified",
+      "editorial_source_url": "https://static.nhtsa.gov/odi/inv/2023/INCLA-PE23018-11022.pdf",
+      "editorial_source_type": "official_NHTSA_ODI_close_resume",
+      "summary_reviewed_at": "2026-10-15"
     },
     {
       "id": "PE22014",
@@ -140,9 +188,15 @@
       "closed": "2024-08-20",
       "subject": "Hard braking and immobilizations",
       "product": "Cruise ADS",
-      "summary": "NHTSA investigated reports of Cruise vehicles braking sharply or becoming immobilized in traffic. The case closed following a software recall intended to reduce unexpected braking.",
+      "summary": "NHTSA's preliminary evaluation reviewed 7,632 hard-braking events and vehicle immobilizations by Cruise's driverless vehicles, which contributed to 10 reported crashes, four injuring vulnerable road users; no immobilization caused a crash or injury. It closed August 20, 2024 after Cruise's recall 24E-067 and software updates to reduce unexpected braking.",
       "source": "https://static.nhtsa.gov/odi/inv/2022/INCLA-PE22014-10746.pdf",
-      "source_label": "ODI closing resume"
+      "source_label": "ODI closing resume",
+      "summary_method": "official_NHTSA_ODI_resume",
+      "summary_quality": "manual_primary_source_verified",
+      "editorial_status": "verified",
+      "editorial_source_url": "https://static.nhtsa.gov/odi/inv/2022/INCLA-PE22014-10746.pdf",
+      "editorial_source_type": "official_NHTSA_ODI_close_resume",
+      "summary_reviewed_at": "2026-10-15"
     },
     {
       "id": "EA22002",
@@ -153,9 +207,15 @@
       "closed": "2024-04-25",
       "subject": "Autopilot driver engagement and misuse",
       "product": "Tesla vehicles equipped with Autopilot",
-      "summary": "NHTSA investigated whether Tesla Autopilot adequately monitored driver attention and prevented foreseeable misuse. The analysis closed following a recall intended to strengthen driver-engagement safeguards.",
+      "summary": "NHTSA's engineering analysis of about 2.0 million Tesla vehicles found that Autopilot's weak driver-engagement controls, paired with high control authority, led to foreseeable misuse and avoidable crashes, including at least 13 fatal ones. It closed April 25, 2024 after Tesla's recall 23V-838; NHTSA then opened recall query RQ24009 to assess whether the remedy is effective.",
       "source": "https://static.nhtsa.gov/odi/inv/2022/INCLA-EA22002-14498.pdf",
-      "source_label": "ODI closing resume"
+      "source_label": "ODI closing resume",
+      "summary_method": "official_NHTSA_ODI_resume",
+      "summary_quality": "manual_primary_source_verified",
+      "editorial_status": "verified",
+      "editorial_source_url": "https://static.nhtsa.gov/odi/inv/2022/INCLA-EA22002-14498.pdf",
+      "editorial_source_type": "official_NHTSA_ODI_close_resume",
+      "summary_reviewed_at": "2026-10-15"
     }
   ],
   "record_count": 11
