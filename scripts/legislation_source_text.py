@@ -290,11 +290,15 @@ def search_public_sources(row,kind):
     elif kind=="state_bill":
         state=str(row.get("jurisdiction") or "")
         session=str(row.get("session") or "")
-        queries=[f'{state} "{row.get("number") or ""}" "{session}" bill text autonomous vehicles',
-                 f'{state} "{row.get("number") or ""}" "{row.get("title") or ""}"']
+        number=str(row.get("number") or "")
+        title=str(row.get("title") or "")
+        queries=[f'{state} "{number}" "{session}" bill text autonomous vehicles',
+                 f'{state} "{number}" "{title}"']
     else:
-        queries=[f'"{row.get("title") or row.get("name") or ident}" autonomous vehicle regulation official',
-                 f'"{ident}" "{row.get("jurisdiction") or ""}" automated vehicles order']
+        title=str(row.get("title") or row.get("name") or ident)
+        jurisdiction=str(row.get("jurisdiction") or "")
+        queries=[f'"{title}" autonomous vehicle regulation official',
+                 f'"{ident}" "{jurisdiction}" automated vehicles order']
     seen=set()
     for query in queries:
         try:
@@ -324,7 +328,7 @@ def evidence_matches(row,kind,text):
         return bool(ident and re.search(r"(?<![A-Z0-9])"+re.escape(ident)+r"(?![A-Z0-9])",text,re.I))
     title=str(row.get("title") or row.get("name") or "")
     terms=set(re.findall(r"[a-z]{5,}",title.lower()))-{"state","vehicle","vehicles","autonomous","regulations"}
-    matched=sum(bool(re.search(r"\\b"+re.escape(term)+r"\\b",text,re.I)) for term in terms)
+    matched=sum(bool(re.search(r"\b"+re.escape(term)+r"\b",text,re.I)) for term in terms)
     return matched>=min(2,len(terms)) if terms else False
 
 
