@@ -717,6 +717,23 @@
       "source_tier": "auto",
       "review_status": "auto_collected",
       "date_precision": "day"
+    },
+    {
+      "id": "auto-fr-2026-20516",
+      "level": "federal",
+      "jurisdiction": "US",
+      "title": "NHTSA fall 2026 research meeting and ADS workshop",
+      "summary": "NHTSA announced a public meeting on December 1-2, 2026 on its safety research programs. On the afternoon of December 1 the Office of Automation Safety will convene an Automated Driving Systems workshop, which will not be recorded.",
+      "takeaway": "NHTSA announced a public meeting on December 1-2, 2026 on its safety research programs. On the afternoon of December 1 the Office of Automation Safety will convene an Automated Driving Systems workshop, which will not be recorded.",
+      "instrument": "proposed program",
+      "status": "historical_status_unverified",
+      "date": "2026-10-07",
+      "source_url": "https://www.federalregister.gov/documents/2026/10/07/2026-20516/nhtsa-safety-research-portfolio-public-meeting-fall-2026-and-automated-driving-systems-workshop",
+      "verified_at": "2026-10-15",
+      "source_label": "Federal Register 2026-20516",
+      "source_tier": "auto",
+      "review_status": "auto_collected",
+      "date_precision": "day"
     }
   ],
   "states": [
@@ -1680,7 +1697,7 @@
       "status": "in_effect",
       "date": "2019",
       "source_url": "https://www.arkleg.state.ar.us/Bills/Detail?ddBienniumSession=2019%2F2019R&id=HB1561",
-      "verified_at": "2026-09-23",
+      "verified_at": "2026-10-15",
       "state": "AR",
       "source_label": "Arkansas HB 1561 · AV pilot program",
       "source_tier": "primary",
@@ -3124,6 +3141,24 @@
       "verified_at": "2026-10-15",
       "state": "AZ",
       "source_label": "Arizona Legislature, SB 1320 (2025)",
+      "source_tier": "auto",
+      "review_status": "auto_collected",
+      "date_precision": "day"
+    },
+    {
+      "id": "auto-ut-sb292-2026",
+      "level": "state",
+      "jurisdiction": "Utah",
+      "title": "SB 292 (2026): automated driving system product liability",
+      "summary": "Utah S.B. 292 (2026), 'Autonomous Systems Amendments', amends and enacts product-liability provisions for automated driving systems, including a limit on noneconomic damages, standards on product defects and reasonably alternative technologies, an affirmative defense for state-of-the-art standards, limits on certain manufacturer and developer claims, and a sunset review. The Governor signed it March 23, 2026; the effective date was not confirmed from the official record.",
+      "takeaway": "Utah S.B. 292 (2026), 'Autonomous Systems Amendments', amends and enacts product-liability provisions for automated driving systems, including a limit on noneconomic damages, standards on product defects and reasonably alternative technologies, an affirmative defense for state-of-the-art standards, limits on certain manufacturer and developer claims, and a sunset review. The Governor signed it March 23, 2026; the effective date was not confirmed from the official record.",
+      "instrument": "legislation",
+      "status": "historical_status_unverified",
+      "date": "2026-03-23",
+      "source_url": "https://le.utah.gov/~2026/bills/static/SB0292.html",
+      "verified_at": "2026-10-15",
+      "state": "UT",
+      "source_label": "Utah Legislature, S.B. 292 (2026)",
       "source_tier": "auto",
       "review_status": "auto_collected",
       "date_precision": "day"
