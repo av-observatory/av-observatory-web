@@ -3,13 +3,13 @@
   "purpose": "Both figures below independently describe 'how many miles has Waymo driven in California,' reported through two different channels. This is published as a transparency check, not a claim that the numbers should match -- see caveats.",
   "cpuc_side": {
     "source": "CPUC AV Program deployment reports, Waymo Driverless Deployment, California",
-    "months_covered": 32,
+    "months_covered": 35,
     "month_range": [
       "2023-08",
       "2026-06"
     ],
     "note": "Sum of VMT Period 1+2+3 across all CPUC-reported months currently ingested for Waymo's Driverless Deployment program. Known gaps exist (see Activity page) -- this is NOT a complete monthly series, so it understates true cumulative VMT over the same period.",
-    "total_vmt": 57328338.9
+    "total_vmt": 140802028.9
   },
   "waymo_s2_side": {
     "source": "Waymo self-published S2-cell safety benchmark data, California, latest vintage",
