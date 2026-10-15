@@ -78,12 +78,12 @@ export function ActivityWaitingTime({ rows }: { rows: ActivityMonthlyRow[] }) {
       parkedMinTrip14:d.parkedMinTrip14===null?null:Number(d.parkedMinTrip14.toFixed(1)),
     };
   });
-  const axis=useMonthAxis(data.length,2);
+  const {axis,onResize}=useMonthAxis(data.length);
   return <div className="grid lg:grid-cols-2 gap-3">
     <div className="viz-card p-4">
       <div className="font-semibold">Total Waiting Time</div>
       <div className="text-sm text-neutral-500">P1 hours: unassigned between trips, whether moving or stationary.</div>
-      <ResponsiveContainer width="100%" height={280}>
+      <ResponsiveContainer width="100%" height={280} onResize={onResize}>
         <LineChart data={data} margin={{top:14,right:15,bottom:4,left:4}}>
           <CartesianGrid {...GRID_PROPS}/><XAxis dataKey="label" {...axis}/><YAxis {...AXIS_PROPS} tickFormatter={v=>`${Math.round(v/1000)}K`}/>
           <Tooltip {...TOOLTIP_PROPS} formatter={v=>`${Number(v).toLocaleString()} hours`}/>
@@ -94,7 +94,7 @@ export function ActivityWaitingTime({ rows }: { rows: ActivityMonthlyRow[] }) {
     <div className="viz-card p-4">
       <div className="font-semibold">Waiting Time per Trip</div>
       <div className="text-sm text-neutral-500">A fleet-efficiency measure: P1 waiting hours divided by passenger trips.</div>
-      <ResponsiveContainer width="100%" height={280}>
+      <ResponsiveContainer width="100%" height={280} onResize={onResize}>
         <LineChart data={data} margin={{top:14,right:15,bottom:4,left:4}}>
           <CartesianGrid {...GRID_PROPS}/><XAxis dataKey="label" {...axis}/><YAxis {...AXIS_PROPS} unit=" min"/>
           <Tooltip {...TOOLTIP_PROPS} formatter={v=>`${v} min/trip`}/>
@@ -117,12 +117,12 @@ export function ActivityVmtUtilization({ rows }: { rows: ActivityMonthlyRow[] })
       deadhead:d.deadhead===null?null:Number((d.deadhead*100).toFixed(1)),
     };
   });
-  const axis=useMonthAxis(data.length,2);
+  const {axis,onResize}=useMonthAxis(data.length);
   return <div className="grid lg:grid-cols-2 gap-3">
     <div className="viz-card p-4">
       <div className="font-semibold">VMT by Trip Period</div>
       <div className="text-sm text-neutral-500">Occupied, pickup, and unassigned / positioning miles.</div>
-      <ResponsiveContainer width="100%" height={300}>
+      <ResponsiveContainer width="100%" height={300} onResize={onResize}>
         <AreaChart data={data} margin={{top:14,right:15,bottom:4,left:4}}>
           <CartesianGrid {...GRID_PROPS}/><XAxis dataKey="label" {...axis}/><YAxis {...AXIS_PROPS} tickFormatter={v=>`${(v/1_000_000).toFixed(0)}M`}/>
           <Tooltip {...TOOLTIP_PROPS} formatter={v=>`${Number(v).toLocaleString()} mi`}/><Legend {...LEGEND_PROPS}/>
@@ -135,7 +135,7 @@ export function ActivityVmtUtilization({ rows }: { rows: ActivityMonthlyRow[] })
     <div className="viz-card p-4">
       <div className="font-semibold">Utilization of Vehicle Miles</div>
       <div className="text-sm text-neutral-500">Passenger-occupied share versus all miles without a passenger.</div>
-      <ResponsiveContainer width="100%" height={300}>
+      <ResponsiveContainer width="100%" height={300} onResize={onResize}>
         <LineChart data={data} margin={{top:14,right:15,bottom:4,left:4}}>
           <CartesianGrid {...GRID_PROPS}/><XAxis dataKey="label" {...axis}/><YAxis {...AXIS_PROPS} domain={[0,100]} unit="%"/>
           <Tooltip {...TOOLTIP_PROPS} formatter={v=>`${v}%`}/><Legend {...LEGEND_PROPS}/>
@@ -156,7 +156,7 @@ export function ActivityParkingEstimate({ rows }: { rows: ActivityMonthlyRow[] }
       minutes:d.parkedMinTrip14===null?null:Number(d.parkedMinTrip14.toFixed(1)),
     };
   });
-  const axis=useMonthAxis(data.length,1);
+  const {axis,onResize}=useMonthAxis(data.length);
   const latest=data.at(-1) as {hours:number;minutes:number|null}|undefined; // last point is always a reported month
   if(!latest) return null;
   return <div className="viz-card p-4">
@@ -170,7 +170,7 @@ export function ActivityParkingEstimate({ rows }: { rows: ActivityMonthlyRow[] }
         <div className="text-sm text-neutral-500">{latest.minutes} min/trip · Latest Month</div>
       </div>
     </div>
-    <ResponsiveContainer width="100%" height={250}>
+    <ResponsiveContainer width="100%" height={250} onResize={onResize}>
       <LineChart data={data} margin={{top:14,right:15,bottom:4,left:4}}>
         <CartesianGrid {...GRID_PROPS}/><XAxis dataKey="label" {...axis}/><YAxis {...AXIS_PROPS} tickFormatter={v=>`${Math.round(v/1000)}K`}/>
         <Tooltip {...TOOLTIP_PROPS} formatter={v=>`${Number(v).toLocaleString()} estimated stationary hours`}/>

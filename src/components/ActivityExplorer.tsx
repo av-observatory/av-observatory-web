@@ -30,7 +30,7 @@ export function ActivityExplorer({ rows }: { rows: ActivityMonthlyRow[] }) {
     return mapWithMonthGaps(months,r=>({label:monthLabel(r.calendar_year,r.calendar_month),value:r.value}));
   },[rows,cfg.key]);
 
-  const axis=useMonthAxis(data.length);
+  const {axis,onResize}=useMonthAxis(data.length);
   const latest=(data.at(-1) as {value?:number}|undefined)?.value ?? 0;
   return <div>
     <div className="grid sm:grid-cols-2 gap-3 mb-5">
@@ -44,7 +44,7 @@ export function ActivityExplorer({ rows }: { rows: ActivityMonthlyRow[] }) {
       <div className="text-sm font-medium">{cfg.label}</div>
       <div className="text-sm tabular-nums"><strong>{Math.round(latest).toLocaleString()}</strong> <span className="text-neutral-500">{data.at(-1)?.label ?? "No reported month"}</span></div>
     </div>
-    <ResponsiveContainer width="100%" height={350}>
+    <ResponsiveContainer width="100%" height={350} onResize={onResize}>
       <LineChart data={data} margin={{top:8,right:18,bottom:8,left:4}}>
         <CartesianGrid {...GRID_PROPS}/>
         <XAxis dataKey="label" {...axis}/>
