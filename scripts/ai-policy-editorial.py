@@ -91,7 +91,7 @@ def get_source(row,kind):
     text,provenance,url=primary_text(row,kind)
     if text:return text,provenance,url
     # A feed abstract is not a substitute for official bill text.
-    return "","missing_full_text_and_substantive_abstract",""
+    return "","automated_source_retrieval_failed",""
 
 def select_relevant_excerpt(text,row,kind):
     """Rank substantive provisions throughout a long document, not just its preamble.
@@ -131,8 +131,8 @@ def select_relevant_excerpt(text,row,kind):
 def summarize(row,kind):
     source,source_type,source_url=get_source(row,kind)
     if not source:
-        row["editorial_status"]="needs_primary_source"
-        row["editorial_failure_reason"]="Official text, bill-version discovery and independent bill-ID research yielded no verified substantive document"
+        row["editorial_status"]="source_retrieval_failed"
+        row["editorial_failure_reason"]="Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable"
         return "missing"
     digest=hashlib.sha256((MODEL+"\n"+EDITORIAL_VERSION+"\n"+kind+"\n"+source+"\n"+str(row.get("status"))).encode()).hexdigest()
     current_text=row.get("analysis") if kind=="state_framework" else row.get("summary")
