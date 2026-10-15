@@ -26,6 +26,6 @@ for (const number of amended) {
 }
 const steering = data.federal.find(e => e.id === "fmvss-204-2026");
 const steeringText = `${steering?.summary || ""} ${steering?.takeaway || ""}`.toLowerCase();
-if (!/\b(?:fmvss|federal motor vehicle safety standard)\s*208\b/.test(steeringText) || !/\b(?:exempt|exemption|excepted)\b/.test(steeringText) || !/\b(?:steering|column|displacement)\b/.test(steeringText)) throw Error("FMVSS 204 summary must identify the Standard 208 exemption from steering-column displacement requirements");
+if (!/\b(?:fmvss|federal motor vehicle safety standard)\s*208\b/.test(steeringText) || !/\b(?:exempt\w*|excepted)\b/.test(steeringText) || !/\b(?:steering|column|displacement)\b/.test(steeringText)) throw Error("FMVSS 204 summary must identify the Standard 208 exemption from steering-column displacement requirements");
 if (steering?.effective_date !== "2026-07-06" || steering?.status !== "effective" || steering?.scope !== "related vehicle design") throw Error("2026 FMVSS 204 final rule missing or misclassified");
 console.log(`Validated ${data.states.length} jurisdictions and ${all.length} policy events`);
