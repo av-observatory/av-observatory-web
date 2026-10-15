@@ -57,6 +57,13 @@ def status_consistent(row,kind,draft):
         sentences=re.split(r"(?<=[.!?])\s+(?=[A-Z])",safe)
         if any(not re.search(r"\b(?:would|could|if enacted)\b",sentence,re.I) for sentence in sentences):
             return False
+    if kind=="fmvss" and row.get("id")=="fmvss-204-2026":
+        content=summary.lower()
+        if not (re.search(r"\b(?:fmvss|federal motor vehicle safety standard)\s*208\b",content)
+                and re.search(r"\bexempt\w*\b",content)
+                and re.search(r"\bsteering\b",content)
+                and re.search(r"\b(?:column|displacement)\b",content)):
+            return False
     if kind=="fmvss" and status in ("under_review","advance_notice","request_for_comment"):
         if not re.search(r"\b(?:would|propos(?:e|es|ed)|seeks?|requested|sought|invited|considering)\b",summary,re.I):
             return False
