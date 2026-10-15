@@ -274,6 +274,60 @@ def california_public_research_links(row):
         f"https://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id={sid}0{bill}",
     ]
 
+def search_public_sources(row,kind):
+    """Search for an exact record using a public web index, without vendor API keys.
+
+    Search results are leads only. Every candidate is fetched and screened
+    before it may be used as AI evidence.
+    """
+    from xml.etree import ElementTree
+    from urllib.parse import urlencode
+    ident=str(row.get("number") or row.get("id") or row.get("code") or "").strip()
+    if kind.startswith("nhtsa_"):
+        ident=str(row.get("id") or "")
+        queries=[f'site:static.nhtsa.gov/odi/inv/ "{ident}"',
+                 f'site:nhtsa.gov "{ident}" investigation recall']
+    elif kind=="state_bill":
+        state=str(row.get("jurisdiction") or "")
+        session=str(row.get("session") or "")
+        queries=[f'{state} "{row.get("number") or ""}" "{session}" bill text autonomous vehicles',
+                 f'{state} "{row.get("number") or ""}" "{row.get("title") or ""}"']
+    else:
+        queries=[f'"{row.get("title") or row.get("name") or ident}" autonomous vehicle regulation official',
+                 f'"{ident}" "{row.get("jurisdiction") or ""}" automated vehicles order']
+    seen=set()
+    for query in queries:
+        try:
+            url="https://www.bing.com/search?"+urlencode({"q":query,"format":"rss"})
+            req=Request(url,headers={"User-Agent":"Mozilla/5.0"})
+            with urlopen(req,timeout=12) as response:
+                root=ElementTree.fromstring(response.read(180000))
+            for node in root.findall(".//item/link"):
+                candidate=(node.text or "").strip()
+                host=(urlparse(candidate).hostname or "").lower()
+                if (candidate.startswith("https://") and candidate not in seen
+                        and (host.endswith(".gov") or host.endswith(".us")
+                             or host=="calmatters.digitaldemocracy.org")):
+                    seen.add(candidate)
+                    yield candidate
+                    if len(seen)>=12:return
+        except Exception as exc:
+            print(f"Web discovery failed for {ident}: {type(exc).__name__}",flush=True)
+
+
+def evidence_matches(row,kind,text):
+    """Prevent a search hit for another session, record, or agency being accepted."""
+    if len(text)<450:return False
+    if kind=="state_bill":return looks_like_bill_text(row,text)
+    if kind.startswith("nhtsa_"):
+        ident=str(row.get("id") or "")
+        return bool(ident and re.search(r"(?<![A-Z0-9])"+re.escape(ident)+r"(?![A-Z0-9])",text,re.I))
+    title=str(row.get("title") or row.get("name") or "")
+    terms=set(re.findall(r"[a-z]{5,}",title.lower()))-{"state","vehicle","vehicles","autonomous","regulations"}
+    matched=sum(bool(re.search(r"\\b"+re.escape(term)+r"\\b",text,re.I)) for term in terms)
+    return matched>=min(2,len(terms)) if terms else False
+
+
 def primary_text(row,kind):
     for url in sources(row,kind):
         text,provenance=fetch(url)
@@ -288,4 +342,18 @@ def primary_text(row,kind):
         if mirrored:return mirrored,"legiscan_mirrored_bill_text",mirror_url
         for lead in california_public_research_links(row):
             print("Public research lead for "+str(row.get("id"))+": "+lead)
-    return "","official_text_unavailable",""
+    for url in search_public_sources(row,kind):
+        # CalMatters pages are secondary evidence, never labeled official.
+        if (urlparse(url).hostname or "").lower()=="calmatters.digitaldemocracy.org":
+            try:
+                req=Request(url,headers={"User-Agent":"Mozilla/5.0"})
+                with urlopen(req,timeout=20) as response:raw=response.read(2_500_000).decode("utf-8","replace")
+                parser=Extract();parser.feed(raw)
+                text=clean(" ".join(parser.words))
+                provenance="public_secondary_bill_page"
+            except Exception:continue
+        else:
+            text,provenance=fetch(url)
+        if evidence_matches(row,kind,text):
+            return text,provenance,url
+    return "","automated_search_exhausted",""
