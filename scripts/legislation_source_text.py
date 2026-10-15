@@ -336,8 +336,6 @@ def primary_text(row,kind):
                 return text,provenance,url
         mirrored,mirror_url=legiscan_mirrored_text(row)
         if mirrored:return mirrored,"legiscan_mirrored_bill_text",mirror_url
-        for lead in california_public_research_links(row):
-            print("Public research lead for "+str(row.get("id"))+": "+lead)
     for url in search_public_sources(row,kind):
         # CalMatters pages are secondary evidence, never labeled official.
         if (urlparse(url).hostname or "").lower()=="calmatters.digitaldemocracy.org":
