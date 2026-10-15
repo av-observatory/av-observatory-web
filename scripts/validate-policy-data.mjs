@@ -25,6 +25,6 @@ for (const number of amended) {
   if (child?.rulemaking_id !== occupant.id || JSON.stringify(child.fmvss) !== JSON.stringify([number])) throw Error(`FMVSS ${number} must have its own indexed entry`);
 }
 const steering = data.federal.find(e => e.id === "fmvss-204-2026");
-if (steering?.takeaway !== "Exempts FMVSS 208-certified vehicles from the steering-column displacement test") throw Error("FMVSS 204 takeaway must describe the limited exemption");
+if (!steering?.takeaway?.includes("Federal Motor Vehicle Safety Standard 208") || !steering.takeaway.includes("steering-column rearward displacement test")) throw Error("FMVSS 204 takeaway must describe the limited exemption");
 if (steering?.effective_date !== "2026-07-06" || steering?.status !== "effective" || steering?.scope !== "related vehicle design") throw Error("2026 FMVSS 204 final rule missing or misclassified");
 console.log(`Validated ${data.states.length} jurisdictions and ${all.length} policy events`);
