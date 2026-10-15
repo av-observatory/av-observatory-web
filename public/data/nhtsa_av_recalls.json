@@ -2,30 +2,108 @@
   "schema_version": "1.0.0",
   "dataset": "NHTSA AV / ADAS Safety Recalls",
   "source_url": "https://static.nhtsa.gov/odi/ffdd/rcl/FLAT_RCL_POST_2010.zip",
-  "observed_at": "2026-10-14",
-  "coverage": "Partial verified fallback; scheduled bulk refresh replaces this with the full matched NHTSA recall dataset.",
+  "observed_at": "2026-10-15",
+  "coverage": "Primary-source NHTSA post-2010 recall campaigns, deduplicated across model rows.",
+  "source_rows": 245885,
   "recalls": [
+    {
+      "id": "26E059000",
+      "company": "Avride",
+      "reported": "2026-08-19",
+      "subject": "Avride Inc. (Avride) is recalling certain Automated Driving Systems (ADS) equipped with software versions prior to RC-01-05. The ADS softwar",
+      "summary": "Avride Inc. (Avride) is recalling certain Automated Driving Systems (automated driving system) equipped with software versions prior to RC-01-05.",
+      "summary_method": "automatic_source_extract",
+      "source_detail": "Avride Inc. (Avride) is recalling certain Automated Driving Systems (ADS) equipped with software versions prior to RC-01-05. The ADS software may direct the vehicle to change lanes, merge, or veer left or right without yielding or maintaining a safe distance from other vehicles.",
+      "consequence": "Unexpected vehicle movement may increase the risk of a crash.",
+      "remedy": "Avride will update the ADS software, free of charge. All affected ADS-equipped fleet vehicles will be updated by August 31, 2026.",
+      "products": [
+        "AUTOMATED DRIVING SYSTEM"
+      ],
+      "status": "Recall announced; remedy information in official record",
+      "related_investigations": [],
+      "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=26E059000",
+      "source_label": "NHTSA campaign record"
+    },
     {
       "id": "26E044000",
       "company": "Zoox",
       "reported": "2026-07-10",
       "subject": "ADS may not detect heavy smoke in roadway",
       "summary": "Zoox recalled automated driving software on 105 vehicles because it could fail to detect heavy smoke and drive into low-visibility areas, particularly active emergency scenes, raising crash risk and potentially impeding first responders. Zoox has updated the software free of charge (Zoox recall 26-01).",
-      "consequence": "May increase the risk of a crash or impede first responders.",
-      "remedy": "Software update released free of charge (Zoox recall 26-01).",
-      "status": "Recall reported",
-      "related_investigations": [],
-      "products": [
-        "Zoox automated driving system"
-      ],
-      "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=26E044000",
-      "source_label": "NHTSA campaign record",
       "summary_method": "official_NHTSA_recall_report",
       "summary_quality": "manual_primary_source_verified",
       "editorial_status": "verified",
       "editorial_source_url": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=26E044000",
       "editorial_source_type": "official_NHTSA_recall_campaign_record",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "source_detail": "Zoox, Inc. (Zoox) is recalling certain Automated Driving Systems (ADS). The ADS software may fail to detect heavy smoke, allowing the vehicle to enter an area of low visibility, particularly active emergency scenes.",
+      "consequence": "Failing to respond to low visibility conditions can increase the risk of a crash or impede first responders.",
+      "remedy": "Zoox has updated the ADS software, free of charge. Zoox's number for this recall is 26-01.",
+      "products": [
+        "AUTOMATED DRIVING SYSTEM"
+      ],
+      "status": "Recall announced; remedy information in official record",
+      "related_investigations": [],
+      "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=26E044000",
+      "source_label": "NHTSA campaign record"
+    },
+    {
+      "id": "26E035000",
+      "company": "Waymo",
+      "reported": "2026-06-12",
+      "subject": "Waymo LLC (Waymo) is recalling certain 5th Generation Automated Driving Systems (ADS). The software may allow the vehicle to enter a closed",
+      "summary": "The software may allow the vehicle to enter a closed freeway construction zone and continue driving at speed.",
+      "summary_method": "automatic_source_extract",
+      "source_detail": "Waymo LLC (Waymo) is recalling certain 5th Generation Automated Driving Systems (ADS). The software may allow the vehicle to enter a closed freeway construction zone and continue driving at speed.",
+      "consequence": "Driving through a closed construction zone increases the risk of a crash.",
+      "remedy": "Beginning June 16, 2026 Waymo updated the ADS software to detect when the vehicle is in and to avoid entering construction zones, free of charge. Waymo resumed vehicle operations on freeway June 25, 2026.",
+      "products": [
+        "5TH GENERATION ADS"
+      ],
+      "status": "Recall announced; remedy information in official record",
+      "related_investigations": [],
+      "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=26E035000",
+      "source_label": "NHTSA campaign record"
+    },
+    {
+      "id": "26E026000",
+      "company": "Waymo",
+      "reported": "2026-05-01",
+      "subject": "Waymo LLC (Waymo) is recalling certain 5th and 6th Generation Automated Driving Systems (ADS). The software may allow the vehicle to slow an",
+      "summary": "The software may allow the vehicle to slow and then drive into standing water on higher speed roadways.",
+      "summary_method": "automatic_source_extract",
+      "source_detail": "Waymo LLC (Waymo) is recalling certain 5th and 6th Generation Automated Driving Systems (ADS). The software may allow the vehicle to slow and then drive into standing water on higher speed roadways.",
+      "consequence": "Entering a flooded roadway can cause a loss of vehicle control, increasing the risk of a crash or injury.",
+      "remedy": "The remedy is currently under development. As an interim remedy, Waymo modified the scope of vehicle operations to increase weather-related constraints and updated the vehicle maps. All affected vehicles received the interim update by April 20, 2026.",
+      "products": [
+        "5TH GENERATION ADS",
+        "6TH GENERATION ADS"
+      ],
+      "status": "Recall announced; remedy information in official record",
+      "related_investigations": [],
+      "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=26E026000",
+      "source_label": "NHTSA campaign record"
+    },
+    {
+      "id": "26V165000",
+      "company": "Other AV / ADAS",
+      "reported": "2026-03-18",
+      "subject": "Ford Motor Company (Ford) is recalling certain 2022-2025 Lincoln Navigator, 2024-2025 Lincoln Nautilus, 2025 Lincoln Aviator and Explorer ve",
+      "summary": "The Image Processing Module A (IPMA) may experience multiple unexpected resets, resulting in loss of the rearview camera image and advanced driver assistance (driver-assistance system) features, including pre-collision assist, lane-keeping assist, and blind-spot monitoring.",
+      "summary_method": "automatic_source_extract",
+      "source_detail": "Ford Motor Company (Ford) is recalling certain 2022-2025 Lincoln Navigator, 2024-2025 Lincoln Nautilus, 2025 Lincoln Aviator and Explorer vehicles. The Image Processing Module A (IPMA) may experience multiple unexpected resets, resulting in loss of the rearview camera image and advanced driver assistance (ADAS) features, including pre-collision assist, lane-keeping assist, and blind-spot monitoring.",
+      "consequence": "Loss of the rearview camera image and certain driver assistance features, can reduce the driverâs ability to detect hazards, increasing the risk of a crash.",
+      "remedy": "The Image Processing Module A software will be updated by a dealer, or through an over-the-air (OTA) update, free of charge. This is a Phased campaign. Phase 1 will include 2025 Aviator, 2025 Explorer, 2025 Nautilus notified owners on 4/13/2026. Phase 2 will include 2025 Navigator will notify owners on or about 4/20/2026. Phase 3 will include 2022-2024 Navigator will notify owners on or about 6/8/2026. Phase 4 will include 2024 Nautilus will notify owners on or about 6/22/2026. Owner notification letters were mailed April 13, 2026. Owners may contact Ford customer service at 1-866-436-7332. Ford's number for this recall is 26S21. Vehicle Identification Numbers (VINs) involved in this recall will be searchable on NHTSA.gov beginning March 25, 2026.",
+      "products": [
+        "NAVIGATOR",
+        "NAUTILUS",
+        "EXPLORER",
+        "AVIATOR"
+      ],
+      "status": "Recall announced; remedy information in official record",
+      "related_investigations": [],
+      "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=26V165000",
+      "source_label": "NHTSA campaign record"
     },
     {
       "id": "25E090000",
@@ -33,21 +111,120 @@
       "reported": "2025-12-19",
       "subject": "ADS software may cause lane-line crossings near intersections",
       "summary": "Zoox recalled software on 332 vehicles that unnecessarily crossed lane lines at or near intersections; in some cases the vehicle stopped in front of oncoming traffic, which could raise crash risk, though no collisions occurred. Zoox found 62 instances after an August 26, 2025 wide-turn incident and updated all vehicles by December 19, 2025.",
-      "consequence": "Potential collision with oncoming traffic.",
-      "remedy": "Updated ADS software.",
-      "status": "Recall reported",
-      "related_investigations": [],
-      "products": [
-        "Zoox automated driving system"
-      ],
-      "source": "https://static.nhtsa.gov/odi/rcl/2025/RCLRPT-25E090-1680.pdf",
-      "source_label": "NHTSA recall report",
       "summary_method": "official_NHTSA_recall_report",
       "summary_quality": "manual_primary_source_verified",
       "editorial_status": "verified",
       "editorial_source_url": "https://static.nhtsa.gov/odi/rcl/2025/RCLRPT-25E090-1680.pdf",
       "editorial_source_type": "official_NHTSA_Part573_recall_report",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "source_detail": "Zoox, Inc. (Zoox) is recalling certain Automated Driving Systems (ADS) equipped with software versions released prior to December 29, 2025. At or near intersections, Zoox vehicles may cross the yellow center line and drive into or stop in front of oncoming traffic.",
+      "consequence": "Crossing or stopping in front of oncoming traffic can increase the risk of a crash.",
+      "remedy": "Zoox has updated the ADS software, free of charge. All affected driverless fleet vehicles were repaired by December 29, 2025. Zoox's number for this recall is 25-04.",
+      "products": [
+        "AUTOMATED DRIVING SYSTEM"
+      ],
+      "status": "Recall announced; remedy information in official record",
+      "related_investigations": [],
+      "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=25E090000",
+      "source_label": "NHTSA campaign record"
+    },
+    {
+      "id": "25E084000",
+      "company": "Waymo",
+      "reported": "2025-12-08",
+      "subject": "Waymo LLC (Waymo) is recalling certain 5th Generation Automated Driving Systems (ADS) operating a software version prior to the November 5,",
+      "summary": "Waymo LLC (Waymo) is recalling certain 5th Generation Automated Driving Systems (automated driving system) operating a software version prior to the November 5, 2025 release.",
+      "summary_method": "automatic_source_extract",
+      "source_detail": "Waymo LLC (Waymo) is recalling certain 5th Generation Automated Driving Systems (ADS) operating a software version prior to the November 5, 2025 release. The software may cause the vehicle to pass a stopped school bus even when the red lights are flashing and/or stop arm is extended.",
+      "consequence": "Passing a stopped school bus increases risk of crash with a pedestrian.",
+      "remedy": "Waymo has updated the ADS software, free of charge. All affected vehicles were repaired by November 17, 2025.",
+      "products": [
+        "5TH GENERATION ADS"
+      ],
+      "status": "Recall announced; remedy information in official record",
+      "related_investigations": [],
+      "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=25E084000",
+      "source_label": "NHTSA campaign record"
+    },
+    {
+      "id": "25V823000",
+      "company": "Other AV / ADAS",
+      "reported": "2025-12-01",
+      "subject": "Ford Motor Company (Ford) is recalling certain 2025 Lincoln Navigator, F-150, Expedition, Bronco, and Ranger vehicles. The Electronic Brake",
+      "summary": "The Electronic Brake Booster (EBB) module may malfunction while driving or when the driver is utilizing an Advanced Driver Assistance System (driver-assistance system) feature, resulting in a loss of power brake assist.",
+      "summary_method": "automatic_source_extract",
+      "source_detail": "Ford Motor Company (Ford) is recalling certain 2025 Lincoln Navigator, F-150, Expedition, Bronco, and Ranger vehicles. The Electronic Brake Booster (EBB) module may malfunction while driving or when the driver is utilizing an Advanced Driver Assistance System (ADAS) feature, resulting in a loss of power brake assist.",
+      "consequence": "An unexpected loss of power brake assist while driving can extend stopping distance and increase the risk of a crash. Additionally, a loss of power brake assist while ADAS features are engaged can result in the vehicle not braking as expected, increasing the risk of a crash.",
+      "remedy": "Dealers will replace the electronic brake booster, free of charge. Owner notification letters were mailed February 26, 2026. Owners may contact Ford customer service at 1-866-436-7332. Ford's number for this recall is 25SD4. Vehicle Identification Numbers (VINs) involved in this recall became searchable on NHTSA.gov on December 3, 2025.",
+      "products": [
+        "F-150",
+        "EXPEDITION",
+        "BRONCO",
+        "RANGER",
+        "NAVIGATOR"
+      ],
+      "status": "Recall announced; remedy information in official record",
+      "related_investigations": [],
+      "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=25V823000",
+      "source_label": "NHTSA campaign record"
+    },
+    {
+      "id": "25V579000",
+      "company": "Cruise",
+      "reported": "2025-09-04",
+      "subject": "Cruiser RV (Cruiser) is recalling certain 2025 Avenir travel trailers. The underslung axle may not provide enough clearance, allowing the wh",
+      "summary": "The recall concerns cruiser rv (cruiser) is recalling certain 2025 avenir travel trailers. the underslung axle may not provide enough clearance, allowing the wheel w.",
+      "summary_method": "automatic_source_extract",
+      "source_detail": "Cruiser RV (Cruiser) is recalling certain 2025 Avenir travel trailers. The underslung axle may not provide enough clearance, allowing the wheel wells to contact and damage the tires.",
+      "consequence": "A damaged tire may blowout, increasing the risk of a crash.",
+      "remedy": "Dealers will replace the underslung axle, free of charge. Owner notification letters were mailed October 15, 2025. Owners may contact Cruiser customer service at 1-574-206-7920.",
+      "products": [
+        "AVENIR"
+      ],
+      "status": "Recall announced; remedy information in official record",
+      "related_investigations": [],
+      "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=25V579000",
+      "source_label": "NHTSA campaign record"
+    },
+    {
+      "id": "25V559000",
+      "company": "Other AV / ADAS",
+      "reported": "2025-08-28",
+      "subject": "VinFast Auto, LLC (VinFast) is recalling certain 2023-2025 VF8 vehicles. The Advanced Driver Assistance System (ADAS) may activate during wi",
+      "summary": "The Advanced Driver Assistance System (driver-assistance system) may activate during wide turns, causing unexpected steering wheel movements that are difficult for the driver to override.",
+      "summary_method": "automatic_source_extract",
+      "source_detail": "VinFast Auto, LLC (VinFast) is recalling certain 2023-2025 VF8 vehicles. The Advanced Driver Assistance System (ADAS) may activate during wide turns, causing unexpected steering wheel movements that are difficult for the driver to override.",
+      "consequence": "A steering wheel that moves unexpectedly may increase the risk of a crash.",
+      "remedy": "VinFast will update the ADAS software, free of charge. Owner notification letters were mailed October 27, 2025. Owners may contact VinFast customer service at 1-833-503-0600.",
+      "products": [
+        "VF 8"
+      ],
+      "status": "Recall announced; remedy information in official record",
+      "related_investigations": [],
+      "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=25V559000",
+      "source_label": "NHTSA campaign record"
+    },
+    {
+      "id": "25V488000",
+      "company": "Other AV / ADAS",
+      "reported": "2025-07-25",
+      "subject": "Ford Motor Company (Ford) is recalling certain 2025 Lincoln Navigator, F-150, Expedition, Bronco, and Ranger vehicles. The Electronic Brake",
+      "summary": "The Electronic Brake Booster (EBB) module may malfunction while driving or when the driver is utilizing an Advanced Driver Assistance System (driver-assistance system) feature, resulting in a loss of power brake assist.",
+      "summary_method": "automatic_source_extract",
+      "source_detail": "Ford Motor Company (Ford) is recalling certain 2025 Lincoln Navigator, F-150, Expedition, Bronco, and Ranger vehicles. The Electronic Brake Booster (EBB) module may malfunction while driving or when the driver is utilizing an Advanced Driver Assistance System (ADAS) feature, resulting in a loss of power brake assist.",
+      "consequence": "An unexpected loss of power brake assist while driving can extend stopping distance and increase the risk of a crash. Additionally, a loss of power brake assist while ADAS features are engaged can result in the vehicle not braking as expected, increasing the risk of a crash.",
+      "remedy": "The EBB module software will be updated over-the-air (OTA) or by a dealer, free of charge. Owner notification letters were mailed on August 22, 2025. Owners may contact Ford customer service at 1-866-436-7332. Ford's number for this recall is 25S77.",
+      "products": [
+        "NAVIGATOR",
+        "F-150",
+        "EXPEDITION",
+        "BRONCO",
+        "RANGER"
+      ],
+      "status": "Recall announced; remedy information in official record",
+      "related_investigations": [],
+      "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=25V488000",
+      "source_label": "NHTSA campaign record"
     },
     {
       "id": "25E037000",
@@ -55,21 +232,40 @@
       "reported": "2025-05-22",
       "subject": "ADS may not detect people immediately next to the vehicle",
       "summary": "Zoox recalled software on 270 vehicles that, at speeds under 0.5 m/s, might not detect a prone vulnerable road user immediately beside the vehicle and resume moving, risking injury. It followed a May 8, 2025 San Francisco incident with a fallen e-scooter rider; updated software reached all vehicles by May 21, 2025.",
-      "consequence": "Risk of collision or injury.",
-      "remedy": "Zoox reported implementing the remedy on affected vehicles by May 21, 2025.",
-      "status": "Recall reported",
-      "related_investigations": [],
-      "products": [
-        "Zoox automated driving system"
-      ],
-      "source": "https://static.nhtsa.gov/odi/rcl/2025/RCLRPT-25E037-4912.pdf",
-      "source_label": "NHTSA recall report",
       "summary_method": "official_NHTSA_recall_report",
       "summary_quality": "manual_primary_source_verified",
       "editorial_status": "verified",
       "editorial_source_url": "https://static.nhtsa.gov/odi/rcl/2025/RCLRPT-25E037-4912.pdf",
       "editorial_source_type": "official_NHTSA_Part573_recall_report",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "source_detail": "Zoox, Inc. (Zoox) is recalling certain Automated Driving Systems (ADS) equipped with software versions released prior to May 21, 2025. The ADS may allow the vehicle to move after failing to detect a person right next to the vehicle.",
+      "consequence": "A vehicle that moves when a person is right next to the vehicle increases the risk of injury or crash.",
+      "remedy": "Zoox has updated the ADS software, free of charge. All affected driverless fleet vehicles were repaired by May 21, 2025. Zoox's number for this recall is 25-03.",
+      "products": [
+        "AUTOMATED DRIVING SYSTEM"
+      ],
+      "status": "Recall announced; remedy information in official record",
+      "related_investigations": [],
+      "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=25E037000",
+      "source_label": "NHTSA campaign record"
+    },
+    {
+      "id": "25E034000",
+      "company": "Waymo",
+      "reported": "2025-05-12",
+      "subject": "Waymo LLC (Waymo) is recalling certain 5th Generation Automated Driving Systems (ADS) with software versions released prior to the November",
+      "summary": "Waymo LLC (Waymo) is recalling certain 5th Generation Automated Driving Systems (automated driving system) with software versions released prior to the November 7, 2024 software release.",
+      "summary_method": "automatic_source_extract",
+      "source_detail": "Waymo LLC (Waymo) is recalling certain 5th Generation Automated Driving Systems (ADS) with software versions released prior to the November 7, 2024 software release.  The software may cause the vehicles to collide with certain roadway barriers, such as chains and gates.",
+      "consequence": "A vehicle that crashes into chains, gates, or other gate-like roadway barriers increases the risk of injury.",
+      "remedy": "Waymo has updated the ADS software, free of charge.  All affected vehicles were repaired by December 26, 2024.",
+      "products": [
+        "5TH GENERATION ADS"
+      ],
+      "status": "Recall announced; remedy information in official record",
+      "related_investigations": [],
+      "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=25E034000",
+      "source_label": "NHTSA campaign record"
     },
     {
       "id": "25E029000",
@@ -77,21 +273,23 @@
       "reported": "2025-04-25",
       "subject": "ADS prediction error may prevent avoiding a collision",
       "summary": "Zoox recalled software on 270 vehicles that, above 40 mph, could wrongly predict that a car creeping out of a perpendicular driveway would enter its lane, delaying evasive action and raising collision risk. It followed an April 8, 2025 Las Vegas collision with no injuries; updated software reached all vehicles by April 17, 2025.",
-      "consequence": "Increased collision risk.",
-      "remedy": "Zoox reported updating operating vehicles by April 17, 2025.",
-      "status": "Recall reported",
-      "related_investigations": [],
-      "products": [
-        "Zoox automated driving system"
-      ],
-      "source": "https://static.nhtsa.gov/odi/rcl/2025/RCLRPT-25E029-4731.PDF",
-      "source_label": "NHTSA recall report",
       "summary_method": "official_NHTSA_recall_report",
       "summary_quality": "manual_primary_source_verified",
       "editorial_status": "verified",
       "editorial_source_url": "https://static.nhtsa.gov/odi/rcl/2025/RCLRPT-25E029-4731.PDF",
       "editorial_source_type": "official_NHTSA_Part573_recall_report",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "source_detail": "Zoox, Inc. (Zoox) is recalling certain Automated Driving Systems (ADS) equipped with software versions released prior to April 17, 2025.  In certain driving scenarios, the Zoox vehicle may make an inaccurate prediction when another vehicle slowly approaches perpendicularly and stops.  In these scenarios, the Zoox vehicle may not be able to avoid a crash.",
+      "consequence": "Inaccurately predicting the movement of another vehicle increases the risk of a crash.",
+      "remedy": "Zoox has updated the ADS software, free of charge.  All affected driverless fleet vehicles operating on public roads were repaired by April 17, 2025.  Zoox's number for this recall is 25-02.",
+      "products": [
+        "ZOOX ROBOTAXI",
+        "AUTOMATED DRIVING SYSTEM"
+      ],
+      "status": "Recall announced; remedy information in official record",
+      "related_investigations": [],
+      "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=25E029000",
+      "source_label": "NHTSA campaign record"
     },
     {
       "id": "25E019000",
@@ -99,23 +297,1077 @@
       "reported": "2025-03-13",
       "subject": "Unexpected hard braking",
       "summary": "Zoox recalled software on 258 vehicles covering two issues: braking unnecessarily hard for a bicyclist near a crosswalk after a light turned green, and for a vulnerable road user rapidly approaching from behind. The hard braking risked rear-end collisions; updated software (version 24.32) reached all vehicles by November 7, 2024.",
-      "consequence": "Increased rear-end collision risk.",
-      "remedy": "ADS software update.",
-      "status": "Recall reported",
-      "related_investigations": [
-        "PE24015"
-      ],
-      "products": [
-        "Zoox automated driving system"
-      ],
-      "source": "https://static.nhtsa.gov/odi/rcl/2025/RCLRPT-25E019-8103.PDF",
-      "source_label": "NHTSA recall report",
       "summary_method": "official_NHTSA_recall_report",
       "summary_quality": "manual_primary_source_verified",
       "editorial_status": "verified",
       "editorial_source_url": "https://static.nhtsa.gov/odi/rcl/2025/RCLRPT-25E019-8103.PDF",
       "editorial_source_type": "official_NHTSA_Part573_recall_report",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "source_detail": "Zoox, Inc. (Zoox) is recalling certain Automated Driving Systems (ADS) equipped with software versions released prior to November 5, 2024.  In certain driving scenarios, such as when a motorcyclist rapidly approaches the rear of the vehicle or a cyclist enters a nearby crosswalk, the vehicle may brake hard unexpectedly.",
+      "consequence": "Unexpected hard braking can increase the risk of a crash.",
+      "remedy": "Zoox has updated the ADS software, free of charge.  All affected driverless fleet vehicles were repaired by November 7, 2024.  Zoox's number for this recall is 25-01.",
+      "products": [
+        "AUTOMATED DRIVING SYSTEM",
+        "ZOOX ROBOTAXI"
+      ],
+      "status": "Recall announced; remedy information in official record",
+      "related_investigations": [],
+      "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=25E019000",
+      "source_label": "NHTSA campaign record"
+    },
+    {
+      "id": "24E103000",
+      "company": "Other AV / ADAS",
+      "reported": "2024-12-09",
+      "subject": "Meritor, Inc. (Meritor) is recalling certain 10-16K and 18-23K front steer drive axles, part numbers FSD 8-16K and FSD 18.  An insufficient",
+      "summary": "The recall concerns meritor, inc. (meritor) is recalling certain 10-16k and 18-23k front steer drive axles, part numbers full self-driving 8-16k and full self-drivin.",
+      "summary_method": "automatic_source_extract",
+      "source_detail": "Meritor, Inc. (Meritor) is recalling certain 10-16K and 18-23K front steer drive axles, part numbers FSD 8-16K and FSD 18.  An insufficient amount of lubricant in the front steer drive (FSD) axle hubs may result in damage to the wheel bearings.",
+      "consequence": "Damaged bearings can cause the wheel to separate and result in a loss of vehicle control, increasing the risk of a crash.",
+      "remedy": "The remedy program will be completed by the vehicle manufacturers and provided free of charge.  Owners may call Meritor's customer service at 1-866-668-7221.  Meritor's number for this recall is C24AM.",
+      "products": [
+        "FRONT DRIVE STEER AXLE"
+      ],
+      "status": "Recall announced; remedy information in official record",
+      "related_investigations": [],
+      "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=24E103000",
+      "source_label": "NHTSA campaign record"
+    },
+    {
+      "id": "24V846000",
+      "company": "Aurora",
+      "reported": "2024-11-08",
+      "subject": "Forest River, Inc. (Forest River) is recalling certain 2024-2025 Catalina and Aurora travel trailers.  Please see the recall report for a co",
+      "summary": "Please see the recall report for a complete list of models.",
+      "summary_method": "automatic_source_extract",
+      "source_detail": "Forest River, Inc. (Forest River) is recalling certain 2024-2025 Catalina and Aurora travel trailers.  Please see the recall report for a complete list of models.  The solar panel wiring may be incorrectly wired, causing the wiring to short and overheat.",
+      "consequence": "Overheated wiring can melt, increasing the risk of a fire.",
+      "remedy": "Dealers will rewire the solar panel to the solar controller, free of charge.  Owner notification letters were mailed November 15, 2024.  Owners may contact Forest River customer service at 1-574-825-4995.  Forest River's number for this recall is 300-1863.",
+      "products": [
+        "ART28BHS-300",
+        "ART24RBS",
+        "ART26ATH-300"
+      ],
+      "status": "Recall announced; remedy information in official record",
+      "related_investigations": [],
+      "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=24V846000",
+      "source_label": "NHTSA campaign record"
+    },
+    {
+      "id": "24V830000",
+      "company": "Other AV / ADAS",
+      "reported": "2024-11-04",
+      "subject": "International Motors, LLC (International) is recalling certain 2024-2025 HX vehicles.  An insufficient amount of lubricant in the front stee",
+      "summary": "The recall concerns international motors, llc (international) is recalling certain 2024-2025 hx vehicles. an insufficient amount of lubricant in the front steer driv.",
+      "summary_method": "automatic_source_extract",
+      "source_detail": "International Motors, LLC (International) is recalling certain 2024-2025 HX vehicles.  An insufficient amount of lubricant in the front steer drive (FSD) axle hubs may result in damage to the wheel bearings.",
+      "consequence": "Damaged bearings can cause the wheel to separate and result in a loss of vehicle control, increasing the risk of a crash.",
+      "remedy": "Dealers will inspect the lubricant levels, and add lubricant or replace parts as necessary, free of charge.  Owner notification letters were mailed December 23, 2024.  Owners may contact International customer service at 1-800-448-7825.  International's number for this recall is 24516.",
+      "products": [
+        "HX"
+      ],
+      "status": "Recall announced; remedy information in official record",
+      "related_investigations": [],
+      "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=24V830000",
+      "source_label": "NHTSA campaign record"
+    },
+    {
+      "id": "24V775000",
+      "company": "Aurora",
+      "reported": "2024-10-18",
+      "subject": "Forest River, Inc. (Forest River) is recalling certain 2024-2025 Catalina and 2025 Aurora travel trailers.  The washer preparation area may",
+      "summary": "The washer preparation area may not have an anti-siphon vent installed, allowing sewer gas to enter the vehicle.",
+      "summary_method": "automatic_source_extract",
+      "source_detail": "Forest River, Inc. (Forest River) is recalling certain 2024-2025 Catalina and 2025 Aurora travel trailers.  The washer preparation area may not have an anti-siphon vent installed, allowing sewer gas to enter the vehicle.",
+      "consequence": "Sewer gas entering the vehicle increases the risk of injury.",
+      "remedy": "Dealers install an anti-siphon vent, free of charge.  Owner notification letters were mailed November 5, 2024.  Owners may contact Forest River Customer Service at (574) 825-4995.  Forest River's number for this recall is 103-1854.",
+      "products": [
+        "ART26BHS"
+      ],
+      "status": "Recall announced; remedy information in official record",
+      "related_investigations": [],
+      "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=24V775000",
+      "source_label": "NHTSA campaign record"
+    },
+    {
+      "id": "24V606000",
+      "company": "Cruise",
+      "reported": "2024-08-13",
+      "subject": "Cruiser RV is recalling certain 2024-2025 Stryker travel trailers, equipped with optional Onan 5.5 generators.  These generators may not be",
+      "summary": "The recall concerns cruiser rv is recalling certain 2024-2025 stryker travel trailers, equipped with optional onan 5.5 generators. these generators may not be proper.",
+      "summary_method": "automatic_source_extract",
+      "source_detail": "Cruiser RV is recalling certain 2024-2025 Stryker travel trailers, equipped with optional Onan 5.5 generators.  These generators may not be properly vented and allow the generator to overheat or prevent exhaust gas from escaping properly.",
+      "consequence": "A generator that overheats increases the risk of fire.  In addition, trapped exhaust gases inside the trailer can increase the risk of injury.",
+      "remedy": "Dealers will correctly route the generator venting, free of charge.  Owner notification letters were mailed September 18, 2024. Owners may contact Heartland customer service at 1-877-277-5630.",
+      "products": [
+        "STRYKER"
+      ],
+      "status": "Recall announced; remedy information in official record",
+      "related_investigations": [],
+      "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=24V606000",
+      "source_label": "NHTSA campaign record"
+    },
+    {
+      "id": "24E067000",
+      "company": "Cruise",
+      "reported": "2024-08-09",
+      "subject": "Cruise LLC (Cruise) is recalling certain Automated Driving Systems (ADS) units equipped with software versions released prior to May 14, 202",
+      "summary": "Cruise LLC (Cruise) is recalling certain Automated Driving Systems (automated driving system) units equipped with software versions released prior to May 14, 2024.",
+      "summary_method": "automatic_source_extract",
+      "source_detail": "Cruise LLC (Cruise) is recalling certain Automated Driving Systems (ADS) units equipped with software versions released prior to May 14, 2024.  The software may cause the vehicle to unexpectedly brake in cases where a vehicle or cyclist approaches the rear of the vehicle.",
+      "consequence": "Unexpected braking can increase the risk of a crash.",
+      "remedy": "Cruise updated the software in all supervised test fleet vehicles, free of charge.  All affected driverless fleet vehicles will also be repaired prior to returning to service.  Cruise's number for this recall is 24-01.",
+      "products": [
+        "ADS SOFTWARE"
+      ],
+      "status": "Recall announced; remedy information in official record",
+      "related_investigations": [],
+      "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=24E067000",
+      "source_label": "NHTSA campaign record"
+    },
+    {
+      "id": "24E049000",
+      "company": "Waymo",
+      "reported": "2024-06-10",
+      "subject": "Waymo LLC (Waymo) is recalling certain 5th Generation Automated Driving Systems (ADS) with software versions released prior to May 29, 2024",
+      "summary": "Waymo LLC (Waymo) is recalling certain 5th Generation Automated Driving Systems (automated driving system) with software versions released prior to May 29, 2024 and map software released prior to June 4, 2024.",
+      "summary_method": "automatic_source_extract",
+      "source_detail": "Waymo LLC (Waymo) is recalling certain 5th Generation Automated Driving Systems (ADS) with software versions released prior to May 29, 2024 and map software released prior to June 4, 2024.  The ADS systems could fail to avoid a pole or similar object.",
+      "consequence": "The inability to avoid a pole or similar object increases the risk of a crash.",
+      "remedy": "Waymo has updated the ADS software, free of charge.  All affected vehicles were repaired by June 6, 2024.",
+      "products": [
+        "5TH GENERATION ADS"
+      ],
+      "status": "Recall announced; remedy information in official record",
+      "related_investigations": [],
+      "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=24E049000",
+      "source_label": "NHTSA campaign record"
+    },
+    {
+      "id": "24V350000",
+      "company": "Aurora",
+      "reported": "2024-05-17",
+      "subject": "Forest River, Inc. (Forest River) is recalling certain 2024 Aurora and Catalina travel trailers.  The furnace may have been installed direct",
+      "summary": "The recall concerns forest river, inc. (forest river) is recalling certain 2024 aurora and catalina travel trailers. the furnace may have been installed directly on .",
+      "summary_method": "automatic_source_extract",
+      "source_detail": "Forest River, Inc. (Forest River) is recalling certain 2024 Aurora and Catalina travel trailers.  The furnace may have been installed directly on top of vinyl linoleum floor, which can allow the floor to overheat.",
+      "consequence": "Overheated vinyl linoleum flooring increases the risk of a fire.",
+      "remedy": "Dealers will install a panel between the furnace and the linoleum, free of charge.  All affected vehicles are still in dealer inventory and therefore no owner notification letters will be mailed.  Owners may contact Forest River Customer Service at 1-574-825-4995.  Forest River's number for this recall is 205-1778.",
+      "products": [
+        "AART18RD"
+      ],
+      "status": "Recall announced; remedy information in official record",
+      "related_investigations": [],
+      "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=24V350000",
+      "source_label": "NHTSA campaign record"
+    },
+    {
+      "id": "24V235000",
+      "company": "Cruise",
+      "reported": "2024-03-27",
+      "subject": "Cruiser RV (Cruiser) is recalling certain 2023-2024 Avenir, Embrace, Shadow Cruiser, Radiance, Stryker, MPG, 2024 Twilight travel trailers,",
+      "summary": "The LED backlight circuit board in the cooktop range may fail, causing the board to overheat.",
+      "summary_method": "automatic_source_extract",
+      "source_detail": "Cruiser RV (Cruiser) is recalling certain 2023-2024 Avenir, Embrace, Shadow Cruiser, Radiance, Stryker, MPG, 2024 Twilight travel trailers, and 2024 Essence fifth wheels.  The LED backlight circuit board in the cooktop range may fail, causing the board to overheat.",
+      "consequence": "A circuit board that overheats increases the risk of a fire.",
+      "remedy": "Dealers will disconnect and cut the circuit powering the LED backlights and terminate the wiring, free of charge.  Owner notification letters were mailed May 9, 2024.  Owners may contact Cruiser customer service at 1-574-206-7920.",
+      "products": [
+        "MPG",
+        "STRYKER",
+        "TWILIGHT",
+        "AVENIR",
+        "RADIANCE",
+        "EMBRACE",
+        "SHADOW CRUISER",
+        "ESSENCE"
+      ],
+      "status": "Recall announced; remedy information in official record",
+      "related_investigations": [],
+      "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=24V235000",
+      "source_label": "NHTSA campaign record"
+    },
+    {
+      "id": "24V210000",
+      "company": "Cruise",
+      "reported": "2024-03-19",
+      "subject": "Cruiser RV (Cruiser) is recalling certain 2023-2024 Avenir trailers.  The Federal Certification labels are missing the tire size and correct",
+      "summary": "As such, these vehicles fail to comply with the requirements of Federal Motor Vehicle Safety Standard number 120, \"Wheels and Rims-Other Than Passenger Cars.\".",
+      "summary_method": "automatic_source_extract",
+      "source_detail": "Cruiser RV (Cruiser) is recalling certain 2023-2024 Avenir trailers.  The Federal Certification labels are missing the tire size and correct PSI.  As such, these vehicles fail to comply with the requirements of Federal Motor Vehicle Safety Standard number 120, \"Wheels and Rims-Other Than Passenger Cars.\"",
+      "consequence": "Incorrect tire size information could result in the wrong tires being installed.  Incorrect PSI information could lead to over or under inflating the tires.  Both instances increase the risk of a crash.",
+      "remedy": "Cruiser will mail new certification labels, free of charge.  Owner notification letters were mailed May 2, 2024.  Owners may contact Cruiser customer service at 1-574-562-3500.",
+      "products": [
+        "AVENIR"
+      ],
+      "status": "Recall announced; remedy information in official record",
+      "related_investigations": [],
+      "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=24V210000",
+      "source_label": "NHTSA campaign record"
+    },
+    {
+      "id": "24E013000",
+      "company": "Waymo",
+      "reported": "2024-02-13",
+      "subject": "Waymo LLC (Waymo) is recalling certain 5th Generation Automated Driving Systems (ADS) with software versions released prior to December 20,",
+      "summary": "Waymo LLC (Waymo) is recalling certain 5th Generation Automated Driving Systems (automated driving system) with software versions released prior to December 20, 2023.",
+      "summary_method": "automatic_source_extract",
+      "source_detail": "Waymo LLC (Waymo) is recalling certain 5th Generation Automated Driving Systems (ADS) with software versions released prior to December 20, 2023.  The ADS systems may inaccurately predict the movement of a towed vehicle.",
+      "consequence": "Inaccurately predicting the movement of another vehicle increases the risk of a crash.",
+      "remedy": "Waymo has updated the ADS software, free of charge.  All affected vehicles were repaired by January 12, 2024.",
+      "products": [
+        "5TH GENERATION ADS"
+      ],
+      "status": "Recall announced; remedy information in official record",
+      "related_investigations": [],
+      "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=24E013000",
+      "source_label": "NHTSA campaign record"
+    },
+    {
+      "id": "24V035000",
+      "company": "Tesla",
+      "reported": "2024-01-22",
+      "subject": "Tesla, Inc. (Tesla) is recalling certain 2023 Model S, X, and Y vehicles equipped with full self-driving computer 4.0 and running a software",
+      "summary": "Tesla, Inc. (Tesla) is recalling certain 2023 Model S, X, and Y vehicles equipped with full self-driving computer 4.0 and running a software release version 2023.44.30 through 2023.44.30.6 or 2023.44.100.",
+      "summary_method": "automatic_source_extract",
+      "source_detail": "Tesla, Inc. (Tesla) is recalling certain 2023 Model S, X, and Y vehicles equipped with full self-driving computer 4.0 and running a software release version 2023.44.30 through 2023.44.30.6 or 2023.44.100.  Software instability may prevent the rearview camera image from displaying.",
+      "consequence": "A rearview image that does not display while in reverse decreases the driver's visibility and increases the risk of a crash.",
+      "remedy": "Tesla has released an over-the-air (OTA) software update, free of charge.  Owner notification letters were mailed March 22, 2024.  Owners may contact Tesla customer service at 1-877-798-3752.  Tesla's number for this recall is SB-24-00-002.",
+      "products": [
+        "MODEL S",
+        "MODEL Y",
+        "MODEL X"
+      ],
+      "status": "Recall announced; remedy information in official record",
+      "related_investigations": [],
+      "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=24V035000",
+      "source_label": "NHTSA campaign record"
+    },
+    {
+      "id": "23E086000",
+      "company": "Cruise",
+      "reported": "2023-11-07",
+      "subject": "Cruise LLC (Cruise) is recalling a subsystem within the Automated Driving Systems (ADS).  The Collision Detection Subsystem may improperly c",
+      "summary": "The Collision Detection Subsystem may improperly cause the vehicle to attempt to move to the side of the road after a crash.",
+      "summary_method": "automatic_source_extract",
+      "source_detail": "Cruise LLC (Cruise) is recalling a subsystem within the Automated Driving Systems (ADS).  The Collision Detection Subsystem may improperly cause the vehicle to attempt to move to the side of the road after a crash.",
+      "consequence": "Additional vehicle movement can increase the risk of injury or cause another crash.",
+      "remedy": "Cruise has deployed an over-the-air (OTA) ADS software update in all supervised test fleet vehicles, free of charge.  All affected driverless fleet vehicles will also be repaired prior to returning to service.  Cruise's number for this recall is 23-02.",
+      "products": [
+        "ADS SOFTWARE"
+      ],
+      "status": "Recall announced; remedy information in official record",
+      "related_investigations": [],
+      "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=23E086000",
+      "source_label": "NHTSA campaign record"
+    },
+    {
+      "id": "23V244000",
+      "company": "Tesla",
+      "reported": "2023-04-05",
+      "subject": "Tesla, Inc. (Tesla) is recalling certain 2023 Model X vehicles equipped with a full self-driving computer 4.0 and running software release v",
+      "summary": "Tesla, Inc. (Tesla) is recalling certain 2023 Model X vehicles equipped with a full self-driving computer 4.0 and running software release version 2023.2.200.",
+      "summary_method": "automatic_source_extract",
+      "source_detail": "Tesla, Inc. (Tesla) is recalling certain 2023 Model X vehicles equipped with a full self-driving computer 4.0 and running software release version 2023.2.200.  Weak camera signal strength may prevent the rearview image from displaying.  As such, these vehicles fail to comply with the requirements of Federal Motor Vehicle Safety Standard number 111, \"Rear Visibility.\"",
+      "consequence": "A rearview image that does not display while in reverse decreases the driver's visibility, increasing the risk of injury or crash.",
+      "remedy": "Tesla has released an over-the-air (OTA) software update, free of charge.  All affected vehicles have been remedied.  Owners may contact Tesla customer service at 1-877-798-3752.",
+      "products": [
+        "MODEL X"
+      ],
+      "status": "Recall announced; remedy information in official record",
+      "related_investigations": [],
+      "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=23V244000",
+      "source_label": "NHTSA campaign record"
+    },
+    {
+      "id": "23E029000",
+      "company": "Cruise",
+      "reported": "2023-04-03",
+      "subject": "Cruise LLC (Cruise) is recalling certain Automated Driving Systems (ADS) with software versions Delta/2023.01.12.00 and Delta/2023.02.09.00,",
+      "summary": "Cruise LLC (Cruise) is recalling certain Automated Driving Systems (automated driving system) with software versions Delta/2023.01.12.00 and Delta/2023.02.09.00, prior to version Delta/2023.02.09.00-08.00.",
+      "summary_method": "automatic_source_extract",
+      "source_detail": "Cruise LLC (Cruise) is recalling certain Automated Driving Systems (ADS) with software versions Delta/2023.01.12.00 and Delta/2023.02.09.00, prior to version Delta/2023.02.09.00-08.00.  The ADS system may inaccurately predict the movement of articulated vehicles such as buses and tractor trailers.",
+      "consequence": "Inaccurately predicting the movement of articulated vehicles increases the risk of a crash.",
+      "remedy": "Cruise updated the ADS software, free of charge.  All affected vehicles were repaired by March 25, 2023.  Cruise's number for this recall is 23-01.",
+      "products": [
+        "ADS SOFTWARE"
+      ],
+      "status": "Recall announced; remedy information in official record",
+      "related_investigations": [],
+      "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=23E029000",
+      "source_label": "NHTSA campaign record"
+    },
+    {
+      "id": "23V085000",
+      "company": "Tesla",
+      "reported": "2023-02-15",
+      "subject": "Tesla, Inc. (Tesla) is recalling certain 2016-2023 Model S, Model X, 2017-2023 Model 3, and 2020-2023 Model Y vehicles equipped with Full Se",
+      "summary": "In addition, the system may respond insufficiently to changes in posted speed limits or not adequately account for the driver's adjustment of the vehicle's speed to exceed posted speed limits.",
+      "summary_method": "automatic_source_extract",
+      "source_detail": "Tesla, Inc. (Tesla) is recalling certain 2016-2023 Model S, Model X, 2017-2023 Model 3, and 2020-2023 Model Y vehicles equipped with Full Self-Driving Beta (FSD Beta) software or pending installation.Â  The FSD Beta system may allow the vehicle to act unsafe around intersections, such as traveling straight through an intersection while in a turn-only lane, entering a stop sign-controlled intersection without coming to a complete stop, or proceeding into an intersection during a steady yellow traffic signal without due caution. In addition, the system may respond insufficiently to changes in posted speed limits or not adequately account for the driver's adjustment of the vehicle's speed to exceed posted speed limits.",
+      "consequence": "FSD Beta software that allows a vehicle to exceed speed limits or travel through intersections in an unlawful or unpredictable manner increases the risk of a crash.",
+      "remedy": "Tesla will release an over-the-air (OTA) software update, free of charge.Â  Owner notification letters were mailed April 15, 2023.Â  Owners may contact Tesla customer service at 1-877-798-3752.Â  Tesla's number for this recall is SB-23-00-001.",
+      "products": [
+        "MODEL X",
+        "MODEL S",
+        "MODEL 3",
+        "MODEL Y"
+      ],
+      "status": "Recall announced; remedy information in official record",
+      "related_investigations": [],
+      "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=23V085000",
+      "source_label": "NHTSA campaign record"
+    },
+    {
+      "id": "22V924000",
+      "company": "EasyMile",
+      "reported": "2022-12-13",
+      "subject": "Easymile Inc. (Easymile) is recalling certain 2018-2019 EZ10 autonomous passenger shuttles.  The 48-volt battery may be defective, allowing",
+      "summary": "The recall concerns easymile inc. (easymile) is recalling certain 2018-2019 ez10 autonomous passenger shuttles. the 48-volt battery may be defective, allowing the ba.",
+      "summary_method": "automatic_source_extract",
+      "source_detail": "Easymile Inc. (Easymile) is recalling certain 2018-2019 EZ10 autonomous passenger shuttles.  The 48-volt battery may be defective, allowing the battery to catch fire while charging.",
+      "consequence": "A defective battery increases the risk of fire.",
+      "remedy": "Owners were advised not to operate their vehicles until the remedy had been completed.  Easymile has replaced the 48-volt battery, free of charge.  All vehicles were repaired by January 2023.  Customers may contact Easymile at Info@easymile.com.",
+      "products": [
+        "EZ10"
+      ],
+      "status": "Recall announced; remedy information in official record",
+      "related_investigations": [],
+      "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=22V924000",
+      "source_label": "NHTSA campaign record"
+    },
+    {
+      "id": "22E072000",
+      "company": "Cruise",
+      "reported": "2022-08-29",
+      "subject": "Cruise LLC (Cruise) is recalling certain Automated Driving Systems (ADS) units with software version Delta/2022.05.13.00.  The software may,",
+      "summary": "Cruise LLC (Cruise) is recalling certain Automated Driving Systems (automated driving system) units with software version Delta/2022.05.13.00.",
+      "summary_method": "automatic_source_extract",
+      "source_detail": "Cruise LLC (Cruise) is recalling certain Automated Driving Systems (ADS) units with software version Delta/2022.05.13.00.  The software may, in certain circumstances when making an unprotected left, cause the ADS to incorrectly predict another vehicleÂs path or be insufficiently reactive to the sudden path change of a road user.",
+      "consequence": "An improper ADS response can increase the risk of a crash.",
+      "remedy": "Cruise has updated the ADS software units, free of charge.  All affected vehicles were repaired in July 2022.  Owners may contact Cruise customer service at 1-415-335-4097.  Cruise's number for this recall is 2022.05.13.00.",
+      "products": [
+        "ADS SOFTWARE"
+      ],
+      "status": "Recall announced; remedy information in official record",
+      "related_investigations": [],
+      "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=22E072000",
+      "source_label": "NHTSA campaign record"
+    },
+    {
+      "id": "22V593000",
+      "company": "Cruise",
+      "reported": "2022-08-08",
+      "subject": "Cruiser RV (Cruiser) is recalling certain 2022 MPG, Hitch, Radiance, Stryker, 2022-2023 Embrace, Shadow Cruiser, and Twilight travel trailer",
+      "summary": "The recall concerns cruiser rv (cruiser) is recalling certain 2022 mpg, hitch, radiance, stryker, 2022-2023 embrace, shadow cruiser, and twilight travel trailers. th.",
+      "summary_method": "automatic_source_extract",
+      "source_detail": "Cruiser RV (Cruiser) is recalling certain 2022 MPG, Hitch, Radiance, Stryker, 2022-2023 Embrace, Shadow Cruiser, and Twilight travel trailers.  The electric retractable awning has a welded seam on the fabric that may separate, potentially allowing the awning to drop beyond normal operation.",
+      "consequence": "An awning that drops or extends beyond normal operation can increase the risk of injury.",
+      "remedy": "Dealers will inspect and repair, or replace the awning, free of charge.  Owner notification letters were mailed September 7, 2022.  Owners may contact Cruiser customer service at 1-574-206-7920.",
+      "products": [
+        "EMBRACE",
+        "TWILIGHT",
+        "MPG",
+        "SHADOW CRUISER",
+        "HITCH",
+        "RADIANCE ULTRA-LITE",
+        "STRYKER"
+      ],
+      "status": "Recall announced; remedy information in official record",
+      "related_investigations": [],
+      "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=22V593000",
+      "source_label": "NHTSA campaign record"
+    },
+    {
+      "id": "22V581000",
+      "company": "Other AV / ADAS",
+      "reported": "2022-08-04",
+      "subject": "Jaguar Land Rover North America, LLC  (Land Rover) is recalling certain 2022 Land Rover Range Rover Velar vehicles.  The vehicles were manuf",
+      "summary": "The vehicles were manufactured without an Audio Amplifier Module (AAM), and therefore will not provide audio safety features, such as seat belt reminders, turn signal sounds, and Advanced Driver Assistance System (driver-assistance system) warnings.",
+      "summary_method": "automatic_source_extract",
+      "source_detail": "Jaguar Land Rover North America, LLC  (Land Rover) is recalling certain 2022 Land Rover Range Rover Velar vehicles.  The vehicles were manufactured without an Audio Amplifier Module (AAM), and therefore will not provide audio safety features, such as seat belt reminders, turn signal sounds, and Advanced Driver Assistance System (ADAS) warnings.",
+      "consequence": "Missing audio safety features, such as seat belt reminders, turn signal sounds, and Advanced Driver Assistance System (ADAS) warnings, can increase the risk of a crash or injury.",
+      "remedy": "Dealers will install the missing AAM, free of charge.  Owner notification letters were mailed September 27, 2022.  Owners may contact Land Rover's customer service at 1-800-637-6837.  Land Rover's number for this recall is N725.",
+      "products": [
+        "RANGE ROVER VELAR"
+      ],
+      "status": "Recall announced; remedy information in official record",
+      "related_investigations": [],
+      "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=22V581000",
+      "source_label": "NHTSA campaign record"
+    },
+    {
+      "id": "22V580000",
+      "company": "Other AV / ADAS",
+      "reported": "2022-08-04",
+      "subject": "Jaguar Land Rover North America, LLC  (Jaguar) is recalling certain 2022 F-Pace vehicles.  The vehicles were manufactured without an Audio A",
+      "summary": "The vehicles were manufactured without an Audio Amplifier Module (AAM), and therefore will not provide audio safety features, such as seat belt reminders, turn signal sounds, and Advanced Driver Assistance System (driver-assistance system) warnings.",
+      "summary_method": "automatic_source_extract",
+      "source_detail": "Jaguar Land Rover North America, LLC  (Jaguar) is recalling certain 2022 F-Pace vehicles.  The vehicles were manufactured without an Audio Amplifier Module (AAM), and therefore will not provide audio safety features, such as seat belt reminders, turn signal sounds, and Advanced Driver Assistance System (ADAS) warnings.",
+      "consequence": "Missing audio safety features, such as seat belt reminders, turn signal sounds, and Advanced Driver Assistance System (ADAS) warnings, can increase the risk of a crash or injury.",
+      "remedy": "Dealers will install the missing AAM, free of charge.  Owner notification letters were mailed September 27, 2022.  Owners may contact Jaguar's customer service at 1-800-452-4827.  Jaguar's number for this recall is H415.",
+      "products": [
+        "F-PACE"
+      ],
+      "status": "Recall announced; remedy information in official record",
+      "related_investigations": [],
+      "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=22V580000",
+      "source_label": "NHTSA campaign record"
+    },
+    {
+      "id": "22V521000",
+      "company": "Cruise",
+      "reported": "2022-07-21",
+      "subject": "Cruiser RV (Cruiser) is recalling certain 2022 Shadow Cruiser travel trailers.  The Federal certification label shows the incorrect Gross Ax",
+      "summary": "The Federal certification label shows the incorrect Gross Axle Weight Rating (GAWR), which can allow the vehicle to be overloaded.",
+      "summary_method": "automatic_source_extract",
+      "source_detail": "Cruiser RV (Cruiser) is recalling certain 2022 Shadow Cruiser travel trailers.  The Federal certification label shows the incorrect Gross Axle Weight Rating (GAWR), which can allow the vehicle to be overloaded.  As such, these vehicles fail to comply with the requirements of 49 CFR Part 567, \"Certification.\"",
+      "consequence": "The vehicle may be overloaded, increasing the risk of a crash.",
+      "remedy": "Cruiser will send out replacement certification labels, free of charge.  Owners notification letters were mailed August 15, 2022.  Owners may contact Cruiser at 1-574-206-7920.",
+      "products": [
+        "SHADOW CRUISER"
+      ],
+      "status": "Recall announced; remedy information in official record",
+      "related_investigations": [],
+      "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=22V521000",
+      "source_label": "NHTSA campaign record"
+    },
+    {
+      "id": "22V433000",
+      "company": "Cruise",
+      "reported": "2022-06-17",
+      "subject": "Cruiser RV (Cruiser) is recalling certain 2022 Shadow Cruiser, Embrace, MPG, Radiance, Hitch, Twilight, and Stryker travel trailers.  The qu",
+      "summary": "The recall concerns cruiser rv (cruiser) is recalling certain 2022 shadow cruiser, embrace, mpg, radiance, hitch, twilight, and stryker travel trailers. the quick di.",
+      "summary_method": "automatic_source_extract",
+      "source_detail": "Cruiser RV (Cruiser) is recalling certain 2022 Shadow Cruiser, Embrace, MPG, Radiance, Hitch, Twilight, and Stryker travel trailers.  The quick disconnect fittings in the LP gas system may be cracked, causing a gas leak.",
+      "consequence": "A gas leak in the presence of an ignition source can increase the risk of a fire.",
+      "remedy": "Dealers will inspect and replace the fittings, as necessary, free of charge.  Owner notification letters were mailed in June 29, 2022.  Owners may contact Cruiser customer service at 1-574-206-7920.  Cruiser's number for this recall is 99.03.21.",
+      "products": [
+        "STRYKER",
+        "EMBRACE",
+        "MPG",
+        "RADIANCE ULTRA-LITE",
+        "SHADOW CRUISER",
+        "TWILIGHT",
+        "HITCH"
+      ],
+      "status": "Recall announced; remedy information in official record",
+      "related_investigations": [],
+      "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=22V433000",
+      "source_label": "NHTSA campaign record"
+    },
+    {
+      "id": "22V306000",
+      "company": "Cruise",
+      "reported": "2022-05-06",
+      "subject": "Cruiser RV (Cruiser) is recalling certain 2022 Shadow Cruiser trailers.  The 12-volt mini breaker cover for the slide-out was not installed",
+      "summary": "The recall concerns cruiser rv (cruiser) is recalling certain 2022 shadow cruiser trailers. the 12-volt mini breaker cover for the slide-out was not installed during.",
+      "summary_method": "automatic_source_extract",
+      "source_detail": "Cruiser RV (Cruiser) is recalling certain 2022 Shadow Cruiser trailers.  The 12-volt mini breaker cover for the slide-out was not installed during production, leading to exposed studs that could cause electrical arcing.",
+      "consequence": "Electrical arcing between the exposed studs and nearby aluminum ducting can increase the risk of fire and injury.",
+      "remedy": "Dealers will inspect the 12-volt mini breaker for the slide-out, and install a cover if necessary, free of charge.  Owner notification letters were mailed June 21, 2022.  Owners may contact Cruiser customer service at 1-574-206-7920.",
+      "products": [
+        "SHADOW CRUISER"
+      ],
+      "status": "Recall announced; remedy information in official record",
+      "related_investigations": [],
+      "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=22V306000",
+      "source_label": "NHTSA campaign record"
+    },
+    {
+      "id": "22V293000",
+      "company": "Cruise",
+      "reported": "2022-05-03",
+      "subject": "Cruiser RV (Cruiser) is recalling certain 2022 Cruiser Shadow Cruiser travel trailers.  The quick disconnect fittings in the LP gas system m",
+      "summary": "The recall concerns cruiser rv (cruiser) is recalling certain 2022 cruiser shadow cruiser travel trailers. the quick disconnect fittings in the lp gas system may be .",
+      "summary_method": "automatic_source_extract",
+      "source_detail": "Cruiser RV (Cruiser) is recalling certain 2022 Cruiser Shadow Cruiser travel trailers.  The quick disconnect fittings in the LP gas system may be cracked, causing a gas leak.",
+      "consequence": "A gas leak in the presence of an ignition source can increase the risk of a fire.",
+      "remedy": "Dealers will inspect and replace the fittings, as necessary, free of charge.  Owner notification letters were mailed in June 27, 2022.  Owners may contact Cruiser customer service at 1-574-206-7920.",
+      "products": [
+        "SHADOW CRUISER"
+      ],
+      "status": "Recall announced; remedy information in official record",
+      "related_investigations": [],
+      "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=22V293000",
+      "source_label": "NHTSA campaign record"
+    },
+    {
+      "id": "22V169000",
+      "company": "Tesla",
+      "reported": "2022-03-18",
+      "subject": "Tesla, Inc. (Tesla) is recalling certain 2018-2019 Model S, Model X, and 2017-2020 Model 3 vehicles equipped with Autopilot Computer 2.5 and",
+      "summary": "The rearview image may not immediately display when the vehicle begins to reverse.",
+      "summary_method": "automatic_source_extract",
+      "source_detail": "Tesla, Inc. (Tesla) is recalling certain 2018-2019 Model S, Model X, and 2017-2020 Model 3 vehicles equipped with Autopilot Computer 2.5 and operating certain firmware releases.  The rearview image may not immediately display when the vehicle begins to reverse.  As such, these vehicles fail to comply with the requirements of Federal Motor Vehicle Safety Standard number 111, \"Rear Visibility.\"",
+      "consequence": "A delayed rearview camera image reduces the driver's rear view, increasing the risk of a crash.",
+      "remedy": "Tesla will perform an over-the-air (OTA) software update, free of charge.  Owner notification letters were mailed May 17, 2022.  Owners may contact Tesla customer service at 1-877-798-3752.  Tesla's number for this recall is SB-22-00-004.",
+      "products": [
+        "MODEL 3",
+        "MODEL S",
+        "MODEL X"
+      ],
+      "status": "Recall announced; remedy information in official record",
+      "related_investigations": [],
+      "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=22V169000",
+      "source_label": "NHTSA campaign record"
+    },
+    {
+      "id": "22E016000",
+      "company": "Pony.ai",
+      "reported": "2022-03-03",
+      "subject": "Pony.ai is recalling certain Automated Driving Systems (ADS) with software version v2_20210712, and subsequent versions through v2_20210920_",
+      "summary": "Pony.ai is recalling certain Automated Driving Systems (automated driving system) with software version v2_20210712, and subsequent versions through v2_20210920_RC38, and v2_20211004.",
+      "summary_method": "automatic_source_extract",
+      "source_detail": "Pony.ai is recalling certain Automated Driving Systems (ADS) with software version v2_20210712, and subsequent versions through v2_20210920_RC38, and v2_20211004.  A software error may cause the ADS to shutdown unexpectedly while the vehicle is moving.",
+      "consequence": "An unexpected ADS shutdown while in motion can increase the risk of a crash.",
+      "remedy": "Pony.ai updated the ADS software code, free of charge.  All affected vehicles have been repaired.",
+      "products": [
+        "AUTOMATED DRIVING SYSTEM"
+      ],
+      "status": "Recall announced; remedy information in official record",
+      "related_investigations": [],
+      "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=22E016000",
+      "source_label": "NHTSA campaign record"
+    },
+    {
+      "id": "22V037000",
+      "company": "Tesla",
+      "reported": "2022-01-27",
+      "subject": "Tesla, Inc. (Tesla) is recalling certain 2016-2022 Model S and Model X, 2017-2022 Model 3, and 2020-2022 Model Y vehicles.  The \"rolling sto",
+      "summary": "The \"rolling stop\" functionality available as part of the Full Self-Driving (Beta) software may allow the vehicle to travel through an all-way stop intersection without first coming to a stop.",
+      "summary_method": "automatic_source_extract",
+      "source_detail": "Tesla, Inc. (Tesla) is recalling certain 2016-2022 Model S and Model X, 2017-2022 Model 3, and 2020-2022 Model Y vehicles.  The \"rolling stop\" functionality available as part of the Full Self-Driving (Beta) software may allow the vehicle to travel through an all-way stop intersection without first coming to a stop.",
+      "consequence": "Failing to stop at a stop sign can increase the risk of a crash.",
+      "remedy": "Tesla will perform an over-the-air (OTA) software update that disables the \"rolling stop\" functionality, free of charge.  Owner notification letters were mailed March 28, 2022.  Owners may contact Tesla customer service at 1-877-798-3752.  Tesla's number for this recall is SB-22-00-001.",
+      "products": [
+        "MODEL S",
+        "MODEL X",
+        "MODEL 3",
+        "MODEL Y"
+      ],
+      "status": "Recall announced; remedy information in official record",
+      "related_investigations": [],
+      "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=22V037000",
+      "source_label": "NHTSA campaign record"
+    },
+    {
+      "id": "21V993000",
+      "company": "Cruise",
+      "reported": "2021-12-20",
+      "subject": "Cruiser RV (Cruiser) is recalling certain 2021-2022 Shadow Cruiser and 2022 Twilight travel trailers.  The Federal and Certification labels",
+      "summary": "As such, these vehicles fail to comply with the requirements of Federal Motor Vehicle Safety Standard number 120, \"Wheel and Rims-Other Than Passenger Cars.\".",
+      "summary_method": "automatic_source_extract",
+      "source_detail": "Cruiser RV (Cruiser) is recalling certain 2021-2022 Shadow Cruiser and 2022 Twilight travel trailers.  The Federal and Certification labels may indicate incorrect tire information.  As such, these vehicles fail to comply with the requirements of Federal Motor Vehicle Safety Standard number 120, \"Wheel and Rims-Other Than Passenger Cars.\"",
+      "consequence": "Incorrect tire information can allow the operator to install incorrect replacement tires, which can affect towing, increasing the risk of a crash.",
+      "remedy": "Cruiser will mail owners replacement certification labels, free of charge.  Owner notification letters were mailed February 9, 2022.  Owners may contact Cruiser customer service at 1-574-206-7920. Cruiser's number for this recall is RC000157.",
+      "products": [
+        "SHADOW CRUISER",
+        "TWILIGHT"
+      ],
+      "status": "Recall announced; remedy information in official record",
+      "related_investigations": [],
+      "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=21V993000",
+      "source_label": "NHTSA campaign record"
+    },
+    {
+      "id": "21V802000",
+      "company": "Cruise",
+      "reported": "2021-10-14",
+      "subject": "Cruiser RV (Cruiser) is recalling 2021-2022 Hitch trailers.  The vehicle certification label does not have the correct Gross Axle Weight Rat",
+      "summary": "The vehicle certification label does not have the correct Gross Axle Weight Rating (GAWR) listed.",
+      "summary_method": "automatic_source_extract",
+      "source_detail": "Cruiser RV (Cruiser) is recalling 2021-2022 Hitch trailers.  The vehicle certification label does not have the correct Gross Axle Weight Rating (GAWR) listed.  As such, these vehicles fail to comply with the requirements of Federal Motor Vehicle Safety Standard number 120, \"Wheels and Rims-Other Than Passenger Cars.\"",
+      "consequence": "Incorrect GAWR information may cause the vehicle to be overloaded, increasing the risk of a crash.",
+      "remedy": "Cruiser will mail new labels to owners, and dealers will replace them, free of charge.  Owner notification letters were mailed November 18, 2021.  Owners may contact Cruiser customer service at 1-574-206-7920.",
+      "products": [
+        "HITCH"
+      ],
+      "status": "Recall announced; remedy information in official record",
+      "related_investigations": [],
+      "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=21V802000",
+      "source_label": "NHTSA campaign record"
+    },
+    {
+      "id": "21V428000",
+      "company": "Cruise",
+      "reported": "2021-06-04",
+      "subject": "Heartland Recreational Vehicles, LLC. (Heartland) is recalling certain 2018-2021 Mallard, Shadow Cruiser, Sundance XLTTT, Wilderness, Prowle",
+      "summary": "The regulator may fail, causing an increase in propane pressure.",
+      "summary_method": "automatic_source_extract",
+      "source_detail": "Heartland Recreational Vehicles, LLC. (Heartland) is recalling certain 2018-2021 Mallard, Shadow Cruiser, Sundance XLTTT, Wilderness, Prowler, Trail Runner, 2018-2019 Pioneer, Terry Classic, 2020-2021 Lithium, and 2021 North Trail trailers equipped with a Winntec model 6020 two-stage propane regulator.  The regulator may fail, causing an increase in propane pressure.",
+      "consequence": "Increased propane pressure can enlarge the flames in gas appliances, increasing the risk of a fire.",
+      "remedy": "Dealers will replace the regulator and test the propane system for leaks, free of charge.  Owner notification letters were mailed August 3, 2021.  Owners may contact Heartland customer service at 1-877-262-8032.",
+      "products": [
+        "SHADOW CRUISER",
+        "redundant SHADOW CRUISER"
+      ],
+      "status": "Recall announced; remedy information in official record",
+      "related_investigations": [],
+      "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=21V428000",
+      "source_label": "NHTSA campaign record"
+    },
+    {
+      "id": "21V147000",
+      "company": "Other AV / ADAS",
+      "reported": "2021-03-09",
+      "subject": "Chrysler (FCA US, LLC) is recalling certain 2020-2021 Ram ProMaster City vehicles.  The Anti-Lock Brake System (ABS) module may have interna",
+      "summary": "The recall concerns chrysler (fca us, llc) is recalling certain 2020-2021 ram promaster city vehicles. the anti-lock brake system (abs) module may have internal dama.",
+      "summary_method": "automatic_source_extract",
+      "source_detail": "Chrysler (FCA US, LLC) is recalling certain 2020-2021 Ram ProMaster City vehicles.  The Anti-Lock Brake System (ABS) module may have internal damage, which could result in a loss of braking performance or autonomous braking functions.",
+      "consequence": "The loss of braking performance or autonomous braking functions can increase the risk of a vehicle crash without prior warning.",
+      "remedy": "FCA US, LLC will notify owners, and dealers will replace the ABS module, free of charge.  The recall began on March 30, 2021.  Owners may contact FCA US, LLC customer service at 1-800-853-1403.",
+      "products": [
+        "PROMASTER CITY"
+      ],
+      "status": "Recall announced; remedy information in official record",
+      "related_investigations": [],
+      "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=21V147000",
+      "source_label": "NHTSA campaign record"
+    },
+    {
+      "id": "20E090000",
+      "company": "Other AV / ADAS",
+      "reported": "2020-12-09",
+      "subject": "Icon Vehicle Dynamics, LLC (Icon) is recalling all 05-UP FSD 2.5 Centerline Stabilizer Kits with part number 65050.  The kits were sold as a",
+      "summary": "Icon Vehicle Dynamics, LLC (Icon) is recalling all 05-UP Full Self-Driving 2.5 Centerline Stabilizer Kits with part number 65050.",
+      "summary_method": "automatic_source_extract",
+      "source_detail": "Icon Vehicle Dynamics, LLC (Icon) is recalling all 05-UP FSD 2.5 Centerline Stabilizer Kits with part number 65050.  The kits were sold as an accessory for certain 2005-2021 Ford F-250 4X4 and F-350 4X4 pickup trucks.  The foam ring inside the stabilizer \"through shaft\" may block the piston ports, possibly causing the steering to lock up.",
+      "consequence": "If the steering locks, it can increase the risk of a crash.",
+      "remedy": "Icon will notify owners, and dealers will install a new shock assembly with a revised foam ring and steel support disc, free of charge.  The recall began December 21, 2020.  Owners may contact Icon customer service at 1-951-689-4266.",
+      "products": [
+        "F-250 SD",
+        "F-350 SD",
+        "CENTERLINE STABLIZER KIT"
+      ],
+      "status": "Recall announced; remedy information in official record",
+      "related_investigations": [],
+      "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=20E090000",
+      "source_label": "NHTSA campaign record"
+    },
+    {
+      "id": "20V478000",
+      "company": "Cruise",
+      "reported": "2020-08-13",
+      "subject": "Cruise Car, Inc. is recalling certain 2020 Moke low-speed vehicles.  The vehicles may be able exceed the 40km/h maximum permissible speed to",
+      "summary": "The vehicles may be able exceed the 40km/h maximum permissible speed to be classified as a low-speed vehicle.",
+      "summary_method": "automatic_source_extract",
+      "source_detail": "Cruise Car, Inc. is recalling certain 2020 Moke low-speed vehicles.  The vehicles may be able exceed the 40km/h maximum permissible speed to be classified as a low-speed vehicle.  As such, these vehicles fail to comply with the requirements of Federal Motor Vehicle Safety Standard number 500, \"Low Speed Vehicles.\"",
+      "consequence": "A low speed vehicle than can exceed 40 km/h, increases the risk of injury in the event of a crash.",
+      "remedy": "Cruise Car will notify owners, and dealers will calibrate the vehicle's maximum speed, free of charge.  The recall began September 9, 2020.  Owners may contact Cruise Car customer service at 1-941-929-1630.",
+      "products": [
+        "MOKE"
+      ],
+      "status": "Recall announced; remedy information in official record",
+      "related_investigations": [],
+      "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=20V478000",
+      "source_label": "NHTSA campaign record"
+    },
+    {
+      "id": "20V140000",
+      "company": "Cruise",
+      "reported": "2020-03-11",
+      "subject": "Heartland Recreational Vehicles, LLC (Heartland) is recalling certain 2020 Shadow Cruiser Ultra Lite trailers.  The Certification Label indi",
+      "summary": "As such, these vehicles fail to comply with the requirements of 49 CFR Part 567, \"Certification.\".",
+      "summary_method": "automatic_source_extract",
+      "source_detail": "Heartland Recreational Vehicles, LLC (Heartland) is recalling certain 2020 Shadow Cruiser Ultra Lite trailers.  The Certification Label indicates an incorrect GVWR and axle rating.  As such, these vehicles fail to comply with the requirements of 49 CFR Part 567, \"Certification.\"",
+      "consequence": "An incorrect GVWR could result in the vehicle being overloaded and the axles failing, increasing the risk of a crash.",
+      "remedy": "Heartland will notify owners and send them corrected replacement labels, free of charge.  The recall began May 11, 2020.  Owners may contact Heartland customer service at 1-877-262-8032.",
+      "products": [
+        "SHADOW CRUISER ULTRA LITE"
+      ],
+      "status": "Recall announced; remedy information in official record",
+      "related_investigations": [],
+      "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=20V140000",
+      "source_label": "NHTSA campaign record"
+    },
+    {
+      "id": "19V905000",
+      "company": "Cruise",
+      "reported": "2019-12-18",
+      "subject": "Cruise Car, Inc. (Cruise Car) is recalling certain 2019 Moke vehicles.  The vehicles may be equipped with a windshield of the incorrect glas",
+      "summary": "As such, these vehicles fail to comply with the requirements of Federal Motor Vehicle Safety Standard (federal vehicle safety standards) number 205, \"Glazing Materials.\".",
+      "summary_method": "automatic_source_extract",
+      "source_detail": "Cruise Car, Inc. (Cruise Car) is recalling certain 2019 Moke vehicles.  The vehicles may be equipped with a windshield of the incorrect glass quality rating.  As such, these vehicles fail to comply with the requirements of Federal Motor Vehicle Safety Standard (FMVSS) number 205, \"Glazing Materials.\"",
+      "consequence": "The incorrect windshield could affect the driver's visibility, increasing the risk of a crash.",
+      "remedy": "Cruise Car will notify owners, and dealers will replace the windshield, free of charge.  Owner notification letters were mailed December 19, 2019.  Owners may contact Cruise Car customer service at 1-941-929-1630.",
+      "products": [
+        "MOKE"
+      ],
+      "status": "Recall announced; remedy information in official record",
+      "related_investigations": [],
+      "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=19V905000",
+      "source_label": "NHTSA campaign record"
+    },
+    {
+      "id": "19V672000",
+      "company": "Cruise",
+      "reported": "2019-09-20",
+      "subject": "Cruiser RV (Cruiser) is recalling certain 2020 Southfork recreational trailers.  The wood backers for bunk supports were not installed on th",
+      "summary": "The recall concerns cruiser rv (cruiser) is recalling certain 2020 southfork recreational trailers. the wood backers for bunk supports were not installed on the slid.",
+      "summary_method": "automatic_source_extract",
+      "source_detail": "Cruiser RV (Cruiser) is recalling certain 2020 Southfork recreational trailers.  The wood backers for bunk supports were not installed on the slide out bunk end walls during manufacturing, possibly allowing the upper bunk bed to fall.",
+      "consequence": "If the bed falls while someone is on or under the bunk, there is an increased risk of an injury.",
+      "remedy": "Cruiser will notify owners, and dealers will install wood backers to secure the bunk bed, free of charge.  The recall began on September 20, 2019.  Owners may contact Cruiser customer service at 1-574-206-7920.",
+      "products": [
+        "SOUTH FORK"
+      ],
+      "status": "Recall announced; remedy information in official record",
+      "related_investigations": [],
+      "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=19V672000",
+      "source_label": "NHTSA campaign record"
+    },
+    {
+      "id": "18V820000",
+      "company": "Cruise",
+      "reported": "2018-11-20",
+      "subject": "Cruiser RV (Cruiser) is recalling certain 2019 Cruiser MPG and Radiance Ultra Light recreational trailers, built on D28H, D35, D40, or D44 t",
+      "summary": "The inner hub bearings may not have been sufficiently greased, which can cause the bearings to overheat and fail.",
+      "summary_method": "automatic_source_extract",
+      "source_detail": "Cruiser RV (Cruiser) is recalling certain 2019 Cruiser MPG and Radiance Ultra Light recreational trailers, built on D28H, D35, D40, or D44 trailer axles.  The inner hub bearings may not have been sufficiently greased, which can cause the bearings to overheat and fail.",
+      "consequence": "If the bearings overheat, the hub may fail, affecting handling and increasing the risk of a crash.",
+      "remedy": "Cruiser will notify owners, and dealers will inspect and repair the hubs and bearings, as necessary, free of charge.  The recall began December 7, 2018.  Owners may contact Cruiser customer service at 1-574-206-7920.  Cruiser's number for this recall is 99.03.16.",
+      "products": [
+        "RADIANCE ULTRA LITE",
+        "MPG"
+      ],
+      "status": "Recall announced; remedy information in official record",
+      "related_investigations": [],
+      "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=18V820000",
+      "source_label": "NHTSA campaign record"
+    },
+    {
+      "id": "18V633000",
+      "company": "Cruise",
+      "reported": "2018-09-14",
+      "subject": "Cruiser RV (Cruiser) is recalling certain 2019 Embrace, Fun Finder Xtreme Lite, MPG, Radiance Ultra Lite and Shadow Cruiser Ultra Lite trave",
+      "summary": "The recall concerns cruiser rv (cruiser) is recalling certain 2019 embrace, fun finder xtreme lite, mpg, radiance ultra lite and shadow cruiser ultra lite travel tra.",
+      "summary_method": "automatic_source_extract",
+      "source_detail": "Cruiser RV (Cruiser) is recalling certain 2019 Embrace, Fun Finder Xtreme Lite, MPG, Radiance Ultra Lite and Shadow Cruiser Ultra Lite travel trailers.  The axles may be missing inner bearing races on the hubs, which can cause the bearing to burnout or cause the hub to overheat.",
+      "consequence": "The missing bearing race may cause premature hub bearing failure, possibly resulting in a separation of the hub from the axle, thereby increasing the risk of a crash.",
+      "remedy": "Cruiser will notify owners, and dealers will replace the defective hubs with new hubs or replace the axles, free of charge.  The recall began October 9, 2018.  Owners may contact Cruiser customer service at 1-574-206-7920.  Cruiser's number for this recall is 99.03.15.",
+      "products": [
+        "FUN FINDER EXTREME LITE",
+        "SHADOW CRUISER ULTRA LITE",
+        "RADIANCE ULTRA LITE",
+        "MPG",
+        "EMBRACE"
+      ],
+      "status": "Recall announced; remedy information in official record",
+      "related_investigations": [],
+      "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=18V633000",
+      "source_label": "NHTSA campaign record"
+    },
+    {
+      "id": "18V625000",
+      "company": "Other AV / ADAS",
+      "reported": "2018-09-13",
+      "subject": "Jaguar Land Rover North America, LLC (Land Rover) is recalling certain 2018 Land Rover Range Rover, Land Rover Range Rover Sport and Land Ro",
+      "summary": "The Autonomous Emergency Braking (AEB) system may be disabled without warning the driver that the system is not functional.",
+      "summary_method": "automatic_source_extract",
+      "source_detail": "Jaguar Land Rover North America, LLC (Land Rover) is recalling certain 2018 Land Rover Range Rover, Land Rover Range Rover Sport and Land Rover Discovery vehicles.  The Autonomous Emergency Braking (AEB) system may be disabled without warning the driver that the system is not functional.",
+      "consequence": "If the AEB does not intervene when needed, without warning, there would be an increased risk of a crash.",
+      "remedy": "Land Rover will notify owners, and dealers will update the vehicle software, free of charge.  The recall began October 17, 2018.  Owners may contact Land Rover customer service at 1-800-637-6837, Option 9.  Land Rover's number for this recall is N227.",
+      "products": [
+        "DISCOVERY",
+        "RANGE ROVER SPORT",
+        "RANGE ROVER"
+      ],
+      "status": "Recall announced; remedy information in official record",
+      "related_investigations": [],
+      "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=18V625000",
+      "source_label": "NHTSA campaign record"
+    },
+    {
+      "id": "17V751000",
+      "company": "Cruise",
+      "reported": "2017-11-22",
+      "subject": "Cruiser RV (Cruiser) is recalling certain 2016-2017 Boss, Full House and Fun Finder Signature, 2018 Embrace and Striker FW, 2013-2016 Enterr",
+      "summary": "The recall concerns cruiser rv (cruiser) is recalling certain 2016-2017 boss, full house and fun finder signature, 2018 embrace and striker fw, 2013-2016 enterra and.",
+      "summary_method": "automatic_source_extract",
+      "source_detail": "Cruiser RV (Cruiser) is recalling certain 2016-2017 Boss, Full House and Fun Finder Signature, 2018 Embrace and Striker FW, 2013-2016 Enterra and View Finder Signature, 2006-2016 Fun Finder, 2007-2015 Fun Finder Xtra, 2015-2017 Fun Finder Xtreme Lite and Shadow Cruiser Ultra Lite, 2016-2018 MPG, 2013-2017 Radiance, 2017-2018 Radiance Ultra Lite, 2010-2016 Shadow Cruiser, 2015-2016 Shadow Cruiser LE,  2017 South Fork, 2014-2018 Striker, 2009-2016 View Finder Lite, 2006-2007 Liberty, 2007 Land Roamer, 2009-2012 View Finder Toy Hauler, and 2006-2013 Fun Finder X recreational vehicles, equipped with certain Kidde Plastic-Handle or Push Button 'Pindicator' Fire Extinguishers.  These extinguishers may become clogged, preventing the extinguisher from discharging as expected or excessive force may be needed to activate the extinguisher.  Additionally, in certain models, the nozzle may detach from the valve assembly with enough force that it could cause injury and also render the product inoperable.  For a full list of the affected fire extinguisher models visit: https://static.nhtsa.gov/odi/rcl/2017/RMISC-17E062-5427.pdf",
+      "consequence": "In the event of a fire, if the fire extinguisher does not function properly, it can increase the risk of injury.",
+      "remedy": "Cruiser will notify owners, instructing them to contact Kidde for a replacement fire extinguisher, free of charge.  The recall began on January 15, 2018.  Owners may contact Cruiser customer service at 1-866-277-5630, or Kidde customer service toll free at 1-855-262-3540, or online at www.kidde.com and click on \"Product Safety Recall\" for more information.",
+      "products": [
+        "MPG",
+        "LIBERTY",
+        "LAND ROAMER",
+        "FUN FINDER XTRA",
+        "FUN FINDER SIGNATURE",
+        "FUN FINDER EXTREME LITE",
+        "VIEW FINDER TOY HAULER",
+        "FUN FINDER X",
+        "ENTERRA",
+        "STRIKER",
+        "SHADOW CRUISER ULTRA LITE",
+        "SHADOW CRUISER LE",
+        "SHADOW CRUISER",
+        "RADIANCE ULTRA LITE",
+        "RADIANCE",
+        "VIEW FINDER SIGNATURE",
+        "BOSS",
+        "EMBRACE",
+        "FUN FINDER",
+        "VIEW FINDER LITE",
+        "FULL HOUSE",
+        "SOUTH FORK",
+        "STRIKER FW"
+      ],
+      "status": "Recall announced; remedy information in official record",
+      "related_investigations": [],
+      "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=17V751000",
+      "source_label": "NHTSA campaign record"
+    },
+    {
+      "id": "17V563000",
+      "company": "Cruise",
+      "reported": "2017-09-13",
+      "subject": "Cruiser RV (Cruiser) is recalling certain 2018 Shadow Cruiser Ultra Lite recreational trailers, models ID225RBS, ID240BHS, ID263RLS, ID279DB",
+      "summary": "The recall concerns cruiser rv (cruiser) is recalling certain 2018 shadow cruiser ultra lite recreational trailers, models id225rbs, id240bhs, id263rls, id279dbs, id.",
+      "summary_method": "automatic_source_extract",
+      "source_detail": "Cruiser RV (Cruiser) is recalling certain 2018 Shadow Cruiser Ultra Lite recreational trailers, models ID225RBS, ID240BHS, ID263RLS, ID279DBS, ID280QBS and ID289RBS.  The axles on these vehicles were installed backwards, possibly reducing the braking ability or causing the brakes to temporarily lock up.",
+      "consequence": "Improper brake function can increase the risk of a crash.",
+      "remedy": "Cruiser has notified owners, and dealers will correct the axle installation, free of charge.  The recall began on September 20, 2017.  Owners may contact Cruiser customer service at 1-866-277-5630.  Cruiser's number for this recall is 99.03.13.",
+      "products": [
+        "SHADOW CRUISER ULTRA LITE"
+      ],
+      "status": "Recall announced; remedy information in official record",
+      "related_investigations": [],
+      "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=17V563000",
+      "source_label": "NHTSA campaign record"
+    },
+    {
+      "id": "17V074000",
+      "company": "Cruise",
+      "reported": "2017-02-07",
+      "subject": "Cruiser RV (Cruiser) is recalling certain 2016-2017 Boss recreational trailers.  The affected vehicles have a vertically-mounted furnace ins",
+      "summary": "The recall concerns cruiser rv (cruiser) is recalling certain 2016-2017 boss recreational trailers. the affected vehicles have a vertically-mounted furnace installed.",
+      "summary_method": "automatic_source_extract",
+      "source_detail": "Cruiser RV (Cruiser) is recalling certain 2016-2017 Boss recreational trailers.  The affected vehicles have a vertically-mounted furnace installed such that the exhaust ports may be at the top of the furnace instead of at the bottom.",
+      "consequence": "If the ports are located in the wrong area it can cause restriction in the chamber, making the furnace operation unsafe, increasing the risk of injury.",
+      "remedy": "Cruiser will notify owners, and dealers will reinstall the furnace so that the exhaust port is at the bottom, free of charge.  The recall began on March 8, 2017.  Owners may contact Cruiser customer service at 1-866-277-5630.  Cruiser's number for this recall is 98.03.12.",
+      "products": [
+        "BOSS"
+      ],
+      "status": "Recall announced; remedy information in official record",
+      "related_investigations": [],
+      "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=17V074000",
+      "source_label": "NHTSA campaign record"
+    },
+    {
+      "id": "16V821000",
+      "company": "Cruise",
+      "reported": "2016-11-14",
+      "subject": "Cruiser RV (Cruiser) is recalling certain model year 2015-2016 Stryker toy hauler trailers manufactured June 12, 2014, to August 27, 2015, e",
+      "summary": "The recall concerns cruiser rv (cruiser) is recalling certain model year 2015-2016 stryker toy hauler trailers manufactured june 12, 2014, to august 27, 2015, equipp.",
+      "summary_method": "automatic_source_extract",
+      "source_detail": "Cruiser RV (Cruiser) is recalling certain model year 2015-2016 Stryker toy hauler trailers manufactured June 12, 2014, to August 27, 2015, equipped with aluminum black ladders manufactured by Christianson Industries.  The affected ladders have retractable hinges, each with a welded 'top hat' that can separate from the hinge.",
+      "consequence": "If the hinges separate from the ladder while in use, the ladder may fall from the vehicle, increasing the risk of injury.",
+      "remedy": "Cruiser will notify owners, and dealers will install a hinge brace over the back of the existing hinges, free of charge.  The recall began on December 2, 2016.  Owners may contact Cruiser customer service at 1-260-562-3500.  Cruiser's number for this recall is 99-03-11.",
+      "products": [
+        "STRYKER TOY"
+      ],
+      "status": "Recall announced; remedy information in official record",
+      "related_investigations": [],
+      "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=16V821000",
+      "source_label": "NHTSA campaign record"
+    },
+    {
+      "id": "16V565000",
+      "company": "Cruise",
+      "reported": "2016-07-29",
+      "subject": "Cruiser RV (Cruiser) is recalling certain model year 2017 Shadow Cruiser, Fun Finder, MPG, Radiance, South Fork, and Stryker recreational tr",
+      "summary": "The recall concerns cruiser rv (cruiser) is recalling certain model year 2017 shadow cruiser, fun finder, mpg, radiance, south fork, and stryker recreational trailer.",
+      "summary_method": "automatic_source_extract",
+      "source_detail": "Cruiser RV (Cruiser) is recalling certain model year 2017 Shadow Cruiser, Fun Finder, MPG, Radiance, South Fork, and Stryker recreational trailers.  The affected vehicles have an LED light on the front cap of the camper that may short circuit and overheat.",
+      "consequence": "If the light overheats there would be an increased risk of a fire.",
+      "remedy": "Cruiser will notify owners, and dealers will replace the light with one that has built-in voltage protection.  The recall began on September 1, 2016.  Owners may contact Cruiser customer service at 1-260-562-3500.",
+      "products": [
+        "SHADOW CRUISER",
+        "FUN FINDER",
+        "RADIANCE",
+        "STRYKER TOY",
+        "MPG",
+        "SOUTH FORK"
+      ],
+      "status": "Recall announced; remedy information in official record",
+      "related_investigations": [],
+      "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=16V565000",
+      "source_label": "NHTSA campaign record"
+    },
+    {
+      "id": "16V196000",
+      "company": "Cruise",
+      "reported": "2016-04-07",
+      "subject": "Cruiser RV (Cruiser) is recalling certain model year 2016-2017 Stryker travel trailers, models ST3316, STG3112 and STG3212, manufactured Dec",
+      "summary": "The affected vehicles are equipped with safety chains on the A-frame that are rated for 11,700 lbs instead of being rated equal to, or greater than, the gross vehicle weight rating (GVWR) of the travel trailer.",
+      "summary_method": "automatic_source_extract",
+      "source_detail": "Cruiser RV (Cruiser) is recalling certain model year 2016-2017 Stryker travel trailers, models ST3316, STG3112 and STG3212, manufactured December 11, 2015, to March 10, 2016.  The affected vehicles are equipped with safety chains on the A-frame that are rated for 11,700 lbs instead of being rated equal to, or greater than, the gross vehicle weight rating (GVWR) of the travel trailer.",
+      "consequence": "In the event the main trailer connection fails, the weight of the trailer can break the safety chains if the chains are not strong enough, allowing the trailer to separate from the vehicle, increasing the risk of a crash.",
+      "remedy": "Cruiser will notify owners, and dealers will replace the existing safety chains with chains that have a 16,200lb rating, free of charge.  The recall began on April 21, 2016.  Owners may contact Cruiser customer service at 1-260-562-3500.",
+      "products": [
+        "STRYKER TOY"
+      ],
+      "status": "Recall announced; remedy information in official record",
+      "related_investigations": [],
+      "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=16V196000",
+      "source_label": "NHTSA campaign record"
+    },
+    {
+      "id": "15V401000",
+      "company": "Cruise",
+      "reported": "2015-06-24",
+      "subject": "Cruiser RV (Cruiser) is recalling certain model year 2016 Stryker travel trailers manufactured March 23, 2015, to April 20, 2015.  In the af",
+      "summary": "The recall concerns cruiser rv (cruiser) is recalling certain model year 2016 stryker travel trailers manufactured march 23, 2015, to april 20, 2015. in the affected.",
+      "summary_method": "automatic_source_extract",
+      "source_detail": "Cruiser RV (Cruiser) is recalling certain model year 2016 Stryker travel trailers manufactured March 23, 2015, to April 20, 2015.  In the affected trailers, the studs that are used to attach the wheels to the axle hubs may break.",
+      "consequence": "If the wheel studs break, the wheel could detach from the vehicle, increasing the risk of a crash.",
+      "remedy": "Cruiser will notify owners, and dealers will replace any affected wheel hub, free of charge. The recall began on July 14, 2015.  Owners may contact Cruiser customer service at 1-866-277-5630.  Cruiser's number for this recall is 11043R & 11044R.",
+      "products": [
+        "STRYKER TOY"
+      ],
+      "status": "Recall announced; remedy information in official record",
+      "related_investigations": [],
+      "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=15V401000",
+      "source_label": "NHTSA campaign record"
+    },
+    {
+      "id": "15V234000",
+      "company": "Cruise",
+      "reported": "2015-04-20",
+      "subject": "Cruiser RV (Cruiser) is recalling certain model year 2015 Viewfinder recreational trailers manufactured September 4, 2014, to March 30, 2015",
+      "summary": "The recall concerns cruiser rv (cruiser) is recalling certain model year 2015 viewfinder recreational trailers manufactured september 4, 2014, to march 30, 2015. in .",
+      "summary_method": "automatic_source_extract",
+      "source_detail": "Cruiser RV (Cruiser) is recalling certain model year 2015 Viewfinder recreational trailers manufactured September 4, 2014, to March 30, 2015.  In the affected vehicles, the liquid propane (LP) compartment in the slide room is not properly sealed to the interior of the trailer.  If a leak occurs in the LP compartment, propane gas could dissipate into the interior of the trailer.",
+      "consequence": "A propane gas leak into the interior of the trailer increases the risk of a fire in the presence of an ignition source.",
+      "remedy": "Cruiser will notify owners, and dealers will modify the recreational trailer so that the LP compartment is sealed from the passenger area, free of charge.  The recall began on May 14, 2015.  Owners may contact Cruiser customer service at 1-866-277-5630.  Cruiser's number for this recall is 11041R.",
+      "products": [
+        "VIEWFINDER"
+      ],
+      "status": "Recall announced; remedy information in official record",
+      "related_investigations": [],
+      "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=15V234000",
+      "source_label": "NHTSA campaign record"
+    },
+    {
+      "id": "15V103000",
+      "company": "Cruise",
+      "reported": "2015-02-23",
+      "subject": "Cruiser RV (Cruiser) is recalling certain model year 2016 Stryker Toy and Stryker Toy Hauler trailers manufactured July 21, 2014, to January",
+      "summary": "The recall concerns cruiser rv (cruiser) is recalling certain model year 2016 stryker toy and stryker toy hauler trailers manufactured july 21, 2014, to january 9, 2.",
+      "summary_method": "automatic_source_extract",
+      "source_detail": "Cruiser RV (Cruiser) is recalling certain model year 2016 Stryker Toy and Stryker Toy Hauler trailers manufactured July 21, 2014, to January 9, 2015, and equipped with an optional slide floor.  In the affected trailers, the slide floor can be flipped up to access the storage space underneath.  If the floor is flipped up while the trailer is stationary, the trailer occupants may be exposed to exhaust fumes from the generator or fumes from the exterior fueling station.",
+      "consequence": "If the optional slide floor is opened and the occupants are exposed to fumes, there is an increased risk of injury.",
+      "remedy": "Cruiser will notify owners, and dealers will secure the slide floor so that it cannot be opened, completely sealing it from the occupant space, free of charge. The recall began April 14, 2015. Owners may contact Cruiser customer service at 1-866-277-5630.",
+      "products": [
+        "STRYKER TOY"
+      ],
+      "status": "Recall announced; remedy information in official record",
+      "related_investigations": [],
+      "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=15V103000",
+      "source_label": "NHTSA campaign record"
+    },
+    {
+      "id": "14V541000",
+      "company": "Other AV / ADAS",
+      "reported": "2014-09-09",
+      "subject": "General Motors LLC (GM) is recalling certain model year 2013-2015 Cadillac XTS vehicles manufactured February 14, 2012, to August 22, 2014,",
+      "summary": "The recall concerns general motors llc (gm) is recalling certain model year 2013-2015 cadillac xts vehicles manufactured february 14, 2012, to august 22, 2014, and 2.",
+      "summary_method": "automatic_source_extract",
+      "source_detail": "General Motors LLC (GM) is recalling certain model year 2013-2015 Cadillac XTS vehicles manufactured February 14, 2012, to August 22, 2014, and 2014-2015 Chevrolet Impala vehicles manufactured November 5, 2012, to September 2, 2014.  In the affected vehicles, the electronic parking brake piston actuation arm may not fully retract causing the brake pads to stay partially engaged.",
+      "consequence": "Brake pads that remain partially engaged with the rotors may cause excessive brake heat that may result in a fire.",
+      "remedy": "GM will notify owners, and dealers will update the electronic parking brake software, free of charge.  The recall began on October 28, 2014.  Owners may contact Chevrolet customer service at 1-800-222-1020, or Cadillac customer service at 1-800-458-8006.  GM's number for this recall is 14471.",
+      "products": [
+        "IMPALA",
+        "XTS"
+      ],
+      "status": "Recall announced; remedy information in official record",
+      "related_investigations": [
+        "PE14010"
+      ],
+      "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=14V541000",
+      "source_label": "NHTSA campaign record"
+    },
+    {
+      "id": "13V649000",
+      "company": "Cruise",
+      "reported": "2013-11-19",
+      "subject": "Cruiser RV is recalling certain model year 2006-2013 Fun Finder, Shadow Cruiser, Fun Finder Xtra, Viewfinder, Signature, Radiance, Enterra r",
+      "summary": "The recall concerns cruiser rv is recalling certain model year 2006-2013 fun finder, shadow cruiser, fun finder xtra, viewfinder, signature, radiance, enterra recrea.",
+      "summary_method": "automatic_source_extract",
+      "source_detail": "Cruiser RV is recalling certain model year 2006-2013 Fun Finder, Shadow Cruiser, Fun Finder Xtra, Viewfinder, Signature, Radiance, Enterra recreational trailers manufactured January 1, 2006, through April 25, 2013 and equipped with Fastec-brand door locks.  It may be possible to remove the key from the lock in a way that potentially jams the deadbolt.",
+      "consequence": "If the deadbolt jams, the interior side of the door lock may also jam.  A person inside the travel trailer at the time will then be locked in and be unable to exit the vehicle without using the emergency exit, increasing the risk of injury.",
+      "remedy": "Cruiser RV will notify owners, and Fastec will coordinate the inspection and replacement of the cylinders, as needed, free of charge.  The recall began January 20, 2014.  Owners may contact Cruiser RV at 1-260-562-3500 or Fastec at 1-800-837-2505.",
+      "products": [
+        "RADIANCE",
+        "VIEWFINDER",
+        "SIGNATURE",
+        "ENTERRA",
+        "SHADOW CRUISER",
+        "FUN FINDER XTRA",
+        "FUN FINDER"
+      ],
+      "status": "Recall announced; remedy information in official record",
+      "related_investigations": [],
+      "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=13V649000",
+      "source_label": "NHTSA campaign record"
+    },
+    {
+      "id": "13V500000",
+      "company": "Other AV / ADAS",
+      "reported": "2013-11-01",
+      "subject": "American Honda Motor Company (Honda) is recalling certain model year 2007-2008 Honda Odyssey vehicles manufactured August 8, 2006, through S",
+      "summary": "Due to a combination of system components and software, the Vehicle Safety Assist System (VSA) may apply the brakes unexpectedly.",
+      "summary_method": "automatic_source_extract",
+      "source_detail": "American Honda Motor Company (Honda) is recalling certain model year 2007-2008 Honda Odyssey vehicles manufactured August 8, 2006, through September 8, 2008.  Due to a combination of system components and software, the Vehicle Safety Assist System (VSA) may apply the brakes unexpectedly.",
+      "consequence": "The vehicle may suddenly and unexpectedly brake hard, and without illuminating the brake lights, increasing the risk of a crash from behind.",
+      "remedy": "Parts to remedy these vehicles will not be available until the spring of 2014.  Honda will send owners an interim letter notifying them of the issue and instruct them how to prevent unintended braking.  A second notification will be sent when the parts become available.  Interim notification was mailed in December 2013.  The recall began on April 29, 2014.   Owners may contact Honda at 1-800-999-1009 or visit their website at www.recalls.honda.com.  Honda's recall number is JC5.",
+      "products": [
+        "ODYSSEY"
+      ],
+      "status": "Recall announced; remedy information in official record",
+      "related_investigations": [
+        "PE13024"
+      ],
+      "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=13V500000",
+      "source_label": "NHTSA campaign record"
+    },
+    {
+      "id": "12V094000",
+      "company": "Cruise",
+      "reported": "2012-03-07",
+      "subject": "CRUISER RV IS RECALLING CERTAIN MODEL YEAR 2013 ENTERRA RECREATIONAL VEHICLES, MODELS E303BHS, AND E314RES, MANUFACTURED FROM DECEMBER 16, 2",
+      "summary": "THESE VEHICLES HAVE THE INCORRECT FEDERAL ID TAG, TIRE AND WHEEL INFORMATION LABELS WHICH FAIL TO COMPLY WITH THE REQUIREMENTS OF PART 567, \"CERTIFICATION.\".",
+      "summary_method": "automatic_source_extract",
+      "source_detail": "CRUISER RV IS RECALLING CERTAIN MODEL YEAR 2013 ENTERRA RECREATIONAL VEHICLES, MODELS E303BHS, AND E314RES, MANUFACTURED FROM DECEMBER 16, 2011, THROUGH FEBRUARY 17, 2012.  THESE VEHICLES HAVE THE INCORRECT FEDERAL ID TAG, TIRE AND WHEEL INFORMATION LABELS WHICH FAIL TO COMPLY WITH THE REQUIREMENTS OF PART 567, \"CERTIFICATION.\"",
+      "consequence": "FAILURE TO FOLLOW PROPER TIRE AND WHEEL SPECIFICATIONS BECAUSE OF A MISPRINTED LABEL COULD INCREASE THE RISK OF A CRASH.",
+      "remedy": "CRUISER RV WILL MAIL TO CONSUMERS THE CORRECTED LABEL OR THE CUSTOMER WILL HAVE THE OPTION FOR DEALERS TO INSTALL THE LABEL FREE OF CHARGE.  THE SAFETY RECALL BEGAN ON MARCH 16, 2012.  OWNERS MAY CONTACT CRUISER RV AT 1-877-514-7289.",
+      "products": [
+        "ENTERRA E314RES",
+        "ENTERRA E303BHS"
+      ],
+      "status": "Recall announced; remedy information in official record",
+      "related_investigations": [],
+      "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=12V094000",
+      "source_label": "NHTSA campaign record"
+    },
+    {
+      "id": "11V497000",
+      "company": "Cruise",
+      "reported": "2011-10-05",
+      "subject": "CRUISER RV IS RECALLING CERTAIN MODEL YEAR 2011 SHADOW CRUISER AND VIEWFINDER RECREATIONAL VEHICLES, MANUFACTURED FROM APRIL 21, 2011, THROU",
+      "summary": "THESE VEHICLES HAVE THE INCORRECT FEDERAL ID TAG, GROSS VEHICLE WEIGHT RATING (GVWR) INFORMATION LABELS WHICH FAILS TO COMPLY WITH THE REQUIREMENTS OF PART 567, \"CERTIFICATION.\".",
+      "summary_method": "automatic_source_extract",
+      "source_detail": "CRUISER RV IS RECALLING CERTAIN MODEL YEAR 2011 SHADOW CRUISER AND VIEWFINDER RECREATIONAL VEHICLES, MANUFACTURED FROM APRIL 21, 2011, THROUGH SEPTEMBER 6, 2011.  THESE VEHICLES HAVE THE INCORRECT FEDERAL ID TAG, GROSS VEHICLE WEIGHT RATING (GVWR) INFORMATION LABELS WHICH FAILS TO COMPLY WITH THE REQUIREMENTS OF PART 567, \"CERTIFICATION.\"",
+      "consequence": "FAILURE TO FOLLOW PROPER VEHICLE LOADING SPECIFICATIONS BECAUSE OF A MISPRINTED LABEL COULD INCREASE THE RISK OF A CRASH.",
+      "remedy": "CRUISER RV WILL MAIL TO CONSUMERS THE CORRECTED LABEL OR THE CUSTOMER WILL HAVE THE OPTION FOR DEALERS TO INSTALL THE LABEL FREE OF CHARGE.  THE SAFETY RECALL BEGAN ON NOVEMBER 30, 2011.  OWNERS MAY CONTACT CRUISER RV AT 1-574-457-6472.",
+      "products": [
+        "SHADOW CRUISER",
+        "VIEWFINDER"
+      ],
+      "status": "Recall announced; remedy information in official record",
+      "related_investigations": [],
+      "source": "https://api.nhtsa.gov/recalls/campaignNumber?campaignNumber=11V497000",
+      "source_label": "NHTSA campaign record"
     }
   ]
 }
