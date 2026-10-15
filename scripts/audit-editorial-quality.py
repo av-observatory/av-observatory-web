@@ -23,7 +23,7 @@ def audit(rows,group):
         source=str(row.get("source_summary") or "").strip()
         if source and len(source)>120 and summary==source:
             errors.append(f"{group}/{ident}: verbatim source abstract")
-        if row.get("editorial_status") in ("needs_review","needs_primary_source"):
+        if row.get("editorial_status") in ("needs_review","needs_primary_source","source_retrieval_failed"):
             errors.append(f"{group}/{ident}: editorial verification incomplete")
     return errors
 
