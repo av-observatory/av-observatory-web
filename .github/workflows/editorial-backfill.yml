@@ -83,13 +83,13 @@ jobs:
           if ! git diff --cached --quiet; then
             git commit -m "data: retroactive official-source editorial corrections"
             git push origin HEAD:main
-            gh workflow run pages.yml --ref main
+            echo "Verified editorial corrections committed; deployment requires a clean cross-feed audit."
           fi
       - name: Publish only after cross-feed editorial audit passes
         run: |
           if ! python3 scripts/audit-editorial-quality.py; then
-            echo "::warning::Backfill remains incomplete; verified corrections committed but full R2 release deferred."
-            exit 0
+            echo "::error::Backfill remains incomplete; verified corrections committed but full R2 release blocked."
+            exit 1
           fi
           if [ -z "$R2_BUCKET" ] || [ -z "$R2_ACCOUNT_ID" ] || [ -z "$AWS_ACCESS_KEY_ID" ] || [ -z "$AWS_SECRET_ACCESS_KEY" ]; then
             echo "::warning::R2 publication not configured."
@@ -97,3 +97,4 @@ jobs:
           fi
           python3 scripts/publish-r2-data.py legislation --file public/data/legislation_tracker.json
           python3 scripts/publish-r2-data.py policy --file public/data/policy_tracker.json
+          gh workflow run pages.yml --ref main
