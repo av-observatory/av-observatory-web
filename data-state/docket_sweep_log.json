@@ -1,0 +1,121 @@
+{
+  "AK": {
+    "checked": null,
+    "attempted": "2026-10-15",
+    "sources_read": [],
+    "bills_found": [],
+    "unreadable": "Official site https://www.akleg.gov/ could not be opened: environment network policy blocked the host (proxy 403 / DNS failure). Only third-party search snippets were available, which do not count as an official check."
+  },
+  "AZ": {
+    "checked": null,
+    "attempted": "2026-10-15",
+    "sources_read": [],
+    "bills_found": [],
+    "unreadable": "Official site https://www.azleg.gov/ could not be opened: environment network policy blocked the host (proxy 403 / DNS failure). Only third-party search snippets were available, which do not count as an official check."
+  },
+  "CT": {
+    "checked": null,
+    "attempted": "2026-10-15",
+    "sources_read": [],
+    "bills_found": [],
+    "unreadable": "Official site https://www.cga.ct.gov/ could not be opened: environment network policy blocked the host (proxy 403 / DNS failure). Only third-party search snippets were available, which do not count as an official check."
+  },
+  "FL": {
+    "checked": null,
+    "attempted": "2026-10-15",
+    "sources_read": [],
+    "bills_found": [],
+    "unreadable": "Official site https://www.flsenate.gov/ could not be opened: environment network policy blocked the host (proxy 403 / DNS failure). Only third-party search snippets were available, which do not count as an official check."
+  },
+  "IA": {
+    "checked": null,
+    "attempted": "2026-10-15",
+    "sources_read": [],
+    "bills_found": [],
+    "unreadable": "Official site https://www.legis.iowa.gov/ could not be opened: environment network policy blocked the host (proxy 403 / DNS failure). Only third-party search snippets were available, which do not count as an official check."
+  },
+  "IN": {
+    "checked": null,
+    "attempted": "2026-10-15",
+    "sources_read": [],
+    "bills_found": [],
+    "unreadable": "Official site https://iga.in.gov/ could not be opened: environment network policy blocked the host (proxy 403 / DNS failure). Only third-party search snippets were available, which do not count as an official check."
+  },
+  "LA": {
+    "checked": null,
+    "attempted": "2026-10-15",
+    "sources_read": [],
+    "bills_found": [],
+    "unreadable": "Official site https://legis.la.gov/ could not be opened: environment network policy blocked the host (proxy 403 / DNS failure). Only third-party search snippets were available, which do not count as an official check."
+  },
+  "ME": {
+    "checked": null,
+    "attempted": "2026-10-15",
+    "sources_read": [],
+    "bills_found": [],
+    "unreadable": "Official site https://legislature.maine.gov/ could not be opened: environment network policy blocked the host (proxy 403 / DNS failure). Only third-party search snippets were available, which do not count as an official check."
+  },
+  "MO": {
+    "checked": null,
+    "attempted": "2026-10-15",
+    "sources_read": [],
+    "bills_found": [],
+    "unreadable": "Official site https://www.house.mo.gov/ could not be opened: environment network policy blocked the host (proxy 403 / DNS failure). Only third-party search snippets were available, which do not count as an official check."
+  },
+  "NC": {
+    "checked": null,
+    "attempted": "2026-10-15",
+    "sources_read": [],
+    "bills_found": [],
+    "unreadable": "Official site https://www.ncleg.gov/ could not be opened: environment network policy blocked the host (proxy 403 / DNS failure). Only third-party search snippets were available, which do not count as an official check."
+  },
+  "NH": {
+    "checked": null,
+    "attempted": "2026-10-15",
+    "sources_read": [],
+    "bills_found": [],
+    "unreadable": "Official site https://gc.nh.gov/ could not be opened: environment network policy blocked the host (proxy 403 / DNS failure). Only third-party search snippets were available, which do not count as an official check."
+  },
+  "NV": {
+    "checked": null,
+    "attempted": "2026-10-15",
+    "sources_read": [],
+    "bills_found": [],
+    "unreadable": "Official site https://www.leg.state.nv.us/ could not be opened: environment network policy blocked the host (proxy 403 / DNS failure). Only third-party search snippets were available, which do not count as an official check."
+  },
+  "OK": {
+    "checked": null,
+    "attempted": "2026-10-15",
+    "sources_read": [],
+    "bills_found": [],
+    "unreadable": "Official site https://www.oklegislature.gov/ could not be opened: environment network policy blocked the host (proxy 403 / DNS failure). Only third-party search snippets were available, which do not count as an official check."
+  },
+  "RI": {
+    "checked": null,
+    "attempted": "2026-10-15",
+    "sources_read": [],
+    "bills_found": [],
+    "unreadable": "Official site https://www.rilegislature.gov/ could not be opened: environment network policy blocked the host (proxy 403 / DNS failure). Only third-party search snippets were available, which do not count as an official check."
+  },
+  "TN": {
+    "checked": null,
+    "attempted": "2026-10-15",
+    "sources_read": [],
+    "bills_found": [],
+    "unreadable": "Official site https://wapp.capitol.tn.gov/ could not be opened: environment network policy blocked the host (proxy 403 / DNS failure). Only third-party search snippets were available, which do not count as an official check."
+  },
+  "VA": {
+    "checked": null,
+    "attempted": "2026-10-15",
+    "sources_read": [],
+    "bills_found": [],
+    "unreadable": "Official site https://lis.virginia.gov/ could not be opened: environment network policy blocked the host (proxy 403 / DNS failure). Only third-party search snippets were available, which do not count as an official check."
+  },
+  "WI": {
+    "checked": null,
+    "attempted": "2026-10-15",
+    "sources_read": [],
+    "bills_found": [],
+    "unreadable": "Official site https://docs.legis.wisconsin.gov/ could not be opened: environment network policy blocked the host (proxy 403 / DNS failure). Only third-party search snippets were available, which do not count as an official check."
+  }
+}
