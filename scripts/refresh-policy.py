@@ -38,7 +38,7 @@ ROOT = Path(__file__).resolve().parents[1]
 POLICY = ROOT / "public/data/policy_tracker.json"
 LEGISLATION = ROOT / "public/data/legislation_tracker.json"
 STATE = ROOT / "data-state/policy_source_state.json"  # not published; tracks page hashes
-MODEL = "claude-opus-5-5"
+MODEL = "claude-sonnet-5-5"  # classification with verbatim-quote checks; cheaper than Opus
 UA = "AV-Observatory-PolicyBot/1.0 (+https://av-observatory.com)"
 TODAY = date.today().isoformat()
 MAX_TEXT = 60_000
@@ -439,8 +439,8 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--open-issues", action="store_true")
-    ap.add_argument("--max-review", type=int, default=12)
-    ap.add_argument("--max-new", type=int, default=15)
+    ap.add_argument("--max-review", type=int, default=8)
+    ap.add_argument("--max-new", type=int, default=8)
     args = ap.parse_args()
 
     policy = json.loads(POLICY.read_text(encoding="utf-8"))
