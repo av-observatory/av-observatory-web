@@ -2,7 +2,7 @@
 import {useMemo,useState} from "react";
 import {useInvestigationsData} from "@/lib/investigations";
 import recallSnapshot from "../../public/data/nhtsa_av_recalls.json";
-import {nhtsaCardSummary,nhtsaCompany} from "@/lib/nhtsaEditorial";
+import {nhtsaCardSummary,nhtsaCardTitle,nhtsaCompany} from "@/lib/nhtsaEditorial";
 
 type Recall = (typeof recallSnapshot.recalls)[number];
 type Investigation = ReturnType<typeof useInvestigationsData>["data"]["investigations"][number] & {related_recalls?:string[]};
@@ -50,7 +50,7 @@ export default function InvestigationTracker(){
             <span className={`text-xs font-semibold rounded-full px-2 py-1 ${r.status==="Open"?"bg-[#e8f4ed] text-[#236b4b]":"bg-[#eef1f4] text-neutral-700"}`}>{r.status}</span>
             <span className="text-xs text-neutral-500">{r.action}</span><span className="text-xs font-mono">{r.id}</span>
           </div>
-          <h2 className="text-xl font-semibold text-[#0b1d33] mt-2">{r.company} · {r.subject}</h2>
+          <h2 className="text-xl font-semibold text-[#0b1d33] mt-2">{r.company} · {nhtsaCardTitle(r.subject,r.source_detail)}</h2>
           <p className="text-sm text-neutral-700 mt-2 leading-relaxed line-clamp-5">{r.summary}</p>
           </div><a className="text-sm text-[#184f95] underline" href={r.source} target="_blank" rel="noreferrer">{r.source_label??"NHTSA"} ↗</a>
         </div>
@@ -62,7 +62,7 @@ export default function InvestigationTracker(){
         {r.related_recalls && r.related_recalls.length>0 && <div className="mt-3 border-t border-neutral-200 pt-3 text-sm"><strong>Associated NHTSA recall{r.related_recalls.length===1?"":"s"}:</strong> {r.related_recalls.map((id,i)=><span key={id}>{i?", ":""}{recallIds.has(id)?<button type="button" onClick={()=>{setCategory("Recalls");setCompany("All")}} className="text-[#184f95] underline">{id} (view recalls)</button>:id}</span>)}</div>}
       </article>) : recallRows.map(r=><article key={r.id} className="viz-card p-5">
         <div className="flex flex-wrap justify-between gap-3">
-          <div><div className="flex flex-wrap gap-2 items-center"><span className="rounded-full bg-[#fff1d9] text-[#76500d] px-2 py-1 text-xs font-semibold">Safety Recall</span><span className="text-xs font-mono">{r.id}</span></div><h2 className="text-xl font-semibold text-[#0b1d33] mt-2">{r.company} · {r.subject}</h2></div>
+          <div><div className="flex flex-wrap gap-2 items-center"><span className="rounded-full bg-[#fff1d9] text-[#76500d] px-2 py-1 text-xs font-semibold">Safety Recall</span><span className="text-xs font-mono">{r.id}</span></div><h2 className="text-xl font-semibold text-[#0b1d33] mt-2">{r.company} · {nhtsaCardTitle(r.subject,r.source_detail)}</h2></div>
           <a href={r.source} target="_blank" rel="noreferrer" className="text-sm text-[#184f95] underline">{r.source_label} ↗</a>
         </div>
         <p className="text-sm text-neutral-700 mt-2 leading-relaxed line-clamp-5">{r.summary}</p>

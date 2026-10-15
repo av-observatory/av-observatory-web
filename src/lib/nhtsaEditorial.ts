@@ -36,3 +36,30 @@ export function nhtsaCompany(company:string, product:string, subject:string) {
   }
   return company;
 }
+
+const TITLE_MAX=100; // about two lines at the card's title size
+/** Subjects cut at 140 chars by the source refresh are NHTSA's opening sentence, not a headline. */
+function looksTruncated(subject:string){ return subject.length>=130 && !/[.!?]$/.test(subject.trim()); }
+function clip(text:string,max:number){
+  if(text.length<=max) return text;
+  const andAt=text.slice(0,max).lastIndexOf(" and ");
+  if(andAt>=30) return text.slice(0,andAt);
+  const comma=text.slice(0,max).lastIndexOf(", ");
+  if(comma>=30) return text.slice(0,comma);
+  return text.slice(0,max).replace(/\s+\S*$/,"").replace(/[,;:\s]+$/,"")+"…";
+}
+/**
+ * Short card headline. Reviewed subjects pass through; a cut-off subject becomes the
+ * hazard clause of the source text ("Software may allow the vehicle to enter a closed
+ * freeway construction zone") so the title fits on one or two lines and the detail
+ * below does not open by repeating the same sentence.
+ */
+export function nhtsaCardTitle(subject:string,detail?:string){
+  const s=(subject||"").trim();
+  if(!looksTruncated(s)) return s;
+  const sentences=(detail||s).replace(/https?:\/\/\S+/g,"").split(/(?<=[.!?])\s+(?=[A-Z])/).map(x=>x.trim()).filter(Boolean);
+  const hazard=sentences.find(x=>!/\bis recalling\b/i.test(x)&&x.length>=25);
+  const base=hazard ?? (sentences[0]??s).replace(/^.*?\)?\s+is recalling\s+/i,"Recall of ");
+  const text=base.replace(/^the\s+/i,"").replace(/[.\s]+$/,"");
+  return clip(text.charAt(0).toUpperCase()+text.slice(1),TITLE_MAX);
+}
