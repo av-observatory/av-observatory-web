@@ -38,3 +38,31 @@ export function sortRows(rows: ActivityMonthlyRow[]): ActivityMonthlyRow[] {
       : a.calendar_month - b.calendar_month
   );
 }
+
+/**
+ * Maps month-sorted rows to chart points and inserts a label-only point for
+ * every calendar month with no row, so the x axis stays continuous and lines
+ * break across unreported months instead of connecting over them.
+ */
+export function mapWithMonthGaps<R extends { calendar_year: number; calendar_month: number }, O extends { label: string }>(
+  rows: R[],
+  fn: (row: R) => O,
+): Array<O | { label: string }> {
+  const out: Array<O | { label: string }> = [];
+  let prev: R | undefined;
+  for (const row of rows) {
+    if (prev) {
+      let gap = (row.calendar_year - prev.calendar_year) * 12 + (row.calendar_month - prev.calendar_month) - 1;
+      let y = prev.calendar_year;
+      let m = prev.calendar_month;
+      while (gap-- > 0) {
+        m += 1;
+        if (m > 12) { m = 1; y += 1; }
+        out.push({ label: monthLabel(y, m) });
+      }
+    }
+    out.push(fn(row));
+    prev = row;
+  }
+  return out;
+}

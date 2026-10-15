@@ -3,7 +3,7 @@
 import {
   LineChart, Line, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
 } from "recharts";
-import { ActivityMonthlyRow, monthLabel } from "@/lib/activity";
+import { ActivityMonthlyRow, mapWithMonthGaps, monthLabel } from "@/lib/activity";
 import { SERIES, AXIS_PROPS, GRID_PROPS, TOOLTIP_PROPS, LEGEND_PROPS } from "@/lib/chartTheme";
 
 function reportedRows(rows: ActivityMonthlyRow[]) {
@@ -67,7 +67,7 @@ export function ActivityCompositeStats({ rows, company }: { rows: ActivityMonthl
 }
 
 export function ActivityWaitingTime({ rows }: { rows: ActivityMonthlyRow[] }) {
-  const data=reportedRows(rows).map(r=>{
+  const data=mapWithMonthGaps(reportedRows(rows),r=>{
     const d=derived(r);
     return {
       label:monthLabel(r.calendar_year,r.calendar_month),
@@ -104,7 +104,7 @@ export function ActivityWaitingTime({ rows }: { rows: ActivityMonthlyRow[] }) {
 }
 
 export function ActivityVmtUtilization({ rows }: { rows: ActivityMonthlyRow[] }) {
-  const data=reportedRows(rows).map(r=>{
+  const data=mapWithMonthGaps(reportedRows(rows),r=>{
     const d=derived(r);
     return {
       label:monthLabel(r.calendar_year,r.calendar_month),
@@ -145,7 +145,7 @@ export function ActivityVmtUtilization({ rows }: { rows: ActivityMonthlyRow[] })
 }
 
 export function ActivityParkingEstimate({ rows }: { rows: ActivityMonthlyRow[] }) {
-  const data=reportedRows(rows).map(r=>{
+  const data=mapWithMonthGaps(reportedRows(rows),r=>{
     const d=derived(r);
     return {
       label:monthLabel(r.calendar_year,r.calendar_month),
@@ -153,7 +153,7 @@ export function ActivityParkingEstimate({ rows }: { rows: ActivityMonthlyRow[] }
       minutes:d.parkedMinTrip14===null?null:Number(d.parkedMinTrip14.toFixed(1)),
     };
   });
-  const latest=data.at(-1);
+  const latest=data.at(-1) as {hours:number;minutes:number|null}|undefined; // last point is always a reported month
   if(!latest) return null;
   return <div className="viz-card p-4">
     <div className="flex flex-wrap items-baseline justify-between gap-2">

@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
-import { ActivityMonthlyRow, monthLabel } from "@/lib/activity";
+import { ActivityMonthlyRow, mapWithMonthGaps, monthLabel } from "@/lib/activity";
 import { SERIES, AXIS_PROPS, GRID_PROPS, TOOLTIP_PROPS } from "@/lib/chartTheme";
 
 const METRICS = {
@@ -24,10 +24,12 @@ export function ActivityExplorer({ rows }: { rows: ActivityMonthlyRow[] }) {
       cur.value += Number(r[cfg.key] ?? 0);
       byMonth.set(key,cur);
     }
-    return Array.from(byMonth.values()).sort((a,b)=>a.year-b.year||a.month-b.month).map(r=>({label:monthLabel(r.year,r.month),value:r.value}));
+    const months=Array.from(byMonth.values()).sort((a,b)=>a.year-b.year||a.month-b.month)
+      .map(r=>({calendar_year:r.year,calendar_month:r.month,value:r.value}));
+    return mapWithMonthGaps(months,r=>({label:monthLabel(r.calendar_year,r.calendar_month),value:r.value}));
   },[rows,cfg.key]);
 
-  const latest=data.at(-1)?.value ?? 0;
+  const latest=(data.at(-1) as {value?:number}|undefined)?.value ?? 0;
   return <div>
     <div className="grid sm:grid-cols-2 gap-3 mb-5">
       <label className="filter-label">Measure
