@@ -3,9 +3,9 @@
   "purpose": "Same-operator, same-state rate: Waymo's SGO incident reports filed for California, per million miles of Waymo's own CPUC-reported California VMT, by month.",
   "methodology_note": "Both numerator and denominator are Waymo-specific and California-specific -- a materially better-grounded exposure rate than cross-operator or cross-geography comparisons elsewhere on this site. Still approximate: SGO report month is the FILING month, not necessarily the incident month; CPUC's ingested months have real gaps (only months with data are included here, which understates true VMT for any period spanning a gap); 'incident' is a broad SGO reporting category, not strictly at-fault crashes.",
   "months_included": 47,
-  "total_waymo_ca_vmt": 141492805.9,
-  "total_waymo_ca_sgo_incidents": 730,
-  "overall_incidents_per_million_miles": 5.159,
+  "total_waymo_ca_vmt": 59977266.0,
+  "total_waymo_ca_sgo_incidents": 716,
+  "overall_incidents_per_million_miles": 11.938,
   "monthly": [
     {
       "year": 2022,
@@ -88,8 +88,8 @@
       "year": 2023,
       "month": 2,
       "waymo_ca_vmt": 90781.6,
-      "waymo_ca_sgo_incidents": 3,
-      "incidents_per_million_miles": 33.046
+      "waymo_ca_sgo_incidents": 2,
+      "incidents_per_million_miles": 22.031
     },
     {
       "year": 2023,
@@ -123,8 +123,8 @@
       "year": 2023,
       "month": 9,
       "waymo_ca_vmt": 246832.1,
-      "waymo_ca_sgo_incidents": 5,
-      "incidents_per_million_miles": 20.257
+      "waymo_ca_sgo_incidents": 4,
+      "incidents_per_million_miles": 16.205
     },
     {
       "year": 2023,
@@ -151,8 +151,8 @@
       "year": 2024,
       "month": 1,
       "waymo_ca_vmt": 426807.6,
-      "waymo_ca_sgo_incidents": 3,
-      "incidents_per_million_miles": 7.029
+      "waymo_ca_sgo_incidents": 2,
+      "incidents_per_million_miles": 4.686
     },
     {
       "year": 2024,
@@ -179,22 +179,22 @@
       "year": 2024,
       "month": 8,
       "waymo_ca_vmt": 1828841.3,
-      "waymo_ca_sgo_incidents": 20,
-      "incidents_per_million_miles": 10.936
+      "waymo_ca_sgo_incidents": 19,
+      "incidents_per_million_miles": 10.389
     },
     {
       "year": 2024,
       "month": 9,
       "waymo_ca_vmt": 2065732.0,
-      "waymo_ca_sgo_incidents": 27,
-      "incidents_per_million_miles": 13.07
+      "waymo_ca_sgo_incidents": 20,
+      "incidents_per_million_miles": 9.682
     },
     {
       "year": 2024,
       "month": 10,
       "waymo_ca_vmt": 2565470.1,
-      "waymo_ca_sgo_incidents": 24,
-      "incidents_per_million_miles": 9.355
+      "waymo_ca_sgo_incidents": 23,
+      "incidents_per_million_miles": 8.965
     },
     {
       "year": 2024,
@@ -228,99 +228,99 @@
       "year": 2025,
       "month": 3,
       "waymo_ca_vmt": 4265981.5,
-      "waymo_ca_sgo_incidents": 42,
-      "incidents_per_million_miles": 9.845
+      "waymo_ca_sgo_incidents": 41,
+      "incidents_per_million_miles": 9.611
     },
     {
       "year": 2025,
       "month": 4,
-      "waymo_ca_vmt": 4784485.3,
+      "waymo_ca_vmt": 23879.9,
       "waymo_ca_sgo_incidents": 44,
-      "incidents_per_million_miles": 9.196
+      "incidents_per_million_miles": 1842.551
     },
     {
       "year": 2025,
       "month": 5,
-      "waymo_ca_vmt": 5336125.6,
+      "waymo_ca_vmt": 18838.9,
       "waymo_ca_sgo_incidents": 46,
-      "incidents_per_million_miles": 8.62
+      "incidents_per_million_miles": 2441.76
     },
     {
       "year": 2025,
       "month": 6,
-      "waymo_ca_vmt": 3567131.7,
+      "waymo_ca_vmt": 14818.4,
       "waymo_ca_sgo_incidents": 19,
-      "incidents_per_million_miles": 5.326
+      "incidents_per_million_miles": 1282.189
     },
     {
       "year": 2025,
       "month": 7,
-      "waymo_ca_vmt": 4875510.0,
+      "waymo_ca_vmt": 22371.4,
       "waymo_ca_sgo_incidents": 20,
-      "incidents_per_million_miles": 4.102
+      "incidents_per_million_miles": 893.998
     },
     {
       "year": 2025,
       "month": 8,
-      "waymo_ca_vmt": 5571862.8,
+      "waymo_ca_vmt": 34414.3,
       "waymo_ca_sgo_incidents": 15,
-      "incidents_per_million_miles": 2.692
+      "incidents_per_million_miles": 435.866
     },
     {
       "year": 2025,
       "month": 9,
-      "waymo_ca_vmt": 6567950.6,
+      "waymo_ca_vmt": 35143.6,
       "waymo_ca_sgo_incidents": 17,
-      "incidents_per_million_miles": 2.588
+      "incidents_per_million_miles": 483.73
     },
     {
       "year": 2025,
       "month": 10,
-      "waymo_ca_vmt": 7902019.3,
+      "waymo_ca_vmt": 24860.8,
       "waymo_ca_sgo_incidents": 20,
-      "incidents_per_million_miles": 2.531
+      "incidents_per_million_miles": 804.478
     },
     {
       "year": 2025,
       "month": 11,
-      "waymo_ca_vmt": 8414102.0,
+      "waymo_ca_vmt": 26858.2,
       "waymo_ca_sgo_incidents": 28,
-      "incidents_per_million_miles": 3.328
+      "incidents_per_million_miles": 1042.513
     },
     {
       "year": 2025,
       "month": 12,
-      "waymo_ca_vmt": 8420126.8,
+      "waymo_ca_vmt": 20220.8,
       "waymo_ca_sgo_incidents": 23,
-      "incidents_per_million_miles": 2.732
+      "incidents_per_million_miles": 1137.445
     },
     {
       "year": 2026,
       "month": 1,
-      "waymo_ca_vmt": 9092739.3,
+      "waymo_ca_vmt": 36806.9,
       "waymo_ca_sgo_incidents": 22,
-      "incidents_per_million_miles": 2.42
+      "incidents_per_million_miles": 597.714
     },
     {
       "year": 2026,
       "month": 2,
-      "waymo_ca_vmt": 8191719.6,
+      "waymo_ca_vmt": 34208.8,
       "waymo_ca_sgo_incidents": 23,
-      "incidents_per_million_miles": 2.808
+      "incidents_per_million_miles": 672.342
     },
     {
       "year": 2026,
       "month": 3,
-      "waymo_ca_vmt": 9105108.3,
+      "waymo_ca_vmt": 20919.4,
       "waymo_ca_sgo_incidents": 33,
-      "incidents_per_million_miles": 3.624
+      "incidents_per_million_miles": 1577.485
     },
     {
       "year": 2026,
       "month": 4,
       "waymo_ca_vmt": 9414525.1,
-      "waymo_ca_sgo_incidents": 21,
-      "incidents_per_million_miles": 2.231
+      "waymo_ca_sgo_incidents": 20,
+      "incidents_per_million_miles": 2.124
     },
     {
       "year": 2026,

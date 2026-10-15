@@ -6,112 +6,112 @@
   "notes": {
     "waymo_ro_miles": "Waymo-reported revenue/operations miles for this geography",
     "hpms_benchmark_vmt": "FHWA Highway Performance Monitoring System human-driving VMT benchmark for the same geography",
-    "benchmark_crash_counts_by_outcome": "Modeled/benchmark human-driving crash counts by outcome category, NOT Waymo's own crash counts.",
-    "implied_human_benchmark_rate_per_million_miles": "benchmark_crash_count / hpms_benchmark_vmt * 1e6; human-driving benchmark rate, NOT a Waymo safety rate."
+    "benchmark_crash_counts_by_outcome": "Modeled/benchmark human-driving crash counts by outcome category (police_reported, airbag, fatal, blincoe, etc), NOT Waymo's own crash counts -- this is the comparison baseline Waymo computes against its own miles",
+    "implied_human_benchmark_rate_per_million_miles": "benchmark_crash_count / hpms_benchmark_vmt * 1e6 -- the implied human-driving crash rate for this geography, NOT a Waymo safety rate. This dataset does not include Waymo's own observed crash counts, so no Waymo-vs-human rate comparison is possible from this file alone."
   },
   "state_summary": [
     {
       "state": "California",
-      "waymo_ro_miles": 149519112.8,
-      "hpms_benchmark_vmt": 12855391133.7,
-      "s2_cell_count": 1102,
+      "waymo_ro_miles": 149519548.7,
+      "hpms_benchmark_vmt": 13218725278.3,
+      "s2_cell_count": 1241,
       "benchmark_crash_counts_by_outcome": {
-        "blincoe_any_injury": 22932.47,
-        "blincoe": 53470.96,
-        "police_reported": 27989.12,
-        "observed_any_injury": 15682.11,
-        "fatal": 204.06,
-        "airbag": 9002.24,
-        "ego_airbag": 9002.24,
-        "ka": 1476.59
+        "airbag": 8990.74,
+        "blincoe": 54075.43,
+        "blincoe_any_injury": 23625.0,
+        "ego_airbag": 8990.74,
+        "fatal": 130.28,
+        "ka": 1377.55,
+        "observed_any_injury": 16130.19,
+        "police_reported": 28401.71
       },
       "implied_human_benchmark_rate_per_million_miles": {
-        "blincoe_any_injury": 1.7839,
-        "blincoe": 4.1594,
-        "police_reported": 2.1772,
-        "observed_any_injury": 1.2199,
-        "fatal": 0.0159,
-        "airbag": 0.7003,
-        "ego_airbag": 0.7003,
-        "ka": 0.1149
+        "airbag": 0.6802,
+        "blincoe": 4.0908,
+        "blincoe_any_injury": 1.7872,
+        "ego_airbag": 0.6802,
+        "fatal": 0.0099,
+        "ka": 0.1042,
+        "observed_any_injury": 1.2203,
+        "police_reported": 2.1486
       }
     },
     {
       "state": "Arizona",
       "waymo_ro_miles": 92121323.8,
-      "hpms_benchmark_vmt": 7962036402.1,
-      "s2_cell_count": 615,
+      "hpms_benchmark_vmt": 7695167252.7,
+      "s2_cell_count": 642,
       "benchmark_crash_counts_by_outcome": {
-        "blincoe": 91952.56,
-        "airbag": 12255.42,
-        "blincoe_any_injury": 17373.97,
-        "police_reported": 41945.66,
-        "fatal": 184.38,
-        "ka": 908.49,
-        "ego_airbag": 12255.42,
-        "observed_any_injury": 11890.49
+        "airbag": 13052.31,
+        "blincoe": 95633.53,
+        "blincoe_any_injury": 17883.39,
+        "ego_airbag": 13052.31,
+        "fatal": 202.15,
+        "ka": 874.77,
+        "observed_any_injury": 12243.08,
+        "police_reported": 43576.38
       },
       "implied_human_benchmark_rate_per_million_miles": {
-        "blincoe": 11.5489,
-        "airbag": 1.5392,
-        "blincoe_any_injury": 2.1821,
-        "police_reported": 5.2682,
-        "fatal": 0.0232,
-        "ka": 0.1141,
-        "ego_airbag": 1.5392,
-        "observed_any_injury": 1.4934
+        "airbag": 1.6962,
+        "blincoe": 12.4277,
+        "blincoe_any_injury": 2.324,
+        "ego_airbag": 1.6962,
+        "fatal": 0.0263,
+        "ka": 0.1137,
+        "observed_any_injury": 1.591,
+        "police_reported": 5.6628
       }
     },
     {
       "state": "Texas",
       "waymo_ro_miles": 21064489.3,
-      "hpms_benchmark_vmt": 2200756116.0,
-      "s2_cell_count": 268,
+      "hpms_benchmark_vmt": 2320051719.9,
+      "s2_cell_count": 273,
       "benchmark_crash_counts_by_outcome": {
-        "ego_airbag": 6615.61,
-        "ka": 475.36,
-        "fatal": 61.89,
-        "blincoe": 28097.54,
-        "observed_any_injury": 6591.39,
-        "blincoe_any_injury": 9649.99,
-        "police_reported": 14025.75,
-        "airbag": 6615.61
+        "airbag": 5931.81,
+        "blincoe": 26337.68,
+        "blincoe_any_injury": 8809.95,
+        "ego_airbag": 5931.81,
+        "fatal": 62.89,
+        "ka": 410.39,
+        "observed_any_injury": 6019.63,
+        "police_reported": 13083.31
       },
       "implied_human_benchmark_rate_per_million_miles": {
-        "ego_airbag": 3.0061,
-        "ka": 0.216,
-        "fatal": 0.0281,
-        "blincoe": 12.7672,
-        "observed_any_injury": 2.9951,
-        "blincoe_any_injury": 4.3849,
-        "police_reported": 6.3731,
-        "airbag": 3.0061
+        "airbag": 2.5568,
+        "blincoe": 11.3522,
+        "blincoe_any_injury": 3.7973,
+        "ego_airbag": 2.5568,
+        "fatal": 0.0271,
+        "ka": 0.1769,
+        "observed_any_injury": 2.5946,
+        "police_reported": 5.6392
       }
     },
     {
       "state": "Georgia",
-      "waymo_ro_miles": 5783708.0,
-      "hpms_benchmark_vmt": 1572715857.4,
+      "waymo_ro_miles": 8624452.7,
+      "hpms_benchmark_vmt": 1689046785.9,
       "s2_cell_count": 224,
       "benchmark_crash_counts_by_outcome": {
-        "ka": 821.64,
-        "blincoe_any_injury": 26478.62,
-        "airbag": 10992.87,
-        "blincoe": 155978.04,
-        "police_reported": 70248.74,
-        "observed_any_injury": 18060.49,
-        "ego_airbag": 10992.87,
-        "fatal": 89.49
+        "airbag": 7115.6,
+        "blincoe": 108503.68,
+        "blincoe_any_injury": 17290.12,
+        "ego_airbag": 7115.6,
+        "fatal": 61.28,
+        "ka": 647.79,
+        "observed_any_injury": 11794.12,
+        "police_reported": 48553.18
       },
       "implied_human_benchmark_rate_per_million_miles": {
-        "ka": 0.5224,
-        "blincoe_any_injury": 16.8362,
-        "airbag": 6.9897,
-        "blincoe": 99.1775,
-        "police_reported": 44.6672,
-        "observed_any_injury": 11.4836,
-        "ego_airbag": 6.9897,
-        "fatal": 0.0569
+        "airbag": 4.2128,
+        "blincoe": 64.2396,
+        "blincoe_any_injury": 10.2366,
+        "ego_airbag": 4.2128,
+        "fatal": 0.0363,
+        "ka": 0.3835,
+        "observed_any_injury": 6.9827,
+        "police_reported": 28.7459
       }
     }
   ],
@@ -120,56 +120,56 @@
       "state": "Arizona",
       "county": "Maricopa",
       "waymo_ro_miles": 92121323.8,
-      "hpms_benchmark_vmt": 7962036402.1,
-      "s2_cell_count": 615
+      "hpms_benchmark_vmt": 7695167252.7,
+      "s2_cell_count": 642
     },
     {
       "state": "California",
       "county": "San Francisco",
       "waymo_ro_miles": 67907810.8,
-      "hpms_benchmark_vmt": 1221030634.7,
-      "s2_cell_count": 123
+      "hpms_benchmark_vmt": 1285157987.5,
+      "s2_cell_count": 134
     },
     {
       "state": "California",
       "county": "Los Angeles",
       "waymo_ro_miles": 67097806.2,
-      "hpms_benchmark_vmt": 6507241178.9,
-      "s2_cell_count": 312
+      "hpms_benchmark_vmt": 6597905194.4,
+      "s2_cell_count": 323
     },
     {
       "state": "Texas",
       "county": "Travis",
       "waymo_ro_miles": 21064489.3,
-      "hpms_benchmark_vmt": 2200756116.0,
-      "s2_cell_count": 268
+      "hpms_benchmark_vmt": 2320051719.9,
+      "s2_cell_count": 273
+    },
+    {
+      "state": "Georgia",
+      "county": "Fulton",
+      "waymo_ro_miles": 7860258.4,
+      "hpms_benchmark_vmt": 1250493012.5,
+      "s2_cell_count": 164
     },
     {
       "state": "California",
       "county": "San Mateo",
       "waymo_ro_miles": 7430245.9,
-      "hpms_benchmark_vmt": 1509957071.1,
-      "s2_cell_count": 286
+      "hpms_benchmark_vmt": 1709013500.0,
+      "s2_cell_count": 358
     },
     {
       "state": "California",
       "county": "Santa Clara",
-      "waymo_ro_miles": 7083249.9,
-      "hpms_benchmark_vmt": 3617162249.0,
-      "s2_cell_count": 381
-    },
-    {
-      "state": "Georgia",
-      "county": "Fulton",
-      "waymo_ro_miles": 5143399.2,
-      "hpms_benchmark_vmt": 1163635676.0,
-      "s2_cell_count": 164
+      "waymo_ro_miles": 7083685.8,
+      "hpms_benchmark_vmt": 3626648596.4,
+      "s2_cell_count": 426
     },
     {
       "state": "Georgia",
       "county": "DeKalb",
-      "waymo_ro_miles": 640308.8,
-      "hpms_benchmark_vmt": 409080181.4,
+      "waymo_ro_miles": 764194.2,
+      "hpms_benchmark_vmt": 438553773.4,
       "s2_cell_count": 60
     }
   ]

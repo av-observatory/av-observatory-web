@@ -9,13 +9,13 @@
       "2026-06"
     ],
     "note": "Sum of VMT Period 1+2+3 across all CPUC-reported months currently ingested for Waymo's Driverless Deployment program. Known gaps exist (see Activity page) -- this is NOT a complete monthly series, so it understates true cumulative VMT over the same period.",
-    "total_vmt": 138875300.0
+    "total_vmt": 57328338.9
   },
   "waymo_s2_side": {
     "source": "Waymo self-published S2-cell safety benchmark data, California, latest vintage",
-    "vintage_end": "202603",
+    "vintage_end": "202606",
     "note": "Cumulative 'RO miles' (revenue/operations miles) for California as of this vintage's reporting window. Scope (e.g. whether Pilot-program or non-passenger miles are included) is not documented in the source file.",
-    "total_miles": 118893629.0
+    "total_miles": 149519548.7
   },
   "caveats": [
     "Different accounting windows: CPUC is a sum of specific reported months (with gaps); Waymo S2 is a cumulative total through a vintage's end date.",

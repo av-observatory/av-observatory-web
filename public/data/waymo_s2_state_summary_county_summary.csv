@@ -1,9 +1,9 @@
 state,county,waymo_ro_miles,hpms_benchmark_vmt,s2_cell_count
-Arizona,Maricopa,92121323.8,7962036402.1,615
-California,San Francisco,67907810.8,1221030634.7,123
-California,Los Angeles,67097806.2,6507241178.9,312
-Texas,Travis,21064489.3,2200756116.0,268
-California,San Mateo,7430245.9,1509957071.1,286
-California,Santa Clara,7083249.9,3617162249.0,381
-Georgia,Fulton,5143399.2,1163635676.0,164
-Georgia,DeKalb,640308.8,409080181.4,60
+Arizona,Maricopa,92121323.8,7695167252.7,642
+California,San Francisco,67907810.8,1285157987.5,134
+California,Los Angeles,67097806.2,6597905194.4,323
+Texas,Travis,21064489.3,2320051719.9,273
+Georgia,Fulton,7860258.4,1250493012.5,164
+California,San Mateo,7430245.9,1709013500.0,358
+California,Santa Clara,7083685.8,3626648596.4,426
+Georgia,DeKalb,764194.2,438553773.4,60
