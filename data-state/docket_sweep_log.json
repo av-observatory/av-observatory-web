@@ -1,0 +1,194 @@
+{
+  "AK": {
+    "checked": "2026-10-15",
+    "sources_read": [
+      "https://www.akleg.gov/basis/Bill/Detail/34?Root=HB%20217",
+      "https://www.akleg.gov/basis/Bill/Detail/34?Root=SB+148"
+    ],
+    "bills_found": [
+      "HB 217",
+      "SB 148 (stalled in committee)"
+    ],
+    "unreadable": "akleg.gov returned 403 to WebFetch (read via curl); subject-title search only, no full-text search.",
+    "attempted": "2026-10-15"
+  },
+  "AZ": {
+    "checked": "2026-10-15",
+    "sources_read": [
+      "https://apps.azleg.gov/api/Bill/?sessionID=130",
+      "https://apps.azleg.gov/api/Bill/?sessionID=129",
+      "https://www.azleg.gov/legtext/57leg/2R/bills/SB1417P.pdf"
+    ],
+    "bills_found": [
+      "SB 1320",
+      "SB 1552 (AV provisions unverified in signed text)",
+      "SB 1417 (held)",
+      "SB 1466 (held)"
+    ],
+    "unreadable": "Bill status web page rendered empty; data via official apps.azleg.gov API; titles screened, no full-text search.",
+    "attempted": "2026-10-15"
+  },
+  "CT": {
+    "checked": null,
+    "sources_read": [],
+    "bills_found": [],
+    "unreadable": "cga.ct.gov could not be opened (TLS failure / 503); only search-result snippets seen. Re-check needed.",
+    "attempted": "2026-10-15"
+  },
+  "FL": {
+    "checked": "2026-10-15",
+    "sources_read": [
+      "https://www.flsenate.gov/Session/Bill/2026/1469",
+      "https://www.flsenate.gov/Session/Bill/2026/1616",
+      "https://www.flsenate.gov/Session/Bill/2026/1258"
+    ],
+    "bills_found": [
+      "HB 1469 (dead)",
+      "SB 1616 (dead)",
+      "SB 1258 (dead)"
+    ],
+    "unreadable": "No full-text search run on flsenate.gov; discovery via ch. 316 citation list; 2025 session not searched.",
+    "attempted": "2026-10-15"
+  },
+  "IA": {
+    "checked": "2026-10-15",
+    "sources_read": [
+      "https://www.legis.iowa.gov/legislation/billTracking/billHistory?billName=SF2384&ga=91",
+      "https://www.legis.iowa.gov/legislation/BillBook?ba=HF2673&ga=91"
+    ],
+    "bills_found": [
+      "HF 2673",
+      "SF 2384",
+      "HSB 598",
+      "SSB 3052"
+    ],
+    "unreadable": "No full-text search run; 2025 session not searched.",
+    "attempted": "2026-10-15"
+  },
+  "IN": {
+    "checked": null,
+    "sources_read": [],
+    "bills_found": [],
+    "unreadable": "iga.in.gov is a JavaScript app and returned no bill content; api.iga.in.gov returned 403. Nothing verified.",
+    "attempted": "2026-10-15"
+  },
+  "LA": {
+    "checked": "2026-10-15",
+    "sources_read": [
+      "https://www.legis.la.gov/legis/BillInfo.aspx?s=26RS&b=SB133&sbi=y",
+      "https://www.legis.la.gov/legis/ViewDocument.aspx?d=1480149"
+    ],
+    "bills_found": [
+      "SB 133"
+    ],
+    "unreadable": "Only SB 133 checked; no full-text search of other LA bills.",
+    "attempted": "2026-10-15"
+  },
+  "ME": {
+    "checked": "2026-10-15",
+    "sources_read": [
+      "https://legislature.maine.gov/legis/bills/display_ps.asp?LD=1209&snum=132"
+    ],
+    "bills_found": [],
+    "unreadable": "Maine search is form-based; full-text search not possible; HP1435 text unreadable.",
+    "attempted": "2026-10-15"
+  },
+  "MO": {
+    "checked": "2026-10-15",
+    "sources_read": [
+      "https://www.senate.mo.gov/BillTracking/Bills/BillInformation?year=2026&billid=277"
+    ],
+    "bills_found": [
+      "SB 1050 (hearing only; session over)",
+      "HB 2069 (not read)"
+    ],
+    "unreadable": "house.mo.gov did not resolve, so HB 2069 official page was not read; no full-text search.",
+    "attempted": "2026-10-15"
+  },
+  "NC": {
+    "checked": "2026-10-15",
+    "sources_read": [
+      "https://www.ncleg.gov/BillLookUp/2025/H394"
+    ],
+    "bills_found": [
+      "H 394 (incidental AV exemption)"
+    ],
+    "unreadable": "ncleg.gov full-text search not reachable; coverage incomplete.",
+    "attempted": "2026-10-15"
+  },
+  "NH": {
+    "checked": "2026-10-15",
+    "sources_read": [
+      "https://gc.nh.gov/bill_status/billinfo.aspx?id=207"
+    ],
+    "bills_found": [],
+    "unreadable": "gc.nh.gov bill search is dynamic; negative finding from web search only.",
+    "attempted": "2026-10-15"
+  },
+  "NV": {
+    "checked": "2026-10-15",
+    "sources_read": [
+      "https://archive.leg.state.nv.us/Session/83rd2025/Bills/SB/SB395.pdf",
+      "https://archive.leg.state.nv.us/Session/83rd2025/Bills/AB/AB523_EN.pdf"
+    ],
+    "bills_found": [
+      "AB 523",
+      "SB 395 (dead)"
+    ],
+    "unreadable": "NELIS history pages returned only a navigation shell; 2026 special session not checked; no full-text search.",
+    "attempted": "2026-10-15"
+  },
+  "OK": {
+    "checked": "2026-10-15",
+    "sources_read": [
+      "https://www.oklegislature.gov/BillInfo.aspx?Bill=sb546&Session=2600"
+    ],
+    "bills_found": [],
+    "unreadable": "Oklahoma bill search form not usable with available tools; no full-text search.",
+    "attempted": "2026-10-15"
+  },
+  "RI": {
+    "checked": "2026-10-15",
+    "sources_read": [
+      "https://status.rilegislature.gov/"
+    ],
+    "bills_found": [],
+    "unreadable": "No keyword search on status.rilegislature.gov; H 8559 returned 503.",
+    "attempted": "2026-10-15"
+  },
+  "TN": {
+    "checked": "2026-10-15",
+    "sources_read": [
+      "https://wapp.capitol.tn.gov/apps/BillInfo/Default?BillNumber=SB2253&GA=114"
+    ],
+    "bills_found": [
+      "SB 2253"
+    ],
+    "unreadable": "No full-text search available; only SB 2253 identified via search.",
+    "attempted": "2026-10-15"
+  },
+  "VA": {
+    "checked": null,
+    "sources_read": [],
+    "bills_found": [
+      "HB 1124",
+      "HB 1125 (unverified)",
+      "SB 670 (unverified)"
+    ],
+    "unreadable": "lis.virginia.gov unreachable (DNS failure / proxy 403); no official VA bill page opened; items come from search snippets only.",
+    "attempted": "2026-10-15"
+  },
+  "WI": {
+    "checked": "2026-10-15",
+    "sources_read": [
+      "https://docs.legis.wisconsin.gov/2025/proposals/sb831",
+      "https://docs.legis.wisconsin.gov/2025/proposals/ab848"
+    ],
+    "bills_found": [
+      "SB 831 (dead)",
+      "AB 848 (dead)"
+    ],
+    "unreadable": "Found by domain-restricted web search, not full-text search of the legislature site.",
+    "attempted": "2026-10-15"
+  }
+}
