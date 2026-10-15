@@ -32,7 +32,7 @@
     "checked": null,
     "sources_read": [],
     "bills_found": [],
-    "unreadable": "cga.ct.gov could not be opened (TLS failure / 503); only search-result snippets seen. Re-check needed.",
+    "unreadable": "cga.ct.gov could not be opened (TLS failure / 503); only search-result snippets seen. Re-check needed. Retried 2026-10-15: still unreachable.",
     "attempted": "2026-10-15"
   },
   "FL": {
@@ -69,7 +69,7 @@
     "checked": null,
     "sources_read": [],
     "bills_found": [],
-    "unreadable": "iga.in.gov is a JavaScript app and returned no bill content; api.iga.in.gov returned 403. Nothing verified.",
+    "unreadable": "iga.in.gov is a JavaScript app and returned no bill content; api.iga.in.gov returned 403. Nothing verified. Retried 2026-10-15: still returns only the JavaScript shell.",
     "attempted": "2026-10-15"
   },
   "LA": {
@@ -175,7 +175,7 @@
       "HB 1125 (unverified)",
       "SB 670 (unverified)"
     ],
-    "unreadable": "lis.virginia.gov unreachable (DNS failure / proxy 403); no official VA bill page opened; items come from search snippets only.",
+    "unreadable": "lis.virginia.gov unreachable (DNS failure / proxy 403); no official VA bill page opened; items come from search snippets only. Retried 2026-10-15: legacylis.virginia.gov returns no 2026 (261) records and lis.virginia.gov is a JavaScript app.",
     "attempted": "2026-10-15"
   },
   "WI": {
