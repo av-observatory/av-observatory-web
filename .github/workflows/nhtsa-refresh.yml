@@ -1,0 +1,63 @@
+name: Refresh NHTSA investigations and recalls
+# Refreshes official NHTSA data, writes AI-edited and independently fact-checked
+# summaries, and COMMITS them to main so the Pages build, the R2 publisher and the
+# website all read the same verified dataset.
+
+on:
+  schedule:
+    - cron: "41 11 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: website-data-writers
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    env:
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      NHTSA_EDITORIAL_MODEL: gpt-4.1-mini
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Require OpenAI key
+        if: ${{ env.OPENAI_API_KEY == '' }}
+        run: |
+          echo '::error::OPENAI_API_KEY is not available; refusing to publish unedited NHTSA narratives.'
+          exit 1
+      - name: Refresh official NHTSA bulk data
+        run: python3 scripts/refresh-nhtsa-oversight.py
+      - name: AI summaries with independent fact-check (fails closed)
+        run: python3 scripts/ai-nhtsa-editorial.py
+      - name: Export CSV companions
+        run: python3 scripts/export-data-csv.py
+      - name: Validate editorial quality and CSV companions
+        run: |
+          python3 scripts/test-nhtsa-editorial.py
+          python3 scripts/export-data-csv.py --check
+      - name: Commit verified NHTSA datasets
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/data/nhtsa_investigations.json public/data/nhtsa_av_recalls.json public/data/nhtsa_*.csv
+          if git diff --cached --quiet; then
+            echo "No NHTSA changes to commit"
+          else
+            git commit -m "Refresh AI-verified NHTSA investigations and recalls"
+            git fetch origin main
+            git rebase origin/main
+            git push origin HEAD:main
+          fi
+      - name: Deploy updated site
+        run: |
+          # Pushes made with GITHUB_TOKEN do not trigger the push-based Pages deploy.
+          if [ "$(git rev-parse HEAD)" != "$GITHUB_SHA" ]; then
+            gh workflow run pages.yml --ref main
+          else
+            echo "No new data commit; no deploy needed"
+          fi
