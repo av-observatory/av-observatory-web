@@ -37,5 +37,4 @@ jobs:
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENSTATES_API_KEY: ${{ secrets.OPENSTATES_API_KEY }}
-          LEGISCAN_API_KEY: ${{ secrets.LEGISCAN_API_KEY }}
         run: python3 scripts/test-policy-live.py
