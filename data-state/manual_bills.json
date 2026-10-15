@@ -54,5 +54,152 @@
     "hearings": [],
     "source_url": "https://www.ilga.gov/Legislation/BillStatus?DocNum=3044&DocTypeID=HB&GAID=18&LegId=161321&SessionID=114",
     "repository_url": "https://www.ilga.gov/Legislation/BillStatus?DocNum=3044&DocTypeID=HB&GAID=18&LegId=161321&SessionID=114"
+  },
+  {
+    "id": "la-sb133-2026rs",
+    "jurisdiction": "LA",
+    "number": "SB 133",
+    "title": "Motor vehicles; oversight of commercial vehicle parking",
+    "summary": "Act 464 amends Louisiana's autonomous commercial motor vehicle provisions (R.S. 32:400.2, 400.3 and 400.7) alongside a highway-shoulder parking change: the state gets sole and exclusive agency jurisdiction over autonomous commercial motor vehicles and automated driving systems, and the written pre-operation certification for driverless trucks and teleoperated trucks is filed with the Department of Public Safety and Corrections, office of state police, rather than DOTD.",
+    "takeaway": "Act 464 shifts the certification filing for driverless and teleoperated commercial trucks to state police and gives the state sole jurisdiction over autonomous commercial vehicles and automated driving systems.",
+    "source_summary": "Official Louisiana Legislature bill page and enrolled Act No. 464 text.",
+    "summary_method": "Auto-collected from the official legislature record; no figures taken from news coverage",
+    "summary_quality": "reviewed_substantive",
+    "summary_reviewed_at": "2026-10-15",
+    "status": "enacted",
+    "measure_type": "bill",
+    "last_action_date": "2026-05-29",
+    "last_action": "Signed by the Governor. Becomes Act No. 464. Effective 8/1/2026.",
+    "session": "2026",
+    "progress_stage": "law",
+    "stage_dates": {
+      "introduced": "2026-03-09",
+      "committee": "2026-03-18",
+      "floor": "2026-03-30",
+      "passed_legislature": "2026-05-19",
+      "executive": "2026-05-21",
+      "law": "2026-05-29"
+    },
+    "hearings": [],
+    "source_url": "https://www.legis.la.gov/legis/BillInfo.aspx?s=26RS&b=SB133&sbi=y",
+    "repository_url": "https://www.legis.la.gov/legis/BillInfo.aspx?s=26RS&b=SB133&sbi=y"
+  },
+  {
+    "id": "tn-sb2253-114",
+    "jurisdiction": "TN",
+    "number": "SB 2253",
+    "title": "Autonomous vehicles; traffic violations",
+    "summary": "Sets the process for citing traffic violations by autonomous vehicles: a POST-certified or state-commissioned officer must determine an offense occurred, notice goes by first-class mail to the registered owner within 20 business days with a Tennessee return address and 30 days to pay, and a second notice with another 30 days is required before added penalties. A Senate amendment defines automated driving system terms and lets state or local law enforcement adopt ADS enforcement policies consistent with the process. Enacted as Public Chapter 726.",
+    "takeaway": "Creates a mailed-notice process for traffic citations issued to the owners of autonomous vehicles in Tennessee.",
+    "source_summary": "Official Tennessee General Assembly bill page for SB 2253 (companion HB 2302).",
+    "summary_method": "Auto-collected from the official legislature record; no figures taken from news coverage",
+    "summary_quality": "reviewed_substantive",
+    "summary_reviewed_at": "2026-10-15",
+    "status": "enacted",
+    "measure_type": "bill",
+    "last_action_date": "2026-05-04",
+    "last_action": "Signed by Governor; assigned Public Chapter 726.",
+    "session": "114",
+    "progress_stage": "law",
+    "stage_dates": {
+      "introduced": "2026-02-05",
+      "committee": "2026-02-25",
+      "floor": "2026-03-23",
+      "passed_legislature": "2026-03-23",
+      "executive": "2026-04-13",
+      "law": "2026-05-04"
+    },
+    "hearings": [],
+    "source_url": "https://wapp.capitol.tn.gov/apps/BillInfo/Default?BillNumber=SB2253&GA=114",
+    "repository_url": "https://wapp.capitol.tn.gov/apps/BillInfo/Default?BillNumber=SB2253&GA=114"
+  },
+  {
+    "id": "az-sb1320-57-1r",
+    "jurisdiction": "AZ",
+    "number": "SB 1320",
+    "title": "Implements of husbandry; autonomous; automated",
+    "summary": "Amends A.R.S. 28-101 so the definition of 'implement of husbandry' covers agricultural implements or vehicles that use an automated driving system or are autonomous. Signed by the Governor March 31, 2025 as Laws 2025, Chapter 19.",
+    "takeaway": "Extends Arizona's 'implement of husbandry' definition to autonomous and automated agricultural vehicles.",
+    "source_summary": "Official Arizona Legislature bill record (apps.azleg.gov) and Senate engrossed text.",
+    "summary_method": "Auto-collected from the official legislature record; no figures taken from news coverage",
+    "summary_quality": "reviewed_substantive",
+    "summary_reviewed_at": "2026-10-15",
+    "status": "enacted",
+    "measure_type": "bill",
+    "last_action_date": "2025-03-31",
+    "last_action": "Governor signed 03/31/2025 (Laws 2025, Chapter 19).",
+    "session": "57th-1st-regular",
+    "progress_stage": "law",
+    "stage_dates": {
+      "introduced": "2025-01-27",
+      "law": "2025-03-31"
+    },
+    "hearings": [],
+    "source_url": "https://apps.azleg.gov/BillStatus/BillOverview?SessionId=129&BillNumber=SB1320",
+    "repository_url": "https://apps.azleg.gov/BillStatus/BillOverview?SessionId=129&BillNumber=SB1320"
+  },
+  {
+    "id": "ia-hf2673-91",
+    "jurisdiction": "IA",
+    "number": "HF 2673",
+    "title": "Driverless-capable vehicles transporting hazardous materials",
+    "summary": "Amends Iowa Code 321.515(1) to bar operation of a driverless-capable vehicle carrying hazardous materials without a conventional human driver, as a simple misdemeanor. Renumbered from House study bill HSB 598. House Transportation recommended passage 20-0 on 2/18/2026; placed on the calendar under unfinished business on 3/19/2026 with no later floor action recorded.",
+    "takeaway": "Would bar driverless-capable vehicles from carrying hazardous materials in Iowa without a human driver.",
+    "source_summary": "Official Iowa Legislature bill history and bill text.",
+    "summary_method": "Auto-collected from the official legislature record; no figures taken from news coverage",
+    "summary_quality": "reviewed_substantive",
+    "summary_reviewed_at": "2026-10-15",
+    "status": "engrossed",
+    "measure_type": "bill",
+    "last_action_date": "2026-03-19",
+    "last_action": "Placed on calendar under unfinished business. H.J. 691.",
+    "session": "2025-2026",
+    "progress_stage": "floor",
+    "stage_dates": {
+      "introduced": "2026-02-23",
+      "committee": "2026-02-18",
+      "floor": "2026-03-19"
+    },
+    "hearings": [
+      {
+        "date": "2026-02-16",
+        "description": "House Transportation subcommittee meeting on HSB 598; recommended passage",
+        "source_url": "https://www.legis.iowa.gov/legislation/billTracking/billHistory?billName=HSB598&ga=91"
+      }
+    ],
+    "source_url": "https://www.legis.iowa.gov/legislation/BillBook?ba=HF2673&ga=91",
+    "repository_url": "https://www.legis.iowa.gov/legislation/BillBook?ba=HF2673&ga=91"
+  },
+  {
+    "id": "ak-hb217-34",
+    "jurisdiction": "AK",
+    "number": "HB 217",
+    "title": "Commercial motor vehicle licensing examinations; autonomous vehicles",
+    "summary": "An Act relating to commercial motor vehicle licensing examinations and regulating autonomous vehicles. Passed the House 39-1 on 4/30/2026; Senate Transportation and State Affairs reported the bill and it was referred to Senate Rules on 5/17/2026. No Senate floor vote or enactment appears on the official record. The record carries no official summary.",
+    "takeaway": "Alaska bill regulating autonomous vehicles that passed the House and sits in Senate Rules with no further recorded action.",
+    "source_summary": "Official Alaska Legislature bill detail page (34th Legislature).",
+    "summary_method": "Auto-collected from the official legislature record; no figures taken from news coverage",
+    "summary_quality": "reviewed_substantive",
+    "summary_reviewed_at": "2026-10-15",
+    "status": "engrossed",
+    "measure_type": "bill",
+    "last_action_date": "2026-05-17",
+    "last_action": "(S) STA RPT SCS(TRA) 2DNP 1DP; (S) REFERRED TO RULES",
+    "session": "34",
+    "progress_stage": "floor",
+    "stage_dates": {
+      "introduced": "2025-05-02",
+      "committee": "2026-03-24",
+      "floor": "2026-04-30"
+    },
+    "hearings": [
+      {
+        "date": "2026-05-14",
+        "description": "Senate State Affairs, heard and held",
+        "source_url": "https://www.akleg.gov/basis/Bill/Detail/34?Root=HB%20217"
+      }
+    ],
+    "source_url": "https://www.akleg.gov/basis/Bill/Detail/34?Root=HB%20217",
+    "repository_url": "https://www.akleg.gov/basis/Bill/Detail/34?Root=HB%20217"
   }
 ]
