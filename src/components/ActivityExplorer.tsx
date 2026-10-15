@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
 import { ActivityMonthlyRow, mapWithMonthGaps, monthLabel } from "@/lib/activity";
+import { useMonthAxis } from "@/components/MonthAxis";
 import { SERIES, AXIS_PROPS, GRID_PROPS, TOOLTIP_PROPS } from "@/lib/chartTheme";
 
 const METRICS = {
@@ -29,6 +30,7 @@ export function ActivityExplorer({ rows }: { rows: ActivityMonthlyRow[] }) {
     return mapWithMonthGaps(months,r=>({label:monthLabel(r.calendar_year,r.calendar_month),value:r.value}));
   },[rows,cfg.key]);
 
+  const axis=useMonthAxis(data.length);
   const latest=(data.at(-1) as {value?:number}|undefined)?.value ?? 0;
   return <div>
     <div className="grid sm:grid-cols-2 gap-3 mb-5">
@@ -45,7 +47,7 @@ export function ActivityExplorer({ rows }: { rows: ActivityMonthlyRow[] }) {
     <ResponsiveContainer width="100%" height={350}>
       <LineChart data={data} margin={{top:8,right:18,bottom:8,left:4}}>
         <CartesianGrid {...GRID_PROPS}/>
-        <XAxis dataKey="label" {...AXIS_PROPS} interval="preserveStartEnd"/>
+        <XAxis dataKey="label" {...axis}/>
         <YAxis {...AXIS_PROPS} tickFormatter={(v)=> v>=1_000_000?`${(v/1_000_000).toFixed(1)}M`:v>=1000?`${Math.round(v/1000)}K`:String(v)}/>
         <Tooltip {...TOOLTIP_PROPS} formatter={(v)=>`${Number(v).toLocaleString()} ${cfg.unit}`}/>
         <Line type="monotone" dataKey="value" name={cfg.label} stroke={SERIES.blue} strokeWidth={2.75} dot={false} activeDot={{r:5}}/>
