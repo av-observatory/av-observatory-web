@@ -25,10 +25,10 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 320
     env:
-      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
       OPENSTATES_API_KEY: ${{ secrets.OPENSTATES_API_KEY }}
-      POLICY_EDITORIAL_MODEL: gpt-4.1-mini
-      POLICY_EDITORIAL_MAX_NEW: 300
+      POLICY_EDITORIAL_MODEL: claude-sonnet-5-5
+      POLICY_EDITORIAL_MAX_NEW: 25
       POLICY_EDITORIAL_REQUEST_GAP_SECONDS: "1.5"
       GH_TOKEN: ${{ github.token }}
       AWS_ACCESS_KEY_ID: ${{ secrets.POLICY_R2_ACCESS_KEY_ID }}
@@ -43,7 +43,7 @@ jobs:
           node-version: '20'
       - name: Check AI configuration and editorial tests
         run: |
-          test -n "$OPENAI_API_KEY" || { echo "::error::Missing OPENAI_API_KEY"; exit 1; }
+          test -n "$ANTHROPIC_API_KEY" || { echo "::error::Missing ANTHROPIC_API_KEY"; exit 1; }
           python3 -m py_compile scripts/ai-policy-editorial.py scripts/legislation_source_text.py scripts/audit-editorial-quality.py
           python3 scripts/test-policy-editorial.py
           python3 scripts/test-nhtsa-editorial.py

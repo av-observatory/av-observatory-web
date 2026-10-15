@@ -61,9 +61,9 @@ jobs:
       - name: AI review state and federal legislation plus FMVSS rules
         if: ${{ env.OPENSTATES_API_KEY != '' }}
         env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          POLICY_EDITORIAL_MODEL: gpt-4.1-mini
-          POLICY_EDITORIAL_MAX_NEW: 10000
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          POLICY_EDITORIAL_MODEL: claude-sonnet-5-5
+          POLICY_EDITORIAL_MAX_NEW: 25
         run: |
           python3 scripts/ai-policy-editorial.py
           python3 scripts/test-policy-editorial.py

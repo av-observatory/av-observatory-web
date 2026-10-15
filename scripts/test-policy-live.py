@@ -13,8 +13,8 @@ import sys
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/"scripts"))
 os.environ["POLICY_EDITORIAL_DEBUG"]="1"
-if not os.environ.get("OPENAI_API_KEY"):
-    raise SystemExit("OPENAI_API_KEY is not configured for this workflow")
+if not os.environ.get("ANTHROPIC_API_KEY"):
+    raise SystemExit("ANTHROPIC_API_KEY is not configured for this workflow")
 from legislation_source_text import primary_text
 leg=json.loads((ROOT/"public/data/legislation_tracker.json").read_text())
 policy=json.loads((ROOT/"public/data/policy_tracker.json").read_text())
