@@ -261,34 +261,18 @@ def discover_official_bill_links(row):
             print(f"Official-record search failed for {row.get('id')}: {type(exc).__name__}")
     return candidates[:10]
 
-def public_bill_mirror(row):
-    """Use public bill-text mirrors as labeled secondary evidence when official retrieval fails.
-
-    Never confuse a bill detail page with full bill text; require the exact
-    bill identifier, substantive AV terminology, and legislative text markers.
-    """
-    state=str(row.get("jurisdiction") or "").upper()
-    number=re.fullmatch(r"(AB|SB|HB|SF|HF|A|S)\\s*0*(\\d+)",str(row.get("number") or ""),re.I)
-    year=re.search(r"20\\d{2}",str(row.get("session") or ""))
-    if not (re.fullmatch(r"[A-Z]{2}",state) and number and year):
-        return "",""
+def california_public_research_links(row):
+    """Keyless public discovery pages; never treat a landing page as full bill text."""
+    if str(row.get("jurisdiction") or "").upper()!="CA":return []
+    session=re.fullmatch(r"(20\\d{2})(20\\d{2})",str(row.get("session") or ""))
+    number=re.fullmatch(r"(AB|SB)\\s*0*(\\d+)",str(row.get("number") or ""),re.I)
+    if not (session and number):return []
     bill=number.group(1).upper()+number.group(2)
-    url=f"https://legiscan.com/{state}/text/{bill}/{year.group(0)}"
-    try:
-        req=Request(url,headers={"User-Agent":"Mozilla/5.0 (compatible; AVObservatory/1.0)"})
-        with urlopen(req,timeout=25) as response:
-            if (urlparse(response.url).hostname or "").lower()!="legiscan.com":
-                return "",""
-            raw=response.read(1_500_000).decode("utf-8","replace")
-        parser=Extract()
-        parser.feed(raw)
-        value=clean(" ".join(parser.words))
-        if (len(value)>1000 and looks_like_bill_text(row,value)
-                and re.search(r"\\b(?:legislative counsel|be it enacted|enact as follows|section\\s+1)\\b",value,re.I)):
-            return value[:180000],url
-    except Exception as exc:
-        print(f"Public bill-text mirror failed for {row.get('id')}: {type(exc).__name__}")
-    return "",""
+    sid=session.group(1)+session.group(2)
+    return [
+        f"https://calmatters.digitaldemocracy.org/bills/ca_{sid}0{bill.lower()}",
+        f"https://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id={sid}0{bill}",
+    ]
 
 def primary_text(row,kind):
     for url in sources(row,kind):
@@ -302,6 +286,6 @@ def primary_text(row,kind):
                 return text,provenance,url
         mirrored,mirror_url=legiscan_mirrored_text(row)
         if mirrored:return mirrored,"legiscan_mirrored_bill_text",mirror_url
-        public_text,public_url=public_bill_mirror(row)
-        if public_text:return public_text,"public_secondary_full_bill_text",public_url
+        for lead in california_public_research_links(row):
+            print("Public research lead for "+str(row.get("id"))+": "+lead)
     return "","official_text_unavailable",""
