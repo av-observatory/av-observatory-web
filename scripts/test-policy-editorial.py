@@ -17,7 +17,7 @@ assert "govinfo.gov/content/pkg/BILLS-119hr7390ih" in list(source.sources(
     {"repository_url":"https://www.govinfo.gov/app/details/BILLS-119hr7390ih",
      "source_url":"https://www.congress.gov/bill/119th-congress/house-bill/7390"},"federal_bill"))[0]
 
-os.environ["OPENAI_API_KEY"]="test-only-key"
+os.environ["ANTHROPIC_API_KEY"]="test-only-key"
 mod=runpy.run_path(str(Path(__file__).resolve().parent/"ai-policy-editorial.py"))
 assert mod["quality"]({"summary": "The bill would require autonomous vehicle operators to submit collision reports to a state agency within thirty days. It would also establish specified minimum reporting criteria and direct the agency to publish an annual summary of reported safety incidents."})
 assert not mod["quality"]({"summary": "An ADS and FMVSS rule."})

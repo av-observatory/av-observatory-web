@@ -15,21 +15,25 @@ from urllib.request import Request,urlopen
 from legislation_source_text import primary_text
 
 ROOT=Path(__file__).resolve().parents[1]
-KEY=os.getenv("OPENAI_API_KEY")
-MODEL=os.getenv("POLICY_EDITORIAL_MODEL","gpt-4.1-mini")
+KEY=os.getenv("ANTHROPIC_API_KEY")
+MODEL=os.getenv("POLICY_EDITORIAL_MODEL","claude-sonnet-5-5")
 EDITORIAL_VERSION="full-text-extract-v2"
 MAX_NEW=int(os.getenv("POLICY_EDITORIAL_MAX_NEW","300"))
 
 def invoke(messages):
-    body=json.dumps({"model":MODEL,"temperature":0,
-      "response_format":{"type":"json_object"},"messages":messages}).encode()
-    request=Request("https://api.openai.com/v1/chat/completions",body,
-        {"Content-Type":"application/json","Authorization":"Bearer "+KEY})
+    """One Claude call; returns the JSON object the model was asked to produce."""
+    system="\n\n".join(m["content"] for m in messages if m["role"]=="system")
+    turns=[{"role":m["role"],"content":m["content"]} for m in messages if m["role"]!="system"]
+    body=json.dumps({"model":MODEL,"max_tokens":800,
+      "system":system+"\n\nRespond with a single JSON object and nothing else.","messages":turns}).encode()
+    request=Request("https://api.anthropic.com/v1/messages",body,
+        {"Content-Type":"application/json","x-api-key":KEY,"anthropic-version":"2023-06-01"})
     for i in range(4):
         try:
             time.sleep(float(os.getenv('POLICY_EDITORIAL_REQUEST_GAP_SECONDS','1.25')))
             with urlopen(request,timeout=95) as response:
-                return json.loads(json.load(response)["choices"][0]["message"]["content"])
+                text="".join(c.get("text","") for c in json.load(response)["content"] if c.get("type")=="text")
+            return json.loads(text[text.index("{"):text.rindex("}")+1])
         except Exception:
             if i==3:raise
             time.sleep(min(60,4**i))
@@ -138,7 +142,7 @@ def summarize(row,kind):
     current_text=row.get("analysis") if kind=="state_framework" else row.get("summary")
     if row.get("editorial_source_hash")==digest and row.get("editorial_status")=="verified" and quality({"summary":current_text}):
         return "cached"
-    if not KEY:raise RuntimeError("OPENAI_API_KEY not configured")
+    if not KEY:raise RuntimeError("ANTHROPIC_API_KEY not configured")
     row["editorial_source_hash"]=digest
     row["editorial_source_type"]=source_type
     row["editorial_source_url"]=source_url
@@ -204,7 +208,7 @@ def summarize(row,kind):
 
 def main():
     if not KEY:
-        print("OPENAI_API_KEY not set; refusing to claim AI verification.",file=sys.stderr)
+        print("ANTHROPIC_API_KEY not set; refusing to claim AI verification.",file=sys.stderr)
         return 2
     counts={}
     used=0

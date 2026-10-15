@@ -84,9 +84,9 @@ jobs:
       - name: Restore source-verified summaries and research source gaps
         if: ${{ inputs.dry_run != true }}
         env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           OPENSTATES_API_KEY: ${{ secrets.OPENSTATES_API_KEY }}
-          POLICY_EDITORIAL_MAX_NEW: 300
+          POLICY_EDITORIAL_MAX_NEW: 25
         run: |
           python3 scripts/ai-policy-editorial.py
           python3 scripts/audit-editorial-quality.py
