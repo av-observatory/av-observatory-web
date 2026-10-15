@@ -261,19 +261,6 @@ def discover_official_bill_links(row):
             print(f"Official-record search failed for {row.get('id')}: {type(exc).__name__}")
     return candidates[:10]
 
-def california_public_research_links(row):
-    """Keyless public discovery pages; never treat a landing page as full bill text."""
-    if str(row.get("jurisdiction") or "").upper()!="CA":return []
-    session=re.fullmatch(r"(20\\d{2})(20\\d{2})",str(row.get("session") or ""))
-    number=re.fullmatch(r"(AB|SB)\\s*0*(\\d+)",str(row.get("number") or ""),re.I)
-    if not (session and number):return []
-    bill=number.group(1).upper()+number.group(2)
-    sid=session.group(1)+session.group(2)
-    return [
-        f"https://calmatters.digitaldemocracy.org/bills/ca_{sid}0{bill.lower()}",
-        f"https://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id={sid}0{bill}",
-    ]
-
 def search_public_sources(row,kind):
     """Search for an exact record using a public web index, without vendor API keys.
 
@@ -322,7 +309,12 @@ def search_public_sources(row,kind):
 def evidence_matches(row,kind,text):
     """Prevent a search hit for another session, record, or agency being accepted."""
     if len(text)<450:return False
-    if kind=="state_bill":return looks_like_bill_text(row,text)
+    if kind=="state_bill":
+        if not looks_like_bill_text(row,text):return False
+        session=str(row.get("session") or "")
+        years=re.findall(r"20\\d{2}",session)
+        if years and not any(year in text for year in years):return False
+        return True
     if kind.startswith("nhtsa_"):
         ident=str(row.get("id") or "")
         return bool(ident and re.search(r"(?<![A-Z0-9])"+re.escape(ident)+r"(?![A-Z0-9])",text,re.I))
