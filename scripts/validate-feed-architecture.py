@@ -37,7 +37,7 @@ BANNED_FILES=[
 ]
 
 BANNED_SNIPPETS={
-  "src/components/InvestigationTracker.tsx":["const investigations:"],
+  "src/components/InvestigationTracker.tsx":["const investigations:Investigation[] = [", "const investigations:Investigation[]=["],
 }
 
 def main():
