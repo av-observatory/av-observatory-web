@@ -129,87 +129,6 @@ def sources(row,kind):
         yield from state_bill_version_links(row)
         yield url
 
-def legiscan_mirrored_text(row):
-    """Fallback to the bill's latest available text mirrored by LegiScan.
-
-    Return this as a *secondary-source mirror*, never silently label it as
-    an official legislature document. LegiScan's Public API terms apply.
-    """
-    key=os.getenv("LEGISCAN_API_KEY")
-    bill_id=row.get("legiscan_bill_id")
-    if not key:return "",""
-    if not str(bill_id or "").isdigit():
-        # Recover the LegiScan ID by exact bill number, state and session year.
-        def bill_key(value):
-            cleaned=re.sub(r"[^A-Z0-9]","",str(value or "").upper())
-            m=re.fullmatch(r"([A-Z]+)0*(\d+)",cleaned)
-            return m.group(1)+str(int(m.group(2))) if m else cleaned
-        identifier=bill_key(row.get("number"))
-        state=str(row.get("jurisdiction") or "").upper()
-        year_match=re.search(r"20\d{2}",str(row.get("session") or ""))
-        year=int(year_match.group(0)) if year_match else 2
-        if not identifier or not re.fullmatch(r"[A-Z]{2}",state):return "",""
-        try:
-            payload=api_json("https://api.legiscan.com/?"+urlencode({
-                "key":key,"op":"getSearch","state":state,"query":identifier,"year":year}))
-            hits=payload.get("searchresult") or {}
-            matches=[]
-            for hit in hits.values():
-                if not isinstance(hit,dict):continue
-                found=bill_key(hit.get("bill_number"))
-                if found==identifier and str(hit.get("state") or "").upper()==state:
-                    if str(hit.get("bill_id") or "").isdigit():
-                        matches.append(hit["bill_id"])
-            if len(set(matches))!=1:return "",""
-            bill_id=matches[0]
-        except Exception as exc:
-            print(f"LegiScan identifier recovery failed for {row.get('id')}: {type(exc).__name__}")
-            return "",""
-    try:
-        from urllib.parse import urlencode
-        def call(op,identifier):
-            url="https://api.legiscan.com/?"+urlencode({"key":key,"op":op,"id":identifier})
-            data=api_json(url)
-            if data.get("status")!="OK":return {}
-            return data
-        detail=call("getBill",bill_id).get("bill") or {}
-        if not detail:return "",""
-        # Some state bill numbers recur across sessions. Require title agreement
-        # before using an external copy of the full text.
-        def terms(t):
-            return set(re.findall(r"[a-z]{4,}",(t or "").lower()))-{"bill","act","state","relating","concerning","vehicles"}
-        listed=terms(row.get("title",""))
-        actual=terms(detail.get("title",""))
-        if listed and actual and len(listed&actual)<min(2,len(listed),len(actual)):
-            return "",""
-        versions=detail.get("texts") or []
-        versions=sorted(versions,key=lambda x:(str(x.get("date") or ""),int(x.get("doc_id") or 0)),reverse=True)
-        for version in versions[:3]:
-            doc_id=version.get("doc_id")
-            if not doc_id:continue
-            payload=(call("getBillText",doc_id).get("text") or {})
-            binary=base64.b64decode(payload.get("doc") or "",validate=True)
-            if not binary or len(binary)>3_500_000:continue
-            mime=str(payload.get("mime") or "").lower()
-            if binary.startswith(b"%PDF") or "pdf" in mime:
-                with tempfile.TemporaryDirectory() as tmp:
-                    p=Path(tmp)/"legislation.pdf";p.write_bytes(binary)
-                    result=subprocess.run(["pdftotext","-layout",str(p),"-"],capture_output=True,timeout=20)
-                    if result.returncode:continue
-                    text=clean(result.stdout.decode("utf-8","replace"))
-            elif "html" in mime:
-                parser=Extract();parser.feed(binary.decode("utf-8","replace"))
-                text=clean(" ".join(parser.words))
-            elif "text" in mime:
-                text=clean(binary.decode("utf-8","replace"))
-            else:
-                continue
-            if len(text)>650:
-                return text[:180000],str(detail.get("url") or row.get("repository_url") or "")
-    except Exception as exc:
-        print(f"LegiScan bill text unavailable for {row.get('id')}: {type(exc).__name__}")
-    return "",""
-
 def looks_like_bill_text(row,text):
     """Reject state search portals and unrelated legislation as source evidence."""
     identifier=str(row.get("number") or "")
@@ -334,8 +253,6 @@ def primary_text(row,kind):
             text,provenance=fetch(url)
             if len(text)>=650 and looks_like_bill_text(row,text):
                 return text,provenance,url
-        mirrored,mirror_url=legiscan_mirrored_text(row)
-        if mirrored:return mirrored,"legiscan_mirrored_bill_text",mirror_url
     for url in search_public_sources(row,kind):
         # CalMatters pages are secondary evidence, never labeled official.
         if (urlparse(url).hostname or "").lower()=="calmatters.digitaldemocracy.org":
