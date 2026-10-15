@@ -37,6 +37,14 @@ jobs:
       - name: Install
         run: npm ci
 
+      - name: Refresh primary-source NHTSA investigations and recalls before building
+        run: |
+          if python3 scripts/refresh-nhtsa-oversight.py; then
+            python3 scripts/export-data-csv.py
+          else
+            echo "::warning::Could not refresh NHTSA bulk data; publishing the committed fallback datasets."
+          fi
+
       - name: Build static site
         env:
           NEXT_PUBLIC_CONTACT_FORM_URL: ${{ vars.CONTACT_FORM_URL }}
