@@ -67,6 +67,51 @@ export function ActivityCompositeStats({ rows, company }: { rows: ActivityMonthl
   </div>;
 }
 
+export function ActivityTripProfile({ rows }: { rows: ActivityMonthlyRow[] }) {
+  const reported=rows.filter(r=>r.total_trips!==null && r.total_trips>0)
+    .sort((a,b)=>a.calendar_year-b.calendar_year||a.calendar_month-b.calendar_month);
+  const data=mapWithMonthGaps(reported,r=>{
+    const d=derived(r);
+    return {
+      label:monthLabel(r.calendar_year,r.calendar_month),
+      riders:d.ridersPerTrip===null?null:Number(d.ridersPerTrip.toFixed(2)),
+      miles:d.avgTrip===null?null:Number(d.avgTrip.toFixed(1)),
+    };
+  });
+  const {axis,onResize}=useMonthAxis(data.length);
+  if(reported.length===0) return null;
+  const riderValues=reported.map(r=>derived(r).ridersPerTrip).filter((v):v is number=>v!==null);
+  const riderLo=Math.max(0,Math.floor(Math.min(...riderValues)/0.2)*0.2);
+  const riderHi=Math.ceil(Math.max(...riderValues)/0.2)*0.2;
+  const riderTicks=Array.from({length:Math.round((riderHi-riderLo)/0.2)+1},(_,i)=>Number((riderLo+i*0.2).toFixed(1)));
+  return <div className="grid lg:grid-cols-2 gap-3">
+    <div className="viz-card p-4">
+      <div className="font-semibold">Riders per Trip</div>
+      <div className="text-sm text-neutral-500">Passengers carried divided by passenger trips.</div>
+      <ResponsiveContainer width="100%" height={280} onResize={onResize}>
+        <LineChart data={data} margin={{top:14,right:15,bottom:4,left:4}}>
+          <CartesianGrid {...GRID_PROPS}/><XAxis dataKey="label" {...axis}/>
+          <YAxis {...AXIS_PROPS} domain={[riderLo,riderHi]} ticks={riderTicks} tickFormatter={v=>Number(v).toFixed(1)}/>
+          <Tooltip {...TOOLTIP_PROPS} formatter={v=>`${v} riders/trip`}/>
+          <Line type="monotone" dataKey="riders" name="Riders per Trip" stroke={SERIES.aqua} strokeWidth={2.5} dot={false}/>
+        </LineChart>
+      </ResponsiveContainer>
+    </div>
+    <div className="viz-card p-4">
+      <div className="font-semibold">Average Rider Miles per Trip</div>
+      <div className="text-sm text-neutral-500">Miles traveled with a passenger aboard divided by passenger trips.</div>
+      <ResponsiveContainer width="100%" height={280} onResize={onResize}>
+        <LineChart data={data} margin={{top:14,right:15,bottom:4,left:4}}>
+          <CartesianGrid {...GRID_PROPS}/><XAxis dataKey="label" {...axis}/>
+          <YAxis {...AXIS_PROPS} domain={[0,"auto"]} unit=" mi"/>
+          <Tooltip {...TOOLTIP_PROPS} formatter={v=>`${v} mi/trip`}/>
+          <Line type="monotone" dataKey="miles" name="Rider Miles / Trip" stroke={SERIES.orange} strokeWidth={2.5} dot={false}/>
+        </LineChart>
+      </ResponsiveContainer>
+    </div>
+  </div>;
+}
+
 export function ActivityWaitingTime({ rows }: { rows: ActivityMonthlyRow[] }) {
   const data=mapWithMonthGaps(reportedRows(rows),r=>{
     const d=derived(r);

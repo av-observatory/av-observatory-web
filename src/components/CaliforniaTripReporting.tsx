@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import { ActivityMonthlyRow, monthLabel } from "@/lib/activity";
 import { ActivityExplorer } from "@/components/ActivityExplorer";
 import { CaCrashRates, type CaCrashRateDataset } from "@/components/CaCrashRates";
-import { ActivityCompositeStats, ActivityWaitingTime, ActivityVmtUtilization, ActivityParkingEstimate } from "@/components/ActivityEfficiency";
+import { ActivityCompositeStats, ActivityTripProfile, ActivityWaitingTime, ActivityVmtUtilization, ActivityParkingEstimate } from "@/components/ActivityEfficiency";
 
 const NAMES: Record<string, string> = { PSG0038152: "Waymo", PSG0039080: "Cruise", "0038380-P": "Zoox" };
 const PROGRAMS: Record<string, string> = { driverless: "Driverless", driverless_pilot: "Driverless Pilot", drivered_pilot: "Drivered Pilot", unspecified: "Program Unspecified" };
@@ -40,6 +40,7 @@ export function CaliforniaTripReporting({ rows, waymoRates }: { rows: ActivityMo
       <section className="mt-5"><ActivityCompositeStats rows={selectedRows} company={company} /></section>
       {companyId === "PSG0038152" && program === "driverless" && <CaCrashRates data={waymoRates} />}
       <section className="mt-7"><div className="flex items-baseline justify-between gap-3 mb-2"><h2 className="text-xl font-semibold tracking-tight">Passenger Activity</h2><span className="text-sm text-neutral-500">{company} · {PROGRAMS[program] ?? program}</span></div><div className="viz-card p-4"><ActivityExplorer rows={selectedRows} /></div></section>
+      <section className="mt-7"><h2 className="text-xl font-semibold tracking-tight mb-2">Riders and Distance per Trip</h2><ActivityTripProfile rows={selectedRows} /></section>
       {companyId === "PSG0038152" && program === "driverless" ? <>
         <section className="mt-8">
           <div className="mb-3 max-w-4xl">
