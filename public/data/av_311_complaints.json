@@ -5,13 +5,13 @@
   "source_api": "https://data.sf.gov/resource/vw6y-z8j6.json",
   "selection": "Exact service_name match: Autonomous Vehicle Complaints. Other city request types and unclassified AV mentions are excluded.",
   "limitations": "These are public 311 requests, not verified incidents. The published subtypes describe how SF311 classified a request, not the specific behavior alleged. Operator identity is unavailable; the AV category begins in April 2025.",
-  "source_data_as_of": "2026-10-15T01:00:00.000",
-  "total_records": 1010,
+  "source_data_as_of": "2026-10-16T01:01:00.000",
+  "total_records": 1012,
   "markets": [
     {
       "market": "San Francisco",
       "state": "CA",
-      "complaints": 1010
+      "complaints": 1012
     }
   ],
   "monthly": [
@@ -127,7 +127,7 @@
       "month": "2026-10",
       "market": "San Francisco",
       "state": "CA",
-      "complaints": 27
+      "complaints": 29
     }
   ],
   "records": [
@@ -16290,6 +16290,38 @@
       "long": -122.39645795,
       "neighborhood": "South of Market",
       "source_url": "https://data.sf.gov/resource/vw6y-z8j6.json?service_request_id=202000182219"
+    },
+    {
+      "id": "SF-202000186061",
+      "source_id": "202000186061",
+      "state": "CA",
+      "market": "San Francisco",
+      "requested_datetime": "2026-10-15T09:13:02.000",
+      "requested_date": "2026-10-15",
+      "month": "2026-10",
+      "type": "incident_report",
+      "status": "Open",
+      "agency": "MTA - Autonomous Vehicles Complaints",
+      "lat": 37.77942727,
+      "long": -122.45942069,
+      "neighborhood": "Inner Richmond",
+      "source_url": "https://data.sf.gov/resource/vw6y-z8j6.json?service_request_id=202000186061"
+    },
+    {
+      "id": "SF-202000187417",
+      "source_id": "202000187417",
+      "state": "CA",
+      "market": "San Francisco",
+      "requested_datetime": "2026-10-15T15:00:58.000",
+      "requested_date": "2026-10-15",
+      "month": "2026-10",
+      "type": "incident_report",
+      "status": "Open",
+      "agency": "MTA - Autonomous Vehicles Complaints",
+      "lat": 37.79336106,
+      "long": -122.3997649,
+      "neighborhood": "Financial District",
+      "source_url": "https://data.sf.gov/resource/vw6y-z8j6.json?service_request_id=202000187417"
     }
   ]
 }
