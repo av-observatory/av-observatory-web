@@ -6,8 +6,8 @@ import { ActivityExplorer } from "@/components/ActivityExplorer";
 import { CaCrashRates, type CaCrashRateDataset } from "@/components/CaCrashRates";
 import { ActivityCompositeStats, ActivityWaitingTime, ActivityVmtUtilization, ActivityParkingEstimate } from "@/components/ActivityEfficiency";
 
-const NAMES: Record<string, string> = { PSG0038152: "Waymo", PSG0039080: "Cruise" };
-const PROGRAMS: Record<string, string> = { driverless: "Driverless", drivered_pilot: "Drivered Pilot", unspecified: "Program Unspecified" };
+const NAMES: Record<string, string> = { PSG0038152: "Waymo", PSG0039080: "Cruise", "0038380-P": "Zoox" };
+const PROGRAMS: Record<string, string> = { driverless: "Driverless", driverless_pilot: "Driverless Pilot", drivered_pilot: "Drivered Pilot", unspecified: "Program Unspecified" };
 
 export function CaliforniaTripReporting({ rows, waymoRates }: { rows: ActivityMonthlyRow[]; waymoRates: CaCrashRateDataset }) {
   const companies = useMemo(() => [...new Set(rows.map(row => row.operator_tcpid))].sort((a, b) =>
