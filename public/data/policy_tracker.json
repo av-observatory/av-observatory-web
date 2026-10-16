@@ -125,7 +125,7 @@
       "status": "effective",
       "date": "2026-06-03",
       "source_url": "https://www.federalregister.gov/d/2026-11080",
-      "verified_at": "2026-09-23",
+      "verified_at": "2026-10-16",
       "fmvss": [
         "204"
       ],
@@ -151,7 +151,7 @@
       "status": "under_review",
       "date": "2026-03-16",
       "source_url": "https://www.federalregister.gov/d/2026-05024",
-      "verified_at": "2026-09-23",
+      "verified_at": "2026-10-16",
       "fmvss": [
         "102"
       ],
@@ -174,7 +174,7 @@
       "status": "under_review",
       "date": "2026-03-16",
       "source_url": "https://www.federalregister.gov/d/2026-05023",
-      "verified_at": "2026-09-23",
+      "verified_at": "2026-10-16",
       "fmvss": [
         "103",
         "104"
@@ -198,7 +198,7 @@
       "status": "under_review",
       "date": "2026-04-01",
       "source_url": "https://www.federalregister.gov/d/2026-06254",
-      "verified_at": "2026-09-23",
+      "verified_at": "2026-10-16",
       "fmvss": [
         "110"
       ],
@@ -221,7 +221,7 @@
       "status": "under_review",
       "date": "2026-06-26",
       "source_url": "https://www.federalregister.gov/d/2026-12981",
-      "verified_at": "2026-09-23",
+      "verified_at": "2026-10-16",
       "fmvss": [
         "135"
       ],
@@ -731,6 +731,23 @@
       "source_url": "https://www.federalregister.gov/documents/2026/10/07/2026-20516/nhtsa-safety-research-portfolio-public-meeting-fall-2026-and-automated-driving-systems-workshop",
       "verified_at": "2026-10-15",
       "source_label": "Federal Register 2026-20516",
+      "source_tier": "auto",
+      "review_status": "auto_collected",
+      "date_precision": "day"
+    },
+    {
+      "id": "auto-fr-2026-15486",
+      "level": "federal",
+      "jurisdiction": "US",
+      "title": "NHTSA receives Robomart FMVSS exemption application",
+      "summary": "NHTSA received an application from Robomart, Inc. for a temporary exemption from several requirements of Federal Motor Vehicle Safety Standard No. 500 for its low-speed vehicle with an automated driving system. NHTSA is reviewing the application and will publish a later notice seeking public comment on its merits.",
+      "takeaway": "NHTSA received an application from Robomart, Inc. for a temporary exemption from several requirements of Federal Motor Vehicle Safety Standard No. 500 for its low-speed vehicle with an automated driving system. NHTSA is reviewing the application and will publish a later notice seeking public comment on its merits.",
+      "instrument": "oversight order",
+      "status": "historical_status_unverified",
+      "date": "2026-07-31",
+      "source_url": "https://www.federalregister.gov/documents/2026/07/31/2026-15486/robomart-inc-receipt-of-application-for-temporary-exemption-from-various-requirements-of-the-federal",
+      "verified_at": "2026-10-16",
+      "source_label": "Federal Register 2026-15486",
       "source_tier": "auto",
       "review_status": "auto_collected",
       "date_precision": "day"
