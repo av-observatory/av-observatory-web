@@ -190,5 +190,203 @@
     ],
     "unreadable": "Found by domain-restricted web search, not full-text search of the legislature site.",
     "attempted": "2026-10-15"
+  },
+  "AL": {
+    "checked": "2026-10-16",
+    "sources_read": [
+      "https://alison.legislature.state.al.us/",
+      "https://alison.legislature.state.al.us/graphql"
+    ],
+    "bills_found": [
+      "SB222",
+      "HB560 (dead)"
+    ],
+    "unreadable": "ALISON search matches bill metadata only, not full text."
+  },
+  "DC": {
+    "checked": "2026-10-16",
+    "sources_read": [
+      "https://lims.dccouncil.gov/",
+      "https://lims.dccouncil.gov/Legislation/B26-0684",
+      "https://lims.dccouncil.gov/Legislation/B26-0323",
+      "https://lims.dccouncil.gov/Legislation/B26-0818"
+    ],
+    "bills_found": [
+      "B26-0684",
+      "B26-0323",
+      "B26-0818"
+    ],
+    "unreadable": null
+  },
+  "GA": {
+    "checked": "2026-10-16",
+    "sources_read": [
+      "https://www.legis.ga.gov/"
+    ],
+    "bills_found": [
+      "HB 308 (vetoed)",
+      "HB 957 (tabled)",
+      "HR 1371 (dead)"
+    ],
+    "unreadable": "Read via the site's public API; full-text coverage not established."
+  },
+  "ID": {
+    "checked": "2026-10-16",
+    "sources_read": [
+      "https://legislature.idaho.gov/sessioninfo/2026/legislation/",
+      "https://legislature.idaho.gov/sessioninfo/2025/legislation/"
+    ],
+    "bills_found": [],
+    "unreadable": "No bill full-text search; titles/subject index scanned and ~20 vehicle bills read in full."
+  },
+  "KS": {
+    "checked": "2026-10-16",
+    "sources_read": [
+      "https://www.kslegislature.gov/b2025_26/measures/",
+      "https://www.kslegislature.gov/b2025_26/subject-index/"
+    ],
+    "bills_found": [],
+    "unreadable": "Search is fuzzy; title/keyword-level check only."
+  },
+  "MA": {
+    "checked": "2026-10-16",
+    "sources_read": [
+      "https://malegislature.gov/Bills/Search",
+      "https://malegislature.gov/Bills/194/H3669",
+      "https://malegislature.gov/Bills/194/S2393"
+    ],
+    "bills_found": [
+      "H1280",
+      "H3634",
+      "H3649",
+      "H3669",
+      "S2379",
+      "S2393"
+    ],
+    "unreadable": null
+  },
+  "MI": {
+    "checked": "2026-10-16",
+    "sources_read": [
+      "https://www.legislature.mi.gov/Search/ExecuteSearch"
+    ],
+    "bills_found": [],
+    "unreadable": "Full-text search is fuzzy; 2023-24 session not searched."
+  },
+  "ND": {
+    "checked": "2026-10-16",
+    "sources_read": [
+      "https://ndlegis.gov/assembly/69-2025/bill-index.html",
+      "https://ndlegis.gov/2025-26-major-topic-index"
+    ],
+    "bills_found": [
+      "HB 1037 (failed)",
+      "HB 1249 (failed)",
+      "HB 1614 (failed)"
+    ],
+    "unreadable": null
+  },
+  "NJ": {
+    "checked": "2026-10-16",
+    "sources_read": [
+      "https://www.njleg.state.nj.us/bill-search",
+      "https://www.njleg.state.nj.us/api/billSearch/allBills/2026",
+      "https://pub.njleg.state.nj.us/Bills/2026/A2000/1639_I1.HTM",
+      "https://pub.njleg.state.nj.us/Bills/2026/S2500/2324_I1.HTM"
+    ],
+    "bills_found": [
+      "A768",
+      "A958",
+      "A1639",
+      "A3968",
+      "S1677",
+      "S2324"
+    ],
+    "unreadable": "Keyword search covers synopsis/title only, not full text."
+  },
+  "NY": {
+    "checked": "2026-10-16",
+    "sources_read": [
+      "https://www.nysenate.gov/search/legislation",
+      "https://www.nysenate.gov/legislation/bills/2025/A10087",
+      "https://www.nysenate.gov/legislation/bills/2025/S9038",
+      "https://www.nysenate.gov/legislation/bills/2025/A10008"
+    ],
+    "bills_found": [
+      "A728",
+      "A793",
+      "S2688",
+      "S344",
+      "A4901",
+      "S7956",
+      "A8109",
+      "S9008",
+      "A10008",
+      "S10413",
+      "S10473",
+      "A11500",
+      "A10087",
+      "S9038"
+    ],
+    "unreadable": null
+  },
+  "OR": {
+    "checked": "2026-10-16",
+    "sources_read": [
+      "https://olis.oregonlegislature.gov/liz/2026R1/Measures/Overview/HB4085",
+      "https://api.oregonlegislature.gov/odata/odataservice.svc/Measures"
+    ],
+    "bills_found": [
+      "HB 4085 (adjourned in committee)",
+      "HB 2671 (2025, dead)"
+    ],
+    "unreadable": "No bill-body search; catchlines/summaries scanned."
+  },
+  "SC": {
+    "checked": "2026-10-16",
+    "sources_read": [
+      "https://www.scstatehouse.gov/billsearch.php"
+    ],
+    "bills_found": [],
+    "unreadable": "Site keyword search returned nothing; titles/summaries of all 126th-session bills scanned."
+  },
+  "VT": {
+    "checked": "2026-10-16",
+    "sources_read": [
+      "https://legislature.vermont.gov/bill/loadBillsIntroduced/2026",
+      "https://legislature.vermont.gov/bill/status/2026/H.851"
+    ],
+    "bills_found": [],
+    "unreadable": "Titles scanned plus selected transportation bill texts; no full-text search."
+  },
+  "WV": {
+    "checked": "2026-10-16",
+    "sources_read": [
+      "https://www.wvlegislature.gov/Bill_Status/Bills_all_bills.cfm?year=2026&sessiontype=RS&btype=bill",
+      "https://www.wvlegislature.gov/Bill_Status/Bills_all_bills.cfm?year=2025&sessiontype=RS&btype=bill"
+    ],
+    "bills_found": [],
+    "unreadable": "Titles only; no full-text search."
+  },
+  "CA": {
+    "checked": null,
+    "sources_read": [],
+    "bills_found": [],
+    "unreadable": "leginfo.legislature.ca.gov returns a Cloudflare 403 challenge; no official page could be opened. Tracked bills AB 2193, AB 33, SB 1246, SB 480, SB 572 unverified; SB 1315 (Drive My Car Act) seen only in a search snippet.",
+    "attempted": "2026-10-16"
+  },
+  "MS": {
+    "checked": null,
+    "sources_read": [],
+    "bills_found": [],
+    "unreadable": "billstatus.ls.state.ms.us TLS chain failure/503 and legislature.ms.gov blocked by egress proxy; no official record read. SB 2269 could not be verified.",
+    "attempted": "2026-10-16"
+  },
+  "TX": {
+    "checked": null,
+    "sources_read": [],
+    "bills_found": [],
+    "unreadable": "capitol.texas.gov blocked by egress proxy (CONNECT 403 / ENOTFOUND); nothing read. SB 2807 (2025) not verified.",
+    "attempted": "2026-10-16"
   }
 }

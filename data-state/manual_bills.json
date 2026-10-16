@@ -201,5 +201,161 @@
     ],
     "source_url": "https://www.akleg.gov/basis/Bill/Detail/34?Root=HB%20217",
     "repository_url": "https://www.akleg.gov/basis/Bill/Detail/34?Root=HB%20217"
+  },
+  {
+    "id": "nj-a-1639-222",
+    "jurisdiction": "NJ",
+    "number": "A 1639",
+    "title": "Clarifies that owners of self-driving motor vehicles must comply with existing insurance requirements.",
+    "summary": "As introduced, the bill would clarify that self-driving motor vehicles must comply with New Jersey's compulsory motor vehicle liability insurance requirements. It would amend the no-fault Automobile Reparation Reform Act definition of automobile to include a self-driving private passenger automobile at any SAE automation level, and would specify that the insurance mandate for registered owners covers self-driving motor vehicles. The bill would extend liability insurance and personal injury protection requirements to self-driving cars.",
+    "takeaway": "Would make clear that owners of self-driving motor vehicles must carry New Jersey's required liability and personal injury protection insurance.",
+    "source_summary": "Official N.J. Legislature bill record, synopsis and introduced text with sponsor's statement.",
+    "summary_method": "Maintainer-written from the official N.J. Legislature bill text and statement; no figures taken from news coverage",
+    "summary_quality": "reviewed_substantive",
+    "summary_reviewed_at": "2026-10-16",
+    "status": "introduced",
+    "measure_type": "bill",
+    "last_action_date": "2026-01-13",
+    "last_action": "Introduced, Referred to Assembly Financial Institutions and Insurance Committee",
+    "session": "222",
+    "progress_stage": "committee",
+    "stage_dates": {
+      "introduced": "2026-01-13",
+      "committee": "2026-01-13"
+    },
+    "hearings": [],
+    "source_url": "https://www.njleg.state.nj.us/bill-search/2026/A1639",
+    "repository_url": "https://www.njleg.state.nj.us/bill-search/2026/A1639"
+  },
+  {
+    "id": "nj-s-2324-222",
+    "jurisdiction": "NJ",
+    "number": "S 2324",
+    "title": "Clarifies that owners of self-driving motor vehicles must comply with existing insurance requirements.",
+    "summary": "As introduced, the bill would clarify that self-driving motor vehicles capable of operating without active control or monitoring by a human operator must comply with New Jersey's compulsory motor vehicle liability insurance requirements. It would amend the no-fault Automobile Reparation Reform Act definition of automobile to include such self-driving private passenger automobiles, extending liability insurance and personal injury protection requirements to them.",
+    "takeaway": "Would make clear that owners of self-driving motor vehicles must carry New Jersey's required liability and personal injury protection insurance.",
+    "source_summary": "Official N.J. Legislature bill record, synopsis and introduced text with sponsor's statement.",
+    "summary_method": "Maintainer-written from the official N.J. Legislature bill text and statement; no figures taken from news coverage",
+    "summary_quality": "reviewed_substantive",
+    "summary_reviewed_at": "2026-10-16",
+    "status": "introduced",
+    "measure_type": "bill",
+    "last_action_date": "2026-01-13",
+    "last_action": "Introduced in the Senate, Referred to Senate Commerce Committee",
+    "session": "222",
+    "progress_stage": "committee",
+    "stage_dates": {
+      "introduced": "2026-01-13",
+      "committee": "2026-01-13"
+    },
+    "hearings": [],
+    "source_url": "https://www.njleg.state.nj.us/bill-search/2026/S2324",
+    "repository_url": "https://www.njleg.state.nj.us/bill-search/2026/S2324"
+  },
+  {
+    "id": "ny-a 10087-2025-2026",
+    "jurisdiction": "NY",
+    "number": "A 10087",
+    "title": "Enacts the \"take the wheel act\" which requires a driver be present in all motor vehicles operated for hire",
+    "summary": "As amended (A10087A), the bill would enact the Take the Wheel Act and amend Vehicle and Traffic Law section 375(23) so a motor vehicle operated for hire on public highways may not be operated by an automated driving system without a human driver physically present, seated behind the steering wheel and engaged in the task of driving. It would take effect immediately. The Senate version is S9038.",
+    "takeaway": "Would bar for-hire vehicles in New York from operating on an automated driving system unless a human driver is seated at the wheel and driving.",
+    "source_summary": "Official NY Senate (nysenate.gov) bill page for A10087A: summary, bill text and actions.",
+    "summary_method": "Maintainer-written from the official NY Senate bill page and bill text; no figures taken from news coverage",
+    "summary_quality": "reviewed_substantive",
+    "summary_reviewed_at": "2026-10-16",
+    "status": "introduced",
+    "measure_type": "bill",
+    "last_action_date": "2026-03-19",
+    "last_action": "amend (t) and recommit to transportation",
+    "session": "2025-2026",
+    "progress_stage": "committee",
+    "stage_dates": {
+      "introduced": "2026-01-30",
+      "committee": "2026-01-30"
+    },
+    "hearings": [],
+    "source_url": "https://www.nysenate.gov/legislation/bills/2025/A10087",
+    "repository_url": "https://www.nysenate.gov/legislation/bills/2025/A10087"
+  },
+  {
+    "id": "ny-s 9038-2025-2026",
+    "jurisdiction": "NY",
+    "number": "S 9038",
+    "title": "Enacts the \"take the wheel act\" which requires a driver be present in all motor vehicles operated for hire",
+    "summary": "As amended (S9038A), the bill would enact the Take the Wheel Act and amend Vehicle and Traffic Law section 375(23) so a motor vehicle operated for hire on public highways may not be operated by an automated driving system without a human driver physically present, seated behind the steering wheel and engaged in the task of driving. It would take effect immediately. The Assembly version is A10087.",
+    "takeaway": "Would bar for-hire vehicles in New York from operating on an automated driving system unless a human driver is seated at the wheel and driving.",
+    "source_summary": "Official NY Senate (nysenate.gov) bill page for S9038A: summary, bill text and actions.",
+    "summary_method": "Maintainer-written from the official NY Senate bill page and bill text; no figures taken from news coverage",
+    "summary_quality": "reviewed_substantive",
+    "summary_reviewed_at": "2026-10-16",
+    "status": "introduced",
+    "measure_type": "bill",
+    "last_action_date": "2026-03-06",
+    "last_action": "AMEND (T) AND RECOMMIT TO TRANSPORTATION",
+    "session": "2025-2026",
+    "progress_stage": "committee",
+    "stage_dates": {
+      "introduced": "2026-01-27",
+      "committee": "2026-01-27"
+    },
+    "hearings": [],
+    "source_url": "https://www.nysenate.gov/legislation/bills/2025/S9038",
+    "repository_url": "https://www.nysenate.gov/legislation/bills/2025/S9038"
+  },
+  {
+    "id": "dc-b26-0323-26",
+    "jurisdiction": "DC",
+    "number": "B26-0323",
+    "title": "Autonomous Vehicles Amendment Act of 2025",
+    "summary": "As introduced, the bill would amend the Autonomous Vehicle Act of 2012 to establish a framework for autonomous vehicle operations, including commercial operations, within the District of Columbia. The introduced text adds definitions including automated driving system, autonomous operation, fully autonomous vehicle and on-demand autonomous vehicle network.",
+    "takeaway": "Would amend the Autonomous Vehicle Act of 2012 to create a framework for autonomous vehicle operations, including commercial operations, in the District.",
+    "source_summary": "Official D.C. Council LIMS bill summary (as introduced) and introduced bill text.",
+    "summary_method": "Maintainer-written from the official D.C. Council LIMS record; no figures taken from news coverage",
+    "summary_quality": "reviewed_substantive",
+    "summary_reviewed_at": "2026-10-16",
+    "status": "introduced",
+    "measure_type": "bill",
+    "last_action_date": "2025-07-18",
+    "last_action": "Notice of Intent to Act on B26-0323 Published in the District of Columbia Register.",
+    "session": "26",
+    "progress_stage": "committee",
+    "stage_dates": {
+      "introduced": "2025-07-11",
+      "committee": "2025-07-14"
+    },
+    "hearings": [],
+    "source_url": "https://lims.dccouncil.gov/Legislation/B26-0323",
+    "repository_url": "https://lims.dccouncil.gov/Legislation/B26-0323"
+  },
+  {
+    "id": "dc-b26-0818-26",
+    "jurisdiction": "DC",
+    "number": "B26-0818",
+    "title": "For-Hire Passenger Service Reform Act of 2026",
+    "summary": "As introduced, the bill would establish regulations governing for-hire passenger service, including Department of For-Hire Vehicles enforcement powers against unlicensed activity, operator background and driving history checks, fare structures, and wheelchair-accessible vehicle standards. The introduction memo lists ensuring that autonomous vehicles providing for-hire trips are covered by the for-hire vehicle law and subject to the same service standards as comparable for-hire trips as a priority. The introduced text defines an operator of a vehicle run by an autonomous driving system as the person that owns, operates or controls deployment of that system, and refers to commercial AV permits under the Autonomous Vehicle Act of 2012.",
+    "takeaway": "For-hire vehicle reform bill that would bring autonomous vehicle for-hire trips under the District's for-hire vehicle law.",
+    "source_summary": "Official D.C. Council LIMS bill summary (as introduced), committee chair introduction memo and introduced bill text.",
+    "summary_method": "Maintainer-written from the official D.C. Council LIMS record; no figures taken from news coverage",
+    "summary_quality": "reviewed_substantive",
+    "summary_reviewed_at": "2026-10-16",
+    "status": "introduced",
+    "measure_type": "bill",
+    "last_action_date": "2026-10-06",
+    "last_action": "Referred to Committee on Public Works and Operations.",
+    "session": "26",
+    "progress_stage": "committee",
+    "stage_dates": {
+      "introduced": "2026-09-25",
+      "committee": "2026-10-06"
+    },
+    "hearings": [
+      {
+        "date": "2026-10-19",
+        "description": "Public hearing, Committee on Public Works and Operations",
+        "source_url": "https://lims.dccouncil.gov/Legislation/B26-0818"
+      }
+    ],
+    "source_url": "https://lims.dccouncil.gov/Legislation/B26-0818",
+    "repository_url": "https://lims.dccouncil.gov/Legislation/B26-0818"
   }
 ]
