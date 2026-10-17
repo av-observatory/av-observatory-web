@@ -173,6 +173,40 @@
   ],
   "state_bills": [
     {
+      "id": "ak-hb217-34",
+      "jurisdiction": "AK",
+      "number": "HB 217",
+      "title": "Commercial motor vehicle licensing examinations; autonomous vehicles",
+      "summary": "An Act relating to commercial motor vehicle licensing examinations and regulating autonomous vehicles. Passed the House 39-1 on 4/30/2026; Senate Transportation and State Affairs reported the bill and it was referred to Senate Rules on 5/17/2026. No Senate floor vote or enactment appears on the official record. The record carries no official summary.",
+      "takeaway": "Alaska bill regulating autonomous vehicles that passed the House and sits in Senate Rules with no further recorded action.",
+      "source_summary": "Official Alaska Legislature bill detail page (34th Legislature).",
+      "summary_method": "Auto-collected from the official legislature record; no figures taken from news coverage",
+      "summary_quality": "reviewed_substantive",
+      "summary_reviewed_at": "2026-10-15",
+      "status": "engrossed",
+      "measure_type": "bill",
+      "last_action_date": "2026-05-17",
+      "last_action": "(S) STA RPT SCS(TRA) 2DNP 1DP; (S) REFERRED TO RULES",
+      "session": "34",
+      "progress_stage": "floor",
+      "stage_dates": {
+        "introduced": "2025-05-02",
+        "committee": "2026-03-24",
+        "floor": "2026-04-30"
+      },
+      "hearings": [
+        {
+          "date": "2026-05-14",
+          "description": "Senate State Affairs, heard and held",
+          "source_url": "https://www.akleg.gov/basis/Bill/Detail/34?Root=HB%20217"
+        }
+      ],
+      "source_url": "https://www.akleg.gov/basis/Bill/Detail/34?Root=HB%20217",
+      "repository_url": "https://www.akleg.gov/basis/Bill/Detail/34?Root=HB%20217",
+      "reviewed_at": "2026-10-17",
+      "source_feed": "manual_official"
+    },
+    {
       "id": "al-sb-222-2026rs",
       "jurisdiction": "AL",
       "number": "SB 222",
@@ -207,6 +241,33 @@
         "at": "2026-10-17",
         "reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable"
       }
+    },
+    {
+      "id": "az-sb1320-57-1r",
+      "jurisdiction": "AZ",
+      "number": "SB 1320",
+      "title": "Implements of husbandry; autonomous; automated",
+      "summary": "Amends A.R.S. 28-101 so the definition of 'implement of husbandry' covers agricultural implements or vehicles that use an automated driving system or are autonomous. Signed by the Governor March 31, 2025 as Laws 2025, Chapter 19.",
+      "takeaway": "Extends Arizona's 'implement of husbandry' definition to autonomous and automated agricultural vehicles.",
+      "source_summary": "Official Arizona Legislature bill record (apps.azleg.gov) and Senate engrossed text.",
+      "summary_method": "Auto-collected from the official legislature record; no figures taken from news coverage",
+      "summary_quality": "reviewed_substantive",
+      "summary_reviewed_at": "2026-10-15",
+      "status": "enacted",
+      "measure_type": "bill",
+      "last_action_date": "2025-03-31",
+      "last_action": "Governor signed 03/31/2025 (Laws 2025, Chapter 19).",
+      "session": "57th-1st-regular",
+      "progress_stage": "law",
+      "stage_dates": {
+        "introduced": "2025-01-27",
+        "law": "2025-03-31"
+      },
+      "hearings": [],
+      "source_url": "https://apps.azleg.gov/BillStatus/BillOverview?SessionId=129&BillNumber=SB1320",
+      "repository_url": "https://apps.azleg.gov/BillStatus/BillOverview?SessionId=129&BillNumber=SB1320",
+      "reviewed_at": "2026-10-17",
+      "source_feed": "manual_official"
     },
     {
       "id": "az-sb-1417-57th-2nd-regular",
@@ -611,12 +672,12 @@
       "source_summary": "",
       "summary_method": "official_latest_bill_text_analysis",
       "summary_quality": "manual_primary_source_verified",
-      "status": "engrossed",
+      "status": "introduced",
       "measure_type": "bill",
       "last_action_date": "2026-02-23",
       "last_action": "Committee report approving bill, renumbered as HF 2673.",
       "session": "2025-2026",
-      "progress_stage": "floor",
+      "progress_stage": "committee",
       "stage_dates": {
         "introduced": "2026-01-21",
         "committee": "2026-02-16"
@@ -630,7 +691,14 @@
       "openstates_updated_at": "2026-03-18T09:27:36.154307+00:00",
       "editorial_status": "verified",
       "editorial_source_url": "https://www.legis.iowa.gov/docs/publications/LGI/91/Attachments/HSB598_ADA.pdf",
-      "editorial_source_type": "official_bill_text"
+      "editorial_source_type": "official_bill_text",
+      "progress_checked": "2026-10-17",
+      "progress_source": "official_site",
+      "editorial_recheck": {
+        "result": "rejected",
+        "at": "2026-10-17",
+        "reason": "The supplied text is only a bill history page listing dates, committee actions, and renumbering. It contains no substantive provisions of HSB 598, such as operating requirements, liability rules, pena"
+      }
     },
     {
       "id": "ia-sf-2384-2025-2026",
@@ -660,7 +728,12 @@
       "openstates_updated_at": "2026-03-20T07:17:51.459528+00:00",
       "editorial_status": "verified",
       "editorial_source_url": "https://www.legis.iowa.gov/docs/publications/LGI/91/SF2384.pdf",
-      "editorial_source_type": "official_bill_text"
+      "editorial_source_type": "official_bill_text",
+      "editorial_recheck": {
+        "result": "rejected",
+        "at": "2026-10-17",
+        "reason": "The supplied source is only a bill history page listing dates, committee actions and related bill numbers for SF 2384. It does not contain the bill's operative text, so the specific provisions, affect"
+      }
     },
     {
       "id": "ia-ssb-3052-2025-2026",
@@ -691,7 +764,14 @@
       "openstates_updated_at": "2026-03-18T09:38:48.219205+00:00",
       "editorial_status": "verified",
       "editorial_source_url": "https://www.legis.iowa.gov/docs/publications/LGI/91/SSB3052.pdf",
-      "editorial_source_type": "official_bill_text"
+      "editorial_source_type": "official_bill_text",
+      "progress_checked": "2026-10-17",
+      "progress_source": "official_site",
+      "editorial_recheck": {
+        "result": "rejected",
+        "at": "2026-10-17",
+        "reason": "The supplied text is only a bill history page listing dates, committee actions, and related bill numbers. It contains no substantive provisions of the bill, such as operating requirements, liability r"
+      }
     },
     {
       "id": "il-hb-1839-104th",
@@ -706,7 +786,7 @@
       "status": "introduced",
       "measure_type": "bill",
       "last_action_date": "2026-03-27",
-      "last_action": "Rule 19(a) / Re-referred to Rules Committee",
+      "last_action": "House Rule 19(a) / Re-referred to Rules Committee",
       "session": "104th",
       "progress_stage": "committee",
       "stage_dates": {
@@ -721,7 +801,14 @@
       "openstates_updated_at": "2026-07-11T08:44:11.137312+00:00",
       "editorial_status": "verified",
       "editorial_source_url": "https://www.ilga.gov/Legislation/BillStatus/FullText?DocNum=1839&DocTypeID=HB&GAID=18&SessionID=114",
-      "editorial_source_type": "official_bill_text"
+      "editorial_source_type": "official_bill_text",
+      "progress_checked": "2026-10-17",
+      "progress_source": "official_site",
+      "editorial_recheck": {
+        "result": "missing",
+        "at": "2026-10-17",
+        "reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable"
+      }
     },
     {
       "id": "il-hb-2974-104th",
@@ -736,9 +823,9 @@
       "status": "introduced",
       "measure_type": "bill",
       "last_action_date": "2025-02-06",
-      "last_action": "Referred to Rules Committee",
+      "last_action": "Referred to Rules Committee (House)",
       "session": "104th",
-      "progress_stage": "introduced",
+      "progress_stage": "committee",
       "stage_dates": {},
       "hearings": [],
       "source_url": "https://ilga.gov/Legislation/BillStatus?DocNum=2974&GAID=18&DocTypeID=HB&LegId=161217&SessionID=114",
@@ -749,7 +836,14 @@
       "openstates_updated_at": "2026-07-11T09:08:24.633480+00:00",
       "editorial_status": "verified",
       "editorial_source_url": "https://www.ilga.gov/Legislation/BillStatus/FullText?DocNum=2974&DocTypeID=HB&GAID=18&SessionID=114",
-      "editorial_source_type": "official_bill_text"
+      "editorial_source_type": "official_bill_text",
+      "progress_checked": "2026-10-17",
+      "progress_source": "official_site",
+      "editorial_recheck": {
+        "result": "missing",
+        "at": "2026-10-17",
+        "reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable"
+      }
     },
     {
       "id": "il-hb3044-104",
@@ -790,7 +884,7 @@
       "status": "introduced",
       "measure_type": "bill",
       "last_action_date": "2026-03-27",
-      "last_action": "Rule 19(a) / Re-referred to Rules Committee",
+      "last_action": "House Rule 19(a) / Re-referred to Rules Committee",
       "session": "104th",
       "progress_stage": "committee",
       "stage_dates": {
@@ -805,7 +899,14 @@
       "openstates_updated_at": "2026-07-11T09:28:19.436103+00:00",
       "editorial_status": "verified",
       "editorial_source_url": "https://www.ilga.gov/Legislation/BillStatus/FullText?DocNum=4663&DocTypeID=HB&GAID=18&SessionID=114",
-      "editorial_source_type": "official_bill_text"
+      "editorial_source_type": "official_bill_text",
+      "progress_checked": "2026-10-17",
+      "progress_source": "official_site",
+      "editorial_recheck": {
+        "result": "missing",
+        "at": "2026-10-17",
+        "reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable"
+      }
     },
     {
       "id": "il-hb-4789-104th",
@@ -820,7 +921,7 @@
       "status": "introduced",
       "measure_type": "bill",
       "last_action_date": "2026-03-27",
-      "last_action": "Rule 19(a) / Re-referred to Rules Committee",
+      "last_action": "House Rule 19(a) / Re-referred to Rules Committee",
       "session": "104th",
       "progress_stage": "committee",
       "stage_dates": {
@@ -835,7 +936,14 @@
       "openstates_updated_at": "2026-07-11T08:31:07.502437+00:00",
       "editorial_status": "verified",
       "editorial_source_url": "https://www.ilga.gov/Legislation/BillStatus?DocNum=4789&DocTypeID=HB&GAID=18&SessionID=114",
-      "editorial_source_type": "official_bill_text"
+      "editorial_source_type": "official_bill_text",
+      "progress_checked": "2026-10-17",
+      "progress_source": "official_site",
+      "editorial_recheck": {
+        "result": "missing",
+        "at": "2026-10-17",
+        "reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable"
+      }
     },
     {
       "id": "il-hb-5103-104th",
@@ -850,7 +958,7 @@
       "status": "introduced",
       "measure_type": "bill",
       "last_action_date": "2026-03-27",
-      "last_action": "Rule 19(a) / Re-referred to Rules Committee",
+      "last_action": "House Rule 19(a) / Re-referred to Rules Committee",
       "session": "104th",
       "progress_stage": "committee",
       "stage_dates": {
@@ -865,7 +973,14 @@
       "openstates_updated_at": "2026-07-11T08:38:34.630857+00:00",
       "editorial_status": "verified",
       "editorial_source_url": "https://www.ilga.gov/Legislation/BillStatus?DocNum=5103&DocTypeID=HB&GAID=18&SessionID=114",
-      "editorial_source_type": "official_bill_text"
+      "editorial_source_type": "official_bill_text",
+      "progress_checked": "2026-10-17",
+      "progress_source": "official_site",
+      "editorial_recheck": {
+        "result": "missing",
+        "at": "2026-10-17",
+        "reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable"
+      }
     },
     {
       "id": "il-hb-5220-104th",
@@ -880,7 +995,7 @@
       "status": "introduced",
       "measure_type": "bill",
       "last_action_date": "2026-03-27",
-      "last_action": "Rule 19(a) / Re-referred to Rules Committee",
+      "last_action": "House Rule 19(a) / Re-referred to Rules Committee",
       "session": "104th",
       "progress_stage": "committee",
       "stage_dates": {
@@ -895,7 +1010,14 @@
       "openstates_updated_at": "2026-07-11T09:09:47.169857+00:00",
       "editorial_status": "verified",
       "editorial_source_url": "https://www.ilga.gov/Legislation/BillStatus/FullText?DocNum=5220&DocTypeID=HB&GAID=18&SessionID=114",
-      "editorial_source_type": "official_bill_text"
+      "editorial_source_type": "official_bill_text",
+      "progress_checked": "2026-10-17",
+      "progress_source": "official_site",
+      "editorial_recheck": {
+        "result": "missing",
+        "at": "2026-10-17",
+        "reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable"
+      }
     },
     {
       "id": "il-sb-3308-104th",
@@ -910,9 +1032,9 @@
       "status": "introduced",
       "measure_type": "bill",
       "last_action_date": "2026-05-13",
-      "last_action": "Added as Co-Sponsor Sen. Mark L. Walker",
+      "last_action": "Senate Added as Co-Sponsor Sen. Mark L. Walker",
       "session": "104th",
-      "progress_stage": "committee",
+      "progress_stage": "introduced",
       "stage_dates": {
         "committee": "2026-02-17"
       },
@@ -925,7 +1047,9 @@
       "openstates_updated_at": "2026-07-11T03:37:16.251716+00:00",
       "editorial_status": "verified",
       "editorial_source_url": "https://www.ilga.gov/Legislation/BillStatus?DocNum=3308&DocTypeID=SB&GAID=18&SessionID=114",
-      "editorial_source_type": "official_bill_text"
+      "editorial_source_type": "official_bill_text",
+      "progress_checked": "2026-10-17",
+      "progress_source": "official_site"
     },
     {
       "id": "il-sb-3392-104th",
@@ -940,7 +1064,7 @@
       "status": "introduced",
       "measure_type": "bill",
       "last_action_date": "2026-05-30",
-      "last_action": "Added as Co-Sponsor Sen. Donald P. DeWitte",
+      "last_action": "Senate Added as Co-Sponsor Sen. Donald P. DeWitte",
       "session": "104th",
       "progress_stage": "committee",
       "stage_dates": {
@@ -955,7 +1079,9 @@
       "openstates_updated_at": "2026-07-11T03:55:39.828458+00:00",
       "editorial_status": "verified",
       "editorial_source_url": "https://www.ilga.gov/Legislation/BillStatus/FullText?DocNum=3392&DocTypeID=SB&GAID=18&SessionID=114",
-      "editorial_source_type": "official_bill_text"
+      "editorial_source_type": "official_bill_text",
+      "progress_checked": "2026-10-17",
+      "progress_source": "official_site"
     },
     {
       "id": "ky-hb-223-2026rs",
@@ -986,7 +1112,9 @@
       "openstates_updated_at": "2026-08-20T01:19:42.748166+00:00",
       "editorial_source_url": "https://apps.legislature.ky.gov/record/26RS/hb223.html",
       "editorial_source_type": "official_legislative_text",
-      "editorial_status": "verified"
+      "editorial_status": "verified",
+      "progress_checked": "2026-10-17",
+      "progress_source": "official_site"
     },
     {
       "id": "la-sb133-2026rs",
@@ -1044,7 +1172,9 @@
       "reviewed_at": "2026-10-14",
       "summary_reviewed_at": "2026-09-29",
       "openstates_id": "ocd-bill/7ffec788-6cc4-485e-83f7-610381c530a4",
-      "openstates_updated_at": "2026-07-09T06:00:20.099851+00:00"
+      "openstates_updated_at": "2026-07-09T06:00:20.099851+00:00",
+      "progress_checked": "2026-10-17",
+      "progress_source": "official_site"
     },
     {
       "id": "ma-h-3634-194th",
@@ -1071,7 +1201,9 @@
       "reviewed_at": "2026-10-14",
       "summary_reviewed_at": "2026-09-29",
       "openstates_id": "ocd-bill/e0c1505f-5e0b-46ab-965c-31d7394f417d",
-      "openstates_updated_at": "2026-07-09T07:47:50.897617+00:00"
+      "openstates_updated_at": "2026-07-09T07:47:50.897617+00:00",
+      "progress_checked": "2026-10-17",
+      "progress_source": "official_site"
     },
     {
       "id": "ma-h-3649-194th",
@@ -1098,7 +1230,9 @@
       "reviewed_at": "2026-10-14",
       "summary_reviewed_at": "2026-09-29",
       "openstates_id": "ocd-bill/f31da09d-d215-40d1-a348-f158a9f7ca41",
-      "openstates_updated_at": "2026-07-09T02:52:26.544405+00:00"
+      "openstates_updated_at": "2026-07-09T02:52:26.544405+00:00",
+      "progress_checked": "2026-10-17",
+      "progress_source": "official_site"
     },
     {
       "id": "ma-h-3669-194th",
@@ -1125,7 +1259,9 @@
       "reviewed_at": "2026-10-14",
       "summary_reviewed_at": "2026-09-29",
       "openstates_id": "ocd-bill/31d4c363-cbbf-48ca-a954-52c2f6bdfe89",
-      "openstates_updated_at": "2026-07-09T02:49:05.141271+00:00"
+      "openstates_updated_at": "2026-07-09T02:49:05.141271+00:00",
+      "progress_checked": "2026-10-17",
+      "progress_source": "official_site"
     },
     {
       "id": "ma-hd-1848-194th",
@@ -1139,10 +1275,10 @@
       "summary_quality": "manual_primary_source_verified",
       "status": "introduced",
       "measure_type": "bill",
-      "last_action_date": "2025-01-15",
-      "last_action": "No action text available",
+      "last_action_date": "2026-04-09",
+      "last_action": "Accompanied a study order, see H5328",
       "session": "194th",
-      "progress_stage": "introduced",
+      "progress_stage": "committee",
       "stage_dates": {},
       "hearings": [],
       "source_url": "https://malegislature.gov/Bills/194/HD1848",
@@ -1153,7 +1289,9 @@
       "openstates_updated_at": "2025-01-15T23:13:05.006180+00:00",
       "editorial_status": "verified",
       "editorial_source_url": "https://malegislature.gov/Bills/194/H3669.Html",
-      "editorial_source_type": "official_legislative_text"
+      "editorial_source_type": "official_legislative_text",
+      "progress_checked": "2026-10-17",
+      "progress_source": "official_site"
     },
     {
       "id": "ma-hd-2268-194th",
@@ -1167,10 +1305,10 @@
       "summary_quality": "manual_primary_source_verified",
       "status": "introduced",
       "measure_type": "bill",
-      "last_action_date": "2025-01-16",
-      "last_action": "No action text available",
+      "last_action_date": "2025-12-01",
+      "last_action": "Accompanied a study order, see H4777",
       "session": "194th",
-      "progress_stage": "introduced",
+      "progress_stage": "committee",
       "stage_dates": {},
       "hearings": [],
       "source_url": "https://malegislature.gov/Bills/194/HD2268",
@@ -1181,7 +1319,9 @@
       "openstates_updated_at": "2025-01-16T01:35:46.863306+00:00",
       "editorial_status": "verified",
       "editorial_source_url": "https://malegislature.gov/Bills/194/HD2268.pdf",
-      "editorial_source_type": "official_legislative_text"
+      "editorial_source_type": "official_legislative_text",
+      "progress_checked": "2026-10-17",
+      "progress_source": "official_site"
     },
     {
       "id": "ma-hd-3325-194th",
@@ -1195,10 +1335,10 @@
       "summary_quality": "manual_primary_source_verified",
       "status": "introduced",
       "measure_type": "bill",
-      "last_action_date": "2025-01-17",
-      "last_action": "No action text available",
+      "last_action_date": "2025-11-24",
+      "last_action": "Accompanied a study order, see H4775",
       "session": "194th",
-      "progress_stage": "introduced",
+      "progress_stage": "committee",
       "stage_dates": {},
       "hearings": [],
       "source_url": "https://malegislature.gov/Bills/194/HD3325",
@@ -1209,7 +1349,9 @@
       "openstates_updated_at": "2025-01-17T17:31:04.313578+00:00",
       "editorial_status": "verified",
       "editorial_source_url": "https://malegislature.gov/Bills/194/HD3325/House/Bill/Text",
-      "editorial_source_type": "official_legislative_text"
+      "editorial_source_type": "official_legislative_text",
+      "progress_checked": "2026-10-17",
+      "progress_source": "official_site"
     },
     {
       "id": "ma-s-2379-194th",
@@ -1236,7 +1378,9 @@
       "reviewed_at": "2026-10-14",
       "summary_reviewed_at": "2026-09-29",
       "openstates_id": "ocd-bill/7fd29cd1-f49b-4ff4-a443-d16f62423eba",
-      "openstates_updated_at": "2026-08-01T18:57:08.154116+00:00"
+      "openstates_updated_at": "2026-08-01T18:57:08.154116+00:00",
+      "progress_checked": "2026-10-17",
+      "progress_source": "official_site"
     },
     {
       "id": "ma-s-2393-194th",
@@ -1251,7 +1395,7 @@
       "status": "introduced",
       "measure_type": "bill",
       "last_action_date": "2026-07-31",
-      "last_action": "Accompanied a study order, see S3245",
+      "last_action": "Senate Accompanied a study order, see S3245",
       "session": "194th",
       "progress_stage": "committee",
       "stage_dates": {
@@ -1263,7 +1407,9 @@
       "reviewed_at": "2026-10-14",
       "summary_reviewed_at": "2026-09-29",
       "openstates_id": "ocd-bill/2ecf2de5-bd85-46e3-8f34-b4022b165220",
-      "openstates_updated_at": "2026-08-01T18:56:57.200613+00:00"
+      "openstates_updated_at": "2026-08-01T18:56:57.200613+00:00",
+      "progress_checked": "2026-10-17",
+      "progress_source": "official_site"
     },
     {
       "id": "ma-sd-2531-194th",
@@ -1277,10 +1423,10 @@
       "summary_quality": "manual_primary_source_verified",
       "status": "introduced",
       "measure_type": "bill",
-      "last_action_date": "2025-01-20",
-      "last_action": "No action text available",
+      "last_action_date": "2026-07-31",
+      "last_action": "Senate Accompanied a study order, see S3245",
       "session": "194th",
-      "progress_stage": "introduced",
+      "progress_stage": "committee",
       "stage_dates": {},
       "hearings": [],
       "source_url": "https://malegislature.gov/Bills/194/SD2531",
@@ -1291,7 +1437,9 @@
       "openstates_updated_at": "2025-01-20T22:17:26.453299+00:00",
       "editorial_status": "verified",
       "editorial_source_url": "https://malegislature.gov/Bills/194/S2393.Html",
-      "editorial_source_type": "official_legislative_text"
+      "editorial_source_type": "official_legislative_text",
+      "progress_checked": "2026-10-17",
+      "progress_source": "official_site"
     },
     {
       "id": "md-hb-1295-2026",
@@ -1321,7 +1469,9 @@
       "openstates_updated_at": "2026-03-17T21:48:05.800982+00:00",
       "editorial_source_url": "https://mgaleg.maryland.gov/2026RS/bills/hb/hb1295F.pdf",
       "editorial_source_type": "official_bill_text",
-      "editorial_status": "verified"
+      "editorial_status": "verified",
+      "progress_checked": "2026-10-17",
+      "progress_source": "official_site"
     },
     {
       "id": "md-sb-909-2026",
@@ -1351,7 +1501,9 @@
       "openstates_updated_at": "2026-03-17T21:38:04.208094+00:00",
       "editorial_source_url": "https://mgaleg.maryland.gov/2026RS/bills/sb/sb0909F.pdf",
       "editorial_source_type": "official_bill_text",
-      "editorial_status": "verified"
+      "editorial_status": "verified",
+      "progress_checked": "2026-10-17",
+      "progress_source": "official_site"
     },
     {
       "id": "mn-hf-3513-2025-2026",
@@ -1382,7 +1534,9 @@
       "openstates_updated_at": "2026-09-21T17:19:26.277823+00:00",
       "editorial_status": "verified",
       "editorial_source_url": "https://www.revisor.mn.gov/bills/94/2026/0/HF/3513/versions/0/",
-      "editorial_source_type": "official_legislative_text"
+      "editorial_source_type": "official_legislative_text",
+      "progress_checked": "2026-10-17",
+      "progress_source": "official_site"
     },
     {
       "id": "mn-hf-3810-2025-2026",
@@ -1413,7 +1567,9 @@
       "openstates_updated_at": "2026-09-21T17:17:32.849486+00:00",
       "editorial_status": "verified",
       "editorial_source_url": "https://www.revisor.mn.gov/bills/94/2026/0/HF/3810/versions/latest/",
-      "editorial_source_type": "official_legislative_text"
+      "editorial_source_type": "official_legislative_text",
+      "progress_checked": "2026-10-17",
+      "progress_source": "official_site"
     },
     {
       "id": "mn-hf-4112-2025-2026",
@@ -1444,7 +1600,9 @@
       "openstates_updated_at": "2026-09-21T17:21:21.828527+00:00",
       "editorial_status": "verified",
       "editorial_source_url": "https://www.revisor.mn.gov/bills/94/2026/0/HF/4112/versions/latest/",
-      "editorial_source_type": "official_legislative_text"
+      "editorial_source_type": "official_legislative_text",
+      "progress_checked": "2026-10-17",
+      "progress_source": "official_site"
     },
     {
       "id": "mn-hf-4216-2025-2026",
@@ -1475,7 +1633,9 @@
       "openstates_updated_at": "2026-09-21T17:30:57.660268+00:00",
       "editorial_status": "verified",
       "editorial_source_url": "https://www.revisor.mn.gov/bills/94/2026/0/HF/4216/versions/0/pdf/",
-      "editorial_source_type": "official_legislative_text"
+      "editorial_source_type": "official_legislative_text",
+      "progress_checked": "2026-10-17",
+      "progress_source": "official_site"
     },
     {
       "id": "mn-hf-4521-2025-2026",
@@ -1506,7 +1666,9 @@
       "openstates_updated_at": "2026-09-21T17:18:01.719571+00:00",
       "editorial_status": "verified",
       "editorial_source_url": "https://www.revisor.mn.gov/bills/94/2026/0/HF/4521/versions/latest/",
-      "editorial_source_type": "official_legislative_text"
+      "editorial_source_type": "official_legislative_text",
+      "progress_checked": "2026-10-17",
+      "progress_source": "official_site"
     },
     {
       "id": "mn-sf-4010-2025-2026",
@@ -1537,7 +1699,9 @@
       "openstates_updated_at": "2026-09-25T06:14:56.671959+00:00",
       "editorial_status": "verified",
       "editorial_source_url": "https://www.revisor.mn.gov/bills/94/2026/0/SF/4010/versions/latest/",
-      "editorial_source_type": "official_legislative_text"
+      "editorial_source_type": "official_legislative_text",
+      "progress_checked": "2026-10-17",
+      "progress_source": "official_site"
     },
     {
       "id": "mn-sf-4014-2025-2026",
@@ -1549,7 +1713,7 @@
       "source_summary": "",
       "summary_method": "official_bill_text_review",
       "summary_quality": "manual_primary_source_verified",
-      "status": "introduced",
+      "status": "engrossed",
       "measure_type": "bill",
       "last_action_date": "2026-03-23",
       "last_action": "Comm report: To pass as amended and re-refer to Judiciary and Public Safety",
@@ -1568,7 +1732,9 @@
       "openstates_updated_at": "2026-09-25T06:08:47.130635+00:00",
       "editorial_status": "verified",
       "editorial_source_url": "https://www.revisor.mn.gov/bills/94/2026/0/SF/4014/versions/latest/",
-      "editorial_source_type": "official_legislative_text"
+      "editorial_source_type": "official_legislative_text",
+      "progress_checked": "2026-10-17",
+      "progress_source": "official_site"
     },
     {
       "id": "mn-sf-4381-2025-2026",
@@ -1599,7 +1765,9 @@
       "openstates_updated_at": "2026-09-25T06:21:48.556511+00:00",
       "editorial_status": "verified",
       "editorial_source_url": "https://www.revisor.mn.gov/bills/94/2026/0/SF/4381/versions/0/pdf/",
-      "editorial_source_type": "official_legislative_text"
+      "editorial_source_type": "official_legislative_text",
+      "progress_checked": "2026-10-17",
+      "progress_source": "official_site"
     },
     {
       "id": "mn-sf-4618-2025-2026",
@@ -1611,7 +1779,7 @@
       "source_summary": "",
       "summary_method": "official_bill_version_analysis",
       "summary_quality": "manual_primary_source_verified",
-      "status": "introduced",
+      "status": "engrossed",
       "measure_type": "bill",
       "last_action_date": "2026-04-07",
       "last_action": "Comm report: To pass as amended and re-refer to Judiciary and Public Safety",
@@ -1630,7 +1798,9 @@
       "openstates_updated_at": "2026-09-25T06:21:15.398816+00:00",
       "editorial_status": "verified",
       "editorial_source_url": "https://www.revisor.mn.gov/bills/94/2026/0/SF/4618/versions/1/pdf/",
-      "editorial_source_type": "official_legislative_text"
+      "editorial_source_type": "official_legislative_text",
+      "progress_checked": "2026-10-17",
+      "progress_source": "official_site"
     },
     {
       "id": "mn-sf-4731-2025-2026",
@@ -1661,7 +1831,9 @@
       "openstates_updated_at": "2026-09-25T05:49:09.358213+00:00",
       "editorial_status": "verified",
       "editorial_source_url": "https://www.revisor.mn.gov/bills/94/2026/0/SF/4731/versions/latest/",
-      "editorial_source_type": "official_legislative_text"
+      "editorial_source_type": "official_legislative_text",
+      "progress_checked": "2026-10-17",
+      "progress_source": "official_site"
     },
     {
       "id": "mt-lc-1344-2025",
@@ -1952,7 +2124,7 @@
       "status": "introduced",
       "measure_type": "bill",
       "last_action_date": "2026-05-28",
-      "last_action": "REFERRED TO TRANSPORTATION",
+      "last_action": "referred to transportation",
       "session": "2025-2026",
       "progress_stage": "committee",
       "stage_dates": {
@@ -1967,7 +2139,9 @@
       "openstates_updated_at": "2026-05-29T14:28:44.677147+00:00",
       "editorial_source_url": "https://www.nysenate.gov/legislation/bills/2025/A11500",
       "editorial_source_type": "official_legislature_full_text",
-      "editorial_status": "verified"
+      "editorial_status": "verified",
+      "progress_checked": "2026-10-17",
+      "progress_source": "official_site"
     },
     {
       "id": "ny-a-3650-2025-2026",
@@ -2012,7 +2186,7 @@
       "status": "introduced",
       "measure_type": "bill",
       "last_action_date": "2026-04-24",
-      "last_action": "PRINT NUMBER 4901B",
+      "last_action": "Amended and recommitted to transportation; print number 4901b",
       "session": "2025-2026",
       "progress_stage": "committee",
       "stage_dates": {
@@ -2027,7 +2201,9 @@
       "openstates_updated_at": "2026-05-07T02:52:08.850632+00:00",
       "editorial_source_url": "https://www.nysenate.gov/legislation/bills/2025/A4901",
       "editorial_source_type": "official_legislature_full_text",
-      "editorial_status": "verified"
+      "editorial_status": "verified",
+      "progress_checked": "2026-10-17",
+      "progress_source": "official_site"
     },
     {
       "id": "ny-a-728-2025-2026",
@@ -2042,7 +2218,7 @@
       "status": "introduced",
       "measure_type": "bill",
       "last_action_date": "2026-01-07",
-      "last_action": "REFERRED TO LABOR",
+      "last_action": "referred to labor",
       "session": "2025-2026",
       "progress_stage": "committee",
       "stage_dates": {
@@ -2057,7 +2233,9 @@
       "openstates_updated_at": "2026-03-18T09:21:56.997484+00:00",
       "editorial_source_url": "https://www.nysenate.gov/legislation/bills/2025/A728",
       "editorial_source_type": "official_legislative_text",
-      "editorial_status": "verified"
+      "editorial_status": "verified",
+      "progress_checked": "2026-10-17",
+      "progress_source": "official_site"
     },
     {
       "id": "ny-a-793-2025-2026",
@@ -2072,7 +2250,7 @@
       "status": "introduced",
       "measure_type": "bill",
       "last_action_date": "2026-01-07",
-      "last_action": "REFERRED TO TRANSPORTATION",
+      "last_action": "referred to transportation",
       "session": "2025-2026",
       "progress_stage": "committee",
       "stage_dates": {
@@ -2087,7 +2265,9 @@
       "openstates_updated_at": "2026-05-16T05:50:49.029583+00:00",
       "editorial_source_url": "https://www.nysenate.gov/legislation/bills/2025/A793",
       "editorial_source_type": "official_legislature_full_text",
-      "editorial_status": "verified"
+      "editorial_status": "verified",
+      "progress_checked": "2026-10-17",
+      "progress_source": "official_site"
     },
     {
       "id": "ny-a-8109-2025-2026",
@@ -2102,7 +2282,7 @@
       "status": "introduced",
       "measure_type": "bill",
       "last_action_date": "2026-01-07",
-      "last_action": "REFERRED TO TRANSPORTATION",
+      "last_action": "referred to transportation",
       "session": "2025-2026",
       "progress_stage": "committee",
       "stage_dates": {
@@ -2117,7 +2297,9 @@
       "openstates_updated_at": "2026-03-18T09:51:23.635517+00:00",
       "editorial_source_url": "https://www.nysenate.gov/legislation/bills/2025/A8109",
       "editorial_source_type": "official_legislative_text",
-      "editorial_status": "verified"
+      "editorial_status": "verified",
+      "progress_checked": "2026-10-17",
+      "progress_source": "official_site"
     },
     {
       "id": "ny-s-10413-2025-2026",
@@ -2132,7 +2314,7 @@
       "status": "introduced",
       "measure_type": "bill",
       "last_action_date": "2026-05-15",
-      "last_action": "REFERRED TO TRANSPORTATION",
+      "last_action": "Referred to Transportation",
       "session": "2025-2026",
       "progress_stage": "committee",
       "stage_dates": {
@@ -2147,7 +2329,9 @@
       "openstates_updated_at": "2026-05-16T06:58:13.550388+00:00",
       "editorial_source_url": "https://www.nysenate.gov/legislation/bills/2025/S10413",
       "editorial_source_type": "official_legislature_full_text",
-      "editorial_status": "verified"
+      "editorial_status": "verified",
+      "progress_checked": "2026-10-17",
+      "progress_source": "official_site"
     },
     {
       "id": "ny-s-10473-2025-2026",
@@ -2162,7 +2346,7 @@
       "status": "introduced",
       "measure_type": "bill",
       "last_action_date": "2026-05-15",
-      "last_action": "REFERRED TO TRANSPORTATION",
+      "last_action": "Referred to Transportation",
       "session": "2025-2026",
       "progress_stage": "committee",
       "stage_dates": {
@@ -2177,7 +2361,9 @@
       "openstates_updated_at": "2026-05-29T14:15:56.844512+00:00",
       "editorial_source_url": "https://www.nysenate.gov/legislation/bills/2025/S10473",
       "editorial_source_type": "official_legislative_text",
-      "editorial_status": "verified"
+      "editorial_status": "verified",
+      "progress_checked": "2026-10-17",
+      "progress_source": "official_site"
     },
     {
       "id": "ny-s-2688-2025-2026",
@@ -2207,7 +2393,9 @@
       "openstates_updated_at": "2026-03-18T09:35:25.968566+00:00",
       "editorial_source_url": "https://www.nysenate.gov/legislation/bills/2025/S2688",
       "editorial_source_type": "official_legislative_text",
-      "editorial_status": "verified"
+      "editorial_status": "verified",
+      "progress_checked": "2026-10-17",
+      "progress_source": "official_site"
     },
     {
       "id": "ny-s-344-2025-2026",
@@ -2237,7 +2425,9 @@
       "openstates_updated_at": "2026-05-15T07:13:10.604800+00:00",
       "editorial_source_url": "https://www.nysenate.gov/legislation/bills/2025/S344",
       "editorial_source_type": "official_legislative_text",
-      "editorial_status": "verified"
+      "editorial_status": "verified",
+      "progress_checked": "2026-10-17",
+      "progress_source": "official_site"
     },
     {
       "id": "ny-s-7956-2025-2026",
@@ -2267,7 +2457,9 @@
       "openstates_updated_at": "2026-03-18T09:08:44.729630+00:00",
       "editorial_source_url": "https://www.nysenate.gov/legislation/bills/2025/S7956",
       "editorial_source_type": "official_legislature_full_text",
-      "editorial_status": "verified"
+      "editorial_status": "verified",
+      "progress_checked": "2026-10-17",
+      "progress_source": "official_site"
     },
     {
       "id": "ny-s-9008-2025-2026",
@@ -2279,12 +2471,12 @@
       "source_summary": "Enacts into law major components of legislation necessary to implement the state transportation, economic development and environmental conservation budget for the 2026-2027 state fiscal year; extends provisions of law relating to increasing certain motor vehicle transaction fees (Part A); extends the accident prevention course internet technology pilot program (Part B); establishes a demonstration program in the city of New York for the installation and operation of intelligent speed assistance devices (Part D); extends provisions of law relating to motor vehicles equipped with autonomous vehicle technology (Part E); expands the automated work zone speed enforcement program utilizing photo speed violation monitoring systems to include all New York highways (Part G); extends provisions of law relating to certain tax increment financing provisions relating to the New York transit authority and the metropolitan transportation authority (Part H); authorizes the MTA to conduct environmental reviews under SEQRA for the crosstown extension of the Second Avenue subway project in two stages (Part I); enacts the dairy promotion act; enacts provisions related to the marketing of agricultural products in New York state; repeals certain provisions relating thereto (Part J); extends the refundability of the investment tax credit for farmers (Part K); authorizes the New York state energy research and development authority to finance a portion of its research, development and demonstration, policy and planning, and Fuel NY program from an assessment on gas and electric corporations (Part M); requires gas, electric, steam and water-works corporations to provide an executive compensation disclosure; requires such corporations to return all revenues derived from their actual return on equity in excess of the authorized rate of return to ratepayers; clarifies costs not to be included in rates (Part N); authorizes the public service commission to consider and approve multi-year changes in rates or charges for utilities (Part O); establishes an energy affordability index; permits the public service commission to implant affordability monitors in certain gas or electric corporations (Part P); makes reforms to the state environmental quality review act relating to sustainable housing and sprawl prevention (Part R); increases rebates for certain vehicles purchased by municipalities (Part S); extends the effectiveness of certain provisions of law relating to the powers and duties of the dormitory authority to establish subsidiaries (Part T); authorizes the trustees of the state university of New York to lease and contract to make available certain land on the state university of New York at Farmingdale's campus (Subpart A); authorizes the trustees of the state university of New York to lease and contract to make available certain land on the state university of New York at Stony Brook's campus (Subpart B); authorizes the commissioner of transportation to transfer and convey certain state-owned real property in the town of Babylon, county of Suffolk (Subpart C); authorizes the trustees of the state university of New York to lease and contract to make available grounds and facilities on the state university of New York College of Environmental Science and Forestry to the Abby Lane Housing Corporation (Part D)(Part U); extends the authority of the New York state urban development corporation to administer the empire state economic development fund (Part V); extends the loan powers of the New York state urban development corporation (Part W); enacts the \"safe by design act\" to authorize the attorney general to promulgate rules and regulations identifying methods for reasonable and technically feasible age assurance which may consider the size, financial resources, and technical capabilities of covered platforms, the costs and effectiveness of available age determination techniques for users of such platforms, the audience of such platforms, and prevalent practices of the industry of the operator (Part Y); relates to requiring insurers to provide written explanations for premium changes in certain covered policies (Part BB); places limitations on damages resulting from motor vehicle accidents (Part EE); requires insurers to file annual reports on insurance for multi-family buildings with the superintendent of financial services (Part GG); relates to the annual consumer guide of health insurers (Subpart A); relates to ongoing treatment by an out-of-network provider during pregnancy (Subpart B); relates to accessible formulary drug lists (Subpart C); relates to utilization reviews for treatment for a chronic health condition (Subpart D) (Part HH); extends the policy period for excess profit refunds or credits to motor vehicle insurance policyholders; requires insurers to submit reports demonstrating whether the insurer realized an excess profit and completed making any credits required (Part KK); relates to the effectiveness of the New York state health insurance continuation assistance demonstration project (Part LL); enacts the \"Long Island MacArthur Airport terminal and rail integration project act\" (Part NN); extends the effectiveness of certain provisions permitting videoconferencing and remote participation in public meetings under certain circumstances (Part OO); exempts major electric generating facilities that provide emergency back-up generation for manufacturing facilities that produce semiconductors from siting requirements set forth in article 10 of the public service law (Part PP); establishes the crime of criminal interference with access to a place of religious worship (Part QQ); extend provisions of law permitting NYC, Nassau and Suffolk to retain a portion of certain fines under the Cleaner, Greener NY Act of 2013 (Part RR); enacts the accelerate solar for affordable power (ASAP) act to direct the public service commission to advance reforms to the utility interconnection process to ensure timely and cost-effective integration of new distributed energy resources (Part SS); establishes a blue ribbon commission on residential affordability through energy savings (RATES commission) to study the causes and origins of rising utility rates and to recommend actions or reforms to reduce rates; provides for the repeal of such commission upon expiration thereof (Part TT); authorizes the creation of a traffic camera violations bureau to adjudicate owner liability for failure of operator to stop for a school bus displaying a red visual signal and stop-arm (Part UU); relates to climate change; requires the plan toward achieving the statewide greenhouse gas emissions limits to be updated in 2028 and every six years thereafter; outlines factors to include when developing a regulatory program or programs (Part VV); establishes a monitor team to oversee the Wyandanch union free school district (Part WW); relates to certain retirement benefit enhancements members of tier VI (Part XX); relation to the re-amortization and valuation methods used for contributions to the New York city employees retirement system, the New York city teachers' retirement system, the police pension fund, subchapter two, the fire department pension fund, subchapter two and the board of education retirement system of such city (Part YY); relates to service retirement benefits for uniformed members of the New York city fire department pension fund (Part ZZ); provides for longevity bonuses relating to first grade firefighters and promotions from the firefighter rank (Part AAA); requires certain pension systems to submit a self-report to the superintendent of the department of financial services; requires the superintendent of the department of financial services to submit a report on such reports (Part BBB); allows a beneficiary of a member whose death occurs on or after July 1, 2026 and who would have been entitled to a service credit at the time of such member's death to elect to receive a lump sum payment equal to the pension reserve that would have been established had the member retired on the date of such member's death (Part CCC); relates to certain retirement benefit enhancements for certain state law enforcement officers (Part DDD); relates to the treatment of prior service with certain agencies by the New York city police pension fund (Part EEE); relates to the restoration of 20 year service retirement for certain New York city corrections officers and sanitation workers (Part FFF); provides for the administration of certain funds and accounts related to the 2026--2027 budget (Part GGG); adds ten additional judges to the civil court of the city of New York (Part HHH); establishes the Excelsior power program designed to reduce peak energy demand (Part III); authorizes certain work in connection with the District Galleria project in the city of White Plains (Part JJJ).",
       "summary_method": "official_enacted_bill_part_e_checked",
       "summary_quality": "manual_primary_source_verified",
-      "status": "introduced",
+      "status": "enacted",
       "measure_type": "bill",
       "last_action_date": "2026-05-26",
-      "last_action": "SUBSTITUTED BY A10008C",
+      "last_action": "signed chap.58",
       "session": "2025-2026",
-      "progress_stage": "committee",
+      "progress_stage": "law",
       "stage_dates": {
         "committee": "2026-05-25"
       },
@@ -2297,7 +2489,9 @@
       "openstates_updated_at": "2026-05-26T23:52:52.803038+00:00",
       "editorial_source_url": "https://www.nysenate.gov/legislation/bills/2025/A10008/amendment/C",
       "editorial_source_type": "official_enacted_text",
-      "editorial_status": "verified"
+      "editorial_status": "verified",
+      "progress_checked": "2026-10-17",
+      "progress_source": "official_site"
     },
     {
       "id": "or-hb-4085-2026r1",

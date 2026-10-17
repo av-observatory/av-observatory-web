@@ -1,0 +1,524 @@
+{
+ "al-sb-222-2026rs": {
+  "checked": "2026-10-17",
+  "hash": "eb35aaae6aafcd8b678d3d3a27869584b759e3fd962ade3ff0dc428cb6e490a2",
+  "url": "https://alison.legislature.state.al.us/bill/2026rs/sb222"
+ },
+ "az-sb-1417-57th-2nd-regular": {
+  "checked": "2026-10-17",
+  "hash": "ca219c8a7cf54fcffdab1eb270a74eede63dc4799e0b4f0dd7c3e7d1ee084d0e",
+  "url": "https://apps.azleg.gov/BillStatus/BillOverview/84971?SessionId=130"
+ },
+ "ca-ab-2193-20252026": {
+  "checked": "2026-10-17",
+  "error": "HTTPError/HTTPError403/HTTPError403",
+  "url": "https://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id=202520260AB2193"
+ },
+ "ca-ab-33-20252026": {
+  "checked": "2026-10-17",
+  "error": "HTTPError/HTTPError403/HTTPError403",
+  "url": "https://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id=202520260AB33"
+ },
+ "ca-sb-572-20252026": {
+  "checked": "2026-10-17",
+  "error": "HTTPError/HTTPError403/HTTPError403",
+  "url": "https://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id=202520260SB572"
+ },
+ "dc-b26-0684-26": {
+  "checked": "2026-10-17",
+  "error": "insufficient_official_html/short_page",
+  "url": "https://lims.dccouncil.gov/Legislation/B26-0008"
+ },
+ "de-sb-46-153": {
+  "checked": "2026-10-17",
+  "hash": "575f0c9671ef814be7b11e3f925199caf91b6578625925272851c899ecfe253e",
+  "last_action": "Out of Committee; placed on the Ready List",
+  "last_action_date": "2025-05-14",
+  "progress_stage": "floor",
+  "status": "introduced",
+  "url": "https://legis.delaware.gov/BillDetail?LegislationId=141797"
+ },
+ "hi-hb-1797-2026": {
+  "checked": "2026-10-17",
+  "hash": "cf643fb5204c42d663fb6b2b3bfdd0be5688f2dd1747fb7d497707d8b954b520",
+  "last_action": "Passed Second Reading as amended in HD 1 and referred to the committee(s) on CPC with none voting aye with reservations; none voting no (0) and none excused (0).",
+  "last_action_date": "2026-02-10",
+  "progress_stage": "committee",
+  "status": "engrossed",
+  "url": "https://data.capitol.hawaii.gov/session/measure_indiv.aspx?billtype=HB&billnumber=1797&year=2026"
+ },
+ "ia-hf2673-91": {
+  "checked": "2026-10-17",
+  "hash": "46485c9249e6aca70e5147e48ded50a5ea2e871ac7d1bb63f17503c5c605455a",
+  "url": "https://www.legis.iowa.gov/legislation/BillBook?ga=91&ba=HF2673"
+ },
+ "ia-hsb-598-2025-2026": {
+  "checked": "2026-10-17",
+  "hash": "46bc8f5315d249064fb6a6d8da25c8e4570027d5942ddf17c91ba8591ca0fd56",
+  "last_action": "Committee report approving bill, renumbered as HF 2673.",
+  "last_action_date": "2026-02-23",
+  "progress_stage": "committee",
+  "status": "introduced",
+  "url": "https://www.legis.iowa.gov/legislation/billTracking/billHistory?billName=HSB 598&ga=91"
+ },
+ "ia-sf-2384-2025-2026": {
+  "checked": "2026-10-17",
+  "hash": "73b145a96f79e9c3a7b0cf2b1920df6cb48e647b90fc1a8cbf33d72cfb3d624f",
+  "url": "https://www.legis.iowa.gov/legislation/BillBook?ga=91&ba=SF2384"
+ },
+ "ia-ssb-3052-2025-2026": {
+  "checked": "2026-10-17",
+  "hash": "1ad34f0412c8702cb8f7b383d8a4384ced832099a0a2e1a6f94a7f067cfdcc02",
+  "last_action": "Committee report approving bill, renumbered as SF 2384.",
+  "last_action_date": "2026-02-18",
+  "progress_stage": "committee",
+  "status": "introduced",
+  "url": "https://www.legis.iowa.gov/legislation/billTracking/billHistory?billName=SSB 3052&ga=91"
+ },
+ "il-hb-1839-104th": {
+  "checked": "2026-10-17",
+  "hash": "69bb65a1c795047ef28f7e2a518a750eb40f8c304994735ec56018e2371c0981",
+  "last_action": "House Rule 19(a) / Re-referred to Rules Committee",
+  "last_action_date": "2026-03-27",
+  "progress_stage": "committee",
+  "status": "introduced",
+  "url": "https://www.ilga.gov/ftp/legislation/104/BillStatus/XML/10400HB1839.xml"
+ },
+ "il-hb-2974-104th": {
+  "checked": "2026-10-17",
+  "hash": "8fa34fc32c90a48adbabf13161c204235cc7ea41e017c783465885953dc3f46f",
+  "last_action": "Referred to Rules Committee (House)",
+  "last_action_date": "2025-02-06",
+  "progress_stage": "committee",
+  "status": "introduced",
+  "url": "https://www.ilga.gov/ftp/legislation/104/BillStatus/XML/10400HB2974.xml"
+ },
+ "il-hb-4663-104th": {
+  "checked": "2026-10-17",
+  "hash": "5172e5f1a61661b11a08de9fc29ef589dfb475840a1977c475b347870ff28dbe",
+  "last_action": "House Rule 19(a) / Re-referred to Rules Committee",
+  "last_action_date": "2026-03-27",
+  "progress_stage": "committee",
+  "status": "introduced",
+  "url": "https://www.ilga.gov/ftp/legislation/104/BillStatus/XML/10400HB4663.xml"
+ },
+ "il-hb-4789-104th": {
+  "checked": "2026-10-17",
+  "hash": "1fd4bf3d0c88de9d536605d2da04a4c0929bb1759ffd05df2e15f65e4b5711f2",
+  "last_action": "House Rule 19(a) / Re-referred to Rules Committee",
+  "last_action_date": "2026-03-27",
+  "progress_stage": "committee",
+  "status": "introduced",
+  "url": "https://www.ilga.gov/ftp/legislation/104/BillStatus/XML/10400HB4789.xml"
+ },
+ "il-hb-5103-104th": {
+  "checked": "2026-10-17",
+  "hash": "3968d7b7b3a7764cf491e38c125492cb08eaa60572eb87e3ca68d57096ad7b00",
+  "last_action": "House Rule 19(a) / Re-referred to Rules Committee",
+  "last_action_date": "2026-03-27",
+  "progress_stage": "committee",
+  "status": "introduced",
+  "url": "https://www.ilga.gov/ftp/legislation/104/BillStatus/XML/10400HB5103.xml"
+ },
+ "il-hb-5220-104th": {
+  "checked": "2026-10-17",
+  "hash": "2ef5a1e35dd00fec26bd12d0504115731c801deab2c32a67a9dfaa2f5baece3e",
+  "last_action": "House Rule 19(a) / Re-referred to Rules Committee",
+  "last_action_date": "2026-03-27",
+  "progress_stage": "committee",
+  "status": "introduced",
+  "url": "https://www.ilga.gov/ftp/legislation/104/BillStatus/XML/10400HB5220.xml"
+ },
+ "il-hb3044-104": {
+  "checked": "2026-10-17",
+  "hash": "ae09dec095dc51ebae75dc045b5b734c22df5254b704ff9cec386b3c26612ae7",
+  "last_action": "Rule 19(a) / Re-referred to Rules Committee",
+  "last_action_date": "2025-03-21",
+  "progress_stage": "committee",
+  "status": "introduced",
+  "url": "https://www.ilga.gov/ftp/legislation/104/BillStatus/XML/10400HB3044.xml"
+ },
+ "il-sb-3308-104th": {
+  "checked": "2026-10-17",
+  "hash": "c9f94301891e94d48eb8b8bd1b551d1663919fa30214628b333fafe8f7fc807a",
+  "last_action": "Senate Added as Co-Sponsor Sen. Mark L. Walker",
+  "last_action_date": "2026-05-13",
+  "progress_stage": "introduced",
+  "status": "introduced",
+  "url": "https://www.ilga.gov/ftp/legislation/104/BillStatus/XML/10400SB3308.xml"
+ },
+ "il-sb-3392-104th": {
+  "checked": "2026-10-17",
+  "hash": "d55af8102a62d311ca0c924c91e20387e3b6ffb73e10d9b72910f9cd3a4e1763",
+  "last_action": "Senate Added as Co-Sponsor Sen. Donald P. DeWitte",
+  "last_action_date": "2026-05-30",
+  "progress_stage": "committee",
+  "status": "introduced",
+  "url": "https://www.ilga.gov/ftp/legislation/104/BillStatus/XML/10400SB3392.xml"
+ },
+ "ky-hb-223-2026rs": {
+  "checked": "2026-10-17",
+  "hash": "d2a344c51067d991a0fcc5b901f98da8f6ca88b05827019a99415527f351d5b2",
+  "last_action": "to Transportation (H)",
+  "last_action_date": "2026-01-14",
+  "progress_stage": "committee",
+  "status": "introduced",
+  "url": "https://apps.legislature.ky.gov/record/26rs/hb223.html"
+ },
+ "ma-h-1280-194th": {
+  "checked": "2026-10-17",
+  "hash": "a6fe00ba3567be90fad76a9b915de08807190f5eb4de5fb4eb1493a090504f45",
+  "last_action": "Accompanied a study order, see H4777",
+  "last_action_date": "2025-12-01",
+  "progress_stage": "committee",
+  "status": "introduced",
+  "url": "https://malegislature.gov/Bills/194/H1280"
+ },
+ "ma-h-3634-194th": {
+  "checked": "2026-10-17",
+  "hash": "f96550380e7f03612b92c54f67b111962b8278afae95d773c67fc8e929ed6a3b",
+  "last_action": "Accompanied a study order, see H5326",
+  "last_action_date": "2026-04-06",
+  "progress_stage": "committee",
+  "status": "introduced",
+  "url": "https://malegislature.gov/Bills/194/H3634"
+ },
+ "ma-h-3649-194th": {
+  "checked": "2026-10-17",
+  "hash": "3ddb4aeb1ca6503f47ff28445432755ea5914e3dd9368712e33445e24a3f4b39",
+  "last_action": "Accompanied a study order, see H4775",
+  "last_action_date": "2025-11-24",
+  "progress_stage": "committee",
+  "status": "introduced",
+  "url": "https://malegislature.gov/Bills/194/H3649"
+ },
+ "ma-h-3669-194th": {
+  "checked": "2026-10-17",
+  "hash": "ebd79b0ff1c21e3929c4d72070ecb350a37cd748ba04c775ea776d71e4e4d8a6",
+  "last_action": "Accompanied a study order, see H5328",
+  "last_action_date": "2026-04-09",
+  "progress_stage": "committee",
+  "status": "introduced",
+  "url": "https://malegislature.gov/Bills/194/H3669"
+ },
+ "ma-hd-1848-194th": {
+  "checked": "2026-10-17",
+  "hash": "ebd79b0ff1c21e3929c4d72070ecb350a37cd748ba04c775ea776d71e4e4d8a6",
+  "last_action": "Accompanied a study order, see H5328",
+  "last_action_date": "2026-04-09",
+  "progress_stage": "committee",
+  "status": "introduced",
+  "url": "https://malegislature.gov/Bills/194/HD1848"
+ },
+ "ma-hd-2268-194th": {
+  "checked": "2026-10-17",
+  "hash": "a6fe00ba3567be90fad76a9b915de08807190f5eb4de5fb4eb1493a090504f45",
+  "last_action": "Accompanied a study order, see H4777",
+  "last_action_date": "2025-12-01",
+  "progress_stage": "committee",
+  "status": "introduced",
+  "url": "https://malegislature.gov/Bills/194/HD2268"
+ },
+ "ma-hd-3325-194th": {
+  "checked": "2026-10-17",
+  "hash": "3ddb4aeb1ca6503f47ff28445432755ea5914e3dd9368712e33445e24a3f4b39",
+  "last_action": "Accompanied a study order, see H4775",
+  "last_action_date": "2025-11-24",
+  "progress_stage": "committee",
+  "status": "introduced",
+  "url": "https://malegislature.gov/Bills/194/HD3325"
+ },
+ "ma-s-2379-194th": {
+  "checked": "2026-10-17",
+  "hash": "01d23b613b7de46a6329529b9d063915b018b14516c4be278b43caa5938fb491",
+  "last_action": "Accompanied a study order, see S3245",
+  "last_action_date": "2026-07-31",
+  "progress_stage": "committee",
+  "status": "introduced",
+  "url": "https://malegislature.gov/Bills/194/S2379"
+ },
+ "ma-s-2393-194th": {
+  "checked": "2026-10-17",
+  "hash": "3063374051dcd6e8d49dd820ff1b5c2a2ba3744e971b4e0fab370e56f6fb17bb",
+  "last_action": "Senate Accompanied a study order, see S3245",
+  "last_action_date": "2026-07-31",
+  "progress_stage": "committee",
+  "status": "introduced",
+  "url": "https://malegislature.gov/Bills/194/S2393"
+ },
+ "ma-sd-2531-194th": {
+  "checked": "2026-10-17",
+  "hash": "3063374051dcd6e8d49dd820ff1b5c2a2ba3744e971b4e0fab370e56f6fb17bb",
+  "last_action": "Senate Accompanied a study order, see S3245",
+  "last_action_date": "2026-07-31",
+  "progress_stage": "committee",
+  "status": "introduced",
+  "url": "https://malegislature.gov/Bills/194/SD2531"
+ },
+ "md-hb-1295-2026": {
+  "checked": "2026-10-17",
+  "hash": "e453e8860540da44dc88c38e46e643b8327fedb05ae248918e316b6072c54a9b",
+  "last_action": "Hearing 3/05 at 1:00 p.m.",
+  "last_action_date": "2026-02-13",
+  "progress_stage": "committee",
+  "status": "introduced",
+  "url": "https://mgaleg.maryland.gov/mgawebsite/Legislation/Details/hb1295?ys=2026RS"
+ },
+ "md-sb-909-2026": {
+  "checked": "2026-10-17",
+  "hash": "3d8c33f89fd6051b164d45608e11295b1da6df2d81ba51b191c87ddfea5b9d2d",
+  "last_action": "Hearing 3/04 at 1:00 p.m.",
+  "last_action_date": "2026-02-12",
+  "progress_stage": "committee",
+  "status": "introduced",
+  "url": "https://mgaleg.maryland.gov/mgawebsite/Legislation/Details/sb0909?ys=2026RS"
+ },
+ "mn-hf-3513-2025-2026": {
+  "checked": "2026-10-17",
+  "hash": "924915babb3f922c51090d6fb6e73c1cdcbe8863c3f0acd9d5b639af050e6ce5",
+  "last_action": "Authors added Allen and Repinski",
+  "last_action_date": "2026-04-16",
+  "progress_stage": "committee",
+  "status": "introduced",
+  "url": "https://www.revisor.mn.gov/bills/94/2026/0/HF/3513?body=House"
+ },
+ "mn-hf-3810-2025-2026": {
+  "checked": "2026-10-17",
+  "hash": "c4a9800dbe703787a032141b149b391de66a019cd8b56416a20c6c341dd82965",
+  "last_action": "Authors added Mekeland and Rehrauer",
+  "last_action_date": "2026-03-12",
+  "progress_stage": "committee",
+  "status": "introduced",
+  "url": "https://www.revisor.mn.gov/bills/94/2026/0/HF/3810?body=House"
+ },
+ "mn-hf-4112-2025-2026": {
+  "checked": "2026-10-17",
+  "hash": "fd9dee2e043b407887b2b39f040baa4417afead0dcfc144ef37140c7ffbbf06b",
+  "last_action": "Introduction and first reading, referred to Commerce Finance and Policy",
+  "last_action_date": "2026-03-09",
+  "progress_stage": "committee",
+  "status": "introduced",
+  "url": "https://www.revisor.mn.gov/bills/94/2026/0/HF/4112?body=House"
+ },
+ "mn-hf-4216-2025-2026": {
+  "checked": "2026-10-17",
+  "hash": "5a4ab87371aae3843305c749e1fef9c16b9eefa9f040f5c1847134d7f1aac026",
+  "last_action": "Authors added Lee, F.; Greenman, and Noor",
+  "last_action_date": "2026-03-16",
+  "progress_stage": "committee",
+  "status": "introduced",
+  "url": "https://www.revisor.mn.gov/bills/94/2026/0/HF/4216?body=House"
+ },
+ "mn-hf-4521-2025-2026": {
+  "checked": "2026-10-17",
+  "hash": "07f641563f3842fc4c1f0f3d5604425741a52de2ae013bc183d16aa61ac65080",
+  "last_action": "Introduction and first reading, referred to Transportation Finance and Policy",
+  "last_action_date": "2026-03-23",
+  "progress_stage": "committee",
+  "status": "introduced",
+  "url": "https://www.revisor.mn.gov/bills/94/2026/0/HF/4521?body=House"
+ },
+ "mn-sf-4010-2025-2026": {
+  "checked": "2026-10-17",
+  "hash": "66dd474d29c77d006a8e31c9ead65783bf27cf7e04481157027203c868754e10",
+  "last_action": "Author added Westrom",
+  "last_action_date": "2026-04-15",
+  "progress_stage": "committee",
+  "status": "introduced",
+  "url": "https://www.revisor.mn.gov/bills/94/2026/0/SF/4010?body=Senate"
+ },
+ "mn-sf-4014-2025-2026": {
+  "checked": "2026-10-17",
+  "hash": "f0f7ca0f2df3835360423e2a49ee9a90015b1e1cd591d0cbb9292a7183563d89",
+  "last_action": "Comm report: To pass as amended and re-refer to Judiciary and Public Safety",
+  "last_action_date": "2026-03-23",
+  "progress_stage": "committee",
+  "status": "engrossed",
+  "url": "https://www.revisor.mn.gov/bills/94/2026/0/SF/4014?body=Senate"
+ },
+ "mn-sf-4381-2025-2026": {
+  "checked": "2026-10-17",
+  "hash": "ffa4a01ac53cd220a2c7c3b99ecf5c925f614b194a37e7cc79166f66ba94336d",
+  "last_action": "Author added Johnson Stewart",
+  "last_action_date": "2026-03-23",
+  "progress_stage": "committee",
+  "status": "introduced",
+  "url": "https://www.revisor.mn.gov/bills/94/2026/0/SF/4381?body=Senate"
+ },
+ "mn-sf-4618-2025-2026": {
+  "checked": "2026-10-17",
+  "hash": "8af0834247324b3a8aa098c137f2948227fca2fe277f7b58a526530dafd384c9",
+  "last_action": "Comm report: To pass as amended and re-refer to Judiciary and Public Safety",
+  "last_action_date": "2026-04-07",
+  "progress_stage": "committee",
+  "status": "engrossed",
+  "url": "https://www.revisor.mn.gov/bills/94/2026/0/SF/4618?body=Senate"
+ },
+ "mn-sf-4731-2025-2026": {
+  "checked": "2026-10-17",
+  "hash": "b6b3375e3fe8cee736b952512ebcbd974ccf48beb32d401912307caa463aa11d",
+  "last_action": "Referred to Transportation",
+  "last_action_date": "2026-03-23",
+  "progress_stage": "committee",
+  "status": "introduced",
+  "url": "https://www.revisor.mn.gov/bills/94/2026/0/SF/4731?body=Senate"
+ },
+ "mt-lc-1344-2025": {
+  "checked": "2026-10-17",
+  "error": "insufficient_official_html/short_page",
+  "url": "https://bills.legmt.gov/#/lc/bill/2/LC1344"
+ },
+ "mt-lc-179-2025": {
+  "checked": "2026-10-17",
+  "error": "insufficient_official_html/short_page",
+  "url": "https://bills.legmt.gov/#/lc/bill/2/LC0179"
+ },
+ "mt-sj-16-2025": {
+  "checked": "2026-10-17",
+  "error": "insufficient_official_html/short_page",
+  "url": "https://bills.legmt.gov/#/laws/bill/2/LC1344"
+ },
+ "nj-a-3968-222": {
+  "checked": "2026-10-17",
+  "hash": "6be2460782b1c366588bd22cc550a583010842eaf8bdef9f0888ae40ede24dfa",
+  "url": "https://www.njleg.state.nj.us/bill-search/2026/A3968"
+ },
+ "nj-a-768-222": {
+  "checked": "2026-10-17",
+  "hash": "6be2460782b1c366588bd22cc550a583010842eaf8bdef9f0888ae40ede24dfa",
+  "url": "https://www.njleg.state.nj.us/bill-search/2026/A768"
+ },
+ "nj-a-958-222": {
+  "checked": "2026-10-17",
+  "hash": "6be2460782b1c366588bd22cc550a583010842eaf8bdef9f0888ae40ede24dfa",
+  "url": "https://www.njleg.state.nj.us/bill-search/2026/A958"
+ },
+ "nj-s-1677-222": {
+  "checked": "2026-10-17",
+  "hash": "6be2460782b1c366588bd22cc550a583010842eaf8bdef9f0888ae40ede24dfa",
+  "url": "https://www.njleg.state.nj.us/bill-search/2026/S1677"
+ },
+ "ny-a-11500-2025-2026": {
+  "checked": "2026-10-17",
+  "hash": "f468f4333683bfe3f532b83cc3c21485b0ebe82df74f88c4a0651d65fb2f39cb",
+  "last_action": "referred to transportation",
+  "last_action_date": "2026-05-28",
+  "progress_stage": "committee",
+  "status": "introduced",
+  "url": "https://nyassembly.gov/leg/?default_fld=&leg_video=&bn=A11500&term=2025&Summary=Y&Actions=Y"
+ },
+ "ny-a-4901-2025-2026": {
+  "checked": "2026-10-17",
+  "hash": "98a9bf6482412650a7a884cc78cad30694e21da218170d460a7fe394ea84ebcf",
+  "last_action": "Amended and recommitted to transportation; print number 4901b",
+  "last_action_date": "2026-04-24",
+  "progress_stage": "committee",
+  "status": "introduced",
+  "url": "https://nyassembly.gov/leg/?default_fld=&leg_video=&bn=A04901&term=2025&Summary=Y&Actions=Y"
+ },
+ "ny-a-728-2025-2026": {
+  "checked": "2026-10-17",
+  "hash": "82e3d7fe970a242ad00644d5aeaf6fb09ecc6ab0bb9945e773378f81bcc4e6dd",
+  "last_action": "referred to labor",
+  "last_action_date": "2026-01-07",
+  "progress_stage": "committee",
+  "status": "introduced",
+  "url": "https://nyassembly.gov/leg/?default_fld=&leg_video=&bn=A00728&term=2025&Summary=Y&Actions=Y"
+ },
+ "ny-a-793-2025-2026": {
+  "checked": "2026-10-17",
+  "hash": "9acfb101c130a8b944be9337f2b8610dca36011113c7ff09e9fbf387e7d4dad5",
+  "last_action": "referred to transportation",
+  "last_action_date": "2026-01-07",
+  "progress_stage": "committee",
+  "status": "introduced",
+  "url": "https://nyassembly.gov/leg/?default_fld=&leg_video=&bn=A00793&term=2025&Summary=Y&Actions=Y"
+ },
+ "ny-a-8109-2025-2026": {
+  "checked": "2026-10-17",
+  "hash": "3d3e24fdeffc3804edc855f121073399d1baf447ed4234a02a83fc6e3864779c",
+  "last_action": "referred to transportation",
+  "last_action_date": "2026-01-07",
+  "progress_stage": "committee",
+  "status": "introduced",
+  "url": "https://nyassembly.gov/leg/?default_fld=&leg_video=&bn=A08109&term=2025&Summary=Y&Actions=Y"
+ },
+ "ny-s-10413-2025-2026": {
+  "checked": "2026-10-17",
+  "hash": "9db5842ef22d40b5494ff8fd6ba7bd495da00404690ab3dd3ac5cbd4d1ebf98f",
+  "last_action": "Referred to Transportation",
+  "last_action_date": "2026-05-15",
+  "progress_stage": "committee",
+  "status": "introduced",
+  "url": "https://nyassembly.gov/leg/?default_fld=&leg_video=&bn=S10413&term=2025&Summary=Y&Actions=Y"
+ },
+ "ny-s-10473-2025-2026": {
+  "checked": "2026-10-17",
+  "hash": "99ae61b24d770589c6cd6d39bb518125824708b384e05eb476603fb1ad4f21aa",
+  "last_action": "Referred to Transportation",
+  "last_action_date": "2026-05-15",
+  "progress_stage": "committee",
+  "status": "introduced",
+  "url": "https://nyassembly.gov/leg/?default_fld=&leg_video=&bn=S10473&term=2025&Summary=Y&Actions=Y"
+ },
+ "ny-s-2688-2025-2026": {
+  "checked": "2026-10-17",
+  "hash": "4e50ad287c12b593d28779b9f26d0b5e714b5137099dde98e925e6fd9ea8439e",
+  "last_action": "REFERRED TO TRANSPORTATION",
+  "last_action_date": "2025-01-22",
+  "progress_stage": "committee",
+  "status": "introduced",
+  "url": "https://nyassembly.gov/leg/?default_fld=&leg_video=&bn=S02688&term=2025&Summary=Y&Actions=Y"
+ },
+ "ny-s-344-2025-2026": {
+  "checked": "2026-10-17",
+  "hash": "1b3d862ddcae0a078b2dd0d2f02e91c8172f9c5f2b236933072683dec1c0d166",
+  "last_action": "PRINT NUMBER 344B",
+  "last_action_date": "2026-05-06",
+  "progress_stage": "committee",
+  "status": "introduced",
+  "url": "https://nyassembly.gov/leg/?default_fld=&leg_video=&bn=S00344&term=2025&Summary=Y&Actions=Y"
+ },
+ "ny-s-7956-2025-2026": {
+  "checked": "2026-10-17",
+  "hash": "ece79bc8b824c605863032b15e4f03dc60370aee8eca1b20a60caed9844e61e5",
+  "last_action": "REFERRED TO TRANSPORTATION",
+  "last_action_date": "2026-01-07",
+  "progress_stage": "committee",
+  "status": "introduced",
+  "url": "https://nyassembly.gov/leg/?default_fld=&leg_video=&bn=S07956&term=2025&Summary=Y&Actions=Y"
+ },
+ "ny-s-9008-2025-2026": {
+  "checked": "2026-10-17",
+  "hash": "1c7988738c9888936bf65f0cc29f14029b3ed93bdd8e638600627aee8ed3d2fd",
+  "last_action": "signed chap.58",
+  "last_action_date": "2026-05-26",
+  "progress_stage": "law",
+  "status": "enacted",
+  "url": "https://nyassembly.gov/leg/?default_fld=&leg_video=&bn=S09008&term=2025&Summary=Y&Actions=Y"
+ },
+ "or-hb-4085-2026r1": {
+  "checked": "2026-10-17",
+  "hash": "0c0b0fa64e05a8cd14eb9f4878ed547dcb07f6d9a5f159dd9f859aaa379434dc",
+  "url": "https://olis.oregonlegislature.gov/liz/2026R1/Measures/Overview/HB4085"
+ },
+ "pa-hb-1639-2025-2026": {
+  "checked": "2026-10-17",
+  "error": "URLError/URLError/URLError",
+  "url": "https://www.palegis.us/legislation/bills/2025/hb1639"
+ },
+ "pa-hr-563-2025-2026": {
+  "checked": "2026-10-17",
+  "error": "URLError/URLError/URLError",
+  "url": "https://www.palegis.us/legislation/bills/2025/hr563"
+ },
+ "ut-hb-581-2026": {
+  "checked": "2026-10-17",
+  "hash": "6cd7d12c09670284fb37a46b542f3aa3841389b7425f8f1525ba0fbe24e6c45b",
+  "last_action": "House/ filed (House file for bills not passed), following failure on 3rd reading in the House (28-44-3)",
+  "last_action_date": "2024-01-25",
+  "progress_stage": "floor",
+  "status": "stricken",
+  "url": "https://le.utah.gov/~2026/bills/static/HB0581.html"
+ }
+}

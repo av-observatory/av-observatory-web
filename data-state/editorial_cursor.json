@@ -14,5 +14,21 @@
  "public/data/legislation_tracker.json:state_bills:ca-sb-1246-20252026": "2026-10-17T20:59:24Z",
  "public/data/legislation_tracker.json:state_bills:ca-sb-480-20252026": "2026-10-17T21:04:33Z",
  "public/data/legislation_tracker.json:state_bills:ca-sb-572-20252026": "2026-10-17T21:09:45Z",
- "public/data/legislation_tracker.json:state_bills:co-hb-1286-2026a": "2026-10-17T21:11:24Z"
+ "public/data/legislation_tracker.json:state_bills:co-hb-1286-2026a": "2026-10-17T21:11:24Z",
+ "public/data/legislation_tracker.json:state_bills:co-hb25-1122-2025-regular-session": "2026-10-17T21:31:42Z",
+ "public/data/legislation_tracker.json:state_bills:co-hb26-1286-2026-regular-session": "2026-10-17T21:31:43Z",
+ "public/data/legislation_tracker.json:state_bills:dc-b26-0684-26": "2026-10-17T21:31:45Z",
+ "public/data/legislation_tracker.json:state_bills:de-sb-46-153": "2026-10-17T21:37:47Z",
+ "public/data/legislation_tracker.json:state_bills:hi-hb-1797-2026": "2026-10-17T21:43:02Z",
+ "public/data/legislation_tracker.json:state_bills:ia-hf2673-91": "2026-10-17T21:43:06Z",
+ "public/data/legislation_tracker.json:state_bills:ia-hsb-598-2025-2026": "2026-10-17T21:43:11Z",
+ "public/data/legislation_tracker.json:state_bills:ia-sf-2384-2025-2026": "2026-10-17T21:43:14Z",
+ "public/data/legislation_tracker.json:state_bills:ia-ssb-3052-2025-2026": "2026-10-17T21:43:18Z",
+ "public/data/legislation_tracker.json:state_bills:il-hb-1839-104th": "2026-10-17T21:48:27Z",
+ "public/data/legislation_tracker.json:state_bills:il-hb-2974-104th": "2026-10-17T21:53:36Z",
+ "public/data/legislation_tracker.json:state_bills:il-hb-4663-104th": "2026-10-17T21:58:49Z",
+ "public/data/legislation_tracker.json:state_bills:il-hb-4789-104th": "2026-10-17T22:04:01Z",
+ "public/data/legislation_tracker.json:state_bills:il-hb-5103-104th": "2026-10-17T22:09:10Z",
+ "public/data/legislation_tracker.json:state_bills:il-hb-5220-104th": "2026-10-17T22:14:24Z",
+ "public/data/legislation_tracker.json:state_bills:il-hb3044-104": "2026-10-17T21:53:38Z"
 }

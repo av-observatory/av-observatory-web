@@ -1,0 +1,478 @@
+[
+ {
+  "id": "de-sb-46-153",
+  "at": "2026-10-17",
+  "from": {
+   "status": "passed",
+   "progress_stage": "passed_legislature",
+   "last_action": "Reported Out of Committee (Transportation) in House with 1 Favorable, 5 On Its Merits",
+   "last_action_date": "2025-05-14"
+  },
+  "to": {
+   "status": "introduced",
+   "progress_stage": "floor",
+   "last_action": "Out of Committee; placed on the Ready List",
+   "last_action_date": "2025-05-14"
+  },
+  "url": "https://legis.delaware.gov/BillDetail?LegislationId=141797"
+ },
+ {
+  "id": "hi-hb-1797-2026",
+  "at": "2026-10-17",
+  "from": {
+   "status": "engrossed",
+   "progress_stage": "floor",
+   "last_action": "Passed Second Reading as amended in HD 1 and referred to the committee(s) on CPC with none voting aye with reservations; none voting no (0) and none excused (0).",
+   "last_action_date": "2026-02-10"
+  },
+  "to": {
+   "status": "engrossed",
+   "progress_stage": "committee",
+   "last_action": "Passed Second Reading as amended in HD 1 and referred to the committee(s) on CPC with none voting aye with reservations; none voting no (0) and none excused (0).",
+   "last_action_date": "2026-02-10"
+  },
+  "url": "https://data.capitol.hawaii.gov/session/measure_indiv.aspx?billtype=HB&billnumber=1797&year=2026"
+ },
+ {
+  "id": "ia-hsb-598-2025-2026",
+  "at": "2026-10-17",
+  "from": {
+   "status": "engrossed",
+   "progress_stage": "floor",
+   "last_action": "Committee report approving bill, renumbered as HF 2673.",
+   "last_action_date": "2026-02-23"
+  },
+  "to": {
+   "status": "introduced",
+   "progress_stage": "committee",
+   "last_action": "Committee report approving bill, renumbered as HF 2673.",
+   "last_action_date": "2026-02-23"
+  },
+  "url": "https://www.legis.iowa.gov/legislation/billTracking/billHistory?billName=HSB 598&ga=91"
+ },
+ {
+  "id": "il-hb-1839-104th",
+  "at": "2026-10-17",
+  "from": {
+   "status": "introduced",
+   "progress_stage": "committee",
+   "last_action": "Rule 19(a) / Re-referred to Rules Committee",
+   "last_action_date": "2026-03-27"
+  },
+  "to": {
+   "status": "introduced",
+   "progress_stage": "committee",
+   "last_action": "House Rule 19(a) / Re-referred to Rules Committee",
+   "last_action_date": "2026-03-27"
+  },
+  "url": "https://www.ilga.gov/ftp/legislation/104/BillStatus/XML/10400HB1839.xml"
+ },
+ {
+  "id": "il-hb-2974-104th",
+  "at": "2026-10-17",
+  "from": {
+   "status": "introduced",
+   "progress_stage": "introduced",
+   "last_action": "Referred to Rules Committee",
+   "last_action_date": "2025-02-06"
+  },
+  "to": {
+   "status": "introduced",
+   "progress_stage": "committee",
+   "last_action": "Referred to Rules Committee (House)",
+   "last_action_date": "2025-02-06"
+  },
+  "url": "https://www.ilga.gov/ftp/legislation/104/BillStatus/XML/10400HB2974.xml"
+ },
+ {
+  "id": "il-hb3044-104",
+  "at": "2026-10-17",
+  "from": {
+   "status": "introduced",
+   "progress_stage": "committee",
+   "last_action": "House: Rule 19(a) / Re-referred to Rules Committee.",
+   "last_action_date": "2025-03-21"
+  },
+  "to": {
+   "status": "introduced",
+   "progress_stage": "committee",
+   "last_action": "Rule 19(a) / Re-referred to Rules Committee",
+   "last_action_date": "2025-03-21"
+  },
+  "url": "https://www.ilga.gov/ftp/legislation/104/BillStatus/XML/10400HB3044.xml"
+ },
+ {
+  "id": "il-hb-4663-104th",
+  "at": "2026-10-17",
+  "from": {
+   "status": "introduced",
+   "progress_stage": "committee",
+   "last_action": "Rule 19(a) / Re-referred to Rules Committee",
+   "last_action_date": "2026-03-27"
+  },
+  "to": {
+   "status": "introduced",
+   "progress_stage": "committee",
+   "last_action": "House Rule 19(a) / Re-referred to Rules Committee",
+   "last_action_date": "2026-03-27"
+  },
+  "url": "https://www.ilga.gov/ftp/legislation/104/BillStatus/XML/10400HB4663.xml"
+ },
+ {
+  "id": "il-hb-4789-104th",
+  "at": "2026-10-17",
+  "from": {
+   "status": "introduced",
+   "progress_stage": "committee",
+   "last_action": "Rule 19(a) / Re-referred to Rules Committee",
+   "last_action_date": "2026-03-27"
+  },
+  "to": {
+   "status": "introduced",
+   "progress_stage": "committee",
+   "last_action": "House Rule 19(a) / Re-referred to Rules Committee",
+   "last_action_date": "2026-03-27"
+  },
+  "url": "https://www.ilga.gov/ftp/legislation/104/BillStatus/XML/10400HB4789.xml"
+ },
+ {
+  "id": "il-hb-5103-104th",
+  "at": "2026-10-17",
+  "from": {
+   "status": "introduced",
+   "progress_stage": "committee",
+   "last_action": "Rule 19(a) / Re-referred to Rules Committee",
+   "last_action_date": "2026-03-27"
+  },
+  "to": {
+   "status": "introduced",
+   "progress_stage": "committee",
+   "last_action": "House Rule 19(a) / Re-referred to Rules Committee",
+   "last_action_date": "2026-03-27"
+  },
+  "url": "https://www.ilga.gov/ftp/legislation/104/BillStatus/XML/10400HB5103.xml"
+ },
+ {
+  "id": "il-hb-5220-104th",
+  "at": "2026-10-17",
+  "from": {
+   "status": "introduced",
+   "progress_stage": "committee",
+   "last_action": "Rule 19(a) / Re-referred to Rules Committee",
+   "last_action_date": "2026-03-27"
+  },
+  "to": {
+   "status": "introduced",
+   "progress_stage": "committee",
+   "last_action": "House Rule 19(a) / Re-referred to Rules Committee",
+   "last_action_date": "2026-03-27"
+  },
+  "url": "https://www.ilga.gov/ftp/legislation/104/BillStatus/XML/10400HB5220.xml"
+ },
+ {
+  "id": "il-sb-3308-104th",
+  "at": "2026-10-17",
+  "from": {
+   "status": "introduced",
+   "progress_stage": "committee",
+   "last_action": "Added as Co-Sponsor Sen. Mark L. Walker",
+   "last_action_date": "2026-05-13"
+  },
+  "to": {
+   "status": "introduced",
+   "progress_stage": "introduced",
+   "last_action": "Senate Added as Co-Sponsor Sen. Mark L. Walker",
+   "last_action_date": "2026-05-13"
+  },
+  "url": "https://www.ilga.gov/ftp/legislation/104/BillStatus/XML/10400SB3308.xml"
+ },
+ {
+  "id": "il-sb-3392-104th",
+  "at": "2026-10-17",
+  "from": {
+   "status": "introduced",
+   "progress_stage": "committee",
+   "last_action": "Added as Co-Sponsor Sen. Donald P. DeWitte",
+   "last_action_date": "2026-05-30"
+  },
+  "to": {
+   "status": "introduced",
+   "progress_stage": "committee",
+   "last_action": "Senate Added as Co-Sponsor Sen. Donald P. DeWitte",
+   "last_action_date": "2026-05-30"
+  },
+  "url": "https://www.ilga.gov/ftp/legislation/104/BillStatus/XML/10400SB3392.xml"
+ },
+ {
+  "id": "ma-hd-1848-194th",
+  "at": "2026-10-17",
+  "from": {
+   "status": "introduced",
+   "progress_stage": "introduced",
+   "last_action": "No action text available",
+   "last_action_date": "2025-01-15"
+  },
+  "to": {
+   "status": "introduced",
+   "progress_stage": "committee",
+   "last_action": "Accompanied a study order, see H5328",
+   "last_action_date": "2026-04-09"
+  },
+  "url": "https://malegislature.gov/Bills/194/HD1848"
+ },
+ {
+  "id": "ma-hd-2268-194th",
+  "at": "2026-10-17",
+  "from": {
+   "status": "introduced",
+   "progress_stage": "introduced",
+   "last_action": "No action text available",
+   "last_action_date": "2025-01-16"
+  },
+  "to": {
+   "status": "introduced",
+   "progress_stage": "committee",
+   "last_action": "Accompanied a study order, see H4777",
+   "last_action_date": "2025-12-01"
+  },
+  "url": "https://malegislature.gov/Bills/194/HD2268"
+ },
+ {
+  "id": "ma-hd-3325-194th",
+  "at": "2026-10-17",
+  "from": {
+   "status": "introduced",
+   "progress_stage": "introduced",
+   "last_action": "No action text available",
+   "last_action_date": "2025-01-17"
+  },
+  "to": {
+   "status": "introduced",
+   "progress_stage": "committee",
+   "last_action": "Accompanied a study order, see H4775",
+   "last_action_date": "2025-11-24"
+  },
+  "url": "https://malegislature.gov/Bills/194/HD3325"
+ },
+ {
+  "id": "ma-s-2393-194th",
+  "at": "2026-10-17",
+  "from": {
+   "status": "introduced",
+   "progress_stage": "committee",
+   "last_action": "Accompanied a study order, see S3245",
+   "last_action_date": "2026-07-31"
+  },
+  "to": {
+   "status": "introduced",
+   "progress_stage": "committee",
+   "last_action": "Senate Accompanied a study order, see S3245",
+   "last_action_date": "2026-07-31"
+  },
+  "url": "https://malegislature.gov/Bills/194/S2393"
+ },
+ {
+  "id": "ma-sd-2531-194th",
+  "at": "2026-10-17",
+  "from": {
+   "status": "introduced",
+   "progress_stage": "introduced",
+   "last_action": "No action text available",
+   "last_action_date": "2025-01-20"
+  },
+  "to": {
+   "status": "introduced",
+   "progress_stage": "committee",
+   "last_action": "Senate Accompanied a study order, see S3245",
+   "last_action_date": "2026-07-31"
+  },
+  "url": "https://malegislature.gov/Bills/194/SD2531"
+ },
+ {
+  "id": "mn-sf-4014-2025-2026",
+  "at": "2026-10-17",
+  "from": {
+   "status": "introduced",
+   "progress_stage": "committee",
+   "last_action": "Comm report: To pass as amended and re-refer to Judiciary and Public Safety",
+   "last_action_date": "2026-03-23"
+  },
+  "to": {
+   "status": "engrossed",
+   "progress_stage": "committee",
+   "last_action": "Comm report: To pass as amended and re-refer to Judiciary and Public Safety",
+   "last_action_date": "2026-03-23"
+  },
+  "url": "https://www.revisor.mn.gov/bills/94/2026/0/SF/4014?body=Senate"
+ },
+ {
+  "id": "mn-sf-4618-2025-2026",
+  "at": "2026-10-17",
+  "from": {
+   "status": "introduced",
+   "progress_stage": "committee",
+   "last_action": "Comm report: To pass as amended and re-refer to Judiciary and Public Safety",
+   "last_action_date": "2026-04-07"
+  },
+  "to": {
+   "status": "engrossed",
+   "progress_stage": "committee",
+   "last_action": "Comm report: To pass as amended and re-refer to Judiciary and Public Safety",
+   "last_action_date": "2026-04-07"
+  },
+  "url": "https://www.revisor.mn.gov/bills/94/2026/0/SF/4618?body=Senate"
+ },
+ {
+  "id": "ny-a-11500-2025-2026",
+  "at": "2026-10-17",
+  "from": {
+   "status": "introduced",
+   "progress_stage": "committee",
+   "last_action": "REFERRED TO TRANSPORTATION",
+   "last_action_date": "2026-05-28"
+  },
+  "to": {
+   "status": "introduced",
+   "progress_stage": "committee",
+   "last_action": "referred to transportation",
+   "last_action_date": "2026-05-28"
+  },
+  "url": "https://nyassembly.gov/leg/?default_fld=&leg_video=&bn=A11500&term=2025&Summary=Y&Actions=Y"
+ },
+ {
+  "id": "ny-a-4901-2025-2026",
+  "at": "2026-10-17",
+  "from": {
+   "status": "introduced",
+   "progress_stage": "committee",
+   "last_action": "PRINT NUMBER 4901B",
+   "last_action_date": "2026-04-24"
+  },
+  "to": {
+   "status": "introduced",
+   "progress_stage": "committee",
+   "last_action": "Amended and recommitted to transportation; print number 4901b",
+   "last_action_date": "2026-04-24"
+  },
+  "url": "https://nyassembly.gov/leg/?default_fld=&leg_video=&bn=A04901&term=2025&Summary=Y&Actions=Y"
+ },
+ {
+  "id": "ny-a-728-2025-2026",
+  "at": "2026-10-17",
+  "from": {
+   "status": "introduced",
+   "progress_stage": "committee",
+   "last_action": "REFERRED TO LABOR",
+   "last_action_date": "2026-01-07"
+  },
+  "to": {
+   "status": "introduced",
+   "progress_stage": "committee",
+   "last_action": "referred to labor",
+   "last_action_date": "2026-01-07"
+  },
+  "url": "https://nyassembly.gov/leg/?default_fld=&leg_video=&bn=A00728&term=2025&Summary=Y&Actions=Y"
+ },
+ {
+  "id": "ny-a-793-2025-2026",
+  "at": "2026-10-17",
+  "from": {
+   "status": "introduced",
+   "progress_stage": "committee",
+   "last_action": "REFERRED TO TRANSPORTATION",
+   "last_action_date": "2026-01-07"
+  },
+  "to": {
+   "status": "introduced",
+   "progress_stage": "committee",
+   "last_action": "referred to transportation",
+   "last_action_date": "2026-01-07"
+  },
+  "url": "https://nyassembly.gov/leg/?default_fld=&leg_video=&bn=A00793&term=2025&Summary=Y&Actions=Y"
+ },
+ {
+  "id": "ny-a-8109-2025-2026",
+  "at": "2026-10-17",
+  "from": {
+   "status": "introduced",
+   "progress_stage": "committee",
+   "last_action": "REFERRED TO TRANSPORTATION",
+   "last_action_date": "2026-01-07"
+  },
+  "to": {
+   "status": "introduced",
+   "progress_stage": "committee",
+   "last_action": "referred to transportation",
+   "last_action_date": "2026-01-07"
+  },
+  "url": "https://nyassembly.gov/leg/?default_fld=&leg_video=&bn=A08109&term=2025&Summary=Y&Actions=Y"
+ },
+ {
+  "id": "ny-s-10413-2025-2026",
+  "at": "2026-10-17",
+  "from": {
+   "status": "introduced",
+   "progress_stage": "committee",
+   "last_action": "REFERRED TO TRANSPORTATION",
+   "last_action_date": "2026-05-15"
+  },
+  "to": {
+   "status": "introduced",
+   "progress_stage": "committee",
+   "last_action": "Referred to Transportation",
+   "last_action_date": "2026-05-15"
+  },
+  "url": "https://nyassembly.gov/leg/?default_fld=&leg_video=&bn=S10413&term=2025&Summary=Y&Actions=Y"
+ },
+ {
+  "id": "ny-s-10473-2025-2026",
+  "at": "2026-10-17",
+  "from": {
+   "status": "introduced",
+   "progress_stage": "committee",
+   "last_action": "REFERRED TO TRANSPORTATION",
+   "last_action_date": "2026-05-15"
+  },
+  "to": {
+   "status": "introduced",
+   "progress_stage": "committee",
+   "last_action": "Referred to Transportation",
+   "last_action_date": "2026-05-15"
+  },
+  "url": "https://nyassembly.gov/leg/?default_fld=&leg_video=&bn=S10473&term=2025&Summary=Y&Actions=Y"
+ },
+ {
+  "id": "ny-s-9008-2025-2026",
+  "at": "2026-10-17",
+  "from": {
+   "status": "introduced",
+   "progress_stage": "committee",
+   "last_action": "SUBSTITUTED BY A10008C",
+   "last_action_date": "2026-05-26"
+  },
+  "to": {
+   "status": "enacted",
+   "progress_stage": "law",
+   "last_action": "signed chap.58",
+   "last_action_date": "2026-05-26"
+  },
+  "url": "https://nyassembly.gov/leg/?default_fld=&leg_video=&bn=S09008&term=2025&Summary=Y&Actions=Y"
+ },
+ {
+  "id": "ut-hb-581-2026",
+  "at": "2026-10-17",
+  "from": {
+   "status": "engrossed",
+   "progress_stage": "floor",
+   "last_action": "House/ filed",
+   "last_action_date": "2026-03-07"
+  },
+  "to": {
+   "status": "stricken",
+   "progress_stage": "floor",
+   "last_action": "House/ filed (House file for bills not passed), following failure on 3rd reading in the House (28-44-3)",
+   "last_action_date": "2024-01-25"
+  },
+  "url": "https://le.utah.gov/~2026/bills/static/HB0581.html"
+ }
+]

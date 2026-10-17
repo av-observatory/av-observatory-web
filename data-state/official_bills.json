@@ -173,36 +173,88 @@
    "via": "ledger:title"
   },
   "DE:S46": {
-   "discovered": "2026-10-17",
+   "checked": "2026-10-17",
+   "hearings": [],
+   "id": "de-sb-46-153rd-general-assembly",
    "jurisdiction": "DE",
+   "last_action": "Progress Status: Out of Committee 5/14/25 (voted out of committee; placed on the Ready List)",
+   "last_action_date": "2025-05-14",
+   "measure_type": "bill",
    "number": "SB 46",
+   "progress_stage": "committee",
+   "repository_url": "https://legis.delaware.gov/BillDetail?LegislationId=141797",
+   "session": "153rd General Assembly",
+   "source_feed": "official_sweep",
    "source_url": "https://legis.delaware.gov/BillDetail?LegislationId=141797",
-   "stage": "discovered",
-   "via": "ledger:title"
+   "stage": "in_feed",
+   "stage_dates": {
+    "committee": "2025-05-14"
+   },
+   "status": "introduced",
+   "title": "AN ACT TO AMEND TITLE 21 OF THE DELAWARE CODE RELATING TO AUTONOMOUS VEHICLES."
   },
   "FL:H1181": {
+   "checked": "2026-10-17",
    "discovered": "2026-10-17",
    "jurisdiction": "FL",
    "number": "HB 1181",
+   "reason": "not a verifiable AV bill page",
    "source_url": "https://www.flsenate.gov/Session/Bill/2025/1181",
-   "stage": "discovered",
+   "stage": "rejected",
    "via": "ledger:page_scan"
   },
   "FL:H1469": {
+   "checked": "2026-10-17",
    "discovered": "2026-10-17",
+   "editorial_failure_reason": "The supplied text is only a bill summary page, not the full bill text. It does not identify the specific standards, prohibited activities, reporting duties, or deadlines, so a more detailed summary cannot be grounded in the source.",
+   "editorial_source_hash": "876c5656d07a01ff7db79bd76b188bb48870aa2ca9becfcc264b89a1042862ff",
+   "editorial_source_type": "official_html",
+   "editorial_source_url": "https://www.flsenate.gov/Session/Bill/2026/1469",
+   "editorial_status": "needs_review",
+   "hearings": [],
+   "id": "fl-hb-1469-2026",
    "jurisdiction": "FL",
+   "last_action": "House - Died in Government Operations Subcommittee",
+   "last_action_date": "2026-03-13",
+   "measure_type": "bill",
    "number": "HB 1469",
+   "progress_stage": "committee",
+   "repository_url": "https://www.flsenate.gov/Session/Bill/2026/1469",
+   "session": "2026",
+   "source_feed": "official_sweep",
    "source_url": "https://www.flsenate.gov/Session/Bill/2026/1469",
-   "stage": "discovered",
-   "via": "ledger:title"
+   "stage": "extracted",
+   "stage_dates": {
+    "committee": "2026-03-13"
+   },
+   "status": "stricken",
+   "title": "Autonomous Vehicle Safety"
   },
   "FL:S1258": {
+   "checked": "2026-10-17",
    "discovered": "2026-10-17",
+   "editorial_failure_reason": "ValueError: substring not found",
+   "editorial_source_hash": "0eabc1c92a3419c31a37defad35c0c4dd1eb1c45dc177dd1f361eb2ea6353035",
+   "editorial_source_type": "official_html",
+   "editorial_source_url": "https://www.flsenate.gov/Session/Bill/2026/1258",
+   "hearings": [],
+   "id": "fl-sb-1258-2026",
    "jurisdiction": "FL",
+   "last_action": "Senate - Died in Transportation",
+   "last_action_date": "2026-03-13",
+   "measure_type": "bill",
    "number": "SB 1258",
+   "progress_stage": "committee",
+   "repository_url": "https://www.flsenate.gov/Session/Bill/2026/1258",
+   "session": "2026",
+   "source_feed": "official_sweep",
    "source_url": "https://www.flsenate.gov/Session/Bill/2026/1258",
-   "stage": "discovered",
-   "via": "ledger:title"
+   "stage": "extracted",
+   "stage_dates": {
+    "committee": "2026-03-13"
+   },
+   "status": "stricken",
+   "title": "Delivery of Commercial Goods by Autonomous Vehicles"
   },
   "IA:H2375": {
    "discovered": "2026-10-17",
@@ -236,6 +288,30 @@
    "stage": "discovered",
    "via": "ledger:title"
   },
+  "IN:H1377": {
+   "discovered": "2026-10-17",
+   "jurisdiction": "IN",
+   "number": "HB 1377",
+   "source_url": "https://iga.in.gov/pdf-documents/124/2025/house/bills/HB1377/HB1377.01.INTR.pdf",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
+  "KY:H252": {
+   "discovered": "2026-10-17",
+   "jurisdiction": "KY",
+   "number": "HB 252",
+   "source_url": "https://apps.legislature.ky.gov/record/25rs/hb252.html",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
+  "KY:H379": {
+   "discovered": "2026-10-17",
+   "jurisdiction": "KY",
+   "number": "HB 379",
+   "source_url": "https://apps.legislature.ky.gov/record/25rs/hb379.html",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
   "MA:H1280": {
    "discovered": "2026-10-17",
    "jurisdiction": "MA",
@@ -267,6 +343,30 @@
    "source_url": "https://malegislature.gov/Bills/194/S2393",
    "stage": "discovered",
    "via": "ledger:title"
+  },
+  "MD:H439": {
+   "discovered": "2026-10-17",
+   "jurisdiction": "MD",
+   "number": "HB0439",
+   "source_url": "https://mgaleg.maryland.gov/mgawebsite/Legislation/Details/hb0439?ys=2025RS&search=True",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
+  "MS:H147": {
+   "discovered": "2026-10-17",
+   "jurisdiction": "MS",
+   "number": "HB147",
+   "source_url": "https://billstatus.ls.state.ms.us/documents/2025/pdf/HB/0100-0199/HB0147IN.pdf",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
+  "MS:H151": {
+   "discovered": "2026-10-17",
+   "jurisdiction": "MS",
+   "number": "HB151",
+   "source_url": "https://billstatus.ls.state.ms.us/documents/2025/pdf/HB/0100-0199/HB0151IN.pdf",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
   },
   "MS:H1770": {
    "discovered": "2026-10-17",
@@ -6091,6 +6191,14 @@
    "source_url": "https://lis.virginia.gov/bill-details/20261/SB670",
    "stage": "discovered",
    "via": "ledger:title"
+  },
+  "WA:H1226": {
+   "discovered": "2026-10-17",
+   "jurisdiction": "WA",
+   "number": "HB 1226",
+   "source_url": "https://app.leg.wa.gov/billsummary?BillNumber=1226&Year=2026&Initiative=false",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
   }
  },
  "note": "First-party AV bill database built from official legislature sites by scripts/sweep-state-legislatures.py"
