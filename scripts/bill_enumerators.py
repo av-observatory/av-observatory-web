@@ -190,6 +190,152 @@ def az(session: str):
                "url": f"https://apps.azleg.gov/BillStatus/BillOverview/{item.get('BillId', '')}?SessionId={sid}"}
 
 
+CHROME = {"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"}
+BILLNO = re.compile(r"^[A-Z]{1,4}\.?\s?\d{1,5}$")
+
+
+# --------------------------------------------------------------------------- Vermont (JSON, biennium)
+def vt(session: str):
+    year = session.split("-")[-1]
+    rows = []
+    for ep in (f"loadBillsIntroduced/{year}/", f"loadAllResolutionsByChamber/{year}/both"):
+        data = jget("https://legislature.vermont.gov/bill/" + ep).get("data")
+        if isinstance(data, list):
+            rows += data
+    for r in rows:
+        number = (r.get("BillNumber") or r.get("BillSortNumber") or "").strip()
+        if number:
+            slug = number.replace(".", "")
+            yield {"session": session, "number": number, "title": (r.get("Title") or r.get("Title1") or "").strip(),
+                   "url": f"https://legislature.vermont.gov/bill/status/{year}/{slug}"}
+
+
+# --------------------------------------------------------------------------- Idaho (HTML table)
+def idaho(session: str):
+    p = page(f"https://legislature.idaho.gov/sessioninfo/{session}/legislation/minidata/")
+    for row in p.rows:
+        if len(row) >= 2 and re.fullmatch(r"[HS][A-Z]*\d+", row[0]["text"]):
+            link = row[0]["links"][0][0] if row[0]["links"] else f"https://legislature.idaho.gov/sessioninfo/{session}/legislation/{row[0]['text']}/"
+            yield {"session": session, "number": row[0]["text"], "title": row[1]["text"], "url": link}
+
+
+# --------------------------------------------------------------------------- Iowa (HTML table, general assembly number)
+def ia(session: str):
+    p = page(f"https://www.legis.iowa.gov/legislation/findLegislation/allbills?ga={session}")
+    for row in p.rows:
+        if len(row) >= 3 and re.fullmatch(r"[A-Z]{1,4} \d+", row[1]["text"]):
+            link = row[1]["links"][0][0].replace(" ", "") if row[1]["links"] else ""
+            yield {"session": session, "number": row[1]["text"], "title": row[2]["text"], "url": link}
+
+
+# --------------------------------------------------------------------------- Washington (XML, no titles in list)
+def wa(session: str):
+    root = ElementTree.fromstring(http(f"https://wslwebservices.leg.wa.gov/legislationservice.asmx/GetLegislationByYear?year={session}", timeout=120))
+    ns = {"w": "http://WSLWebServices.leg.wa.gov/"}
+    for item in root.findall("w:LegislationInfo", ns):
+        bill_id = (item.findtext("w:BillId", "", ns) or "").strip()
+        num = (item.findtext("w:BillNumber", "", ns) or "").strip()
+        if bill_id:
+            yield {"session": session, "number": bill_id, "title": "",
+                   "url": f"https://app.leg.wa.gov/billsummary?BillNumber={num}&Year={session}&Initiative=false"}
+
+
+# --------------------------------------------------------------------------- Alaska (HTML, 100-bill ranges)
+def ak(session: str):
+    for kind in ("HB", "SB", "HJR", "SJR", "HCR", "SCR", "HR", "SR"):
+        start = 1
+        while start < 3000:
+            p = page(f"https://www.akleg.gov/basis/Bill/Range/{session}?bill1={kind}{start}&bill2={kind}{start + 99}")
+            found = 0
+            for row in p.rows:
+                if len(row) >= 2 and re.fullmatch(rf"{kind} \d+", row[0]["text"]):
+                    found += 1
+                    link = row[0]["links"][0][0] if row[0]["links"] else ""
+                    yield {"session": session, "number": row[0]["text"], "title": row[1]["text"], "url": link}
+            if not found:
+                break
+            start += 100
+
+
+# --------------------------------------------------------------------------- Nebraska (HTML table by year)
+def ne(session: str):
+    for year in {"109th": ("2025", "2026")}[session]:
+        p = page(f"https://nebraskalegislature.gov/bills/search_by_date.php?SessionDay={year}")
+        for row in p.rows:
+            if len(row) >= 4 and re.fullmatch(r"[A-Z]{2,3}\d+", row[0]["text"]):
+                link = row[0]["links"][0][0] if row[0]["links"] else ""
+                yield {"session": session, "number": row[0]["text"], "title": row[3]["text"], "url": link}
+
+
+# --------------------------------------------------------------------------- Ohio (JSON)
+def oh(session: str):
+    seen = set()
+    for item in jget(f"https://search-prod.lis.state.oh.us/api/v2/general_assembly_{session}/legislation/", timeout=180):
+        key = item.get("number")
+        if key and key not in seen:
+            seen.add(key)
+            yield {"session": session, "number": item.get("name") or key.upper(), "title": item.get("short_title") or "",
+                   "url": f"https://www.legislature.ohio.gov/legislation/{session}/{key}"}
+
+
+# --------------------------------------------------------------------------- Maryland (HTML index per chamber; no titles)
+def md(session: str):
+    seen = set()
+    for chamber in ("senate", "house"):
+        p = page(f"https://mgaleg.maryland.gov/mgawebsite/Legislation/Index/{chamber}?ys={session}")
+        for a in p.anchors:
+            if re.fullmatch(r"(?:HB|SB|HJ|SJ|HR|SR)\d{4}", a["text"]) and a["text"] not in seen:
+                seen.add(a["text"])
+                yield {"session": session, "number": a["text"], "title": "", "url": a["href"]}
+
+
+# --------------------------------------------------------------------------- Kentucky (HTML link lists; Chrome UA)
+def ky(session: str):
+    for chamber in ("house", "senate"):
+        for kind in ("bills", "resolutions"):
+            url = f"https://apps.legislature.ky.gov/record/{session}/{chamber}_{kind}.html"
+            try:
+                p = page(url, headers=CHROME)
+            except HTTPError:
+                continue
+            for a in p.anchors:
+                m = re.search(r"/([a-z]+)(\d+)\.html?$", a["href"])
+                if m and a["text"].strip().isdigit():
+                    yield {"session": session, "number": f"{m.group(1).upper()} {int(m.group(2))}", "title": "", "url": a["href"]}
+
+
+# --------------------------------------------------------------------------- Massachusetts (JSON API)
+def ma(session: str):
+    for row in jget(f"https://malegislature.gov/api/GeneralCourts/{session}/Documents", timeout=180):
+        number = (row.get("BillNumber") or row.get("DocketNumber") or "").strip()
+        if number:
+            yield {"session": session, "number": number, "title": row.get("Title") or "",
+                   "url": f"https://malegislature.gov/Bills/{session}/{number}"}
+
+
+# --------------------------------------------------------------------------- Michigan (HTML search results; Chrome UA)
+def mi(session: str):
+    url = ("https://legislature.mi.gov/Search/ExecuteSearch?chamber=&docTypesList=HB%2CSB&docTypesList=HR%2CSR&docTypesList=HCR%2CSCR"
+           f"&docTypesList=HJR%2CSJR&sessions={session}&sponsor=&number=&dateFrom=&dateTo=&contentFullText=")
+    p = page(url, headers=CHROME, timeout=180)
+    for row in p.rows:
+        if len(row) >= 3 and " of " in row[0]["text"] and row[0]["links"]:
+            yield {"session": session, "number": row[0]["text"].split(" of ")[0].strip(), "title": row[2]["text"],
+                   "url": row[0]["links"][0][0]}
+
+
+# --------------------------------------------------------------------------- West Virginia (HTML table)
+def wv(session: str):
+    for kind in ("bill", "res"):
+        try:
+            p = page(f"https://www.wvlegislature.gov/Bill_Status/Bills_all_bills.cfm?year={session}&sessiontype=RS&btype={kind}", timeout=120)
+        except HTTPError:
+            continue
+        for row in p.rows:
+            if len(row) >= 2 and row[0]["links"] and BILLNO.match(row[0]["text"]):
+                yield {"session": session, "number": row[0]["text"], "title": row[1]["text"], "url": row[0]["links"][0][0]}
+
+
 # state -> (sessions to enumerate each run, function)
 ENUMERATORS = {
     "SD": (("2026", "2025"), sd),
@@ -199,4 +345,16 @@ ENUMERATORS = {
     "MT": (("2025",), mt),
     "ND": (("2025",), nd),
     "AZ": (("57th-2nd-regular", "57th-1st-regular"), az),
+    "VT": (("2025-2026",), vt),
+    "ID": (("2026", "2025"), idaho),
+    "IA": (("91",), ia),
+    "WA": (("2026", "2025"), wa),
+    "AK": (("34",), ak),
+    "NE": (("109th",), ne),
+    "OH": (("136",), oh),
+    "MD": (("2026RS", "2025RS"), md),
+    "KY": (("26rs", "25rs"), ky),
+    "MA": (("194",), ma),
+    "MI": (("2025-2026",), mi),
+    "WV": (("2026", "2025"), wv),
 }
