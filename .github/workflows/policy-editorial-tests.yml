@@ -20,7 +20,7 @@ jobs:
   test-editorial:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Test Python syntax
         run: python3 -m py_compile scripts/ai-policy-editorial.py scripts/legislation_source_text.py scripts/refresh-legislation.py scripts/legislation-supplement.py scripts/test-policy-editorial.py scripts/test-policy-live.py scripts/publish-r2-data.py
       - name: Test rate limiting and HTTP 429 retries
