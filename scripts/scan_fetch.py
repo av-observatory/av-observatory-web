@@ -36,10 +36,15 @@ def scan_fetch(url: str):
             return text, kind
     except Exception as exc:
         kind = _status(exc)
-    try:  # second chance: browser-like request
-        data = http(url, tries=1, timeout=40, headers=CHROME)
-    except Exception as exc:
-        return "", f"{kind}/{_status(exc)}"
+    data = None
+    for headers in (CHROME, {"User-Agent": "curl/8.5.0", "Accept": "*/*"}):  # second chance: browser UA, then curl UA (some CDNs only block the first)
+        try:
+            data = http(url, tries=1, timeout=40, headers=headers)
+            break
+        except Exception as exc:
+            kind = f"{kind}/{_status(exc)}"
+    if data is None:
+        return "", kind
     if data[:5] == b"%PDF-":
         try:
             text = _pdf_text(data)
@@ -55,12 +60,24 @@ def _norm(value: str) -> str:
     return re.sub(r"[^a-z0-9]", "", value.lower())
 
 
+_WORDS = {"H": "House", "S": "Senate", "A": "Assembly"}
+
+
 def is_bill_page(text: str, number: str, title: str = "") -> bool:
-    """A fetched page only counts as the bill when it carries the bill's number or the start of its title
-    (guards against JavaScript shells, error pages and the like being read as 'no AV words')."""
-    flat = _norm(text)
-    digits = re.sub(r"\D", "", number)
-    if title and len(_norm(title)) >= 12 and _norm(title)[:30] in flat:
+    """A fetched page only counts as the bill when it carries the bill's number (in any common spelling) or the
+    start of its title (guards against JavaScript shells, error pages and the like being read as 'no AV words')."""
+    if title and len(_norm(title)) >= 12 and _norm(title)[:30] in _norm(text):
         return True
-    num = _norm(number)
-    return bool(num) and num in flat and bool(digits)
+    m = re.match(r"\s*([A-Za-z]+)[\s._-]*0*(\d+)", number or "")
+    if not m:
+        return False
+    letters, digits = m.group(1).upper(), m.group(2)
+    spaced = r"[\s._-]*".join(re.escape(c) for c in letters)
+    if re.search(rf"(?<![A-Za-z]){spaced}[\s._-]*(?:No\.?\s*)?0*{digits}(?!\d)", text, re.I):
+        return True
+    kind = {"B": "Bill", "R": "Resolution"}.get(letters[-1], "")
+    if len(letters) >= 2 and kind and letters[0] in _WORDS:
+        mid = {"CR": "Concurrent Resolution", "JR": "Joint Resolution", "R": "Resolution", "B": "Bill"}
+        tail = mid.get(letters[1:], mid.get(letters[-2:], kind))
+        return bool(re.search(rf"{_WORDS[letters[0]]}\s+{tail}\s*(?:No\.?\s*)?0*{digits}(?!\d)", text, re.I))
+    return False

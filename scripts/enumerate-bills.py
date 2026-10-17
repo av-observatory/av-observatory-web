@@ -35,6 +35,9 @@ LEDGER_DIR = ROOT / "data-state/bill_ledger"
 SOURCES = ROOT / "data-state/official_sources.json"
 TODAY = date.today().isoformat()
 
+# States whose bill pages are JavaScript shells or refuse automated requests: classified from titles only (their ledgers carry titles).
+TITLE_ONLY = {"AL", "AZ", "CA", "DC", "GA", "MT", "NH", "NJ", "SD", "VA", "WY"}
+
 AV = re.compile(
     r"\b(?:autonomous\s+(?:vehicle|vehicles|driving|truck|trucks|taxi|taxis|mobility|shuttle|shuttles|technology)|"
     r"automated\s+(?:driving\s+system|driving\s+systems|vehicle|vehicles|motor\s+vehicle|motor\s+vehicles)|"
@@ -143,6 +146,8 @@ def classify(ledgers: dict, scan_budget: int, scan_minutes: float) -> dict:
     # Round-robin across states (oldest scan first) so one failing state cannot eat the whole budget.
     queue = []
     for code, ledger in ledgers.items():
+        if code in TITLE_ONLY:
+            continue
         pending = sorted((row.get("scanned") or "", key) for key, row in ledger["bills"].items()
                          if row.get("av") in ("unknown", "no") and (row.get("text_url") or row.get("url")))
         queue += [(scanned, rank, code, key) for rank, (scanned, key) in enumerate(pending)]

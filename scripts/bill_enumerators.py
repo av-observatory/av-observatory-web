@@ -239,7 +239,8 @@ def wa(session: str):
         bill_id = (item.findtext("w:BillId", "", ns) or "").strip()
         num = (item.findtext("w:BillNumber", "", ns) or "").strip()
         if bill_id:
-            kind = "House Bills" if bill_id.startswith("H") else "Senate Bills"
+            letters = re.sub(r"[^A-Z]", "", bill_id.split()[0].upper())  # ESHB, 2SSB, HJR ... the chamber is the letters before B/J/C/M/R
+            kind = "House Bills" if letters.endswith(("HB", "HJR", "HJM", "HCR")) else "Senate Bills"
             yield {"session": session, "number": bill_id, "title": "",
                    "url": f"https://app.leg.wa.gov/billsummary?BillNumber={num}&Year={session}&Initiative=false",
                    "text_url": f"https://lawfilesext.leg.wa.gov/biennium/2025-26/Htm/Bills/{kind.replace(' ', '%20')}/{num}.htm"}
@@ -1093,7 +1094,7 @@ def ny(session: str):
 
 
 # Bump a state's revision when its adapter changes so recently enumerated ledgers are rebuilt.
-REV = {"WA": 2, "KS": 2, "GA": 2}  # bump to force a re-enumeration (KS/GA came back short in the first full run)
+REV = {"WA": 3, "KS": 2, "GA": 2}  # bump to force a re-enumeration (KS/GA came back short in the first full run)
 
 # state -> (sessions to enumerate each run, function)
 ENUMERATORS = {
