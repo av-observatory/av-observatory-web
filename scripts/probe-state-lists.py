@@ -125,19 +125,20 @@ def body_text(html):
 
 def ny_probe():
     out = []
-    def check(bn, term, extra="&Summary=Y&Actions=Y"):
-        url = f"https://nyassembly.gov/leg/?default_fld=&leg_video=&bn={bn}&term={term}{extra}"
-        try:
-            html = http(url, headers=BROWSER, tries=1, timeout=40).decode("utf-8", "replace")
-        except Exception as exc:
-            return f"{bn}/{term}: ERR {str(exc)[:40]}"
-        txt = body_text(html)
-        nf = "was not found" in txt
-        i = txt.find("Bill No.")
-        return f"{bn}/{term}: {len(html)}B notfound={nf} :: " + ("" if nf else txt[i:i + 420])
-    for bn, term in (("A00100", "2025"), ("A01234", "2025"), ("A05000", "2025"), ("S00100", "2025"), ("S01234", "2025"), ("A01234", "2023"),
-                     ("A1234", "2023"), ("A1234", "2025"), ("S1234", "2025"), ("A00001", "2025"), ("A00001", "2023")):
-        out.append(check(bn, term))
+    base = "https://www.nysenate.gov/search/legislation?type=bill&status=all&sponsor=all&full_text=Autonomous%20vehicle&committee=all"
+    for label, hdr in (("curl", {"User-Agent": "curl/8.5.0", "Accept": "*/*"}), ("browser", BROWSER), ("python", {"User-Agent": "python-requests/2.32"})):
+        for suffix in ("", "&page=1"):
+            url = base + suffix
+            try:
+                html = http(url, headers=hdr, tries=1, timeout=40).decode("utf-8", "replace")
+            except Exception as exc:
+                out.append(f"{label}{suffix or ' p0'}: ERR {str(exc)[:50]}")
+                continue
+            p = parse_html(html, url)
+            hits = [a for a in p.anchors if re.search(r"/legislation/bills/\d{4}/[A-Za-z]\d+", a["href"])]
+            txt = body_text(html)
+            m = re.search(r"([\d,]+)\s+(?:results|bills|Results)", txt)
+            out.append(f"{label}{suffix or ' p0'}: {len(html)}B bill-links={len(hits)} total={m.group(0) if m else None} first={[(a['text'][:20], a['href'][-30:]) for a in hits[:3]]} text={txt[:160]}")
     return "\n".join(out)
 
 with ThreadPoolExecutor(max_workers=12) as pool:
