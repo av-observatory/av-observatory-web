@@ -58,6 +58,11 @@ jobs:
           python3 scripts/test-known-bills.py
           python3 scripts/check-known-bills.py --open-issues
 
+      - name: Sweep every state legislature's official site (independent of Open States)
+        # Least-recently-swept states first; never blocks the data refresh.
+        continue-on-error: true
+        run: python3 scripts/sweep-state-legislatures.py --open-issues --budget-minutes 25
+
       - name: AI review state and federal legislation plus FMVSS rules
         if: ${{ env.OPENSTATES_API_KEY != '' }}
         env:
