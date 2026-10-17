@@ -159,6 +159,23 @@ def extract(invoke, entry: dict, url: str, text: str, ident: str) -> dict | None
         "source_url": url, "repository_url": url, "source_feed": "official_sweep"}
 
 
+def adopt_ledger_candidates(bills: dict) -> int:
+    """AV candidates found by enumerate-bills.py (every bill, every state) join the work queue."""
+    added = 0
+    for path in sorted((ROOT / "data-state/bill_ledger").glob("[A-Z][A-Z].json")):
+        ledger = json.loads(path.read_text())
+        for row in ledger["bills"].values():
+            nk = number_key(row["number"])
+            if row.get("av") != "candidate" or not row.get("url") or not nk:
+                continue
+            key = f"{ledger['jurisdiction']}:{nk[0]}{nk[1]}"
+            if key not in bills:
+                bills[key] = {"jurisdiction": ledger["jurisdiction"], "number": row["number"], "source_url": row["url"],
+                              "stage": "discovered", "discovered": TODAY, "via": f"ledger:{row.get('via')}"}
+                added += 1
+    return added
+
+
 # ------------------------------------------------------------------ main
 def main() -> int:
     ap = argparse.ArgumentParser()
@@ -172,6 +189,8 @@ def main() -> int:
     bills = database["bills"]
     index = json.loads(TRACKER.read_text())["state_bills"]
     started = time.monotonic()
+    adopted = adopt_ledger_candidates(bills)
+    print(f"Adopted {adopted} AV candidate(s) from the bill ledgers", flush=True)
 
     def save():
         SWEEP_LOG.write_text(json.dumps(log, indent=1, sort_keys=True) + "\n")

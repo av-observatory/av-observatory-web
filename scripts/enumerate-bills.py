@@ -1,0 +1,195 @@
+#!/usr/bin/env python3
+"""Enumerate EVERY bill from each state's own legislature, classify AV bills, queue them for analysis.
+
+  1. ENUMERATE  run each registered state enumerator (bill_enumerators.py) for its sessions and
+                record every bill in ``data-state/bill_ledger/<STATE>.json`` (first/last seen).
+  2. CLASSIFY   every ledger bill is screened: title/summary match -> AV candidate; otherwise the
+                bill's official page is scanned for AV language, oldest-scanned first within a
+                per-run budget, so every bill is eventually scanned.
+  3. HAND OFF   AV candidates stay in the ledger; sweep-state-legislatures.py adopts them into
+                ``data-state/official_bills.json``, then extracts, verifies (is it really an AV bill?)
+                and summarizes them. (Separate writers: no file is written by both workflows.)
+  4. REPORT     ``data-state/bill_ledger/_report.json`` plus a table (also the Actions job summary):
+                per state, bills enumerated, scan coverage, candidates, failures.
+
+States without an enumerator are listed as ``not_built`` so coverage gaps are explicit, never silent.
+Usage: enumerate-bills.py [--scan-budget N] [--states XX,YY]
+"""
+from __future__ import annotations
+
+import argparse
+import json
+import os
+import re
+import sys
+import time
+from datetime import date
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from bill_enumerators import ENUMERATORS  # noqa: E402
+from legislation_source_text import fetch  # noqa: E402
+
+ROOT = Path(__file__).resolve().parents[1]
+LEDGER_DIR = ROOT / "data-state/bill_ledger"
+SOURCES = ROOT / "data-state/official_sources.json"
+TODAY = date.today().isoformat()
+
+AV = re.compile(
+    r"\b(?:autonomous\s+(?:vehicle|vehicles|driving|truck|trucks|taxi|taxis|mobility|shuttle|shuttles|technology)|"
+    r"automated\s+(?:driving\s+system|driving\s+systems|vehicle|vehicles|motor\s+vehicle|motor\s+vehicles)|"
+    r"driverless|self[- ]driving|robotaxi(?:s)?|highly\s+automated\s+vehicle(?:s)?|"
+    r"(?:fully|conditionally)\s+automated)\b", re.I)
+EXCLUDE = re.compile(r"\b(?:autonomous region|autonomous university|unmanned aircraft|autonomous weapon)\b", re.I)
+
+
+def number_key(value: str):
+    m = re.match(r"([A-Za-z]+)[\s._-]*(\d+)", str(value or ""))
+    return (m.group(1)[0].upper(), int(m.group(2))) if m else None
+
+
+def is_av(text: str) -> bool:
+    return bool(AV.search(text)) and not EXCLUDE.search(text)
+
+
+def load_ledger(code: str) -> dict:
+    path = LEDGER_DIR / f"{code}.json"
+    return json.loads(path.read_text()) if path.exists() else {"jurisdiction": code, "sessions": {}, "bills": {}}
+
+
+def save_ledger(code: str, ledger: dict) -> None:
+    LEDGER_DIR.mkdir(parents=True, exist_ok=True)
+    (LEDGER_DIR / f"{code}.json").write_text(json.dumps(ledger, sort_keys=True, separators=(",", ":"), ensure_ascii=False) + "\n")
+
+
+def enumerate_state(code: str) -> dict:
+    sessions, func = ENUMERATORS[code]
+    ledger = load_ledger(code)
+    result = {"sessions": {}, "error": None}
+    for session in sessions:
+        info = {"enumerated": 0, "error": None}
+        started = time.monotonic()
+        try:
+            seen = set()
+            for bill in func(session):
+                number = " ".join(str(bill["number"]).split())
+                if not number:
+                    continue
+                key = f"{session}:{number}"
+                seen.add(key)
+                row = ledger["bills"].setdefault(key, {"session": session, "number": number, "first_seen": TODAY, "av": "unknown"})
+                title = " ".join(str(bill.get("title") or "").split())
+                row.update(title=title, url=bill.get("url") or row.get("url") or "", last_seen=TODAY)
+                if bill.get("summary"):
+                    row["summary"] = " ".join(str(bill["summary"]).split())[:400]
+                info["enumerated"] += 1
+            if info["enumerated"] == 0:
+                raise RuntimeError("enumerator returned no bills")
+            prefixes: dict = {}
+            for key in seen:
+                m = re.match(r"[^:]+:([A-Za-z]+)\s*(\d+)", key)
+                if m:
+                    p = prefixes.setdefault(m.group(1).upper(), [0, 0])
+                    p[0] += 1
+                    p[1] = max(p[1], int(m.group(2)))
+            info["density"] = {k: f"{n}/{top}" for k, (n, top) in sorted(prefixes.items())}
+            info["with_title"] = sum(1 for k in seen if ledger["bills"][k].get("title"))
+        except Exception as exc:
+            info["error"] = f"{type(exc).__name__}: {str(exc)[:200]}"
+        info["seconds"] = round(time.monotonic() - started, 1)
+        info["last_run"] = TODAY
+        ledger["sessions"][session] = info
+        result["sessions"][session] = info
+    save_ledger(code, ledger)
+    return result
+
+
+def classify(ledgers: dict, scan_budget: int) -> dict:
+    """Title/summary screen for all; page scan for unscanned bills (oldest first) within budget."""
+    stats = {code: {"candidates": 0, "scanned": 0, "unscanned": 0, "scan_failed": 0} for code in ledgers}
+    for code, ledger in ledgers.items():
+        for row in ledger["bills"].values():
+            if row.get("av") == "unknown" and is_av(f"{row.get('title', '')} {row.get('summary', '')}"):
+                row["av"], row["via"], row["classified"] = "candidate", "title", TODAY
+    queue = sorted(((row.get("scanned") or "", code, key) for code, ledger in ledgers.items()
+                    for key, row in ledger["bills"].items() if row.get("av") in ("unknown", "no") and row.get("url")))
+    done = 0
+    for _, code, key in queue:
+        if done >= scan_budget:
+            break
+        row = ledgers[code]["bills"][key]
+        text, _ = fetch(row["url"])
+        row["scanned"] = TODAY
+        done += 1
+        if not text:
+            row["scan_failed"] = True
+            continue
+        row.pop("scan_failed", None)
+        if is_av(text):
+            row["av"], row["via"], row["classified"] = "candidate", "page_scan", TODAY
+        else:
+            row["av"] = "no"
+    for code, ledger in ledgers.items():
+        for row in ledger["bills"].values():
+            s = stats[code]
+            s["candidates"] += row.get("av") in ("candidate", "yes")
+            s["scanned"] += bool(row.get("scanned")) and not row.get("scan_failed")
+            s["scan_failed"] += bool(row.get("scan_failed"))
+        s["unscanned"] = sum(1 for r in ledger["bills"].values() if not r.get("scanned") and r.get("via") != "title")
+    return stats
+
+
+def report(results: dict, stats: dict, ledgers: dict) -> str:
+    all_codes = [j["code"] for j in json.loads(SOURCES.read_text())["jurisdictions"]]
+    lines = ["| State | Status | Bills | Titled | Scanned | AV candidates | Notes |", "|---|---|---:|---:|---:|---:|---|"]
+    built = ok = total = 0
+    for code in all_codes:
+        if code not in ENUMERATORS:
+            lines.append(f"| {code} | not built | 0 | 0 | 0 | 0 | no enumerator yet |")
+            continue
+        built += 1
+        res = results.get(code)
+        led = ledgers.get(code, {"bills": {}})
+        n = len(led["bills"])
+        errs = [f"{s}: {i['error']}" for s, i in (res["sessions"] if res else led.get("sessions", {})).items() if i.get("error")]
+        good = [s for s, i in (res["sessions"] if res else led.get("sessions", {})).items() if not i.get("error")]
+        status = "ok" if good and not errs else ("partial" if good else "FAILED")
+        ok += status == "ok"
+        total += n
+        titled = sum(1 for r in led["bills"].values() if r.get("title"))
+        st = stats.get(code, {})
+        dens = "; ".join(f"{s} {','.join(f'{k} {v}' for k, v in (i.get('density') or {}).items())}"
+                         for s, i in led.get("sessions", {}).items() if i.get("density"))
+        lines.append(f"| {code} | {status} | {n} | {titled} | {st.get('scanned', 0)} | {st.get('candidates', 0)} | "
+                     f"{'; '.join(errs)[:160] or dens[:120]} |")
+    head = (f"## Bill enumeration report ({TODAY})\n\n{built}/{len(all_codes)} jurisdictions have an enumerator; "
+            f"{ok} enumerated cleanly; {total} bills in the ledgers; {sum(v['candidates'] for v in stats.values())} AV candidate(s) awaiting analysis.\n\n")
+    return head + "\n".join(lines) + "\n"
+
+
+def main() -> int:
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--scan-budget", type=int, default=int(os.getenv("SCAN_BUDGET", "300")))
+    ap.add_argument("--states", default="")
+    args = ap.parse_args()
+    wanted = [s for s in args.states.split(",") if s] or sorted(ENUMERATORS)
+    results = {}
+    for code in wanted:
+        results[code] = enumerate_state(code)
+        print(f"Enumerated {code}: " + "; ".join(
+            f"{s}={i['enumerated']}{' ERROR ' + i['error'] if i['error'] else ''}" for s, i in results[code]["sessions"].items()), flush=True)
+    ledgers = {code: load_ledger(code) for code in sorted(ENUMERATORS)}
+    stats = classify(ledgers, args.scan_budget)
+    for code, ledger in ledgers.items():
+        save_ledger(code, ledger)
+    text = report(results, stats, ledgers)
+    (LEDGER_DIR / "_report.md").write_text(text)
+    print(text)
+    if os.getenv("GITHUB_STEP_SUMMARY"):
+        with open(os.environ["GITHUB_STEP_SUMMARY"], "a") as fh:
+            fh.write(text)
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

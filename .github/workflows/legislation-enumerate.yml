@@ -1,0 +1,41 @@
+name: Enumerate every state bill (first-party AV bill database)
+
+on:
+  push:
+    paths:
+      - "scripts/enumerate-bills.py"
+      - "scripts/bill_enumerators.py"
+      - ".github/workflows/legislation-enumerate.yml"
+  schedule:
+    - cron: "41 9 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+# Own group: writes only data-state/bill_ledger, so it never conflicts with the refresh workflow.
+concurrency:
+  group: bill-ledger-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  enumerate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Enumerate every bill, classify AV bills, write coverage report
+        run: python3 scripts/enumerate-bills.py --scan-budget 300
+      - name: Commit ledgers
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data-state/bill_ledger
+          if git diff --cached --quiet; then
+            echo "No ledger changes"
+          else
+            git commit -m "Update state bill ledgers"
+            git fetch origin "$GITHUB_REF_NAME"
+            git rebase "origin/$GITHUB_REF_NAME"
+            git push origin "HEAD:$GITHUB_REF_NAME"
+          fi
