@@ -110,6 +110,23 @@ def california_bill_url(row):
     bill_id=session+"0"+m.group(1).upper()+m.group(2).zfill(4)
     return "https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id="+bill_id
 
+def sweep_log_links(row):
+    """Official pages the 50-state docket sweep already read for this jurisdiction.
+
+    Candidates only: primary_text() still requires looks_like_bill_text(), so a
+    page for another bill in the same state is rejected. Pages naming this bill's
+    number sort first. This avoids Open States calls (and their rate limits).
+    """
+    try:
+        log=json.loads((Path(__file__).resolve().parents[1]/"data-state/docket_sweep_log.json").read_text())
+    except (OSError,ValueError):
+        return []
+    urls=(log.get(str(row.get("jurisdiction") or "")) or {}).get("sources_read") or []
+    urls=[u for u in urls if isinstance(u,str) and u.startswith("https://")]
+    numbers=re.findall(r"\d+",str(row.get("number") or ""))
+    n=numbers[-1] if numbers else None
+    return sorted(urls,key=lambda u:0 if n and re.search(r"(?<!\d)"+n+r"(?!\d)",u) else 1)
+
 def sources(row,kind):
     url=row.get("source_url") or ""
     repository=row.get("repository_url") or ""
@@ -126,6 +143,7 @@ def sources(row,kind):
     else:
         california=california_bill_url(row)
         if california:yield california
+        yield from sweep_log_links(row)
         yield from state_bill_version_links(row)
         yield url
 
