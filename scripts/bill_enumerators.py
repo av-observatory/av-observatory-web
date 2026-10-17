@@ -551,6 +551,74 @@ def nm(session: str):
                     yield {"session": session, "number": number, "title": "", "url": a["href"]}
 
 
+# --------------------------------------------------------------------------- Colorado (HTML search, POST pages)
+def co(session: str):
+    from urllib.parse import urlencode
+    seen, number_page = set(), 1
+    while number_page < 200:
+        form = urlencode({"q": "", "sessions[]": session, "show_filters": "", "sort": "Last Action Descending", "page": number_page}).encode()
+        p = parse_html(http("https://leg.colorado.gov/bills/bill-search", data=form, timeout=120,
+                            headers={**CHROME, "Content-Type": "application/x-www-form-urlencoded"}).decode("utf-8", "replace"),
+                       "https://leg.colorado.gov/")
+        fresh = 0
+        for a in p.anchors:
+            m = re.search(r"/bills/([A-Z]{2,3}\d{2}-\d+)$", a["href"])
+            if m and m.group(1) not in seen:
+                seen.add(m.group(1))
+                fresh += 1
+                yield {"session": session, "number": m.group(1), "title": a["text"], "url": a["href"]}
+        if not fresh:
+            break
+        number_page += 1
+        time.sleep(1)
+
+
+# --------------------------------------------------------------------------- Wisconsin (HTML lists; Chrome UA)
+def wi(session: str):
+    seen = set()
+    for chamber in ("asm", "sen"):
+        for kind in ("bill", "joint_resolution", "resolution"):
+            try:
+                p = page(f"https://docs.legis.wisconsin.gov/{session}/proposals/reg/{chamber}/{kind}", headers=CHROME, timeout=90)
+            except (HTTPError, URLError, OSError):
+                continue
+            for a in p.anchors:
+                m = re.search(rf"/{session}/proposals/(?:reg/)?([a-z]+\d+)$", a["href"])
+                if m and m.group(1) not in seen:
+                    seen.add(m.group(1))
+                    yield {"session": session, "number": m.group(1).upper(), "title": "", "url": a["href"]}
+
+
+# --------------------------------------------------------------------------- Pennsylvania (bill index pages)
+def pa(session: str):
+    seen = set()
+    for body in ("H", "S"):
+        p = page(f"https://www.palegis.us/legislation/bills/bill-index?&display=index&sessyr={session}&sessind=0&billbody={body}", headers=CHROME, timeout=120)
+        for a in p.anchors:
+            m = re.search(r"/bills/\d{4}/([a-z]+\d+)$", a["href"], re.I)
+            if m and m.group(1).lower() not in seen:
+                seen.add(m.group(1).lower())
+                yield {"session": session, "number": re.sub(r"(\D+)(\d+)", r"\1 \2", m.group(1).upper()), "title": a["text"] if not BILLNO.match(a["text"]) else "", "url": a["href"]}
+
+
+# --------------------------------------------------------------------------- Arkansas (session data file, UTF-16, pipe-delimited)
+def ar(session: str):
+    from urllib.parse import quote_plus
+    raw = http("https://arkleg.state.ar.us/Home/FTPDocument?path=" + quote_plus("/SessionInformation/LegislativeMeasures.txt"), headers=CHROME, timeout=120)
+    text = raw.decode("utf-16", "replace") if raw[:2] in (b"\xff\xfe", b"\xfe\xff") else raw.decode("utf-8", "replace").replace("\x00", "")
+    seen = set()
+    for line in text.splitlines():
+        row = line.split("|")
+        if len(row) >= 3 and row[0].strip() in ("H", "S") and row[2].strip().isdigit():
+            number = f"{row[0].strip()}{row[1].strip()} {row[2].strip()}"
+            if number not in seen:
+                seen.add(number)
+                title = max((c.strip() for c in row[3:]), key=len, default="")
+                slug = number.replace(" ", "")
+                yield {"session": session, "number": number, "title": title,
+                       "url": f"https://www.arkleg.state.ar.us/Bills/Detail?id={slug}&ddBienniumSession={session}%2F{session}R"}
+
+
 # Bump a state's revision when its adapter changes so recently enumerated ledgers are rebuilt.
 REV = {"WA": 2}
 
@@ -587,4 +655,8 @@ ENUMERATORS = {
     "AL": (("2026rs", "2025rs"), al),
     "GA": (("2025_26",), ga),
     "NM": (("26%20Regular", "25%20Regular"), nm),
+    "CO": (("2026 Regular Session", "2025 Regular Session"), co),
+    "WI": (("2025",), wi),
+    "PA": (("2025",), pa),
+    "AR": (("2025",), ar),
 }
