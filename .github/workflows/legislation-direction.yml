@@ -1,0 +1,40 @@
+name: Judge bill direction on an issue (enables or restricts, adds or cuts funding)
+
+on:
+  workflow_dispatch:
+    inputs:
+      issue:
+        description: "av, guns, children_families, health_care, housing or ai_regulation"
+        default: "av"
+      max_bills:
+        description: "Most bills to read this run"
+        default: "300"
+      budget_minutes:
+        description: "Minutes to spend"
+        default: "30"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: bill-direction-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  direction:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      COMMIT_PATH: data-state/bill_direction
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Install poppler (PDF bill text)
+        run: sudo apt-get install -y -q poppler-utils > /dev/null
+      - name: Read the bills and judge direction
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          POLICY_EDITORIAL_MODEL: claude-sonnet-5-5
+        run: bash scripts/live-commit.sh python3 scripts/classify-bill-direction.py "${{ inputs.issue }}" --max "${{ inputs.max_bills }}" --budget-minutes "${{ inputs.budget_minutes }}"
+      - name: Commit direction results
+        if: always()
+        run: bash scripts/commit-ledgers.sh "Bill direction (${{ inputs.issue }})"
