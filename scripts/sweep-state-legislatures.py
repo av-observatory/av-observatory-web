@@ -1,25 +1,30 @@
 #!/usr/bin/env python3
-"""Sweep every state legislature's official site for AV bills, independent of Open States.
+"""Build our own AV bill database straight from every state legislature's official site.
 
-For each of the 50 states + DC in ``data-state/official_sources.json`` this searches the
-state's own legislative domain, fetches the candidate pages, keeps only pages that are
-about autonomous vehicles and name a bill, and compares them with the bill index.
+Independent of Open States. For each of the 50 states + DC in ``official_sources.json``:
+  1. DISCOVER  search the state's own legislative domain, fetch the pages, keep those that are
+     about autonomous vehicles and name a bill, and add a stub to the database.
+  2. EXTRACT   for stubs not yet processed, read the official page and extract the bill's
+     number, title, session, status, stage and last action (Claude, grounded in the page text;
+     the bill number and AV relevance are verified in code).
+  3. SUMMARIZE the bill with the same verified, fact-checked editorial pipeline as the rest of
+     the site (ai-policy-editorial.summarize), grounded in the official text.
 
-  * ``data-state/docket_sweep_log.json``  per-jurisdiction record (checked / sources_read /
-    bills_found / unreadable). The editorial step uses ``sources_read`` as bill-text candidates.
-  * ``data-state/state_sweep_candidates.json``  AV bills found on an official site but absent
-    from the index; with --open-issues each jurisdiction's new candidates get one GitHub issue.
+``data-state/official_bills.json`` is the database. legislation-supplement.py merges verified
+records into the public index (retiring ours once an Open States feed carries the same bill).
+``data-state/docket_sweep_log.json`` records per-state checked / sources_read / unreadable.
 
-Jurisdictions are processed least-recently-checked first, so a time budget or a blocked site
-never starves the same states: the next run resumes with whatever was swept longest ago.
-Usage: sweep-state-legislatures.py [--open-issues] [--budget-minutes N]
+States are swept least-recently-attempted first and unprocessed stubs persist, so rate limits,
+call caps or a blocked site just defer work to the next run.
+Usage: sweep-state-legislatures.py [--budget-minutes N] [--max-new N]
 """
 from __future__ import annotations
 
 import argparse
 import json
+import os
 import re
-import subprocess
+import runpy
 import sys
 import time
 from datetime import date
@@ -33,10 +38,9 @@ from legislation_source_text import fetch  # noqa: E402
 ROOT = Path(__file__).resolve().parents[1]
 SOURCES = ROOT / "data-state/official_sources.json"
 SWEEP_LOG = ROOT / "data-state/docket_sweep_log.json"
-CANDIDATES = ROOT / "data-state/state_sweep_candidates.json"
+DATABASE = ROOT / "data-state/official_bills.json"
 TRACKER = ROOT / "public/data/legislation_tracker.json"
 TODAY = date.today().isoformat()
-YEARS = (str(date.today().year), str(date.today().year - 1))
 
 RELEVANT = re.compile(
     r"\b(?:autonomous\s+(?:vehicle|vehicles|driving|truck|trucks|taxi|taxis|mobility|shuttle|shuttles)|"
@@ -45,22 +49,25 @@ RELEVANT = re.compile(
     r"self[- ]driving|robotaxi(?:s)?|highly\s+automated\s+vehicle(?:s)?)\b", re.I)
 EXCLUDE = re.compile(r"\b(?:autonomous region|autonomous university|unmanned aircraft)\b", re.I)
 BILL_ID = re.compile(r"\b(HB|SB|HF|SF|AB|SJR|HJR|HCR|SCR|HSB|SSB|HR|SR|LB|LD|HD|SD|A|S|H)[\s._-]*(?:No\.?\s*)?(\d{1,5})\b")
+STATUSES = ("introduced", "engrossed", "passed", "enacted", "vetoed", "stricken")
+STAGES = ("introduced", "committee", "floor", "passed_legislature", "executive", "law")
+DATE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
+
+
+def slug(value: str) -> str:
+    return re.sub(r"[^a-z0-9]+", "-", str(value).lower()).strip("-")
 
 
 def search(host: str, query: str) -> list[str]:
     """Official-domain search; results are candidates only (fetch() enforces gov hosts)."""
     from xml.etree import ElementTree
-    q = f"site:{host} {query}"
-    url = "https://www.bing.com/search?" + urlencode({"q": q, "format": "rss"})
+    url = "https://www.bing.com/search?" + urlencode({"q": f"site:{host} {query}", "format": "rss"})
     req = Request(url, headers={"User-Agent": "Mozilla/5.0 AVObservatoryResearch/1.0"})
     with urlopen(req, timeout=20) as response:
         root = ElementTree.fromstring(response.read(300000))
-    links = []
-    for link in root.findall(".//item/link"):
-        href = (link.text or "").strip()
-        if href.startswith("https://") and (urlparse(href).hostname or "").lower().endswith(host.split(".", 1)[-1]):
-            links.append(href)
-    return links
+    suffix = host.split(".", 1)[-1]
+    return [h for h in ((l.text or "").strip() for l in root.findall(".//item/link"))
+            if h.startswith("https://") and (urlparse(h).hostname or "").lower().endswith(suffix)]
 
 
 def bill_numbers(url: str, text: str) -> list[str]:
@@ -74,103 +81,173 @@ def bill_numbers(url: str, text: str) -> list[str]:
     return found[:3]
 
 
+def number_key(value: str):
+    m = re.match(r"([A-Za-z]+)[\s._-]*(\d+)", str(value or ""))
+    return (m.group(1)[0].upper(), int(m.group(2))) if m else None
+
+
 def in_index(jurisdiction: str, ident: str, index: list[dict]) -> bool:
-    prefix, number = ident.split()
-    for bill in index:
-        if bill.get("jurisdiction") != jurisdiction:
-            continue
-        m = re.match(r"([A-Za-z]+)[\s._-]*(\d+)", str(bill.get("number") or ""))
-        if m and int(m.group(2)) == int(number) and m.group(1)[0].upper() == prefix[0]:
-            return True
-    return False
+    want = number_key(ident)
+    return any(b.get("jurisdiction") == jurisdiction and number_key(b.get("number")) == want for b in index)
 
 
-def sweep_one(entry: dict, index: list[dict]) -> dict:
+# ------------------------------------------------------------------ 1. discover
+def discover(entry: dict) -> dict:
     host = (urlparse(entry["official_site"]).hostname or "").removeprefix("www.")
-    queries = ["autonomous vehicle bill", '"automated driving system" bill', "driverless OR self-driving vehicle bill"]
     urls, errors = [], []
-    for query in queries:
+    for query in ("autonomous vehicle bill", '"automated driving system" bill', "driverless OR self-driving vehicle bill"):
         try:
             urls += [u for u in search(host, query) if u not in urls]
         except Exception as exc:
             errors.append(f"search {type(exc).__name__}")
         time.sleep(1)
-    read, found, candidates = [], [], []
+    pages = []  # (url, identifiers)
     for url in urls[:10]:
         text, provenance = fetch(url)
         if not text:
             errors.append(f"{provenance} {urlparse(url).path[:50]}")
             continue
         sample = text[:6000]
-        if not RELEVANT.search(sample) or EXCLUDE.search(sample):
-            continue
-        idents = bill_numbers(url, text)
-        if not idents:
-            continue
-        read.append(url)
-        for ident in idents:
-            found.append(ident)
-            if not in_index(entry["code"], ident, index) and any(y in text[:4000] for y in YEARS):
-                candidates.append({"number": ident, "url": url, "first_seen": TODAY})
-    result = {"attempted": TODAY, "searched": len(urls)}
-    if read:
-        result.update(checked=TODAY, sources_read=read, bills_found=sorted(set(found)))
+        if RELEVANT.search(sample) and not EXCLUDE.search(sample):
+            idents = bill_numbers(url, text)
+            if idents:
+                pages.append((url, idents))
+    log = {"attempted": TODAY, "searched": len(urls)}
+    if pages:
+        log.update(checked=TODAY, sources_read=[u for u, _ in pages],
+                   bills_found=sorted({i for _, ids in pages for i in ids}))
     else:
-        result["unreadable"] = ("; ".join(sorted(set(errors)))[:300] or
-                                "official-site search returned no AV bill pages") + f" (searched {len(urls)} pages)"
-    return {"log": result, "candidates": candidates}
+        log["unreadable"] = ("; ".join(sorted(set(errors)))[:300] or
+                             "official-site search returned no AV bill pages") + f" (searched {len(urls)} pages)"
+    return {"log": log, "pages": pages}
 
 
-def open_issue(code: str, new: list[dict]) -> None:
-    title = f"AV bill on official {code} site missing from index"
-    body = ("The weekly official-site sweep found AV bills on the state's own legislative site that the "
-            "index does not carry:\n\n" + "\n".join(f"- {c['number']}: {c['url']}" for c in new) +
-            "\n\nVerify and add via data-state/manual_bills.json if genuine.")
-    found = subprocess.run(["gh", "issue", "list", "--state", "open", "--label", "data-coverage", "--search",
-                            f'"{title}" in:title', "--json", "number"], capture_output=True, text=True)
-    if found.returncode == 0 and found.stdout.strip() not in ("", "[]"):
-        return
-    subprocess.run(["gh", "issue", "create", "--title", title, "--label", "data-coverage", "--body", body])
+# ------------------------------------------------------------------ 2. extract
+EXTRACT_PROMPT = (
+    "You extract facts about ONE state legislative bill from the text of its official page. Use ONLY the supplied text. "
+    "Return JSON {is_av_bill:boolean, number:string, title:string, session:string, measure_type:'bill'|'resolution', "
+    "status:one of introduced|engrossed|passed|enacted|vetoed|stricken, "
+    "progress_stage:one of introduced|committee|floor|passed_legislature|executive|law, "
+    "last_action:string, last_action_date:'YYYY-MM-DD' or null, reason:string}. "
+    "is_av_bill is true only if the bill substantively concerns autonomous/automated/driverless vehicles. "
+    "number is the bill's own identifier as printed (e.g. 'SB 1417'). session is the legislative session or year as printed. "
+    "last_action/last_action_date are the most recent action stated on the page; null the date if not stated. Never guess.")
 
 
+def extract(invoke, entry: dict, url: str, text: str, ident: str) -> dict | None:
+    data = invoke([{"role": "system", "content": EXTRACT_PROMPT},
+                   {"role": "user", "content": json.dumps({"jurisdiction": entry["name"], "expected_number": ident,
+                                                           "source_url": url, "page_text": text[:14000]})}])
+    number = str(data.get("number") or ident)
+    if not data.get("is_av_bill") or number_key(number) != number_key(ident):
+        return None
+    if data.get("status") not in STATUSES or data.get("progress_stage") not in STAGES:
+        return None
+    action_date = data.get("last_action_date")
+    if not (isinstance(action_date, str) and DATE.match(action_date) and action_date <= TODAY):
+        return None
+    session = str(data.get("session") or "").strip()
+    title = " ".join(str(data.get("title") or "").split())
+    if not session or not title:
+        return None
+    return {
+        "id": f"{entry['code'].lower()}-{slug(number)}-{slug(session)}",
+        "jurisdiction": entry["code"], "number": number, "title": title, "session": session,
+        "status": data["status"], "measure_type": data.get("measure_type") if data.get("measure_type") in ("bill", "resolution") else "bill",
+        "progress_stage": data["progress_stage"], "stage_dates": {data["progress_stage"]: action_date}, "hearings": [],
+        "last_action": " ".join(str(data.get("last_action") or "").split())[:300], "last_action_date": action_date,
+        "source_url": url, "repository_url": url, "source_feed": "official_sweep"}
+
+
+# ------------------------------------------------------------------ main
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--open-issues", action="store_true")
     ap.add_argument("--budget-minutes", type=float, default=25)
+    ap.add_argument("--max-new", type=int, default=int(os.getenv("SWEEP_MAX_NEW", "15")))
     args = ap.parse_args()
     jurisdictions = json.loads(SOURCES.read_text())["jurisdictions"]
+    by_code = {j["code"]: j for j in jurisdictions}
     log = json.loads(SWEEP_LOG.read_text()) if SWEEP_LOG.exists() else {}
-    known = json.loads(CANDIDATES.read_text()) if CANDIDATES.exists() else {}
+    database = json.loads(DATABASE.read_text()) if DATABASE.exists() else {"note": "First-party AV bill database built from official legislature sites by scripts/sweep-state-legislatures.py", "bills": {}}
+    bills = database["bills"]
     index = json.loads(TRACKER.read_text())["state_bills"]
-    # Least-recently-attempted first: resume where the previous sweep stopped.
+    started = time.monotonic()
+
+    def save():
+        SWEEP_LOG.write_text(json.dumps(log, indent=1, sort_keys=True) + "\n")
+        DATABASE.write_text(json.dumps(database, indent=1, sort_keys=True, ensure_ascii=False) + "\n")
+
+    # 1. DISCOVER: least-recently-attempted first.
     order = sorted(jurisdictions, key=lambda j: (log.get(j["code"], {}).get("attempted") or "", j["code"]))
-    started, done, readable = time.monotonic(), 0, 0
+    swept = readable = 0
     for entry in order:
-        if time.monotonic() - started > args.budget_minutes * 60:
+        if time.monotonic() - started > args.budget_minutes * 60 * 0.6:
             break
         code = entry["code"]
         try:
-            out = sweep_one(entry, index)
+            out = discover(entry)
         except Exception as exc:
-            out = {"log": {"attempted": TODAY, "unreadable": f"sweep error {type(exc).__name__}"}, "candidates": []}
-        previous = log.get(code, {})
-        merged = {**previous, **out["log"]}
+            out = {"log": {"attempted": TODAY, "unreadable": f"sweep error {type(exc).__name__}"}, "pages": []}
+        merged = {**log.get(code, {}), **out["log"]}
         if "unreadable" not in out["log"]:
             merged.pop("unreadable", None)
         log[code] = merged
-        old = {c["number"] for c in known.get(code, [])}
-        new = [c for c in out["candidates"] if c["number"] not in old]
-        if out["candidates"]:
-            known[code] = known.get(code, []) + new
-        done += 1
+        for url, idents in out["pages"]:
+            for ident in idents[:1]:
+                key = f"{code}:{number_key(ident)[0]}{number_key(ident)[1]}"
+                if key not in bills:
+                    bills[key] = {"jurisdiction": code, "number": ident, "source_url": url, "stage": "discovered", "discovered": TODAY}
+        swept += 1
         readable += "unreadable" not in out["log"]
-        print(f"Sweep {code}: {'read ' + str(len(out['log'].get('sources_read', []))) + ' pages' if 'unreadable' not in out['log'] else out['log']['unreadable']}"
-              f"; {len(new)} new candidate(s)", flush=True)
-        SWEEP_LOG.write_text(json.dumps(log, indent=1, sort_keys=True) + "\n")
-        CANDIDATES.write_text(json.dumps(known, indent=1, sort_keys=True) + "\n")
-        if args.open_issues and new:
-            open_issue(code, new)
-    print(f"Swept {done}/{len(jurisdictions)} jurisdictions; {readable} produced official AV pages")
+        print(f"Sweep {code}: {out['log'].get('unreadable') or 'read ' + str(len(out['pages'])) + ' AV pages'}", flush=True)
+        save()
+    print(f"Swept {swept}/{len(jurisdictions)} jurisdictions; {readable} produced official AV pages", flush=True)
+
+    # 2+3. EXTRACT and SUMMARIZE unprocessed stubs (oldest first; durable across runs).
+    if not os.getenv("ANTHROPIC_API_KEY"):
+        print("ANTHROPIC_API_KEY not set; stubs stay queued")
+        return 0
+    editorial = runpy.run_path(str(Path(__file__).resolve().parent / "ai-policy-editorial.py"))
+    invoke, summarize = editorial["invoke"], editorial["summarize"]
+    done = 0
+    pending = sorted((k for k, b in bills.items() if b.get("stage") in ("discovered", "extracted")),
+                     key=lambda k: bills[k].get("discovered", ""))
+    for key in pending:
+        if done >= args.max_new or time.monotonic() - started > args.budget_minutes * 60:
+            break
+        stub = bills[key]
+        entry = by_code[stub["jurisdiction"]]
+        done += 1
+        try:
+            text, _ = fetch(stub["source_url"])
+            if not text:
+                print(f"  {key}: page unreadable; stays queued", flush=True)
+                continue
+            record = extract(invoke, entry, stub["source_url"], text, stub["number"]) if RELEVANT.search(text[:6000]) else None
+        except Exception as exc:
+            print(f"  {key}: extraction error {type(exc).__name__}", flush=True)
+            continue
+        if not record:
+            stub.update(stage="rejected", reason="not a verifiable AV bill page", checked=TODAY)
+            print(f"  {key}: rejected (not a verifiable AV bill page)", flush=True)
+            save()
+            continue
+        if in_index(record["jurisdiction"], record["number"], index):
+            bills[key] = {**record, "stage": "in_feed", "checked": TODAY}
+            print(f"  {key}: already carried by a feed", flush=True)
+            save()
+            continue
+        try:
+            result = summarize(record, "state_bill")
+        except Exception as exc:
+            result, record["editorial_failure_reason"] = "error", f"{type(exc).__name__}: {str(exc)[:160]}"
+        stage = "verified" if result == "updated" and record.get("editorial_status") == "verified" else "extracted"
+        bills[key] = {**record, "stage": stage, "checked": TODAY, "discovered": stub.get("discovered", TODAY)}
+        print(f"  {key}: {result} -> {stage}", flush=True)
+        save()
+    save()
+    print("Database:", {s: sum(1 for b in bills.values() if b.get("stage") == s)
+                        for s in sorted({b.get("stage") for b in bills.values()})})
     return 0
 
 

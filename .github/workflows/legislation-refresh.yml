@@ -47,6 +47,15 @@ jobs:
       - name: Search current sessions and rebuild Open States bill database
         if: ${{ env.OPENSTATES_API_KEY != '' }}
         run: python3 scripts/refresh-legislation.py public/data/legislation_tracker.json
+      - name: Sweep every state legislature's official site (independent of Open States)
+        # Builds data-state/official_bills.json from each state's own site; least-recently-swept
+        # first, durable queue, never blocks the data refresh.
+        continue-on-error: true
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          POLICY_EDITORIAL_MODEL: claude-sonnet-5-5
+        run: python3 scripts/sweep-state-legislatures.py --budget-minutes 30
+
       - name: Cross-check a second source, apply manual overrides, report coverage gaps
         if: ${{ env.OPENSTATES_API_KEY != '' }}
         run: |
@@ -57,11 +66,6 @@ jobs:
         run: |
           python3 scripts/test-known-bills.py
           python3 scripts/check-known-bills.py --open-issues
-
-      - name: Sweep every state legislature's official site (independent of Open States)
-        # Least-recently-swept states first; never blocks the data refresh.
-        continue-on-error: true
-        run: python3 scripts/sweep-state-legislatures.py --open-issues --budget-minutes 25
 
       - name: AI review state and federal legislation plus FMVSS rules
         if: ${{ env.OPENSTATES_API_KEY != '' }}
