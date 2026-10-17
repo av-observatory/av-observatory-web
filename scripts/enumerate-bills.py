@@ -98,6 +98,9 @@ def enumerate_state(code: str) -> dict:
                 if bill.get("av_hint") and row.get("av") in ("unknown", "no"):
                     row["av"], row["via"], row["classified"] = "candidate", "state_fulltext", TODAY
                 if bill.get("text_url"):
+                    if bill["text_url"] != row.get("text_url") and (row.get("scan_failed") or row.get("text_url")):
+                        for stale in ("scanned", "scan_failed", "scan_error"):  # a new text source: read it again
+                            row.pop(stale, None)
                     row["text_url"] = bill["text_url"]
                 if bill.get("summary"):
                     row["summary"] = " ".join(str(bill["summary"]).split())[:400]
@@ -148,10 +151,12 @@ def classify(ledgers: dict, scan_budget: int, scan_minutes: float) -> dict:
     for code, ledger in ledgers.items():
         if code in TITLE_ONLY:
             continue
-        pending = sorted((row.get("scanned") or "", key) for key, row in ledger["bills"].items()
+        # Unconfirmed full-text-search hits go first so candidates are settled quickly; then oldest scan first.
+        pending = sorted(((0 if row.get("av") == "candidate" else 1), row.get("scanned") or "", key) for key, row in ledger["bills"].items()
                          if (row.get("av") in ("unknown", "no") or (row.get("av") == "candidate" and row.get("via") == "state_fulltext" and not row.get("scanned")))
                          and (row.get("text_url") or row.get("url")))
-        queue += [(scanned, rank, code, key) for rank, (scanned, key) in enumerate(pending)]
+        # sort keys: "" = unconfirmed candidate, " " = never scanned, otherwise the date of the last scan
+        queue += [("" if first == 0 else (scanned or " "), rank, code, key) for rank, (first, scanned, key) in enumerate(pending)]
     queue = [(scanned, code, key) for scanned, _, code, key in sorted(queue, key=lambda q: (q[0], q[1], q[2]))][:scan_budget]
     gates: dict = {}
 
