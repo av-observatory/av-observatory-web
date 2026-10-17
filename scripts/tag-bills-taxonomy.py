@@ -14,14 +14,14 @@ TAX = json.loads((ROOT / "data-state/taxonomy/taxonomy.json").read_text())
 KEY = os.getenv("ANTHROPIC_API_KEY")
 MODEL = os.getenv("TAG_MODEL", "claude-sonnet-5-5")
 SUB = {s["id"]: dict(s, topic=t["name"]) for t in TAX["topics"] for s in t["subtopics"]}
-DIRECTIONS = TAX["directions"]
+DIRS = TAX["directions_by_axis"]
 FUNDING = TAX["funding"]
 MECHANISMS = ("tax_incentive", "permitting_streamlining", "ban_or_prohibition", "licensing_or_registration", "disclosure_or_reporting",
               "funding_or_appropriation", "penalty_or_enforcement", "preemption", "study_or_task_force", "standards_or_requirements",
               "repeal_or_exemption", "program_creation", "other")
-POLES = {"A": "expands = expands access/rights, restricts = limits them",
-         "R": "tightens = adds rules/oversight/burdens, loosens = removes or relaxes them",
-         "F": "no direction; set direction to not_applicable and use funding", "N": "no direction; set direction to not_applicable"}
+POLES = {"A": "direction is one of " + "|".join(DIRS["A"]) + " (expands = expands access/rights, restricts = limits them)",
+         "R": "direction is one of " + "|".join(DIRS["R"]) + " (tightens = adds rules, oversight or burdens, loosens = removes or relaxes them)",
+         "F": "no direction; use not_applicable and set funding", "N": "no direction; use not_applicable"}
 KEYWORDS = {"guns": r"firearm|ammunition", "abortion": r"abortion|reproductive", "ai": r"artificial intelligence|automated decision",
             "data_centers": r"data center", "housing": r"zoning|tenant|rental housing|housing element", "schools": r"pupil|school district",
             "immigration": r"immigra", "av": r"autonomous vehicle", "privacy": r"personal information|privacy"}
@@ -30,7 +30,7 @@ KEYWORDS = {"guns": r"firearm|ammunition", "abortion": r"abortion|reproductive",
 def system_prompt() -> str:
     lines = [f"- {sid}: {s['topic']} / {s['name']} (axis {s['axis']}: {POLES[s['axis']]})" for sid, s in SUB.items()]
     return ("You tag California bills for a legislative tracker. Choose up to 4 sub-topics from this list, using the exact ids:\n" + "\n".join(lines) +
-            "\n\nFor each tag give: direction (one of " + "|".join(DIRECTIONS + ["not_applicable"]) + "), funding (" + "|".join(FUNDING) +
+            "\n\nFor each tag give: direction (the values allowed for that sub-topic's axis, listed above), funding (" + "|".join(FUNDING) +
             "), mechanism (" + "|".join(MECHANISMS) + "), confidence (high|medium|low), and evidence: ONE sentence copied verbatim from the bill text below that supports the direction. "
             "Judge direction from what THIS bill would do (the 'This bill would...' parts), not from existing law it summarizes. "
             "Direction describes the bill's effect, never a viewpoint. Use 'mixed' when it moves both ways, 'neutral' for procedural or no real effect on the sub-topic, 'unclear' when the text does not say. "
@@ -66,14 +66,11 @@ def tag_bill(system: str, key: str, bill: dict) -> dict:
         if sid not in SUB:
             continue
         axis = SUB[sid]["axis"]
-        direction = t.get("direction") if t.get("direction") in DIRECTIONS + ["not_applicable"] else "unclear"
-        if axis in ("F", "N"):
-            direction = "not_applicable"
-        elif direction == "not_applicable":
-            direction = "unclear"
+        allowed = DIRS[axis]
+        direction = allowed[0] if axis in ("F", "N") else (t.get("direction") if t.get("direction") in allowed else "unclear")
         evidence = str(t.get("evidence") or "")
         supported = len(flat(evidence)) >= 12 and flat(evidence) in flat(text)
-        if not supported and direction not in ("unclear", "not_applicable"):
+        if not supported and direction not in ("unclear", "not_applicable", "neutral"):
             direction = "unclear"  # no verifiable quote, no direction
         tags.append({"subtopic": sid, "topic": SUB[sid]["topic"], "direction": direction,
                      "funding": t.get("funding") if t.get("funding") in FUNDING else "unclear",
