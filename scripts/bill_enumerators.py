@@ -7,6 +7,7 @@ the public documentation of each legislature's data service; no third-party aggr
 """
 from __future__ import annotations
 
+import io
 import json
 import re
 import ssl
@@ -597,24 +598,6 @@ def pa(session: str):
                 yield {"session": session, "number": re.sub(r"(\D+)(\d+)", r"\1 \2", m.group(1).upper()), "title": a["text"] if not BILLNO.match(a["text"]) else "", "url": a["href"]}
 
 
-# --------------------------------------------------------------------------- Arkansas (session data file, UTF-16, pipe-delimited)
-def ar(session: str):
-    from urllib.parse import quote_plus
-    raw = http("https://arkleg.state.ar.us/Home/FTPDocument?path=" + quote_plus("/SessionInformation/LegislativeMeasures.txt"), headers=CHROME, timeout=120)
-    text = raw.decode("utf-16", "replace") if raw[:2] in (b"\xff\xfe", b"\xfe\xff") else raw.decode("utf-8", "replace").replace("\x00", "")
-    seen = set()
-    for line in text.splitlines():
-        row = line.split("|")
-        if len(row) >= 3 and row[0].strip() in ("H", "S") and row[2].strip().isdigit():
-            number = f"{row[0].strip()}{row[1].strip()} {row[2].strip()}"
-            if number not in seen:
-                seen.add(number)
-                title = max((c.strip() for c in row[3:]), key=len, default="")
-                slug = number.replace(" ", "")
-                yield {"session": session, "number": number, "title": title,
-                       "url": f"https://www.arkleg.state.ar.us/Bills/Detail?id={slug}&ddBienniumSession={session}%2F{session}R"}
-
-
 # --------------------------------------------------------------------------- Tennessee (index of ranges -> bill links)
 def tn(session: str):
     seen = set()
@@ -706,13 +689,12 @@ def mn(session: str):
                 p = page(f"https://www.revisor.mn.gov/bills/status_result.php?body={body}&session={session}&bill={start}-{start + 500}&bill_type={kind}&submit_bill=GO", timeout=120)
                 found = 0
                 for row in p.rows:
-                    if row and row[0]["links"]:
-                        number = " ".join(row[0]["text"].split())
-                        if number and number not in seen and re.search(r"\d", number):
+                    if len(row) >= 2 and row[1]["links"] and re.fullmatch(r"[A-Z]{2,4}\d+", row[1]["text"].strip()):
+                        number = row[1]["text"].strip()
+                        if number not in seen:
                             seen.add(number)
                             found += 1
-                            title = next((c["text"] for c in row[1:3] if len(c["text"]) > 25), "")
-                            yield {"session": session, "number": number, "title": title, "url": row[0]["links"][0][0]}
+                            yield {"session": session, "number": number, "title": "", "url": row[1]["links"][0][0]}
                 if not found:
                     break
                 start += 501
@@ -808,6 +790,21 @@ def head_ok(url: str) -> bool:
     return False
 
 
+def pdf_exists(url: str) -> bool:
+    """True only when the URL really serves a PDF (missing files often return a 200 HTML shell)."""
+    for attempt in range(2):
+        try:
+            with urlopen(Request(url, headers={**CHROME, "Range": "bytes=0-7"}), timeout=40) as r:
+                return r.read(5).startswith(b"%PDF")
+        except HTTPError as exc:
+            if exc.code in (403, 404, 410):
+                return False
+        except Exception:
+            pass
+        time.sleep(1)
+    return False
+
+
 def download(url: str, dest: str, headers: dict | None = None) -> None:
     with urlopen(Request(url, headers={**CHROME, **(headers or {})}), timeout=300) as r, open(dest, "wb") as fh:
         while True:
@@ -829,7 +826,7 @@ def inn(session: str):
             while start < first + 3000:
                 nums = list(range(start, start + 100))
                 urls = [f"https://iga.in.gov/pdf-documents/{ga}/{year}/{chamber}/{folder}/{prefix}{n:04d}/{prefix}{n:04d}.01.INTR.pdf" for n in nums]
-                hits = [(n, u) for n, u, ok_ in zip(nums, urls, pool.map(head_ok, urls)) if ok_]
+                hits = [(n, u) for n, u, ok_ in zip(nums, urls, pool.map(pdf_exists, urls)) if ok_]
                 for n, u in hits:
                     yield {"session": session, "number": f"{prefix} {n}", "title": "", "url": u}
                 if not hits:
@@ -871,33 +868,141 @@ def nj(session: str):
                        "url": f"https://www.njleg.state.nj.us/bill-search/{year}/{number}"}
 
 
-# --------------------------------------------------------------------------- California (LEGINFO bulk database)
+# --------------------------------------------------------------------------- Arkansas (one PDF per bill; real-PDF ranges)
+def ar(session: str):
+    from concurrent.futures import ThreadPoolExecutor
+    kinds = [("HB", 1001), ("SB", 1), ("HR", 1001), ("SR", 1), ("HCR", 1001), ("SCR", 1), ("HJR", 1001), ("SJR", 1), ("HMR", 1001), ("SMR", 1)]
+    if session.endswith("F"):
+        kinds = [(k, f) for k, f in kinds if k in ("HB", "SB", "HJR", "SJR", "HR", "SR")]
+    with ThreadPoolExecutor(max_workers=24) as pool:
+        for prefix, first in kinds:
+            start = first
+            while start < first + 3000:
+                nums = list(range(start, start + 100))
+                urls = [f"https://www.arkleg.state.ar.us/Bills/FTPDocument?path=%2FBills%2F{session}%2FPublic%2F{prefix}{n}.pdf" for n in nums]
+                hits = [(n, u) for n, u, ok_ in zip(nums, urls, pool.map(pdf_exists, urls)) if ok_]
+                for n, u in hits:
+                    yield {"session": session, "number": f"{prefix} {n}", "title": "", "url": u}
+                if not hits:
+                    break
+                start += 100
+
+
+# --------------------------------------------------------------------------- Illinois (per-bill status XML directory)
+def il(session: str):
+    seen = set()
+    for a in page(f"https://www.ilga.gov/ftp/legislation/{session}/BillStatus/XML/", headers=CHROME, timeout=300).anchors:
+        m = re.search(rf"/{session}(\d{{2}})([A-Z]+)(\d+)\.xml$", a["href"])
+        if m and m.group(2) != "AM":
+            number = f"{m.group(2)} {int(m.group(3))}"
+            if number not in seen:
+                seen.add(number)
+                yield {"session": session, "number": number, "title": "", "url": a["href"]}
+
+
+# --------------------------------------------------------------------------- Connecticut (per-bill status pages; ranges)
+def ct(session: str):
+    from concurrent.futures import ThreadPoolExecutor
+
+    def probe(item):
+        kind, n = item
+        url = f"https://www.cga.ct.gov/asp/cgabillstatus/cgabillstatus.asp?selBillType=Bill&bill_num={kind}{n}&which_year={session}"
+        try:
+            text = http(url, headers=CHROME, timeout=60, tries=2).decode("utf-8", "replace")
+        except Exception:
+            return None
+        if "not found in Database" in text or not re.search(rf"\b{kind}\s?-?\s?0*{n}\b", text):
+            return None
+        t = re.search(r"AN ACT[^<]{5,300}", re.sub(r"\s+", " ", text))
+        return {"session": session, "number": f"{kind} {n}", "title": t.group(0).strip() if t else "", "url": url}
+
+    with ThreadPoolExecutor(max_workers=12) as pool:
+        for kind, first in (("HB", 5001), ("SB", 1), ("HJ", 1), ("SJ", 1), ("HR", 1), ("SR", 1)):
+            start = first
+            while start < first + 4000:
+                results = [r for r in pool.map(probe, [(kind, n) for n in range(start, start + 100)]) if r]
+                yield from results
+                if not results:
+                    break
+                start += 100
+
+
+# --------------------------------------------------------------------------- California (LEGINFO bulk zip, read with HTTP range requests)
+class RangeFile(io.RawIOBase):
+    """Seekable read-only file over HTTP Range requests, so one table of a huge zip can be read without downloading it all."""
+
+    BLOCK = 4 << 20
+
+    def __init__(self, url: str):
+        self.url, self.pos, self.cache = url, 0, {}
+        with urlopen(Request(url, method="HEAD", headers=CHROME), timeout=60) as r:
+            self.size = int(r.headers["Content-Length"])
+
+    def readable(self):
+        return True
+
+    def seekable(self):
+        return True
+
+    def tell(self):
+        return self.pos
+
+    def seek(self, offset, whence=0):
+        self.pos = offset if whence == 0 else self.pos + offset if whence == 1 else self.size + offset
+        return self.pos
+
+    def _block(self, index):
+        if index not in self.cache:
+            lo = index * self.BLOCK
+            hi = min(self.size, lo + self.BLOCK) - 1
+            with urlopen(Request(self.url, headers={**CHROME, "Range": f"bytes={lo}-{hi}"}), timeout=300) as r:
+                self.cache[index] = r.read()
+            if len(self.cache) > 6:
+                self.cache.pop(next(iter(self.cache)))
+        return self.cache[index]
+
+    def read(self, n=-1):
+        n = self.size - self.pos if n is None or n < 0 else min(n, self.size - self.pos)
+        out = []
+        while n > 0:
+            index, offset = divmod(self.pos, self.BLOCK)
+            chunk = self._block(index)[offset:offset + n]
+            if not chunk:
+                break
+            out.append(chunk)
+            self.pos += len(chunk)
+            n -= len(chunk)
+        return b"".join(out)
+
+    def readinto(self, b):
+        data = self.read(len(b))
+        b[:len(data)] = data
+        return len(data)
+
+
 def ca(session: str):
-    import tempfile
     import zipfile
-    with tempfile.TemporaryDirectory() as tmp:
-        download(f"https://downloads.leginfo.legislature.ca.gov/pubinfo_{session}.zip", tmp + "/pubinfo.zip")
-        with zipfile.ZipFile(tmp + "/pubinfo.zip") as z:
-            members = {n.rsplit("/", 1)[-1].upper(): n for n in z.namelist()}
-            if "BILL_TBL.DAT" not in members:
-                raise RuntimeError("BILL_TBL.dat not in zip: " + ", ".join(sorted(members)[:15]))
-            subjects = {}
-            if "BILL_VERSION_TBL.DAT" in members:
-                with z.open(members["BILL_VERSION_TBL.DAT"]) as fh:
-                    for raw in fh:
-                        f = raw.decode("utf-8", "replace").rstrip("\r\n").split("\t")
-                        if len(f) > 6:
-                            subjects[f[1].strip("`")] = f[6].strip("`")
-            seen = set()
-            with z.open(members["BILL_TBL.DAT"]) as fh:
-                for raw in fh:
-                    f = [c.strip("`") for c in raw.decode("utf-8", "replace").rstrip("\r\n").split("\t")]
-                    if len(f) > 4 and f[3] and f[4].isdigit():
-                        number = f"{f[3]} {int(f[4])}"
-                        if number not in seen:
-                            seen.add(number)
-                            yield {"session": session, "number": number, "title": subjects.get(f[0], ""),
-                                   "url": f"https://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id={f[0]}"}
+    z = zipfile.ZipFile(RangeFile(f"https://downloads.leginfo.legislature.ca.gov/pubinfo_{session}.zip"))
+    members = {n.rsplit("/", 1)[-1].upper(): n for n in z.namelist()}
+    if "BILL_TBL.DAT" not in members:
+        raise RuntimeError("BILL_TBL.dat not in zip: " + ", ".join(sorted(members)[:15]))
+    subjects = {}
+    if "BILL_VERSION_TBL.DAT" in members:
+        with z.open(members["BILL_VERSION_TBL.DAT"]) as fh:
+            for raw in fh:
+                f = raw.decode("utf-8", "replace").rstrip("\r\n").split("\t")
+                if len(f) > 6:
+                    subjects[f[1].strip("`")] = f[6].strip("`")
+    seen = set()
+    with z.open(members["BILL_TBL.DAT"]) as fh:
+        for raw in fh:
+            f = [c.strip("`") for c in raw.decode("utf-8", "replace").rstrip("\r\n").split("\t")]
+            if len(f) > 4 and f[3] and f[4].isdigit():
+                number = f"{f[3]} {int(f[4])}"
+                if number not in seen:
+                    seen.add(number)
+                    yield {"session": session, "number": number, "title": subjects.get(f[0], ""),
+                           "url": f"https://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id={f[0]}"}
 
 
 # Bump a state's revision when its adapter changes so recently enumerated ledgers are rebuilt.
@@ -939,7 +1044,7 @@ ENUMERATORS = {
     "CO": (("2026 Regular Session", "2025 Regular Session"), co),
     "WI": (("2025",), wi),
     "PA": (("2025",), pa),
-    "AR": (("2025",), ar),
+    "AR": (("2025R", "2026F"), ar),
     "TN": (("2025",), tn),
     "LA": (("26RS", "25RS"), la),
     "SC": (("126",), sc),
@@ -952,4 +1057,6 @@ ENUMERATORS = {
     "IN": (("124/2026", "124/2025"), inn),
     "NJ": (("2026", "2024"), nj),
     "CA": (("2025",), ca),
+    "IL": (("104",), il),
+    "CT": (("2026", "2025"), ct),
 }

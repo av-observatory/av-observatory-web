@@ -9,22 +9,13 @@ from bill_enumerators import http, parse_html
 CHROME = {"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"}
 BILL = re.compile(r"^(?:[A-Z]{1,4}\.?\s?\d{1,5}|[A-Z]{1,4}\s?[A-Z]?\d{1,5}|\d{1,5})$")
 P = [
- ("CT-b", "https://www.cga.ct.gov/asp/cgabillstatus/cgabillstatus.asp?selBillType=Bill&bill_num=HB05001&which_year=2026", {"raw": "AN ACT"}),
- ("CT-c", "https://www.cga.ct.gov/asp/cgabillstatus/cgabillstatus.asp?selBillType=Bill&bill_num=HB09999&which_year=2026", {"raw": "AN ACT"}),
- ("CT-d", "https://www.cga.ct.gov/2026/lob/h/pdf/2026HB-05001-R00-HB.pdf", {"headers": CHROME}),
- ("IL-ftp", "https://www.ilga.gov/ftp/legislation/104/BillStatus/XML/", {"headers": CHROME, "hrefs": r"HB0001|\.xml"}),
- ("IL-ftp2", "https://www.ilga.gov/ftp/legislation/104/BillStatus/XML/10400HB0001.xml", {"headers": CHROME}),
- ("IL-ftp3", "https://ilga.gov/ftp/legislation/104/BillStatus/", {"headers": CHROME, "hrefs": r"."}),
- ("NY-pdf1", "https://legislation.nysenate.gov/pdf/bills/2025/S1", {"headers": CHROME}),
- ("NY-pdf2", "https://legislation.nysenate.gov/pdf/bills/2025/S99999", {"headers": CHROME}),
- ("NY-api", "https://legislation.nysenate.gov/api/3/bills/2025/S1?view=only_fields", {"headers": CHROME}),
- ("DC", "https://lims.dccouncil.gov/Legislation/B26-0684", {"headers": CHROME, "raw": "src="}),
- ("MN", "https://www.revisor.mn.gov/bills/status_result.php?body=House&session=0942025&bill=1-501&bill_type=bill&submit_bill=GO", {"raw": "HF"}),
- ("AR-a", "https://arkleg.state.ar.us/Bills/SearchResults?ddBienniumSession=2025%2F2025R&Page=1&PageSize=100", {"headers": CHROME, "hrefs": r"Detail"}),
- ("AR-b", "https://arkleg.state.ar.us/Home/FTPDocument?path=%2FSessionInformation%2F2025R%2FLegislativeMeasures.txt", {"headers": CHROME}),
- ("AR-c", "https://www.arkleg.state.ar.us/Bills/FTPDocument?path=%2FSessionInformation%2FLegislativeMeasures.txt", {"headers": CHROME}),
- ("WI", "https://docs.legis.wisconsin.gov/2025/proposals/reg/asm/bill", {"headers": CHROME, "hrefs": r"proposals"}),
- ("CA", "https://downloads.leginfo.legislature.ca.gov/pubinfo_2025.zip", {"headers": {**CHROME, "Range": "bytes=0-300"}}),
+ ("NY-a1", "https://nyassembly.gov/leg/?default_fld=&bn=A00001&term=2025&Summary=Y", {"headers": CHROME, "raw": "Sponsor"}),
+ ("NY-s1", "https://nyassembly.gov/leg/?default_fld=&bn=S00001&term=2025&Summary=Y", {"headers": CHROME, "raw": "Sponsor"}),
+ ("NY-sen", "https://www.nysenate.gov/legislation/bills/2025/S1", {"headers": {"User-Agent": "curl/8.5.0", "Accept": "*/*"}}),
+ ("NY-pdf3", "https://legislation.nysenate.gov/pdf/bills/2025/S00001", {"headers": CHROME}),
+ ("NY-cat", "https://data.ny.gov/api/catalog/v1?q=legislation+bills+assembly+senate&limit=10", {}),
+ ("NY-lbdc", "https://webapps.legislature.ny.gov/", {"headers": CHROME}),
+ ("DC-api", "https://lims.dccouncil.gov/api/v2/PublicData/Legislation/B26-0684", {"headers": CHROME}),
 ]
 
 def describe(code, url, opt):
@@ -132,7 +123,27 @@ def oklahoma():
     except Exception as exc:
         return f"OK ERR {type(exc).__name__} {str(exc)[:80]}"
 
+def dc_bundle():
+    try:
+        html = http("https://lims.dccouncil.gov/Legislation/B26-0684", headers=CHROME, tries=1).decode("utf-8", "replace")
+        srcs = re.findall(r'src="([^"]+\.js[^"]*)"', html) + re.findall(r"src='([^']+\.js[^']*)'", html)
+        out = [f"scripts={srcs[:8]}"]
+        for src in srcs[:6]:
+            url = src if src.startswith("http") else "https://lims.dccouncil.gov" + (src if src.startswith("/") else "/" + src)
+            try:
+                js = http(url, headers=CHROME, tries=1, timeout=60).decode("utf-8", "replace")
+            except Exception as exc:
+                out.append(f"{url[-50:]} ERR {exc}")
+                continue
+            for m in re.finditer(r"(Authorization|api[-_ ]?key|PublicData)", js, re.I):
+                out.append(f"{url[-40:]} @{m.start()}: " + " ".join(js[max(0, m.start() - 60): m.start() + 140].split()))
+                if len(out) > 8:
+                    break
+        return "DC bundle: " + " || ".join(out)
+    except Exception as exc:
+        return f"DC bundle ERR {type(exc).__name__} {str(exc)[:80]}"
+
 with ThreadPoolExecutor(max_workers=12) as pool:
-    futs = [pool.submit(describe, *x) for x in P]
+    futs = [pool.submit(describe, *x) for x in P] + [pool.submit(dc_bundle)]
     for f in futs:
         print(f.result(), flush=True)
