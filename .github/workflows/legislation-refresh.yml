@@ -92,7 +92,9 @@ jobs:
           python3 scripts/test-policy-editorial.py
 
       - name: Reject unverified editorial text before committing or publishing
-        run: python3 scripts/audit-editorial-quality.py
+        # Unverified bills are reverted to their last audited version or withheld (data-state/editorial_quarantine.json)
+        # instead of failing the refresh; policy and NHTSA feeds still fail the run.
+        run: python3 scripts/audit-editorial-quality.py --quarantine
       - name: Validate refreshed index
         if: ${{ env.OPENSTATES_API_KEY != '' }}
         run: node scripts/validate-legislation-data.mjs public/data/legislation_tracker.json

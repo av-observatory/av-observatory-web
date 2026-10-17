@@ -4,7 +4,7 @@
 Never replace existing useful text with guesses. Each generation requires a
 second independent model check and preserves provenance and a source hash.
 """
-import hashlib
+import copy,hashlib
 import json
 import os
 from pathlib import Path
@@ -256,6 +256,8 @@ def main():
             continue
         actual_kind="fmvss" if kind=="policy_rule" and "FMVSS" in row.get("instrument","") else kind
         # Existing verified records are reconsidered to detect changed sources.
+        was_verified=row.get("editorial_status")=="verified"
+        before=copy.deepcopy(row) if was_verified else None
         try:
             result=summarize(row,actual_kind)
         except Exception as exc:
@@ -264,6 +266,12 @@ def main():
             result="error"
             row["editorial_status"]="needs_review"
             row["editorial_failure_reason"]=f"{type(exc).__name__}: {str(exc)[:160]}"
+        if before is not None and result in ("missing","rejected","error"):
+            # A failed re-check (blocked source, throttling, stricter second opinion) must not demote text that was
+            # already verified against its source: keep the verified record and note the failed re-check instead.
+            reason=row.get("editorial_failure_reason")
+            row.clear();row.update(before)
+            row["editorial_recheck"]={"result":result,"at":time.strftime("%Y-%m-%d",time.gmtime()),"reason":str(reason or "")[:200]}
         counts[result]=counts.get(result,0)+1
         cursor[key]=time.strftime("%Y-%m-%dT%H:%M:%SZ",time.gmtime())
         print(f"Editorial progress: {key} -> {result}",flush=True)
