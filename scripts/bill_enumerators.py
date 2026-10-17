@@ -761,14 +761,22 @@ def ri(session: str):
                 text = re.sub(r"<br\s*/?>", "\n", result)
                 text = " ".join(re.sub(r"<[^>]+>", " ", text.replace("\n", " | ")).split())
                 found = 0
+                pdfs = {}  # bill text PDFs linked from the report (H5017.pdf, H5017A.pdf = amended; the last one listed wins)
+                for href in re.findall(r'href="([^"]*BillText[^"]*?\.pdf)"', result):
+                    pm = re.search(r"/([HS])(\d+)[A-Z]*\.pdf$", href)
+                    if pm:
+                        pdfs[f"{pm.group(1)}B {int(pm.group(2))}"] = href.replace("http://", "https://")
                 for m in re.finditer(r"((?:House|Senate)(?: Concurrent)?(?: Bill| Resolution) No\.)\s*(\d+)(.*?)(?=(?:House|Senate)(?: Concurrent)?(?: Bill| Resolution) No\.|$)", text):
                     number = f"{names.get(m.group(1), m.group(1))} {m.group(2)}"
                     if number not in seen:
                         seen.add(number)
                         found += 1
                         t = re.search(r"ENTITLED,\s+(.+?)(?:\(|\|| BY | \{)", m.group(3))
-                        yield {"session": session, "number": number, "title": t.group(1).strip() if t else "",
+                        row = {"session": session, "number": number, "title": t.group(1).strip() if t else "",
                                "url": f"https://status.rilegislature.gov/?bill={number.replace(' ', '')}&year={session}"}
+                        if number in pdfs:
+                            row["text_url"] = pdfs[number]
+                        yield row
                 if not found:
                     break
                 idx += 251
@@ -1094,7 +1102,7 @@ def ny(session: str):
 
 
 # Bump a state's revision when its adapter changes so recently enumerated ledgers are rebuilt.
-REV = {"WA": 3, "KS": 2, "GA": 2}  # bump to force a re-enumeration (KS/GA came back short in the first full run)
+REV = {"WA": 3, "RI": 2, "KS": 2, "GA": 2}  # bump to force a re-enumeration (KS/GA came back short in the first full run)
 
 # state -> (sessions to enumerate each run, function)
 ENUMERATORS = {

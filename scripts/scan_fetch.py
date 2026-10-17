@@ -76,6 +76,8 @@ def is_bill_page(text: str, number: str, title: str = "") -> bool:
     spaced = r"[\s._-]*".join(re.escape(c) for c in letters)
     if re.search(rf"(?<![A-Za-z]){spaced}[\s._-]*(?:No\.?\s*)?0*{digits}(?!\d)", text, re.I):
         return True
+    if letters in ("HB", "SB", "AB") and re.search(rf"(?<![A-Za-z]){letters[0]}[\s._-]*0*{digits}(?!\d)", text):  # "H 5017" style headers
+        return True
     if letters in ("H", "S", "A"):
         return bool(re.search(rf"{_WORDS[letters]}\s+Bill\s*(?:No\.?\s*)?0*{digits}(?!\d)", text, re.I))
     kind = {"B": "Bill", "R": "Resolution"}.get(letters[-1], "")
