@@ -46,7 +46,12 @@ jobs:
 
       - name: Search current sessions and rebuild Open States bill database
         if: ${{ env.OPENSTATES_API_KEY != '' }}
-        run: python3 scripts/refresh-legislation.py public/data/legislation_tracker.json
+        # Open States is a convenience feed, not a dependency: it writes the index only on success, so on
+        # a failure (e.g. HTTP 429) keep the last good index and let the official-site sweep, merge,
+        # editorial and publish steps run.
+        run: |
+          python3 scripts/refresh-legislation.py public/data/legislation_tracker.json \
+            || echo "::warning::Open States refresh failed; keeping the existing index and continuing"
       - name: Sweep every state legislature's official site (independent of Open States)
         # Builds data-state/official_bills.json from each state's own site; least-recently-swept
         # first, durable queue, never blocks the data refresh.
