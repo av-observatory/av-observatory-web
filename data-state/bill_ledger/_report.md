@@ -1,11 +1,11 @@
 ## Bill enumeration report (2026-10-17)
 
-51/51 jurisdictions have an enumerator; 51 enumerated cleanly; 253110 bills in the ledgers; 754 AV candidate(s) awaiting analysis.
+51/51 jurisdictions have an enumerator; 51 enumerated cleanly; 254584 bills in the ledgers; 754 AV candidate(s) awaiting analysis.
 
 | State | Status | Bills | Titled | Scanned | Unreadable | AV candidates | Scan secs | Notes |
 |---|---|---:|---:|---:|---:|---:|---:|---|
-| AK | ok | 836 | 836 | 0 | 834 | 2 | 1 | 34 HB 391/391,HCR 32/32,HJR 46/46,HR 6/6,SB 290/290,SCR 35/36,SJR 31/31,SR 5/5 |
-| AL | ok | 2979 | 2979 | 0 | 2366 | 2 | 8388 | 2025rs HB 621/621,HJR 111/350,HR 270/381,SB 347/347,SJR 64/92,SR 35/99; 2026rs HB 666/666,HJR 146/358,HR 216/362,SB 380/ |
+| AK | ok | 836 | 836 | 0 | 834 | 2 | 0 | 34 HB 391/391,HCR 32/32,HJR 46/46,HR 6/6,SB 290/290,SCR 35/36,SJR 31/31,SR 5/5 |
+| AL | ok | 2979 | 2979 | 0 | 2766 | 2 | 0 | 2025rs HB 621/621,HJR 111/350,HR 270/381,SB 347/347,SJR 64/92,SR 35/99; 2026rs HB 666/666,HJR 146/358,HR 216/362,SB 380/ |
 | AR | ok | 2198 | 0 | 0 | 0 | 0 | 0 | 2025R HB 1005/2005,HCR 11/1011,HJR 20/1020,HMR 13/1013,HR 120/1120,SB 647/647,SCR 8/8,SJR 24/24,SMR 5/5,SR 75/75; 2026F  |
 | AZ | ok | 4044 | 4044 | 0 | 0 | 2 | 0 | 57th-1st-regular HB 974/2974,HCM 16/2016,HCR 60/2060,HM 1/2001,HR 8/2008,SB 750/1750,SCM 2/1002,SCR 42/1042,SR 1/1001; 5 |
 | CA | ok | 5041 | 5041 | 0 | 0 | 4 | 0 | 2025 AB 2796/2796,ACA 24/24,ACR 235/235,AJR 35/35,GRP 1/1,HR 141/141,SB 1447/1447,SCA 5/5,SCR 198/198,SJR 19/19,SR 140/1 |
@@ -20,7 +20,7 @@
 | ID | ok | 1475 | 1475 | 0 | 0 | 0 | 0 | 2025 H 446/488,HCR 19/19,HJM 8/8,HJR 6/6,HR 18/18,S 184/1220,SCR 13/113,SJM 5/105,SJR 1/101,SR 12/112; 2026 H 462/978,HC |
 | IL | ok | 12147 | 0 | 0 | 0 | 0 | 0 | 104 EO 16/2608,HB 5825/5825,HC 28/28,HJ 68/68,HR 1052/1052,JS 3/3,SB 4213/4214,SC 11/11,SJ 67/67,SR 864/864 |
 | IN | ok | 2427 | 0 | 0 | 0 | 0 | 0 | 124/2025 HB 708/1714,HC 47/47,HJ 5/5,HR 69/69,SB 521/543,SC 47/47,SJ 19/24,SR 76/76; 124/2026 HB 452/1460,HC 25/25,HJ 4/ |
-| KS | ok | 9 | 9 | 0 | 0 | 0 | 0 | b2025_26 SB 9/67 |
+| KS | ok | 1483 | 1483 | 0 | 0 | 0 | 0 | b2025_26 HB 800/2800,HCR 36/5036,HR 47/6047,SB 536/536,SCR 26/1626,SR 38/1738 |
 | KY | ok | 3178 | 0 | 0 | 0 | 0 | 0 | 25rs HB 814/814,HCR 17/92,HJR 33/70,HR 43/93,SB 266/313,SCR 21/250,SJR 16/74,SR 231/273; 26rs HB 939/939,HCR 25/137,HJR  |
 | LA | ok | 4305 | 0 | 0 | 0 | 0 | 0 | 25RS HB 696/696,HCR 83/83,HR 383/383,SB 248/248,SCR 70/70,SR 211/211; 26RS HB 1259/1259,HCR 120/120,HR 410/410,SB 525/52 |
 | MA | ok | 11958 | 11958 | 0 | 0 | 4 | 0 | 194 H 5695/5695,HD 1492/6404,S 3286/3286,SD 1485/4303 |
