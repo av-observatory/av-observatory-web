@@ -1,0 +1,29 @@
+name: Check R2 configuration (prints set or unset only, never a value)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.POLICY_R2_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.POLICY_R2_SECRET_ACCESS_KEY }}
+      R2_ACCOUNT_ID: ${{ vars.POLICY_R2_ACCOUNT_ID }}
+      R2_BUCKET: ${{ vars.POLICY_R2_BUCKET }}
+    steps:
+      - name: Report which values are configured
+        run: |
+          for v in AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY R2_ACCOUNT_ID R2_BUCKET; do
+            if [ -n "${!v}" ]; then echo "$v: set"; else echo "$v: NOT set"; fi
+          done
+      - name: List the bucket if everything is set (keys only)
+        run: |
+          if [ -n "$AWS_ACCESS_KEY_ID" ] && [ -n "$AWS_SECRET_ACCESS_KEY" ] && [ -n "$R2_ACCOUNT_ID" ] && [ -n "$R2_BUCKET" ]; then
+            AWS_DEFAULT_REGION=auto aws s3 ls "s3://$R2_BUCKET/" --endpoint-url "https://$R2_ACCOUNT_ID.r2.cloudflarestorage.com" | head -20 | sed -E 's/^[0-9-]+ [0-9:]+ +[0-9]+ //' || echo "bucket listing failed"
+          else
+            echo "skipped: not fully configured in this repository"
+          fi
