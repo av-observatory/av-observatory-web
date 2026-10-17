@@ -3,10 +3,8 @@ name: Enumerate every state bill (first-party AV bill database)
 on:
   push:
     paths:
-      - "scripts/enumerate-bills.py"
-      - "scripts/bill_enumerators.py"
-      - "scripts/commit-ledgers.sh"
-      - ".github/workflows/legislation-enumerate.yml"
+      # Enumeration is a deliberate act: touch this file to start a run (adapter edits only run the no-write test).
+      - ".github/enumerate-trigger"
   schedule:
     - cron: "41 9 * * *"
   workflow_dispatch:

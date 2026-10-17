@@ -1,13 +1,22 @@
-name: Probe state bill-list endpoints
+name: Test state adapters and probe endpoints
 on:
   push:
     paths:
       - "scripts/probe-state-lists.py"
+      - "scripts/test-adapters.py"
+      - "scripts/bill_enumerators.py"
       - ".github/workflows/legislation-probe.yml"
   workflow_dispatch:
 permissions:
   contents: read
 jobs:
+  test-adapters:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Run every adapter without writing ledgers
+        run: python3 scripts/test-adapters.py
   probe:
     runs-on: ubuntu-latest
     timeout-minutes: 20

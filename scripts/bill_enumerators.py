@@ -392,26 +392,22 @@ def orr(session: str):
 
 # --------------------------------------------------------------------------- Kansas (HTML fragments, paged)
 def ks(session: str):
-    seen, number_page = set(), 1
-    while number_page < 400:
+    seen, number_page, last = set(), 1, 1
+    while number_page <= min(last, 400):
         url = (f"https://www.kslegislature.gov/{session}/measures/fragment/?per_page=20&types=bill&types=resolution"
                f"&chambers=House&chambers=Senate&page={number_page}")
         p = page(url)
-        fresh = 0
+        last = max([last] + [int(m.group(1)) for a in p.anchors for m in [re.search(r"[?&]page=(\d+)", a["href"])] if m])
         for row, attrs in zip(p.rows, p.row_attrs):
             href = attrs.get("data-href", "")
-            m = re.search(r"\b(HB|SB|HCR|SCR|HR|SR)\s?(\d+)\b", " ".join(c["text"] for c in row[:2]))
+            m = re.search(r"([A-Z]{2,4})\s?(\d+)$", row[0]["text"].strip()) if row else None
             if not href or "appointments" in href or not m:
                 continue
             number = f"{m.group(1)} {m.group(2)}"
-            if number in seen:
-                continue
-            seen.add(number)
-            fresh += 1
-            title = max((c["text"] for c in row), key=len)
-            yield {"session": session, "number": number, "title": title, "url": "https://www.kslegislature.gov" + href}
-        if not fresh:
-            break
+            if number not in seen:
+                seen.add(number)
+                yield {"session": session, "number": number, "title": row[1]["text"] if len(row) > 1 else "",
+                       "url": "https://www.kslegislature.gov" + href}
         number_page += 1
 
 
@@ -619,6 +615,146 @@ def ar(session: str):
                        "url": f"https://www.arkleg.state.ar.us/Bills/Detail?id={slug}&ddBienniumSession={session}%2F{session}R"}
 
 
+# --------------------------------------------------------------------------- Tennessee (index of ranges -> bill links)
+def tn(session: str):
+    seen = set()
+    index = page(f"https://wapp.capitol.tn.gov/apps/indexes/BillsByIndex/?year={session}", timeout=120)
+    for a in index.anchors:
+        if "BillIndex?startNum" in a["href"]:
+            for b in page(a["href"], timeout=120).anchors:
+                if "BillInfo/Default?BillNumber=" in b["href"] and b["text"] and b["text"] not in seen:
+                    seen.add(b["text"])
+                    yield {"session": session, "number": b["text"], "title": "", "url": b["href"]}
+
+
+# --------------------------------------------------------------------------- Louisiana (100-bill ranges per type)
+def la(session: str):
+    seen = set()
+    for kind in ("HB", "SB", "HR", "SR", "HCR", "SCR"):
+        start = 1
+        while start < 6000:
+            p = page(f"https://www.legis.la.gov/Legis/BillSearchListQ.aspx?s={session}&r={kind}{start}-{start + 99}", timeout=120)
+            found = 0
+            for a in p.anchors:
+                if re.fullmatch(rf"{kind}\d+", a["text"]) and "BillInfo" in a["href"] and a["text"] not in seen:
+                    seen.add(a["text"])
+                    found += 1
+                    yield {"session": session, "number": a["text"], "title": "", "url": a["href"]}
+            if not found:
+                break
+            start += 100
+
+
+# --------------------------------------------------------------------------- South Carolina (daily introduction pages)
+def sc(session: str):
+    seen = set()
+    for chamber in ("h", "s"):
+        index = page(f"https://www.scstatehouse.gov/sessphp/{chamber}intros.php", timeout=120)
+        days = sorted({a["href"] for a in index.anchors if re.search(rf"/sess{session}_[^/]+/{chamber}intro\d+/\d+\.htm$", a["href"])})
+        for url in days:
+            for a in page(url, timeout=120).anchors:
+                m = re.fullmatch(r"([HS])\.\s*(\d+)", a["text"].strip())
+                if m and "billnumbers=" in a["href"] and (m.group(1), m.group(2)) not in seen:
+                    seen.add((m.group(1), m.group(2)))
+                    yield {"session": session, "number": f"{m.group(1)} {m.group(2)}", "title": "", "url": a["href"]}
+
+
+# --------------------------------------------------------------------------- Texas (filed-bills reports)
+def tx(session: str):
+    seen = set()
+    for report in ("housefiled", "senatefiled"):
+        p = page(f"https://capitol.texas.gov/Reports/Report.aspx?LegSess={session}&ID={report}", headers=CHROME, timeout=300)
+        for a in p.anchors:
+            if "History.aspx" in a["href"] and re.fullmatch(r"[A-Z]{2,4} \d+", a["text"]) and a["text"] not in seen:
+                seen.add(a["text"])
+                yield {"session": session, "number": a["text"], "title": "", "url": a["href"].replace("http://", "https://")}
+
+
+# --------------------------------------------------------------------------- Maine (cookie session + paged results)
+def me(session: str):
+    import http.cookiejar
+    import urllib.parse
+    import urllib.request
+    seen = set()
+    for paper in ("HP", "SP"):
+        opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(http.cookiejar.CookieJar()))
+        opener.addheaders = [("User-Agent", CHROME["User-Agent"])]
+        form = urllib.parse.urlencode({"PaperType": paper, "LegSession": session, "LRType": "None", "Sponsor": "None", "Introducer": "None",
+                                       "Committee": "None", "AmdFilingChamber": "None", "RollcallChamber": "None", "Action": "None",
+                                       "ActionChamber": "None", "GovernorAction": "None", "FinalLawType": "None"}).encode()
+        opener.open("https://legislature.maine.gov/LawMakerWeb/doadvancedsearch.asp", form, timeout=60).read()
+        first = 1
+        while first < 12000:
+            html = opener.open(f"https://legislature.maine.gov/LawMakerWeb/searchresults.asp?StartWith={first}", timeout=60).read().decode("utf-8", "replace")
+            hits = [a for a in parse_html(html, "https://legislature.maine.gov/LawMakerWeb/").anchors if "summary.asp" in a["href"] and a["text"]]
+            if not hits:
+                break
+            for a in hits:
+                if a["text"] not in seen:
+                    seen.add(a["text"])
+                    yield {"session": session, "number": a["text"], "title": "", "url": a["href"]}
+            first += len(hits)
+
+
+# --------------------------------------------------------------------------- Minnesota (status search, 500-bill ranges)
+def mn(session: str):
+    seen = set()
+    for body in ("House", "Senate"):
+        for kind in ("bill", "concurrent", "resolution"):
+            start = 1
+            while start < 20000:
+                p = page(f"https://www.revisor.mn.gov/bills/status_result.php?body={body}&session={session}&bill={start}-{start + 500}&bill_type={kind}&submit_bill=GO", timeout=120)
+                found = 0
+                for row in p.rows:
+                    if row and row[0]["links"]:
+                        number = " ".join(row[0]["text"].split())
+                        if number and number not in seen and re.search(r"\d", number):
+                            seen.add(number)
+                            found += 1
+                            title = next((c["text"] for c in row[1:3] if len(c["text"]) > 25), "")
+                            yield {"session": session, "number": number, "title": title, "url": row[0]["links"][0][0]}
+                if not found:
+                    break
+                start += 501
+
+
+# --------------------------------------------------------------------------- Hawaii (bill file directory on the data host)
+def hi(session: str):
+    seen = set()
+    for a in page(f"https://data.capitol.hawaii.gov/sessions/session{session}/bills/", headers=CHROME, timeout=180).anchors:
+        m = re.search(r"/([HS][A-Z]{0,2})(\d+)_[A-Z0-9_]*\.HTM$", a["href"], re.I)
+        if m:
+            number = f"{m.group(1).upper()} {int(m.group(2))}"
+            if number not in seen:
+                seen.add(number)
+                yield {"session": session, "number": number, "title": "",
+                       "url": f"https://data.capitol.hawaii.gov/session/measure_indiv.aspx?billtype={m.group(1).upper()}&billnumber={int(m.group(2))}&year={session}"}
+
+
+# --------------------------------------------------------------------------- Oklahoma (ASP.NET form post)
+def ok(session: str):
+    import http.cookiejar
+    import urllib.parse
+    import urllib.request
+    base = "https://webapps.oklegislature.gov/WebApplication3/WebForm1.aspx"
+    opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(http.cookiejar.CookieJar()))
+    opener.addheaders = [("User-Agent", CHROME["User-Agent"])]
+    html = opener.open(base, timeout=60).read().decode("utf-8", "replace")
+    fields = [(n, v) for n, v in re.findall(r'<input type="hidden" name="([^"]+)"[^>]*value="([^"]*)"', html)]
+    fields += [("cbxSessionId", session), ("cbxActiveStatus", "All"), ("RadioButtonList1", "On Any day"), ("Button1", "Retrieve")]
+    fields += [("lbxTypes", f"{c}{t}") for c in "HS" for t in ("B", "R", "CR", "JR")]
+    result = opener.open(base, urllib.parse.urlencode(fields).encode(), timeout=120).read().decode("utf-8", "replace")
+    p = parse_html(result, base)
+    seen = set()
+    for a in p.anchors:
+        m = re.fullmatch(r"([HS][A-Z]{1,2})\s?(\d{1,5})", a["text"].strip())
+        if m and (m.group(1), m.group(2)) not in seen:
+            seen.add((m.group(1), m.group(2)))
+            yield {"session": session, "number": f"{m.group(1)} {m.group(2)}", "title": "", "url": a["href"]}
+    if not seen:
+        raise RuntimeError("no bills in Oklahoma form result: " + " ".join(re.sub(r"<[^>]+>", " ", result)[:300].split()))
+
+
 # Bump a state's revision when its adapter changes so recently enumerated ledgers are rebuilt.
 REV = {"WA": 2}
 
@@ -659,4 +795,12 @@ ENUMERATORS = {
     "WI": (("2025",), wi),
     "PA": (("2025",), pa),
     "AR": (("2025",), ar),
+    "TN": (("2025",), tn),
+    "LA": (("26RS", "25RS"), la),
+    "SC": (("126",), sc),
+    "TX": (("89R",), tx),
+    "ME": (("16",), me),
+    "MN": (("0942025",), mn),
+    "HI": (("2026", "2025"), hi),
+    "OK": (("2600", "2500"), ok),
 }
