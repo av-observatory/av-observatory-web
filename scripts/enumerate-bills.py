@@ -27,7 +27,7 @@ from datetime import date
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from bill_enumerators import ENUMERATORS  # noqa: E402
+from bill_enumerators import ENUMERATORS, REV  # noqa: E402
 from legislation_source_text import fetch  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -68,7 +68,8 @@ def recently_enumerated(code: str, days: int) -> bool:
     want = ENUMERATORS[code][0]
     cutoff = date.fromordinal(date.today().toordinal() - days).isoformat()
     return all(s in sessions and not sessions[s].get("error") and sessions[s].get("enumerated", 0) > 0
-               and sessions[s].get("last_run", "") >= cutoff for s in want)
+               and sessions[s].get("last_run", "") >= cutoff and sessions[s].get("rev", 1) == REV.get(code, 1)
+               for s in want)
 
 
 def enumerate_state(code: str) -> dict:
@@ -109,8 +110,13 @@ def enumerate_state(code: str) -> dict:
             info["error"] = f"{type(exc).__name__}: {str(exc)[:200]}"
         info["seconds"] = round(time.monotonic() - started, 1)
         info["last_run"] = TODAY
+        info["rev"] = REV.get(code, 1)
         ledger["sessions"][session] = info
         result["sessions"][session] = info
+    # Drop sessions the adapter no longer covers (e.g. an overlapping biennium) so counts are not doubled.
+    keep = set(sessions)
+    ledger["bills"] = {k: v for k, v in ledger["bills"].items() if v.get("session") in keep}
+    ledger["sessions"] = {k: v for k, v in ledger["sessions"].items() if k in keep}
     save_ledger(code, ledger)
     return result
 

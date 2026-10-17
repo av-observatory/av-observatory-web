@@ -425,6 +425,9 @@ def nv(session: str):
             yield {"session": session, "number": a["text"], "title": "", "url": a["href"]}
 
 
+# Bump a state's revision when its adapter changes so recently enumerated ledgers are rebuilt.
+REV = {"WA": 2}
+
 # state -> (sessions to enumerate each run, function)
 ENUMERATORS = {
     "SD": (("2026", "2025"), sd),
