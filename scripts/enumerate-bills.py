@@ -90,6 +90,8 @@ def enumerate_state(code: str) -> dict:
                 row = ledger["bills"].setdefault(key, {"session": session, "number": number, "first_seen": TODAY, "av": "unknown"})
                 title = " ".join(str(bill.get("title") or "").split())
                 row.update(title=title, url=bill.get("url") or row.get("url") or "", last_seen=TODAY)
+                if bill.get("av_hint") and row.get("av") in ("unknown", "no"):
+                    row["av"], row["via"], row["classified"] = "candidate", "state_fulltext", TODAY
                 if bill.get("text_url"):
                     row["text_url"] = bill["text_url"]
                 if bill.get("summary"):

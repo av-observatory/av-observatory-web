@@ -1029,6 +1029,11 @@ def dc(session: str):
                 start += 100
 
 
+AV_TERMS = ("Autonomous vehicle", "Autonomous vehicles", "Automated driving system", "Automated driving systems", "Automated vehicle",
+            "Automated vehicles", "Self-driving", "Self driving vehicle", "Driverless", "Robotaxi", "Autonomous truck", "Autonomous mobility",
+            "Highly automated vehicle", "Autonomous technology", "Fully automated", "Conditionally automated", "Automated motor vehicle")
+
+
 # --------------------------------------------------------------------------- New York (Assembly lookup by bill number; covers Assembly and Senate bills)
 def ny(session: str):
     from concurrent.futures import ThreadPoolExecutor
@@ -1050,7 +1055,30 @@ def ny(session: str):
         title = re.split(r"\bGo to top\b", m.group(1))[0].strip() if m else ""
         return {"session": session, "number": f"{letter}{n}", "title": title[:300] if len(title) >= 12 else "", "url": url}
 
-    time.sleep(0)
+    # The Senate's own full-text search finds AV bills by wording; every hit is flagged so it is queued for analysis
+    # even when its title never mentions vehicles. (The site admits plain curl and blocks browser identities.)
+    seen_hint = set()
+    for term in AV_TERMS:
+        for pg in range(0, 80):
+            url = ("https://www.nysenate.gov/search/legislation?type=bill&status=all&sponsor=all&full_text="
+                   + quote(term) + "&committee=all" + (f"&page={pg}" if pg else ""))
+            try:
+                html = http(url, headers={"User-Agent": "curl/8.5.0", "Accept": "*/*"}, tries=2, timeout=60).decode("utf-8", "replace")
+            except Exception:
+                break
+            fresh = 0
+            for a in parse_html(html, url).anchors:
+                m = re.search(rf"/legislation/bills/{session}/([A-Z]\d+)(?:/|$)", a["href"])
+                if m and m.group(1) not in seen_hint:
+                    seen_hint.add(m.group(1))
+                    fresh += 1
+                    num = m.group(1)
+                    yield {"session": session, "number": f"{num[0]}{int(num[1:])}", "title": "", "av_hint": True,
+                           "url": f"https://www.nysenate.gov/legislation/bills/{session}/{num}"}
+            if not fresh:
+                break
+            time.sleep(0.5)
+
     with ThreadPoolExecutor(max_workers=12) as pool:
         for letter in ("A", "S", "K", "J", "E"):
             start, empty, seen_any = 1, 0, False
