@@ -68,13 +68,16 @@ def is_bill_page(text: str, number: str, title: str = "") -> bool:
     start of its title (guards against JavaScript shells, error pages and the like being read as 'no AV words')."""
     if title and len(_norm(title)) >= 12 and _norm(title)[:30] in _norm(text):
         return True
-    m = re.match(r"\s*([A-Za-z]+)[\s._-]*0*(\d+)", number or "")
+    m = re.match(r"\s*\d*([A-Za-z]+)[\s._-]*0*(\d+)", number or "")
     if not m:
         return False
     letters, digits = m.group(1).upper(), m.group(2)
+    letters = re.sub(r"^(?:E?S{1,2}|E)(?=[HS][BJCM][A-Z]?$)", "", letters)  # WA substitute/engrossed prefixes: ESHB -> HB, 2SSB -> SB
     spaced = r"[\s._-]*".join(re.escape(c) for c in letters)
     if re.search(rf"(?<![A-Za-z]){spaced}[\s._-]*(?:No\.?\s*)?0*{digits}(?!\d)", text, re.I):
         return True
+    if letters in ("H", "S", "A"):
+        return bool(re.search(rf"{_WORDS[letters]}\s+Bill\s*(?:No\.?\s*)?0*{digits}(?!\d)", text, re.I))
     kind = {"B": "Bill", "R": "Resolution"}.get(letters[-1], "")
     if len(letters) >= 2 and kind and letters[0] in _WORDS:
         mid = {"CR": "Concurrent Resolution", "JR": "Joint Resolution", "R": "Resolution", "B": "Bill"}
