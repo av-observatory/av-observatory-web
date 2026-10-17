@@ -52,6 +52,61 @@ def jget(url: str, **kw):
     return json.loads(http(url, **kw).decode("utf-8", "replace"))
 
 
+# --------------------------------------------------------------------------- shared HTML helpers
+from html.parser import HTMLParser
+from urllib.parse import urljoin
+
+
+class _Cells(HTMLParser):
+    """Collects <tr> rows as lists of cells; each cell is {text, links:[(href, text)]}. Also collects all anchors."""
+
+    def __init__(self, base: str):
+        super().__init__(convert_charrefs=True)
+        self.base, self.rows, self.anchors = base, [], []
+        self._row = self._cell = self._a = None
+
+    def handle_starttag(self, tag, attrs):
+        if tag == "tr":
+            self._row = []
+        elif tag in ("td", "th") and self._row is not None:
+            self._cell = {"text": "", "links": []}
+        elif tag == "a":
+            href = dict(attrs).get("href")
+            self._a = {"href": urljoin(self.base, href) if href else "", "text": ""}
+
+    def handle_data(self, data):
+        if self._cell is not None:
+            self._cell["text"] += data
+        if self._a is not None:
+            self._a["text"] += data
+
+    def handle_endtag(self, tag):
+        if tag == "a" and self._a is not None:
+            a, self._a = self._a, None
+            a["text"] = " ".join(a["text"].split())
+            self.anchors.append(a)
+            if self._cell is not None and a["href"]:
+                self._cell["links"].append((a["href"], a["text"]))
+        elif tag in ("td", "th") and self._cell is not None and self._row is not None:
+            self._cell["text"] = " ".join(self._cell["text"].split())
+            self._row.append(self._cell)
+            self._cell = None
+        elif tag == "tr" and self._row is not None:
+            if self._row:
+                self.rows.append(self._row)
+            self._row = None
+
+
+def parse_html(html: str, base: str = "") -> _Cells:
+    p = _Cells(base)
+    p.feed(html)
+    return p
+
+
+def page(url: str, **kw) -> _Cells:
+    return parse_html(http(url, **kw).decode("utf-8", "replace"), url)
+
+
 # --------------------------------------------------------------------------- South Dakota
 def sd(session: str):
     ids = {"2026": "71", "2025": "70"}

@@ -62,6 +62,15 @@ def save_ledger(code: str, ledger: dict) -> None:
     (LEDGER_DIR / f"{code}.json").write_text(json.dumps(ledger, sort_keys=True, separators=(",", ":"), ensure_ascii=False) + "\n")
 
 
+def recently_enumerated(code: str, days: int) -> bool:
+    """True when every session of this state enumerated cleanly within `days` days (nothing to redo)."""
+    sessions = load_ledger(code).get("sessions", {})
+    want = ENUMERATORS[code][0]
+    cutoff = date.fromordinal(date.today().toordinal() - days).isoformat()
+    return all(s in sessions and not sessions[s].get("error") and sessions[s].get("enumerated", 0) > 0
+               and sessions[s].get("last_run", "") >= cutoff for s in want)
+
+
 def enumerate_state(code: str) -> dict:
     sessions, func = ENUMERATORS[code]
     ledger = load_ledger(code)
@@ -199,11 +208,16 @@ def main() -> int:
     ap.add_argument("--scan-budget", type=int, default=int(os.getenv("SCAN_BUDGET", "100000")))
     ap.add_argument("--scan-minutes", type=float, default=float(os.getenv("SCAN_MINUTES", "40")))
     ap.add_argument("--states", default="")
+    ap.add_argument("--force", action="store_true", help="re-enumerate states even if enumerated recently")
+    ap.add_argument("--refresh-days", type=int, default=int(os.getenv("ENUM_REFRESH_DAYS", "5")))
     ap.add_argument("--skip-enumerate", action="store_true", help="reuse the ledgers; only scan/report (scan chunks)")
     args = ap.parse_args()
     wanted = [s for s in args.states.split(",") if s] or sorted(ENUMERATORS)
     results = {}
     for code in ([] if args.skip_enumerate else wanted):
+        if not args.force and recently_enumerated(code, args.refresh_days):
+            print(f"Skipped {code}: enumerated within the last {args.refresh_days} days", flush=True)
+            continue
         results[code] = enumerate_state(code)
         print(f"Enumerated {code}: " + "; ".join(
             f"{s}={i['enumerated']}{' ERROR ' + i['error'] if i['error'] else ''}" for s, i in results[code]["sessions"].items()), flush=True)
