@@ -118,7 +118,9 @@ def main() -> int:
             continue
         before = {k: rec.get(k, bill.get(k)) for k in ("status", "progress_stage", "last_action", "last_action_date")}
         rec.update(found)
-        if before["status"] != found["status"] or before["progress_stage"] != found["progress_stage"] or before["last_action"] != found["last_action"]:
+        newer = (found.get("last_action_date") or "") > (before.get("last_action_date") or "")
+        # A real change: status or stage moved, or a later action appeared. A reworded copy of the same action is not.
+        if before["status"] != found["status"] or before["progress_stage"] != found["progress_stage"] or newer:
             changed += 1
             feed.append({"id": bill["id"], "at": TODAY, "from": before, "to": found, "url": url})
     PROGRESS.parent.mkdir(exist_ok=True)
