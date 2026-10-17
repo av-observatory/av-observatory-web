@@ -11,7 +11,8 @@ sys.path.insert(0, Path(__file__).parent.as_posix())
 from bill_enumerators import ENUMERATORS
 
 WANT = [a for a in sys.argv[1:] if not a.startswith("-") and not a.replace(".", "").isdigit()]
-WANT = WANT[0].split(",") if WANT else sorted(ENUMERATORS)
+_only = os.getenv("TEST_STATES", "").strip() or (Path(__file__).parents[1] / ".github/test-states").read_text().strip() if (Path(__file__).parents[1] / ".github/test-states").exists() else os.getenv("TEST_STATES", "")
+WANT = WANT[0].split(",") if WANT else ([x for x in _only.replace(",", " ").split() if x in ENUMERATORS] or sorted(ENUMERATORS))
 CAP = 60 * float(os.getenv("TEST_MINUTES", "6"))
 MIN_BILLS = 20
 

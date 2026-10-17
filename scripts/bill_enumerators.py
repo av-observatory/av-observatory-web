@@ -1029,24 +1029,38 @@ def dc(session: str):
                 start += 100
 
 
-# --------------------------------------------------------------------------- New York (official Open Legislation API; free key in NY_SENATE_API_KEY)
+# --------------------------------------------------------------------------- New York (Assembly lookup by bill number; covers Assembly and Senate bills)
 def ny(session: str):
-    import os
-    key = os.getenv("NY_SENATE_API_KEY", "")
-    if not key:
-        raise RuntimeError("NY_SENATE_API_KEY is not set (free key from legislation.nysenate.gov); New York has no public list otherwise")
-    offset = 1
-    while True:
-        data = jget(f"https://legislation.nysenate.gov/api/3/bills/{session}?view=info&limit=1000&offset={offset}&key={key}", timeout=180)
-        items = ((data.get("result") or {}).get("items")) or []
-        for it in items:
-            number = it.get("printNo") or it.get("basePrintNo")
-            if number:
-                yield {"session": session, "number": number, "title": it.get("title") or "",
-                       "url": f"https://www.nysenate.gov/legislation/bills/{session}/{it.get('basePrintNo') or number}"}
-        if len(items) < 1000:
-            break
-        offset += 1000
+    from concurrent.futures import ThreadPoolExecutor
+    from html import unescape
+
+    def probe(item):
+        letter, n = item
+        bn = f"{letter}{n:05d}"
+        url = f"https://nyassembly.gov/leg/?default_fld=&leg_video=&bn={bn}&term={session}&Summary=Y&Actions=Y"
+        try:
+            html = http(url, headers=CHROME, tries=2, timeout=60).decode("utf-8", "replace")
+        except Exception:
+            return None
+        text = " ".join(re.sub(r"<[^>]+>", " ", re.sub(r"(?is)<(script|style).*?</\1>", " ", html)).split())
+        if "was not found" in text or f"BILL NO {bn}" not in unescape(text).replace("\xa0", " "):
+            return None
+        t = unescape(text).replace("\xa0", " ")
+        m = re.search(r"MLTSPNSR\s*(.{0,400}?)(?:\s+(?:Current Committee|Law Section|Versions|Actions|Votes|Memo)\b|$)", t)
+        return {"session": session, "number": f"{letter}{n}", "title": (m.group(1).strip() if m else "")[:300], "url": url}
+
+    time.sleep(0)
+    with ThreadPoolExecutor(max_workers=12) as pool:
+        for letter in ("A", "S", "K", "J", "E"):
+            start, empty, seen_any = 1, 0, False
+            while start < 22000:
+                results = [r for r in pool.map(probe, [(letter, n) for n in range(start, start + 100)]) if r]
+                yield from results
+                seen_any = seen_any or bool(results)
+                empty = 0 if results else empty + 1
+                if (seen_any and empty >= 3) or (not seen_any and start > 1500):
+                    break
+                start += 100
 
 
 # Bump a state's revision when its adapter changes so recently enumerated ledgers are rebuilt.
