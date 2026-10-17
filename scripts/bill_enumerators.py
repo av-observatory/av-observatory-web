@@ -755,6 +755,42 @@ def ok(session: str):
         raise RuntimeError("no bills in Oklahoma form result: " + " ".join(re.sub(r"<[^>]+>", " ", result)[:300].split()))
 
 
+# --------------------------------------------------------------------------- Rhode Island (ASP.NET search by bill-number range)
+def ri(session: str):
+    import http.cookiejar
+    import urllib.parse
+    import urllib.request
+    base = "https://status.rilegislature.gov/"
+    names = {"House Bill No.": "HB", "Senate Bill No.": "SB", "House Resolution No.": "HR", "Senate Resolution No.": "SR",
+             "House Concurrent Resolution No.": "HCR", "Senate Concurrent Resolution No.": "SCR"}
+    starts = {"lower": [6500, 7000] if int(session) % 2 == 0 else [5000], "upper": [2000] if int(session) % 2 == 0 else [1]}
+    seen = set()
+    for chamber, firsts in starts.items():
+        for idx in firsts:
+            while idx < idx + 100000:
+                opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(http.cookiejar.CookieJar()))
+                opener.addheaders = [("User-Agent", CHROME["User-Agent"])]
+                html = opener.open(base, timeout=60).read().decode("utf-8", "replace")
+                form = {n: v for n, v in re.findall(r'<input[^>]*name="([^"]+)"[^>]*value="([^"]*)"', html)}
+                form.update({"__EVENTTARGET": "", "__EVENTARGUMENT": "", "__LASTFOCUS": "", "ctl00$rilinContent$cbYear": session,
+                             "ctl00$rilinContent$txtBillFrom": str(idx), "ctl00$rilinContent$txtBillTo": str(idx + 250)})
+                result = opener.open(base, urllib.parse.urlencode(form).encode(), timeout=120).read().decode("utf-8", "replace")
+                text = re.sub(r"<br\s*/?>", "\n", result)
+                text = " ".join(re.sub(r"<[^>]+>", " ", text.replace("\n", " | ")).split())
+                found = 0
+                for m in re.finditer(r"((?:House|Senate)(?: Concurrent)?(?: Bill| Resolution) No\.)\s*(\d+)(.*?)(?=(?:House|Senate)(?: Concurrent)?(?: Bill| Resolution) No\.|$)", text):
+                    number = f"{names.get(m.group(1), m.group(1))} {m.group(2)}"
+                    if number not in seen:
+                        seen.add(number)
+                        found += 1
+                        t = re.search(r"ENTITLED,\s+(.+?)(?:\(|\|| BY | \{)", m.group(3))
+                        yield {"session": session, "number": number, "title": t.group(1).strip() if t else "",
+                               "url": f"https://status.rilegislature.gov/?bill={number.replace(' ', '')}&year={session}"}
+                if not found:
+                    break
+                idx += 251
+
+
 # Bump a state's revision when its adapter changes so recently enumerated ledgers are rebuilt.
 REV = {"WA": 2}
 
@@ -803,4 +839,5 @@ ENUMERATORS = {
     "MN": (("0942025",), mn),
     "HI": (("2026", "2025"), hi),
     "OK": (("2600", "2500"), ok),
+    "RI": (("2026", "2025"), ri),
 }

@@ -9,29 +9,20 @@ from bill_enumerators import http, parse_html
 CHROME = {"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"}
 BILL = re.compile(r"^(?:[A-Z]{1,4}\.?\s?\d{1,5}|[A-Z]{1,4}\s?[A-Z]?\d{1,5}|\d{1,5})$")
 P = [
- ("KS-p1", "https://www.kslegislature.gov/b2025_26/measures/fragment/?per_page=20&types=bill&types=resolution&chambers=House&chambers=Senate&page=1", {}),
- ("KS-p2", "https://www.kslegislature.gov/b2025_26/measures/fragment/?per_page=20&types=bill&types=resolution&chambers=House&chambers=Senate&page=2", {}),
- ("TN", "https://wapp.capitol.tn.gov/apps/Indexes/BillIndex?startNum=HB0001&endNum=HB0100&ga=114", {"hrefs": r"BillInfo|billnumber"}),
- ("LA-a", "https://www.legis.la.gov/Legis/BillSearchListQ.aspx?s=26RS&r=HB1-100", {"hrefs": r"BillInfo"}),
- ("LA-b", "https://www.legis.la.gov/Legis/BillSearchListQ.aspx?s=26RS&r=HB101-200", {"hrefs": r"BillInfo"}),
- ("SC", "https://www.scstatehouse.gov/sess126_2025-2026/hintro26/20260825.htm", {"hrefs": r"billnum|bill="}),
- ("IL", "https://ilga.gov/Legislation/RegularSession/HouseBills?SessionId=114", {"headers": CHROME, "hrefs": r"BillStatus|DocNum"}),
- ("CT", "https://www.cga.ct.gov/asp/cgabillstatus/cgabillstatus.asp?selBillType=Bill&which_year=2026", {"hrefs": r"cgabillstatus|billnum"}),
- ("NJ1", "https://pub.njleg.state.nj.us/Bills/2024/", {"hrefs": r"Bills/2024"}),
- ("NJ2", "https://pub.njleg.state.nj.us/leg-databases/", {"hrefs": r"leg-databases"}),
- ("RI", "https://webserver.rilegislature.gov/BillText/BillText26/HouseText26/", {"hrefs": r"BillText"}),
- ("HI1", "https://data.capitol.hawaii.gov/sessions/session2026/rss/", {"headers": CHROME}),
- ("HI2", "https://data.capitol.hawaii.gov/session/measure_indiv.aspx?billtype=HB&billnumber=1&year=2026", {"headers": CHROME}),
- ("PA", "https://www.palegis.us/legislation/bills/bill-index?&display=index&sessyr=2025&sessind=0&billbody=H", {"headers": CHROME, "hrefs": r"/bills/20"}),
- ("AR", "https://arkleg.state.ar.us/Home/FTPDocument?path=%2FSessionInformation%2FLegislativeMeasures.txt", {"headers": CHROME}),
- ("TX", "https://capitol.texas.gov/BillLookup/History.aspx?LegSess=89R&Bill=HB5600", {"headers": CHROME}),
- ("TXlist", "https://capitol.texas.gov/Reports/Report.aspx?LegSess=89R&ID=housefiled", {"headers": CHROME}),
- ("IN", "https://iga.in.gov/pdf-documents/124/2026/house/bills/HB1001/HB1001.01.INTR.pdf", {"headers": CHROME}),
- ("NY", "https://nyassembly.gov/leg/?default_fld=&bn=S1&term=2025&Summary=Y&Actions=Y", {"headers": CHROME}),
- ("NYsen", "https://www.nysenate.gov/legislation/bills/2025/S1", {"headers": {"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Safari/605.1.15", "Accept": "text/html,application/xhtml+xml", "Accept-Language": "en-US,en;q=0.9"}}),
- ("DC", "https://lims.dccouncil.gov/Legislation/B26-0684", {"headers": CHROME, "hrefs": r"\.js"}),
- ("CA", "https://downloads.leginfo.legislature.ca.gov/", {"headers": CHROME, "hrefs": r"pubinfo_20"}),
- ("MN", "https://www.revisor.mn.gov/bills/status_result.php?body=House&session=0942025&bill=HF1-HF150", {"raw": "HF 1"}),
+ ("CT-a", "https://ftp.cga.ct.gov/pub/data/bill_info.csv", {"headers": CHROME}),
+ ("CT-b", "https://www.cga.ct.gov/asp/cgabillstatus/cgabillstatus.asp?selBillType=Bill&bill_num=HB05001&which_year=2026", {"raw": "AN ACT"}),
+ ("IL", "https://ilga.gov/Legislation/RegularSession/HouseBills?SessionId=114", {"headers": CHROME, "raw": "HB"}),
+ ("IL2", "https://www.ilga.gov/Legislation/BillStatus?DocNum=1&GAID=18&DocTypeID=HB&SessionID=114&GA=104", {"headers": CHROME, "raw": "Short Description"}),
+ ("NJ26", "https://pub.njleg.state.nj.us/leg-databases/2026data/", {}),
+ ("NJ24", "https://pub.njleg.state.nj.us/leg-databases/2024data/", {}),
+ ("NY1", "https://nyassembly.gov/leg/?default_fld=&bn=S1&term=2025&Summary=Y", {"headers": CHROME, "raw": "Sponsor"}),
+ ("NY2", "https://nyassembly.gov/leg/?default_fld=&bn=S99999&term=2025&Summary=Y", {"headers": CHROME, "raw": "Sponsor"}),
+ ("NY3", "https://nyassembly.gov/leg/?default_fld=&bn=A1&term=2025&Summary=Y", {"headers": CHROME, "raw": "Sponsor"}),
+ ("DC", "https://lims.dccouncil.gov/Legislation/B26-0684", {"headers": CHROME, "raw": "script"}),
+ ("CA", "https://downloads.leginfo.legislature.ca.gov/", {"headers": CHROME, "hrefs": r"pubinfo_202|pubinfo_Mon|\.zip"}),
+ ("IN1", "https://iga.in.gov/pdf-documents/124/2026/senate/bills/SB0001/SB0001.01.INTR.pdf", {"headers": CHROME}),
+ ("IN2", "https://iga.in.gov/pdf-documents/124/2026/senate/bills/SB1/SB1.01.INTR.pdf", {"headers": CHROME}),
+ ("HI", "https://data.capitol.hawaii.gov/sessions/session2026/bills/", {"headers": CHROME, "hrefs": r"HB1_|HB2_"}),
 ]
 
 def describe(code, url, opt):
@@ -140,6 +131,6 @@ def oklahoma():
         return f"OK ERR {type(exc).__name__} {str(exc)[:80]}"
 
 with ThreadPoolExecutor(max_workers=12) as pool:
-    futs = [pool.submit(describe, *x) for x in P] + [pool.submit(maine), pool.submit(oklahoma)]
+    futs = [pool.submit(describe, *x) for x in P]
     for f in futs:
         print(f.result(), flush=True)
