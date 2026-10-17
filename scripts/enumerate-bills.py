@@ -222,13 +222,23 @@ def main() -> int:
     args = ap.parse_args()
     wanted = [s for s in args.states.split(",") if s] or sorted(ENUMERATORS)
     results = {}
+    todo = []
     for code in ([] if args.skip_enumerate else wanted):
         if not args.force and recently_enumerated(code, args.refresh_days):
             print(f"Skipped {code}: enumerated within the last {args.refresh_days} days", flush=True)
-            continue
-        results[code] = enumerate_state(code)
+        else:
+            todo.append(code)
+
+    def run(code):
+        res = enumerate_state(code)  # each state writes only its own ledger file, so states can run in parallel
         print(f"Enumerated {code}: " + "; ".join(
-            f"{s}={i['enumerated']}{' ERROR ' + i['error'] if i['error'] else ''}" for s, i in results[code]["sessions"].items()), flush=True)
+            f"{s}={i['enumerated']}{' ERROR ' + i['error'] if i['error'] else ''} ({i['seconds']}s)" for s, i in res["sessions"].items()), flush=True)
+        return code, res
+
+    from concurrent.futures import ThreadPoolExecutor
+    with ThreadPoolExecutor(max_workers=int(os.getenv("ENUM_WORKERS", "10"))) as pool:
+        for code, res in pool.map(run, todo):
+            results[code] = res
     ledgers = {code: load_ledger(code) for code in sorted(ENUMERATORS)}
     stats = classify(ledgers, args.scan_budget, args.scan_minutes)
     for code, ledger in ledgers.items():
