@@ -65,7 +65,13 @@ jobs:
           POLICY_EDITORIAL_MODEL: claude-sonnet-5-5
           POLICY_EDITORIAL_MAX_NEW: 25
         run: |
-          python3 scripts/ai-policy-editorial.py
+          # Exit 1 means records remain unverified or deferred by the per-run cap
+          # (a standing backlog); keep verified corrections and let the audit step gate them.
+          code=0
+          python3 scripts/ai-policy-editorial.py || code=$?
+          if [ "$code" -gt 1 ]; then
+            echo "::error::Editorial runtime failed (exit $code)"; exit "$code"
+          fi
           python3 scripts/test-policy-editorial.py
 
       - name: Reject unverified editorial text before committing or publishing
