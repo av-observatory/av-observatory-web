@@ -62,12 +62,13 @@ class _Cells(HTMLParser):
 
     def __init__(self, base: str):
         super().__init__(convert_charrefs=True)
-        self.base, self.rows, self.anchors = base, [], []
+        self.base, self.rows, self.row_attrs, self.anchors = base, [], [], []
         self._row = self._cell = self._a = None
+        self._attrs = {}
 
     def handle_starttag(self, tag, attrs):
         if tag == "tr":
-            self._row = []
+            self._row, self._attrs = [], dict(attrs)
         elif tag in ("td", "th") and self._row is not None:
             self._cell = {"text": "", "links": []}
         elif tag == "a":
@@ -94,6 +95,7 @@ class _Cells(HTMLParser):
         elif tag == "tr" and self._row is not None:
             if self._row:
                 self.rows.append(self._row)
+                self.row_attrs.append(self._attrs)
             self._row = None
 
 
@@ -236,8 +238,10 @@ def wa(session: str):
         bill_id = (item.findtext("w:BillId", "", ns) or "").strip()
         num = (item.findtext("w:BillNumber", "", ns) or "").strip()
         if bill_id:
+            kind = "House Bills" if bill_id.startswith("H") else "Senate Bills"
             yield {"session": session, "number": bill_id, "title": "",
-                   "url": f"https://app.leg.wa.gov/billsummary?BillNumber={num}&Year={session}&Initiative=false"}
+                   "url": f"https://app.leg.wa.gov/billsummary?BillNumber={num}&Year={session}&Initiative=false",
+                   "text_url": f"https://lawfilesext.leg.wa.gov/biennium/2025-26/Htm/Bills/{kind.replace(' ', '%20')}/{num}.htm"}
 
 
 # --------------------------------------------------------------------------- Alaska (HTML, 100-bill ranges)
@@ -336,6 +340,91 @@ def wv(session: str):
                 yield {"session": session, "number": row[0]["text"], "title": row[1]["text"], "url": row[0]["links"][0][0]}
 
 
+# --------------------------------------------------------------------------- Florida (HTML table, paged)
+def fl(session: str):
+    seen, number_page = set(), 1
+    while number_page < 500:
+        url = (f"https://www.flsenate.gov/Session/Bills/{session}?Chamber=both&SearchOnlyCurrentVersions=True"
+               f"&LegislativeSessionTitle={session}&pageNumber={number_page}")
+        fresh = 0
+        for row in page(url).rows:
+            if len(row) >= 2 and re.fullmatch(r"[A-Z]{2,4} \d+", row[0]["text"]) and row[0]["text"] not in seen:
+                seen.add(row[0]["text"])
+                fresh += 1
+                link = row[0]["links"][0][0] if row[0]["links"] else ""
+                yield {"session": session, "number": row[0]["text"], "title": row[1]["text"], "url": link}
+        if not fresh:
+            break
+        number_page += 1
+
+
+# --------------------------------------------------------------------------- Missouri (House XML list + Senate list page)
+def mo(session: str):
+    root = ElementTree.fromstring(http(f"https://documents.house.mo.gov/xml/{session}-BillList.xml", timeout=120))
+    for b in root.iter("BillXML"):
+        kind, num = (b.findtext("BillType") or "").strip(), (b.findtext("BillNumber") or "").strip()
+        if kind and num:
+            yield {"session": session, "number": f"{kind} {num}", "title": "",
+                   "url": f"https://house.mo.gov/Bill.aspx?bill={kind}{num}&year={b.findtext('SessionYear')}&code={b.findtext('SessionCode')}"}
+    year = 2000 + int(session[:2])
+    for a in page(f"https://www.senate.mo.gov/BillTracking/Bills/BillList?year={year}&session=R", headers=CHROME, timeout=120).anchors:
+        if re.fullmatch(r"S[A-Z]{1,2} \d+", a["text"]):
+            yield {"session": session, "number": a["text"], "title": "", "url": a["href"]}
+
+
+# --------------------------------------------------------------------------- Oregon (public OData API)
+def orr(session: str):
+    skip = 0
+    while True:
+        url = (f"https://api.oregonlegislature.gov/odata/odataservice.svc/LegislativeSessions('{session}')/Measures"
+               f"?$format=json&$top=500&$skip={skip}")
+        data = jget(url, headers={"Accept": "application/json"}, timeout=120)
+        rows = data.get("value") or (data.get("d") or {}).get("results") or []
+        for m in rows:
+            number = f"{m.get('MeasurePrefix', '')} {m.get('MeasureNumber', '')}".strip()
+            if number:
+                yield {"session": session, "number": number, "title": m.get("RelatingTo") or "",
+                       "url": f"https://olis.oregonlegislature.gov/liz/{session}/Measures/Overview/{number.replace(' ', '')}"}
+        if len(rows) < 500:
+            break
+        skip += 500
+
+
+# --------------------------------------------------------------------------- Kansas (HTML fragments, paged)
+def ks(session: str):
+    seen, number_page = set(), 1
+    while number_page < 400:
+        url = (f"https://www.kslegislature.gov/{session}/measures/fragment/?per_page=20&types=bill&types=resolution"
+               f"&chambers=House&chambers=Senate&page={number_page}")
+        p = page(url)
+        fresh = 0
+        for row, attrs in zip(p.rows, p.row_attrs):
+            href = attrs.get("data-href", "")
+            m = re.search(r"\b(HB|SB|HCR|SCR|HR|SR)\s?(\d+)\b", " ".join(c["text"] for c in row[:2]))
+            if not href or "appointments" in href or not m:
+                continue
+            number = f"{m.group(1)} {m.group(2)}"
+            if number in seen:
+                continue
+            seen.add(number)
+            fresh += 1
+            title = max((c["text"] for c in row), key=len)
+            yield {"session": session, "number": number, "title": title, "url": "https://www.kslegislature.gov" + href}
+        if not fresh:
+            break
+        number_page += 1
+
+
+# --------------------------------------------------------------------------- Nevada (HTML list, one page)
+def nv(session: str):
+    url = f"https://www.leg.state.nv.us/App/NELIS/REL/{session}/HomeBill/BillsTab?selectedTab=List&Filters.PageSize=2147483647&_={int(time.time())}"
+    seen = set()
+    for a in page(url, timeout=180).anchors:
+        if re.search(r"/Bill/\d+/Overview", a["href"]) and a["text"] and a["text"] not in seen:
+            seen.add(a["text"])
+            yield {"session": session, "number": a["text"], "title": "", "url": a["href"]}
+
+
 # state -> (sessions to enumerate each run, function)
 ENUMERATORS = {
     "SD": (("2026", "2025"), sd),
@@ -348,7 +437,7 @@ ENUMERATORS = {
     "VT": (("2025-2026",), vt),
     "ID": (("2026", "2025"), idaho),
     "IA": (("91",), ia),
-    "WA": (("2026", "2025"), wa),
+    "WA": (("2026",), wa),
     "AK": (("34",), ak),
     "NE": (("109th",), ne),
     "OH": (("136",), oh),
@@ -357,4 +446,9 @@ ENUMERATORS = {
     "MA": (("194",), ma),
     "MI": (("2025-2026",), mi),
     "WV": (("2026", "2025"), wv),
+    "FL": (("2026", "2025"), fl),
+    "MO": (("261", "251"), mo),
+    "OR": (("2026R1", "2025R1"), orr),
+    "KS": (("b2025_26",), ks),
+    "NV": (("83rd2025",), nv),
 }

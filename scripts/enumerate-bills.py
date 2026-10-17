@@ -89,6 +89,8 @@ def enumerate_state(code: str) -> dict:
                 row = ledger["bills"].setdefault(key, {"session": session, "number": number, "first_seen": TODAY, "av": "unknown"})
                 title = " ".join(str(bill.get("title") or "").split())
                 row.update(title=title, url=bill.get("url") or row.get("url") or "", last_seen=TODAY)
+                if bill.get("text_url"):
+                    row["text_url"] = bill["text_url"]
                 if bill.get("summary"):
                     row["summary"] = " ".join(str(bill["summary"]).split())[:400]
                 info["enumerated"] += 1
@@ -129,12 +131,12 @@ def classify(ledgers: dict, scan_budget: int, scan_minutes: float) -> dict:
             if row.get("av") == "unknown" and is_av(f"{row.get('title', '')} {row.get('summary', '')}"):
                 row["av"], row["via"], row["classified"] = "candidate", "title", TODAY
     queue = sorted(((row.get("scanned") or "", code, key) for code, ledger in ledgers.items()
-                    for key, row in ledger["bills"].items() if row.get("av") in ("unknown", "no") and row.get("url")))[:scan_budget]
+                    for key, row in ledger["bills"].items() if row.get("av") in ("unknown", "no") and (row.get("text_url") or row.get("url"))))[:scan_budget]
     gates: dict = {}
 
     def scan(item):
         _, code, key = item
-        url = ledgers[code]["bills"][key]["url"]
+        url = ledgers[code]["bills"][key].get("text_url") or ledgers[code]["bills"][key]["url"]
         gate = gates.setdefault(urlparse(url).hostname, BoundedSemaphore(int(os.getenv("SCAN_PER_HOST", "4"))))
         started = time.monotonic()
         with gate:
