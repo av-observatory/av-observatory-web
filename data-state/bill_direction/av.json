@@ -1,0 +1,121 @@
+{
+ "al-sb-222-2026rs": {
+  "checked": "2026-10-17",
+  "direction": "unclear",
+  "evidence": "",
+  "funding": "unclear",
+  "hash": "8dd3db3f36e2"
+ },
+ "az-sb-1417-57th-2nd-regular": {
+  "checked": "2026-10-17",
+  "direction": "restricts",
+  "evidence": "A manufacturer or operator that violates this article or any rule adopted pursuant to this article is subject to a civil penalty of not more than $25,000 per violation.",
+  "funding": "increases",
+  "hash": "22ab3c7a2a03"
+ },
+ "ca-ab-2193-20252026": {
+  "checked": "2026-10-17",
+  "direction": "unclear",
+  "error": "HTTPError/HTTPError403/HTTPError403",
+  "evidence": "",
+  "funding": "unclear"
+ },
+ "ca-ab-33-20252026": {
+  "checked": "2026-10-17",
+  "direction": "unclear",
+  "error": "non_government_host/short_page",
+  "evidence": "",
+  "funding": "unclear"
+ },
+ "ca-sb-1246-20252026": {
+  "checked": "2026-10-17",
+  "direction": "unclear",
+  "error": "non_government_host/short_page",
+  "evidence": "",
+  "funding": "unclear"
+ },
+ "ca-sb-480-20252026": {
+  "checked": "2026-10-17",
+  "direction": "unclear",
+  "error": "non_government_host/short_page",
+  "evidence": "",
+  "funding": "unclear"
+ },
+ "ca-sb-572-20252026": {
+  "checked": "2026-10-17",
+  "direction": "unclear",
+  "error": "non_government_host/short_page",
+  "evidence": "",
+  "funding": "unclear"
+ },
+ "co-hb-1286-2026a": {
+  "checked": "2026-10-17",
+  "direction": "restricts",
+  "evidence": "The act prohibits using an automated driving system to drive a commercial motor vehicle unless an individual who holds a commercial driver's license is in the vehicle, monitors the vehicle's driving, and intervenes, if necessary, to avoid illegal or unsafe driving.",
+  "funding": "increases",
+  "hash": "ba191130b935"
+ },
+ "co-hb25-1122-2025-regular-session": {
+  "checked": "2026-10-17",
+  "direction": "restricts",
+  "evidence": "The act prohibits using an automated driving system to drive a commercial motor vehicle unless an individual who holds a commercial driver's license is in the vehicle, is in the driver's seat if the vehicle is transporting hazardous materials, monitors the vehicle's driving, and intervenes, if necessary, to avoid illegal or unsafe driving.",
+  "funding": "none",
+  "hash": "cd9a20f51c2d"
+ },
+ "co-hb26-1286-2026-regular-session": {
+  "checked": "2026-10-17",
+  "direction": "restricts",
+  "evidence": "The act prohibits using an automated driving system to drive a commercial motor vehicle unless an individual who holds a commercial driver's license is in the vehicle, monitors the vehicle's driving, and intervenes, if necessary, to avoid illegal or unsafe driving.",
+  "funding": "increases",
+  "hash": "ba191130b935"
+ },
+ "dc-b26-0684-26": {
+  "checked": "2026-10-17",
+  "direction": "unclear",
+  "error": "insufficient_official_html/short_page",
+  "evidence": "",
+  "funding": "unclear"
+ },
+ "de-sb-46-153": {
+  "checked": "2026-10-17",
+  "direction": "restricts",
+  "evidence": "This Act prohibits any autonomous vehicle that requires a Class A commercial driver license without an O restriction from being operated on a Delaware highway for testing purposes, transporting goods, or transporting passengers without a human safety operator being physically present within the autonomous vehicle.",
+  "funding": "none",
+  "hash": "919fdbaa2354"
+ },
+ "hi-hb-1797-2026": {
+  "checked": "2026-10-17",
+  "direction": "unclear",
+  "error": "HTTPError/HTTPError403/HTTPError403",
+  "evidence": "",
+  "funding": "unclear"
+ },
+ "ia-hf2673-91": {
+  "checked": "2026-10-17",
+  "direction": "unclear",
+  "evidence": "",
+  "funding": "unclear",
+  "hash": "4099bf699ada"
+ },
+ "ia-hsb-598-2025-2026": {
+  "checked": "2026-10-17",
+  "direction": "restricts",
+  "evidence": "A driverless-capable vehicle transporting hazardous material shall not operate without a conventional human driver.",
+  "funding": "none",
+  "hash": "d6c14b4eef12"
+ },
+ "ia-sf-2384-2025-2026": {
+  "checked": "2026-10-17",
+  "direction": "unclear",
+  "evidence": "",
+  "funding": "unclear",
+  "hash": "c08f78e8ed17"
+ },
+ "ia-ssb-3052-2025-2026": {
+  "checked": "2026-10-17",
+  "direction": "unclear",
+  "evidence": "",
+  "funding": "unclear",
+  "hash": "543b4c25b891"
+ }
+}
