@@ -123,12 +123,17 @@ def fetch_head(label, url, n=1500, headers=CHROME, data=None):
         return f"{label} ERR {type(exc).__name__} {str(exc)[:80]} {url}"
 
 def dc_docs():
-    return "\n".join([
-        fetch_head("DC-help", "https://lims.dccouncil.gov/api/help/index.html", 2500),
-        fetch_head("DC-doc", "https://lims.dccouncil.gov/api/APIDocument", 2500),
-        fetch_head("DC-meta", "https://lims.dccouncil.gov/api/search/GetLegislationMetadata/B26-0684", 800),
-        fetch_head("DC-api", "https://lims.dccouncil.gov/api", 800),
-    ])
+    import json as _j
+    out = []
+    try:
+        sw = _j.loads(http("https://lims.dccouncil.gov/api-docs/v2.0/swagger.json", headers=CHROME, tries=1, timeout=60).decode("utf-8", "replace"))
+        paths = sorted(sw.get("paths", {}))
+        out.append(f"DC swagger paths ({len(paths)}): " + ", ".join(paths[:70]))
+    except Exception as exc:
+        out.append(f"DC swagger ERR {type(exc).__name__} {str(exc)[:80]}")
+    out.append(fetch_head("DC-missing", "https://lims.dccouncil.gov/api/search/GetLegislationMetadata/B26-9999", 300))
+    out.append(fetch_head("DC-ok2", "https://lims.dccouncil.gov/api/search/GetLegislationMetadata/B26-0001", 300))
+    return "\n".join(out)
 
 def ny_script():
     try:
@@ -139,6 +144,6 @@ def ny_script():
         return f"NY-script ERR {type(exc).__name__} {str(exc)[:80]}"
 
 with ThreadPoolExecutor(max_workers=12) as pool:
-    futs = [pool.submit(f) for f in (dc_docs, ny_script)]
+    futs = [pool.submit(f) for f in (dc_docs,)]
     for f in futs:
         print(f.result(), flush=True)
