@@ -199,10 +199,11 @@ def main() -> int:
     ap.add_argument("--scan-budget", type=int, default=int(os.getenv("SCAN_BUDGET", "100000")))
     ap.add_argument("--scan-minutes", type=float, default=float(os.getenv("SCAN_MINUTES", "40")))
     ap.add_argument("--states", default="")
+    ap.add_argument("--skip-enumerate", action="store_true", help="reuse the ledgers; only scan/report (scan chunks)")
     args = ap.parse_args()
     wanted = [s for s in args.states.split(",") if s] or sorted(ENUMERATORS)
     results = {}
-    for code in wanted:
+    for code in ([] if args.skip_enumerate else wanted):
         results[code] = enumerate_state(code)
         print(f"Enumerated {code}: " + "; ".join(
             f"{s}={i['enumerated']}{' ERROR ' + i['error'] if i['error'] else ''}" for s, i in results[code]["sessions"].items()), flush=True)
