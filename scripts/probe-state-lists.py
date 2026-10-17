@@ -115,35 +115,52 @@ def oklahoma():
     except Exception as exc:
         return f"OK ERR {type(exc).__name__} {str(exc)[:80]}"
 
-def fetch_head(label, url, n=1500, headers=CHROME, data=None):
-    try:
-        body = http(url, headers=headers, tries=1, timeout=60, data=data).decode("utf-8", "replace")
-        return f"{label} OK {len(body)}B {url}\n   " + " ".join(re.sub(r"<[^>]+>", " ", body)[:n].split())
-    except Exception as exc:
-        return f"{label} ERR {type(exc).__name__} {str(exc)[:80]} {url}"
+BROWSER = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+           "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8", "Accept-Language": "en-US,en;q=0.9",
+           "Upgrade-Insecure-Requests": "1", "Sec-Fetch-Dest": "document", "Sec-Fetch-Mode": "navigate", "Sec-Fetch-Site": "none", "Sec-Fetch-User": "?1"}
 
-def dc_docs():
-    import json as _j
+def body_text(html):
+    html = re.sub(r"(?is)<(script|style).*?</\1>", " ", html)
+    return " ".join(re.sub(r"<[^>]+>", " ", html).split())
+
+def ny_probe():
+    import http.cookiejar, urllib.request
     out = []
-    try:
-        sw = _j.loads(http("https://lims.dccouncil.gov/api-docs/v2.0/swagger.json", headers=CHROME, tries=1, timeout=60).decode("utf-8", "replace"))
-        paths = sorted(sw.get("paths", {}))
-        out.append(f"DC swagger paths ({len(paths)}): " + ", ".join(paths[:70]))
-    except Exception as exc:
-        out.append(f"DC swagger ERR {type(exc).__name__} {str(exc)[:80]}")
-    out.append(fetch_head("DC-missing", "https://lims.dccouncil.gov/api/search/GetLegislationMetadata/B26-9999", 300))
-    out.append(fetch_head("DC-ok2", "https://lims.dccouncil.gov/api/search/GetLegislationMetadata/B26-0001", 300))
+    jar = http.cookiejar.CookieJar()
+    op = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(jar))
+    op.addheaders = list(BROWSER.items())
+    def get(u):
+        try:
+            return op.open(u, timeout=40).read().decode("utf-8", "replace")
+        except Exception as exc:
+            return f"ERR {type(exc).__name__} {str(exc)[:60]}"
+    root = get("https://nyassembly.gov/")
+    out.append(f"NY-root {len(root)}B cookies={[c.name for c in jar]}")
+    page1 = get("https://nyassembly.gov/leg/?default_fld=&leg_video=&bn=A00001&term=2025&Summary=Y&Actions=Y&Text=Y&Memo=Y")
+    out.append(f"NY-A1 {len(page1)}B text: {body_text(page1)[:1500]}")
+    page2 = get("https://nyassembly.gov/leg/?default_fld=&leg_video=&bn=A00001&term=2025")
+    out.append(f"NY-A1-min {len(page2)}B has-sponsor={'ponsor' in page2}")
+    sen = get("https://www.nysenate.gov/legislation/bills/2025/S1")
+    out.append(f"NY-sen-bill {len(sen)}B text: {body_text(sen)[:300]}")
+    lst = get("https://www.nysenate.gov/search/legislation?searched=true&type=f_bill&bill_session_year=2025&page=0")
+    out.append(f"NY-sen-list {len(lst)}B text: {body_text(lst)[:300]}")
     return "\n".join(out)
 
-def ny_script():
-    try:
-        js = http("https://nyassembly.gov/leg/nysa_srch.js?v=392211174", headers={"User-Agent": "curl/8.5.0"}, tries=1, timeout=60).decode("utf-8", "replace")
-        urls = sorted(set(re.findall(r"""["']((?:https?:)?//[^"'\s]+|/[A-Za-z0-9_./?=&-]*(?:api|json|ajax|search|leg)[A-Za-z0-9_./?=&-]*)["']""", js)))[:25]
-        return f"NY-script {len(js)}B urls={urls}\n   head: " + " ".join(js[:600].split())
-    except Exception as exc:
-        return f"NY-script ERR {type(exc).__name__} {str(exc)[:80]}"
+def ny_misc():
+    out = []
+    for label, url, hdr in (
+        ("NY-openleg-docs", "https://legislation.nysenate.gov/static/docs/html/index.html", BROWSER),
+        ("NY-openleg-bulk", "https://legislation.nysenate.gov/api/3/bills/2025?key=", BROWSER),
+        ("NY-github", "https://api.github.com/repos/nysenate/OpenLegislation/contents/", {"User-Agent": "x"}),
+    ):
+        try:
+            body = http(url, headers=hdr, tries=1, timeout=40).decode("utf-8", "replace")
+            out.append(f"{label} OK {len(body)}B: {body_text(body)[:500]}")
+        except Exception as exc:
+            out.append(f"{label} ERR {type(exc).__name__} {str(exc)[:70]}")
+    return "\n".join(out)
 
 with ThreadPoolExecutor(max_workers=12) as pool:
-    futs = [pool.submit(f) for f in (dc_docs,)]
+    futs = [pool.submit(f) for f in (ny_probe, ny_misc)]
     for f in futs:
         print(f.result(), flush=True)
