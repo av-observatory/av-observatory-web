@@ -6,6 +6,7 @@ Resumable: only bills with no tag for their current title are sent. Bills withou
 (they are tagged later from their page text). Topics are approximate, title-based labels.
 """
 import argparse, hashlib, json, os, sys, time
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 from urllib.request import Request, urlopen
 
@@ -82,21 +83,27 @@ def main() -> int:
         tags = json.loads(out_path.read_text()) if out_path.exists() else {}
         todo = [(k, b["title"]) for k, b in bills.items()
                 if b.get("title", "").strip() and tags.get(k, {}).get("h") != title_hash(b["title"])]
-        for start in range(0, len(todo), args.batch):
+        chunks = [todo[start:start + args.batch] for start in range(0, len(todo), args.batch)]
+
+        def run(chunk):
             if time.monotonic() - started > args.budget_minutes * 60:
-                break
-            chunk = todo[start:start + args.batch]
+                return chunk, None
             try:
-                result = ask([(i, t) for i, (_, t) in enumerate(chunk)])
+                return chunk, ask([(i, t) for i, (_, t) in enumerate(chunk)])
             except Exception as exc:
                 print(f"{code}: batch failed ({type(exc).__name__}); will retry next run", flush=True)
-                continue
-            for i, (key, title) in enumerate(chunk):
-                if i in result:  # a bill the model skipped stays untagged and is retried next run
-                    tags[key] = {"t": result[i], "h": title_hash(title)}
-                    tagged += 1
-            sent += len(chunk)
-            out_path.write_text(json.dumps(tags, sort_keys=True, separators=(",", ":"), ensure_ascii=False) + "\n")
+                return chunk, None
+
+        with ThreadPoolExecutor(max_workers=int(os.getenv("TOPIC_WORKERS", "8"))) as pool:
+            for chunk, result in pool.map(run, chunks):
+                if result is None:
+                    continue
+                for i, (key, title) in enumerate(chunk):
+                    if i in result:  # a bill the model skipped stays untagged and is retried next run
+                        tags[key] = {"t": result[i], "h": title_hash(title)}
+                        tagged += 1
+                sent += len(chunk)
+        out_path.write_text(json.dumps(tags, sort_keys=True, separators=(",", ":"), ensure_ascii=False) + "\n")
         print(f"{code}: {len(todo)} to tag, {len(tags)} tagged in total", flush=True)
     print(f"Topic pass: sent {sent}, tagged {tagged}")
     return 0
