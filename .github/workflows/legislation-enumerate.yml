@@ -28,34 +28,34 @@ jobs:
       - name: Enumerate every bill (title screen only)
         env:
           NY_SENATE_API_KEY: ${{ secrets.NY_SENATE_API_KEY }}
-        run: python3 scripts/enumerate-bills.py --scan-minutes 0
+        run: bash scripts/live-commit.sh python3 scripts/enumerate-bills.py --scan-minutes 0
       - name: Commit enumeration
         run: bash scripts/commit-ledgers.sh "Enumerate state bills"
       - name: Scan chunk 1 (progress is committed after each chunk)
-        run: python3 scripts/enumerate-bills.py --skip-enumerate --scan-minutes 6
+        run: bash scripts/live-commit.sh python3 scripts/enumerate-bills.py --skip-enumerate --scan-minutes 6
       - name: Commit progress 1
         run: bash scripts/commit-ledgers.sh "Scan chunk 1"
       - name: Scan chunk 2 (progress is committed after each chunk)
-        run: python3 scripts/enumerate-bills.py --skip-enumerate --scan-minutes 6
+        run: bash scripts/live-commit.sh python3 scripts/enumerate-bills.py --skip-enumerate --scan-minutes 6
       - name: Commit progress 2
         run: bash scripts/commit-ledgers.sh "Scan chunk 2"
       - name: Scan chunk 3 (progress is committed after each chunk)
-        run: python3 scripts/enumerate-bills.py --skip-enumerate --scan-minutes 6
+        run: bash scripts/live-commit.sh python3 scripts/enumerate-bills.py --skip-enumerate --scan-minutes 6
       - name: Commit progress 3
         run: bash scripts/commit-ledgers.sh "Scan chunk 3"
       - name: Scan chunk 4 (progress is committed after each chunk)
-        run: python3 scripts/enumerate-bills.py --skip-enumerate --scan-minutes 6
+        run: bash scripts/live-commit.sh python3 scripts/enumerate-bills.py --skip-enumerate --scan-minutes 6
       - name: Commit progress 4
         run: bash scripts/commit-ledgers.sh "Scan chunk 4"
       - name: Scan chunk 5 (progress is committed after each chunk)
-        run: python3 scripts/enumerate-bills.py --skip-enumerate --scan-minutes 6
+        run: bash scripts/live-commit.sh python3 scripts/enumerate-bills.py --skip-enumerate --scan-minutes 6
       - name: Commit progress 5
         run: bash scripts/commit-ledgers.sh "Scan chunk 5"
       - name: Scan chunk 6 (progress is committed after each chunk)
-        run: python3 scripts/enumerate-bills.py --skip-enumerate --scan-minutes 6
+        run: bash scripts/live-commit.sh python3 scripts/enumerate-bills.py --skip-enumerate --scan-minutes 6
       - name: Commit progress 6
         run: bash scripts/commit-ledgers.sh "Scan chunk 6"
       - name: Scan chunk 7 (progress is committed after each chunk)
-        run: python3 scripts/enumerate-bills.py --skip-enumerate --scan-minutes 6
+        run: bash scripts/live-commit.sh python3 scripts/enumerate-bills.py --skip-enumerate --scan-minutes 6
       - name: Commit progress 7
         run: bash scripts/commit-ledgers.sh "Scan chunk 7"

@@ -59,7 +59,9 @@ def load_ledger(code: str) -> dict:
 
 def save_ledger(code: str, ledger: dict) -> None:
     LEDGER_DIR.mkdir(parents=True, exist_ok=True)
-    (LEDGER_DIR / f"{code}.json").write_text(json.dumps(ledger, sort_keys=True, separators=(",", ":"), ensure_ascii=False) + "\n")
+    tmp = LEDGER_DIR / f"{code}.json.tmp"  # atomic: the live committer may read while we write
+    tmp.write_text(json.dumps(ledger, sort_keys=True, separators=(",", ":"), ensure_ascii=False) + "\n")
+    tmp.replace(LEDGER_DIR / f"{code}.json")
 
 
 def recently_enumerated(code: str, days: int) -> bool:
