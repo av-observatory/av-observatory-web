@@ -63,7 +63,10 @@ jobs:
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           POLICY_EDITORIAL_MODEL: claude-sonnet-5-5
-          POLICY_EDITORIAL_MAX_NEW: 25
+          # Rotating cursor (data-state/editorial_cursor.json): each run resumes with the
+          # least-recently-checked records, so ~60/run covers all records in about a week.
+          POLICY_EDITORIAL_MAX_NEW: 60
+          POLICY_EDITORIAL_TIME_BUDGET_MINUTES: 40
         run: |
           # Exit 1 means records remain unverified or deferred by the per-run cap
           # (a standing backlog); keep verified corrections and let the audit step gate them.
@@ -87,7 +90,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add public/data/legislation_tracker.json public/data/policy_tracker.json public/data/legislation_tracker_*.csv data-state
+          git add public/data/legislation_tracker.json public/data/policy_tracker.json public/data/nhtsa_investigations.json public/data/nhtsa_av_recalls.json public/data/legislation_tracker_*.csv data-state
           if git diff --cached --quiet; then
             echo "No legislation changes to commit"
           else
