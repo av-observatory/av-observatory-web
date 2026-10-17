@@ -1005,6 +1005,50 @@ def ca(session: str):
                            "url": f"https://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id={f[0]}"}
 
 
+# --------------------------------------------------------------------------- District of Columbia (public LIMS metadata endpoint; number ranges)
+def dc(session: str):
+    from concurrent.futures import ThreadPoolExecutor
+
+    def probe(item):
+        prefix, n = item
+        number = f"{prefix}{session}-{n:04d}"
+        try:
+            text = http(f"https://lims.dccouncil.gov/api/search/GetLegislationMetadata/{number}", headers=CHROME, tries=1, timeout=45).decode("utf-8", "replace")
+        except Exception:
+            return None
+        title = " ".join(re.sub(r"<[^>]+>", " ", text).split()).split(" - https://")[0][:240]
+        return {"session": session, "number": number, "title": title, "url": f"https://lims.dccouncil.gov/Legislation/{number}"}
+
+    with ThreadPoolExecutor(max_workers=16) as pool:
+        for prefix in ("B", "PR"):
+            start, empty = 1, 0
+            while start < 6000 and empty < 3:
+                results = [r for r in pool.map(probe, [(prefix, n) for n in range(start, start + 100)]) if r]
+                yield from results
+                empty = 0 if results else empty + 1
+                start += 100
+
+
+# --------------------------------------------------------------------------- New York (official Open Legislation API; free key in NY_SENATE_API_KEY)
+def ny(session: str):
+    import os
+    key = os.getenv("NY_SENATE_API_KEY", "")
+    if not key:
+        raise RuntimeError("NY_SENATE_API_KEY is not set (free key from legislation.nysenate.gov); New York has no public list otherwise")
+    offset = 1
+    while True:
+        data = jget(f"https://legislation.nysenate.gov/api/3/bills/{session}?view=info&limit=1000&offset={offset}&key={key}", timeout=180)
+        items = ((data.get("result") or {}).get("items")) or []
+        for it in items:
+            number = it.get("printNo") or it.get("basePrintNo")
+            if number:
+                yield {"session": session, "number": number, "title": it.get("title") or "",
+                       "url": f"https://www.nysenate.gov/legislation/bills/{session}/{it.get('basePrintNo') or number}"}
+        if len(items) < 1000:
+            break
+        offset += 1000
+
+
 # Bump a state's revision when its adapter changes so recently enumerated ledgers are rebuilt.
 REV = {"WA": 2}
 
@@ -1059,4 +1103,6 @@ ENUMERATORS = {
     "CA": (("2025",), ca),
     "IL": (("104",), il),
     "CT": (("2026", "2025"), ct),
+    "DC": (("26", "25"), dc),
+    "NY": (("2025",), ny),
 }
