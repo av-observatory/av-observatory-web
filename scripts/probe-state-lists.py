@@ -115,41 +115,30 @@ def oklahoma():
     except Exception as exc:
         return f"OK ERR {type(exc).__name__} {str(exc)[:80]}"
 
-def urls_in(label, html_url, headers, deep=True):
-    """List data-ish URLs referenced by a JS-driven page and its scripts."""
+def fetch_head(label, url, n=1500, headers=CHROME, data=None):
     try:
-        html = http(html_url, headers=headers, tries=1, timeout=60).decode("utf-8", "replace")
+        body = http(url, headers=headers, tries=1, timeout=60, data=data).decode("utf-8", "replace")
+        return f"{label} OK {len(body)}B {url}\n   " + " ".join(re.sub(r"<[^>]+>", " ", body)[:n].split())
     except Exception as exc:
-        return f"{label} ERR {type(exc).__name__} {str(exc)[:80]}"
-    out = [f"{label} page {len(html)}B"]
-    srcs = re.findall(r'src=["\']([^"\']+\.js[^"\']*)["\']', html)
-    out.append("scripts=" + str([x[-60:] for x in srcs[:10]]))
-    pool_text = {"page": html}
-    if deep:
-        from urllib.parse import urljoin
-        for src in [x for x in srcs if "analytics" not in x and "sharethis" not in x][:6]:
-            try:
-                pool_text[src[-40:]] = http(urljoin(html_url, src), headers=headers, tries=1, timeout=90).decode("utf-8", "replace")
-            except Exception:
-                pass
-    for name, text in pool_text.items():
-        found = sorted(set(re.findall(r"""["'](/api[^"']{0,80}|https?://[^"'\s]{0,90}(?:api|json|graphql|odata)[^"'\s]{0,60})["']""", text)))[:12]
-        if found:
-            out.append(f"{name}: {found}")
-        for m in list(re.finditer(r"(Authorization|x-api-key|apiKey|api_key|Bearer )", text))[:3]:
-            out.append(f"{name} @{m.start()}: " + " ".join(text[max(0, m.start() - 120): m.start() + 220].split()))
-    return " || ".join(out)
+        return f"{label} ERR {type(exc).__name__} {str(exc)[:80]} {url}"
 
-def dc_bundle():
-    return urls_in("DC", "https://lims.dccouncil.gov/Legislation/B26-0684", CHROME)
+def dc_docs():
+    return "\n".join([
+        fetch_head("DC-help", "https://lims.dccouncil.gov/api/help/index.html", 2500),
+        fetch_head("DC-doc", "https://lims.dccouncil.gov/api/APIDocument", 2500),
+        fetch_head("DC-meta", "https://lims.dccouncil.gov/api/search/GetLegislationMetadata/B26-0684", 800),
+        fetch_head("DC-api", "https://lims.dccouncil.gov/api", 800),
+    ])
 
-def ny_assembly():
-    return urls_in("NY-assembly", "https://nyassembly.gov/leg/?default_fld=&bn=A00001&term=2025&Summary=Y", {"User-Agent": "curl/8.5.0", "Accept": "*/*"})
-
-def ny_senate():
-    return urls_in("NY-senate", "https://www.nysenate.gov/search/legislation?searched=true&type=f_bill&bill_session_year=2025&page=0", {"User-Agent": "curl/8.5.0", "Accept": "*/*"})
+def ny_script():
+    try:
+        js = http("https://nyassembly.gov/leg/nysa_srch.js?v=392211174", headers={"User-Agent": "curl/8.5.0"}, tries=1, timeout=60).decode("utf-8", "replace")
+        urls = sorted(set(re.findall(r"""["']((?:https?:)?//[^"'\s]+|/[A-Za-z0-9_./?=&-]*(?:api|json|ajax|search|leg)[A-Za-z0-9_./?=&-]*)["']""", js)))[:25]
+        return f"NY-script {len(js)}B urls={urls}\n   head: " + " ".join(js[:600].split())
+    except Exception as exc:
+        return f"NY-script ERR {type(exc).__name__} {str(exc)[:80]}"
 
 with ThreadPoolExecutor(max_workers=12) as pool:
-    futs = [pool.submit(f) for f in (dc_bundle, ny_assembly, ny_senate)]
+    futs = [pool.submit(f) for f in (dc_docs, ny_script)]
     for f in futs:
         print(f.result(), flush=True)
