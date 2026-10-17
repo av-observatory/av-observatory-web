@@ -105,31 +105,57 @@ def enumerate_state(code: str) -> dict:
 
 
 def classify(ledgers: dict, scan_budget: int, scan_minutes: float) -> dict:
-    """Title/summary screen for all; page scan for unscanned bills (oldest first) within budget."""
-    stats = {code: {"candidates": 0, "scanned": 0, "unscanned": 0, "scan_failed": 0} for code in ledgers}
+    """Title/summary screen for all; parallel page scan of unscanned bills (oldest first) within budget.
+
+    Scans run in a thread pool with a per-host cap (politeness), in batches so progress is
+    checkpointed to the ledgers and the deadline is honoured.
+    """
+    from concurrent.futures import ThreadPoolExecutor
+    from threading import BoundedSemaphore
+    from urllib.parse import urlparse
+
+    stats = {code: {"candidates": 0, "scanned": 0, "unscanned": 0, "scan_failed": 0, "scan_seconds": 0.0} for code in ledgers}
     for code, ledger in ledgers.items():
         for row in ledger["bills"].values():
             if row.get("av") == "unknown" and is_av(f"{row.get('title', '')} {row.get('summary', '')}"):
                 row["av"], row["via"], row["classified"] = "candidate", "title", TODAY
     queue = sorted(((row.get("scanned") or "", code, key) for code, ledger in ledgers.items()
-                    for key, row in ledger["bills"].items() if row.get("av") in ("unknown", "no") and row.get("url")))
-    done = 0
+                    for key, row in ledger["bills"].items() if row.get("av") in ("unknown", "no") and row.get("url")))[:scan_budget]
+    gates: dict = {}
+
+    def scan(item):
+        _, code, key = item
+        url = ledgers[code]["bills"][key]["url"]
+        gate = gates.setdefault(urlparse(url).hostname, BoundedSemaphore(int(os.getenv("SCAN_PER_HOST", "4"))))
+        started = time.monotonic()
+        with gate:
+            try:
+                text, _ = fetch(url)
+            except Exception:
+                text = ""
+        return code, key, text, time.monotonic() - started
+
     deadline = time.monotonic() + scan_minutes * 60
-    for _, code, key in queue:
-        if done >= scan_budget or time.monotonic() > deadline:
-            break
-        row = ledgers[code]["bills"][key]
-        text, _ = fetch(row["url"])
-        row["scanned"] = TODAY
-        done += 1
-        if not text:
-            row["scan_failed"] = True
-            continue
-        row.pop("scan_failed", None)
-        if is_av(text):
-            row["av"], row["via"], row["classified"] = "candidate", "page_scan", TODAY
-        else:
-            row["av"] = "no"
+    workers = int(os.getenv("SCAN_WORKERS", "24"))
+    with ThreadPoolExecutor(max_workers=workers) as pool:
+        for start in range(0, len(queue), 400):
+            if time.monotonic() > deadline:
+                break
+            for code, key, text, secs in pool.map(scan, queue[start:start + 400]):
+                row = ledgers[code]["bills"][key]
+                row["scanned"] = TODAY
+                stats[code]["scan_seconds"] += secs
+                if not text:
+                    row["scan_failed"] = True
+                    continue
+                row.pop("scan_failed", None)
+                if is_av(text):
+                    row["av"], row["via"], row["classified"] = "candidate", "page_scan", TODAY
+                else:
+                    row["av"] = "no"
+            for code, ledger in ledgers.items():  # checkpoint: progress survives a killed run
+                save_ledger(code, ledger)
+            print(f"Scanned {min(start + 400, len(queue))}/{len(queue)} queued pages", flush=True)
     for code, ledger in ledgers.items():
         s = stats[code]
         for row in ledger["bills"].values():
@@ -142,11 +168,11 @@ def classify(ledgers: dict, scan_budget: int, scan_minutes: float) -> dict:
 
 def report(results: dict, stats: dict, ledgers: dict) -> str:
     all_codes = [j["code"] for j in json.loads(SOURCES.read_text())["jurisdictions"]]
-    lines = ["| State | Status | Bills | Titled | Scanned | AV candidates | Notes |", "|---|---|---:|---:|---:|---:|---|"]
+    lines = ["| State | Status | Bills | Titled | Scanned | Unreadable | AV candidates | Scan secs | Notes |", "|---|---|---:|---:|---:|---:|---:|---:|---|"]
     built = ok = total = 0
     for code in all_codes:
         if code not in ENUMERATORS:
-            lines.append(f"| {code} | not built | 0 | 0 | 0 | 0 | no enumerator yet |")
+            lines.append(f"| {code} | not built | 0 | 0 | 0 | 0 | 0 | 0 | no enumerator yet |")
             continue
         built += 1
         res = results.get(code)
@@ -161,7 +187,7 @@ def report(results: dict, stats: dict, ledgers: dict) -> str:
         st = stats.get(code, {})
         dens = "; ".join(f"{s} {','.join(f'{k} {v}' for k, v in (i.get('density') or {}).items())}"
                          for s, i in led.get("sessions", {}).items() if i.get("density"))
-        lines.append(f"| {code} | {status} | {n} | {titled} | {st.get('scanned', 0)} | {st.get('candidates', 0)} | "
+        lines.append(f"| {code} | {status} | {n} | {titled} | {st.get('scanned', 0)} | {st.get('scan_failed', 0)} | {st.get('candidates', 0)} | {st.get('scan_seconds', 0):.0f} | "
                      f"{'; '.join(errs)[:160] or dens[:120]} |")
     head = (f"## Bill enumeration report ({TODAY})\n\n{built}/{len(all_codes)} jurisdictions have an enumerator; "
             f"{ok} enumerated cleanly; {total} bills in the ledgers; {sum(v['candidates'] for v in stats.values())} AV candidate(s) awaiting analysis.\n\n")
