@@ -4,7 +4,7 @@ import json, sys, time
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 sys.path.insert(0, Path(__file__).parent.as_posix())
-from legislation_source_text import fetch
+from scan_fetch import scan_fetch as fetch
 
 
 def probe(item):

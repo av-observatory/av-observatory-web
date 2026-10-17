@@ -23,8 +23,8 @@ jobs:
     timeout-minutes: 240
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
-      - name: Install mdbtools (New Jersey database)
-        run: sudo apt-get install -y -q mdbtools > /dev/null
+      - name: Install mdbtools (New Jersey database) and poppler (PDF bill text)
+        run: sudo apt-get install -y -q mdbtools poppler-utils > /dev/null
       - name: Enumerate every bill (title screen only)
         env:
           NY_SENATE_API_KEY: ${{ secrets.NY_SENATE_API_KEY }}

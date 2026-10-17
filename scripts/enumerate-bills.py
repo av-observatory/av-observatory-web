@@ -28,7 +28,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from bill_enumerators import ENUMERATORS, REV  # noqa: E402
-from legislation_source_text import fetch  # noqa: E402
+from scan_fetch import scan_fetch  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
 LEDGER_DIR = ROOT / "data-state/bill_ledger"
@@ -140,8 +140,13 @@ def classify(ledgers: dict, scan_budget: int, scan_minutes: float) -> dict:
         for row in ledger["bills"].values():
             if row.get("av") == "unknown" and is_av(f"{row.get('title', '')} {row.get('summary', '')}"):
                 row["av"], row["via"], row["classified"] = "candidate", "title", TODAY
-    queue = sorted(((row.get("scanned") or "", code, key) for code, ledger in ledgers.items()
-                    for key, row in ledger["bills"].items() if row.get("av") in ("unknown", "no") and (row.get("text_url") or row.get("url"))))[:scan_budget]
+    # Round-robin across states (oldest scan first) so one failing state cannot eat the whole budget.
+    queue = []
+    for code, ledger in ledgers.items():
+        pending = sorted((row.get("scanned") or "", key) for key, row in ledger["bills"].items()
+                         if row.get("av") in ("unknown", "no") and (row.get("text_url") or row.get("url")))
+        queue += [(scanned, rank, code, key) for rank, (scanned, key) in enumerate(pending)]
+    queue = [(scanned, code, key) for scanned, _, code, key in sorted(queue, key=lambda q: (q[0], q[1], q[2]))][:scan_budget]
     gates: dict = {}
 
     def scan(item):
@@ -150,11 +155,8 @@ def classify(ledgers: dict, scan_budget: int, scan_minutes: float) -> dict:
         gate = gates.setdefault(urlparse(url).hostname, BoundedSemaphore(int(os.getenv("SCAN_PER_HOST", "4"))))
         started = time.monotonic()
         with gate:
-            try:
-                text, _ = fetch(url)
-            except Exception:
-                text = ""
-        return code, key, text, time.monotonic() - started
+            text, kind = scan_fetch(url)
+        return code, key, text, kind, time.monotonic() - started
 
     deadline = time.monotonic() + scan_minutes * 60
     workers = int(os.getenv("SCAN_WORKERS", "24"))
@@ -162,14 +164,15 @@ def classify(ledgers: dict, scan_budget: int, scan_minutes: float) -> dict:
         for start in range(0, len(queue), 400):
             if time.monotonic() > deadline:
                 break
-            for code, key, text, secs in pool.map(scan, queue[start:start + 400]):
+            for code, key, text, kind, secs in pool.map(scan, queue[start:start + 400]):
                 row = ledgers[code]["bills"][key]
                 row["scanned"] = TODAY
                 stats[code]["scan_seconds"] += secs
                 if not text:
-                    row["scan_failed"] = True
+                    row["scan_failed"], row["scan_error"] = True, kind
                     continue
                 row.pop("scan_failed", None)
+                row.pop("scan_error", None)
                 if is_av(text):
                     row["av"], row["via"], row["classified"] = "candidate", "page_scan", TODAY
                 else:
