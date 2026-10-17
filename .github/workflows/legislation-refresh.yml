@@ -47,6 +47,15 @@ jobs:
       - name: Search current sessions and rebuild Open States bill database
         if: ${{ env.OPENSTATES_API_KEY != '' }}
         run: python3 scripts/refresh-legislation.py public/data/legislation_tracker.json
+      - name: Sweep every state legislature's official site (independent of Open States)
+        # Builds data-state/official_bills.json from each state's own site; least-recently-swept
+        # first, durable queue, never blocks the data refresh.
+        continue-on-error: true
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          POLICY_EDITORIAL_MODEL: claude-sonnet-5-5
+        run: python3 scripts/sweep-state-legislatures.py --budget-minutes 30
+
       - name: Cross-check a second source, apply manual overrides, report coverage gaps
         if: ${{ env.OPENSTATES_API_KEY != '' }}
         run: |
@@ -63,9 +72,18 @@ jobs:
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           POLICY_EDITORIAL_MODEL: claude-sonnet-5-5
-          POLICY_EDITORIAL_MAX_NEW: 25
+          # Rotating cursor (data-state/editorial_cursor.json): each run resumes with the
+          # least-recently-checked records, so ~60/run covers all records in about a week.
+          POLICY_EDITORIAL_MAX_NEW: 60
+          POLICY_EDITORIAL_TIME_BUDGET_MINUTES: 40
         run: |
-          python3 scripts/ai-policy-editorial.py
+          # Exit 1 means records remain unverified or deferred by the per-run cap
+          # (a standing backlog); keep verified corrections and let the audit step gate them.
+          code=0
+          python3 scripts/ai-policy-editorial.py || code=$?
+          if [ "$code" -gt 1 ]; then
+            echo "::error::Editorial runtime failed (exit $code)"; exit "$code"
+          fi
           python3 scripts/test-policy-editorial.py
 
       - name: Reject unverified editorial text before committing or publishing
@@ -81,7 +99,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add public/data/legislation_tracker.json public/data/policy_tracker.json public/data/legislation_tracker_*.csv data-state
+          git add public/data/legislation_tracker.json public/data/policy_tracker.json public/data/nhtsa_investigations.json public/data/nhtsa_av_recalls.json public/data/legislation_tracker_*.csv data-state
           if git diff --cached --quiet; then
             echo "No legislation changes to commit"
           else

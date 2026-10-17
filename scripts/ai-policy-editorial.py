@@ -206,45 +206,74 @@ def summarize(row,kind):
     row["summary_reviewed_at"]=datetime.now(timezone.utc).date().isoformat()
     return "updated"
 
+CURSOR_PATH=ROOT/"data-state/editorial_cursor.json"
+TIME_BUDGET=float(os.getenv("POLICY_EDITORIAL_TIME_BUDGET_MINUTES","0"))*60
+
+SOURCES=[
+    ("public/data/legislation_tracker.json",[("federal","federal_bill"),("state_bills","state_bill")]),
+    ("public/data/policy_tracker.json",[("federal","policy_rule"),("federal_oversight","policy_rule"),
+        ("state_events","state_regulation"),("city_events","state_regulation"),("states","state_framework")]),
+    ("public/data/nhtsa_investigations.json",[("investigations","nhtsa_investigation")]),
+    ("public/data/nhtsa_av_recalls.json",[("recalls","nhtsa_recall")])]
+
+def load_cursor():
+    try:return json.loads(CURSOR_PATH.read_text())
+    except (OSError,ValueError):return {}
+
+def save_cursor(cursor):
+    CURSOR_PATH.parent.mkdir(parents=True,exist_ok=True)
+    CURSOR_PATH.write_text(json.dumps(cursor,indent=1,sort_keys=True)+"\n")
+
 def main():
     if not KEY:
         print("ANTHROPIC_API_KEY not set; refusing to claim AI verification.",file=sys.stderr)
         return 2
     counts={}
     used=0
-    for filename,groups in [
-        ("public/data/legislation_tracker.json",[("federal","federal_bill"),("state_bills","state_bill")]),
-        ("public/data/policy_tracker.json",[("federal","policy_rule"),("federal_oversight","policy_rule"),
-            ("state_events","state_regulation"),("city_events","state_regulation"),("states","state_framework")]),
-        ("public/data/nhtsa_investigations.json",[("investigations","nhtsa_investigation")]),
-        ("public/data/nhtsa_av_recalls.json",[("recalls","nhtsa_recall")])]:
-        path=ROOT/filename
-        data=json.loads(path.read_text())
+    started=time.monotonic()
+    # Rotating cursor: each record remembers when it was last attempted, and every
+    # run starts with the records attempted longest ago (never-attempted first), so
+    # a per-run limit (API rate limits, call cap, time budget) resumes where the
+    # previous run stopped and the whole set is covered across consecutive runs.
+    cursor=load_cursor()
+    loaded={}
+    queue=[]
+    for filename,groups in SOURCES:
+        data=json.loads((ROOT/filename).read_text())
+        loaded[filename]=data
         for field,kind in groups:
             for row in data[field]:
-                actual_kind="fmvss" if kind=="policy_rule" and "FMVSS" in row.get("instrument","") else kind
-                if used>=MAX_NEW:
-                    counts["deferred_due_to_limit"]=counts.get("deferred_due_to_limit",0)+1
-                    continue
-                # Existing verified records are reconsidered to detect changed sources.
-                try:
-                    result=summarize(row,actual_kind)
-                except Exception as exc:
-                    # One unavailable jurisdiction or throttled source must not
-                    # prevent verified corrections for other records being saved.
-                    result="error"
-                    row["editorial_status"]="needs_review"
-                    row["editorial_failure_reason"]=f"{type(exc).__name__}: {str(exc)[:160]}"
-                counts[result]=counts.get(result,0)+1
-                print(f"Editorial progress: {filename} {field} {row.get('id') or row.get('code')} -> {result}",flush=True)
-                if result in ("updated","rejected","error"):used+=1
-                # Durable checkpoint for long nationwide retrospective audits.
-                if sum(counts.values())%10==0:
-                    path.write_text(json.dumps(data,ensure_ascii=False,indent=2)+"\n")
-        path.write_text(json.dumps(data,ensure_ascii=False,indent=2)+"\n")
+                key=f"{filename}:{field}:{row.get('id') or row.get('code')}"
+                queue.append((cursor.get(key,""),len(queue),key,filename,kind,row))
+    queue.sort(key=lambda item:item[:2])
+    def checkpoint():
+        for name,data in loaded.items():
+            (ROOT/name).write_text(json.dumps(data,ensure_ascii=False,indent=2)+"\n")
+        save_cursor(cursor)
+    for _,_,key,filename,kind,row in queue:
+        if used>=MAX_NEW or (TIME_BUDGET and time.monotonic()-started>=TIME_BUDGET):
+            counts["deferred_due_to_limit"]=counts.get("deferred_due_to_limit",0)+1
+            continue
+        actual_kind="fmvss" if kind=="policy_rule" and "FMVSS" in row.get("instrument","") else kind
+        # Existing verified records are reconsidered to detect changed sources.
+        try:
+            result=summarize(row,actual_kind)
+        except Exception as exc:
+            # One unavailable jurisdiction or throttled source must not
+            # prevent verified corrections for other records being saved.
+            result="error"
+            row["editorial_status"]="needs_review"
+            row["editorial_failure_reason"]=f"{type(exc).__name__}: {str(exc)[:160]}"
+        counts[result]=counts.get(result,0)+1
+        cursor[key]=time.strftime("%Y-%m-%dT%H:%M:%SZ",time.gmtime())
+        print(f"Editorial progress: {key} -> {result}",flush=True)
+        used+=1
+        # Durable checkpoint for long nationwide retrospective audits.
+        if used%10==0:checkpoint()
+    checkpoint()
     print("Policy editorial results:",counts)
     # Missing source or failed verification is marked, not silently invented.
-    # Any failure remains visible as a coverage gap, never a successful editorial run.
-    return 1 if any(counts.get(k,0) for k in ("missing","rejected","deferred_due_to_limit","awaiting_review","error")) else 0
+    # Records deferred by the per-run limit are not failures: they head the next run's queue.
+    return 1 if any(counts.get(k,0) for k in ("missing","rejected","awaiting_review","error")) else 0
 
 if __name__=="__main__":raise SystemExit(main())

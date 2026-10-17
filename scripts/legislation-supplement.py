@@ -22,6 +22,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 TRACKER = ROOT / "public/data/legislation_tracker.json"
 MANUAL = ROOT / "data-state/manual_bills.json"
+OFFICIAL = ROOT / "data-state/official_bills.json"
 COVERAGE = ROOT / "data-state/legislation_coverage.json"
 TODAY = date.today().isoformat()
 
@@ -47,17 +48,29 @@ def key_of(bill: dict) -> tuple:
     return bill["jurisdiction"], norm_number(bill["number"])
 
 
+def official_database_bills() -> list[dict]:
+    """Verified records from our own official-site database (scripts/sweep-state-legislatures.py)."""
+    if not OFFICIAL.exists():
+        return []
+    bills = json.loads(OFFICIAL.read_text(encoding="utf-8")).get("bills", {}).values()
+    internal = ("stage", "discovered", "checked", "reason")
+    return [{k: v for k, v in b.items() if k not in internal} for b in bills
+            if b.get("stage") == "verified" and b.get("summary") and b.get("takeaway")]
+
+
 # ---------------------------------------------------------------- merge logic
 def merge_manual(tracker: dict, manual: list[dict]) -> tuple[list[str], list[str]]:
     # Drop manual entries from an earlier run so only a real feed counts as "already present".
-    tracker["state_bills"] = [b for b in tracker["state_bills"] if b.get("source_feed") != "manual_official"]
+    tracker["state_bills"] = [b for b in tracker["state_bills"]
+                              if b.get("source_feed") not in ("manual_official", "official_sweep")]
     present = {key_of(b) for b in tracker["state_bills"]}
     added, retired = [], []
     for bill in manual:
         if key_of(bill) in present:
             retired.append(bill["id"])  # a feed now carries it: the manual entry can be removed
             continue
-        record = dict(bill, reviewed_at=TODAY, source_feed="manual_official")
+        record = dict(bill, reviewed_at=TODAY)
+        record.setdefault("source_feed", "manual_official")
         tracker["state_bills"].append(record)
         present.add(key_of(record))
         added.append(bill["id"])
@@ -92,6 +105,7 @@ def main() -> int:
     args = ap.parse_args()
     tracker = json.loads(TRACKER.read_text(encoding="utf-8"))
     manual = json.loads(MANUAL.read_text(encoding="utf-8")) if MANUAL.exists() else []
+    manual += official_database_bills()
     codes = [s["code"] for s in tracker["states"]]
     report = {"generated": TODAY, "jurisdictions": {c: {"primary_bills": sum(1 for b in tracker["state_bills"]
               if b["jurisdiction"] == c and not b.get("source_feed"))} for c in codes}}
