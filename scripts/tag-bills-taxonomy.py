@@ -62,6 +62,8 @@ def call(system: str, user: str) -> dict:
             USAGE["output"] += u.get("output_tokens", 0)
             USAGE["cache_read"] += u.get("cache_read_input_tokens", 0)
             USAGE["cache_write"] += u.get("cache_creation_input_tokens", 0)
+            if data.get("stop_reason") == "refusal":  # a safety classifier declined the request: record it, do not retry
+                return {"_refused": True, "_category": (data.get("stop_details") or {}).get("category")}
             text = "".join(c.get("text", "") for c in data["content"] if c.get("type") == "text")
             return json.loads(text[text.index("{"):text.rindex("}") + 1])
         except Exception:
@@ -82,6 +84,8 @@ def flat(s: str) -> str:
 def tag_bill(system: str, key: str, bill: dict) -> dict:
     text = f"{bill.get('title', '')}\n\n{bill.get('digest', '')}".strip()
     reply = call(system, json.dumps({"bill": key, "text": text[:9000]}))
+    if reply.get("_refused"):
+        return {"summary": "", "has_digest": bool(bill.get("digest")), "tags": [], "refused": reply.get("_category") or True}
     tags = []
     for t in reply.get("tags", []):
         sid = t.get("subtopic")
