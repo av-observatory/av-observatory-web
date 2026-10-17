@@ -37,7 +37,7 @@ jobs:
       R2_ACCOUNT_ID: ${{ vars.POLICY_R2_ACCOUNT_ID }}
       R2_BUCKET: ${{ vars.POLICY_R2_BUCKET }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
