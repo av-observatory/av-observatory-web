@@ -23,6 +23,8 @@ jobs:
     timeout-minutes: 90
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Install mdbtools (New Jersey database)
+        run: sudo apt-get install -y -q mdbtools > /dev/null
       - name: Enumerate every bill (title screen only)
         run: python3 scripts/enumerate-bills.py --scan-minutes 0
       - name: Commit enumeration

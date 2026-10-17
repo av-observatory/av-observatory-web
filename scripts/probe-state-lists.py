@@ -9,20 +9,22 @@ from bill_enumerators import http, parse_html
 CHROME = {"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"}
 BILL = re.compile(r"^(?:[A-Z]{1,4}\.?\s?\d{1,5}|[A-Z]{1,4}\s?[A-Z]?\d{1,5}|\d{1,5})$")
 P = [
- ("CT-a", "https://ftp.cga.ct.gov/pub/data/bill_info.csv", {"headers": CHROME}),
  ("CT-b", "https://www.cga.ct.gov/asp/cgabillstatus/cgabillstatus.asp?selBillType=Bill&bill_num=HB05001&which_year=2026", {"raw": "AN ACT"}),
- ("IL", "https://ilga.gov/Legislation/RegularSession/HouseBills?SessionId=114", {"headers": CHROME, "raw": "HB"}),
- ("IL2", "https://www.ilga.gov/Legislation/BillStatus?DocNum=1&GAID=18&DocTypeID=HB&SessionID=114&GA=104", {"headers": CHROME, "raw": "Short Description"}),
- ("NJ26", "https://pub.njleg.state.nj.us/leg-databases/2026data/", {}),
- ("NJ24", "https://pub.njleg.state.nj.us/leg-databases/2024data/", {}),
- ("NY1", "https://nyassembly.gov/leg/?default_fld=&bn=S1&term=2025&Summary=Y", {"headers": CHROME, "raw": "Sponsor"}),
- ("NY2", "https://nyassembly.gov/leg/?default_fld=&bn=S99999&term=2025&Summary=Y", {"headers": CHROME, "raw": "Sponsor"}),
- ("NY3", "https://nyassembly.gov/leg/?default_fld=&bn=A1&term=2025&Summary=Y", {"headers": CHROME, "raw": "Sponsor"}),
- ("DC", "https://lims.dccouncil.gov/Legislation/B26-0684", {"headers": CHROME, "raw": "script"}),
- ("CA", "https://downloads.leginfo.legislature.ca.gov/", {"headers": CHROME, "hrefs": r"pubinfo_202|pubinfo_Mon|\.zip"}),
- ("IN1", "https://iga.in.gov/pdf-documents/124/2026/senate/bills/SB0001/SB0001.01.INTR.pdf", {"headers": CHROME}),
- ("IN2", "https://iga.in.gov/pdf-documents/124/2026/senate/bills/SB1/SB1.01.INTR.pdf", {"headers": CHROME}),
- ("HI", "https://data.capitol.hawaii.gov/sessions/session2026/bills/", {"headers": CHROME, "hrefs": r"HB1_|HB2_"}),
+ ("CT-c", "https://www.cga.ct.gov/asp/cgabillstatus/cgabillstatus.asp?selBillType=Bill&bill_num=HB09999&which_year=2026", {"raw": "AN ACT"}),
+ ("CT-d", "https://www.cga.ct.gov/2026/lob/h/pdf/2026HB-05001-R00-HB.pdf", {"headers": CHROME}),
+ ("IL-ftp", "https://www.ilga.gov/ftp/legislation/104/BillStatus/XML/", {"headers": CHROME, "hrefs": r"HB0001|\.xml"}),
+ ("IL-ftp2", "https://www.ilga.gov/ftp/legislation/104/BillStatus/XML/10400HB0001.xml", {"headers": CHROME}),
+ ("IL-ftp3", "https://ilga.gov/ftp/legislation/104/BillStatus/", {"headers": CHROME, "hrefs": r"."}),
+ ("NY-pdf1", "https://legislation.nysenate.gov/pdf/bills/2025/S1", {"headers": CHROME}),
+ ("NY-pdf2", "https://legislation.nysenate.gov/pdf/bills/2025/S99999", {"headers": CHROME}),
+ ("NY-api", "https://legislation.nysenate.gov/api/3/bills/2025/S1?view=only_fields", {"headers": CHROME}),
+ ("DC", "https://lims.dccouncil.gov/Legislation/B26-0684", {"headers": CHROME, "raw": "src="}),
+ ("MN", "https://www.revisor.mn.gov/bills/status_result.php?body=House&session=0942025&bill=1-501&bill_type=bill&submit_bill=GO", {"raw": "HF"}),
+ ("AR-a", "https://arkleg.state.ar.us/Bills/SearchResults?ddBienniumSession=2025%2F2025R&Page=1&PageSize=100", {"headers": CHROME, "hrefs": r"Detail"}),
+ ("AR-b", "https://arkleg.state.ar.us/Home/FTPDocument?path=%2FSessionInformation%2F2025R%2FLegislativeMeasures.txt", {"headers": CHROME}),
+ ("AR-c", "https://www.arkleg.state.ar.us/Bills/FTPDocument?path=%2FSessionInformation%2FLegislativeMeasures.txt", {"headers": CHROME}),
+ ("WI", "https://docs.legis.wisconsin.gov/2025/proposals/reg/asm/bill", {"headers": CHROME, "hrefs": r"proposals"}),
+ ("CA", "https://downloads.leginfo.legislature.ca.gov/pubinfo_2025.zip", {"headers": {**CHROME, "Range": "bytes=0-300"}}),
 ]
 
 def describe(code, url, opt):

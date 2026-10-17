@@ -454,7 +454,7 @@ def nh(session: str):
         if not number:
             continue
         text = " ".join(re.sub(r"<[^>]+>", " ", unescape(item.findtext("description") or "")).split())
-        m = re.search(r"(?:Title|Bill Title)\s*:?\s*(.+?)(?:Sponsor|Status|Session|$)", text)
+        m = re.search(r"\btitle:\s*(.+?)(?:\s+(?:sponsor|bill status|status|session year|date)\b|$)", text, re.I)
         yield {"session": session, "number": number, "title": (m.group(1).strip() if m else text[:200]),
                "url": (item.findtext("link") or "").strip()}
 
@@ -579,7 +579,7 @@ def wi(session: str):
             except (HTTPError, URLError, OSError):
                 continue
             for a in p.anchors:
-                m = re.search(rf"/{session}/proposals/(?:reg/)?([a-z]+\d+)$", a["href"])
+                m = re.search(r"/proposals/(?:reg/)?(?:asm|sen)/(?:bill|joint_resolution|resolution)/([a-z]+\d+)$", a["href"])
                 if m and m.group(1) not in seen:
                     seen.add(m.group(1))
                     yield {"session": session, "number": m.group(1).upper(), "title": "", "url": a["href"]}
@@ -791,6 +791,115 @@ def ri(session: str):
                 idx += 251
 
 
+# --------------------------------------------------------------------------- generic helpers for file-based states
+def head_ok(url: str) -> bool:
+    """True when a HEAD request returns 200 (used to enumerate states that publish one file per bill)."""
+    for attempt in range(2):
+        for ctx in (None, ssl._create_unverified_context()):
+            try:
+                with urlopen(Request(url, method="HEAD", headers={**CHROME}), timeout=30, context=ctx) as r:
+                    return r.status == 200
+            except HTTPError as exc:
+                if exc.code in (403, 404, 410):
+                    return False
+            except Exception:
+                continue
+        time.sleep(1)
+    return False
+
+
+def download(url: str, dest: str, headers: dict | None = None) -> None:
+    with urlopen(Request(url, headers={**CHROME, **(headers or {})}), timeout=300) as r, open(dest, "wb") as fh:
+        while True:
+            chunk = r.read(1 << 20)
+            if not chunk:
+                break
+            fh.write(chunk)
+
+
+# --------------------------------------------------------------------------- Indiana (one PDF per bill; HEAD ranges)
+def inn(session: str):
+    from concurrent.futures import ThreadPoolExecutor
+    ga, year = session.split("/")
+    kinds = [("house", "bills", "HB", 1001), ("senate", "bills", "SB", 1), ("house", "resolutions", "HR", 1), ("senate", "resolutions", "SR", 1),
+             ("house", "resolutions", "HC", 1), ("senate", "resolutions", "SC", 1), ("house", "resolutions", "HJ", 1), ("senate", "resolutions", "SJ", 1)]
+    with ThreadPoolExecutor(max_workers=24) as pool:
+        for chamber, folder, prefix, first in kinds:
+            start = first
+            while start < first + 3000:
+                nums = list(range(start, start + 100))
+                urls = [f"https://iga.in.gov/pdf-documents/{ga}/{year}/{chamber}/{folder}/{prefix}{n:04d}/{prefix}{n:04d}.01.INTR.pdf" for n in nums]
+                hits = [(n, u) for n, u, ok_ in zip(nums, urls, pool.map(head_ok, urls)) if ok_]
+                for n, u in hits:
+                    yield {"session": session, "number": f"{prefix} {n}", "title": "", "url": u}
+                if not hits:
+                    break
+                start += 100
+
+
+# --------------------------------------------------------------------------- New Jersey (legislative database download; needs mdbtools)
+def nj(session: str):
+    import csv
+    import io
+    import subprocess
+    import tempfile
+    import zipfile
+    with tempfile.TemporaryDirectory() as tmp:
+        download(f"https://pub.njleg.state.nj.us/leg-databases/{session}data/DB{session}.zip", tmp + "/db.zip")
+        with zipfile.ZipFile(tmp + "/db.zip") as z:
+            names = z.namelist()
+            z.extractall(tmp)
+        text = None
+        for n in names:
+            if n.upper().endswith("MAINBILL.TXT"):
+                text = open(f"{tmp}/{n}", encoding="latin-1", errors="replace").read()
+        if text is None:
+            mdb = next((f"{tmp}/{n}" for n in names if n.lower().endswith((".mdb", ".accdb"))), None)
+            if not mdb:
+                raise RuntimeError("no MAINBILL.TXT or .mdb in NJ zip: " + ", ".join(names[:12]))
+            tables = subprocess.run(["mdb-tables", "-1", mdb], capture_output=True, text=True, check=True).stdout.split()
+            table = next((t for t in tables if t.upper() == "MAINBILL"), None)
+            if not table:
+                raise RuntimeError("no MAINBILL table; tables: " + ", ".join(tables[:20]))
+            text = subprocess.run(["mdb-export", mdb, table], capture_output=True, text=True, check=True).stdout
+        year = int(session)
+        for rec in csv.DictReader(io.StringIO(text)):
+            kind, num = (rec.get("BillType") or "").strip(), (rec.get("BillNumber") or "").strip()
+            if kind and num.isdigit():
+                number = f"{kind}{int(num)}"
+                yield {"session": session, "number": number, "title": (rec.get("Synopsis") or "").strip(),
+                       "url": f"https://www.njleg.state.nj.us/bill-search/{year}/{number}"}
+
+
+# --------------------------------------------------------------------------- California (LEGINFO bulk database)
+def ca(session: str):
+    import tempfile
+    import zipfile
+    with tempfile.TemporaryDirectory() as tmp:
+        download(f"https://downloads.leginfo.legislature.ca.gov/pubinfo_{session}.zip", tmp + "/pubinfo.zip")
+        with zipfile.ZipFile(tmp + "/pubinfo.zip") as z:
+            members = {n.rsplit("/", 1)[-1].upper(): n for n in z.namelist()}
+            if "BILL_TBL.DAT" not in members:
+                raise RuntimeError("BILL_TBL.dat not in zip: " + ", ".join(sorted(members)[:15]))
+            subjects = {}
+            if "BILL_VERSION_TBL.DAT" in members:
+                with z.open(members["BILL_VERSION_TBL.DAT"]) as fh:
+                    for raw in fh:
+                        f = raw.decode("utf-8", "replace").rstrip("\r\n").split("\t")
+                        if len(f) > 6:
+                            subjects[f[1].strip("`")] = f[6].strip("`")
+            seen = set()
+            with z.open(members["BILL_TBL.DAT"]) as fh:
+                for raw in fh:
+                    f = [c.strip("`") for c in raw.decode("utf-8", "replace").rstrip("\r\n").split("\t")]
+                    if len(f) > 4 and f[3] and f[4].isdigit():
+                        number = f"{f[3]} {int(f[4])}"
+                        if number not in seen:
+                            seen.add(number)
+                            yield {"session": session, "number": number, "title": subjects.get(f[0], ""),
+                                   "url": f"https://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id={f[0]}"}
+
+
 # Bump a state's revision when its adapter changes so recently enumerated ledgers are rebuilt.
 REV = {"WA": 2}
 
@@ -822,7 +931,7 @@ ENUMERATORS = {
     "NV": (("83rd2025",), nv),
     "UT": (("2026GS", "2025GS"), ut),
     "VA": (("20261", "20251"), va),
-    "NH": (("2026", "2025"), nh),
+    "NH": (("2026",), nh),
     "DE": (("153",), de),
     "AL": (("2026rs", "2025rs"), al),
     "GA": (("2025_26",), ga),
@@ -840,4 +949,7 @@ ENUMERATORS = {
     "HI": (("2026", "2025"), hi),
     "OK": (("2600", "2500"), ok),
     "RI": (("2026", "2025"), ri),
+    "IN": (("124/2026", "124/2025"), inn),
+    "NJ": (("2026", "2024"), nj),
+    "CA": (("2025",), ca),
 }
