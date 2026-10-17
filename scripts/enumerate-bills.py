@@ -149,14 +149,18 @@ def classify(ledgers: dict, scan_budget: int, scan_minutes: float) -> dict:
         if code in TITLE_ONLY:
             continue
         pending = sorted((row.get("scanned") or "", key) for key, row in ledger["bills"].items()
-                         if row.get("av") in ("unknown", "no") and (row.get("text_url") or row.get("url")))
+                         if (row.get("av") in ("unknown", "no") or (row.get("av") == "candidate" and row.get("via") == "state_fulltext" and not row.get("scanned")))
+                         and (row.get("text_url") or row.get("url")))
         queue += [(scanned, rank, code, key) for rank, (scanned, key) in enumerate(pending)]
     queue = [(scanned, code, key) for scanned, _, code, key in sorted(queue, key=lambda q: (q[0], q[1], q[2]))][:scan_budget]
     gates: dict = {}
 
     def scan(item):
         _, code, key = item
-        url = ledgers[code]["bills"][key].get("text_url") or ledgers[code]["bills"][key]["url"]
+        row = ledgers[code]["bills"][key]
+        url = row.get("text_url") or row["url"]
+        if row.get("via") == "state_fulltext" and code == "NY":  # confirm a full-text-search hit on the Senate's page, which carries the bill text
+            url = f"https://www.nysenate.gov/legislation/bills/{row.get('session')}/{row.get('number')}"
         gate = gates.setdefault(urlparse(url).hostname, BoundedSemaphore(int(os.getenv("SCAN_PER_HOST", "4"))))
         started = time.monotonic()
         with gate:
