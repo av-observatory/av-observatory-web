@@ -77,6 +77,27 @@ def merge_manual(tracker: dict, manual: list[dict]) -> tuple[list[str], list[str
     return added, retired
 
 
+def apply_progress(tracker: dict) -> int:
+    """Overlay first-party status from data-state/av_progress.json (scripts/refresh-av-bill-progress.py)."""
+    path = ROOT / "data-state/av_progress.json"
+    if not path.exists():
+        return 0
+    progress = json.loads(path.read_text(encoding="utf-8"))
+    applied = 0
+    for bill in tracker["state_bills"]:
+        rec = progress.get(bill.get("id"))
+        if not rec or not rec.get("status") or rec.get("error"):
+            continue
+        if (rec.get("last_action_date") or "") < (bill.get("last_action_date") or ""):
+            continue  # the index already has a newer action
+        for key in ("status", "progress_stage", "last_action", "last_action_date"):
+            if rec.get(key):
+                bill[key] = rec[key]
+        bill["progress_checked"], bill["progress_source"] = rec.get("checked"), "official_site"
+        applied += 1
+    return applied
+
+
 # ---------------------------------------------------------------- alerts
 def open_issue(key: str, title: str, body: str, only_open: bool = False) -> None:
     state = "open" if only_open else "all"
@@ -113,6 +134,7 @@ def main() -> int:
     added_manual, retired = merge_manual(tracker, manual)
     report["manual_added"], report["manual_retired"] = added_manual, retired
 
+    report["progress_applied"] = apply_progress(tracker)
     tracker["state_bills"].sort(key=lambda b: (b["jurisdiction"], b["number"], b["session"]))
     TRACKER.write_text(json.dumps(tracker, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     COVERAGE.parent.mkdir(exist_ok=True)
