@@ -104,7 +104,7 @@ def enumerate_state(code: str) -> dict:
     return result
 
 
-def classify(ledgers: dict, scan_budget: int) -> dict:
+def classify(ledgers: dict, scan_budget: int, scan_minutes: float) -> dict:
     """Title/summary screen for all; page scan for unscanned bills (oldest first) within budget."""
     stats = {code: {"candidates": 0, "scanned": 0, "unscanned": 0, "scan_failed": 0} for code in ledgers}
     for code, ledger in ledgers.items():
@@ -114,8 +114,9 @@ def classify(ledgers: dict, scan_budget: int) -> dict:
     queue = sorted(((row.get("scanned") or "", code, key) for code, ledger in ledgers.items()
                     for key, row in ledger["bills"].items() if row.get("av") in ("unknown", "no") and row.get("url")))
     done = 0
+    deadline = time.monotonic() + scan_minutes * 60
     for _, code, key in queue:
-        if done >= scan_budget:
+        if done >= scan_budget or time.monotonic() > deadline:
             break
         row = ledgers[code]["bills"][key]
         text, _ = fetch(row["url"])
@@ -130,8 +131,8 @@ def classify(ledgers: dict, scan_budget: int) -> dict:
         else:
             row["av"] = "no"
     for code, ledger in ledgers.items():
+        s = stats[code]
         for row in ledger["bills"].values():
-            s = stats[code]
             s["candidates"] += row.get("av") in ("candidate", "yes")
             s["scanned"] += bool(row.get("scanned")) and not row.get("scan_failed")
             s["scan_failed"] += bool(row.get("scan_failed"))
@@ -169,7 +170,8 @@ def report(results: dict, stats: dict, ledgers: dict) -> str:
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--scan-budget", type=int, default=int(os.getenv("SCAN_BUDGET", "300")))
+    ap.add_argument("--scan-budget", type=int, default=int(os.getenv("SCAN_BUDGET", "100000")))
+    ap.add_argument("--scan-minutes", type=float, default=float(os.getenv("SCAN_MINUTES", "40")))
     ap.add_argument("--states", default="")
     args = ap.parse_args()
     wanted = [s for s in args.states.split(",") if s] or sorted(ENUMERATORS)
@@ -179,7 +181,7 @@ def main() -> int:
         print(f"Enumerated {code}: " + "; ".join(
             f"{s}={i['enumerated']}{' ERROR ' + i['error'] if i['error'] else ''}" for s, i in results[code]["sessions"].items()), flush=True)
     ledgers = {code: load_ledger(code) for code in sorted(ENUMERATORS)}
-    stats = classify(ledgers, args.scan_budget)
+    stats = classify(ledgers, args.scan_budget, args.scan_minutes)
     for code, ledger in ledgers.items():
         save_ledger(code, ledger)
     text = report(results, stats, ledgers)

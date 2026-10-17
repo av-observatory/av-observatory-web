@@ -126,7 +126,7 @@ def nd(session: str):
 def az(session: str):
     sid = {"57th-2nd-regular": 130, "57th-1st-regular": 129}[session]
     data = jget(f"https://apps.azleg.gov/api/Bill/?sessionID={sid}")
-    rows = data if isinstance(data, list) else data.get("Bills") or data.get("bills") or []
+    rows = data if isinstance(data, list) else data.get("ListItems") or data.get("Bills") or data.get("bills") or []
     if not rows:
         raise RuntimeError(f"unrecognized AZ list shape: {str(data)[:200]}")
     for item in rows:
