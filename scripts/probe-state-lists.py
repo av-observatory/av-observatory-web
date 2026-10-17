@@ -8,14 +8,7 @@ from bill_enumerators import http, parse_html
 
 CHROME = {"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"}
 BILL = re.compile(r"^(?:[A-Z]{1,4}\.?\s?\d{1,5}|[A-Z]{1,4}\s?[A-Z]?\d{1,5}|\d{1,5})$")
-P = [
- ("NY-s-up", "https://www.nysenate.gov/legislation/bills/2025/S1", {"headers": {"User-Agent": "curl/8.5.0", "Accept": "*/*"}}),
- ("NY-s-lo", "https://www.nysenate.gov/legislation/bills/2025/s1", {"headers": {"User-Agent": "curl/8.5.0", "Accept": "*/*"}}),
- ("NY-s-list", "https://www.nysenate.gov/search/legislation?searched=true&type=f_bill&bill_session_year=2025&page=0", {"headers": {"User-Agent": "curl/8.5.0", "Accept": "*/*"}, "hrefs": r"/legislation/bills/2025/"}),
- ("NY-a-old", "https://assembly.state.ny.us/leg/?default_fld=&bn=A00001&term=2025&Summary=Y&Actions=Y&Text=Y", {"headers": {"User-Agent": "curl/8.5.0", "Accept": "*/*"}, "raw": "Sponsor"}),
- ("NY-a-new", "https://nyassembly.gov/leg/?default_fld=&leg_video=&bn=A00001&term=2025&Summary=Y&Actions=Y&Text=Y&Memo=Y", {"headers": {"User-Agent": "curl/8.5.0", "Accept": "*/*"}, "raw": "Introduced"}),
- ("NY-open", "https://legislation.nysenate.gov/api/3/bills/2025?limitOffset=1&limit=1", {"headers": {"User-Agent": "curl/8.5.0"}}),
-]
+P = []
 
 def describe(code, url, opt):
     try:
@@ -122,27 +115,41 @@ def oklahoma():
     except Exception as exc:
         return f"OK ERR {type(exc).__name__} {str(exc)[:80]}"
 
-def dc_bundle():
+def urls_in(label, html_url, headers, deep=True):
+    """List data-ish URLs referenced by a JS-driven page and its scripts."""
     try:
-        html = http("https://lims.dccouncil.gov/Legislation/B26-0684", headers=CHROME, tries=1).decode("utf-8", "replace")
-        srcs = re.findall(r'src="([^"]+\.js[^"]*)"', html) + re.findall(r"src='([^']+\.js[^']*)'", html)
-        out = [f"scripts={srcs[:8]}"]
-        srcs = [x for x in srcs if "/static/js/" in x]
-        for src in srcs[:6]:
-            url = src if src.startswith("http") else "https://lims.dccouncil.gov" + (src if src.startswith("/") else "/" + src)
-            try:
-                js = http(url, headers=CHROME, tries=1, timeout=60).decode("utf-8", "replace")
-            except Exception as exc:
-                out.append(f"{url[-50:]} ERR {exc}")
-                continue
-            if "main." in url:
-                for m in list(re.finditer(r"(Authorization|PublicData|apiKey|api_key|Bearer)", js))[:10]:
-                    out.append(f"{url[-30:]} @{m.start()}: " + " ".join(js[max(0, m.start() - 150): m.start() + 250].split()))
-        return "DC bundle: " + " || ".join(out)
+        html = http(html_url, headers=headers, tries=1, timeout=60).decode("utf-8", "replace")
     except Exception as exc:
-        return f"DC bundle ERR {type(exc).__name__} {str(exc)[:80]}"
+        return f"{label} ERR {type(exc).__name__} {str(exc)[:80]}"
+    out = [f"{label} page {len(html)}B"]
+    srcs = re.findall(r'src=["\']([^"\']+\.js[^"\']*)["\']', html)
+    out.append("scripts=" + str([x[-60:] for x in srcs[:10]]))
+    pool_text = {"page": html}
+    if deep:
+        from urllib.parse import urljoin
+        for src in [x for x in srcs if "analytics" not in x and "sharethis" not in x][:6]:
+            try:
+                pool_text[src[-40:]] = http(urljoin(html_url, src), headers=headers, tries=1, timeout=90).decode("utf-8", "replace")
+            except Exception:
+                pass
+    for name, text in pool_text.items():
+        found = sorted(set(re.findall(r"""["'](/api[^"']{0,80}|https?://[^"'\s]{0,90}(?:api|json|graphql|odata)[^"'\s]{0,60})["']""", text)))[:12]
+        if found:
+            out.append(f"{name}: {found}")
+        for m in list(re.finditer(r"(Authorization|x-api-key|apiKey|api_key|Bearer )", text))[:3]:
+            out.append(f"{name} @{m.start()}: " + " ".join(text[max(0, m.start() - 120): m.start() + 220].split()))
+    return " || ".join(out)
+
+def dc_bundle():
+    return urls_in("DC", "https://lims.dccouncil.gov/Legislation/B26-0684", CHROME)
+
+def ny_assembly():
+    return urls_in("NY-assembly", "https://nyassembly.gov/leg/?default_fld=&bn=A00001&term=2025&Summary=Y", {"User-Agent": "curl/8.5.0", "Accept": "*/*"})
+
+def ny_senate():
+    return urls_in("NY-senate", "https://www.nysenate.gov/search/legislation?searched=true&type=f_bill&bill_session_year=2025&page=0", {"User-Agent": "curl/8.5.0", "Accept": "*/*"})
 
 with ThreadPoolExecutor(max_workers=12) as pool:
-    futs = [pool.submit(describe, *x) for x in P] + [pool.submit(dc_bundle)]
+    futs = [pool.submit(f) for f in (dc_bundle, ny_assembly, ny_senate)]
     for f in futs:
         print(f.result(), flush=True)
