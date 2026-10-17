@@ -1,0 +1,35 @@
+name: Tag every bill with topics (model pass over titles)
+
+on:
+  workflow_dispatch:
+    inputs:
+      only:
+        description: "Comma-separated state codes (empty = all)"
+        default: ""
+      budget_minutes:
+        description: "Minutes to spend tagging"
+        default: "100"
+
+permissions:
+  contents: write
+
+# Own group and own output files (data-state/bill_topics), so it never conflicts with the enumeration run.
+concurrency:
+  group: bill-topics-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  topics:
+    runs-on: ubuntu-latest
+    timeout-minutes: 140
+    env:
+      COMMIT_PATH: data-state/bill_topics
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Tag bills by topic (progress is committed every 90 seconds)
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: bash scripts/live-commit.sh python3 scripts/classify-bill-topics.py --budget-minutes "${{ inputs.budget_minutes }}" --only "${{ inputs.only }}"
+      - name: Commit final topic tags
+        if: always()
+        run: bash scripts/commit-ledgers.sh "Bill topic tags"
