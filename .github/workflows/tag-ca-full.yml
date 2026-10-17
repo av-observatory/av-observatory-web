@@ -1,0 +1,38 @@
+name: "Tag every California bill with the taxonomy (resumable)"
+
+on:
+  workflow_dispatch:
+    inputs:
+      model:
+        description: "Model id"
+        default: "claude-haiku-5-5"
+      workers:
+        description: "Parallel requests"
+        default: "10"
+      budget_minutes:
+        description: "Stop starting new bills after this many minutes"
+        default: "100"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: tag-ca-full-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  tag:
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    env:
+      COMMIT_PATH: data-state/states/CA
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Tag all bills (progress is committed every 90 seconds)
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          TAG_MODEL: ${{ inputs.model }}
+        run: bash scripts/live-commit.sh python3 scripts/tag-bills-taxonomy.py --all --out data-state/states/CA/tags.json --workers "${{ inputs.workers }}" --budget-minutes "${{ inputs.budget_minutes }}"
+      - name: Commit final tags
+        if: always()
+        run: bash scripts/commit-ledgers.sh "California taxonomy tags"

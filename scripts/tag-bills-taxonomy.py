@@ -117,38 +117,75 @@ def pick_sample(bills: dict, n: int, seed: int) -> list:
     return chosen[:n]
 
 
+PROMPT_REV = "r2"  # bump when the prompt or taxonomy changes, so every bill is retagged
+
+
+def bill_hash(bill: dict) -> str:
+    import hashlib
+    return hashlib.sha1(f"{PROMPT_REV}|{TAX['version']}|{MODEL}|{bill.get('title', '')}|{bill.get('digest', '')}".encode()).hexdigest()[:12]
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--bills", default="data-state/states/CA/bills.json")
     ap.add_argument("--out", default="data-state/states/CA/tags_sample.json")
     ap.add_argument("--sample", type=int, default=50)
     ap.add_argument("--seed", type=int, default=7)
+    ap.add_argument("--all", action="store_true", help="tag every bill (resumable: skips bills already tagged with the same text, prompt and model)")
+    ap.add_argument("--workers", type=int, default=4)
+    ap.add_argument("--budget-minutes", type=float, default=0)
     args = ap.parse_args()
     if not KEY:
         print("::error::ANTHROPIC_API_KEY not configured")
         return 1
     bills = json.loads((ROOT / args.bills).read_text())
-    keys = pick_sample(bills, args.sample, args.seed)
-    system = system_prompt()
-    results = {}
-    with cf.ThreadPoolExecutor(max_workers=4) as pool:
-        futures = {pool.submit(tag_bill, system, k, bills[k]): k for k in keys}
-        for fut in cf.as_completed(futures):
-            k = futures[fut]
-            try:
-                results[k] = fut.result()
-            except Exception as exc:
-                results[k] = {"error": f"{type(exc).__name__}"}
     out = ROOT / args.out
-    out.write_text(json.dumps({"model": MODEL, "taxonomy": TAX["version"], "bills": results}, indent=1, sort_keys=True, ensure_ascii=False) + "\n")
-    tags = [t for r in results.values() for t in r.get("tags", [])]
-    verified = sum(t["evidence_verified"] for t in tags)
-    n = max(1, len(results))
+    out.parent.mkdir(parents=True, exist_ok=True)
+    keys = sorted(bills) if args.all else pick_sample(bills, args.sample, args.seed)
+    results = {}
+    if args.all and out.exists():
+        prior = json.loads(out.read_text())
+        results = {k: v for k, v in prior.get("bills", {}).items() if "error" not in v}
+    todo = [k for k in keys if results.get(k, {}).get("hash") != bill_hash(bills[k])]
+    print(f"{len(keys)} bills, {len(keys) - len(todo)} already tagged, {len(todo)} to tag with {MODEL}", flush=True)
+    system = system_prompt()
+    started = time.monotonic()
+    errors = 0
+
+    def save():
+        out.write_text(json.dumps({"model": MODEL, "taxonomy": TAX["version"], "prompt_rev": PROMPT_REV, "bills": results},
+                                  sort_keys=True, ensure_ascii=False, separators=(",", ":")) + "\n")
+
+    def work(k):
+        if args.budget_minutes and time.monotonic() - started > args.budget_minutes * 60:
+            return k, None
+        try:
+            r = tag_bill(system, k, bills[k])
+            r["hash"] = bill_hash(bills[k])
+            return k, r
+        except Exception as exc:
+            return k, {"error": type(exc).__name__}
+
+    done = 0
+    with cf.ThreadPoolExecutor(max_workers=args.workers) as pool:
+        for k, r in pool.map(work, todo):
+            if r is None:
+                continue
+            if "error" in r:
+                errors += 1
+                continue
+            results[k] = r
+            done += 1
+            if done % 100 == 0:
+                save()
+                print(f"  tagged {done}/{len(todo)}  (${cost_estimate():.2f} so far)", flush=True)
+    save()
+    n = max(1, USAGE["calls"])
     print(f"Usage ({MODEL}): {USAGE['calls']} calls; input {USAGE['input']:,} + cache write {USAGE['cache_write']:,} + cache read {USAGE['cache_read']:,}; "
-          f"output {USAGE['output']:,} (includes any hidden thinking); about ${cost_estimate():.2f} for {len(results)} bills "
-          f"= ${cost_estimate() / n:.4f} per bill, so roughly ${cost_estimate() / n * 5041:.0f} for all 5,041 California bills")
-    print(f"Tagged {len(results)} bills, {len(tags)} tags, {verified} with a verified quote, {sum('error' in r for r in results.values())} errors")
-    return 0
+          f"output {USAGE['output']:,}; about ${cost_estimate():.2f} (${cost_estimate() / n:.4f} per bill)")
+    tags = [t for r in results.values() for t in r.get("tags", [])]
+    print(f"Tagged {len(results)} bills in the file, {len(tags)} tags, {sum(t['evidence_verified'] for t in tags)} with a verified quote, {errors} errors this run")
+    return 1 if errors and not done else 0
 
 
 if __name__ == "__main__":
