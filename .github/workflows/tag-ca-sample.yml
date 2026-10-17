@@ -1,0 +1,29 @@
+name: "Tag a California sample with the approved taxonomy (for review)"
+
+on:
+  workflow_dispatch:
+    inputs:
+      sample:
+        description: "Number of bills"
+        default: "50"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: tag-ca-sample-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  tag:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Tag the sample
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          TAG_MODEL: claude-sonnet-5-5
+        run: python3 scripts/tag-bills-taxonomy.py --sample "${{ inputs.sample }}"
+      - name: Commit the sample
+        run: COMMIT_PATH=data-state/states/CA/tags_sample.json bash scripts/commit-ledgers.sh "California taxonomy tagging sample"
