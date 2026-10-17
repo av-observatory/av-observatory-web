@@ -3162,6 +3162,24 @@
       "source_tier": "auto",
       "review_status": "auto_collected",
       "date_precision": "day"
+    },
+    {
+      "id": "auto-ny-a10008-2026",
+      "level": "state",
+      "jurisdiction": "New York",
+      "title": "A 10008 (2026), Ch. 58, Part E: for-hire autonomous vehicles",
+      "summary": "New York A.10008 (2026), the transportation budget bill signed as Chapter 58 of the Laws of 2026 on May 26, 2026, includes Part E, which adds a new Vehicle and Traffic Law article on for-hire autonomous vehicles. Networks may not deploy them for taxi or livery service in cities of one million or more people, and elsewhere need commissioner authorization; Part E also extends the sunset of the 2017 AV testing law to April 1, 2028. The page says the new article takes effect one year after enactment.",
+      "takeaway": "New York A.10008 (2026), the transportation budget bill signed as Chapter 58 of the Laws of 2026 on May 26, 2026, includes Part E, which adds a new Vehicle and Traffic Law article on for-hire autonomous vehicles. Networks may not deploy them for taxi or livery service in cities of one million or more people, and elsewhere need commissioner authorization; Part E also extends the sunset of the 2017 AV testing law to April 1, 2028. The page says the new article takes effect one year after enactment.",
+      "instrument": "legislation",
+      "status": "historical_status_unverified",
+      "date": "2026-05-26",
+      "source_url": "https://www.nysenate.gov/legislation/bills/2025/A10008",
+      "verified_at": "2026-10-17",
+      "state": "NY",
+      "source_label": "New York Senate, A 10008 (2025-2026)",
+      "source_tier": "auto",
+      "review_status": "auto_collected",
+      "date_precision": "day"
     }
   ],
   "city_events": [
