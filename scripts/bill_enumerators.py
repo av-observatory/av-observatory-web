@@ -425,6 +425,132 @@ def nv(session: str):
             yield {"session": session, "number": a["text"], "title": "", "url": a["href"]}
 
 
+# --------------------------------------------------------------------------- Utah (HTML link list)
+def ut(session: str):
+    seen = set()
+    for a in page(f"https://le.utah.gov/billlist.jsp?session={session}", timeout=120).anchors:
+        m = re.fullmatch(r"([A-Z.]+)\s*(\d+)", a["text"].strip())
+        if m and "/bills/static/" in a["href"]:
+            number = f"{m.group(1).replace('.', '')} {int(m.group(2))}"
+            if number not in seen:
+                seen.add(number)
+                yield {"session": session, "number": number, "title": "", "url": a["href"]}
+
+
+# --------------------------------------------------------------------------- Virginia (LIS data CSV)
+def va(session: str):
+    import csv
+    import io
+    text = http(f"https://lis.blob.core.windows.net/lisfiles/{session}/BILLS.CSV", timeout=120).decode("utf-8-sig", "replace")
+    for row in csv.DictReader(io.StringIO(text)):
+        number = (row.get("Bill_id") or "").strip()
+        if number:
+            yield {"session": session, "number": number, "title": (row.get("Bill_description") or "").strip(),
+                   "url": f"https://lis.virginia.gov/bill-details/{session}/{number}"}
+
+
+# --------------------------------------------------------------------------- New Hampshire (RSS feed of all bills)
+def nh(session: str):
+    from html import unescape
+    root = ElementTree.fromstring(http(f"https://gc.nh.gov/rssFeeds/rssQueryResults.aspx?&sortoption=&txtsessionyear={session}", timeout=180).lstrip(b"\xef\xbb\xbf"))
+    for item in root.iter("item"):
+        number = (item.findtext("title") or "").strip()
+        if not number:
+            continue
+        text = " ".join(re.sub(r"<[^>]+>", " ", unescape(item.findtext("description") or "")).split())
+        m = re.search(r"(?:Title|Bill Title)\s*:?\s*(.+?)(?:Sponsor|Status|Session|$)", text)
+        yield {"session": session, "number": number, "title": (m.group(1).strip() if m else text[:200]),
+               "url": (item.findtext("link") or "").strip()}
+
+
+# --------------------------------------------------------------------------- Delaware (JSON POST)
+def de(session: str):
+    from urllib.parse import urlencode
+    headers = {**CHROME, "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8", "X-Requested-With": "XMLHttpRequest"}
+    seen, number_page, total = set(), 1, None
+    while total is None or len(seen) < total:
+        form = [("page", number_page), ("pageSize", 500), ("selectedGA[0]", session), ("coSponsorCheck", "True"),
+                ("sort", ""), ("group", ""), ("filter", "")]
+        form += [(f"selectedLegislationTypeId[{i}]", t) for i, t in enumerate((1, 2, 3, 4, 6))]
+        data = json.loads(http("https://legis.delaware.gov/json/AllLegislation/GetAllLegislation", data=urlencode(form).encode(),
+                               headers=headers, timeout=120).decode())
+        rows = data.get("Data") or []
+        total = data.get("Total", 0)
+        if not rows:
+            break
+        for r in rows:
+            number = (r.get("LegislationNumber") or "").strip()
+            if number and number not in seen:
+                seen.add(number)
+                yield {"session": session, "number": number, "title": r.get("LongTitle") or r.get("Title") or "",
+                       "url": f"https://legis.delaware.gov/BillDetail?LegislationId={r.get('LegislationId')}"}
+        number_page += 1
+
+
+# --------------------------------------------------------------------------- Alabama (GraphQL)
+def al(session: str):
+    query = ("query bills($sessionAbbreviation: String, $instrumentType: InstrumentType, $offset: Int, $limit: Int){"
+             "instruments(where:[{sessionAbbreviation:{eq:$sessionAbbreviation},instrumentType:{eq:$instrumentType}}],"
+             " order:[\"sessionAbbreviation\",\"DESC\"], limit:$limit, offset:$offset){data{id instrumentNbr shortTitle sessionYear currentStatus} count}}")
+    headers = {**CHROME, "Content-Type": "application/json"}
+    for kind in ("B", "R"):
+        offset = 0
+        while True:
+            body = json.dumps({"query": query, "variables": {"sessionAbbreviation": session, "instrumentType": kind, "offset": offset, "limit": 250}}).encode()
+            data = json.loads(http("https://alison.legislature.state.al.us/graphql", data=body, headers=headers, timeout=120).decode())
+            inst = ((data.get("data") or {}).get("instruments")) or {}
+            if "errors" in data and not inst:
+                raise RuntimeError("GraphQL errors: " + json.dumps(data["errors"])[:300])
+            rows = inst.get("data") or []
+            for r in rows:
+                if r.get("instrumentNbr"):
+                    yield {"session": session, "number": r["instrumentNbr"], "title": (r.get("shortTitle") or "").strip(),
+                           "url": f"https://alison.legislature.state.al.us/bill/{session}/{r['instrumentNbr'].lower()}"}
+            offset += 250
+            if len(rows) < 250:
+                break
+
+
+# --------------------------------------------------------------------------- Georgia (public token + search API)
+def ga(session: str):
+    import hashlib
+    sid = {"2025_26": 1033, "2023_24": 1031}[session]
+    ts = str(int(time.time() * 1000))
+    key = hashlib.sha512(("QFpCwKfd7" + "fjVEXFFwSu36BwwcP83xYgxLAhLYmKk" + "letvarconst" + ts).encode()).hexdigest()
+    token = json.loads(http(f"https://www.legis.ga.gov/api/authentication/token?key={key}&ms={ts}", headers=CHROME))
+    headers = {**CHROME, "Authorization": "Bearer " + token, "Content-Type": "application/json"}
+    number_page = 0
+    while True:
+        data = json.loads(http(f"https://www.legis.ga.gov/api/Legislation/Search/250/{number_page}", data=json.dumps({"sessionId": sid}).encode(),
+                               headers=headers, timeout=120).decode())
+        rows = data.get("results") or []
+        for r in rows:
+            number = r.get("number") or r.get("legislationNumber") or ""
+            if not number and r.get("documentType") is not None:
+                number = f"{r.get('documentType')} {r.get('documentNumber', '')}".strip()
+            if not number:
+                raise RuntimeError("unrecognized GA result keys: " + ",".join(sorted(r)))
+            yield {"session": session, "number": str(number), "title": r.get("caption") or r.get("title") or r.get("description") or "",
+                   "url": f"https://www.legis.ga.gov/legislation/{r.get('legislationId')}"}
+        if len(rows) < 250:
+            break
+        number_page += 1
+
+
+# --------------------------------------------------------------------------- New Mexico (session bill directories)
+def nm(session: str):
+    seen = set()
+    for chamber in ("house", "senate"):
+        p = page(f"https://www.nmlegis.gov/Sessions/{session}/bills/{chamber}/", timeout=120)
+        for a in p.anchors:
+            m = re.search(r"/([HS][A-Z]{0,3})(\d{1,4})\.(?:pdf|html?)$", a["href"], re.I)
+            if m:
+                number = f"{m.group(1).upper()} {int(m.group(2))}"
+                if number not in seen:
+                    seen.add(number)
+                    yield {"session": session, "number": number, "title": "", "url": a["href"]}
+
+
 # Bump a state's revision when its adapter changes so recently enumerated ledgers are rebuilt.
 REV = {"WA": 2}
 
@@ -454,4 +580,11 @@ ENUMERATORS = {
     "OR": (("2026R1", "2025R1"), orr),
     "KS": (("b2025_26",), ks),
     "NV": (("83rd2025",), nv),
+    "UT": (("2026GS", "2025GS"), ut),
+    "VA": (("20261", "20251"), va),
+    "NH": (("2026", "2025"), nh),
+    "DE": (("153",), de),
+    "AL": (("2026rs", "2025rs"), al),
+    "GA": (("2025_26",), ga),
+    "NM": (("26%20Regular", "25%20Regular"), nm),
 }
