@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-14",
+ "generated": "2026-10-17",
  "jurisdictions": {
   "AK": {
    "primary_bills": 0
@@ -17,7 +17,7 @@
    "primary_bills": 5
   },
   "CO": {
-   "primary_bills": 3
+   "primary_bills": 1
   },
   "CT": {
    "primary_bills": 0
@@ -38,13 +38,13 @@
    "primary_bills": 1
   },
   "IA": {
-   "primary_bills": 4
+   "primary_bills": 3
   },
   "ID": {
    "primary_bills": 0
   },
   "IL": {
-   "primary_bills": 8
+   "primary_bills": 9
   },
   "IN": {
    "primary_bills": 0
@@ -53,7 +53,7 @@
    "primary_bills": 0
   },
   "KY": {
-   "primary_bills": 2
+   "primary_bills": 1
   },
   "LA": {
    "primary_bills": 0
@@ -80,7 +80,7 @@
    "primary_bills": 0
   },
   "MT": {
-   "primary_bills": 5
+   "primary_bills": 4
   },
   "NC": {
    "primary_bills": 0
@@ -104,7 +104,7 @@
    "primary_bills": 0
   },
   "NY": {
-   "primary_bills": 15
+   "primary_bills": 13
   },
   "OH": {
    "primary_bills": 0
@@ -116,7 +116,7 @@
    "primary_bills": 1
   },
   "PA": {
-   "primary_bills": 3
+   "primary_bills": 2
   },
   "RI": {
    "primary_bills": 0
@@ -156,8 +156,16 @@
   }
  },
  "manual_added": [
-  "dc-b26-0684-26"
+  "dc-b26-0684-26",
+  "la-sb133-2026rs",
+  "tn-sb2253-114",
+  "az-sb1320-57-1r",
+  "ia-hf2673-91",
+  "ak-hb217-34",
+  "co-hb25-1122-2025-regular-session",
+  "co-hb26-1286-2026-regular-session"
  ],
- "manual_retired": [],
- "second_source_configured": false
+ "manual_retired": [
+  "il-hb3044-104"
+ ]
 }

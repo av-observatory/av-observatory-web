@@ -28,15 +28,20 @@
       "summary_quality": "manual_primary_source_verified",
       "editorial_status": "verified",
       "editorial_source_url": "https://www.govinfo.gov/content/pkg/BILLS-119hr7390ih/html/BILLS-119hr7390ih.htm",
-      "editorial_source_type": "official_govinfo_introduced_bill"
+      "editorial_source_type": "official_govinfo_introduced_bill",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-10-17",
+        "reason": "ValueError: substring not found"
+      }
     },
     {
       "id": "us-s3742-119t",
       "jurisdiction": "US",
       "number": "S. 3742",
       "title": "AV Safety Data Act",
-      "summary": "The bill would require covered automated-driving and Level 2 driver-assistance manufacturers and operators to submit monthly vehicle-mileage, injury-crash, and unplanned-stoppage reports, alongside existing crash reporting. NHTSA would publish machine-readable data beginning 120 days after enactment, with rulemaking required within 90 days.",
-      "takeaway": "The bill would require covered automated-driving and Level 2 driver-assistance manufacturers and operators to submit monthly vehicle-mileage, injury-crash, and unplanned-stoppage reports, alongside existing crash reporting. NHTSA would publish machine-readable data beginning 120 days after enactment, with rulemaking required within 90 days.",
+      "summary": "This introduced bill, not enacted law, would direct the head of the National Highway Traffic Safety Administration to issue rules within 90 days requiring manufacturers and operators already covered by its 2025 incident-reporting order to file monthly reports on miles driven, injury-causing collisions, and \"unplanned stoppage\" events involving automated or Level 2 driver-assistance vehicles. The agency would publish the data online within 120 days and could not weaken the rules for 10 years.",
+      "takeaway": "This introduced bill, not enacted law, would direct the head of the National Highway Traffic Safety Administration to issue rules within 90 days requiring manufacturers and operators already covered by its 2025 incident-reporting order to file monthly reports on miles driven, injury-causing collisions, and \"unplanned stoppage\" events involving automated or Level 2 driver-assistance vehicles. The agency would publish the data online within 120 days and could not weaken the rules for 10 years.",
       "status": "introduced",
       "measure_type": "bill",
       "last_action_date": "2026-01-29",
@@ -48,20 +53,22 @@
       "source_url": "https://www.congress.gov/bill/119th-congress/senate-bill/3742",
       "repository_url": "https://www.govinfo.gov/app/details/BILLS-119s3742is",
       "reviewed_at": "2026-09-23",
-      "summary_reviewed_at": "2026-10-14",
-      "summary_method": "official_congressional_bill_text_analysis",
-      "summary_quality": "manual_primary_source_verified",
+      "summary_reviewed_at": "2026-10-17",
+      "summary_method": "ai_verified_primary_source",
+      "summary_quality": "verified",
       "editorial_status": "verified",
       "editorial_source_url": "https://www.govinfo.gov/content/pkg/BILLS-119s3742is/html/BILLS-119s3742is.htm",
-      "editorial_source_type": "official_govinfo_introduced_bill"
+      "editorial_source_type": "official_html",
+      "editorial_source_hash": "ff14a84ce5e12a01cec19b6793377852f59ae69358ebe46cd1001c01ca4eaf00",
+      "editorial_model": "claude-sonnet-5-5"
     },
     {
       "id": "us-hr10033-119t",
       "jurisdiction": "US",
       "number": "H.R. 10033",
       "title": "AV Emergency Response Coordination Act",
-      "summary": "The bill would require autonomous-vehicle operators and manufacturers to provide standardized emergency-response guides and rescue sheets, maintain a 24-hour responder hotline answering within 30 seconds, and comply with government geofence notices within two minutes. It would direct NHTSA to establish national responder-coordination standards.",
-      "takeaway": "The bill would require autonomous-vehicle operators and manufacturers to provide standardized emergency-response guides and rescue sheets, maintain a 24-hour responder hotline answering within 30 seconds, and comply with government geofence notices within two minutes. It would direct NHTSA to establish national responder-coordination standards.",
+      "summary": "This introduced bill would require operators and makers of vehicles with automated driving systems to maintain an emergency hotline, available at all times and answered within 30 seconds, beginning 90 days after enactment. Under proposed section 2(f), the hotline would let emergency responders coordinate with the company and its remote human personnel during emergencies.",
+      "takeaway": "This introduced bill would require operators and makers of vehicles with automated driving systems to maintain an emergency hotline, available at all times and answered within 30 seconds, beginning 90 days after enactment. Under proposed section 2(f), the hotline would let emergency responders coordinate with the company and its remote human personnel during emergencies.",
       "status": "introduced",
       "measure_type": "bill",
       "last_action_date": "2026-08-03",
@@ -73,20 +80,22 @@
       "source_url": "https://www.congress.gov/bill/119th-congress/house-bill/10033",
       "repository_url": "https://www.govinfo.gov/app/details/BILLS-119hr10033ih",
       "reviewed_at": "2026-09-23",
-      "summary_reviewed_at": "2026-10-14",
-      "summary_method": "official_congressional_bill_text_analysis",
-      "summary_quality": "manual_primary_source_verified",
+      "summary_reviewed_at": "2026-10-17",
+      "summary_method": "ai_verified_primary_source",
+      "summary_quality": "verified",
       "editorial_status": "verified",
       "editorial_source_url": "https://www.govinfo.gov/content/pkg/BILLS-119hr10033ih/html/BILLS-119hr10033ih.htm",
-      "editorial_source_type": "official_govinfo_introduced_bill"
+      "editorial_source_type": "official_html",
+      "editorial_source_hash": "633cda2db7583707fc32dc535c2ac1213f6ed3aa33df56fb3a8c6ce142d953d2",
+      "editorial_model": "claude-sonnet-5-5"
     },
     {
       "id": "us-s1798-119t",
       "jurisdiction": "US",
       "number": "S. 1798",
       "title": "Autonomous Vehicle Acceleration Act of 2025",
-      "summary": "The bill would direct the Transportation Secretary to address federal vehicle standards designed around human drivers within one year, including exemptions and reinterpretations for Level 4 and 5 vehicle designs. It would also require a national commercial-deployment roadmap, supplemental technology assessment, and congressional progress reports.",
-      "takeaway": "The bill would direct the Transportation Secretary to address federal vehicle standards designed around human drivers within one year, including exemptions and reinterpretations for Level 4 and 5 vehicle designs. It would also require a national commercial-deployment roadmap, supplemental technology assessment, and congressional progress reports.",
+      "summary": "Section 4 would require the Secretary of Transportation, acting through the National Highway Traffic Safety Administration, to address within one year of enactment the certification barriers identified in a 2016 Volpe Center report, including presumptions of a human driver. The Secretary could update, interpret, or exempt federal motor vehicle safety standards for Level 4 and Level 5 autonomous vehicles, and would report to Congress 180 days after that deadline.",
+      "takeaway": "Section 4 would require the Secretary of Transportation, acting through the National Highway Traffic Safety Administration, to address within one year of enactment the certification barriers identified in a 2016 Volpe Center report, including presumptions of a human driver. The Secretary could update, interpret, or exempt federal motor vehicle safety standards for Level 4 and Level 5 autonomous vehicles, and would report to Congress 180 days after that deadline.",
       "status": "introduced",
       "measure_type": "bill",
       "last_action_date": "2025-05-15",
@@ -98,20 +107,22 @@
       "source_url": "https://www.congress.gov/bill/119th-congress/senate-bill/1798",
       "repository_url": "https://www.govinfo.gov/app/details/BILLS-119s1798is",
       "reviewed_at": "2026-09-23",
-      "summary_reviewed_at": "2026-10-14",
-      "summary_method": "official_congressional_bill_text_analysis",
-      "summary_quality": "manual_primary_source_verified",
+      "summary_reviewed_at": "2026-10-17",
+      "summary_method": "ai_verified_primary_source",
+      "summary_quality": "verified",
       "editorial_status": "verified",
       "editorial_source_url": "https://www.govinfo.gov/content/pkg/BILLS-119s1798is/html/BILLS-119s1798is.htm",
-      "editorial_source_type": "official_govinfo_introduced_bill"
+      "editorial_source_type": "official_html",
+      "editorial_source_hash": "594419856ee127ea763d64b84976ef4c83ce16fbe16a956a9e33b2dc6dc33fe3",
+      "editorial_model": "claude-sonnet-5-5"
     },
     {
       "id": "us-hr4661-119t",
       "jurisdiction": "US",
       "number": "H.R. 4661",
       "title": "AMERICA DRIVES Act",
-      "summary": "The bill would authorize Level 4 and 5 commercial vehicles to operate in interstate commerce without onboard or remote human drivers, overriding state human-occupant requirements. It would direct federal regulators by September 2027 to revise driver-centered trucking rules and exclude automated-driving equipment from vehicle-width measurements.",
-      "takeaway": "The bill would authorize Level 4 and 5 commercial vehicles to operate in interstate commerce without onboard or remote human drivers, overriding state human-occupant requirements. It would direct federal regulators by September 2027 to revise driver-centered trucking rules and exclude automated-driving equipment from vehicle-width measurements.",
+      "summary": "This introduced bill would add a new section to federal transportation law stating that commercial trucks with Level 4 or Level 5 automated driving systems (ADS, self-driving technology) could operate in interstate commerce with no human driver on board and no remote human driver. It would direct the Secretary of Transportation to issue implementing regulations. It would also not require any vehicle to have ADS.",
+      "takeaway": "This introduced bill would add a new section to federal transportation law stating that commercial trucks with Level 4 or Level 5 automated driving systems (ADS, self-driving technology) could operate in interstate commerce with no human driver on board and no remote human driver. It would direct the Secretary of Transportation to issue implementing regulations. It would also not require any vehicle to have ADS.",
       "status": "introduced",
       "measure_type": "bill",
       "last_action_date": "2025-07-23",
@@ -123,20 +134,22 @@
       "source_url": "https://www.congress.gov/bill/119th-congress/house-bill/4661",
       "repository_url": "https://www.govinfo.gov/app/details/BILLS-119hr4661ih",
       "reviewed_at": "2026-09-23",
-      "summary_reviewed_at": "2026-10-14",
-      "summary_method": "official_congressional_bill_text_analysis",
-      "summary_quality": "manual_primary_source_verified",
+      "summary_reviewed_at": "2026-10-17",
+      "summary_method": "ai_verified_primary_source",
+      "summary_quality": "verified",
       "editorial_status": "verified",
       "editorial_source_url": "https://www.govinfo.gov/content/pkg/BILLS-119hr4661ih/html/BILLS-119hr4661ih.htm",
-      "editorial_source_type": "official_govinfo_introduced_bill"
+      "editorial_source_type": "official_html",
+      "editorial_source_hash": "312c6bc61f11b5f6b2e7cfec26057de9842ed542a7c9f97c36b68f1c133d65a8",
+      "editorial_model": "claude-sonnet-5-5"
     },
     {
       "id": "us-hr8692-119t",
       "jurisdiction": "US",
       "number": "H.R. 8692",
       "title": "Shared Autonomous Mobility Act of 2026",
-      "summary": "The bill would create a competitive federal grant program to deploy autonomous shared-mobility buses, allowing spending on vehicles and driving software. It proposes $60 million for fiscal 2027 and $40 million for 2028, reserves at least 15% for rural projects, and requires a dedicated autonomous-bus testing facility.",
-      "takeaway": "The bill would create a competitive federal grant program to deploy autonomous shared-mobility buses, allowing spending on vehicles and driving software. It proposes $60 million for fiscal 2027 and $40 million for 2028, reserves at least 15% for rural projects, and requires a dedicated autonomous-bus testing facility.",
+      "summary": "This introduced bill would require the Secretary of Transportation to create, within 90 days of enactment, a competitive grant program for deploying new automated-driving buses, with at least 15 percent of funds reserved for rural projects, an 80 percent federal cost share cap, and $100 million authorized across fiscal years 2027–2028. It would also direct a dedicated test facility by January 1, 2027.",
+      "takeaway": "This introduced bill would require the Secretary of Transportation to create, within 90 days of enactment, a competitive grant program for deploying new automated-driving buses, with at least 15 percent of funds reserved for rural projects, an 80 percent federal cost share cap, and $100 million authorized across fiscal years 2027–2028. It would also direct a dedicated test facility by January 1, 2027.",
       "status": "introduced",
       "measure_type": "bill",
       "last_action_date": "2026-05-07",
@@ -148,12 +161,14 @@
       "source_url": "https://www.congress.gov/bill/119th-congress/house-bill/8692",
       "repository_url": "https://www.govinfo.gov/app/details/BILLS-119hr8692ih",
       "reviewed_at": "2026-09-23",
-      "summary_reviewed_at": "2026-10-14",
-      "summary_method": "official_congressional_bill_text_analysis",
-      "summary_quality": "manual_primary_source_verified",
+      "summary_reviewed_at": "2026-10-17",
+      "summary_method": "ai_verified_primary_source",
+      "summary_quality": "verified",
       "editorial_status": "verified",
       "editorial_source_url": "https://www.govinfo.gov/content/pkg/BILLS-119hr8692ih/html/BILLS-119hr8692ih.htm",
-      "editorial_source_type": "official_govinfo_introduced_bill"
+      "editorial_source_type": "official_html",
+      "editorial_source_hash": "ed4e29896ba939720ba1e9c2dbf4f7e37c243b924cb2d3798a3b09a6c3328406",
+      "editorial_model": "claude-sonnet-5-5"
     }
   ],
   "state_bills": [
@@ -186,7 +201,12 @@
       "openstates_updated_at": "2026-07-09T22:32:17.309868+00:00",
       "editorial_source_url": "https://alison.legislature.state.al.us/files/pdf/SearchableInstruments/2026RS/MSN861H-1.pdf",
       "editorial_source_type": "official_legislative_committee_substitute",
-      "editorial_status": "verified"
+      "editorial_status": "verified",
+      "editorial_recheck": {
+        "result": "missing",
+        "at": "2026-10-17",
+        "reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable"
+      }
     },
     {
       "id": "az-sb-1417-57th-2nd-regular",
@@ -214,7 +234,12 @@
       "openstates_updated_at": "2026-03-18T01:18:38.574357+00:00",
       "editorial_source_url": "https://www.azleg.gov/legtext/57leg/2R/bills/SB1417P.htm",
       "editorial_source_type": "official_bill_text",
-      "editorial_status": "verified"
+      "editorial_status": "verified",
+      "editorial_recheck": {
+        "result": "missing",
+        "at": "2026-10-17",
+        "reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable"
+      }
     },
     {
       "id": "ca-ab-2193-20252026",
@@ -393,6 +418,66 @@
       "openstates_updated_at": "2026-08-03T18:12:45.474864+00:00"
     },
     {
+      "editorial_model": "claude-sonnet-5-5",
+      "editorial_source_hash": "1ab346ac6ad9d30b760b8c58d979cfa5aebbe8175d09680cfaef04154e3aeba6",
+      "editorial_source_type": "official_html",
+      "editorial_source_url": "https://leg.colorado.gov/bills/HB25-1122",
+      "editorial_status": "verified",
+      "hearings": [],
+      "id": "co-hb25-1122-2025-regular-session",
+      "jurisdiction": "CO",
+      "last_action": "Governor Vetoed",
+      "last_action_date": "2025-05-29",
+      "measure_type": "bill",
+      "number": "HB25-1122",
+      "progress_stage": "executive",
+      "repository_url": "https://leg.colorado.gov/bills/HB25-1122",
+      "session": "2025 Regular Session",
+      "source_feed": "official_sweep",
+      "source_url": "https://leg.colorado.gov/bills/HB25-1122",
+      "stage_dates": {
+        "executive": "2025-05-29"
+      },
+      "status": "vetoed",
+      "summary": "This vetoed proposal would have barred use of an automated driving system to drive a commercial motor vehicle unless a commercial driver's license holder is aboard, monitors the driving, and intervenes to avoid illegal or unsafe operation, sitting in the driver's seat if hazardous materials are carried. Fines would be $1,000 first offense, $2,000 second, doubling thereafter. Light-duty vehicles would be excluded.",
+      "summary_method": "ai_verified_primary_source",
+      "summary_quality": "verified",
+      "summary_reviewed_at": "2026-10-17",
+      "takeaway": "This vetoed proposal would have barred use of an automated driving system to drive a commercial motor vehicle unless a commercial driver's license holder is aboard, monitors the driving, and intervenes to avoid illegal or unsafe operation, sitting in the driver's seat if hazardous materials are carried. Fines would be $1,000 first offense, $2,000 second, doubling thereafter. Light-duty vehicles would be excluded.",
+      "title": "Automated Driving System Commercial Motor Vehicle",
+      "reviewed_at": "2026-10-17"
+    },
+    {
+      "editorial_model": "claude-sonnet-5-5",
+      "editorial_source_hash": "03517a77c964fa95aae8703dfe7606e758cdcbe4e07925379b2b3fdb338e360f",
+      "editorial_source_type": "official_html",
+      "editorial_source_url": "https://leg.colorado.gov/bills/HB26-1286",
+      "editorial_status": "verified",
+      "hearings": [],
+      "id": "co-hb26-1286-2026-regular-session",
+      "jurisdiction": "CO",
+      "last_action": "Governor Vetoed",
+      "last_action_date": "2026-05-28",
+      "measure_type": "bill",
+      "number": "HB26-1286",
+      "progress_stage": "executive",
+      "repository_url": "https://leg.colorado.gov/bills/HB26-1286",
+      "session": "2026 Regular Session",
+      "source_feed": "official_sweep",
+      "source_url": "https://leg.colorado.gov/bills/HB26-1286",
+      "stage_dates": {
+        "executive": "2026-05-28"
+      },
+      "status": "vetoed",
+      "summary": "This bill would prohibit driving a commercial motor vehicle with an automated driving system unless a person holding a commercial driver's license is aboard, monitoring and intervening if needed; that person would have to sit in the driver's seat when hazardous materials are carried. Penalties would start at $1,000, and the prohibition would be repealed September 1, 2031. The state patrol chief would report by November 1, 2030.",
+      "summary_method": "ai_verified_primary_source",
+      "summary_quality": "verified",
+      "summary_reviewed_at": "2026-10-17",
+      "takeaway": "This bill would prohibit driving a commercial motor vehicle with an automated driving system unless a person holding a commercial driver's license is aboard, monitoring and intervening if needed; that person would have to sit in the driver's seat when hazardous materials are carried. Penalties would start at $1,000, and the prohibition would be repealed September 1, 2031. The state patrol chief would report by November 1, 2030.",
+      "title": "Automated Driving System Commercial Vehicles",
+      "reviewed_at": "2026-10-17"
+    },
+    {
       "id": "dc-b26-0684-26",
       "jurisdiction": "DC",
       "number": "B26-0684",
@@ -422,7 +507,7 @@
       ],
       "source_url": "https://lims.dccouncil.gov/Legislation/B26-0684",
       "repository_url": "https://lims.dccouncil.gov/Legislation/B26-0684",
-      "reviewed_at": "2026-10-14",
+      "reviewed_at": "2026-10-17",
       "source_feed": "manual_official"
     },
     {
@@ -481,6 +566,40 @@
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/0d43893c-264f-4691-b034-28e2756b3cd3",
       "openstates_updated_at": "2026-07-15T06:43:52.768339+00:00"
+    },
+    {
+      "id": "ia-hf2673-91",
+      "jurisdiction": "IA",
+      "number": "HF 2673",
+      "title": "Driverless-capable vehicles transporting hazardous materials",
+      "summary": "Amends Iowa Code 321.515(1) to bar operation of a driverless-capable vehicle carrying hazardous materials without a conventional human driver, as a simple misdemeanor. Renumbered from House study bill HSB 598. House Transportation recommended passage 20-0 on 2/18/2026; placed on the calendar under unfinished business on 3/19/2026 with no later floor action recorded.",
+      "takeaway": "Would bar driverless-capable vehicles from carrying hazardous materials in Iowa without a human driver.",
+      "source_summary": "Official Iowa Legislature bill history and bill text.",
+      "summary_method": "Auto-collected from the official legislature record; no figures taken from news coverage",
+      "summary_quality": "reviewed_substantive",
+      "summary_reviewed_at": "2026-10-15",
+      "status": "engrossed",
+      "measure_type": "bill",
+      "last_action_date": "2026-03-19",
+      "last_action": "Placed on calendar under unfinished business. H.J. 691.",
+      "session": "2025-2026",
+      "progress_stage": "floor",
+      "stage_dates": {
+        "introduced": "2026-02-23",
+        "committee": "2026-02-18",
+        "floor": "2026-03-19"
+      },
+      "hearings": [
+        {
+          "date": "2026-02-16",
+          "description": "House Transportation subcommittee meeting on HSB 598; recommended passage",
+          "source_url": "https://www.legis.iowa.gov/legislation/billTracking/billHistory?billName=HSB598&ga=91"
+        }
+      ],
+      "source_url": "https://www.legis.iowa.gov/legislation/BillBook?ba=HF2673&ga=91",
+      "repository_url": "https://www.legis.iowa.gov/legislation/BillBook?ba=HF2673&ga=91",
+      "reviewed_at": "2026-10-17",
+      "source_feed": "manual_official"
     },
     {
       "id": "ia-hsb-598-2025-2026",
@@ -868,6 +987,37 @@
       "editorial_source_url": "https://apps.legislature.ky.gov/record/26RS/hb223.html",
       "editorial_source_type": "official_legislative_text",
       "editorial_status": "verified"
+    },
+    {
+      "id": "la-sb133-2026rs",
+      "jurisdiction": "LA",
+      "number": "SB 133",
+      "title": "Motor vehicles; oversight of commercial vehicle parking",
+      "summary": "Act 464 amends Louisiana's autonomous commercial motor vehicle provisions (R.S. 32:400.2, 400.3 and 400.7) alongside a highway-shoulder parking change: the state gets sole and exclusive agency jurisdiction over autonomous commercial motor vehicles and automated driving systems, and the written pre-operation certification for driverless trucks and teleoperated trucks is filed with the Department of Public Safety and Corrections, office of state police, rather than DOTD.",
+      "takeaway": "Act 464 shifts the certification filing for driverless and teleoperated commercial trucks to state police and gives the state sole jurisdiction over autonomous commercial vehicles and automated driving systems.",
+      "source_summary": "Official Louisiana Legislature bill page and enrolled Act No. 464 text.",
+      "summary_method": "Auto-collected from the official legislature record; no figures taken from news coverage",
+      "summary_quality": "reviewed_substantive",
+      "summary_reviewed_at": "2026-10-15",
+      "status": "enacted",
+      "measure_type": "bill",
+      "last_action_date": "2026-05-29",
+      "last_action": "Signed by the Governor. Becomes Act No. 464. Effective 8/1/2026.",
+      "session": "2026",
+      "progress_stage": "law",
+      "stage_dates": {
+        "introduced": "2026-03-09",
+        "committee": "2026-03-18",
+        "floor": "2026-03-30",
+        "passed_legislature": "2026-05-19",
+        "executive": "2026-05-21",
+        "law": "2026-05-29"
+      },
+      "hearings": [],
+      "source_url": "https://www.legis.la.gov/legis/BillInfo.aspx?s=26RS&b=SB133&sbi=y",
+      "repository_url": "https://www.legis.la.gov/legis/BillInfo.aspx?s=26RS&b=SB133&sbi=y",
+      "reviewed_at": "2026-10-17",
+      "source_feed": "manual_official"
     },
     {
       "id": "ma-h-1280-194th",
