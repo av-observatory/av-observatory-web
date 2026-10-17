@@ -190,5 +190,203 @@
     ],
     "unreadable": "Found by domain-restricted web search, not full-text search of the legislature site.",
     "attempted": "2026-10-15"
+  },
+  "AR": {
+    "checked": "2026-10-17",
+    "sources_read": [
+      "https://www.arkleg.state.ar.us/Bills/Search",
+      "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1001&ddBienniumSession=2025%2F2025R"
+    ],
+    "bills_found": [],
+    "unreadable": "Site keyword search unusable; scanned current bill-text PDFs for 2025 Regular (HB, SB, HJR, SJR) and 2026 Fiscal sessions; 2026 First Extraordinary Session and other resolutions not text-scanned.",
+    "attempted": "2026-10-17"
+  },
+  "CO": {
+    "checked": "2026-10-17",
+    "sources_read": [
+      "https://leg.colorado.gov/bills/bill-search",
+      "https://leg.colorado.gov/bills/hb26-1286",
+      "https://leg.colorado.gov/bills/hb25-1122"
+    ],
+    "bills_found": [
+      "HB26-1286 (vetoed 2026-05-28)",
+      "HB25-1122 (vetoed 2025, dead)"
+    ],
+    "unreadable": null,
+    "attempted": "2026-10-17"
+  },
+  "DE": {
+    "checked": "2026-10-17",
+    "sources_read": [
+      "https://legis.delaware.gov/BillDetail/141797",
+      "https://legis.delaware.gov/AllLegislation"
+    ],
+    "bills_found": [
+      "SB 46 (on Ready List since 2025-05-14; tracker shows passed - see PR)"
+    ],
+    "unreadable": "Titles screened, no full-text search; SB 46 actions history loaded dynamically and not readable.",
+    "attempted": "2026-10-17"
+  },
+  "MD": {
+    "checked": "2026-10-17",
+    "sources_read": [
+      "https://mgaleg.maryland.gov/mgawebsite/Legislation/Details/HB1295?ys=2026RS",
+      "https://mgaleg.maryland.gov/mgawebsite/Search/FullText?search=autonomous&ys=2026RS"
+    ],
+    "bills_found": [
+      "HB 1295",
+      "SB 909"
+    ],
+    "unreadable": "Official full-text search returned no results; SB 909 page not opened.",
+    "attempted": "2026-10-17"
+  },
+  "MN": {
+    "checked": "2026-10-17",
+    "sources_read": [
+      "https://www.revisor.mn.gov/",
+      "https://www.revisor.mn.gov/bills/94/2026/0/SF/4618/"
+    ],
+    "bills_found": [
+      "HF 3513",
+      "HF 3810",
+      "HF 4112",
+      "HF 4216",
+      "HF 4521",
+      "SF 4010",
+      "SF 4014",
+      "SF 4381",
+      "SF 4618",
+      "SF 4731"
+    ],
+    "unreadable": "Official search forms returned HTTP 500/timeouts; only SF 4618 status page opened.",
+    "attempted": "2026-10-17"
+  },
+  "NE": {
+    "checked": "2026-10-17",
+    "sources_read": [
+      "https://nebraskalegislature.gov/bills/search_by_keyword.php"
+    ],
+    "bills_found": [],
+    "unreadable": null,
+    "attempted": "2026-10-17"
+  },
+  "NM": {
+    "checked": "2026-10-17",
+    "sources_read": [
+      "https://www.nmlegis.gov/Legislation/Legislation_List?SessionYear=26",
+      "https://www.nmlegis.gov/Legislation/Legislation?Chamber=H&LegType=B&LegNo=148&year=25"
+    ],
+    "bills_found": [
+      "HB 148 (2025, died - postponed indefinitely)"
+    ],
+    "unreadable": "Grepped all 688 base bill texts of 2026 regular session; memorials/resolutions and special sessions not scanned.",
+    "attempted": "2026-10-17"
+  },
+  "PA": {
+    "checked": "2026-10-17",
+    "sources_read": [
+      "https://www.palegis.us/legislation/bills/bill-keyword-search?sessYr=2025&sessInd=0&keyword=autonomous&searchType=1",
+      "https://www.palegis.us/legislation/bills/2025/hb1639",
+      "https://www.palegis.us/legislation/bills/2025/sb997"
+    ],
+    "bills_found": [
+      "HB 1639",
+      "HR 563",
+      "SB 997 (Act 10 of 2026; only peripheral AV committee-membership provision)"
+    ],
+    "unreadable": null,
+    "attempted": "2026-10-17"
+  },
+  "SD": {
+    "checked": "2026-10-17",
+    "sources_read": [
+      "https://www.sdlegislature.gov/api/Bills/Session/71",
+      "https://www.sdlegislature.gov/api/Bills/Session/70"
+    ],
+    "bills_found": [],
+    "unreadable": "Official API; titles/keywords only, no full-text search.",
+    "attempted": "2026-10-17"
+  },
+  "UT": {
+    "checked": "2026-10-17",
+    "sources_read": [
+      "https://le.utah.gov/billlist.jsp?session=2026GS",
+      "https://le.utah.gov/data/2026GS/HB0581.json",
+      "https://le.utah.gov/data/2026GS/SB0292.json"
+    ],
+    "bills_found": [
+      "HB 581 (dead per official record - see PR)",
+      "SB 292",
+      "SB 195 (2025, peripheral)"
+    ],
+    "unreadable": "Bill JSON summaries only, no full-text search.",
+    "attempted": "2026-10-17"
+  },
+  "WA": {
+    "checked": "2026-10-17",
+    "sources_read": [
+      "https://app.leg.wa.gov/billsummary?BillNumber=6243&Year=2025",
+      "https://wslwebservices.leg.wa.gov/LegislationService.asmx/GetLegislationByYear"
+    ],
+    "bills_found": [
+      "SB 6243 (no action after referral)",
+      "HB 1984 (retained, no action)",
+      "SB 5042 (retained, no action)"
+    ],
+    "unreadable": "Title-level scan of HB/SB only.",
+    "attempted": "2026-10-17"
+  },
+  "WY": {
+    "checked": "2026-10-17",
+    "sources_read": [
+      "https://wyoleg.gov/LsoService/api/BillInformation/2025",
+      "https://wyoleg.gov/LsoService/api/BillInformation/2026"
+    ],
+    "bills_found": [],
+    "unreadable": null,
+    "attempted": "2026-10-17"
+  },
+  "HI": {
+    "checked": null,
+    "sources_read": [
+      "https://data.capitol.hawaii.gov/sessions/session2026/bills/HB1797_.HTM"
+    ],
+    "bills_found": [
+      "HB 1797"
+    ],
+    "unreadable": "www.capitol.hawaii.gov bill-status pages returned 403; only bill text and hearing notices on data.capitol.hawaii.gov read, so status unverified.",
+    "attempted": "2026-10-17"
+  },
+  "IL": {
+    "checked": null,
+    "sources_read": [],
+    "bills_found": [
+      "HB 2593 (unverified candidate)"
+    ],
+    "unreadable": "ilga.gov returned HTTP 503 and TLS errors; no official page opened (search snippets only).",
+    "attempted": "2026-10-17"
+  },
+  "KY": {
+    "checked": null,
+    "sources_read": [
+      "https://legislature.ky.gov/"
+    ],
+    "bills_found": [],
+    "unreadable": "apps.legislature.ky.gov bill pages unreachable (DNS/403); homepage only.",
+    "attempted": "2026-10-17"
+  },
+  "MT": {
+    "checked": null,
+    "sources_read": [],
+    "bills_found": [],
+    "unreadable": "leg.mt.gov and bills.legmt.gov refused by egress proxy.",
+    "attempted": "2026-10-17"
+  },
+  "OH": {
+    "checked": null,
+    "sources_read": [],
+    "bills_found": [],
+    "unreadable": "legislature.ohio.gov returned 503 / TLS verification failure; no official page opened.",
+    "attempted": "2026-10-17"
   }
 }
