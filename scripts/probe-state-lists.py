@@ -124,43 +124,23 @@ def body_text(html):
     return " ".join(re.sub(r"<[^>]+>", " ", html).split())
 
 def ny_probe():
-    import http.cookiejar, urllib.request
     out = []
-    jar = http.cookiejar.CookieJar()
-    op = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(jar))
-    op.addheaders = list(BROWSER.items())
-    def get(u):
+    def check(bn, term, extra="&Summary=Y&Actions=Y"):
+        url = f"https://nyassembly.gov/leg/?default_fld=&leg_video=&bn={bn}&term={term}{extra}"
         try:
-            return op.open(u, timeout=40).read().decode("utf-8", "replace")
+            html = http(url, headers=BROWSER, tries=1, timeout=40).decode("utf-8", "replace")
         except Exception as exc:
-            return f"ERR {type(exc).__name__} {str(exc)[:60]}"
-    root = get("https://nyassembly.gov/")
-    out.append(f"NY-root {len(root)}B cookies={[c.name for c in jar]}")
-    page1 = get("https://nyassembly.gov/leg/?default_fld=&leg_video=&bn=A00001&term=2025&Summary=Y&Actions=Y&Text=Y&Memo=Y")
-    out.append(f"NY-A1 {len(page1)}B text: {body_text(page1)[:1500]}")
-    page2 = get("https://nyassembly.gov/leg/?default_fld=&leg_video=&bn=A00001&term=2025")
-    out.append(f"NY-A1-min {len(page2)}B has-sponsor={'ponsor' in page2}")
-    sen = get("https://www.nysenate.gov/legislation/bills/2025/S1")
-    out.append(f"NY-sen-bill {len(sen)}B text: {body_text(sen)[:300]}")
-    lst = get("https://www.nysenate.gov/search/legislation?searched=true&type=f_bill&bill_session_year=2025&page=0")
-    out.append(f"NY-sen-list {len(lst)}B text: {body_text(lst)[:300]}")
-    return "\n".join(out)
-
-def ny_misc():
-    out = []
-    for label, url, hdr in (
-        ("NY-openleg-docs", "https://legislation.nysenate.gov/static/docs/html/index.html", BROWSER),
-        ("NY-openleg-bulk", "https://legislation.nysenate.gov/api/3/bills/2025?key=", BROWSER),
-        ("NY-github", "https://api.github.com/repos/nysenate/OpenLegislation/contents/", {"User-Agent": "x"}),
-    ):
-        try:
-            body = http(url, headers=hdr, tries=1, timeout=40).decode("utf-8", "replace")
-            out.append(f"{label} OK {len(body)}B: {body_text(body)[:500]}")
-        except Exception as exc:
-            out.append(f"{label} ERR {type(exc).__name__} {str(exc)[:70]}")
+            return f"{bn}/{term}: ERR {str(exc)[:40]}"
+        txt = body_text(html)
+        nf = "was not found" in txt
+        i = txt.find("Bill No.")
+        return f"{bn}/{term}: {len(html)}B notfound={nf} :: " + ("" if nf else txt[i:i + 420])
+    for bn, term in (("A00100", "2025"), ("A01234", "2025"), ("A05000", "2025"), ("S00100", "2025"), ("S01234", "2025"), ("A01234", "2023"),
+                     ("A1234", "2023"), ("A1234", "2025"), ("S1234", "2025"), ("A00001", "2025"), ("A00001", "2023")):
+        out.append(check(bn, term))
     return "\n".join(out)
 
 with ThreadPoolExecutor(max_workers=12) as pool:
-    futs = [pool.submit(f) for f in (ny_probe, ny_misc)]
+    futs = [pool.submit(f) for f in (ny_probe,)]
     for f in futs:
         print(f.result(), flush=True)
