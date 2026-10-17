@@ -1047,7 +1047,8 @@ def ny(session: str):
             return None
         t = unescape(text).replace("\xa0", " ")
         m = re.search(r"MLTSPNSR\s*(.{0,400}?)(?:\s+(?:Current Committee|Law Section|Versions|Actions|Votes|Memo)\b|$)", t)
-        return {"session": session, "number": f"{letter}{n}", "title": (m.group(1).strip() if m else "")[:300], "url": url}
+        title = re.split(r"\bGo to top\b", m.group(1))[0].strip() if m else ""
+        return {"session": session, "number": f"{letter}{n}", "title": title[:300] if len(title) >= 12 else "", "url": url}
 
     time.sleep(0)
     with ThreadPoolExecutor(max_workers=12) as pool:
