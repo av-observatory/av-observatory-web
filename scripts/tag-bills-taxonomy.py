@@ -34,23 +34,45 @@ def system_prompt() -> str:
             "), mechanism (" + "|".join(MECHANISMS) + "), confidence (high|medium|low), and evidence: ONE sentence copied verbatim from the bill text below that supports the direction. "
             "Judge direction from what THIS bill would do (the 'This bill would...' parts), not from existing law it summarizes. "
             "Direction describes the bill's effect, never a viewpoint. Use 'mixed' when it moves both ways, 'neutral' for procedural or no real effect on the sub-topic, 'unclear' when the text does not say. "
+            "Rules: (a) a rule that only assigns responsibility, procedure, enforcement mechanics or liability, without limiting or enabling the activity itself, is neutral; "
+            "(b) a bill that only requires a study, assessment, report or recommendations is neutral unless it changes a requirement now; "
+            "(c) a voluntary program or optional authority adds an option, not an obligation, so it is neutral unless it expressly lifts a ban or limit; "
+            "(d) if the digest is thin or purely procedural, choose unclear or neutral, never guess a direction; "
+            "(e) give at most 3 tags, and include a tag beyond the first only if your confidence in it is medium or high; omit low-confidence tags. "
             "Also give summary: one plain sentence, 25 words or fewer, saying what the bill does. "
             "Return JSON {summary:string, tags:[{subtopic, direction, funding, mechanism, confidence, evidence}]}. Return {tags:[]} if no sub-topic fits.")
 
 
+PRICE = {"claude-sonnet-5-5": (2.00, 10.00, 0.20), "claude-haiku-5-5": (0.10, 0.50, 0.01)}  # $ per million tokens: input, output, cache read
+USAGE = {"input": 0, "output": 0, "cache_read": 0, "cache_write": 0, "calls": 0}
+
+
 def call(system: str, user: str) -> dict:
-    body = json.dumps({"model": MODEL, "max_tokens": 2000, "system": system + "\n\nRespond with a single JSON object and nothing else.",
+    body = json.dumps({"model": MODEL, "max_tokens": 4000,
+                       "system": [{"type": "text", "text": system + "\n\nRespond with a single JSON object and nothing else.", "cache_control": {"type": "ephemeral"}}],
                        "messages": [{"role": "user", "content": user}]}).encode()
     req = Request("https://api.anthropic.com/v1/messages", body, {"Content-Type": "application/json", "x-api-key": KEY, "anthropic-version": "2023-06-01"})
     for attempt in range(4):
         try:
-            with urlopen(req, timeout=120) as r:
-                text = "".join(c.get("text", "") for c in json.load(r)["content"] if c.get("type") == "text")
+            with urlopen(req, timeout=180) as r:
+                data = json.load(r)
+            u = data.get("usage", {})
+            USAGE["calls"] += 1
+            USAGE["input"] += u.get("input_tokens", 0)
+            USAGE["output"] += u.get("output_tokens", 0)
+            USAGE["cache_read"] += u.get("cache_read_input_tokens", 0)
+            USAGE["cache_write"] += u.get("cache_creation_input_tokens", 0)
+            text = "".join(c.get("text", "") for c in data["content"] if c.get("type") == "text")
             return json.loads(text[text.index("{"):text.rindex("}") + 1])
         except Exception:
             if attempt == 3:
                 raise
             time.sleep(2 ** (attempt + 1))
+
+
+def cost_estimate() -> float:
+    pin, pout, pread = PRICE.get(MODEL, (2.0, 10.0, 0.2))
+    return (USAGE["input"] * pin + USAGE["cache_write"] * pin * 1.25 + USAGE["cache_read"] * pread + USAGE["output"] * pout) / 1e6
 
 
 def flat(s: str) -> str:
@@ -77,7 +99,10 @@ def tag_bill(system: str, key: str, bill: dict) -> dict:
                      "mechanism": t.get("mechanism") if t.get("mechanism") in MECHANISMS else "other",
                      "confidence": t.get("confidence") if t.get("confidence") in ("high", "medium", "low") else "low",
                      "evidence": evidence[:400] if supported else "", "evidence_verified": supported})
-    return {"summary": str(reply.get("summary") or "")[:300], "has_digest": bool(bill.get("digest")), "tags": tags}
+    rank = {"high": 0, "medium": 1, "low": 2}
+    tags = sorted(tags, key=lambda t: rank[t["confidence"]])
+    kept = [t for i, t in enumerate(tags) if t["confidence"] != "low"][:3]
+    return {"summary": str(reply.get("summary") or "")[:300], "has_digest": bool(bill.get("digest")), "tags": kept, "dropped_low_confidence": len(tags) - len(kept)}
 
 
 def pick_sample(bills: dict, n: int, seed: int) -> list:
@@ -118,6 +143,10 @@ def main() -> int:
     out.write_text(json.dumps({"model": MODEL, "taxonomy": TAX["version"], "bills": results}, indent=1, sort_keys=True, ensure_ascii=False) + "\n")
     tags = [t for r in results.values() for t in r.get("tags", [])]
     verified = sum(t["evidence_verified"] for t in tags)
+    n = max(1, len(results))
+    print(f"Usage ({MODEL}): {USAGE['calls']} calls; input {USAGE['input']:,} + cache write {USAGE['cache_write']:,} + cache read {USAGE['cache_read']:,}; "
+          f"output {USAGE['output']:,} (includes any hidden thinking); about ${cost_estimate():.2f} for {len(results)} bills "
+          f"= ${cost_estimate() / n:.4f} per bill, so roughly ${cost_estimate() / n * 5041:.0f} for all 5,041 California bills")
     print(f"Tagged {len(results)} bills, {len(tags)} tags, {verified} with a verified quote, {sum('error' in r for r in results.values())} errors")
     return 0
 
