@@ -117,5 +117,75 @@
   "evidence": "",
   "funding": "unclear",
   "hash": "543b4c25b891"
+ },
+ "il-hb-1839-104th": {
+  "checked": "2026-10-17",
+  "direction": "unclear",
+  "evidence": "",
+  "funding": "unclear",
+  "hash": "7ef04931c9b6"
+ },
+ "il-hb-2974-104th": {
+  "checked": "2026-10-17",
+  "direction": "unclear",
+  "evidence": "",
+  "funding": "unclear",
+  "hash": "b896d730a523"
+ },
+ "il-hb-4663-104th": {
+  "checked": "2026-10-17",
+  "direction": "unclear",
+  "evidence": "",
+  "funding": "unclear",
+  "hash": "73fd034cc27b"
+ },
+ "il-hb-4789-104th": {
+  "checked": "2026-10-17",
+  "direction": "enables",
+  "evidence": "Creates the Automated Driving Systems Development Act. Provides that the operation of highly automated vehicles participating in an automated vehicle pilot project is subject to all applicable federal and State laws.",
+  "funding": "none",
+  "hash": "e1b4315c05f5"
+ },
+ "il-hb-5103-104th": {
+  "checked": "2026-10-17",
+  "direction": "enables",
+  "evidence": "Creates the Automated Driving Systems Development Act. Provides that the operation of highly automated vehicles participating in an automated vehicle pilot project is subject to all applicable federal and State laws.",
+  "funding": "none",
+  "hash": "5267f138ea36"
+ },
+ "il-hb-5220-104th": {
+  "checked": "2026-10-17",
+  "direction": "unclear",
+  "evidence": "",
+  "funding": "unclear",
+  "hash": "2712036fa17a"
+ },
+ "il-hb3044-104": {
+  "checked": "2026-10-17",
+  "direction": "restricts",
+  "evidence": "Prohibits the sale or operation of autonomous vehicles classified as having Level 3, 4, or 5 Driving Automation.",
+  "funding": "none",
+  "hash": "8e9fb5a6f1b5"
+ },
+ "il-sb-3308-104th": {
+  "checked": "2026-10-17",
+  "direction": "enables",
+  "evidence": "Creates the Automated Driving Systems Development Act. Provides that the operation of highly automated vehicles participating in an automated vehicle pilot project is subject to all applicable federal and State laws.",
+  "funding": "none",
+  "hash": "903de679daf2"
+ },
+ "il-sb-3392-104th": {
+  "checked": "2026-10-17",
+  "direction": "unclear",
+  "evidence": "",
+  "funding": "unclear",
+  "hash": "ec850bbacc90"
+ },
+ "ky-hb-223-2026rs": {
+  "checked": "2026-10-17",
+  "direction": "restricts",
+  "evidence": "Amend KRS 186.763 to prohibit a school district from operating a fully autonomous vehicle as a school bus or for transporting students; prohibit the operation of a fully autonomous vehicle if that vehicle requires an operator with a commercial driver's license; amend KRS 281.764 to conform.",
+  "funding": "none",
+  "hash": "8db83be4f700"
  }
 }
