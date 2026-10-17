@@ -28,7 +28,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from bill_enumerators import ENUMERATORS, REV  # noqa: E402
-from scan_fetch import scan_fetch  # noqa: E402
+from scan_fetch import is_bill_page, scan_fetch  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
 LEDGER_DIR = ROOT / "data-state/bill_ledger"
@@ -168,6 +168,8 @@ def classify(ledgers: dict, scan_budget: int, scan_minutes: float) -> dict:
                 row = ledgers[code]["bills"][key]
                 row["scanned"] = TODAY
                 stats[code]["scan_seconds"] += secs
+                if text and not is_bill_page(text, row.get("number", ""), row.get("title", "")):
+                    text, kind = "", f"{kind}/not_bill_page"
                 if not text:
                     row["scan_failed"], row["scan_error"] = True, kind
                     continue
