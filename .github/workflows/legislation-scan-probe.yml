@@ -14,6 +14,9 @@ on:
       titleonly2:
         description: "Round 2: field names and text URLs for the title-only states"
         default: "false"
+      titleonly3:
+        description: "Round 3: NH/WY text URLs, MT subjects, AL fields"
+        default: "false"
 permissions:
   contents: read
 jobs:
@@ -30,3 +33,5 @@ jobs:
         run: python3 scripts/probe-pa.py
       - if: ${{ inputs.titleonly2 == 'true' }}
         run: python3 scripts/probe-titleonly2.py
+      - if: ${{ inputs.titleonly3 == 'true' }}
+        run: python3 scripts/probe-titleonly3.py
