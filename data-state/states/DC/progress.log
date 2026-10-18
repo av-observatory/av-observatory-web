@@ -8,3 +8,20 @@
 [    35s] 300/1677 details
 [    40s] 400/1677 details
 [    45s] 500/1677 details
+[     0s] first page cat 1 size 100: True
+[     6s] search category 1: total=856, numbers so far 856
+[     6s] first page cat 6 size 100: True
+[    11s] search category 6: total=1051, numbers so far 1907
+[    11s] search listed 1677 B/PR numbers
+[    16s] 100/1677 details
+[    22s] 200/1677 details
+[    27s] 300/1677 details
+[    32s] 400/1677 details
+[    36s] 500/1677 details
+[    41s] 600/1677 details
+[    45s] 700/1677 details
+[    75s] retry 0 /api/Search/GetLegislationDetails/B26-0708: HTTP 429 rc=0  (30s)
+[    75s] retry 0 /api/Search/GetLegislationDetails/B26-0710: HTTP 429 rc=0  (30s)
+[    75s] retry 0 /api/Search/GetLegislationDetails/B26-0709: HTTP 429 rc=0  (30s)
+[    75s] retry 0 /api/Search/GetLegislationDetails/B26-0711: HTTP 429 rc=0  (30s)
+[    75s] retry 0 /api/Search/GetLegislationDetails/B26-0712: HTTP 429 rc=0  (30s)
