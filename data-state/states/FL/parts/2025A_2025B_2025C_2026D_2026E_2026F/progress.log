@@ -64,3 +64,9 @@
 05:55:24   list 2026E type=7,19 page 1 (0 so far)
 05:55:27   list 2026E type=8,17 page 1 (0 so far)
 05:55:29 2026E: 22 listed (0 from resolution/memorial/JR type filters); types {'SB': 10, 'HB': 12}
+05:58:53   list 2026F type=None page 1 (0 so far)
+05:58:56   list 2026F type=5,18 page 1 (0 so far)
+05:58:58   list 2026F type=6,16 page 1 (0 so far)
+05:59:00   list 2026F type=7,19 page 1 (0 so far)
+05:59:03   list 2026F type=8,17 page 1 (0 so far)
+05:59:05 2026F: 5 listed (0 from resolution/memorial/JR type filters); types {'HJR': 2, 'SJR': 1, 'HB': 1, 'SB': 1}
