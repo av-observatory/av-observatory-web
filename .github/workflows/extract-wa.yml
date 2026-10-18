@@ -1,0 +1,41 @@
+name: Extract Washington legislature data (bills, sponsors, votes, summaries)
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "probe or extract"
+        default: "extract"
+      limit:
+        description: "max bills (0 = all)"
+        default: "0"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: extract-wa-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Probe endpoints
+        if: ${{ inputs.mode == 'probe' }}
+        run: |
+          B=https://wslwebservices.leg.wa.gov
+          p() { echo "=== $1"; curl -sS -L -m 90 -A "StateTrack-extract/1.0" "$1" | head -c ${2:-2500}; echo; }
+          p "$B/LegislationService.asmx/GetLegislationByYear?year=2025" 3000
+          p "$B/LegislationService.asmx/GetLegislation?biennium=2025-26&billNumber=1210" 4000
+          p "$B/LegislationService.asmx/GetLegislativeStatus?biennium=2025-26&billNumber=1210" 3000
+          p "$B/LegislationService.asmx/GetCurrentStatus?biennium=2025-26&billNumber=1210" 2500
+          p "$B/LegislationService.asmx/GetLegislativeStatusChangesByBillNumber?biennium=2025-26&billNumber=1210&beginDate=2025-01-01&endDate=2026-12-31" 3000
+          p "$B/LegislationService.asmx/GetRollCalls?biennium=2025-26&billNumber=1210" 5000
+          p "$B/LegislationService.asmx/GetSponsors?biennium=2025-26&billId=HB%201210" 2000
+          p "$B/LegislationService.asmx/GetHearings?biennium=2025-26&billNumber=1210" 1000
+          p "$B/SponsorService.asmx/GetSponsors?biennium=2025-26" 2500
+          p "$B/LegislationService.asmx/GetLegislationIntroducedSince?sinceDate=2025-01-01" 1500
+          p "https://lawfilesext.leg.wa.gov/biennium/2025-26/Htm/Bill%20Reports/House/1210-S.E%20HBR%20APP%2025.htm" 1500
