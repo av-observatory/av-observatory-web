@@ -9,9 +9,12 @@ on:
       only:
         description: "Comma-separated bill ids to retag (blank = only bills not yet tagged)"
         default: ""
+      state:
+        description: "State code (CA, WA, OR, MA, DC, FL)"
+        default: "CA"
       out:
         description: "Output file (default overwrites the main tags file)"
-        default: "data-state/states/CA/tags.json"
+        default: ""
       workers:
         description: "Parallel requests"
         default: "10"
@@ -23,7 +26,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: tag-ca-full-${{ github.ref }}
+  group: tag-full-${{ inputs.state }}-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
@@ -31,14 +34,16 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 150
     env:
-      COMMIT_PATH: data-state/states/CA
+      COMMIT_PATH: data-state/states/${{ inputs.state }}
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
       - name: Tag all bills (progress is committed every 90 seconds)
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           TAG_MODEL: ${{ inputs.model }}
-        run: bash scripts/live-commit.sh python3 scripts/tag-bills-taxonomy.py --all --out "${{ inputs.out }}" --only "${{ inputs.only }}" --workers "${{ inputs.workers }}" --budget-minutes "${{ inputs.budget_minutes }}"
+        run: |
+          OUT="${{ inputs.out }}"; [ -n "$OUT" ] || OUT="data-state/states/${{ inputs.state }}/tags.json"
+          bash scripts/live-commit.sh python3 scripts/tag-bills-taxonomy.py --state "${{ inputs.state }}" --bills "data-state/states/${{ inputs.state }}/bills.json" --all --out "$OUT" --only "${{ inputs.only }}" --workers "${{ inputs.workers }}" --budget-minutes "${{ inputs.budget_minutes }}"
       - name: Commit final tags
         if: always()
-        run: bash scripts/commit-ledgers.sh "California taxonomy tags"
+        run: bash scripts/commit-ledgers.sh "${{ inputs.state }} taxonomy tags"

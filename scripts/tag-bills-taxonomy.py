@@ -27,8 +27,15 @@ KEYWORDS = {"guns": r"firearm|ammunition", "abortion": r"abortion|reproductive",
             "immigration": r"immigra", "av": r"autonomous vehicle", "privacy": r"personal information|privacy"}
 
 
+STATE_NAMES = {"CA": "California", "WA": "Washington", "OR": "Oregon", "MA": "Massachusetts", "DC": "the District of Columbia", "FL": "Florida"}
+STATE = os.getenv("TAG_STATE", "CA").upper()
+
+
 def system_prompt() -> str:
     lines = [f"- {sid}: {s['topic']} / {s['name']} (axis {s['axis']}: {POLES[s['axis']]})" + (f" [{s['note']}]" if s.get("note") else "") for sid, s in SUB.items()]
+    if STATE != "CA":
+        name = STATE_NAMES.get(STATE, STATE)
+        return system_prompt_generic(name, lines)
     return ("You tag California bills for a legislative tracker. The benchmark for every direction is the STATUS QUO: current California law as the digest describes it (the 'existing law' paragraphs). "
             "Direction measures how this bill CHANGES that status quo on the sub-topic: expands/loosens = moves toward more permission, access or fewer rules; restricts/tightens = moves toward less permission or more rules; "
             "neutral = does not change the status quo on that sub-topic (continues it, studies it, clarifies it, or funds it without changing rules). "
@@ -42,6 +49,25 @@ def system_prompt() -> str:
             "(b) a bill that only requires a study, assessment, report or recommendations is neutral unless it changes a requirement now; "
             "(c) a voluntary program or optional authority adds an option, not an obligation, so it is neutral unless it expressly lifts a ban or limit; "
             "(d) if the digest is thin or purely procedural, choose unclear or neutral, never guess a direction; "
+            "(e) give at most 3 tags, and include a tag beyond the first only if your confidence in it is medium or high; omit low-confidence tags. "
+            "Also give summary: one plain sentence, 25 words or fewer, saying what the bill does. "
+            "Return JSON {summary:string, tags:[{subtopic, direction, funding, mechanism, confidence, evidence}]}. Return {tags:[]} if no sub-topic fits.")
+
+
+def system_prompt_generic(name: str, lines: list) -> str:
+    return (f"You tag {name} bills for a legislative tracker. The benchmark for every direction is the STATUS QUO: current {name} law as the bill's title and summary describe it. "
+            "Direction measures how this bill CHANGES that status quo on the sub-topic: expands/loosens = moves toward more permission, access or fewer rules; restricts/tightens = moves toward less permission or more rules; "
+            "neutral = does not change the status quo on that sub-topic (continues it, studies it, clarifies it, or funds it without changing rules). "
+            "Ceremonial, naming, honoring, commemorative or memorial measures (resolutions that only honor, recognize or proclaim) get only the sub-topic not_a_policy_topic.ceremonial_and_commemorative_measures. "
+            "Choose up to 4 sub-topics from this list, using the exact ids:\n" + "\n".join(lines) +
+            "\n\nFor each tag give: direction (the values allowed for that sub-topic's axis, listed above), funding (" + "|".join(FUNDING) +
+            "), mechanism (" + "|".join(MECHANISMS) + "), confidence (high|medium|low), and evidence: ONE sentence or phrase copied verbatim from the bill text below that supports the direction. "
+            "Judge direction from what THIS bill would do, not from existing law it summarizes. "
+            "Direction describes the bill's effect, never a viewpoint. Use 'mixed' when it moves both ways, 'neutral' for procedural or no real effect on the sub-topic, 'unclear' when the text does not say. "
+            "Rules: (a) a rule that only assigns responsibility, procedure, enforcement mechanics or liability, without limiting or enabling the activity itself, is neutral; "
+            "(b) a bill that only requires a study, assessment, report or recommendations is neutral unless it changes a requirement now; "
+            "(c) a voluntary program or optional authority adds an option, not an obligation, so it is neutral unless it expressly lifts a ban or limit; "
+            "(d) the text may be only a short title or a one-sentence summary: if it is thin or purely procedural, choose unclear or neutral, never guess a direction; "
             "(e) give at most 3 tags, and include a tag beyond the first only if your confidence in it is medium or high; omit low-confidence tags. "
             "Also give summary: one plain sentence, 25 words or fewer, saying what the bill does. "
             "Return JSON {summary:string, tags:[{subtopic, direction, funding, mechanism, confidence, evidence}]}. Return {tags:[]} if no sub-topic fits.")
@@ -135,8 +161,9 @@ def bill_hash(bill: dict) -> str:
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--bills", default="data-state/states/CA/bills.json")
-    ap.add_argument("--out", default="data-state/states/CA/tags_sample.json")
+    ap.add_argument("--state", default=os.getenv("TAG_STATE", "CA"))
+    ap.add_argument("--bills", default="")
+    ap.add_argument("--out", default="")
     ap.add_argument("--sample", type=int, default=50)
     ap.add_argument("--seed", type=int, default=7)
     ap.add_argument("--all", action="store_true", help="tag every bill (resumable: skips bills already tagged with the same text, prompt and model)")
@@ -144,6 +171,10 @@ def main() -> int:
     ap.add_argument("--workers", type=int, default=4)
     ap.add_argument("--budget-minutes", type=float, default=0)
     args = ap.parse_args()
+    global STATE
+    STATE = args.state.upper()
+    args.bills = args.bills or f"data-state/states/{STATE}/bills.json"
+    args.out = args.out or f"data-state/states/{STATE}/tags_sample.json"
     if not KEY:
         print("::error::ANTHROPIC_API_KEY not configured")
         return 1
