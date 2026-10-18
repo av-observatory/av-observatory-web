@@ -3,15 +3,15 @@
 Generated 2026-10-18 by scripts/extract-fl-legislature.py (workflow extract-fl.yml).
 
 ## Counts
-- bills/resolutions: 64  (by session: {'2025A': 22, '2025B': 2, '2025C': 7, '2026D': 6, '2026E': 22, '2026F': 5})
-- by type: {'HB': 28, 'HJR': 3, 'HM': 1, 'HR': 1, 'SB': 29, 'SJR': 1, 'SM': 1}
-- with digest: 64
-- with authors (members): 64; committee-sponsored: 2
-- author rows matched to a legislator id: 82 of 102
-- bills with floor roll calls: 0 (0 votes)
-- legislators: 159 (0 inactive stubs created from roll calls)
-- history rows: 1018
-- status: {'Died': 45, 'Chaptered': 14, 'Vetoed': 2, 'Passed': 3}
+- bills/resolutions: 3920  (by session: {'2025': 1959, '2025A': 22, '2025B': 2, '2025C': 7, '2026': 1897, '2026D': 6, '2026E': 22, '2026F': 5})
+- by type: {'HB': 1800, 'HCR': 7, 'HJR': 35, 'HM': 7, 'HR': 121, 'SB': 1840, 'SCR': 6, 'SJR': 26, 'SM': 6, 'SPB': 1, 'SR': 71}
+- with digest: 3920
+- with authors (members): 3917; committee-sponsored: 938
+- author rows matched to a legislator id: 8810 of 9739
+- bills with floor roll calls: 832 (1596 votes)
+- legislators: 171 (12 inactive stubs created from roll calls)
+- history rows: 57235
+- status: {'Died': 3217, 'Chaptered': 493, 'Vetoed': 21, 'Passed': 189}
 
 ## Sources
 - Florida Senate site (www.flsenate.gov): session bill lists, bill pages (summary line, sponsors, history, vote links), floor roll-call PDFs (pdftotext).
@@ -25,4 +25,4 @@ Generated 2026-10-18 by scripts/extract-fl-legislature.py (workflow extract-fl.y
 - Keys use the session code as suffix: (2025), (2026) regular sessions and (2025A)/(2025B)/(2025C)/(2026D)/(2026E)/(2026F) special sessions.
 - Sponsors: the bill page prints last names only (with initials only where needed); matched to the member rosters by chamber and last name, ambiguous or departed members stay unmatched (legislator null).
 - Status is derived from the action history: Chapter No./Approved by Governor = Chaptered; Vetoed by Governor = Vetoed; enrolled/presented = Passed; Died*/Indefinitely postponed/Withdrawn/Laid on Table = Died; every other bill of an ended session = Died.
-- 7 distinct sponsor names unmatched to a member id (e.g. Appropriations, Avila, Collins, Fine, Gregory, Ingoglia, Young).
+- 30 distinct sponsor names unmatched to a member id (e.g. Agriculture, Appropriations, Avila, Banking and Insurance, Boyles, Children, Families, and Elder Affairs, Collins, Commerce and Tourism, Community Affairs, Criminal Justice, Education Postsecondary, Education Pre-K - 12).
