@@ -1,0 +1,10 @@
+[     0s] first page cat 1 size 100: True
+[    10s] search category 1: total=856, numbers so far 856
+[    10s] first page cat 6 size 100: True
+[    17s] search category 6: total=1051, numbers so far 1907
+[    17s] search listed 1677 B/PR numbers
+[    25s] 100/1677 details
+[    29s] 200/1677 details
+[    35s] 300/1677 details
+[    40s] 400/1677 details
+[    45s] 500/1677 details
