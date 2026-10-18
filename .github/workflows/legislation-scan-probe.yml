@@ -5,6 +5,9 @@ on:
       states:
         description: "Comma-separated states whose failed scan rows are re-fetched and diagnosed"
         default: "MO,PA,SC,RI,WA,NC"
+      titleonly:
+        description: "Also explore summary endpoints for the title-only states"
+        default: "false"
 permissions:
   contents: read
 jobs:
@@ -13,4 +16,7 @@ jobs:
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
-      - run: python3 scripts/probe-scan.py "${{ inputs.states }}"
+      - if: ${{ inputs.states != '' }}
+        run: python3 scripts/probe-scan.py "${{ inputs.states }}"
+      - if: ${{ inputs.titleonly == 'true' }}
+        run: python3 scripts/probe-titleonly.py
