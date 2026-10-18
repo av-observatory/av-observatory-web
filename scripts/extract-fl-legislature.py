@@ -30,8 +30,18 @@ RESOLUTION_TYPES = {"HR", "SR", "HCR", "SCR", "HM", "SM"}
 EXTRA_BILL_TYPES = ["5,18", "6,16", "7,19", "8,17"]  # joint resolutions, resolutions, concurrent resolutions, memorials
 
 # ----------------------------------------------------------------------------- http
+LOGFILE = [None]
+
+
+def log(msg):
+    print(msg, flush=True)
+    if LOGFILE[0]:
+        with open(LOGFILE[0], "a", encoding="utf-8") as fh:
+            fh.write(f"{datetime.utcnow():%H:%M:%S} {msg}\n")
+
+
 _lock, _last = threading.Lock(), [0.0]
-GAP = {"now": 1.2, "floor": 1.0, "ceil": 6.0}  # adaptive seconds between any two requests across all workers (the site sends 429 + Retry-After)
+GAP = {"now": 2.0, "floor": 2.0, "ceil": 8.0}  # adaptive seconds between any two requests across all workers (the site sends 429 + Retry-After)
 
 
 def fetch(url, binary=False, tries=7):
@@ -46,7 +56,7 @@ def fetch(url, binary=False, tries=7):
             req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept-Encoding": "identity"})
             with urllib.request.urlopen(req, timeout=60) as r:
                 data = r.read()
-            GAP["now"] = max(GAP["floor"], GAP["now"] * 0.97)
+            GAP["now"] = max(GAP["floor"], GAP["now"] * 0.99)
             return data if binary else data.decode("utf-8", "replace")
         except urllib.error.HTTPError as e:
             if e.code == 404:
@@ -58,7 +68,7 @@ def fetch(url, binary=False, tries=7):
             if e.code not in (429, 500, 502, 503, 504, 403) or attempt == tries - 1:
                 print(f"HTTP {e.code} {url}", file=sys.stderr)
                 return None
-            print(f"retry {e.code} in {min(delay, 120)}s: {url}", file=sys.stderr, flush=True)
+            log(f"retry {e.code} in {min(delay, 120)}s (gap {GAP['now']:.1f}): {url[-90:]}")
             time.sleep(min(delay, 120))
             wait = min(wait * 2, 120)
         except Exception as e:  # network hiccup
@@ -186,7 +196,7 @@ def list_session(session, extra_type=None, base_first=None):
     seen, out, n = set(), [], 1
     while n < 300:
         if n % 10 == 1:
-            print(f"  list {session} type={extra_type} page {n} ({len(out)} so far)", flush=True)
+            log(f"  list {session} type={extra_type} page {n} ({len(out)} so far)")
         url = (f"{BASE}/Session/Bills/{session}?Chamber=both&SearchOnlyCurrentVersion=True&LegislativeSessionTitle={session}"
                f"&IsIncludeAmendments=False&IsFirstReference=True&pageNumber={n}")
         if extra_type:
@@ -497,12 +507,18 @@ def main():
     ap.add_argument("--part", action="store_true", help="write to parts/<sessions>/ (merged later with --merge)")
     ap.add_argument("--merge", action="store_true")
     ap.add_argument("--checkpoint", type=int, default=150)
+    ap.add_argument("--shard", default="", help="i/n: process only every n-th listed bill (offset i) so several runners can share one session")
     args = ap.parse_args()
     if args.merge:
         return merge()
     sessions = [s for s in args.sessions.split(",") if s]
-    outdir = OUT / "parts" / "_".join(sessions) if args.part else OUT
+    shard_i, shard_n = (int(x) for x in args.shard.split("/")) if args.shard else (0, 1)
+    label = "_".join(sessions) + (f"_s{shard_i}of{shard_n}" if shard_n > 1 else "")
+    outdir = OUT / "parts" / label if args.part else OUT
 
+    if args.part:
+        outdir.mkdir(parents=True, exist_ok=True)
+        LOGFILE[0] = str(outdir / "progress.log")
     legs = load_members()
     print(f"members: {sum(1 for l in legs.values() if l['house']=='Senate')} senators, {sum(1 for l in legs.values() if l['house']=='House')} reps", flush=True)
     bills, votes, history, notes = {}, {}, {}, []
@@ -522,7 +538,10 @@ def main():
                     have.add(label)
                     items.append((label, href))
                     extra_new += 1
-        print(f"{session}: {len(items)} listed ({extra_new} from resolution/memorial/JR type filters); types {dict(Counter(l.split()[0] for l, _ in items))}", flush=True)
+        log(f"{session}: {len(items)} listed ({extra_new} from resolution/memorial/JR type filters); types {dict(Counter(l.split()[0] for l, _ in items))}", flush=True)
+        items = sorted(items, key=lambda x: x[0])  # stable order so every shard sees the same partition
+        if shard_n > 1:
+            items = [x for i, x in enumerate(items) if i % shard_n == shard_i]
         if args.limit:
             items = items[:args.limit]
         session_over = session not in ("2026D", "2026E", "2026F")  # later special sessions: judged per bill by activity age
@@ -549,7 +568,7 @@ def main():
                 done += 1
                 if done % args.checkpoint == 0:
                     write_all(outdir, bills, roster.legs, votes, history, notes)
-                    print(f"{session}: {done}/{len(todo)} done (gap {GAP['now']:.2f}s)", flush=True)
+                    log(f"{session}: {done}/{len(todo)} done (gap {GAP['now']:.2f}s)")
     write_all(outdir, bills, roster.legs, votes, history, notes)
     if not args.part:
         report(bills, roster.legs, votes, history, STATIC_NOTES + sorted(set(notes))[:40])
