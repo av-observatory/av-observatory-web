@@ -8,7 +8,7 @@ Source: https://lims.dccouncil.gov/api/Search/* (the public JSON that the LIMS w
   (204 = no such number.)  Sequential probing of B26-nnnn / PR26-nnnn fills any gaps in the search listing.
 Only B26-xxxx (bills) and PR26-xxxx (proposed resolutions) are kept; ceremonial (CER), hearings (HN), contracts etc. are skipped.
 """
-import argparse, gzip, html, json, re, sys, time, urllib.error, urllib.request
+import argparse, gzip, html, json, re, subprocess, sys, time
 from collections import Counter, defaultdict
 from concurrent.futures import ThreadPoolExecutor
 from datetime import date
@@ -42,30 +42,32 @@ def log(msg):
         fh.write(line + "\n")
 
 
-def fetch(path, data=None, tries=5):
-    body = json.dumps(data).encode() if data is not None else None
-    hdrs = dict(UA)
-    if body:
-        hdrs["Content-Type"] = "application/json"
+def fetch(path, data=None, tries=3, max_time=120):
+    """GET/POST JSON through curl, which enforces a hard total time limit (urllib only limits idle sockets)."""
+    body = json.dumps(data) if data is not None else None
+    cmd = ["curl", "-sS", "--compressed", "--max-time", str(max_time), "-A", UA["User-Agent"], "-H", "Accept: application/json",
+           "-w", "\n%{http_code}", BASE + path]
+    if body is not None:
+        cmd[1:1] = ["-X", "POST", "-H", "Content-Type: application/json", "--data-binary", "@-"]
     for attempt in range(tries):
+        t0 = time.time()
         try:
-            with urllib.request.urlopen(urllib.request.Request(BASE + path, headers=hdrs, data=body), timeout=90) as r:
-                if r.status == 204:
-                    return None
-                raw = r.read().decode("utf-8", "replace")
+            r = subprocess.run(cmd, input=body.encode() if body is not None else None, capture_output=True, timeout=max_time + 20)
+            out = r.stdout.decode("utf-8", "replace")
+            raw, _, code = out.rpartition("\n")
+            code = int(code or 0)
+            if code == 204 or code == 404:
+                return None
+            if code == 200:
                 return json.loads(raw) if raw.strip() else None
-        except urllib.error.HTTPError as e:
-            if e.code == 204:
-                return None
-            if e.code == 429:
-                time.sleep(min(60, int(e.headers.get("Retry-After") or 10)))
-            elif e.code in (404,):
-                return None
-            else:
-                time.sleep(2 ** attempt)
-        except Exception:
-            time.sleep(2 ** attempt)
+            if code == 429:
+                time.sleep(30)
+            log(f"retry {attempt} {path}: HTTP {code} rc={r.returncode} {r.stderr.decode('utf-8', 'replace')[:100]} ({time.time() - t0:.0f}s)")
+        except Exception as e:
+            log(f"retry {attempt} {path}: {type(e).__name__} {e} ({time.time() - t0:.0f}s)")
+        time.sleep(2 ** attempt)
     STATS["fetch_failed"] += 1
+    log(f"GAVE UP {path}")
     return None
 
 
@@ -391,7 +393,9 @@ def main():
 
     done = 0
     with ThreadPoolExecutor(WORKERS) as pool:
-        for num, d in zip(todo, pool.map(lambda x: fetch(f"/api/Search/GetLegislationDetails/{x}"), todo)):
+        def one(x):
+            return x, fetch(f"/api/Search/GetLegislationDetails/{x}")
+        for num, d in pool.map(one, todo):
             if d:
                 ingest(num, d)
             else:
