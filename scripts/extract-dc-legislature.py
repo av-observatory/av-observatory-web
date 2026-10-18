@@ -162,14 +162,14 @@ class Legs:
             return None
         lid = f"DC:{term_id}"
         rec = self.d.setdefault(lid, {"id": lid, "name": "", "first": "", "last": "", "party": "", "house": "Council", "district": "", "active": True, "_last": "", "_title": ""})
-        if name and (not rec["name"] or ", " in name and "," not in rec["name"]):
-            if "," in name and not re.search(r",\s*(Jr|Sr)\.?$", name):
+        if name:
+            name = re.sub(r"[,\s]+(Jr|Sr|II|III)\.?$", "", " ".join(name.split()))
+            if "," in name:
                 last, first = [x.strip() for x in name.split(",", 1)]
-                rec.update(name=f"{last}, {first}", first=first, last=last)
             else:
                 first, last = split_name(name)
-                if not rec["name"] or not rec["first"]:
-                    rec.update(name=f"{last}, {first}".strip(", "), first=first, last=last)
+            if not rec["name"] or not rec["first"]:
+                rec.update(name=f"{last}, {first}".strip(", "), first=first, last=last)
         if title:
             rec["_title"] = title
         if last_date and last_date > rec["_last"]:
@@ -185,7 +185,7 @@ def map_status(d, hist):
         return "Vetoed"
     if "deemed approved" in s:
         return "Chaptered"
-    if any(k in s for k in ("withdraw", "fail", "disapprov", "expire", "reject", "not applicable", "defeat", "lapsed")):
+    if any(k in s for k in ("withdraw", "fail", "disapprov", "expire", "postpone", "reject", "not applicable", "defeat", "lapsed")):
         return "Died"
     if any(k in s for k in ("official law", "enacted", "approved", "adopted", "signed", "law")):
         return "Chaptered"
@@ -312,11 +312,29 @@ def write_all(bills, hist, votes, legs, authors_tid, final=False):
         r["title"] = r.pop("_title", "")
         r["url"] = f"{BASE}/introducerDetail/{lid.split(':')[1]}/{PERIOD}"
         legislators[lid] = r
-    # point sponsor ids that did not resolve to a legislator
+    # one person can hold several LIMS term ids (e.g. a re-seated member): merge them under the lowest id
+    groups = defaultdict(list)
+    for lid, r in legislators.items():
+        groups[(r["last"].lower(), (r["first"].lower().split() or [""])[0])].append(lid)
+    remap = {}
+    for lids in groups.values():
+        keep = min(lids, key=lambda x: int(x.split(":")[1]))
+        for lid in lids:
+            if lid != keep:
+                remap[lid] = keep
+                legislators[keep]["active"] = legislators[keep]["active"] or legislators[lid]["active"]
+                legislators.pop(lid)
     for b in bills.values():
         for a in b["authors"]:
+            if a["legislator"] in remap:
+                a["legislator"] = remap[a["legislator"]]
             if a["legislator"] and a["legislator"] not in legislators:
                 a["legislator"] = None
+    for vs in votes.values():
+        for v in vs:
+            for m in v["members"].values():
+                if m["legislator"] in remap:
+                    m["legislator"] = remap[m["legislator"]]
     dump = lambda o: json.dumps(o, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
     (OUT / "bills.json").write_text(dump(bills) + "\n", encoding="utf-8")
     (OUT / "legislators.json").write_text(dump(legislators) + "\n", encoding="utf-8")
@@ -385,7 +403,7 @@ def main():
     for num, d in probe_missing(set(todo), limit).items():
         ingest(num, d)
     legislators = write_all(bills, hist, votes, legs, auth, final=True)
-    extra = [f"{k}: {v}" for k, v in sorted(STATS.items())] or ["none recorded"]
+    extra = [f"counter {k}: {v}" for k, v in sorted(STATS.items()) if not k.startswith("label:")] or ["no fetch failures"]
     extra.append("Digest = LIMS 'BILL SUMMARY' text where the Council published one; many bills (and most resolutions) have none, so the title is used.")
     extra.append("Committee reports/abstracts are PDFs and not read.")
     report(bills, votes, legislators, extra)
