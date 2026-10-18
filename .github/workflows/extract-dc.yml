@@ -35,4 +35,7 @@ jobs:
         if: ${{ always() }}
         run: |
           ls -l data-state/states/DC
-          COMMIT_PATH=data-state/states/DC bash scripts/commit-ledgers.sh "DC Council data (${{ inputs.mode }})"
+          for i in 1 2 3 4 5 6; do
+            COMMIT_PATH=data-state/states/DC bash scripts/commit-ledgers.sh "DC Council data (${{ inputs.mode }})" && break
+            echo "push attempt $i failed; retrying"; git rebase --abort 2>/dev/null || true; git reset -q --soft HEAD~1 2>/dev/null || true; sleep $((i * 7))
+          done
