@@ -1,3 +1,4 @@
 03:41:34   list 2025 type=None page 1 (0 so far)
 03:41:38 retry 429 in 120s (gap 3.0): &LegislativeSessionTitle=2025&IsIncludeAmendments=False&IsFirstReference=True&pageNumber=2
 03:43:50 retry 429 in 120s (gap 4.3): &LegislativeSessionTitle=2025&IsIncludeAmendments=False&IsFirstReference=True&pageNumber=6
+03:46:07 retry 429 in 120s (gap 6.2): LegislativeSessionTitle=2025&IsIncludeAmendments=False&IsFirstReference=True&pageNumber=10
