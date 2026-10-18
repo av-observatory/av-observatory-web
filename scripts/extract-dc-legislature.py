@@ -31,6 +31,15 @@ MEMBER_INFO = {
     ("allen", ""): ("Ward 6", "DEM"), ("felder", ""): ("Ward 7", "DEM"),
 }
 STATS = Counter()
+T0 = time.time()
+
+
+def log(msg):
+    line = f"[{time.time() - T0:6.0f}s] {msg}"
+    print(line, flush=True)
+    OUT.mkdir(parents=True, exist_ok=True)
+    with open(OUT / "progress.log", "a", encoding="utf-8") as fh:
+        fh.write(line + "\n")
 
 
 def fetch(path, data=None, tries=5):
@@ -89,16 +98,25 @@ def list_numbers():
         while True:
             body["pagination"] = {"pageSize": size, "pageIndex": idx, "totalCount": 0}
             res = fetch("/api/Search/SearchResult", body)
+            if idx == 0:
+                log(f"first page cat {cat} size {size}: {bool(res)}")
             if not res:
                 break
             results = (res.get("searchResults") or {}).get("results") or []
             total = (res.get("pagination") or {}).get("totalCount", total)
+            if idx == 0 and results and total and len(results) < min(size, total):
+                size, idx = len(results), 0  # the service caps the page size: restart with its cap
+                log(f"page size capped at {size}")
+                continue
+            before = len(found)
             for r in results:
                 found.add(r["legislationNumber"])
-            if not results or (total and (idx + 1) * size >= total):
+            if not results or (total and (idx + 1) * size >= total) or (idx > 3 and len(found) == before):
                 break
             idx += 1
-        print(f"search category {cat}: total={total}, numbers so far {len(found)}", flush=True)
+            if idx % 20 == 0:
+                log(f"  category {cat} page {idx}, {len(found)} numbers")
+        log(f"search category {cat}: total={total}, numbers so far {len(found)}")
     return {n for n in found if re.match(rf"^(B|PR){PERIOD}-\d+$", n)}
 
 
@@ -119,7 +137,7 @@ def probe_missing(have, limit):
                     else:
                         misses += 1
                 n += 50
-    print(f"probe found {len(got)} extra numbers not in search", flush=True)
+    log(f"probe found {len(got)} extra numbers not in search")
     return got
 
 
@@ -340,7 +358,7 @@ def main():
     args = ap.parse_args()
     limit = int(args.limit or 0)
     listed = list_numbers()
-    print(f"search listed {len(listed)} B/PR numbers", flush=True)
+    log(f"search listed {len(listed)} B/PR numbers")
     todo = sorted(listed, key=lambda x: (x.startswith("PR"), int(x.split("-")[1])))
     if limit:
         todo = [t for t in todo if int(t.split("-")[1]) <= limit]
@@ -361,8 +379,8 @@ def main():
             else:
                 STATS["listed_but_no_details"] += 1
             done += 1
-            if done % 400 == 0:
-                print(f"{done}/{len(todo)} details", flush=True)
+            if done % 100 == 0:
+                log(f"{done}/{len(todo)} details")
                 write_all(bills, hist, votes, legs, auth)
     for num, d in probe_missing(set(todo), limit).items():
         ingest(num, d)
@@ -371,6 +389,7 @@ def main():
     extra.append("Digest = LIMS 'BILL SUMMARY' text where the Council published one; many bills (and most resolutions) have none, so the title is used.")
     extra.append("Committee reports/abstracts are PDFs and not read.")
     report(bills, votes, legislators, extra)
+    (OUT / "progress.log").unlink(missing_ok=True)
     print(f"DC: {len(bills)} bills, {len(legislators)} legislators, votes for {len(votes)} bills", flush=True)
     return 0
 
