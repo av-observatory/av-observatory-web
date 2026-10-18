@@ -23,18 +23,16 @@ jobs:
     timeout-minutes: 240
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
-      - name: Probe endpoints
-        if: ${{ inputs.mode == 'probe' }}
+      - name: Extract Washington data
+        if: ${{ inputs.mode != 'probe' }}
+        env:
+          COMMIT_PATH: data-state/states/WA
         run: |
-          B=https://wslwebservices.leg.wa.gov
-          p() { echo "=== $1"; curl -sS -L -m 90 -A "StateTrack-extract/1.0" "$1" | head -c ${2:-2500}; echo; }
-          p "$B/LegislationService.asmx/GetLegislationByYear?year=2025" 1800
-          p "$B/SponsorService.asmx/GetSponsors?biennium=2025-26" 1800
-          p "$B/LegislativeDocumentService.asmx/GetDocumentsByClass?biennium=2025-26&documentClass=Bill%20Reports" 2500
-          p "$B/LegislativeDocumentService.asmx/GetDocumentsByClass?biennium=2025-26&documentClass=Digests" 1200
-          p "$B/LegislativeDocumentService.asmx/GetDocuments?biennium=2025-26&namedLike=1210" 3000
-          p "$B/LegislationService.asmx/GetLegislationTypes" 1500
-          p "$B/LegislationService.asmx/GetLegislation?biennium=2025-26&billNumber=1210" 100
-          curl -sS -m 60 "$B/LegislationService.asmx/GetLegislation?biennium=2025-26&billNumber=5001" | grep -E "BillId|Status>|Veto|LongDesc" | head -30
-          curl -sS -m 60 "$B/LegislationService.asmx/GetLegislationByYear?year=2025" | grep -c "<LegislationInfo>"
-          curl -sS -m 60 "$B/LegislationService.asmx/GetLegislationByYear?year=2026" | grep -c "<LegislationInfo>"
+          mkdir -p data-state/states/WA
+          bash scripts/live-commit.sh python3 -u scripts/extract-wa-legislature.py --limit "${{ inputs.limit }}"
+      - name: Commit the extracted files
+        if: ${{ inputs.mode != 'probe' }}
+        run: |
+          ls -l data-state/states/WA
+          python3 scripts/check-state-extract.py WA || true
+          COMMIT_PATH=data-state/states/WA bash scripts/commit-ledgers.sh "Washington legislature data"
