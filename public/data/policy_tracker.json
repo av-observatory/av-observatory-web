@@ -734,6 +734,23 @@
       "source_tier": "auto",
       "review_status": "auto_collected",
       "date_precision": "day"
+    },
+    {
+      "id": "auto-fr-2026-15486",
+      "level": "federal",
+      "jurisdiction": "US",
+      "title": "NHTSA receives Robomart temporary exemption application",
+      "summary": "NHTSA published a notice that it received Robomart, Inc.'s application for a temporary exemption from several requirements of FMVSS No. 500 for its low-speed vehicle equipped with an automated driving system. NHTSA is conducting an initial review and will later publish a notice seeking public comment on the application's merits.",
+      "takeaway": "NHTSA published a notice that it received Robomart, Inc.'s application for a temporary exemption from several requirements of FMVSS No. 500 for its low-speed vehicle equipped with an automated driving system. NHTSA is conducting an initial review and will later publish a notice seeking public comment on the application's merits.",
+      "instrument": "proposed program",
+      "status": "historical_status_unverified",
+      "date": "2026-07-31",
+      "source_url": "https://www.federalregister.gov/documents/2026/07/31/2026-15486/robomart-inc-receipt-of-application-for-temporary-exemption-from-various-requirements-of-the-federal",
+      "verified_at": "2026-10-18",
+      "source_label": "Federal Register 2026-15486",
+      "source_tier": "auto",
+      "review_status": "auto_collected",
+      "date_precision": "day"
     }
   ],
   "states": [
