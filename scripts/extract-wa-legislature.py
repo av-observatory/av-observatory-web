@@ -86,11 +86,12 @@ STOP = re.compile(r"^(Votes on Final Passage|Effective Date|Staff Summary|Approp
 
 
 def report_summary(text):
+    text = re.sub(r"(?is)<(style|script)\b.*?</\1>", " ", text)
     t2 = re.sub(r"(?i)<br\s*/?>|</p>|</div>|</h\d>|</tr>|</li>", "\n", text)
     lines = [clean_text(x) for x in t2.split("\n")]
     lines = [x for x in lines if x]
     best = ""
-    for pref in (r"^Summary of [^:]{0,100}:?$", r"^Summary:?$", r"^Summary of [^:]{0,100}:\s*\S+"):
+    for pref in (r"^(?:Brief )?Summary of [^:]{0,100}:?$", r"^(?:Brief )?Summary:?$", r"^(?:Brief )?Summary of [^:]{0,100}:\s*\S+"):
         for i, ln in enumerate(lines):
             if re.match(pref, ln, re.I):
                 first = re.sub(r"^Summary[^:]*:\s*", "", ln, flags=re.I) if ":" in ln and not ln.endswith(":") else ""
@@ -213,7 +214,8 @@ def process(num, types_wanted):
     for b, versions in groups.items():
         ty, n = b
         key = f"{ty} {n}"
-        latest = next((v for v in versions if t(v, "Active") == "true"), None) or max(
+        active = [v for v in versions if t(v, "Active") == "true"]
+        latest = active[0] if active else max(
             versions, key=lambda v: (t(v.find("CurrentStatus"), "ActionDate"), int(t(v, "EngrossedVersion", "0") or 0), int(t(v, "SubstituteVersion", "0") or 0)))
         lid = t(latest, "BillId")
         cs = latest.find("CurrentStatus")
