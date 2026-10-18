@@ -4,3 +4,5 @@
 03:55:40 retry 429 in 120s (gap 6.0): https://www.flsenate.gov/Session/Bill/2025/39
 03:57:06 retry 429 in 120s (gap 8.0): https://www.flsenate.gov/Session/Bill/2025/42/Vote/SenateVote_s00042__005.PDF
 03:57:35 retry 429 in 120s (gap 8.0): https://www.flsenate.gov/Session/Bill/2025/54
+03:59:13 retry 429 in 120s (gap 8.0): https://www.flsenate.gov/Session/Bill/2025/42/Vote/SenateVote_s00042__005.PDF
+04:00:22 retry 429 in 120s (gap 8.0): https://www.flsenate.gov/Session/Bill/2025/105
