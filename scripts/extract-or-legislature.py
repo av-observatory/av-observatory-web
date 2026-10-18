@@ -19,6 +19,13 @@ CHAMBER = {"H": "House", "S": "Senate", "J": "Joint"}
 PARTY = {"democrat": "DEM", "republican": "REP", "independent": "IND", "nonaffiliated": "IND"}
 
 
+def log(msg):
+    line = f"{time.strftime('%H:%M:%S')} {msg}"
+    print(line, flush=True)
+    with open(OUT / "progress.log", "a", encoding="utf-8") as fh:
+        fh.write(line + "\n")
+
+
 def get(entity, params, tries=6):
     url = BASE + entity + "?" + urllib.parse.urlencode(params, quote_via=urllib.parse.quote)
     for i in range(tries):
@@ -32,7 +39,7 @@ def get(entity, params, tries=6):
                 raise
             time.sleep(max(wait, 2 ** i))
         except Exception as e:  # network / timeout / json
-            print(f"  retry {i + 1} {entity}: {e!r}", flush=True)
+            log(f"  retry {i + 1} {entity}: {e!r}", flush=True)
             time.sleep(2 ** i)
     raise RuntimeError(f"giving up on {url}")
 
@@ -49,8 +56,18 @@ def fetch_skip(entity, flt, order, page=1000, workers=4):
         with ThreadPoolExecutor(workers) as ex:
             for part in ex.map(one, offsets):
                 rows.extend(part)
-    print(f"  {entity} [{flt}]: {len(rows)} rows (server count {total})", flush=True)
+    log(f"  {entity} [{flt}]: {len(rows)} rows (server count {total})")
     return rows
+
+
+def fetch_keyset_parallel(entity, flt, idf, prefixes, workers=4):
+    def one(p):
+        return fetch_keyset(entity, f"{flt} and MeasurePrefix eq '{p}'", idf)
+    out = []
+    with ThreadPoolExecutor(workers) as ex:
+        for part in ex.map(one, prefixes):
+            out.extend(part)
+    return out
 
 
 def fetch_keyset(entity, flt, idf, page=1000):
@@ -61,9 +78,9 @@ def fetch_keyset(entity, flt, idf, page=1000):
             break
         rows.extend(d)
         last = d[-1][idf]
-        if len(rows) % 20000 < len(d):
-            print(f"  {entity} [{flt}]: {len(rows)} rows so far", flush=True)
-    print(f"  {entity} [{flt}]: {len(rows)} rows", flush=True)
+        if len(rows) % 10000 < len(d):
+            log(f"  {entity} [{flt}]: {len(rows)} rows so far")
+    log(f"  {entity} [{flt}]: {len(rows)} rows")
     return rows
 
 
@@ -110,6 +127,7 @@ def main():
     args = ap.parse_args()
     sessions = args.sessions.split(",")
     OUT.mkdir(parents=True, exist_ok=True)
+    (OUT / "progress.log").write_text("")
 
     # legislators (later sessions override earlier ones)
     legs, code2id, seen_in = {}, {}, defaultdict(set)
@@ -158,6 +176,7 @@ def main():
             }
             bykey[(s, pre, num)] = key
 
+    log(f"measures done: {len(bills)}")
     # sponsors
     for s in sessions:
         for r in fetch_skip("MeasureSponsors", f"SessionKey eq '{s}'", "MeasureSponsorId", workers=2):
@@ -184,7 +203,8 @@ def main():
     history = defaultdict(list)
     hist_by_id = {}
     for s in sessions:
-        for r in fetch_keyset("MeasureHistoryActions", f"SessionKey eq '{s}'", "MeasureHistoryId"):
+        prefs = sorted({p for (ss, p, _) in bykey if ss == s})
+        for r in fetch_keyset_parallel("MeasureHistoryActions", f"SessionKey eq '{s}'", "MeasureHistoryId", prefs):
             key = bykey.get((s, r["MeasurePrefix"], r["MeasureNumber"]))
             if not key:
                 continue
@@ -209,12 +229,14 @@ def main():
         if b["status"] == "Chaptered":
             b["chaptered"] = True
 
+    log("history done")
     # votes (floor roll calls, one record per MeasureHistoryId)
     votes, vote_rows = {}, 0
     if not args.no_votes:
         for s in sessions:
             groups = defaultdict(list)
-            for r in fetch_keyset("MeasureVotes", f"SessionKey eq '{s}'", "MeasureVoteId"):
+            prefs = sorted({p for (ss, p, _) in bykey if ss == s})
+            for r in fetch_keyset_parallel("MeasureVotes", f"SessionKey eq '{s}'", "MeasureVoteId", prefs):
                 groups[r["MeasureHistoryId"]].append(r)
                 vote_rows += 1
             for hid, rs in groups.items():
