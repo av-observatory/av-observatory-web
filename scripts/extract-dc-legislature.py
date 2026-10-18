@@ -8,7 +8,7 @@ Source: https://lims.dccouncil.gov/api/Search/* (the public JSON that the LIMS w
   (204 = no such number.)  Sequential probing of B26-nnnn / PR26-nnnn fills any gaps in the search listing.
 Only B26-xxxx (bills) and PR26-xxxx (proposed resolutions) are kept; ceremonial (CER), hearings (HN), contracts etc. are skipped.
 """
-import argparse, gzip, html, json, re, subprocess, sys, time
+import argparse, gzip, html, json, re, subprocess, sys, threading, time
 from collections import Counter, defaultdict
 from concurrent.futures import ThreadPoolExecutor
 from datetime import date
@@ -20,7 +20,7 @@ BASE = "https://lims.dccouncil.gov"
 PERIOD = "26"
 UA = {"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36 av-observatory-research",
       "Accept": "application/json, text/plain, */*"}
-WORKERS = 5
+WORKERS = 3
 
 # LIMS exposes neither party nor ward for members; this table is from public knowledge of the 2025-26 Council.
 MEMBER_INFO = {
@@ -42,7 +42,23 @@ def log(msg):
         fh.write(line + "\n")
 
 
-def fetch(path, data=None, tries=3, max_time=120):
+INTERVAL = 0.3  # seconds between request starts across all threads (~3/s); LIMS answers 429 when hammered
+_gate = threading.Lock()
+_next_slot = [0.0]
+
+
+def throttle(extra=0.0):
+    with _gate:
+        now = time.time()
+        if extra:
+            _next_slot[0] = max(_next_slot[0], now + extra)
+        wait = _next_slot[0] - now
+        _next_slot[0] = max(now, _next_slot[0]) + INTERVAL
+    if wait > 0:
+        time.sleep(wait)
+
+
+def fetch(path, data=None, tries=6, max_time=120):
     """GET/POST JSON through curl, which enforces a hard total time limit (urllib only limits idle sockets)."""
     body = json.dumps(data) if data is not None else None
     cmd = ["curl", "-sS", "--compressed", "--max-time", str(max_time), "-A", UA["User-Agent"], "-H", "Accept: application/json",
@@ -51,6 +67,7 @@ def fetch(path, data=None, tries=3, max_time=120):
         cmd[1:1] = ["-X", "POST", "-H", "Content-Type: application/json", "--data-binary", "@-"]
     for attempt in range(tries):
         t0 = time.time()
+        throttle()
         try:
             r = subprocess.run(cmd, input=body.encode() if body is not None else None, capture_output=True, timeout=max_time + 20)
             out = r.stdout.decode("utf-8", "replace")
@@ -61,7 +78,9 @@ def fetch(path, data=None, tries=3, max_time=120):
             if code == 200:
                 return json.loads(raw) if raw.strip() else None
             if code == 429:
-                time.sleep(30)
+                throttle(extra=45 + 15 * attempt)  # pause every thread
+                log(f"429 on {path}; global pause")
+                continue
             log(f"retry {attempt} {path}: HTTP {code} rc={r.returncode} {r.stderr.decode('utf-8', 'replace')[:100]} ({time.time() - t0:.0f}s)")
         except Exception as e:
             log(f"retry {attempt} {path}: {type(e).__name__} {e} ({time.time() - t0:.0f}s)")
