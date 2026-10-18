@@ -1,8 +1,55 @@
-scripts ['https://www.google-analytics.com/analytics.js', '//platform-api.sharethis.com/js/sharethis.js#property=#{property?._id}&product=custom-share-buttons', '/static/js/6.7c624645.chunk.js', '/static/js/main.c11efed6.chunk.js']
-=== /static/js/6.7c624645.chunk.js len=727816
-   ,e.onUploadProgress),e.cancelToken&&e.cancelToken.promise.then(function(e){p&&(p.abort(),c(e),p=null)}),void 0===l&&(l=null),p.send(l)})}},function(e,t,n){
-  CTX:  l=e.data,f=e.headers;r.isFormData(l)&&delete f["Content-Type"];var p=new XMLHttpRequest;if(e.auth){var d=e.auth.username||"",h=e.auth.password||"";f.Authorization="Basic "+btoa(d+":"+h)}if(p.open(e.method.toUpperCase(),i(e.url,e.params,e.paramsSerializer),!0),p.timeout=e.timeout,p.onreadystatechange=function(){if(p&&4===p.readyState&&(0!==p.status||p.responseURL&&0===p.responseURL.indexOf("file:"))){var n="ge
-=== /static/js/main.c11efed6.chunk.js len=55511
-   /api/APIDocument
-   /api/help/index.html
-   /api/search/GetLegislationMetadata/:legislationNumber
+=== main chunk api contexts
+  CTX: (t,"a",function(){return n}),a.d(t,"b",function(){return c}),a.d(t,"c",function(){return i});var n={apiUrl:"/api"},c={arrayFormat:"index"},i={1:"LawSearch",2:"EmergencyActsSearch",3:"LegislationSearch",4:"MayoralSignatureSearch",5:"UnderCongressionalReviewSearch",6:"WhatsNewSearch"}},830:function(e,t,a
+  CTX: nction(){return n}),a.d(t,"b",function(){return c}),a.d(t,"c",function(){return i});var n={apiUrl:"/api"},c={arrayFormat:"index"},i={1:"LawSearch",2:"EmergencyActsSearch",3:"LegislationSearch",4:"MayoralSignatureSearch",5:"UnderCongressionalReviewSearch",6:"WhatsNewSearch"}},830:function(e,t,a){},831:f
+  CTX: g Search")),c.a.createElement("li",null,c.a.createElement("a",{className:"header__link_item",href:"/api/help/index.html","aria-label":"Access LIMS Data (API)"},"Access LIMS Data (API)"))))),c.a.createElement(P.a,{maxWidth:666},c.a.createElement("nav",{className:"nav"},c.a.createElement(H.a,{direction:"
+  CTX: h")),c.a.createElement(H.a.Item,{key:2},c.a.createElement("a",{className:"header__link_item",href:"/api/help/index.html","aria-label":"Access LIMS Data (API)"},"Access LIMS Data (API)"))))))))))))};function F(e){var t=Object(n.useState)(document.title),a=Object(D.a)(t,2),i=a[0],l=a[1],r=Object(n.useSta
+  CTX: X.a.create({baseURL:t,timeout:1e3,crossDomain:!0,headers:{Accept:"*/*","Cache-Control":"no-cache"}}).get("/manifast.json").then(function(t){var a=(t||{}).headers["last-modified"]||"";if(a){var n=localStorage.getItem(e.localStorageKey);null==n||""==n?localStorage.setItem(e.localStorageKey,a):n!==a&&e.open
+  CTX: are/media/Legislation/:legislationNumber",component:se(te)}),c.a.createElement(j.a,{exact:!0,path:"/api/search/GetLegislationMetadata/:legislationNumber",component:se(te)}),c.a.createElement(j.a,{exact:!0,path:"/efiling",component:me}),c.a.createElement(j.a,{exact:!0,path:"/efiling/*",component:me}),c.
+  CTX: eElement(j.a,{exact:!0,path:"/SearchHelp",component:se(le)}),c.a.createElement(j.a,{exact:!0,path:"/api/APIDocument",component:se(re)}),c.a.createElement(j.a,{exact:!0,path:"/#",component:q}),c.a.createElement(j.a,{exact:!0,path:"/home",component:q}),c.a.createElement(j.a,{exact:!0,path:"/",component:q
+  CTX: function(){return i});var n=a(90),c=a(74),i={getSearchMaster:function(){return n.a.getAxioInstance().get("".concat(c.a.apiUrl,"/Search/GetSearchMaster")).then(function(e){return e})},getWhatsNew:function(){if(arguments.length>0&&void 0!==arguments[0]&&arguments[0])return new Promise(function(e){setTimeou
+  CTX: });var n=a(90),c=a(74),i={getSearchMaster:function(){return n.a.getAxioInstance().get("".concat(c.a.apiUrl,"/Search/GetSearchMaster")).then(function(e){return e})},getWhatsNew:function(){if(arguments.length>0&&void 0!==arguments[0]&&arguments[0])return new Promise(function(e){setTimeout(function(){e({s
+  CTX: (e){setTimeout(function(){e({status:200})},2e3)},function(e){});var e=n.a.getAxioInstance();return e.get("".concat(c.a.apiUrl,"/Search/GetWhatsNew")).then(function(e){return e})},getUnderConsideration:function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:0;if(arguments.length>1&&void 0!
+  CTX: tion(){e({status:200})},2e3)},function(e){});var e=n.a.getAxioInstance();return e.get("".concat(c.a.apiUrl,"/Search/GetWhatsNew")).then(function(e){return e})},getUnderConsideration:function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:0;if(arguments.length>1&&void 0!==arguments[1]&&a
+  CTX: {message:"testMessage",data:"mockData"}})},2e3)},function(e){});var t=n.a.getAxioInstance();return t.get("".concat(c.a.apiUrl,"/Search/GetUpComingHearings/").concat(e)).then(function(e){return e})},getTrending:function(){if(arguments.length>0&&void 0!==arguments[0]&&arguments[0])return new Promise(functi
+  CTX: ge",data:"mockData"}})},2e3)},function(e){});var t=n.a.getAxioInstance();return t.get("".concat(c.a.apiUrl,"/Search/GetUpComingHearings/").concat(e)).then(function(e){return e})},getTrending:function(){if(arguments.length>0&&void 0!==arguments[0]&&arguments[0])return new Promise(function(e){setTimeout(
+  CTX: {message:"testMessage",data:"mockData"}})},2e3)},function(e){});var e=n.a.getAxioInstance();return e.get("".concat(c.a.apiUrl,"/Search/GetTrendingList")).then(function(e){return e})},getStatistics:function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:0;if(arguments.length>1&&void 0!==ar
+  CTX: ge",data:"mockData"}})},2e3)},function(e){});var e=n.a.getAxioInstance();return e.get("".concat(c.a.apiUrl,"/Search/GetTrendingList")).then(function(e){return e})},getStatistics:function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:0;if(arguments.length>1&&void 0!==arguments[1]&&argum
+  CTX: {message:"testMessage",data:"mockData"}})},8e3)},function(e){});var t=n.a.getAxioInstance();return t.get("".concat(c.a.apiUrl,"/Search/GetStatisticSummary/").concat(e)).then(function(e){return e})},getAllUnderConsideration:function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:0;if(argum
+  CTX: ge",data:"mockData"}})},8e3)},function(e){});var t=n.a.getAxioInstance();return t.get("".concat(c.a.apiUrl,"/Search/GetStatisticSummary/").concat(e)).then(function(e){return e})},getAllUnderConsideration:function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:0;if(arguments.length>1&&vo
+  CTX: {message:"testMessage",data:"mockData"}})},2e3)},function(e){});var t=n.a.getAxioInstance();return t.get("".concat(c.a.apiUrl,"/Search/GetAllUpComingHearings/").concat(e)).then(function(e){return e})}}},90:function(e,t,a){"use strict";a.d(t,"a",function(){return r});var n=a(187),c=a.n(n),i=a(73),l=a.n(i)
+  CTX: ge",data:"mockData"}})},2e3)},function(e){});var t=n.a.getAxioInstance();return t.get("".concat(c.a.apiUrl,"/Search/GetAllUpComingHearings/").concat(e)).then(function(e){return e})}}},90:function(e,t,a){"use strict";a.d(t,"a",function(){return r});var n=a(187),c=a.n(n),i=a(73),l=a.n(i),r={getAxioInstan
+=== chunk refs
+[]
+=== direct tries
+### /api/search/GetLegislationMetadata/B26-0100 -> 200 text/html; charset=utf-8 len=2130
+<!DOCTYPE html>
+<html>
+<head prefix="og: http://ogp.me/ns#">
+    <meta name="viewport" content="width=device-width" />
+    <title>Deferred Retirement Option Program Amendment Act of 2025</title>    
+    <meta name="description" content="BILL SUMMARY - As introduced, Bill 26-100 would establish a deferred retirement option program to allow retirement-eligible FEMS and MPD members to co.." />
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="https://lims.dccouncil.gov/Legislation/B26-0100">
+    <meta name="twitter:title" content="Deferred Retirement Option Program Amendment Act of 2025">
+    <meta name="twitter:description" content="BILL SUMMARY - As introduced, Bill 26-100 would establish a deferred retirement op
+
+### /api/search/GetLegislationMetadata/B25-0100 -> ERR HTTP Error 500: Internal Server Error b'Internal Server Error'
+
+### /api/search/GetLegislationMetadata/PR26-0100 -> ERR HTTP Error 500: Internal Server Error b'Internal Server Error'
+
+### /api/legislation/B26-0100 -> 200 text/html len=5979
+<!doctype html><html lang="en"><head prefix="og: http://ogp.me/ns#"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/><noscript><meta http-equiv="refresh" content="0; URL=/NO_SCRIPT_URL/ROUTE_HERE"/></noscript><meta name="theme-color" content="#000000"><link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600,500,700&display=swap" rel="stylesheet"><base href="/"/><meta http-equiv="cache-control" content="no-cache, must-revalidate, post-check=0, pre-check=0"/><meta http-equiv="cache-control" content="max-age=0"/><meta http-equiv="Clear-Site-Data" content="cookies, cache"/><meta http-equiv="expires" content="0"/><meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT"/><meta http-equiv="pragma"
+
+### /api/search/Legislation/B26-0100 -> 200 text/html len=5979
+<!doctype html><html lang="en"><head prefix="og: http://ogp.me/ns#"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/><noscript><meta http-equiv="refresh" content="0; URL=/NO_SCRIPT_URL/ROUTE_HERE"/></noscript><meta name="theme-color" content="#000000"><link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600,500,700&display=swap" rel="stylesheet"><base href="/"/><meta http-equiv="cache-control" content="no-cache, must-revalidate, post-check=0, pre-check=0"/><meta http-equiv="cache-control" content="max-age=0"/><meta http-equiv="Clear-Site-Data" content="cookies, cache"/><meta http-equiv="expires" content="0"/><meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT"/><meta http-equiv="pragma"
+
+### /api/Search/GetLegislation/B26-0100 -> 200 text/html len=5979
+<!doctype html><html lang="en"><head prefix="og: http://ogp.me/ns#"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/><noscript><meta http-equiv="refresh" content="0; URL=/NO_SCRIPT_URL/ROUTE_HERE"/></noscript><meta name="theme-color" content="#000000"><link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600,500,700&display=swap" rel="stylesheet"><base href="/"/><meta http-equiv="cache-control" content="no-cache, must-revalidate, post-check=0, pre-check=0"/><meta http-equiv="cache-control" content="max-age=0"/><meta http-equiv="Clear-Site-Data" content="cookies, cache"/><meta http-equiv="expires" content="0"/><meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT"/><meta http-equiv="pragma"
+
+### /api/v1/Legislation/B26-0100 -> 200 text/html len=5979
+<!doctype html><html lang="en"><head prefix="og: http://ogp.me/ns#"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/><noscript><meta http-equiv="refresh" content="0; URL=/NO_SCRIPT_URL/ROUTE_HERE"/></noscript><meta name="theme-color" content="#000000"><link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600,500,700&display=swap" rel="stylesheet"><base href="/"/><meta http-equiv="cache-control" content="no-cache, must-revalidate, post-check=0, pre-check=0"/><meta http-equiv="cache-control" content="max-age=0"/><meta http-equiv="Clear-Site-Data" content="cookies, cache"/><meta http-equiv="expires" content="0"/><meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT"/><meta http-equiv="pragma"
+
+### /api/Legislation/GetPublicData/B26-0100 -> 200 text/html len=5979
+<!doctype html><html lang="en"><head prefix="og: http://ogp.me/ns#"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/><noscript><meta http-equiv="refresh" content="0; URL=/NO_SCRIPT_URL/ROUTE_HERE"/></noscript><meta name="theme-color" content="#000000"><link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600,500,700&display=swap" rel="stylesheet"><base href="/"/><meta http-equiv="cache-control" content="no-cache, must-revalidate, post-check=0, pre-check=0"/><meta http-equiv="cache-control" content="max-age=0"/><meta http-equiv="Clear-Site-Data" content="cookies, cache"/><meta http-equiv="expires" content="0"/><meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT"/><meta http-equiv="pragma"
+
