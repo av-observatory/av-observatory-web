@@ -18,18 +18,28 @@ def get(path, n=1500, full=False, quiet=False, headers=None):
 
 
 js = get("/static/js/main.c11efed6.chunk.js", quiet=True)
-print("=== main chunk api contexts")
-seen = 0
-for m in re.finditer(r"api|fetch\(|axios|\.get\(", js):
-    a = max(0, m.start() - 100)
-    print("  CTX:", js[a:m.end() + 200].replace("\n", " "))
-    seen += 1
-    if seen > 40:
+i = js.find("getAxioInstance:function")
+print("=== axios instance module:\n", js[max(0, i - 300):i + 1800])
+print("=== all api paths")
+for m in sorted(set(re.findall(r'apiUrl,"(/[^"]+)"', js))):
+    print("  ", m)
+for m in re.finditer(r'(?i)authori[sz]|bearer|\bkey\b.{0,40}api|GetToken|accessToken', js):
+    a = max(0, m.start() - 200)
+    print("  AUTHCTX:", js[a:m.end() + 300].replace("\n", " "))
+print("=== chunk map")
+home = get("/", quiet=True)
+for s in re.findall(r'src="(/static/js/[^"]+)"', home):
+    t = get(s, quiet=True)
+    print(s, len(t))
+    for m in sorted(set(re.findall(r'apiUrl,"(/[^"]+)"', t))):
+        print("   api:", m)
+    for m in re.finditer(r'(?i)GetToken|accessToken|Authorization["\']?\s*[:=]', t):
+        a = max(0, m.start() - 200)
+        print("   AUTH:", t[a:m.end() + 300].replace("\n", " "))
         break
-print("=== chunk refs")
-print(sorted(set(re.findall(r"static/js/[\w.]+\.js", js)))[:20])
-print("=== direct tries")
-for p in ["/api/search/GetLegislationMetadata/B26-0100", "/api/search/GetLegislationMetadata/B25-0100", "/api/search/GetLegislationMetadata/PR26-0100",
-          "/api/legislation/B26-0100", "/api/search/Legislation/B26-0100", "/api/Search/GetLegislation/B26-0100",
-          "/api/v1/Legislation/B26-0100", "/api/Legislation/GetPublicData/B26-0100"]:
-    get(p, 800)
+k = home.find("static/js/")
+print("HOME-INLINE", home[max(0, home.find("<script>", 2000)):][:200])
+for m in re.finditer(r'static/js/"\s*\+[^;]{0,400}', home):
+    print("HOMEMAP", m.group(0)[:500])
+for m in re.finditer(r'"static/js/"\s*\+[^;]{0,300}', js):
+    print("CHUNKMAP", m.group(0)[:400])
