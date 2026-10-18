@@ -1,0 +1,36 @@
+name: Extract Massachusetts legislature data
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "probe | extract"
+        default: "extract"
+      args:
+        description: "extra args for the extract script"
+        default: ""
+
+permissions:
+  contents: write
+
+concurrency:
+  group: extract-ma-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 330
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Probe
+        if: inputs.mode == 'probe'
+        run: python3 scripts/extract-ma-legislature.py --probe
+      - name: Extract
+        if: inputs.mode != 'probe'
+        env:
+          COMMIT_PATH: data-state/states/MA
+        run: bash scripts/live-commit.sh python3 scripts/extract-ma-legislature.py ${{ inputs.args }}
+      - name: Commit the extracted files
+        if: inputs.mode != 'probe' && always()
+        run: COMMIT_PATH=data-state/states/MA bash scripts/commit-ledgers.sh "Massachusetts legislature data"
