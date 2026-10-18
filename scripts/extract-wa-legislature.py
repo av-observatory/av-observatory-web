@@ -228,11 +228,14 @@ def process(num, types_wanted):
         short = t(latest, "ShortDescription") or t(latest, "LongDescription")
         long_desc = t(latest, "LongDescription")
         # authors
-        authors = []
+        authors, committee_sp = [], []
         sp = xml(f"{BASE}/LegislationService.asmx/GetSponsors?biennium={BIENNIUM}&billId={quoted(lid)}")
         if sp is not None:
             for s in sp.findall("Sponsor"):
                 sid = t(s, "Id")
+                if not re.match(r"(?i)^(representative|senator|rep\.|sen\.)", t(s, "LongName")):
+                    committee_sp.append(t(s, "Name") or t(s, "LongName"))  # committee listed as sponsor
+                    continue
                 nm = t(s, "LastName") or t(s, "Name")
                 authors.append({"legislator": f"WA:{sid}" if sid else None, "name": nm,
                                 "role": "LEAD_AUTHOR" if t(s, "Type") == "Primary" else "COAUTHOR", "house": t(s, "Agency"),
@@ -244,6 +247,8 @@ def process(num, types_wanted):
             committee = m.group(1).strip()
         elif sponsor_txt and not sponsor_txt.startswith("("):
             committee = sponsor_txt if "(" not in sponsor_txt else ""
+        if committee_sp and not committee:
+            committee = ", ".join(dict.fromkeys(committee_sp))
         # digest
         digest, src = "", ""
         for _date, fname, url in sorted(docs_by.get(b, []), reverse=True):
