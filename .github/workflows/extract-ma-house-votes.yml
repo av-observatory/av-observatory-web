@@ -1,0 +1,41 @@
+name: Extract Massachusetts House roll-call votes
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "discover | run"
+        default: "run"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: extract-ma-house-votes-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  votes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Install PDF tools
+        run: |
+          command -v pdftotext >/dev/null || (sudo apt-get update -qq && sudo apt-get install -y -qq poppler-utils)
+          command -v tesseract >/dev/null || sudo apt-get install -y -qq tesseract-ocr || true
+      - name: Run
+        run: python3 scripts/extract-ma-house-votes.py ${{ inputs.mode }}
+      - name: Commit
+        if: inputs.mode == 'run' && always()
+        env:
+          COMMIT_PATH: data-state/states/MA/votes.json.gz data-state/states/MA/house_votes_report.md
+        run: |
+          # commit-ledgers.sh commits + rebases + pushes once; if the push loses a race with another bot, retry rebase/push.
+          bash scripts/commit-ledgers.sh "Massachusetts House roll-call member votes" && exit 0
+          for i in 1 2 3 4 5 6 7 8; do
+            git rebase --abort 2>/dev/null || true
+            git pull -q --rebase origin "$GITHUB_REF_NAME" && git push -q origin "HEAD:$GITHUB_REF_NAME" && echo pushed && exit 0
+            sleep $((i*5))
+          done
+          exit 1
