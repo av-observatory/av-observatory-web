@@ -5,3 +5,5 @@
 04:45:34 retry 429 in 120s (gap 8.5): https://www.flsenate.gov/Session/Bill/2026/27
 04:48:50 2026: 3300 bill numbers to probe
 04:48:56 retry 429 in 120s (gap 3.3): https://www.flsenate.gov/Session/Bill/2026/3
+04:51:07 retry 429 in 120s (gap 4.0): https://www.flsenate.gov/Session/Bill/2026/3
+04:51:14 retry 429 in 120s (gap 5.6): https://www.flsenate.gov/Session/Bill/2026/8
