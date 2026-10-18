@@ -177,9 +177,11 @@ class Roster:
 
 
 # ----------------------------------------------------------------------------- bill list
-def list_session(session, extra_type=None):
+def list_session(session, extra_type=None, base_first=None):
     seen, out, n = set(), [], 1
     while n < 300:
+        if n % 10 == 1:
+            print(f"  list {session} type={extra_type} page {n} ({len(out)} so far)", flush=True)
         url = (f"{BASE}/Session/Bills/{session}?Chamber=both&SearchOnlyCurrentVersion=True&LegislativeSessionTitle={session}"
                f"&IsIncludeAmendments=False&IsFirstReference=True&pageNumber={n}")
         if extra_type:
@@ -197,6 +199,9 @@ def list_session(session, extra_type=None):
             out.append((label, href))
         if not fresh:
             break
+        if n == 1 and base_first and {l for l, _ in out} == base_first:
+            print("  type filter ignored by the site; skipping", flush=True)
+            return []
         n += 1
     return out
 
@@ -453,7 +458,7 @@ def main():
         have = {a for a, _ in items}
         extra_new = 0
         for t in EXTRA_BILL_TYPES:
-            for label, href in list_session(session, t):
+            for label, href in list_session(session, t, base_first={l for l, _ in items[:50]}):
                 if label not in have:
                     have.add(label)
                     items.append((label, href))

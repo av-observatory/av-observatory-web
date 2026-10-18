@@ -66,7 +66,7 @@ jobs:
           ARGS: ${{ inputs.args }}
       - name: Extract
         if: ${{ inputs.mode == 'extract' }}
-        run: bash scripts/live-commit.sh python3 scripts/extract-fl-legislature.py $ARGS
+        run: bash scripts/live-commit.sh python3 -u scripts/extract-fl-legislature.py $ARGS
         env:
           COMMIT_PATH: data-state/states/FL
           ARGS: ${{ inputs.args }}
