@@ -24,7 +24,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "data-state/states/FL"
 BASE = "https://www.flsenate.gov"
-UA = "Mozilla/5.0 (compatible; StateTrack-research/1.0; +https://github.com/av-observatory/av-observatory-web)"
+UA = "Mozilla/5.0 (StateTrack research)"
 SESSIONS = ["2025", "2025A", "2025B", "2025C", "2026", "2026D", "2026E", "2026F"]
 RESOLUTION_TYPES = {"HR", "SR", "HCR", "SCR", "HM", "SM"}
 EXTRA_BILL_TYPES = ["5,18", "6,16", "7,19", "8,17"]  # joint resolutions, resolutions, concurrent resolutions, memorials
