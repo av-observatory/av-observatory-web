@@ -45,6 +45,24 @@ jobs:
           bash scripts/commit-ledgers.sh "FL probe" || true
         env:
           COMMIT_PATH: data-state/states/FL
+      - name: Fetch listed URLs
+        if: ${{ inputs.mode == 'fetch' }}
+        run: |
+          mkdir -p data-state/states/FL/probe
+          P=data-state/states/FL/probe
+          n=0
+          for u in ${{ inputs.args }}; do
+            n=$((n+1)); f="f_$(date +%s)_$n.html"
+            for try in 1 2 3 4; do
+              code=$(curl -sS -L --max-time 60 -A "Mozilla/5.0 (StateTrack research)" -o "$P/$f" -w "%{http_code}" "$u")
+              [ "$code" != "429" ] && break; sleep 20
+            done
+            echo "$f $code $u" | tee -a $P/log2.txt
+            sleep 3
+          done
+          bash scripts/commit-ledgers.sh "FL fetch probe" || true
+        env:
+          COMMIT_PATH: data-state/states/FL
       - name: Extract
         if: ${{ inputs.mode == 'extract' }}
         run: bash scripts/live-commit.sh python3 scripts/extract-fl-legislature.py ${{ inputs.args }}
