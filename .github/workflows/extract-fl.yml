@@ -33,7 +33,7 @@ jobs:
           for u in $ARGS; do
             n=$((n+1)); f="f_$(date +%s)_$n.html"
             for try in 1 2 3 4; do
-              code=$(curl -sS -L --max-time 60 -A "Mozilla/5.0 (StateTrack research)" -o "$P/$f" -w "%{http_code}" "$u")
+              code=$(curl -sS -L --max-time 60 --connect-timeout 20 --max-filesize 8000000 -A "Mozilla/5.0 (StateTrack research)" -o "$P/$f" -w "%{http_code}" "$u" || echo fail)
               [ "$code" != "429" ] && break; sleep 20
             done
             echo "$f $code $u" | tee -a $P/log2.txt
