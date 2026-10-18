@@ -17,7 +17,7 @@ import argparse, gzip, json, re, shutil, subprocess, sys, tempfile, threading, t
 import urllib.error, urllib.parse, urllib.request
 from collections import Counter, defaultdict
 from concurrent.futures import ThreadPoolExecutor
-from datetime import date, datetime
+from datetime import date, datetime, timezone
 from html import unescape
 from pathlib import Path
 
@@ -37,11 +37,11 @@ def log(msg):
     print(msg, flush=True)
     if LOGFILE[0]:
         with open(LOGFILE[0], "a", encoding="utf-8") as fh:
-            fh.write(f"{datetime.utcnow():%H:%M:%S} {msg}\n")
+            fh.write(f"{datetime.now(timezone.utc):%H:%M:%S} {msg}\n")
 
 
 _lock, _last = threading.Lock(), [0.0]
-GAP = {"now": 3.0, "floor": 2.4, "ceil": 12.0}  # adaptive seconds between any two requests across all workers (the site sends 429 + Retry-After 120)
+GAP = {"now": 3.0, "floor": 2.6, "ceil": 12.0}  # adaptive seconds between any two requests across all workers (the site sends 429 + Retry-After 120)
 
 
 def fetch(url, binary=False, tries=7):

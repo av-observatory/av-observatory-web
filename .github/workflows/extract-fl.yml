@@ -56,19 +56,18 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - {sessions: "2025A,2025B,2025C,2026D,2026E,2026F,2025,2026", shard: ""}
+          - {sessions: "2025A,2025B,2025C,2026D,2026E,2026F", shard: ""}
+          - {sessions: "2025", shard: ""}
+          - {sessions: "2026", shard: ""}
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
       - name: Install pdftotext
         run: command -v pdftotext || (sudo apt-get update -qq && sudo apt-get install -y -qq poppler-utils)
       - name: Extract sessions ${{ matrix.sessions }} ${{ matrix.shard }}
-        run: bash scripts/live-commit.sh python3 -u scripts/extract-fl-legislature.py --part --resume --sessions "${{ matrix.sessions }}" --shard "${{ matrix.shard }}" $ARGS
+        run: bash scripts/fl-push-progress.sh run python3 -u scripts/extract-fl-legislature.py --part --resume --sessions "${{ matrix.sessions }}" --shard "${{ matrix.shard }}" $ARGS
         env:
           COMMIT_PATH: data-state/states/FL
           ARGS: ${{ inputs.args }}
-      - name: Commit the parts
-        if: ${{ always() }}
-        run: for i in 1 2 3 4 5; do COMMIT_PATH=data-state/states/FL bash scripts/commit-ledgers.sh "Florida legislature data (part ${{ matrix.sessions }} ${{ matrix.shard }})" && break; sleep 5; done
 
   merge:
     if: ${{ !cancelled() && (inputs.mode == 'extract' || inputs.mode == 'merge') }}
@@ -82,4 +81,4 @@ jobs:
       - name: Merge parts into the final files
         run: python3 -u scripts/extract-fl-legislature.py --merge
       - name: Commit the merged files
-        run: for i in 1 2 3 4 5; do COMMIT_PATH=data-state/states/FL bash scripts/commit-ledgers.sh "Florida legislature data" && break; sleep 5; done
+        run: bash scripts/fl-push-progress.sh once "Florida legislature data"

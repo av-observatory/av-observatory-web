@@ -1,7 +1,0 @@
-05:09:52   list 2025A type=None page 1 (0 so far)
-05:09:57 retry 429 in 120s (gap 3.6): LegislativeSessionTitle=2025A&IsIncludeAmendments=False&IsFirstReference=True&pageNumber=2
-05:12:00 retry 429 in 120s (gap 5.4): LegislativeSessionTitle=2025A&IsIncludeAmendments=False&IsFirstReference=True&pageNumber=2
-05:14:06 retry 429 in 120s (gap 8.1): LegislativeSessionTitle=2025A&IsIncludeAmendments=False&IsFirstReference=True&pageNumber=2
-05:16:14 retry 429 in 120s (gap 12.0): LegislativeSessionTitle=2025A&IsIncludeAmendments=False&IsFirstReference=True&pageNumber=2
-05:18:26 retry 429 in 120s (gap 12.0): LegislativeSessionTitle=2025A&IsIncludeAmendments=False&IsFirstReference=True&pageNumber=2
-05:20:38 retry 429 in 120s (gap 12.0): LegislativeSessionTitle=2025A&IsIncludeAmendments=False&IsFirstReference=True&pageNumber=2
