@@ -5,3 +5,7 @@
 06:40:09   list 2025A type=8,17 page 1 (0 so far)
 06:40:19 2025A: 22 listed (0 from resolution/memorial/JR type filters); types {'HB': 11, 'SB': 11}
 06:40:19 2025A: 22 of 22 bills still to fetch
+06:43:59 2025A: 22/22 fetched, 22 bills in part (gap 10.0s)
+06:43:59   list 2025B type=None page 1 (0 so far)
+06:44:09   list 2025B type=5,18 page 1 (0 so far)
+06:44:19   list 2025B type=6,16 page 1 (0 so far)
