@@ -25,3 +25,23 @@
 [    75s] retry 0 /api/Search/GetLegislationDetails/B26-0709: HTTP 429 rc=0  (30s)
 [    75s] retry 0 /api/Search/GetLegislationDetails/B26-0711: HTTP 429 rc=0  (30s)
 [    75s] retry 0 /api/Search/GetLegislationDetails/B26-0712: HTTP 429 rc=0  (30s)
+[   106s] retry 1 /api/Search/GetLegislationDetails/B26-0708: HTTP 429 rc=0  (30s)
+[   106s] retry 1 /api/Search/GetLegislationDetails/B26-0709: HTTP 429 rc=0  (30s)
+[   106s] retry 1 /api/Search/GetLegislationDetails/B26-0710: HTTP 429 rc=0  (30s)
+[   106s] retry 1 /api/Search/GetLegislationDetails/B26-0712: HTTP 429 rc=0  (30s)
+[   106s] retry 1 /api/Search/GetLegislationDetails/B26-0711: HTTP 429 rc=0  (30s)
+[   138s] retry 2 /api/Search/GetLegislationDetails/B26-0708: HTTP 429 rc=0  (30s)
+[   138s] retry 2 /api/Search/GetLegislationDetails/B26-0710: HTTP 429 rc=0  (30s)
+[   138s] retry 2 /api/Search/GetLegislationDetails/B26-0709: HTTP 429 rc=0  (30s)
+[   138s] retry 2 /api/Search/GetLegislationDetails/B26-0711: HTTP 429 rc=0  (30s)
+[   138s] retry 2 /api/Search/GetLegislationDetails/B26-0712: HTTP 429 rc=0  (30s)
+[   142s] GAVE UP /api/Search/GetLegislationDetails/B26-0708
+[   142s] GAVE UP /api/Search/GetLegislationDetails/B26-0710
+[   142s] GAVE UP /api/Search/GetLegislationDetails/B26-0709
+[   142s] GAVE UP /api/Search/GetLegislationDetails/B26-0711
+[   142s] GAVE UP /api/Search/GetLegislationDetails/B26-0712
+[   172s] retry 0 /api/Search/GetLegislationDetails/B26-0713: HTTP 429 rc=0  (30s)
+[   172s] retry 0 /api/Search/GetLegislationDetails/B26-0715: HTTP 429 rc=0  (30s)
+[   172s] retry 0 /api/Search/GetLegislationDetails/B26-0714: HTTP 429 rc=0  (30s)
+[   172s] retry 0 /api/Search/GetLegislationDetails/B26-0716: HTTP 429 rc=0  (30s)
+[   172s] retry 0 /api/Search/GetLegislationDetails/B26-0717: HTTP 429 rc=0  (30s)
