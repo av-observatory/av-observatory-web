@@ -9,3 +9,15 @@
 06:43:59   list 2025B type=None page 1 (0 so far)
 06:44:09   list 2025B type=5,18 page 1 (0 so far)
 06:44:19   list 2025B type=6,16 page 1 (0 so far)
+06:44:29   list 2025B type=7,19 page 1 (0 so far)
+06:44:42   list 2025B type=8,17 page 1 (0 so far)
+06:44:49 2025B: 2 listed (0 from resolution/memorial/JR type filters); types {'HB': 1, 'SB': 1}
+06:44:49 2025B: 2 of 2 bills still to fetch
+06:45:09 2025B: 2/2 fetched, 24 bills in part (gap 10.0s)
+06:45:09   list 2025C type=None page 1 (0 so far)
+06:45:19   list 2025C type=5,18 page 1 (0 so far)
+06:45:29   list 2025C type=6,16 page 1 (0 so far)
+06:45:39   list 2025C type=7,19 page 1 (0 so far)
+06:45:50   list 2025C type=8,17 page 1 (0 so far)
+06:45:59 2025C: 7 listed (0 from resolution/memorial/JR type filters); types {'HB': 2, 'HM': 1, 'HR': 1, 'SB': 2, 'SM': 1}
+06:45:59 2025C: 7 of 7 bills still to fetch
