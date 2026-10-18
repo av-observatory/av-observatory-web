@@ -17,6 +17,9 @@ on:
       titleonly3:
         description: "Round 3: NH/WY text URLs, MT subjects, AL fields"
         default: "false"
+      ny:
+        description: "Print status/sponsor text for the New York AV candidates"
+        default: "false"
 permissions:
   contents: read
 jobs:
@@ -35,3 +38,5 @@ jobs:
         run: python3 scripts/probe-titleonly2.py
       - if: ${{ inputs.titleonly3 == 'true' }}
         run: python3 scripts/probe-titleonly3.py
+      - if: ${{ inputs.ny == 'true' }}
+        run: python3 scripts/probe-ny.py
