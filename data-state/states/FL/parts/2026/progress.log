@@ -26,3 +26,6 @@
 11:43:09 2026: 1600/1897 fetched, 1600 bills in part (gap 10.0s)
 11:59:49 2026: 1700/1897 fetched, 1700 bills in part (gap 10.0s)
 12:16:29 2026: 1800/1897 fetched, 1800 bills in part (gap 10.0s)
+12:32:39 2026: 1897/1897 fetched, 1897 bills in part (gap 10.0s)
+12:32:39 roll-call PDFs still to read: 732
+12:34:29 deadline reached during the PDF pass
