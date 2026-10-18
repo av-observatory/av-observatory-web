@@ -41,7 +41,7 @@ def log(msg):
 
 
 _lock, _last = threading.Lock(), [0.0]
-GAP = {"now": 2.2, "floor": 2.2, "ceil": 10.0}  # adaptive seconds between any two requests across all workers (the site sends 429 + Retry-After)
+GAP = {"now": 3.0, "floor": 2.4, "ceil": 12.0}  # adaptive seconds between any two requests across all workers (the site sends 429 + Retry-After 120)
 
 
 def fetch(url, binary=False, tries=7):
