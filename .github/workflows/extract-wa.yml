@@ -6,6 +6,9 @@ on:
       mode:
         description: "probe or extract"
         default: "extract"
+      numbers:
+        description: "debug: comma list of bill numbers (writes to a scratch dir? no: use limit/probe instead)"
+        default: ""
       limit:
         description: "max bills (0 = all)"
         default: "0"
@@ -29,7 +32,7 @@ jobs:
           COMMIT_PATH: data-state/states/WA
         run: |
           mkdir -p data-state/states/WA
-          bash scripts/live-commit.sh python3 -u scripts/extract-wa-legislature.py --limit "${{ inputs.limit }}"
+          bash scripts/live-commit.sh python3 -u scripts/extract-wa-legislature.py --limit "${{ inputs.limit }}" --numbers "${{ inputs.numbers }}" ${{ inputs.numbers != '' && '--debug' || '' }}
       - name: Commit the extracted files
         if: ${{ inputs.mode != 'probe' }}
         run: |

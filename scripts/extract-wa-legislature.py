@@ -21,6 +21,7 @@ TYPES = ("HJR", "SJR", "HJM", "SJM", "HCR", "SCR", "HB", "SB", "HR", "SR")  # 3-
 SKIP_TYPES = {"GA", "I"}  # gubernatorial appointments and initiatives are not bills
 PARTY = {"D": "DEM", "R": "REP", "I": "IND"}
 stats = Counter()
+DEBUG = False
 
 
 def http(url, timeout=90, tries=5):
@@ -258,13 +259,18 @@ def process(num, types_wanted):
             if not txt:
                 continue
             s = report_summary(txt)
-            if len(s) > 40:
+            if DEBUG and len(s) <= 40:
+                i = txt.lower().find("summary")
+                print(f"DEBUG nosummary {key} {fname} {url} len={len(txt)} :: {clean_text(txt[max(0, i - 100):i + 400]) if i >= 0 else clean_text(txt[:300])}", flush=True)
+            if len(s) > 40 and not s[0].islower():
                 digest, src = s, f"WA {fname} (Summary of Bill)"
                 break
+        if docs_by.get(b) and not digest:
+            stats["has_report_no_summary"] += 1
         if not digest:
             digest = clean_text(long_desc)[:3500]
             src = "WA long description (no bill report summary)"
-        stats["digest_report" if src.startswith("WA House") or src.startswith("WA Senate") else "digest_long"] += 1
+        stats["digest_long" if src.startswith("WA long") else "digest_report"] += 1
         last_date = hist[-1][0] if hist else t(cs, "ActionDate")[:10]
         last_action = hist[-1][2] if hist else t(cs, "HistoryLine")
         bill = {"id": lid, "type": ty, "number": n, "session": BIENNIUM, "title": short, "digest": digest, "digest_source": src,
@@ -295,8 +301,14 @@ def write_all(bills, legs, votes, hist, final=False):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--limit", type=int, default=0)
+    ap.add_argument("--numbers", default="", help="comma list of bill numbers (debug)")
+    ap.add_argument("--debug", action="store_true")
     ap.add_argument("--workers", type=int, default=5)
     args = ap.parse_args()
+    global DEBUG, OUT
+    DEBUG = args.debug
+    if args.numbers:
+        OUT = Path("/tmp/wa-debug")  # debug runs never touch the committed outputs
 
     legs = fetch_member_list()
     print(f"members: {len(legs)}", flush=True)
@@ -311,7 +323,9 @@ def main():
             if b and b[0]:
                 numbers.add(b[1])
     numbers = sorted(numbers)
-    if args.limit:
+    if args.numbers:
+        numbers = [int(x) for x in args.numbers.split(",")]
+    elif args.limit:
         step = max(1, len(numbers) // args.limit)
         numbers = numbers[::step][:args.limit]
     print(f"bill numbers: {len(numbers)}", flush=True)
@@ -357,7 +371,7 @@ def report(bills, legs, votes, hist):
     by_status = Counter(b["status"] for b in bills.values())
     by_raw = Counter(re.sub(r"\d+", "#", b["status_raw"]) for b in bills.values())
     by_type = Counter(b["type"] for b in bills.values())
-    nd = sum(1 for b in bills.values() if b["digest"] and b["digest_source"].startswith(("WA House", "WA Senate")))
+    nd = sum(1 for b in bills.values() if b["digest"] and not b["digest_source"].startswith("WA long"))
     na = sum(1 for b in bills.values() if b["authors"])
     nvotes = sum(len(v) for v in votes.values())
     nfloor = sum(1 for v in votes.values() for x in v if x["floor"])
