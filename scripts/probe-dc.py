@@ -1,25 +1,30 @@
 #!/usr/bin/env python3
-import urllib.request
+import urllib.request, re
 H = {"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/124.0 Safari/537.36", "Accept": "application/json, text/plain, */*"}
 B = "https://lims.dccouncil.gov"
 
 
-def get(path, n=1800):
+def get(path, n=1500, full=False):
     try:
-        r = urllib.request.urlopen(urllib.request.Request(B + path, headers=H), timeout=60)
+        r = urllib.request.urlopen(urllib.request.Request(B + path, headers=H), timeout=40)
         d = r.read().decode("utf-8", "replace")
-        print(f"### {path} -> {r.status} {r.headers.get('content-type')} len={len(d)}\n{d[:n]}\n", flush=True)
+        ct = r.headers.get("content-type")
+        if "text/html" in (ct or "") and "<title>DC Legislation Information" in d:
+            print(f"### {path} -> SPA shell\n", flush=True)
+            return d
+        print(f"### {path} -> {r.status} {ct} len={len(d)}\n{d if full else d[:n]}\n", flush=True)
+        return d
     except Exception as e:
         body = getattr(e, "read", lambda: b"")()[:200]
         print(f"### {path} -> ERR {e} {body}\n", flush=True)
+    return ""
 
 
-for p in ["/api/search/GetLegislationMetadata/B26-0001", "/api/v1/Legislation/GetPublicData/B26-0001", "/api/v2/legislation/GetPublicData/B26-0001",
-          "/api/v1/Legislation/GetPublicData/PR26-0001", "/api/v2/legislation/GetPublicData/PR26-0001",
-          "/api/v1/Legislation/GetPublicData/B26-0100",
-          "/api/v1/Councilmembers/GetPublicData", "/api/v2/Councilmembers/GetPublicData", "/api/v1/Councilmembers", "/api/v2/councilmembers",
-          "/api/v1/Committees/GetPublicData", "/api/v2/committees/GetPublicData",
-          "/api/v1/Legislation/GetVotes/B26-0001", "/api/v2/Legislation/GetVotes/B26-0001",
-          "/api/v1/Legislation/GetRollCall/B26-0001", "/swagger/index.html", "/swagger/v1/swagger.json", "/swagger/v2/swagger.json",
-          "/api/swagger.json", "/Help", "/api/help", "/Legislation/B26-0001"]:
-    get(p)
+h = get("/api/help", full=True)
+cands = set(re.findall(r"""['"]([^'"]*(?:swagger|api-docs)[^'"]*)['"]""", h))
+print("candidates", cands)
+for p in ["/swagger/docs/v1", "/swagger/docs/v2", "/swagger/ui/index", "/api/swagger/docs/v1", "/api/swagger/docs/v2", "/api/v1/swagger.json", "/api/v2/swagger.json", "/api/swagger/v1/swagger.json"]:
+    get(p, 3000)
+for p in cands:
+    if p.startswith("/"):
+        get(p, 4000)
