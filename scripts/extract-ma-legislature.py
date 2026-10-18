@@ -91,9 +91,9 @@ def load_legislators():
 
 # ----------------------------------------------------------------------------- status from history
 FLOOR = re.compile(r"read (second|third)|ordered to a (second|third) reading|passed to be engrossed|engrossed|orders of the day|"
-                   r"bill reported favorably by committee and referred to the committee on (house|senate) (steering|rules|ways|bills)|"
+                   r"referred to the committee on (house|senate) (steering|rules)|"
                    r"placed in the orders|rules suspended|committee reported that the matter|amendment .* (adopted|rejected)|"
-                   r"reported (favorably|from the committee on (house|senate) ways)|new draft|laid aside|passed to be enacted|"
+                   r"new draft|laid aside|passed to be enacted|"
                    r"committee of conference|conference committee", re.I)
 COMMITTEE = re.compile(r"referred to the committee|referred to committee|discharged to the committee|hearing (scheduled|rescheduled|cancel)|"
                        r"reporting date extended|accompanied|committee recommended|^referred|sent to the committee|"
