@@ -74,3 +74,5 @@
 06:14:52 retry 429 in 300s (gap 3.4, block#1): LegislativeSessionTitle=2025A&IsIncludeAmendments=False&IsFirstReference=True&pageNumber=1
 06:19:56   list 2025A type=5,18 page 1 (0 so far)
 06:19:59 retry 429 in 300s (gap 4.1, block#1): onTitle=2025A&IsIncludeAmendments=False&IsFirstReference=True&pageNumber=1&BillType=5%2C18
+06:25:03   list 2025A type=6,16 page 1 (0 so far)
+06:25:07 retry 429 in 300s (gap 4.9, block#1): onTitle=2025A&IsIncludeAmendments=False&IsFirstReference=True&pageNumber=1&BillType=6%2C16
