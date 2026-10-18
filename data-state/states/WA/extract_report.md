@@ -3,7 +3,7 @@
 - Bills and resolutions: 3411 (one record per type and number; version records collapsed)
 - By type: {'HB': 1748, 'HJM': 18, 'HJR': 14, 'HCR': 9, 'HR': 115, 'SB': 1363, 'SJM': 17, 'SJR': 13, 'SCR': 11, 'SR': 103}
 - By status: {'Died': 2484, 'Chaptered': 690, 'Vetoed': 1, 'Passed': 236}
-- Digest from bill report 'Summary of Bill': 1541/3411; remainder use the WA long description (digest_source says which)
+- Digest from bill report 'Summary of Bill': 1970/3411; remainder use the WA long description (digest_source says which)
 - Bills with authors: 2808/3411 (0 author rows without a legislator id); committee-sponsored bills keep sponsor_committee
 - Bills with roll calls: 953; vote records: 2304 (2049 flagged floor)
 - History: 3411 bills, 37589 actions
