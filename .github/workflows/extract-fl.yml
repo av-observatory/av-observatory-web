@@ -51,7 +51,7 @@ jobs:
           mkdir -p data-state/states/FL/probe
           P=data-state/states/FL/probe
           n=0
-          for u in ${{ inputs.args }}; do
+          for u in $ARGS; do
             n=$((n+1)); f="f_$(date +%s)_$n.html"
             for try in 1 2 3 4; do
               code=$(curl -sS -L --max-time 60 -A "Mozilla/5.0 (StateTrack research)" -o "$P/$f" -w "%{http_code}" "$u")
@@ -63,11 +63,13 @@ jobs:
           bash scripts/commit-ledgers.sh "FL fetch probe" || true
         env:
           COMMIT_PATH: data-state/states/FL
+          ARGS: ${{ inputs.args }}
       - name: Extract
         if: ${{ inputs.mode == 'extract' }}
-        run: bash scripts/live-commit.sh python3 scripts/extract-fl-legislature.py ${{ inputs.args }}
+        run: bash scripts/live-commit.sh python3 scripts/extract-fl-legislature.py $ARGS
         env:
           COMMIT_PATH: data-state/states/FL
+          ARGS: ${{ inputs.args }}
       - name: Commit the extracted files
         if: ${{ always() && inputs.mode == 'extract' }}
         run: COMMIT_PATH=data-state/states/FL bash scripts/commit-ledgers.sh "Florida legislature data"
