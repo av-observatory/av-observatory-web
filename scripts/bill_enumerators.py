@@ -233,17 +233,31 @@ def ia(session: str):
 
 # --------------------------------------------------------------------------- Washington (XML, no titles in list)
 def wa(session: str):
-    root = ElementTree.fromstring(http(f"https://wslwebservices.leg.wa.gov/legislationservice.asmx/GetLegislationByYear?year={session}", timeout=120))
     ns = {"w": "http://WSLWebServices.leg.wa.gov/"}
-    for item in root.findall("w:LegislationInfo", ns):
-        bill_id = (item.findtext("w:BillId", "", ns) or "").strip()
-        num = (item.findtext("w:BillNumber", "", ns) or "").strip()
-        if bill_id:
-            letters = re.sub(r"[^A-Z]", "", bill_id.split()[0].upper())  # ESHB, 2SSB, HJR ... the chamber is the letters before B/J/C/M/R
-            kind = "House Bills" if letters.endswith(("HB", "HJR", "HJM", "HCR")) else "Senate Bills"
-            yield {"session": session, "number": bill_id, "title": "",
-                   "url": f"https://app.leg.wa.gov/billsummary?BillNumber={num}&Year={session}&Initiative=false",
-                   "text_url": f"https://lawfilesext.leg.wa.gov/biennium/2025-26/Htm/Bills/{kind.replace(' ', '%20')}/{num}.htm"}
+    done = set()
+    # The biennium's bills are listed per calendar year: the second year lists only bills still alive in it, so read both
+    # (the later year first, so its latest engrossed/substitute number wins) and keep one row per base bill number.
+    for year in (session, str(int(session) - 1)):
+        try:
+            root = ElementTree.fromstring(http(f"https://wslwebservices.leg.wa.gov/legislationservice.asmx/GetLegislationByYear?year={year}", timeout=120))
+        except Exception:
+            if year == session:
+                raise
+            continue
+        for item in root.findall("w:LegislationInfo", ns):
+            bill_id = (item.findtext("w:BillId", "", ns) or "").strip()
+            num = (item.findtext("w:BillNumber", "", ns) or "").strip()
+            if bill_id and num:
+                letters = re.sub(r"[^A-Z]", "", bill_id.split()[0].upper())  # ESHB, 2SSB, HJR ... the chamber is the letters before B/J/C/M/R
+                base = re.sub(r"[^A-Z]", "", bill_id.split()[0].upper())
+                base = re.sub(r"^E?S{0,2}(?=[HS][BJCMR][A-Z]?$)", "", base) + num  # SHB 1170 and HB 1170 are the same bill
+                if base in done:
+                    continue
+                done.add(base)
+                kind = "House Bills" if letters.endswith(("HB", "HJR", "HJM", "HCR")) else "Senate Bills"
+                yield {"session": session, "number": bill_id, "title": "",
+                       "url": f"https://app.leg.wa.gov/billsummary?BillNumber={num}&Year={year}&Initiative=false",
+                       "text_url": f"https://lawfilesext.leg.wa.gov/biennium/2025-26/Htm/Bills/{kind.replace(' ', '%20')}/{num}.htm"}
 
 
 # --------------------------------------------------------------------------- Alaska (HTML, 100-bill ranges)
@@ -366,8 +380,11 @@ def mo(session: str):
     for b in root.iter("BillXML"):
         kind, num = (b.findtext("BillType") or "").strip(), (b.findtext("BillNumber") or "").strip()
         if kind and num:
+            # house.mo.gov answers 403 to every automated client, but the House's own XML record of each bill (title, summary,
+            # actions) is served from documents.house.mo.gov: scan that instead of the HTML page.
             yield {"session": session, "number": f"{kind} {num}", "title": "",
-                   "url": f"https://house.mo.gov/Bill.aspx?bill={kind}{num}&year={b.findtext('SessionYear')}&code={b.findtext('SessionCode')}"}
+                   "url": f"https://house.mo.gov/Bill.aspx?bill={kind}{num}&year={b.findtext('SessionYear')}&code={b.findtext('SessionCode')}",
+                   "text_url": f"https://documents.house.mo.gov/xml/{session}-{kind}{num}.xml"}
     year = 2000 + int(session[:2])
     for a in page(f"https://www.senate.mo.gov/BillTracking/Bills/BillList?year={year}&session=R", headers=CHROME, timeout=120).anchors:
         if re.fullmatch(r"S[A-Z]{1,2} \d+", a["text"]):
@@ -640,7 +657,10 @@ def sc(session: str):
                 m = re.fullmatch(r"([HS])\.\s*(\d+)", a["text"].strip())
                 if m and "billnumbers=" in a["href"] and (m.group(1), m.group(2)) not in seen:
                     seen.add((m.group(1), m.group(2)))
-                    yield {"session": session, "number": f"{m.group(1)} {m.group(2)}", "title": "", "url": a["href"]}
+                    # billsearch.php is a JavaScript shell; the static bill page carries status and full text
+                    first = 2025 + (int(session) - 126) * 2
+                    yield {"session": session, "number": f"{m.group(1)} {m.group(2)}", "title": "", "url": a["href"],
+                           "text_url": f"https://www.scstatehouse.gov/sess{session}_{first}-{first + 1}/bills/{m.group(2)}.htm"}
 
 
 # --------------------------------------------------------------------------- Texas (filed-bills reports)
@@ -1040,7 +1060,8 @@ def dc(session: str):
 
 AV_TERMS = ("Autonomous vehicle", "Autonomous vehicles", "Automated driving system", "Automated driving systems", "Automated vehicle",
             "Automated vehicles", "Self-driving", "Self driving vehicle", "Driverless", "Robotaxi", "Autonomous truck", "Autonomous mobility",
-            "Highly automated vehicle", "Autonomous technology", "Fully automated", "Conditionally automated", "Automated motor vehicle")
+            "Highly automated vehicle", "Autonomous technology", "Fully automated", "Conditionally automated", "Automated motor vehicle",
+            "Autonomous driving", "Autonomous motor vehicle", "Autonomous taxi", "Dynamic driving task")
 
 
 # --------------------------------------------------------------------------- New York (Assembly lookup by bill number; covers Assembly and Senate bills)
@@ -1075,16 +1096,18 @@ def ny(session: str):
                 html = http(url, headers={"User-Agent": "curl/8.5.0", "Accept": "*/*"}, tries=2, timeout=60).decode("utf-8", "replace")
             except Exception:
                 break
-            fresh = 0
+            fresh = links = 0
             for a in parse_html(html, url).anchors:
                 m = re.search(rf"/legislation/bills/{session}/([A-Z]\d+)(?:/|$)", a["href"])
+                if m:
+                    links += 1
                 if m and m.group(1) not in seen_hint:
                     seen_hint.add(m.group(1))
                     fresh += 1
                     num = m.group(1)
                     yield {"session": session, "number": f"{num[0]}{int(num[1:])}", "title": "", "av_hint": True,
                            "url": f"https://www.nysenate.gov/legislation/bills/{session}/{num}"}
-            if not fresh:
+            if not links:  # end of this term's results (a page of only already-seen bills must not stop the walk: later pages can still hold new ones)
                 break
             time.sleep(0.5)
 
@@ -1102,7 +1125,7 @@ def ny(session: str):
 
 
 # Bump a state's revision when its adapter changes so recently enumerated ledgers are rebuilt.
-REV = {"WA": 3, "RI": 2, "KS": 2, "GA": 2}  # bump to force a re-enumeration (KS/GA came back short in the first full run)
+REV = {"WA": 4, "RI": 2, "KS": 2, "GA": 2, "NY": 2, "MO": 2, "SC": 2}  # bump to force a re-enumeration (KS/GA came back short in the first full run)
 
 # state -> (sessions to enumerate each run, function)
 ENUMERATORS = {

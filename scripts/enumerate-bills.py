@@ -28,7 +28,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from bill_enumerators import ENUMERATORS, REV  # noqa: E402
-from scan_fetch import is_bill_page, scan_fetch  # noqa: E402
+from scan_fetch import SKIPPED, is_bill_page, scan_fetch  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
 LEDGER_DIR = ROOT / "data-state/bill_ledger"
@@ -37,6 +37,9 @@ TODAY = date.today().isoformat()
 
 # States whose bill pages are JavaScript shells or refuse automated requests: classified from titles only (their ledgers carry titles).
 TITLE_ONLY = {"AL", "AZ", "CA", "DC", "GA", "MT", "NH", "NJ", "SD", "VA", "WY"}
+
+# Per-host scan concurrency for servers that throttle (nysenate.gov answers 429/403 when hit in parallel; palegis.us stalls under load).
+HOST_CAP = {"www.nysenate.gov": 1, "nysenate.gov": 1, "www.palegis.us": 2}
 
 AV = re.compile(
     r"\b(?:autonomous\s+(?:vehicle|vehicles|driving|truck|trucks|taxi|taxis|mobility|shuttle|shuttles|technology)|"
@@ -131,7 +134,7 @@ def enumerate_state(code: str) -> dict:
     return result
 
 
-def classify(ledgers: dict, scan_budget: int, scan_minutes: float) -> dict:
+def classify(ledgers: dict, scan_budget: int, scan_minutes: float, only: set | None = None) -> dict:
     """Title/summary screen for all; parallel page scan of unscanned bills (oldest first) within budget.
 
     Scans run in a thread pool with a per-host cap (politeness), in batches so progress is
@@ -149,7 +152,7 @@ def classify(ledgers: dict, scan_budget: int, scan_minutes: float) -> dict:
     # Round-robin across states (oldest scan first) so one failing state cannot eat the whole budget.
     queue = []
     for code, ledger in ledgers.items():
-        if code in TITLE_ONLY:
+        if code in TITLE_ONLY or (only and code not in only):
             continue
         # Unconfirmed full-text-search hits go first so candidates are settled quickly; then oldest scan first.
         pending = sorted(((0 if row.get("av") == "candidate" else 1), row.get("scanned") or "", key) for key, row in ledger["bills"].items()
@@ -166,7 +169,8 @@ def classify(ledgers: dict, scan_budget: int, scan_minutes: float) -> dict:
         url = row.get("text_url") or row["url"]
         if row.get("via") == "state_fulltext" and code == "NY":  # confirm a full-text-search hit on the Senate's page, which carries the bill text
             url = f"https://www.nysenate.gov/legislation/bills/{row.get('session')}/{row.get('number')}"
-        gate = gates.setdefault(urlparse(url).hostname, BoundedSemaphore(int(os.getenv("SCAN_PER_HOST", "4"))))
+        host = urlparse(url).hostname
+        gate = gates.setdefault(host, BoundedSemaphore(HOST_CAP.get(host, int(os.getenv("SCAN_PER_HOST", "4")))))
         started = time.monotonic()
         with gate:
             text, kind = scan_fetch(url)
@@ -180,6 +184,9 @@ def classify(ledgers: dict, scan_budget: int, scan_minutes: float) -> dict:
                 break
             for code, key, text, kind, secs in pool.map(scan, queue[start:start + 400]):
                 row = ledgers[code]["bills"][key]
+                if kind == SKIPPED:  # the host is down right now: leave the row as it was so it is tried again, not dated as scanned
+                    row["scan_failed"], row["scan_error"] = True, kind
+                    continue
                 row["scanned"] = TODAY
                 stats[code]["scan_seconds"] += secs
                 if text and not is_bill_page(text, row.get("number", ""), row.get("title", "")):
@@ -238,8 +245,8 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--scan-budget", type=int, default=int(os.getenv("SCAN_BUDGET", "100000")))
     ap.add_argument("--scan-minutes", type=float, default=float(os.getenv("SCAN_MINUTES", "40")))
-    ap.add_argument("--states", default="")
-    ap.add_argument("--force", action="store_true", help="re-enumerate states even if enumerated recently")
+    ap.add_argument("--states", default=os.getenv("ENUM_STATES", ""), help="comma list: enumerate and scan only these states (env ENUM_STATES)")
+    ap.add_argument("--force", action="store_true", default=os.getenv("ENUM_FORCE") == "true", help="re-enumerate states even if enumerated recently")
     ap.add_argument("--refresh-days", type=int, default=int(os.getenv("ENUM_REFRESH_DAYS", "5")))
     ap.add_argument("--skip-enumerate", action="store_true", help="reuse the ledgers; only scan/report (scan chunks)")
     args = ap.parse_args()
@@ -263,7 +270,7 @@ def main() -> int:
         for code, res in pool.map(run, todo):
             results[code] = res
     ledgers = {code: load_ledger(code) for code in sorted(ENUMERATORS)}
-    stats = classify(ledgers, args.scan_budget, args.scan_minutes)
+    stats = classify(ledgers, args.scan_budget, args.scan_minutes, set(wanted) if args.states else None)
     for code, ledger in ledgers.items():
         save_ledger(code, ledger)
     text = report(results, stats, ledgers)

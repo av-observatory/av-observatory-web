@@ -8,6 +8,13 @@ on:
   schedule:
     - cron: "41 9 * * *"
   workflow_dispatch:
+    inputs:
+      states:
+        description: "Comma-separated state codes: enumerate and scan only these (blank = all)"
+        default: ""
+      force:
+        description: "Re-enumerate even if enumerated recently (true/false)"
+        default: "false"
 
 permissions:
   contents: write
@@ -21,6 +28,9 @@ jobs:
   enumerate:
     runs-on: ubuntu-latest
     timeout-minutes: 240
+    env:
+      ENUM_STATES: ${{ inputs.states }}
+      ENUM_FORCE: ${{ inputs.force }}
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
       - name: Install mdbtools (New Jersey database) and poppler (PDF bill text)

@@ -4,9 +4,15 @@ on:
     inputs:
       states:
         description: "Comma-separated states whose failed scan rows are re-fetched and diagnosed"
-        default: "MO,PA,SC,RI,WA,NC"
+        default: ""
       titleonly:
         description: "Also explore summary endpoints for the title-only states"
+        default: "false"
+      pa:
+        description: "Probe palegis.us (Pennsylvania) timeouts"
+        default: "false"
+      titleonly2:
+        description: "Round 2: field names and text URLs for the title-only states"
         default: "false"
 permissions:
   contents: read
@@ -20,3 +26,7 @@ jobs:
         run: python3 scripts/probe-scan.py "${{ inputs.states }}"
       - if: ${{ inputs.titleonly == 'true' }}
         run: python3 scripts/probe-titleonly.py
+      - if: ${{ inputs.pa == 'true' }}
+        run: python3 scripts/probe-pa.py
+      - if: ${{ inputs.titleonly2 == 'true' }}
+        run: python3 scripts/probe-titleonly2.py
