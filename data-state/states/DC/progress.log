@@ -45,3 +45,10 @@
 [   172s] retry 0 /api/Search/GetLegislationDetails/B26-0714: HTTP 429 rc=0  (30s)
 [   172s] retry 0 /api/Search/GetLegislationDetails/B26-0716: HTTP 429 rc=0  (30s)
 [   172s] retry 0 /api/Search/GetLegislationDetails/B26-0717: HTTP 429 rc=0  (30s)
+[     1s] first page cat 1 size 100: True
+[     4s] search category 1: total=856, numbers so far 856
+[     4s] first page cat 6 size 100: True
+[     7s] search category 6: total=1051, numbers so far 1907
+[     7s] search listed 1677 B/PR numbers
+[    37s] 100/1677 details
+[    72s] 200/1677 details
