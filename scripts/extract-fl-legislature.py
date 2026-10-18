@@ -213,8 +213,8 @@ def list_session(session, extra_type=None, base_first=None):
             seen.add(label)
             fresh += 1
             out.append((label, href))
-        if not fresh:
-            break
+        if not fresh or not re.search(rf"[?&;]PageNumber={n + 1}(?!\d)", h, re.I):
+            break  # no further page is linked (page 2+ of the list is heavily rate-limited, so never ask for one that does not exist)
         if n == 1 and base_first and {l for l, _ in out} == base_first:
             print("  type filter ignored by the site; skipping", flush=True)
             return []
