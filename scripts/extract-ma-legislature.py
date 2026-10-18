@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import sys, json, os, re, urllib.request, ssl, time
-from concurrent.futures import ThreadPoolExecutor
+
 UA = "AVObservatory/1.0 (+https://av-observatory.com/; public-records research)"
 
 
@@ -11,40 +11,19 @@ def get(u, timeout=60):
 
 if "--probe" in sys.argv:
     B = "https://malegislature.gov/api/GeneralCourts/194"
-    print(get(B + "/Documents/H4000/DocumentHistoryActions")[:2500], flush=True)
-    docs = json.loads(get(B + "/Documents", 180))
-    print("ndocs", len(docs), flush=True)
-    from collections import Counter
-    print(Counter(re.match(r"[A-Z]+", d["BillNumber"]).group(0) for d in docs if d.get("BillNumber")), flush=True)
-    nums = [d["BillNumber"] for d in docs if d.get("BillNumber")]
-    # prioritise low-numbered and a spread
-    sample = nums[:1200:1]
-
-    def one(n):
+    for u, n in [("/Branches/Senate/RollCalls/119", 3500), ("/Branches/House/RollCalls/30", 3500), ("/Branches/House/RollCalls", 1200),
+                 ("/Branches/Senate/RollCalls", 1200), ("/Branches/House", 800), ("/Branches", 600), ("/Documents/S1948", 2500),
+                 ("/LegislativeMembers/GOV7", 800), ("/LegislativeMembers/DAF0", 600)]:
         try:
-            return n, json.loads(get(f"{B}/Documents/{n}"))
+            b = get(B + u)
+            print("OK", u, len(b), flush=True); print(b[:n].replace("\n", " "), flush=True); print(flush=True)
         except Exception as e:
-            return n, None
-    shown = {"rc": 0, "pin": 0, "cr": 0, "txt": 0}
-    keys = Counter()
-    with ThreadPoolExecutor(4) as ex:
-        for n, d in ex.map(one, sample):
-            if not d:
-                continue
-            keys.update(d.keys())
-            if d.get("RollCalls") and shown["rc"] < 2:
-                shown["rc"] += 1; print("ROLLCALLS", n, json.dumps(d["RollCalls"])[:2500], flush=True)
-            if d.get("Pinslip") and shown["pin"] < 3:
-                shown["pin"] += 1; print("PINSLIP", n, json.dumps(d["Pinslip"])[:600], flush=True)
-            if d.get("CommitteeRecommendations") and shown["cr"] < 1:
-                shown["cr"] += 1; print("CR", n, json.dumps(d["CommitteeRecommendations"])[:1200], flush=True)
-            if d.get("DocumentText") and shown["txt"] < 1:
-                shown["txt"] += 1; print("TXT", n, json.dumps(d["DocumentText"])[:300], flush=True)
-    print("keys", dict(keys), flush=True)
-    # known enacted: search history of some bills for "Chapter"
-    for n in ("H4000", "S2", "H4144", "H4"):
-        try:
-            h = get(f"{B}/Documents/{n}/DocumentHistoryActions")
-            print("HIST", n, len(h), h[-900:], flush=True)
-        except Exception as e:
-            print("HISTFAIL", n, repr(e)[:100], flush=True)
+            print("FAIL", u, repr(e)[:200], flush=True)
+    # does an enacted law exist? search last-action of some docs for 'Chapter'
+    try:
+        h = get("https://malegislature.gov/Laws/SessionLaws/Acts/2025/Chapter17")
+        t = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", h))
+        i = t.find("Chapter 17")
+        print("SESSIONLAW", t[i:i + 600], flush=True)
+    except Exception as e:
+        print("SLFAIL", repr(e)[:150], flush=True)
