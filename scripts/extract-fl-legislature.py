@@ -55,9 +55,11 @@ def fetch(url, binary=False, tries=7):
             if e.code not in (429, 500, 502, 503, 504, 403) or attempt == tries - 1:
                 print(f"HTTP {e.code} {url}", file=sys.stderr)
                 return None
+            print(f"retry {e.code} in {min(delay, 120)}s: {url}", file=sys.stderr, flush=True)
             time.sleep(min(delay, 120))
             wait = min(wait * 2, 120)
         except Exception as e:  # network hiccup
+            print(f"retry error {e}: {url}", file=sys.stderr, flush=True)
             if attempt == tries - 1:
                 print(f"FAIL {url}: {e}", file=sys.stderr)
                 return None

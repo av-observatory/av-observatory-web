@@ -64,6 +64,11 @@ jobs:
         env:
           COMMIT_PATH: data-state/states/FL
           ARGS: ${{ inputs.args }}
+      - name: Smoke (time-boxed, no commit)
+        if: ${{ inputs.mode == 'smoke' }}
+        run: timeout 240 python3 -u scripts/extract-fl-legislature.py $ARGS || echo "exit $?"
+        env:
+          ARGS: ${{ inputs.args }}
       - name: Extract
         if: ${{ inputs.mode == 'extract' }}
         run: bash scripts/live-commit.sh python3 -u scripts/extract-fl-legislature.py $ARGS
