@@ -21,3 +21,15 @@
 06:45:50   list 2025C type=8,17 page 1 (0 so far)
 06:45:59 2025C: 7 listed (0 from resolution/memorial/JR type filters); types {'HB': 2, 'HM': 1, 'HR': 1, 'SB': 2, 'SM': 1}
 06:45:59 2025C: 7 of 7 bills still to fetch
+06:47:09 2025C: 7/7 fetched, 31 bills in part (gap 10.0s)
+06:47:09   list 2026D type=None page 1 (0 so far)
+06:47:20   list 2026D type=5,18 page 1 (0 so far)
+06:47:29   list 2026D type=6,16 page 1 (0 so far)
+06:47:39   list 2026D type=7,19 page 1 (0 so far)
+06:47:49   list 2026D type=8,17 page 1 (0 so far)
+06:47:59 2026D: 6 listed (0 from resolution/memorial/JR type filters); types {'HB': 1, 'HJR': 1, 'SB': 4}
+06:47:59 2026D: 6 of 6 bills still to fetch
+06:48:59 2026D: 6/6 fetched, 37 bills in part (gap 10.0s)
+06:48:59   list 2026E type=None page 1 (0 so far)
+06:49:09   list 2026E type=5,18 page 1 (0 so far)
+06:49:19   list 2026E type=6,16 page 1 (0 so far)
