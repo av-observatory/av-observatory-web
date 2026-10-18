@@ -140,6 +140,7 @@ def main() -> int:
     ap.add_argument("--sample", type=int, default=50)
     ap.add_argument("--seed", type=int, default=7)
     ap.add_argument("--all", action="store_true", help="tag every bill (resumable: skips bills already tagged with the same text, prompt and model)")
+    ap.add_argument("--only", default="", help="comma-separated bill ids to retag even if already tagged (use with --all so other tags are kept)")
     ap.add_argument("--workers", type=int, default=4)
     ap.add_argument("--budget-minutes", type=float, default=0)
     args = ap.parse_args()
@@ -154,7 +155,11 @@ def main() -> int:
     if args.all and out.exists():
         prior = json.loads(out.read_text())
         results = {k: v for k, v in prior.get("bills", {}).items() if "error" not in v}
-    todo = [k for k in keys if results.get(k, {}).get("hash") != bill_hash(bills[k])]
+    only = {x.strip() for x in args.only.split(",") if x.strip()}
+    if only:
+        todo = sorted(k for k in only if k in bills)
+    else:
+        todo = [k for k in keys if results.get(k, {}).get("hash") != bill_hash(bills[k])]
     print(f"{len(keys)} bills, {len(keys) - len(todo)} already tagged, {len(todo)} to tag with {MODEL}", flush=True)
     system = system_prompt()
     started = time.monotonic()
