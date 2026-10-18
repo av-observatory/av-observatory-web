@@ -75,7 +75,7 @@ jobs:
         run: for i in 1 2 3 4 5; do COMMIT_PATH=data-state/states/FL bash scripts/commit-ledgers.sh "Florida legislature data (part ${{ matrix.sessions }} ${{ matrix.shard }})" && break; sleep 5; done
 
   merge:
-    if: ${{ always() && (inputs.mode == 'extract' || inputs.mode == 'merge') }}
+    if: ${{ !cancelled() && (inputs.mode == 'extract' || inputs.mode == 'merge') }}
     needs: [extract]
     runs-on: ubuntu-latest
     timeout-minutes: 20

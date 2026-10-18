@@ -221,6 +221,16 @@ def list_session(session, extra_type=None, base_first=None):
     return out
 
 
+def scan_numbers(session):
+    """Regular sessions: the list pages are rate-limited hard, so read the numbering blocks (BillRange options) from one list page and probe each number's bill page."""
+    h = fetch(f"{BASE}/Session/Bills/{session}?Chamber=both&SearchOnlyCurrentVersion=True&LegislativeSessionTitle={session}&pageNumber=1") or ""
+    m = re.search(r'<select[^>]*id="bill-range".*?</select>', h, re.S)
+    nums = []
+    for lo, hi in re.findall(r'value="(\d+)-(\d+)"', m.group(0) if m else ""):
+        nums += range(int(lo), int(hi) + 1)
+    return sorted(set(nums))
+
+
 # ----------------------------------------------------------------------------- bill page
 COMMITTEE_WORDS = re.compile(r"committee|subcommittee|council|commission|rules|calendar|select|conference|delegation|caucus|office|department", re.I)
 
@@ -233,6 +243,7 @@ def parse_bill_page(h):
     head = text_of(m.group(1))
     hm = re.match(r"((?:CS/)*)([A-Z]+)\s+(\S+?):\s*(.*)", head)
     r["title"] = hm.group(4) if hm else head
+    r["btype"], r["bnum"] = (hm.group(2), hm.group(3)) if hm else ("", "")
     # sponsor paragraph
     sp = re.search(r"</h2>\s*<p>\s*(.*?)<span>by</span>(.*?)</p>", h, re.S)
     r["kind"] = text_of(sp.group(1)) if sp else ""
@@ -352,16 +363,13 @@ def parse_vote_pdf(pdf_bytes, roster):
 
 # ----------------------------------------------------------------------------- per bill
 def process(session, label, href, roster, session_over, want_votes=True):
-    m = re.match(r"([A-Z]+)\s+(\S+)$", label)
-    if not m:
-        return None
-    btype, num = m.groups()
     h = fetch(BASE + href)
     if not h:
         return None
     p = parse_bill_page(h)
-    if not p:
-        return None
+    if not p or not p["btype"]:
+        return "MISSING"
+    btype, num = p["btype"], p["bnum"]
     number = int(num) if num.isdigit() else num
     key = f"{btype} {num} ({session})"
     chamber = "House" if btype.startswith("H") else "Senate"
@@ -506,7 +514,7 @@ def main():
     ap.add_argument("--resume", action="store_true")
     ap.add_argument("--part", action="store_true", help="write to parts/<sessions>/ (merged later with --merge)")
     ap.add_argument("--merge", action="store_true")
-    ap.add_argument("--checkpoint", type=int, default=150)
+    ap.add_argument("--checkpoint", type=int, default=100)
     ap.add_argument("--shard", default="", help="i/n: process only every n-th listed bill (offset i) so several runners can share one session")
     args = ap.parse_args()
     if args.merge:
@@ -528,48 +536,67 @@ def main():
             legs.setdefault(k, x)
         print(f"resuming with {len(bills)} bills", flush=True)
     roster = Roster(legs)
+    scanned_file = outdir / "scanned.json"
+    try:
+        scanned = set(json.loads(scanned_file.read_text())) if args.resume else set()
+    except Exception:
+        scanned = set()
     for session in sessions:
-        items = list_session(session)
-        have = {a for a, _ in items}
-        extra_new = 0
-        for t in EXTRA_BILL_TYPES:
-            for label, href in list_session(session, t, base_first={l for l, _ in items[:50]}):
-                if label not in have:
-                    have.add(label)
-                    items.append((label, href))
-                    extra_new += 1
-        log(f"{session}: {len(items)} listed ({extra_new} from resolution/memorial/JR type filters); types {dict(Counter(l.split()[0] for l, _ in items))}", flush=True)
-        items = sorted(items, key=lambda x: x[0])  # stable order so every shard sees the same partition
+        scan_mode = session in ("2025", "2026")
+        if scan_mode:
+            nums = scan_numbers(session)
+            items = [(f"#{n}", f"/Session/Bill/{session}/{n}") for n in nums]
+            log(f"{session}: {len(nums)} bill numbers to probe")
+        else:
+            items = list_session(session)
+            have = {a for a, _ in items}
+            extra_new = 0
+            for t in EXTRA_BILL_TYPES:
+                for lab, href in list_session(session, t, base_first={l for l, _ in items[:50]}):
+                    if lab not in have:
+                        have.add(lab)
+                        items.append((lab, href))
+                        extra_new += 1
+            log(f"{session}: {len(items)} listed ({extra_new} from resolution/memorial/JR type filters); types {dict(Counter(l.split()[0] for l, _ in items))}")
+            items = sorted(items, key=lambda x: x[0])
         if shard_n > 1:
             items = [x for i, x in enumerate(items) if i % shard_n == shard_i]
         if args.limit:
             items = items[:args.limit]
         session_over = session not in ("2026D", "2026E", "2026F")  # later special sessions: judged per bill by activity age
-        todo = [(l, h) for l, h in items if f"{l} ({session})" not in bills]
+        if scan_mode:
+            todo = [(l, h) for l, h in items if f"{session}:{l}" not in scanned]
+        else:
+            todo = [(l, h) for l, h in items if f"{l} ({session})" not in bills]
         done = 0
         with ThreadPoolExecutor(max_workers=min(args.workers, 4)) as ex:
-            futs = [ex.submit(process, session, l, h, roster, session_over, not args.no_votes) for l, h in todo]
-            for f in futs:
+            futs = [(l, ex.submit(process, session, l, h, roster, session_over, not args.no_votes)) for l, h in todo]
+            for lab, f in futs:
                 try:
                     res = f.result()
                 except Exception as e:
                     print("error", repr(e), file=sys.stderr)
                     continue
-                if not res:
-                    continue
-                key, bill, vs, hist = res
-                bills[key] = bill
-                if vs:
-                    votes[key] = [{k: v for k, v in x.items() if k != "_parsed_ok"} for x in vs]
-                    for x in vs:
-                        if not x["_parsed_ok"]:
-                            notes.append(f"{key} {x['date']} {x['chamber']}: member list did not reconcile with the tally; members omitted")
-                history[key] = hist
                 done += 1
+                if res == "MISSING":
+                    scanned.add(f"{session}:{lab}")
+                elif res:
+                    key, bill, vs, hist = res
+                    bills[key] = bill
+                    scanned.add(f"{session}:{lab}")
+                    if vs:
+                        votes[key] = [{k: v for k, v in x.items() if k != "_parsed_ok"} for x in vs]
+                        for x in vs:
+                            if not x["_parsed_ok"]:
+                                notes.append(f"{key} {x['date']} {x['chamber']}: member list did not reconcile with the tally; members omitted")
+                    history[key] = hist
                 if done % args.checkpoint == 0:
                     write_all(outdir, bills, roster.legs, votes, history, notes)
-                    log(f"{session}: {done}/{len(todo)} done (gap {GAP['now']:.2f}s)")
+                    scanned_file.write_text(json.dumps(sorted(scanned)))
+                    log(f"{session}: {done}/{len(todo)} probed, {len(bills)} bills (gap {GAP['now']:.2f}s)")
     write_all(outdir, bills, roster.legs, votes, history, notes)
+    if args.part:
+        scanned_file.write_text(json.dumps(sorted(scanned)))
     if not args.part:
         report(bills, roster.legs, votes, history, STATIC_NOTES + sorted(set(notes))[:40])
     print(f"FL{' part' if args.part else ''}: {len(bills)} bills, {len(roster.legs)} legislators, {sum(len(v) for v in votes.values())} votes")
