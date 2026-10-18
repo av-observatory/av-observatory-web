@@ -32,6 +32,14 @@
    "stage": "discovered",
    "via": "ledger:title"
   },
+  "AZ:S1320": {
+   "discovered": "2026-10-18",
+   "jurisdiction": "AZ",
+   "number": "SB1320",
+   "source_url": "https://apps.azleg.gov/BillStatus/BillOverview/82704?SessionId=129",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
   "AZ:S1417": {
    "checked": "2026-10-17",
    "discovered": "2026-10-17",
@@ -50,6 +58,14 @@
    "stage": "discovered",
    "via": "ledger:title"
   },
+  "AZ:S1750": {
+   "discovered": "2026-10-18",
+   "jurisdiction": "AZ",
+   "number": "SB1750",
+   "source_url": "https://apps.azleg.gov/BillStatus/BillOverview/83486?SessionId=129",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
   "CA:A2193": {
    "discovered": "2026-10-17",
    "jurisdiction": "CA",
@@ -57,6 +73,14 @@
    "source_url": "https://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id=202520260AB2193",
    "stage": "discovered",
    "via": "ledger:title"
+  },
+  "CA:A2403": {
+   "discovered": "2026-10-18",
+   "jurisdiction": "CA",
+   "number": "AB 2403",
+   "source_url": "https://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id=202520260AB2403",
+   "stage": "discovered",
+   "via": "ledger:digest"
   },
   "CA:A33": {
    "discovered": "2026-10-17",
@@ -74,6 +98,14 @@
    "stage": "discovered",
    "via": "ledger:title"
   },
+  "CA:S1315": {
+   "discovered": "2026-10-18",
+   "jurisdiction": "CA",
+   "number": "SB 1315",
+   "source_url": "https://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id=202520260SB1315",
+   "stage": "discovered",
+   "via": "ledger:digest"
+  },
   "CA:S480": {
    "discovered": "2026-10-17",
    "jurisdiction": "CA",
@@ -81,6 +113,22 @@
    "source_url": "https://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id=202520260SB480",
    "stage": "discovered",
    "via": "ledger:title"
+  },
+  "CA:S511": {
+   "discovered": "2026-10-18",
+   "jurisdiction": "CA",
+   "number": "SB 511",
+   "source_url": "https://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id=202520260SB511",
+   "stage": "discovered",
+   "via": "ledger:digest"
+  },
+  "CA:S572": {
+   "discovered": "2026-10-18",
+   "jurisdiction": "CA",
+   "number": "SB 572",
+   "source_url": "https://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id=202520260SB572",
+   "stage": "discovered",
+   "via": "ledger:digest"
   },
   "CO:H25": {
    "checked": "2026-10-17",
@@ -204,13 +252,7 @@
    "via": "ledger:page_scan"
   },
   "FL:H1469": {
-   "checked": "2026-10-17",
-   "discovered": "2026-10-17",
-   "editorial_failure_reason": "The supplied text is only a bill summary page, not the full bill text. It does not identify the specific standards, prohibited activities, reporting duties, or deadlines, so a more detailed summary cannot be grounded in the source.",
-   "editorial_source_hash": "876c5656d07a01ff7db79bd76b188bb48870aa2ca9becfcc264b89a1042862ff",
-   "editorial_source_type": "official_html",
-   "editorial_source_url": "https://www.flsenate.gov/Session/Bill/2026/1469",
-   "editorial_status": "needs_review",
+   "checked": "2026-10-18",
    "hearings": [],
    "id": "fl-hb-1469-2026",
    "jurisdiction": "FL",
@@ -223,20 +265,23 @@
    "session": "2026",
    "source_feed": "official_sweep",
    "source_url": "https://www.flsenate.gov/Session/Bill/2026/1469",
-   "stage": "extracted",
+   "stage": "in_feed",
    "stage_dates": {
     "committee": "2026-03-13"
    },
    "status": "stricken",
    "title": "Autonomous Vehicle Safety"
   },
+  "FL:S1256": {
+   "discovered": "2026-10-18",
+   "jurisdiction": "FL",
+   "number": "SB 1256",
+   "source_url": "https://www.flsenate.gov/Session/Bill/2025/1256",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
   "FL:S1258": {
-   "checked": "2026-10-17",
-   "discovered": "2026-10-17",
-   "editorial_failure_reason": "ValueError: substring not found",
-   "editorial_source_hash": "0eabc1c92a3419c31a37defad35c0c4dd1eb1c45dc177dd1f361eb2ea6353035",
-   "editorial_source_type": "official_html",
-   "editorial_source_url": "https://www.flsenate.gov/Session/Bill/2026/1258",
+   "checked": "2026-10-18",
    "hearings": [],
    "id": "fl-sb-1258-2026",
    "jurisdiction": "FL",
@@ -249,7 +294,7 @@
    "session": "2026",
    "source_feed": "official_sweep",
    "source_url": "https://www.flsenate.gov/Session/Bill/2026/1258",
-   "stage": "extracted",
+   "stage": "in_feed",
    "stage_dates": {
     "committee": "2026-03-13"
    },
@@ -257,19 +302,23 @@
    "title": "Delivery of Commercial Goods by Autonomous Vehicles"
   },
   "IA:H2375": {
+   "checked": "2026-10-18",
    "discovered": "2026-10-17",
    "jurisdiction": "IA",
    "number": "HF 2375",
+   "reason": "not a verifiable AV bill page",
    "source_url": "https://www.legis.iowa.gov/legislation/BillBook?ga=91&ba=HF2375",
-   "stage": "discovered",
+   "stage": "rejected",
    "via": "ledger:title"
   },
   "IA:H2673": {
+   "checked": "2026-10-18",
    "discovered": "2026-10-17",
    "jurisdiction": "IA",
    "number": "HF 2673",
+   "reason": "not a verifiable AV bill page",
    "source_url": "https://www.legis.iowa.gov/legislation/BillBook?ga=91&ba=HF2673",
-   "stage": "discovered",
+   "stage": "rejected",
    "via": "ledger:title"
   },
   "IA:S2034": {
@@ -288,11 +337,43 @@
    "stage": "discovered",
    "via": "ledger:title"
   },
+  "IL:H1839": {
+   "discovered": "2026-10-18",
+   "jurisdiction": "IL",
+   "number": "HB 1839",
+   "source_url": "https://www.ilga.gov/ftp/legislation/104/BillStatus/XML/10400HB1839.xml",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
+  "IL:H2593": {
+   "discovered": "2026-10-18",
+   "jurisdiction": "IL",
+   "number": "HB 2593",
+   "source_url": "https://www.ilga.gov/ftp/legislation/104/BillStatus/XML/10400HB2593.xml",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
+  "IL:H2974": {
+   "discovered": "2026-10-18",
+   "jurisdiction": "IL",
+   "number": "HB 2974",
+   "source_url": "https://www.ilga.gov/ftp/legislation/104/BillStatus/XML/10400HB2974.xml",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
   "IN:H1377": {
    "discovered": "2026-10-17",
    "jurisdiction": "IN",
    "number": "HB 1377",
    "source_url": "https://iga.in.gov/pdf-documents/124/2025/house/bills/HB1377/HB1377.01.INTR.pdf",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
+  "KY:H223": {
+   "discovered": "2026-10-18",
+   "jurisdiction": "KY",
+   "number": "HB 223",
+   "source_url": "https://apps.legislature.ky.gov/record/26rs/hb223.html",
    "stage": "discovered",
    "via": "ledger:page_scan"
   },
@@ -309,6 +390,22 @@
    "jurisdiction": "KY",
    "number": "HB 379",
    "source_url": "https://apps.legislature.ky.gov/record/25rs/hb379.html",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
+  "KY:S241": {
+   "discovered": "2026-10-18",
+   "jurisdiction": "KY",
+   "number": "SB 241",
+   "source_url": "https://apps.legislature.ky.gov/record/25rs/sb241.html",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
+  "KY:S38": {
+   "discovered": "2026-10-18",
+   "jurisdiction": "KY",
+   "number": "SB 38",
+   "source_url": "https://apps.legislature.ky.gov/record/25rs/sb38.html",
    "stage": "discovered",
    "via": "ledger:page_scan"
   },
@@ -344,11 +441,75 @@
    "stage": "discovered",
    "via": "ledger:title"
   },
+  "MD:H1256": {
+   "discovered": "2026-10-18",
+   "jurisdiction": "MD",
+   "number": "HB1256",
+   "source_url": "https://mgaleg.maryland.gov/mgawebsite/Legislation/Details/hb1256?ys=2025RS&search=True",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
   "MD:H439": {
    "discovered": "2026-10-17",
    "jurisdiction": "MD",
    "number": "HB0439",
    "source_url": "https://mgaleg.maryland.gov/mgawebsite/Legislation/Details/hb0439?ys=2025RS&search=True",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
+  "MD:S405": {
+   "discovered": "2026-10-18",
+   "jurisdiction": "MD",
+   "number": "SB0405",
+   "source_url": "https://mgaleg.maryland.gov/mgawebsite/Legislation/Details/sb0405?ys=2025RS&search=True",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
+  "MO:H2069": {
+   "discovered": "2026-10-18",
+   "jurisdiction": "MO",
+   "number": "HB 2069",
+   "source_url": "https://house.mo.gov/Bill.aspx?bill=HB2069&year=2026&code=R",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
+  "MO:H2208": {
+   "discovered": "2026-10-18",
+   "jurisdiction": "MO",
+   "number": "HB 2208",
+   "source_url": "https://house.mo.gov/Bill.aspx?bill=HB2208&year=2026&code=R",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
+  "MO:H2240": {
+   "discovered": "2026-10-18",
+   "jurisdiction": "MO",
+   "number": "HB 2240",
+   "source_url": "https://house.mo.gov/Bill.aspx?bill=HB2240&year=2026&code=R",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
+  "MO:H3034": {
+   "discovered": "2026-10-18",
+   "jurisdiction": "MO",
+   "number": "HB 3034",
+   "source_url": "https://house.mo.gov/Bill.aspx?bill=HB3034&year=2026&code=R",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
+  "MO:H3365": {
+   "discovered": "2026-10-18",
+   "jurisdiction": "MO",
+   "number": "HB 3365",
+   "source_url": "https://house.mo.gov/Bill.aspx?bill=HB3365&year=2026&code=R",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
+  "MO:S1050": {
+   "discovered": "2026-10-18",
+   "jurisdiction": "MO",
+   "number": "SB 1050",
+   "source_url": "https://www.senate.mo.gov/BillTracking/Bills/BillInformation?year=2026&billid=277",
    "stage": "discovered",
    "via": "ledger:page_scan"
   },
@@ -375,6 +536,14 @@
    "source_url": "https://billstatus.ls.state.ms.us/documents/2026/pdf/HB/1700-1799/HB1770IN.pdf",
    "stage": "discovered",
    "via": "ledger:title"
+  },
+  "MS:H529": {
+   "discovered": "2026-10-18",
+   "jurisdiction": "MS",
+   "number": "HB529",
+   "source_url": "https://billstatus.ls.state.ms.us/documents/2025/pdf/HB/0500-0599/HB0529IN.pdf",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
   },
   "MS:S2269": {
    "discovered": "2026-10-17",
@@ -541,6 +710,14 @@
    "jurisdiction": "NM",
    "number": "HB 160",
    "source_url": "https://www.nmlegis.gov/Sessions/25%20Regular/bills/house/HB0160.HTML",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
+  "NM:H214": {
+   "discovered": "2026-10-18",
+   "jurisdiction": "NM",
+   "number": "HB 214",
+   "source_url": "https://www.nmlegis.gov/Sessions/26%20Regular/bills/house/HB0214.HTML",
    "stage": "discovered",
    "via": "ledger:page_scan"
   },
@@ -2224,6 +2401,14 @@
    "stage": "discovered",
    "via": "ledger:state_fulltext"
   },
+  "NY:A3650": {
+   "discovered": "2026-10-18",
+   "jurisdiction": "NY",
+   "number": "A3650",
+   "source_url": "https://nyassembly.gov/leg/?default_fld=&leg_video=&bn=A03650&term=2025&Summary=Y&Actions=Y",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
   "NY:A4017": {
    "discovered": "2026-10-17",
    "jurisdiction": "NY",
@@ -2551,6 +2736,14 @@
    "source_url": "https://nyassembly.gov/leg/?default_fld=&leg_video=&bn=A07912&term=2025&Summary=Y&Actions=Y",
    "stage": "discovered",
    "via": "ledger:state_fulltext"
+  },
+  "NY:A793": {
+   "discovered": "2026-10-18",
+   "jurisdiction": "NY",
+   "number": "A793",
+   "source_url": "https://nyassembly.gov/leg/?default_fld=&leg_video=&bn=A00793&term=2025&Summary=Y&Actions=Y",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
   },
   "NY:A7940": {
    "discovered": "2026-10-17",
@@ -3967,6 +4160,14 @@
    "source_url": "https://nyassembly.gov/leg/?default_fld=&leg_video=&bn=S00258&term=2025&Summary=Y&Actions=Y",
    "stage": "discovered",
    "via": "ledger:state_fulltext"
+  },
+  "NY:S2688": {
+   "discovered": "2026-10-18",
+   "jurisdiction": "NY",
+   "number": "S2688",
+   "source_url": "https://nyassembly.gov/leg/?default_fld=&leg_video=&bn=S02688&term=2025&Summary=Y&Actions=Y",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
   },
   "NY:S291": {
    "discovered": "2026-10-17",
@@ -6144,6 +6345,54 @@
    "stage": "discovered",
    "via": "ledger:title"
   },
+  "PA:H1639": {
+   "discovered": "2026-10-18",
+   "jurisdiction": "PA",
+   "number": "HB 1639",
+   "source_url": "https://www.palegis.us/legislation/bills/2025/hb1639",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
+  "PA:H2069": {
+   "discovered": "2026-10-18",
+   "jurisdiction": "PA",
+   "number": "HB 2069",
+   "source_url": "https://www.palegis.us/legislation/bills/2025/hb2069",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
+  "PA:H563": {
+   "discovered": "2026-10-18",
+   "jurisdiction": "PA",
+   "number": "HR 563",
+   "source_url": "https://www.palegis.us/legislation/bills/2025/hr563",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
+  "RI:H8012": {
+   "discovered": "2026-10-18",
+   "jurisdiction": "RI",
+   "number": "HB 8012",
+   "source_url": "https://status.rilegislature.gov/?bill=HB8012&year=2026",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
+  "RI:S2751": {
+   "discovered": "2026-10-18",
+   "jurisdiction": "RI",
+   "number": "SB 2751",
+   "source_url": "https://status.rilegislature.gov/?bill=SB2751&year=2026",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
+  "TN:H1168": {
+   "discovered": "2026-10-18",
+   "jurisdiction": "TN",
+   "number": "HB1168",
+   "source_url": "https://wapp.capitol.tn.gov/apps/BillInfo/Default?BillNumber=HB1168&ga=114",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
   "VA:H1124": {
    "discovered": "2026-10-17",
    "jurisdiction": "VA",
@@ -6192,11 +6441,123 @@
    "stage": "discovered",
    "via": "ledger:title"
   },
+  "WA:E1423": {
+   "discovered": "2026-10-18",
+   "jurisdiction": "WA",
+   "number": "ESHB 1423",
+   "source_url": "https://app.leg.wa.gov/billsummary?BillNumber=1423&Year=2026&Initiative=false",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
   "WA:H1226": {
    "discovered": "2026-10-17",
    "jurisdiction": "WA",
    "number": "HB 1226",
    "source_url": "https://app.leg.wa.gov/billsummary?BillNumber=1226&Year=2026&Initiative=false",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
+  "WA:H1984": {
+   "discovered": "2026-10-18",
+   "jurisdiction": "WA",
+   "number": "HB 1984",
+   "source_url": "https://app.leg.wa.gov/billsummary?BillNumber=1984&Year=2026&Initiative=false",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
+  "WA:H2157": {
+   "discovered": "2026-10-18",
+   "jurisdiction": "WA",
+   "number": "HB 2157",
+   "source_url": "https://app.leg.wa.gov/billsummary?BillNumber=2157&Year=2026&Initiative=false",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
+  "WA:H2715": {
+   "discovered": "2026-10-18",
+   "jurisdiction": "WA",
+   "number": "HB 2715",
+   "source_url": "https://app.leg.wa.gov/billsummary?BillNumber=2715&Year=2026&Initiative=false",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
+  "WA:S2157": {
+   "discovered": "2026-10-18",
+   "jurisdiction": "WA",
+   "number": "SHB 2157",
+   "source_url": "https://app.leg.wa.gov/billsummary?BillNumber=2157&Year=2026&Initiative=false",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
+  "WA:S5042": {
+   "discovered": "2026-10-18",
+   "jurisdiction": "WA",
+   "number": "SB 5042",
+   "source_url": "https://app.leg.wa.gov/billsummary?BillNumber=5042&Year=2026&Initiative=false",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
+  "WA:S5160": {
+   "discovered": "2026-10-18",
+   "jurisdiction": "WA",
+   "number": "SB 5160",
+   "source_url": "https://app.leg.wa.gov/billsummary?BillNumber=5160&Year=2026&Initiative=false",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
+  "WA:S5417": {
+   "discovered": "2026-10-18",
+   "jurisdiction": "WA",
+   "number": "SB 5417",
+   "source_url": "https://app.leg.wa.gov/billsummary?BillNumber=5417&Year=2026&Initiative=false",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
+  "WA:S5690": {
+   "discovered": "2026-10-18",
+   "jurisdiction": "WA",
+   "number": "SSB 5690",
+   "source_url": "https://app.leg.wa.gov/billsummary?BillNumber=5690&Year=2026&Initiative=false",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
+  "WA:S5995": {
+   "discovered": "2026-10-18",
+   "jurisdiction": "WA",
+   "number": "SB 5995",
+   "source_url": "https://app.leg.wa.gov/billsummary?BillNumber=5995&Year=2026&Initiative=false",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
+  "WA:S6120": {
+   "discovered": "2026-10-18",
+   "jurisdiction": "WA",
+   "number": "SB 6120",
+   "source_url": "https://app.leg.wa.gov/billsummary?BillNumber=6120&Year=2026&Initiative=false",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
+  "WA:S6160": {
+   "discovered": "2026-10-18",
+   "jurisdiction": "WA",
+   "number": "SB 6160",
+   "source_url": "https://app.leg.wa.gov/billsummary?BillNumber=6160&Year=2026&Initiative=false",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
+  "WA:S6243": {
+   "discovered": "2026-10-18",
+   "jurisdiction": "WA",
+   "number": "SB 6243",
+   "source_url": "https://app.leg.wa.gov/billsummary?BillNumber=6243&Year=2026&Initiative=false",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
+  "WI:A848": {
+   "discovered": "2026-10-18",
+   "jurisdiction": "WI",
+   "number": "AB848",
+   "source_url": "https://docs.legis.wisconsin.gov/2025/proposals/reg/asm/bill/ab848",
    "stage": "discovered",
    "via": "ledger:page_scan"
   }

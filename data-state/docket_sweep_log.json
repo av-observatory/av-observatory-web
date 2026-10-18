@@ -1,30 +1,30 @@
 {
  "AK": {
-  "attempted": "2026-10-17",
+  "attempted": "2026-10-18",
   "bills_found": [
    "HB 217",
    "SB 148 (stalled in committee)"
   ],
   "checked": "2026-10-15",
-  "searched": 0,
+  "searched": 1,
   "sources_read": [
    "https://www.akleg.gov/basis/Bill/Detail/34?Root=HB%20217",
    "https://www.akleg.gov/basis/Bill/Detail/34?Root=SB+148"
   ],
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "insufficient_official_html / (searched 1 pages)"
  },
  "AL": {
-  "attempted": "2026-10-17",
+  "attempted": "2026-10-18",
   "searched": 0,
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "AR": {
-  "attempted": "2026-10-17",
+  "attempted": "2026-10-18",
   "searched": 0,
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "AZ": {
-  "attempted": "2026-10-17",
+  "attempted": "2026-10-18",
   "bills_found": [
    "SB 1320",
    "SB 1552 (AV provisions unverified in signed text)",
@@ -41,17 +41,17 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "CA": {
-  "attempted": "2026-10-17",
+  "attempted": "2026-10-18",
   "searched": 0,
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "CO": {
-  "attempted": "2026-10-17",
+  "attempted": "2026-10-18",
   "searched": 0,
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "CT": {
-  "attempted": "2026-10-17",
+  "attempted": "2026-10-18",
   "bills_found": [],
   "checked": null,
   "searched": 0,
@@ -59,43 +59,43 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "DC": {
-  "attempted": "2026-10-17",
+  "attempted": "2026-10-18",
   "searched": 0,
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "DE": {
-  "attempted": "2026-10-17",
+  "attempted": "2026-10-18",
   "searched": 0,
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "FL": {
-  "attempted": "2026-10-17",
+  "attempted": "2026-10-18",
   "bills_found": [
    "HB 1469 (dead)",
    "SB 1616 (dead)",
    "SB 1258 (dead)"
   ],
   "checked": "2026-10-15",
-  "searched": 0,
+  "searched": 1,
   "sources_read": [
    "https://www.flsenate.gov/Session/Bill/2026/1469",
    "https://www.flsenate.gov/Session/Bill/2026/1616",
    "https://www.flsenate.gov/Session/Bill/2026/1258"
   ],
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "insufficient_official_html / (searched 1 pages)"
  },
  "GA": {
-  "attempted": "2026-10-17",
+  "attempted": "2026-10-18",
   "searched": 0,
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "HI": {
-  "attempted": "2026-10-17",
+  "attempted": "2026-10-18",
   "searched": 0,
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "IA": {
-  "attempted": "2026-10-17",
+  "attempted": "2026-10-18",
   "bills_found": [
    "HF 2673",
    "SF 2384",
@@ -111,17 +111,17 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "ID": {
-  "attempted": "2026-10-17",
+  "attempted": "2026-10-18",
   "searched": 0,
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "IL": {
-  "attempted": "2026-10-17",
-  "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "attempted": "2026-10-18",
+  "searched": 1,
+  "unreadable": "insufficient_official_html / (searched 1 pages)"
  },
  "IN": {
-  "attempted": "2026-10-17",
+  "attempted": "2026-10-18",
   "bills_found": [],
   "checked": null,
   "searched": 0,
@@ -129,17 +129,17 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "KS": {
-  "attempted": "2026-10-17",
-  "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "attempted": "2026-10-18",
+  "searched": 1,
+  "unreadable": "insufficient_official_html / (searched 1 pages)"
  },
  "KY": {
-  "attempted": "2026-10-17",
+  "attempted": "2026-10-18",
   "searched": 0,
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "LA": {
-  "attempted": "2026-10-17",
+  "attempted": "2026-10-18",
   "bills_found": [
    "SB 133"
   ],
@@ -152,17 +152,17 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "MA": {
-  "attempted": "2026-10-17",
-  "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "attempted": "2026-10-18",
+  "searched": 1,
+  "unreadable": "insufficient_official_html / (searched 1 pages)"
  },
  "MD": {
-  "attempted": "2026-10-17",
+  "attempted": "2026-10-18",
   "searched": 0,
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "ME": {
-  "attempted": "2026-10-17",
+  "attempted": "2026-10-18",
   "bills_found": [],
   "checked": "2026-10-15",
   "searched": 0,
@@ -172,17 +172,17 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "MI": {
-  "attempted": "2026-10-17",
+  "attempted": "2026-10-18",
   "searched": 0,
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "MN": {
-  "attempted": "2026-10-17",
+  "attempted": "2026-10-18",
   "searched": 0,
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "MO": {
-  "attempted": "2026-10-17",
+  "attempted": "2026-10-18",
   "bills_found": [
    "SB 1050 (hearing only; session over)",
    "HB 2069 (not read)"
@@ -195,39 +195,39 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "MS": {
-  "attempted": "2026-10-17",
+  "attempted": "2026-10-18",
   "searched": 0,
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "MT": {
-  "attempted": "2026-10-17",
+  "attempted": "2026-10-18",
   "searched": 0,
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "NC": {
-  "attempted": "2026-10-17",
+  "attempted": "2026-10-18",
   "bills_found": [
    "H 394 (incidental AV exemption)"
   ],
   "checked": "2026-10-15",
-  "searched": 0,
+  "searched": 1,
   "sources_read": [
    "https://www.ncleg.gov/BillLookUp/2025/H394"
   ],
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "insufficient_official_html / (searched 1 pages)"
  },
  "ND": {
-  "attempted": "2026-10-17",
-  "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "attempted": "2026-10-18",
+  "searched": 1,
+  "unreadable": "insufficient_official_html / (searched 1 pages)"
  },
  "NE": {
-  "attempted": "2026-10-17",
-  "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "attempted": "2026-10-18",
+  "searched": 1,
+  "unreadable": "insufficient_official_html / (searched 1 pages)"
  },
  "NH": {
-  "attempted": "2026-10-17",
+  "attempted": "2026-10-18",
   "bills_found": [],
   "checked": "2026-10-15",
   "searched": 0,
@@ -237,17 +237,17 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "NJ": {
-  "attempted": "2026-10-17",
+  "attempted": "2026-10-18",
   "searched": 0,
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "NM": {
-  "attempted": "2026-10-17",
-  "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "attempted": "2026-10-18",
+  "searched": 1,
+  "unreadable": "insufficient_official_html / (searched 1 pages)"
  },
  "NV": {
-  "attempted": "2026-10-17",
+  "attempted": "2026-10-18",
   "bills_found": [
    "AB 523",
    "SB 395 (dead)"
@@ -261,57 +261,57 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "NY": {
-  "attempted": "2026-10-17",
-  "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "attempted": "2026-10-18",
+  "searched": 1,
+  "unreadable": "insufficient_official_html / (searched 1 pages)"
  },
  "OH": {
-  "attempted": "2026-10-17",
+  "attempted": "2026-10-18",
   "searched": 0,
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "OK": {
-  "attempted": "2026-10-17",
+  "attempted": "2026-10-18",
   "bills_found": [],
   "checked": "2026-10-15",
-  "searched": 0,
+  "searched": 1,
   "sources_read": [
    "https://www.oklegislature.gov/BillInfo.aspx?Bill=sb546&Session=2600"
   ],
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "insufficient_official_html / (searched 1 pages)"
  },
  "OR": {
-  "attempted": "2026-10-17",
+  "attempted": "2026-10-18",
   "searched": 0,
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "PA": {
-  "attempted": "2026-10-17",
+  "attempted": "2026-10-18",
   "searched": 0,
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "RI": {
-  "attempted": "2026-10-17",
+  "attempted": "2026-10-18",
   "bills_found": [],
   "checked": "2026-10-15",
-  "searched": 0,
+  "searched": 1,
   "sources_read": [
    "https://status.rilegislature.gov/"
   ],
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "insufficient_official_html / (searched 1 pages)"
  },
  "SC": {
-  "attempted": "2026-10-17",
-  "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "attempted": "2026-10-18",
+  "searched": 1,
+  "unreadable": "insufficient_official_html / (searched 1 pages)"
  },
  "SD": {
-  "attempted": "2026-10-17",
-  "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "attempted": "2026-10-18",
+  "searched": 1,
+  "unreadable": "insufficient_official_html / (searched 1 pages)"
  },
  "TN": {
-  "attempted": "2026-10-17",
+  "attempted": "2026-10-18",
   "bills_found": [
    "SB 2253"
   ],
@@ -323,17 +323,17 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "TX": {
-  "attempted": "2026-10-17",
+  "attempted": "2026-10-18",
   "searched": 0,
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "UT": {
-  "attempted": "2026-10-17",
+  "attempted": "2026-10-18",
   "searched": 0,
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "VA": {
-  "attempted": "2026-10-17",
+  "attempted": "2026-10-18",
   "bills_found": [
    "HB 1124",
    "HB 1125 (unverified)",
@@ -345,17 +345,17 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "VT": {
-  "attempted": "2026-10-17",
+  "attempted": "2026-10-18",
   "searched": 0,
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "WA": {
-  "attempted": "2026-10-17",
+  "attempted": "2026-10-18",
   "searched": 0,
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "WI": {
-  "attempted": "2026-10-17",
+  "attempted": "2026-10-18",
   "bills_found": [
    "SB 831 (dead)",
    "AB 848 (dead)"
@@ -369,13 +369,13 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "WV": {
-  "attempted": "2026-10-17",
-  "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "attempted": "2026-10-18",
+  "searched": 1,
+  "unreadable": "insufficient_official_html / (searched 1 pages)"
  },
  "WY": {
-  "attempted": "2026-10-17",
-  "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "attempted": "2026-10-18",
+  "searched": 2,
+  "unreadable": "insufficient_official_html / (searched 2 pages)"
  }
 }

@@ -1,23 +1,23 @@
 {
- "generated": "2026-10-17",
+ "generated": "2026-10-18",
  "jurisdictions": {
   "AK": {
-   "primary_bills": 0
+   "primary_bills": 2
   },
   "AL": {
-   "primary_bills": 1
+   "primary_bills": 2
   },
   "AR": {
    "primary_bills": 0
   },
   "AZ": {
-   "primary_bills": 1
+   "primary_bills": 2
   },
   "CA": {
    "primary_bills": 5
   },
   "CO": {
-   "primary_bills": 1
+   "primary_bills": 2
   },
   "CT": {
    "primary_bills": 0
@@ -26,43 +26,43 @@
    "primary_bills": 0
   },
   "DE": {
-   "primary_bills": 1
+   "primary_bills": 2
   },
   "FL": {
-   "primary_bills": 0
+   "primary_bills": 3
   },
   "GA": {
-   "primary_bills": 0
+   "primary_bills": 1
   },
   "HI": {
    "primary_bills": 1
   },
   "IA": {
-   "primary_bills": 3
+   "primary_bills": 4
   },
   "ID": {
    "primary_bills": 0
   },
   "IL": {
-   "primary_bills": 9
+   "primary_bills": 14
   },
   "IN": {
-   "primary_bills": 0
+   "primary_bills": 1
   },
   "KS": {
    "primary_bills": 0
   },
   "KY": {
-   "primary_bills": 1
+   "primary_bills": 4
   },
   "LA": {
    "primary_bills": 0
   },
   "MA": {
-   "primary_bills": 10
+   "primary_bills": 16
   },
   "MD": {
-   "primary_bills": 2
+   "primary_bills": 6
   },
   "ME": {
    "primary_bills": 0
@@ -74,37 +74,37 @@
    "primary_bills": 10
   },
   "MO": {
-   "primary_bills": 0
+   "primary_bills": 7
   },
   "MS": {
-   "primary_bills": 0
+   "primary_bills": 2
   },
   "MT": {
-   "primary_bills": 4
+   "primary_bills": 8
   },
   "NC": {
    "primary_bills": 0
   },
   "ND": {
-   "primary_bills": 0
+   "primary_bills": 2
   },
   "NE": {
-   "primary_bills": 0
+   "primary_bills": 1
   },
   "NH": {
    "primary_bills": 0
   },
   "NJ": {
-   "primary_bills": 4
+   "primary_bills": 8
   },
   "NM": {
-   "primary_bills": 0
+   "primary_bills": 1
   },
   "NV": {
-   "primary_bills": 0
+   "primary_bills": 1
   },
   "NY": {
-   "primary_bills": 13
+   "primary_bills": 29
   },
   "OH": {
    "primary_bills": 0
@@ -113,7 +113,7 @@
    "primary_bills": 0
   },
   "OR": {
-   "primary_bills": 1
+   "primary_bills": 2
   },
   "PA": {
    "primary_bills": 2
@@ -128,16 +128,16 @@
    "primary_bills": 0
   },
   "TN": {
-   "primary_bills": 0
+   "primary_bills": 4
   },
   "TX": {
-   "primary_bills": 0
+   "primary_bills": 1
   },
   "UT": {
    "primary_bills": 2
   },
   "VA": {
-   "primary_bills": 0
+   "primary_bills": 3
   },
   "VT": {
    "primary_bills": 0
@@ -157,16 +157,16 @@
  },
  "manual_added": [
   "dc-b26-0684-26",
+  "il-hb3044-104",
   "la-sb133-2026rs",
-  "tn-sb2253-114",
   "az-sb1320-57-1r",
   "ia-hf2673-91",
-  "ak-hb217-34",
-  "co-hb25-1122-2025-regular-session",
   "co-hb26-1286-2026-regular-session"
  ],
  "manual_retired": [
-  "il-hb3044-104"
+  "tn-sb2253-114",
+  "ak-hb217-34",
+  "co-hb25-1122-2025-regular-session"
  ],
- "progress_applied": 47
+ "progress_applied": 91
 }
