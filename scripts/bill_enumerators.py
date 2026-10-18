@@ -814,6 +814,9 @@ def ri(session: str):
                                "url": f"https://status.rilegislature.gov/?bill={number.replace(' ', '')}&year={session}"}
                         if number in pdfs:
                             row["text_url"] = pdfs[number]
+                        else:  # the status page is a form app, not a bill page: fall back to the introduced-text PDF, which follows a fixed pattern
+                            yy, chamber = session[-2:], ("House" if number[0] == "H" else "Senate")
+                            row["text_url"] = f"https://webserver.rilegislature.gov/BillText/BillText{yy}/{chamber}Text{yy}/{number[0]}{number.split()[1]}.pdf"
                         yield row
                 if not found:
                     break
@@ -1158,7 +1161,8 @@ def ny(session: str):
 
 
 # Bump a state's revision when its adapter changes so recently enumerated ledgers are rebuilt.
-REV = {"WA": 4, "RI": 2, "KS": 2, "GA": 2, "NY": 2, "MO": 2, "SC": 2, "SD": 2, "AZ": 2}  # bump to force a re-enumeration (KS/GA came back short in the first full run)
+REV = {"WA": 4, "RI": 2, "KS": 2, "GA": 2, "NY": 2, "MO": 2, "SC": 2, "SD": 2, "AZ": 2}
+REV["RI"] = 3  # bump to force a re-enumeration (KS/GA came back short in the first full run)
 
 # state -> (sessions to enumerate each run, function)
 ENUMERATORS = {

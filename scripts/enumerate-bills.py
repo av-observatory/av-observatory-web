@@ -28,7 +28,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from bill_enumerators import ENUMERATORS, REV  # noqa: E402
-from scan_fetch import SKIPPED, is_bill_page, scan_fetch  # noqa: E402
+from scan_fetch import SCAN_REV, SKIPPED, is_bill_page, scan_fetch  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
 LEDGER_DIR = ROOT / "data-state/bill_ledger"
@@ -155,8 +155,12 @@ def classify(ledgers: dict, scan_budget: int, scan_minutes: float, only: set | N
         if code in TITLE_ONLY or (only and code not in only):
             continue
         # Unconfirmed full-text-search hits go first so candidates are settled quickly; then oldest scan first.
-        pending = sorted(((0 if row.get("av") == "candidate" else 1), row.get("scanned") or "", key) for key, row in ledger["bills"].items()
-                         if (row.get("av") in ("unknown", "no") or (row.get("av") == "candidate" and row.get("via") == "state_fulltext" and not row.get("scanned")))
+        # a failure recorded by an older fetcher is retried like a never-scanned bill
+        pending = sorted(((0 if row.get("av") == "candidate" else 1),
+                          ("" if row.get("scan_failed") and row.get("scan_rev") != SCAN_REV else row.get("scanned") or ""), key)
+                         for key, row in ledger["bills"].items()
+                         if (row.get("av") in ("unknown", "no") or (row.get("av") == "candidate" and row.get("via") == "state_fulltext"
+                                                                   and (not row.get("scanned") or (row.get("scan_failed") and (row.get("scan_rev") != SCAN_REV or row.get("scanned") != TODAY)))))
                          and (row.get("text_url") or row.get("url")))
         # sort keys: "" = unconfirmed candidate, " " = never scanned, otherwise the date of the last scan
         queue += [("" if first == 0 else (scanned or " "), rank, code, key) for rank, (first, scanned, key) in enumerate(pending)]
@@ -191,6 +195,7 @@ def classify(ledgers: dict, scan_budget: int, scan_minutes: float, only: set | N
                 stats[code]["scan_seconds"] += secs
                 if text and not is_bill_page(text, row.get("number", ""), row.get("title", "")):
                     text, kind = "", f"{kind}/not_bill_page"
+                row["scan_rev"] = SCAN_REV
                 if not text:
                     row["scan_failed"], row["scan_error"] = True, kind
                     continue

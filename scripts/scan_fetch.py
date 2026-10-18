@@ -25,6 +25,8 @@ def _status(exc: Exception) -> str:
     return f"{type(exc).__name__}{getattr(exc, 'code', '')}"
 
 
+# Bump when scan_fetch/is_bill_page change in a way that can fix earlier failures: failed rows stamped with an older value are read again.
+SCAN_REV = 2
 CURL = {"User-Agent": "curl/8.5.0", "Accept": "*/*"}
 # Hosts that rate-limit or block by identity: (minimum seconds between requests, first-choice headers, tries).
 # nysenate.gov refuses browser identities (403) and answers 429 when hit in parallel, so it gets one request at a time with backoff.
