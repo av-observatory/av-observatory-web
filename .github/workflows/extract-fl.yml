@@ -1,0 +1,55 @@
+name: Extract Florida legislature data (bills, authors, votes, digests)
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "probe or extract"
+        default: "extract"
+      args:
+        description: "extra args for the extractor"
+        default: ""
+
+permissions:
+  contents: write
+
+concurrency:
+  group: extract-fl-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 340
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Probe
+        if: ${{ inputs.mode == 'probe' }}
+        run: |
+          mkdir -p data-state/states/FL/probe
+          P=data-state/states/FL/probe
+          get() { curl -sS -L --max-time 60 -A "Mozilla/5.0 (StateTrack research)" -o "$P/$1" -w "$1 %{http_code} %{size_download} %{url_effective}\n" "$2" || echo "$1 FAIL"; }
+          get list2025.html "https://www.flsenate.gov/Session/Bills/2025?Chamber=both&SearchOnlyCurrentVersions=True&LegislativeSessionTitle=2025&pageNumber=1" | tee -a $P/log.txt
+          get bill2025_1.html "https://www.flsenate.gov/Session/Bill/2025/1" | tee -a $P/log.txt
+          get bill2025_1001.html "https://www.flsenate.gov/Session/Bill/2025/1001" | tee -a $P/log.txt
+          get bill2025_1_votes.html "https://www.flsenate.gov/Session/Bill/2025/1/Vote" | tee -a $P/log.txt
+          get bill2025_1_history.html "https://www.flsenate.gov/Session/Bill/2025/1/BillHistory" | tee -a $P/log.txt
+          get sessions.html "https://www.flsenate.gov/Session/Bills" | tee -a $P/log.txt
+          get senators.html "https://www.flsenate.gov/Senators/" | tee -a $P/log.txt
+          get reps.html "https://www.flhouse.gov/Sections/Representatives/representatives.aspx" | tee -a $P/log.txt
+          get ftp.html "https://ftp.flsenate.gov/" | tee -a $P/log.txt
+          get ftp2.html "https://www.flsenate.gov/Session/DataDownloads" | tee -a $P/log.txt
+          get leg_data.html "http://www.leg.state.fl.us/data/" | tee -a $P/log.txt
+          get leg_data2.html "https://www.leg.state.fl.us/data/session/" | tee -a $P/log.txt
+          get house_bill.html "https://www.flhouse.gov/Sections/Bills/billsdetail.aspx?BillId=79000&SessionId=104" | tee -a $P/log.txt
+          bash scripts/commit-ledgers.sh "FL probe" || true
+        env:
+          COMMIT_PATH: data-state/states/FL
+      - name: Extract
+        if: ${{ inputs.mode == 'extract' }}
+        run: bash scripts/live-commit.sh python3 scripts/extract-fl-legislature.py ${{ inputs.args }}
+        env:
+          COMMIT_PATH: data-state/states/FL
+      - name: Commit the extracted files
+        if: ${{ always() && inputs.mode == 'extract' }}
+        run: COMMIT_PATH=data-state/states/FL bash scripts/commit-ledgers.sh "Florida legislature data"
