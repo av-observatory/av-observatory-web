@@ -276,7 +276,8 @@ def wa(session: str):
                     continue
                 done.add(base)
                 kind = "House Bills" if letters.endswith(("HB", "HJR", "HJM", "HCR")) else "Senate Bills"
-                yield {"session": session, "number": bill_id, "title": "",
+                # Resolutions, memorials, appointments and initiatives have no file under Bills/ (404): they are listed but not page-scanned.
+                yield {"session": session, "number": bill_id, "title": "", **({} if letters.endswith("B") else {"no_scan": True}),
                        "url": f"https://app.leg.wa.gov/billsummary?BillNumber={num}&Year={year}&Initiative=false",
                        "text_url": f"https://lawfilesext.leg.wa.gov/biennium/2025-26/Htm/Bills/{kind.replace(' ', '%20')}/{num}.htm"}
 
@@ -820,7 +821,7 @@ def ri(session: str):
                             row["text_url"] = pdfs[number]
                         else:  # the status page is a form app, not a bill page: fall back to the introduced-text PDF, which follows a fixed pattern
                             yy, chamber = session[-2:], ("House" if number[0] == "H" else "Senate")
-                            row["text_url"] = f"https://webserver.rilegislature.gov/BillText/BillText{yy}/{chamber}Text{yy}/{number[0]}{number.split()[1]}.pdf"
+                            row["text_url"] = f"https://webserver.rilegislature.gov/BillText/BillText{yy}/{chamber}Text{yy}/{number[0]}{int(number.split()[1]):04d}.pdf"  # Senate files are zero-padded to four digits (S0114.pdf)
                         yield row
                 if not found:
                     break
@@ -1166,7 +1167,7 @@ def ny(session: str):
 
 # Bump a state's revision when its adapter changes so recently enumerated ledgers are rebuilt.
 REV = {"WA": 4, "RI": 2, "KS": 2, "GA": 2, "NY": 2, "MO": 2, "SC": 2, "SD": 2, "AZ": 2}
-REV.update({"RI": 3, "AL": 2, "MT": 2, "WY": 2})  # bump to force a re-enumeration (KS/GA came back short in the first full run)
+REV.update({"WA": 5, "RI": 4, "AL": 2, "MT": 2, "WY": 2})  # bump to force a re-enumeration (KS/GA came back short in the first full run)
 
 # state -> (sessions to enumerate each run, function)
 ENUMERATORS = {

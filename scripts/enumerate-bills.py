@@ -105,6 +105,10 @@ def enumerate_state(code: str) -> dict:
                         for stale in ("scanned", "scan_failed", "scan_error"):  # a new text source: read it again
                             row.pop(stale, None)
                     row["text_url"] = bill["text_url"]
+                if bill.get("no_scan"):
+                    row["no_scan"] = True
+                    for stale in ("scan_failed", "scan_error"):
+                        row.pop(stale, None)
                 if bill.get("summary"):
                     row["summary"] = " ".join(str(bill["summary"]).split())[:400]
                 info["enumerated"] += 1
@@ -164,7 +168,7 @@ def classify(ledgers: dict, scan_budget: int, scan_minutes: float, only: set | N
                          for key, row in ledger["bills"].items()
                          if (row.get("av") in ("unknown", "no") or (row.get("av") == "candidate" and row.get("via") == "state_fulltext"
                                                                    and (not row.get("scanned") or (row.get("scan_failed") and (row.get("scan_rev") != SCAN_REV or row.get("scanned") != TODAY)))))
-                         and (row.get("text_url") or row.get("url")))
+                         and not row.get("no_scan") and (row.get("text_url") or row.get("url")))
         # sort keys: "" = unconfirmed candidate, " " = never scanned, otherwise the date of the last scan
         queue += [("" if first == 0 else (scanned or " "), rank, code, key) for rank, (first, scanned, key) in enumerate(pending)]
     queue = [(scanned, code, key) for scanned, _, code, key in sorted(queue, key=lambda q: (q[0], q[1], q[2]))][:scan_budget]
@@ -217,7 +221,7 @@ def classify(ledgers: dict, scan_budget: int, scan_minutes: float, only: set | N
             s["candidates"] += row.get("av") in ("candidate", "yes")
             s["scanned"] += bool(row.get("scanned")) and not row.get("scan_failed")
             s["scan_failed"] += bool(row.get("scan_failed"))
-        s["unscanned"] = sum(1 for r in ledger["bills"].values() if not r.get("scanned") and r.get("via") != "title")
+        s["unscanned"] = sum(1 for r in ledger["bills"].values() if not r.get("scanned") and r.get("via") != "title" and not r.get("no_scan"))
     return stats
 
 

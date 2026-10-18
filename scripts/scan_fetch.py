@@ -26,7 +26,7 @@ def _status(exc: Exception) -> str:
 
 
 # Bump when scan_fetch/is_bill_page change in a way that can fix earlier failures: failed rows stamped with an older value are read again.
-SCAN_REV = 2
+SCAN_REV = 3
 CURL = {"User-Agent": "curl/8.5.0", "Accept": "*/*"}
 # Hosts that rate-limit or block by identity: (minimum seconds between requests, first-choice headers, tries).
 # nysenate.gov refuses browser identities (403) and answers 429 when hit in parallel, so it gets one request at a time with backoff.
@@ -160,6 +160,8 @@ def is_bill_page(text: str, number: str, title: str = "") -> bool:
     if letters in ("H", "S", "A"):
         # House/Senate/Assembly Bill, Resolution, Joint/Concurrent Resolution or Memorial (NC and others share one number series)
         return bool(re.search(rf"{_WORDS[letters]}\s+(?:Joint\s+|Concurrent\s+)?(?:Bill|Resolution|Memorial)\s*(?:No\.?\s*)?0*{digits}(?!\d)", text, re.I))
+    if len(letters) == 2 and letters[0] in _WORDS and letters[1] in "BR" and re.search(rf"(?<![A-Za-z]){letters[0]}[\s._-]*0*{digits}(?!\d)", text):
+        return True  # bills printed with the chamber letter alone ("2025 -- H 5067", Rhode Island)
     if len(letters) >= 2 and letters[0] in _WORDS and letters[1:] in _KINDS:
         return bool(re.search(rf"{_WORDS[letters[0]]}\s+{_KINDS[letters[1:]]}\s*(?:No\.?\s*)?0*{digits}(?!\d)", text, re.I))
     return False
