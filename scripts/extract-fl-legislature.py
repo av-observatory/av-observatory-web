@@ -41,7 +41,7 @@ def log(msg):
 
 
 _lock, _last = threading.Lock(), [0.0]
-GAP = {"now": 2.0, "floor": 2.0, "ceil": 8.0}  # adaptive seconds between any two requests across all workers (the site sends 429 + Retry-After)
+GAP = {"now": 2.2, "floor": 2.2, "ceil": 10.0}  # adaptive seconds between any two requests across all workers (the site sends 429 + Retry-After)
 
 
 def fetch(url, binary=False, tries=7):
@@ -69,7 +69,8 @@ def fetch(url, binary=False, tries=7):
                 print(f"HTTP {e.code} {url}", file=sys.stderr)
                 return None
             log(f"retry {e.code} in {min(delay, 120)}s (gap {GAP['now']:.1f}): {url[-90:]}")
-            time.sleep(min(delay, 120))
+            with _lock:  # global cool-down: every worker waits, not just this one
+                _last[0] = max(_last[0], time.time() + min(delay, 120))
             wait = min(wait * 2, 120)
         except Exception as e:  # network hiccup
             print(f"retry error {e}: {url}", file=sys.stderr, flush=True)
