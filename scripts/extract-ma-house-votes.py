@@ -39,6 +39,9 @@ def hrefs(html):
 
 
 def discover():
+    global fetch
+    _f = fetch
+    fetch = lambda u, tries=1, timeout=25, binary=False: _f(u, 1, 25, binary)
     for u in [f"{SITE}/RollCall/House/194", f"{SITE}/RollCall", f"{SITE}/RollCall/House", f"{SITE}/Journal/House/194",
               f"{SITE}/Bills/194/H2024", f"{SITE}/Bills/194/H4000", f"{SITE}/Bills/194/H4"]:
         st, ct, body = fetch(u)

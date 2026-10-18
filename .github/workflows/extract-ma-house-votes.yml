@@ -25,7 +25,8 @@ jobs:
           command -v pdftotext >/dev/null || (sudo apt-get update -qq && sudo apt-get install -y -qq poppler-utils)
           command -v tesseract >/dev/null || sudo apt-get install -y -qq tesseract-ocr || true
       - name: Run
-        run: python3 scripts/extract-ma-house-votes.py ${{ inputs.mode }}
+        timeout-minutes: ${{ inputs.mode == 'discover' && 8 || 90 }}
+        run: python3 -u scripts/extract-ma-house-votes.py ${{ inputs.mode }}
       - name: Commit
         if: inputs.mode == 'run' && always()
         env:
