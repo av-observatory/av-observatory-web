@@ -39,7 +39,7 @@ def get(entity, params, tries=6):
                 raise
             time.sleep(max(wait, 2 ** i))
         except Exception as e:  # network / timeout / json
-            log(f"  retry {i + 1} {entity}: {e!r}", flush=True)
+            log(f"  retry {i + 1} {entity}: {e!r}")
             time.sleep(2 ** i)
     raise RuntimeError(f"giving up on {url}")
 
