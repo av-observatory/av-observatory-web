@@ -60,7 +60,7 @@ jobs:
             echo "$f $code $u" | tee -a $P/log2.txt
             sleep 3
           done
-          bash scripts/commit-ledgers.sh "FL fetch probe" || true
+          for i in 1 2 3 4 5; do bash scripts/commit-ledgers.sh "FL fetch probe" && break; sleep 5; done
         env:
           COMMIT_PATH: data-state/states/FL
           ARGS: ${{ inputs.args }}
@@ -72,4 +72,4 @@ jobs:
           ARGS: ${{ inputs.args }}
       - name: Commit the extracted files
         if: ${{ always() && inputs.mode == 'extract' }}
-        run: COMMIT_PATH=data-state/states/FL bash scripts/commit-ledgers.sh "Florida legislature data"
+        run: for i in 1 2 3 4 5; do COMMIT_PATH=data-state/states/FL bash scripts/commit-ledgers.sh "Florida legislature data" && break; sleep 5; done
