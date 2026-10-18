@@ -72,10 +72,22 @@ def discover():
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("mode", choices=["discover", "run"])
+    ap.add_argument("mode", choices=["discover", "sample", "run"])
     a = ap.parse_args()
     if a.mode == "discover":
         discover()
+        return 0
+    if a.mode == "sample":
+        for n in (20, 24, 150, 400):
+            st, ct, b = fetch(f"{SITE}/RollCall/194/HouseRollCall{n}.pdf", tries=2, timeout=40, binary=True)
+            print(f"\n##### {n}: {st} {ct} {len(b or b'')}", flush=True)
+            if b:
+                f = Path(f"/tmp/rc{n}.pdf"); f.write_bytes(b)
+                t = subprocess.run(["pdftotext", "-layout", str(f), "-"], capture_output=True, text=True).stdout
+                print(f"text chars={len(t)}")
+                print(t[:3500])
+                print("...TAIL...")
+                print(t[-800:])
         return 0
     print("run mode not implemented yet")
     return 0
