@@ -141,7 +141,8 @@ def wy(session: str):
         title = next((item[k] for k in ("catchTitle", "shortTitle", "billTitle", "title") if item.get(k)), "")
         number = item.get("billNum") or item.get("bill") or ""
         yield {"session": session, "number": str(number), "title": title,
-               "url": f"https://wyoleg.gov/Legislation/{session}/{number}"}
+               "url": f"https://wyoleg.gov/Legislation/{session}/{number}",  # JavaScript shell; the introduced text is a PDF at a fixed path
+               "text_url": f"https://wyoleg.gov/{session}/Introduced/{number}.pdf"}
 
 
 # --------------------------------------------------------------------------- North Carolina
@@ -180,8 +181,10 @@ def mt(session: str):
         for row in rows:
             draft = row.get("draft") or {}
             number = f"{row['billType']['code']} {row['billNumber']}" if row.get("billNumber") else draft.get("draftNumber", "")
+            subjects = "; ".join(sorted({(x.get("subjectCode") or {}).get("description", "") for x in draft.get("subjects") or [] if (x.get("subjectCode") or {}).get("description")}))
             yield {"session": session, "number": number, "title": draft.get("shortTitle") or "",
-                   "url": f"https://bills.legmt.gov/#/laws/bill/{sid}/{draft.get('draftNumber', '')}"}
+                   "url": f"https://bills.legmt.gov/#/laws/bill/{sid}/{draft.get('draftNumber', '')}",
+                   **({"summary": f"Subjects: {subjects}"} if subjects else {})}
         if data.get("last", True) or not rows:
             break
         page += 1
@@ -524,7 +527,7 @@ def de(session: str):
 def al(session: str):
     query = ("query bills($sessionAbbreviation: String, $instrumentType: InstrumentType, $offset: Int, $limit: Int){"
              "instruments(where:[{sessionAbbreviation:{eq:$sessionAbbreviation},instrumentType:{eq:$instrumentType}}],"
-             " order:[\"sessionAbbreviation\",\"DESC\"], limit:$limit, offset:$offset){data{id instrumentNbr shortTitle sessionYear currentStatus} count}}")
+             " order:[\"sessionAbbreviation\",\"DESC\"], limit:$limit, offset:$offset){data{id instrumentNbr shortTitle subject sessionYear currentStatus} count}}")
     headers = {**CHROME, "Content-Type": "application/json"}
     for kind in ("B", "R"):
         offset = 0
@@ -538,7 +541,8 @@ def al(session: str):
             for r in rows:
                 if r.get("instrumentNbr"):
                     yield {"session": session, "number": r["instrumentNbr"], "title": (r.get("shortTitle") or "").strip(),
-                           "url": f"https://alison.legislature.state.al.us/bill/{session}/{r['instrumentNbr'].lower()}"}
+                           "url": f"https://alison.legislature.state.al.us/bill/{session}/{r['instrumentNbr'].lower()}",
+                           **({"summary": f"Subject: {r['subject'].strip()}"} if (r.get("subject") or "").strip() else {})}
             offset += 250
             if len(rows) < 250:
                 break
@@ -1162,7 +1166,7 @@ def ny(session: str):
 
 # Bump a state's revision when its adapter changes so recently enumerated ledgers are rebuilt.
 REV = {"WA": 4, "RI": 2, "KS": 2, "GA": 2, "NY": 2, "MO": 2, "SC": 2, "SD": 2, "AZ": 2}
-REV["RI"] = 3  # bump to force a re-enumeration (KS/GA came back short in the first full run)
+REV.update({"RI": 3, "AL": 2, "MT": 2, "WY": 2})  # bump to force a re-enumeration (KS/GA came back short in the first full run)
 
 # state -> (sessions to enumerate each run, function)
 ENUMERATORS = {

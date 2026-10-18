@@ -36,7 +36,7 @@ SOURCES = ROOT / "data-state/official_sources.json"
 TODAY = date.today().isoformat()
 
 # States whose bill pages are JavaScript shells or refuse automated requests: classified from titles only (their ledgers carry titles).
-TITLE_ONLY = {"AL", "CA", "DC", "GA", "MT", "NJ", "SD", "VA", "WY"}  # AZ (text via DocType) and NH (static gencourt pages) are scanned
+TITLE_ONLY = {"AL", "CA", "DC", "GA", "MT", "NH", "NJ", "SD", "VA"}  # AZ (text via DocType index) and WY (introduced-text PDFs) are scanned now
 
 # Per-host scan concurrency for servers that throttle (nysenate.gov answers 429/403 when hit in parallel; palegis.us stalls under load).
 HOST_CAP = {"www.nysenate.gov": 1, "nysenate.gov": 1, "www.palegis.us": 2}
@@ -147,6 +147,9 @@ def classify(ledgers: dict, scan_budget: int, scan_minutes: float, only: set | N
     stats = {code: {"candidates": 0, "scanned": 0, "unscanned": 0, "scan_failed": 0, "scan_seconds": 0.0} for code in ledgers}
     for code, ledger in ledgers.items():
         for row in ledger["bills"].values():
+            if code in TITLE_ONLY and row.get("scan_failed"):  # leftovers of a failed trial scan: these states are never page-scanned
+                for stale in ("scan_failed", "scan_error", "scanned", "scan_rev"):
+                    row.pop(stale, None)
             if row.get("av") == "unknown" and is_av(f"{row.get('title', '')} {row.get('summary', '')}"):
                 row["av"], row["via"], row["classified"] = "candidate", "title", TODAY
     # Round-robin across states (oldest scan first) so one failing state cannot eat the whole budget.
