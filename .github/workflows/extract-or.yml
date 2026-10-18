@@ -1,0 +1,36 @@
+name: Extract Oregon legislature data (bills, authors, votes, digests)
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "probe or extract"
+        default: "extract"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: extract-or-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Probe
+        if: inputs.mode == 'probe'
+        run: |
+          bash scripts/probe-or.sh
+          COMMIT_PATH=data-state/states/OR bash scripts/commit-ledgers.sh "OR probe"
+      - name: Extract
+        if: inputs.mode != 'probe'
+        run: |
+          COMMIT_PATH=data-state/states/OR bash scripts/live-commit.sh python3 scripts/extract-or-legislature.py
+      - name: Commit the extracted files
+        if: inputs.mode != 'probe'
+        run: |
+          ls -l data-state/states/OR
+          COMMIT_PATH=data-state/states/OR bash scripts/commit-ledgers.sh "Oregon legislature data"
