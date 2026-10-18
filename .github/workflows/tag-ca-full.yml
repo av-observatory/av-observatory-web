@@ -9,6 +9,9 @@ on:
       only:
         description: "Comma-separated bill ids to retag (blank = only bills not yet tagged)"
         default: ""
+      out:
+        description: "Output file (default overwrites the main tags file)"
+        default: "data-state/states/CA/tags.json"
       workers:
         description: "Parallel requests"
         default: "10"
@@ -35,7 +38,7 @@ jobs:
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           TAG_MODEL: ${{ inputs.model }}
-        run: bash scripts/live-commit.sh python3 scripts/tag-bills-taxonomy.py --all --out data-state/states/CA/tags.json --only "${{ inputs.only }}" --workers "${{ inputs.workers }}" --budget-minutes "${{ inputs.budget_minutes }}"
+        run: bash scripts/live-commit.sh python3 scripts/tag-bills-taxonomy.py --all --out "${{ inputs.out }}" --only "${{ inputs.only }}" --workers "${{ inputs.workers }}" --budget-minutes "${{ inputs.budget_minutes }}"
       - name: Commit final tags
         if: always()
         run: bash scripts/commit-ledgers.sh "California taxonomy tags"
