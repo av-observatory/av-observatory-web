@@ -17,29 +17,19 @@ def get(path, n=1500, full=False, quiet=False, headers=None):
     return ""
 
 
-js = get("/static/js/main.c11efed6.chunk.js", quiet=True)
-i = js.find("getAxioInstance:function")
-print("=== axios instance module:\n", js[max(0, i - 300):i + 1800])
-print("=== all api paths")
-for m in sorted(set(re.findall(r'apiUrl,"(/[^"]+)"', js))):
-    print("  ", m)
-for m in re.finditer(r'(?i)authori[sz]|bearer|\bkey\b.{0,40}api|GetToken|accessToken', js):
-    a = max(0, m.start() - 200)
-    print("  AUTHCTX:", js[a:m.end() + 300].replace("\n", " "))
-print("=== chunk map")
 home = get("/", quiet=True)
-for s in re.findall(r'src="(/static/js/[^"]+)"', home):
-    t = get(s, quiet=True)
-    print(s, len(t))
-    for m in sorted(set(re.findall(r'apiUrl,"(/[^"]+)"', t))):
-        print("   api:", m)
-    for m in re.finditer(r'(?i)GetToken|accessToken|Authorization["\']?\s*[:=]', t):
-        a = max(0, m.start() - 200)
-        print("   AUTH:", t[a:m.end() + 300].replace("\n", " "))
-        break
-k = home.find("static/js/")
-print("HOME-INLINE", home[max(0, home.find("<script>", 2000)):][:200])
-for m in re.finditer(r'static/js/"\s*\+[^;]{0,400}', home):
-    print("HOMEMAP", m.group(0)[:500])
-for m in re.finditer(r'"static/js/"\s*\+[^;]{0,300}', js):
-    print("CHUNKMAP", m.group(0)[:400])
+m = re.search(r'\{0:"6d870a77".*?\}\[d\]', home)
+ids = dict(re.findall(r'(\d+):"([0-9a-f]{8})"', m.group(0))) if m else {}
+print("lazy chunks", ids)
+apis = {}
+for k, h in ids.items():
+    t = get(f"/static/js/{k}.{h}.chunk.js", quiet=True)
+    found = sorted(set(re.findall(r'apiUrl,"(/[^"]+)"', t)) | set(re.findall(r'["\'`](/api/[A-Za-z0-9_/.\-]+)', t)))
+    print(f"chunk {k} len={len(t)}", found)
+    for f in found:
+        apis[f] = k
+    for mm in re.finditer(r'apiUrl,"(/[^"]+)"\)?(?:\.concat\([^)]*\))?[^;]{0,300}', t):
+        print("   CALL:", mm.group(0)[:400])
+print("=== live tries")
+for p in ["/api/Search/GetSearchMaster", "/api/Search/GetWhatsNew"]:
+    get(p, 2500)
