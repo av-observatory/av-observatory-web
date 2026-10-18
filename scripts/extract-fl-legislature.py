@@ -281,9 +281,9 @@ def parse_bill_page(h):
     if vs:
         for row in re.findall(r"<tr>(.*?)</tr>", vs.group(1), re.S):
             tds = re.findall(r"<td[^>]*>(.*?)</td>", row, re.S)
-            lk = re.search(r'href="([^"]+\.PDF)"', row, re.I)
+            lk = re.search(r'<a[^>]*href="([^"]+\.PDF)"[^>]*>(.*?)</a>', row, re.I | re.S)
             if len(tds) >= 4 and lk:
-                votes.append({"stamp": text_of(tds[1]), "chamber": text_of(tds[2]), "href": unescape(lk.group(1))})
+                votes.append({"stamp": text_of(tds[1]), "chamber": text_of(tds[2]), "href": unescape(lk.group(1)), "tally": text_of(lk.group(2))})
     r["votes"] = votes
     return r
 
@@ -367,7 +367,7 @@ def parse_vote_pdf(pdf_bytes, roster):
 
 
 # ----------------------------------------------------------------------------- per bill
-def process(session, label, href, roster, session_over, want_votes=True):
+def process(session, label, href, roster, session_over):
     h = fetch(BASE + href)
     if not h:
         return None
@@ -401,18 +401,18 @@ def process(session, label, href, roster, session_over, want_votes=True):
     }
     if committee:
         bill["sponsor_committee"] = committee
-    votes = []
-    if want_votes:
-        for v in p["votes"]:
-            pdf = fetch(BASE + urllib.parse.quote(v["href"], safe="/%:~"), binary=True)
-            if not pdf:
-                continue
-            pv = parse_vote_pdf(pdf, roster)
-            if pv:
-                votes.append(pv)
-    votes.sort(key=lambda v: v["date"])
+    votes, links = [], []
+    for v in p["votes"]:
+        tm = re.search(r"(\d+)\s+Yeas?\s*-\s*(\d+)\s+Nays?", v["tally"])
+        sm = re.match(r"(\d+)/(\d+)/(\d{4})", v["stamp"])
+        if not tm or not sm:
+            continue
+        ay, no = int(tm.group(1)), int(tm.group(2))
+        votes.append({"date": f"{sm.group(3)}-{int(sm.group(1)):02d}-{int(sm.group(2)):02d}", "chamber": v["chamber"], "floor": True,
+                      "motion": "Floor vote", "ayes": ay, "noes": no, "abstain": 0, "result": "Passed" if ay > no else "Failed", "members": {}})
+        links.append(v["href"])
     history = [[d, i + 1, t] for i, (d, t) in enumerate(hist)]
-    return key, bill, votes, history
+    return key, bill, votes, history, links
 
 
 # ----------------------------------------------------------------------------- output
@@ -514,11 +514,13 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--sessions", default=",".join(SESSIONS))
     ap.add_argument("--limit", type=int, default=0, help="debug: only the first N bills per session")
-    ap.add_argument("--workers", type=int, default=3)
+    ap.add_argument("--workers", type=int, default=2)
     ap.add_argument("--no-votes", action="store_true")
     ap.add_argument("--resume", action="store_true")
     ap.add_argument("--part", action="store_true", help="write to parts/<sessions>/ (merged later with --merge)")
     ap.add_argument("--merge", action="store_true")
+    ap.add_argument("--deadline-min", type=float, default=325, help="stop politely after this many minutes (state is saved; rerun with --resume)")
+    ap.add_argument("--delay", type=float, default=10.0, help="seconds between requests (robots.txt asks for 10)")
     ap.add_argument("--checkpoint", type=int, default=100)
     ap.add_argument("--shard", default="", help="i/n: process only every n-th listed bill (offset i) so several runners can share one session")
     args = ap.parse_args()
@@ -528,6 +530,7 @@ def main():
     if not args.no_votes and not shutil.which("pdftotext"):
         print("pdftotext is required for the roll-call PDFs (apt-get install poppler-utils)", file=sys.stderr)
         return 2
+    GAP.update(now=args.delay, floor=args.delay, ceil=max(60.0, args.delay * 6))
     shard_i, shard_n = (int(x) for x in args.shard.split("/")) if args.shard else (0, 1)
     label = "_".join(sessions) + (f"_s{shard_i}of{shard_n}" if shard_n > 1 else "")
     outdir = OUT / "parts" / label if args.part else OUT
@@ -545,17 +548,29 @@ def main():
         print(f"resuming with {len(bills)} bills", flush=True)
     roster = Roster(legs)
     scanned_file = outdir / "scanned.json"
+    links_file = outdir / "votelinks.json"
     try:
-        scanned = set(json.loads(scanned_file.read_text())) if args.resume else set()
+        votelinks = json.loads(links_file.read_text()) if args.resume else {}
     except Exception:
-        scanned = set()
+        votelinks = {}
+    deadline = time.time() + args.deadline_min * 60
+    out_of_time = lambda: time.time() > deadline
+
+    def save():
+        write_all(outdir, bills, roster.legs, votes, history, notes)
+        links_file.write_text(json.dumps(votelinks, sort_keys=True))
+
     for session in sessions:
-        scan_mode = session in ("2025", "2026")
-        if scan_mode:
-            nums = scan_numbers(session)
-            items = [(f"#{n}", f"/Session/Bill/{session}/{n}") for n in nums]
-            log(f"{session}: {len(nums)} bill numbers to probe")
-        else:
+        if out_of_time():
+            break
+        items_file = outdir / f"items_{session}.json"
+        items = None
+        if args.resume and items_file.exists():
+            try:
+                items = [tuple(x) for x in json.loads(items_file.read_text())]
+            except Exception:
+                items = None
+        if items is None:
             items = list_session(session)
             have = {a for a, _ in items}
             extra_new = 0
@@ -565,46 +580,68 @@ def main():
                         have.add(lab)
                         items.append((lab, href))
                         extra_new += 1
-            log(f"{session}: {len(items)} listed ({extra_new} from resolution/memorial/JR type filters); types {dict(Counter(l.split()[0] for l, _ in items))}")
             items = sorted(items, key=lambda x: x[0])
+            log(f"{session}: {len(items)} listed ({extra_new} from resolution/memorial/JR type filters); types {dict(Counter(l.split()[0] for l, _ in items))}")
+            if args.part and not args.limit:
+                items_file.write_text(json.dumps(items))
         if shard_n > 1:
             items = [x for i, x in enumerate(items) if i % shard_n == shard_i]
         if args.limit:
             items = items[:args.limit]
         session_over = session not in ("2026D", "2026E", "2026F")  # later special sessions: judged per bill by activity age
-        if scan_mode:
-            todo = [(l, h) for l, h in items if f"{session}:{l}" not in scanned]
-        else:
-            todo = [(l, h) for l, h in items if f"{l} ({session})" not in bills]
+        todo = [(l, h) for l, h in items if f"{l} ({session})" not in bills]
+        log(f"{session}: {len(todo)} of {len(items)} bills still to fetch")
         done = 0
         with ThreadPoolExecutor(max_workers=min(args.workers, 4)) as ex:
-            futs = [(l, ex.submit(process, session, l, h, roster, session_over, not args.no_votes)) for l, h in todo]
-            for lab, f in futs:
-                try:
-                    res = f.result()
-                except Exception as e:
-                    print("error", repr(e), file=sys.stderr)
-                    continue
-                done += 1
-                if res == "MISSING":
-                    scanned.add(f"{session}:{lab}")
-                elif res:
-                    key, bill, vs, hist = res
+            for i in range(0, len(todo), args.checkpoint):
+                if out_of_time():
+                    log("deadline reached; state saved, rerun with --resume")
+                    break
+                futs = [ex.submit(process, session, l, h, roster, session_over) for l, h in todo[i:i + args.checkpoint]]
+                for f in futs:
+                    try:
+                        res = f.result()
+                    except Exception as e:
+                        print("error", repr(e), file=sys.stderr)
+                        continue
+                    if not res or res == "MISSING":
+                        continue
+                    key, bill, vs, hist, links = res
                     bills[key] = bill
-                    scanned.add(f"{session}:{lab}")
                     if vs:
-                        votes[key] = [{k: v for k, v in x.items() if k != "_parsed_ok"} for x in vs]
-                        for x in vs:
-                            if not x["_parsed_ok"]:
-                                notes.append(f"{key} {x['date']} {x['chamber']}: member list did not reconcile with the tally; members omitted")
+                        votes[key] = vs
+                        votelinks[key] = links
                     history[key] = hist
-                if done % args.checkpoint == 0:
-                    write_all(outdir, bills, roster.legs, votes, history, notes)
-                    scanned_file.write_text(json.dumps(sorted(scanned)))
-                    log(f"{session}: {done}/{len(todo)} probed, {len(bills)} bills (gap {GAP['now']:.2f}s)")
-    write_all(outdir, bills, roster.legs, votes, history, notes)
-    if args.part:
-        scanned_file.write_text(json.dumps(sorted(scanned)))
+                    done += 1
+                save()
+                log(f"{session}: {done}/{len(todo)} fetched, {len(bills)} bills in part (gap {GAP['now']:.1f}s)")
+
+    # second pass: roll-call PDFs -> member lists (needs pdftotext)
+    if not args.no_votes and not args.limit:
+        pending = [(k, i, votelinks[k][i]) for k in sorted(votes) if k in votelinks for i, v in enumerate(votes[k])
+                   if not v["members"] and v["motion"] == "Floor vote" and i < len(votelinks[k])]
+        log(f"roll-call PDFs still to read: {len(pending)}")
+        n = 0
+        for k, i, href in pending:
+            if out_of_time():
+                log("deadline reached during the PDF pass")
+                break
+            pdf = fetch(BASE + urllib.parse.quote(href, safe="/%:~"), binary=True)
+            if not pdf:
+                continue
+            pv = parse_vote_pdf(pdf, roster)
+            if not pv:
+                continue
+            if not pv.pop("_parsed_ok"):
+                notes.append(f"{k} {pv['date']} {pv['chamber']}: member list did not reconcile with the tally; members omitted")
+                pv["members"] = {}
+                pv["motion"] = pv["motion"] or "Floor vote"
+            votes[k][i] = pv
+            n += 1
+            if n % 50 == 0:
+                save()
+                log(f"PDFs read: {n}/{len(pending)}")
+    save()
     if not args.part:
         report(bills, roster.legs, votes, history, STATIC_NOTES + sorted(set(notes))[:40])
     print(f"FL{' part' if args.part else ''}: {len(bills)} bills, {len(roster.legs)} legislators, {sum(len(v) for v in votes.values())} votes")

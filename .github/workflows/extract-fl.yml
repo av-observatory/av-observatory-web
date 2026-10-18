@@ -51,10 +51,10 @@ jobs:
   extract:
     if: ${{ inputs.mode == 'extract' }}
     runs-on: ubuntu-latest
-    timeout-minutes: 345
+    timeout-minutes: 350
     strategy:
       fail-fast: false
-      max-parallel: 1
+      max-parallel: 2
       matrix:
         include:
           - {sessions: "2025A,2025B,2025C,2026D,2026E,2026F", shard: ""}
@@ -65,7 +65,7 @@ jobs:
       - name: Install pdftotext
         run: command -v pdftotext || (sudo apt-get update -qq && sudo apt-get install -y -qq poppler-utils)
       - name: Extract sessions ${{ matrix.sessions }} ${{ matrix.shard }}
-        run: bash scripts/fl-push-progress.sh run python3 -u scripts/extract-fl-legislature.py --part --resume --sessions "${{ matrix.sessions }}" --shard "${{ matrix.shard }}" $ARGS
+        run: bash scripts/fl-push-progress.sh run python3 -u scripts/extract-fl-legislature.py --part --resume --deadline-min 325 --delay 10 --sessions "${{ matrix.sessions }}" --shard "${{ matrix.shard }}" $ARGS
         env:
           COMMIT_PATH: data-state/states/FL
           ARGS: ${{ inputs.args }}
