@@ -18,3 +18,18 @@
 03:55:58   list 2025C type=None page 1 (0 so far)
 03:56:02   list 2025C type=5,18 page 1 (0 so far)
 03:56:04   list 2025C type=6,16 page 1 (0 so far)
+03:56:08   list 2025C type=7,19 page 1 (0 so far)
+03:56:10   list 2025C type=8,17 page 1 (0 so far)
+03:56:14 2025C: 7 listed (0 from resolution/memorial/JR type filters); types {'HB': 2, 'SB': 2, 'HM': 1, 'SM': 1, 'HR': 1}
+03:56:40   list 2026D type=None page 1 (0 so far)
+03:56:44   list 2026D type=5,18 page 1 (0 so far)
+03:56:48   list 2026D type=6,16 page 1 (0 so far)
+03:56:50   list 2026D type=7,19 page 1 (0 so far)
+03:56:52   list 2026D type=8,17 page 1 (0 so far)
+03:56:54 2026D: 6 listed (0 from resolution/memorial/JR type filters); types {'HB': 1, 'SB': 4, 'HJR': 1}
+03:57:17   list 2026E type=None page 1 (0 so far)
+03:57:20   list 2026E type=5,18 page 1 (0 so far)
+03:57:22   list 2026E type=6,16 page 1 (0 so far)
+03:57:24   list 2026E type=7,19 page 1 (0 so far)
+03:57:27   list 2026E type=8,17 page 1 (0 so far)
+03:57:28 2026E: 22 listed (0 from resolution/memorial/JR type filters); types {'SB': 10, 'HB': 12}
