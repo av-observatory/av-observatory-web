@@ -1,0 +1,38 @@
+name: Extract DC Council data (bills, sponsors, votes, summaries)
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "probe or extract"
+        default: "extract"
+      limit:
+        description: "max bills per prefix (0 = all)"
+        default: "0"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: extract-dc-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Probe
+        if: ${{ inputs.mode == 'probe' }}
+        run: |
+          mkdir -p data-state/states/DC
+          python3 scripts/probe-dc.py | tee data-state/states/DC/probe.txt
+      - name: Extract
+        if: ${{ inputs.mode == 'extract' }}
+        run: COMMIT_PATH=data-state/states/DC bash scripts/live-commit.sh python3 scripts/extract-dc-legislature.py --limit "${{ inputs.limit }}"
+      - name: Commit the extracted files
+        if: ${{ always() }}
+        run: |
+          ls -l data-state/states/DC
+          COMMIT_PATH=data-state/states/DC bash scripts/commit-ledgers.sh "DC Council data (${{ inputs.mode }})"
