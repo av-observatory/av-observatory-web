@@ -98,7 +98,8 @@ def enumerate_state(code: str) -> dict:
                 row = ledger["bills"].setdefault(key, {"session": session, "number": number, "first_seen": TODAY, "av": "unknown"})
                 title = " ".join(str(bill.get("title") or "").split())
                 row.update(title=title, url=bill.get("url") or row.get("url") or "", last_seen=TODAY)
-                if bill.get("av_hint") and row.get("av") in ("unknown", "no"):
+                # (a full-text hit already read and found clean on the Senate's text page, ft_checked, is not re-flagged by every enumeration)
+                if bill.get("av_hint") and row.get("av") in ("unknown", "no") and not row.get("ft_checked"):
                     row["av"], row["via"], row["classified"] = "candidate", "state_fulltext", TODAY
                 if bill.get("text_url"):
                     if bill["text_url"] != row.get("text_url") and (row.get("scan_failed") or row.get("text_url")):
@@ -167,7 +168,7 @@ def classify(ledgers: dict, scan_budget: int, scan_minutes: float, only: set | N
                           ("" if row.get("scan_failed") and row.get("scan_rev") != SCAN_REV else row.get("scanned") or ""), key)
                          for key, row in ledger["bills"].items()
                          if (row.get("av") in ("unknown", "no") or (row.get("av") == "candidate" and row.get("via") == "state_fulltext"
-                                                                   and (not row.get("scanned") or (row.get("scan_failed") and (row.get("scan_rev") != SCAN_REV or row.get("scanned") != TODAY)))))
+                                                                   and (not row.get("ft_checked") or (row.get("scan_failed") and (row.get("scan_rev") != SCAN_REV or row.get("scanned") != TODAY)))))
                          and not row.get("no_scan") and (row.get("text_url") or row.get("url")))
         # sort keys: "" = unconfirmed candidate, " " = never scanned, otherwise the date of the last scan
         queue += [("" if first == 0 else (scanned or " "), rank, code, key) for rank, (first, scanned, key) in enumerate(pending)]
@@ -195,6 +196,7 @@ def classify(ledgers: dict, scan_budget: int, scan_minutes: float, only: set | N
                 break
             for code, key, text, kind, secs in pool.map(scan, queue[start:start + 400]):
                 row = ledgers[code]["bills"][key]
+                was_hint = row.get("av") == "candidate" and row.get("via") == "state_fulltext"
                 if kind == SKIPPED:  # the host is down right now: leave the row as it was so it is tried again, not dated as scanned
                     row["scan_failed"], row["scan_error"] = True, kind
                     continue
@@ -208,6 +210,8 @@ def classify(ledgers: dict, scan_budget: int, scan_minutes: float, only: set | N
                     continue
                 row.pop("scan_failed", None)
                 row.pop("scan_error", None)
+                if was_hint:
+                    row["ft_checked"] = TODAY  # the text page was read: the verdict below stands until the bill changes
                 if is_av(text):
                     row["av"], row["via"], row["classified"] = "candidate", "page_scan", TODAY
                 else:
