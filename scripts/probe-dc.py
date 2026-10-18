@@ -4,30 +4,32 @@ H = {"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/12
 B = "https://lims.dccouncil.gov"
 
 
-def get(path, n=3000, full=False, quiet=False):
+def get(path, n=1500, full=False, quiet=False, headers=None):
     try:
-        r = urllib.request.urlopen(urllib.request.Request(B + path if path.startswith("/") else path, headers=H), timeout=60)
+        r = urllib.request.urlopen(urllib.request.Request(B + path if path.startswith("/") else path, headers=headers or H), timeout=60)
         d = r.read().decode("utf-8", "replace")
         if not quiet:
             print(f"### {path} -> {r.status} {r.headers.get('content-type')} len={len(d)}\n{d if full else d[:n]}\n", flush=True)
         return d
     except Exception as e:
-        body = getattr(e, "read", lambda: b"")()[:200]
+        body = getattr(e, "read", lambda: b"")()[:300]
         print(f"### {path} -> ERR {e} {body}\n", flush=True)
     return ""
 
 
-home = get("/", quiet=True)
-scripts = re.findall(r'src="([^"]+\.js[^"]*)"', home)
-print("scripts", scripts)
-for s in scripts:
-    if "sharethis" in s or "google" in s:
-        continue
-    js = get(s if s.startswith("http") else s, quiet=True)
-    print(f"=== {s} len={len(js)}")
-    for m in sorted(set(re.findall(r"""["'`]([^"'`]{0,120}(?:/api/|api/v|Token|token|GetLegislationMetadata|/search/)[^"'`]{0,120})["'`]""", js)))[:120]:
-        print("  ", m)
-    for m in re.finditer(r"(?:Authorization|Bearer|access_token|getToken|GetToken)", js):
-        a = max(0, m.start() - 150)
-        print("  CTX:", js[a:m.end() + 250].replace("\n", " "))
+js = get("/static/js/main.c11efed6.chunk.js", quiet=True)
+print("=== main chunk api contexts")
+seen = 0
+for m in re.finditer(r"api|fetch\(|axios|\.get\(", js):
+    a = max(0, m.start() - 100)
+    print("  CTX:", js[a:m.end() + 200].replace("\n", " "))
+    seen += 1
+    if seen > 40:
         break
+print("=== chunk refs")
+print(sorted(set(re.findall(r"static/js/[\w.]+\.js", js)))[:20])
+print("=== direct tries")
+for p in ["/api/search/GetLegislationMetadata/B26-0100", "/api/search/GetLegislationMetadata/B25-0100", "/api/search/GetLegislationMetadata/PR26-0100",
+          "/api/legislation/B26-0100", "/api/search/Legislation/B26-0100", "/api/Search/GetLegislation/B26-0100",
+          "/api/v1/Legislation/B26-0100", "/api/Legislation/GetPublicData/B26-0100"]:
+    get(p, 800)
