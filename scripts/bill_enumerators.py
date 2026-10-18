@@ -112,10 +112,26 @@ def page(url: str, **kw) -> _Cells:
 
 # --------------------------------------------------------------------------- South Dakota
 def sd(session: str):
+    from concurrent.futures import ThreadPoolExecutor
     ids = {"2026": "71", "2025": "70"}
-    for item in jget(f"https://sdlegislature.gov/api/Bills/Session/Light/{ids[session]}"):
-        yield {"session": session, "number": f"{item['BillType']} {item['BillNumberOnly']}",
+    items = jget(f"https://sdlegislature.gov/api/Bills/Session/Light/{ids[session]}")
+
+    def keywords(item):
+        """The per-bill record carries the LRC's subject keywords, the only summary-like text the API offers."""
+        try:
+            rec = jget(f"https://sdlegislature.gov/api/Bills/{item['BillId']}", tries=2, timeout=40)
+            return "Keywords: " + "; ".join(k.get("Keyword", "") for k in rec.get("Keywords") or [] if k.get("Keyword"))
+        except Exception:
+            return ""
+
+    with ThreadPoolExecutor(max_workers=8) as pool:
+        words = list(pool.map(keywords, items))
+    for item, kw in zip(items, words):
+        row = {"session": session, "number": f"{item['BillType']} {item['BillNumberOnly']}",
                "title": item.get("Title") or "", "url": f"https://sdlegislature.gov/Session/Bill/{item['BillId']}"}
+        if len(kw) > len("Keywords: "):
+            row["summary"] = kw
+        yield row
 
 
 # --------------------------------------------------------------------------- Wyoming
@@ -190,7 +206,9 @@ def az(session: str):
     for item in rows:
         number = item.get("Number") or item.get("BillNumber") or ""
         yield {"session": session, "number": number, "title": item.get("ShortTitle") or item.get("Title") or "",
-               "url": f"https://apps.azleg.gov/BillStatus/BillOverview/{item.get('BillId', '')}?SessionId={sid}"}
+               "url": f"https://apps.azleg.gov/BillStatus/BillOverview/{item.get('BillId', '')}?SessionId={sid}",
+               # the overview page is a JavaScript shell; DocType lists the bill's text versions (resolved to the latest by scan_fetch)
+               "text_url": f"https://apps.azleg.gov/api/DocType/?billStatusId={item.get('BillId', '')}"}
 
 
 CHROME = {"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"}
@@ -1125,7 +1143,7 @@ def ny(session: str):
 
 
 # Bump a state's revision when its adapter changes so recently enumerated ledgers are rebuilt.
-REV = {"WA": 4, "RI": 2, "KS": 2, "GA": 2, "NY": 2, "MO": 2, "SC": 2}  # bump to force a re-enumeration (KS/GA came back short in the first full run)
+REV = {"WA": 4, "RI": 2, "KS": 2, "GA": 2, "NY": 2, "MO": 2, "SC": 2, "SD": 2, "AZ": 2}  # bump to force a re-enumeration (KS/GA came back short in the first full run)
 
 # state -> (sessions to enumerate each run, function)
 ENUMERATORS = {

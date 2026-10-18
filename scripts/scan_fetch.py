@@ -28,7 +28,8 @@ def _status(exc: Exception) -> str:
 CURL = {"User-Agent": "curl/8.5.0", "Accept": "*/*"}
 # Hosts that rate-limit or block by identity: (minimum seconds between requests, first-choice headers, tries).
 # nysenate.gov refuses browser identities (403) and answers 429 when hit in parallel, so it gets one request at a time with backoff.
-HOST_POLICY = {"www.nysenate.gov": (1.2, CURL, 5), "nysenate.gov": (1.2, CURL, 5)}
+# palegis.us needs the browser identity (curl gets 403) and stalls for minutes when hit by many parallel clients, so it is paced too.
+HOST_POLICY = {"www.nysenate.gov": (1.2, CURL, 5), "nysenate.gov": (1.2, CURL, 5), "www.palegis.us": (0.5, CHROME, 3)}
 _gap_lock = threading.Lock()
 _next_slot: dict = {}
 # Circuit breaker: a host that times out repeatedly is skipped for a while instead of burning minutes of timeouts per row.
@@ -63,9 +64,23 @@ def _note(host: str, timed_out: bool) -> None:
             state[0] = _TRIP_AFTER - 1  # half-open: one more timeout after the cooldown trips it again at once
 
 
+def resolve_indirect(url: str) -> str:
+    """Some sources name a bill's text only through an index call; return the URL of the latest text version (or the URL itself)."""
+    if url.startswith("https://apps.azleg.gov/api/DocType/"):  # Arizona: [{Documents:[{HtmlPath}, ...]}] listed oldest to newest
+        import json
+        try:
+            groups = json.loads(http(url, tries=2, timeout=40, headers=CHROME).decode("utf-8", "replace"))
+        except Exception:
+            return url
+        paths = [d.get("HtmlPath") for g in groups for d in (g.get("Documents") or []) if d.get("HtmlPath")]
+        return paths[-1] if paths else url
+    return url
+
+
 def scan_fetch(url: str):
     """Fetch a bill page for the AV text screen: tidy the URL, upgrade http, retry with a browser UA. Returns (text, kind)."""
     from urllib.parse import quote, urlsplit, urlunsplit
+    url = resolve_indirect(url)
     parts = urlsplit(url.replace(" ", "%20"))
     if parts.scheme == "http":
         parts = parts._replace(scheme="https")
@@ -84,7 +99,11 @@ def scan_fetch(url: str):
         except Exception as exc:
             kind = _status(exc)
     data = None
+    tried = []
     for headers in ([first_headers] if first_headers else []) + [CHROME, CURL]:  # browser UA, then curl UA (some CDNs only block the first)
+        if headers in tried:
+            continue
+        tried.append(headers)
         if gap:
             _wait_turn(host, gap)
         try:

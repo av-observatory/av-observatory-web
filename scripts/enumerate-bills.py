@@ -36,7 +36,7 @@ SOURCES = ROOT / "data-state/official_sources.json"
 TODAY = date.today().isoformat()
 
 # States whose bill pages are JavaScript shells or refuse automated requests: classified from titles only (their ledgers carry titles).
-TITLE_ONLY = {"AL", "AZ", "CA", "DC", "GA", "MT", "NH", "NJ", "SD", "VA", "WY"}
+TITLE_ONLY = {"AL", "CA", "DC", "GA", "MT", "NJ", "SD", "VA", "WY"}  # AZ (text via DocType) and NH (static gencourt pages) are scanned
 
 # Per-host scan concurrency for servers that throttle (nysenate.gov answers 429/403 when hit in parallel; palegis.us stalls under load).
 HOST_CAP = {"www.nysenate.gov": 1, "nysenate.gov": 1, "www.palegis.us": 2}
