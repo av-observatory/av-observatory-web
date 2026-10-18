@@ -28,9 +28,24 @@ jobs:
       - name: Extract
         if: inputs.mode != 'probe'
         run: |
-          COMMIT_PATH=data-state/states/OR bash scripts/live-commit.sh python3 scripts/extract-or-legislature.py
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          (
+            while sleep 120; do
+              git add data-state/states/OR
+              git commit -q -m "OR progress $(date -u +%H:%M)" || continue
+              git pull -q --rebase --autostash origin main && git push -q origin HEAD:main || true
+            done
+          ) &
+          LIVE=$!
+          set +e
+          python3 scripts/extract-or-legislature.py
+          code=$?
+          kill "$LIVE" 2>/dev/null
+          wait "$LIVE" 2>/dev/null
+          exit $code
       - name: Commit the extracted files
-        if: inputs.mode != 'probe'
+        if: always() && inputs.mode != 'probe'
         run: |
           ls -l data-state/states/OR
           COMMIT_PATH=data-state/states/OR bash scripts/commit-ledgers.sh "Oregon legislature data"
