@@ -70,3 +70,5 @@
 05:59:00   list 2026F type=7,19 page 1 (0 so far)
 05:59:03   list 2026F type=8,17 page 1 (0 so far)
 05:59:05 2026F: 5 listed (0 from resolution/memorial/JR type filters); types {'HJR': 2, 'SJR': 1, 'HB': 1, 'SB': 1}
+06:14:50   list 2025A type=None page 1 (0 so far)
+06:14:52 retry 429 in 300s (gap 3.4, block#1): LegislativeSessionTitle=2025A&IsIncludeAmendments=False&IsFirstReference=True&pageNumber=1
