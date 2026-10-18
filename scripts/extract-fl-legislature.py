@@ -222,14 +222,13 @@ def list_session(session, extra_type=None, base_first=None):
     return out
 
 
+# Numbering blocks that held bills in the 2025 session (the BillRange filter on the list page); widened a little for 2026.
+NUMBER_BLOCKS = [(1, 2100), (2500, 2549), (4000, 4099), (5000, 5599), (6000, 6099), (6500, 6549), (7000, 7099), (8000, 8199)]
+
+
 def scan_numbers(session):
-    """Regular sessions: the list pages are rate-limited hard, so read the numbering blocks (BillRange options) from one list page and probe each number's bill page."""
-    h = fetch(f"{BASE}/Session/Bills/{session}?Chamber=both&SearchOnlyCurrentVersion=True&LegislativeSessionTitle={session}&pageNumber=1") or ""
-    m = re.search(r'<select[^>]*id="bill-range".*?</select>', h, re.S)
-    nums = []
-    for lo, hi in re.findall(r'value="(\d+)-(\d+)"', m.group(0) if m else ""):
-        nums += range(int(lo), int(hi) + 1)
-    return sorted(set(nums))
+    """Regular sessions: the list pages are rate-limited hard, so probe every number in the known blocks directly (a missing number returns a 200 'does not exist' page)."""
+    return [n for lo, hi in NUMBER_BLOCKS for n in range(lo, hi + 1)]
 
 
 # ----------------------------------------------------------------------------- bill page
