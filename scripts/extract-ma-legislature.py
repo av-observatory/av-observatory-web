@@ -93,7 +93,7 @@ def load_legislators():
 FLOOR = re.compile(r"read (second|third)|ordered to a (second|third) reading|passed to be engrossed|engrossed|orders of the day|"
                    r"referred to the committee on (house|senate) (steering|rules)|"
                    r"placed in the orders|rules suspended|committee reported that the matter|amendment .* (adopted|rejected)|"
-                   r"new draft|laid aside|passed to be enacted|"
+                   r"laid aside|passed to be enacted|"
                    r"committee of conference|conference committee", re.I)
 COMMITTEE = re.compile(r"referred to the committee|referred to committee|discharged to the committee|hearing (scheduled|rescheduled|cancel)|"
                        r"reporting date extended|accompanied|committee recommended|^referred|sent to the committee|"
@@ -131,7 +131,7 @@ def derive_status(actions):
         if ADVERSE.search(t) and not re.search(r"in part", t, re.I):
             state = "Failed Passage in Committee"
             continue
-        if re.search(r"study order|placed on file|no further action|withdrawn|leave to withdraw|negatived|indefinitely", t, re.I):
+        if re.search(r"new draft|study order|placed on file|no further action|withdrawn|leave to withdraw|negatived|indefinitely", t, re.I):
             state = "Died"
             continue
         if FLOOR.search(t) and not re.search(r"hearing", t, re.I):
@@ -287,12 +287,34 @@ def report(bills, legs, votes, hist, notes):
     (OUT / "extract_report.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
+REPORT_NOTES = [
+    "Docket-only filings without a bill number (about 2,977 in the Documents list) are not included; they receive numbers after the filing deadline.",
+    "House roll calls are published only as PDFs (\"YEA and NAY No. N\"); House votes carry the tally parsed from the history action text and empty `members`. Senate roll calls linked to a bill have member-level votes.",
+    "Committee votes are not included. Digest is the official Pinslip where one exists; otherwise the title.",
+    "Status is derived from history action text; most filings die quietly in committee and stay 'In Committee Process' while the 194th session runs to January 2027. 'Died' = study order, new draft, placed on file, withdrawn; 'Failed Passage in Committee' = reported adversely.",
+    "Sponsors that are not legislators (Governor, Treasurer, agencies, private petitioners) have legislator null.",
+]
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--probe", action="store_true")
     ap.add_argument("--limit", type=int, default=0)
+    ap.add_argument("--rederive", action="store_true", help="recompute status/chapter from the committed history file (no network)")
     ap.add_argument("--resume", action="store_true", help="skip bills already present in the committed history file")
     args = ap.parse_args()
+    if args.rederive:
+        bills = json.loads((OUT / "bills.json").read_text(encoding="utf-8"))
+        legs = json.loads((OUT / "legislators.json").read_text(encoding="utf-8"))
+        votes = json.load(gzip.open(OUT / "votes.json.gz", "rt", encoding="utf-8"))
+        hist = json.load(gzip.open(OUT / "history.json.gz", "rt", encoding="utf-8"))
+        for key, b in bills.items():
+            acts = [(a[0], "", a[2]) for a in hist.get(key, [])]
+            b["status"], b["chapter"] = derive_status(acts)
+            b["chaptered"] = b["status"] == "Chaptered"
+        write_outputs(bills, legs, votes, hist)
+        report(bills, legs, votes, hist, REPORT_NOTES)
+        return 0
     legs = load_legislators()
     print(f"{len(legs)} legislators loaded", flush=True)
     docs = get_json(f"{API}/Documents", timeout=300) or []
