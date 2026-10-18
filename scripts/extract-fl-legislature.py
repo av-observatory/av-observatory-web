@@ -13,7 +13,7 @@ Sessions: 2025 and 2026 regular sessions plus the special sessions 2025A/B/C and
 Keys are "<TYPE> <NUMBER> (<session>)" because each session is numbered separately.
 Run from a GitHub Actions workflow only (the sandbox cannot reach the state site).
 """
-import argparse, gzip, json, re, subprocess, sys, tempfile, threading, time, unicodedata
+import argparse, gzip, json, re, shutil, subprocess, sys, tempfile, threading, time, unicodedata
 import urllib.error, urllib.parse, urllib.request
 from collections import Counter, defaultdict
 from concurrent.futures import ThreadPoolExecutor
@@ -31,14 +31,14 @@ EXTRA_BILL_TYPES = ["5,18", "6,16", "7,19", "8,17"]  # joint resolutions, resolu
 
 # ----------------------------------------------------------------------------- http
 _lock, _last = threading.Lock(), [0.0]
-MIN_GAP = 0.45  # seconds between any two requests across all workers
+GAP = {"now": 1.2, "floor": 1.0, "ceil": 6.0}  # adaptive seconds between any two requests across all workers (the site sends 429 + Retry-After)
 
 
 def fetch(url, binary=False, tries=7):
     wait = 5
     for attempt in range(tries):
         with _lock:
-            gap = _last[0] + MIN_GAP - time.time()
+            gap = _last[0] + GAP["now"] - time.time()
             if gap > 0:
                 time.sleep(gap)
             _last[0] = time.time()
@@ -46,10 +46,13 @@ def fetch(url, binary=False, tries=7):
             req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept-Encoding": "identity"})
             with urllib.request.urlopen(req, timeout=60) as r:
                 data = r.read()
+            GAP["now"] = max(GAP["floor"], GAP["now"] * 0.97)
             return data if binary else data.decode("utf-8", "replace")
         except urllib.error.HTTPError as e:
             if e.code == 404:
                 return None
+            if e.code == 429:
+                GAP["now"] = min(GAP["ceil"], GAP["now"] * 1.5)
             ra = e.headers.get("Retry-After") if e.headers else None
             delay = int(ra) if ra and ra.isdigit() else wait
             if e.code not in (429, 500, 502, 503, 504, 403) or attempt == tries - 1:
@@ -390,30 +393,38 @@ def process(session, label, href, roster, session_over, want_votes=True):
 
 
 # ----------------------------------------------------------------------------- output
-def write_all(bills, legs, votes, history, extra=None):
-    OUT.mkdir(parents=True, exist_ok=True)
+def write_all(d, bills, legs, votes, history, notes=None):
+    d.mkdir(parents=True, exist_ok=True)
     dump = lambda o: json.dumps(o, sort_keys=True, separators=(",", ":"), ensure_ascii=False) + "\n"
-    (OUT / "bills.json").write_text(dump(bills), encoding="utf-8")
-    (OUT / "legislators.json").write_text(dump(legs), encoding="utf-8")
+    (d / "bills.json").write_text(dump(bills), encoding="utf-8")
+    (d / "legislators.json").write_text(dump(legs), encoding="utf-8")
     for name, data in (("votes", votes), ("history", history)):
-        with gzip.open(OUT / f"{name}.json.gz", "wt", encoding="utf-8") as fh:
+        with gzip.open(d / f"{name}.json.gz", "wt", encoding="utf-8") as fh:
             json.dump(data, fh, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
+    if notes is not None:
+        (d / "notes.json").write_text(dump(notes), encoding="utf-8")
 
 
-def load_existing():
+def load_dir(d):
     try:
-        bills = json.loads((OUT / "bills.json").read_text(encoding="utf-8"))
-        votes = json.load(gzip.open(OUT / "votes.json.gz", "rt", encoding="utf-8"))
-        hist = json.load(gzip.open(OUT / "history.json.gz", "rt", encoding="utf-8"))
-        return bills, votes, hist
+        bills = json.loads((d / "bills.json").read_text(encoding="utf-8"))
+        legs = json.loads((d / "legislators.json").read_text(encoding="utf-8"))
+        votes = json.load(gzip.open(d / "votes.json.gz", "rt", encoding="utf-8"))
+        hist = json.load(gzip.open(d / "history.json.gz", "rt", encoding="utf-8"))
+        try:
+            notes = json.loads((d / "notes.json").read_text(encoding="utf-8"))
+        except Exception:
+            notes = []
+        return bills, legs, votes, hist, notes
     except Exception:
-        return {}, {}, {}
+        return {}, {}, {}, {}, []
 
 
 def report(bills, legs, votes, history, notes):
     n = len(bills)
     c = Counter(b["status"] for b in bills.values())
     per = Counter(b["session"] for b in bills.values())
+    typ = Counter(b["type"] for b in bills.values())
     vb = [k for k, v in votes.items() if v]
     nvotes = sum(len(v) for v in votes.values())
     auth_total = sum(len(b["authors"]) for b in bills.values())
@@ -423,11 +434,12 @@ def report(bills, legs, votes, history, notes):
         f"Generated {date.today().isoformat()} by scripts/extract-fl-legislature.py (workflow extract-fl.yml).", "",
         "## Counts",
         f"- bills/resolutions: {n}  (by session: {dict(sorted(per.items()))})",
+        f"- by type: {dict(sorted(typ.items()))}",
         f"- with digest: {sum(1 for b in bills.values() if b['digest'])}",
         f"- with authors (members): {sum(1 for b in bills.values() if b['authors'])}; committee-sponsored: {sum(1 for b in bills.values() if b.get('sponsor_committee'))}",
         f"- author rows matched to a legislator id: {auth_m} of {auth_total}",
         f"- bills with floor roll calls: {len(vb)} ({nvotes} votes)",
-        f"- legislators: {len(legs)} ({sum(1 for l in legs.values() if not l['active'])} inactive/stub from roll calls)",
+        f"- legislators: {len(legs)} ({sum(1 for l in legs.values() if not l['active'])} inactive stubs created from roll calls)",
         f"- history rows: {sum(len(v) for v in history.values())}",
         f"- status: {dict(c)}", "",
         "## Sources",
@@ -438,6 +450,43 @@ def report(bills, legs, votes, history, notes):
     (OUT / "extract_report.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
+STATIC_NOTES = [
+    "Digest is the one-sentence bill summary printed on the Senate bill page (subject; summary of the current version). Florida does not publish a longer plain-language digest in a machine-readable feed; staff analysis PDFs exist for some bills but are not ingested.",
+    "No official bulk/API feed was reachable (ftp.flsenate.gov did not connect, leg.state.fl.us/data returned 403, www.flsenate.gov has no data-download page), so everything is scraped from bill pages and roll-call PDFs.",
+    "Only floor roll calls are included (committee vote records are PDFs and were not parsed). Voice votes have no roll call.",
+    "Roll-call members are resolved by chamber+district; inactive stub legislators (id FL:<S|H><district>-<lastname>, empty party) were created where the seat's current member differs from the name printed in the vote (members who left office, e.g. Ingoglia, Collins, Avila).",
+    "Keys use the session code as suffix: (2025), (2026) regular sessions and (2025A)/(2025B)/(2025C)/(2026D)/(2026E)/(2026F) special sessions.",
+    "Sponsors: the bill page prints last names only (with initials only where needed); matched to the member rosters by chamber and last name, ambiguous or departed members stay unmatched (legislator null).",
+    "Status is derived from the action history: Chapter No./Approved by Governor = Chaptered; Vetoed by Governor = Vetoed; enrolled/presented = Passed; Died*/Indefinitely postponed/Withdrawn/Laid on Table = Died; every other bill of an ended session = Died.",
+]
+
+
+def merge():
+    parts = sorted((OUT / "parts").glob("*")) if (OUT / "parts").exists() else []
+    bills, legs, votes, history, notes = {}, {}, {}, {}, []
+    for p in parts:
+        b, l, v, h, n = load_dir(p)
+        bills.update(b)
+        for k, x in l.items():
+            if k not in legs or (x["active"] and not legs[k]["active"]):
+                legs[k] = x
+        votes.update(v)
+        history.update(h)
+        notes += n
+        print(f"part {p.name}: {len(b)} bills")
+    if not bills:
+        print("no parts to merge", file=sys.stderr)
+        return 1
+    write_all(OUT, bills, legs, votes, history)
+    unmatched = sorted({nm for b in bills.values() for a in b["authors"] if not a["legislator"] for nm in [a["name"]]})
+    extra = [f"{len(unmatched)} distinct sponsor names unmatched to a member id (e.g. {', '.join(unmatched[:12])})."] if unmatched else []
+    report(bills, legs, votes, history, STATIC_NOTES + extra + sorted(set(notes))[:40])
+    shutil.rmtree(OUT / "parts", ignore_errors=True)
+    shutil.rmtree(OUT / "probe", ignore_errors=True)
+    print(f"FL: {len(bills)} bills, {len(legs)} legislators, {sum(len(v) for v in votes.values())} votes")
+    return 0
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--sessions", default=",".join(SESSIONS))
@@ -445,16 +494,24 @@ def main():
     ap.add_argument("--workers", type=int, default=3)
     ap.add_argument("--no-votes", action="store_true")
     ap.add_argument("--resume", action="store_true")
-    ap.add_argument("--checkpoint", type=int, default=250)
+    ap.add_argument("--part", action="store_true", help="write to parts/<sessions>/ (merged later with --merge)")
+    ap.add_argument("--merge", action="store_true")
+    ap.add_argument("--checkpoint", type=int, default=150)
     args = ap.parse_args()
+    if args.merge:
+        return merge()
     sessions = [s for s in args.sessions.split(",") if s]
+    outdir = OUT / "parts" / "_".join(sessions) if args.part else OUT
 
     legs = load_members()
-    print(f"members: {sum(1 for l in legs.values() if l['house']=='Senate')} senators, {sum(1 for l in legs.values() if l['house']=='House')} reps")
+    print(f"members: {sum(1 for l in legs.values() if l['house']=='Senate')} senators, {sum(1 for l in legs.values() if l['house']=='House')} reps", flush=True)
+    bills, votes, history, notes = {}, {}, {}, []
+    if args.resume:
+        bills, old_legs, votes, history, notes = load_dir(outdir)
+        for k, x in old_legs.items():
+            legs.setdefault(k, x)
+        print(f"resuming with {len(bills)} bills", flush=True)
     roster = Roster(legs)
-    bills, votes, history = load_existing() if args.resume else ({}, {}, {})
-    today = date.today()
-    notes = []
     for session in sessions:
         items = list_session(session)
         have = {a for a, _ in items}
@@ -465,10 +522,9 @@ def main():
                     have.add(label)
                     items.append((label, href))
                     extra_new += 1
-        print(f"{session}: {len(items)} listed ({extra_new} from resolution/memorial/JR type filters)", flush=True)
+        print(f"{session}: {len(items)} listed ({extra_new} from resolution/memorial/JR type filters); types {dict(Counter(l.split()[0] for l, _ in items))}", flush=True)
         if args.limit:
             items = items[:args.limit]
-        # a session is over when its latest-dated action is old; judged after we have bills, so use the regular-session calendar
         session_over = session not in ("2026D", "2026E", "2026F")  # later special sessions: judged per bill by activity age
         todo = [(l, h) for l, h in items if f"{l} ({session})" not in bills]
         done = 0
@@ -478,7 +534,7 @@ def main():
                 try:
                     res = f.result()
                 except Exception as e:
-                    print("error", e, file=sys.stderr)
+                    print("error", repr(e), file=sys.stderr)
                     continue
                 if not res:
                     continue
@@ -488,20 +544,16 @@ def main():
                     votes[key] = [{k: v for k, v in x.items() if k != "_parsed_ok"} for x in vs]
                     for x in vs:
                         if not x["_parsed_ok"]:
-                            notes.append(f"{key} {x['date']} {x['chamber']}: member list did not reconcile with tally; members omitted")
+                            notes.append(f"{key} {x['date']} {x['chamber']}: member list did not reconcile with the tally; members omitted")
                 history[key] = hist
                 done += 1
                 if done % args.checkpoint == 0:
-                    write_all(bills, roster.legs, votes, history)
-                    print(f"{session}: {done}/{len(todo)} done", flush=True)
-    write_all(bills, roster.legs, votes, history)
-    stubs = roster.stub_count
-    notes.insert(0, "Digest is the one-sentence bill summary printed on the Senate bill page (subject; summary of the filed/current version). Florida does not publish a longer plain-language digest in a machine-readable feed; staff analysis PDFs exist for some bills but are not ingested.")
-    notes.insert(1, "Only floor roll calls are included (committee vote records are PDFs and were not parsed). House voice votes and unrecorded votes have no roll call.")
-    notes.insert(2, f"Roll-call members are resolved by chamber+district; {stubs} inactive stub legislators were created where the district's current member differs from the name printed in the vote (members who left office).")
-    notes.insert(3, "Keys use the session code as suffix: (2025), (2026) regular sessions and (2025A)/(2025B)/(2025C)/(2026D)/(2026E)/(2026F) special sessions.")
-    report(bills, roster.legs, votes, history, notes)
-    print(f"FL: {len(bills)} bills, {len(roster.legs)} legislators, {sum(len(v) for v in votes.values())} votes")
+                    write_all(outdir, bills, roster.legs, votes, history, notes)
+                    print(f"{session}: {done}/{len(todo)} done (gap {GAP['now']:.2f}s)", flush=True)
+    write_all(outdir, bills, roster.legs, votes, history, notes)
+    if not args.part:
+        report(bills, roster.legs, votes, history, STATIC_NOTES + sorted(set(notes))[:40])
+    print(f"FL{' part' if args.part else ''}: {len(bills)} bills, {len(roster.legs)} legislators, {sum(len(v) for v in votes.values())} votes")
     return 0
 
 
