@@ -1087,14 +1087,16 @@ def ny(session: str):
     from concurrent.futures import ThreadPoolExecutor
     from html import unescape
 
-    def probe(item):
+    ERR = {"error": True}  # a fetch that failed (not "bill does not exist"): retried, because swallowing it left ~1,300 A/S numbers missing
+
+    def probe(item, tries=2):
         letter, n = item
         bn = f"{letter}{n:05d}"
         url = f"https://nyassembly.gov/leg/?default_fld=&leg_video=&bn={bn}&term={session}&Summary=Y&Actions=Y"
         try:
-            html = http(url, headers=CHROME, tries=2, timeout=60).decode("utf-8", "replace")
+            html = http(url, headers=CHROME, tries=tries, timeout=60).decode("utf-8", "replace")
         except Exception:
-            return None
+            return ERR
         text = " ".join(re.sub(r"<[^>]+>", " ", re.sub(r"(?is)<(script|style).*?</\1>", " ", html)).split())
         if "was not found" in text or f"BILL NO {bn}" not in unescape(text).replace("\xa0", " "):
             return None
@@ -1133,10 +1135,19 @@ def ny(session: str):
         for letter in ("A", "S", "K", "J", "E"):
             start, empty, seen_any = 1, 0, False
             while start < 22000:
-                results = [r for r in pool.map(probe, [(letter, n) for n in range(start, start + 100)]) if r]
+                items = [(letter, n) for n in range(start, start + 100)]
+                raw = list(pool.map(probe, items))
+                for _ in range(2):  # re-probe the failed fetches, slower and with more retries
+                    redo = [i for i, r in enumerate(raw) if r is ERR]
+                    if not redo:
+                        break
+                    time.sleep(3)
+                    for i, r in zip(redo, pool.map(lambda it: probe(it, tries=4), [items[i] for i in redo])):
+                        raw[i] = r
+                results = [r for r in raw if r and r is not ERR]
                 yield from results
                 seen_any = seen_any or bool(results)
-                empty = 0 if results else empty + 1
+                empty = 0 if (results or any(r is ERR for r in raw)) else empty + 1  # a block that only errored is not evidence the numbers ended
                 if (seen_any and empty >= 3) or (not seen_any and start > 1500):
                     break
                 start += 100
