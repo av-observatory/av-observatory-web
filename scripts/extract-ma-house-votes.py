@@ -118,7 +118,8 @@ def parse_rc(text):
         if not line.strip():
             continue
         for c in CELL.finditer(line):
-            name = re.sub(r"^-+|-+$", "", c.group(2).strip())
+            name = re.sub(r"^-+|-+$", "", re.sub(r"\s*\*$", "", c.group(2).strip()))
+            name = re.sub(r"^(\S+), ([A-Z]\.)$", r"\1 \2", name) if False else name
             rows.append((c.group(1).rstrip("*"), name))
     return {"number": int(m.group(1)), "date": f"{dm.group(3)}-{dm.group(1)}-{dm.group(2)}" if dm else "",
             "yeas": int(m.group(2)), "nays": int(m.group(3)), "nv": int(m.group(4)), "rows": rows}
@@ -129,7 +130,8 @@ def build_matcher(legs):
     for lid, l in legs.items():
         if l.get("house") != "House":
             continue
-        by_last.setdefault(deaccent(l["last"]), []).append(l)
+        base = re.sub(r"(,|\s)+(jr|sr|ii|iii|iv)\.?$", "", l["last"].split(",")[0].strip(), flags=re.I)
+        by_last.setdefault(deaccent(base), []).append(l)
     speaker = [l for l in legs.values() if "speaker" in (l.get("leadership") or "").lower() and "deputy" not in (l.get("leadership") or "").lower()
                and "pro tem" not in (l.get("leadership") or "").lower() and l.get("house") == "House"]
 
@@ -193,7 +195,8 @@ def run():
         ay = sum(1 for c, _ in p["rows"] if c == "Y")
         no = sum(1 for c, _ in p["rows"] if c == "N")
         ab = len(p["rows"]) - ay - no
-        if p["number"] != n or ay != p["yeas"] or no != p["nays"] or ab != p["nv"]:
+        nx = sum(1 for c, _ in p["rows"] if c == "X")
+        if p["number"] != n or ay != p["yeas"] or no != p["nays"] or nx != p["nv"]:
             problems.append(f"No. {n}: PDF header {p['yeas']}Y/{p['nays']}N/{p['nv']}NV (no {p['number']}) but parsed rows {ay}Y/{no}N/{ab}other ({len(p['rows'])} rows)")
             continue
         members = {}
