@@ -1109,6 +1109,7 @@ def ny(session: str):
     # even when its title never mentions vehicles. (The site admits plain curl and blocks browser identities.)
     seen_hint = set()
     for term in AV_TERMS:
+        stale = 0  # consecutive result pages that held only bills already found under another term
         for pg in range(0, 80):
             url = ("https://www.nysenate.gov/search/legislation?type=bill&status=all&sponsor=all&full_text="
                    + quote(term) + "&committee=all" + (f"&page={pg}" if pg else ""))
@@ -1127,7 +1128,10 @@ def ny(session: str):
                     num = m.group(1)
                     yield {"session": session, "number": f"{num[0]}{int(num[1:])}", "title": "", "av_hint": True,
                            "url": f"https://www.nysenate.gov/legislation/bills/{session}/{num}"}
-            if not links:  # end of this term's results (a page of only already-seen bills must not stop the walk: later pages can still hold new ones)
+            if not links:  # end of this term's results
+                break
+            stale = 0 if fresh else stale + 1
+            if stale >= 4:  # terms overlap heavily; four pages in a row with nothing new means this term is exhausted for our purposes
                 break
             time.sleep(0.5)
 
