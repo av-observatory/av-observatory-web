@@ -44,7 +44,10 @@ _lock, _last = threading.Lock(), [0.0]
 GAP = {"now": 3.0, "floor": 2.6, "ceil": 12.0}  # adaptive seconds between any two requests across all workers (the site sends 429 + Retry-After 120)
 
 
-def fetch(url, binary=False, tries=7):
+BLOCK = {"n": 0}  # consecutive 429s; the site's block outlasts its Retry-After, so back off harder each time
+
+
+def fetch(url, binary=False, tries=8):
     wait = 5
     for attempt in range(tries):
         with _lock:
@@ -57,25 +60,27 @@ def fetch(url, binary=False, tries=7):
             with urllib.request.urlopen(req, timeout=60) as r:
                 data = r.read()
             GAP["now"] = max(GAP["floor"], GAP["now"] * 0.93)
+            BLOCK["n"] = 0
             return data if binary else data.decode("utf-8", "replace")
         except urllib.error.HTTPError as e:
             if e.code == 404:
                 return None
-            if e.code == 429:
-                GAP["now"] = min(GAP["ceil"], GAP["now"] * 1.5)
             ra = e.headers.get("Retry-After") if e.headers else None
             delay = int(ra) if ra and ra.isdigit() else wait
+            if e.code == 429:
+                GAP["now"] = min(GAP["ceil"], GAP["now"] * 1.3)
+                BLOCK["n"] += 1
+                delay = max(delay, min(120 * 2 ** (BLOCK["n"] - 1), 900))
             if e.code not in (429, 500, 502, 503, 504, 403) or attempt == tries - 1:
-                print(f"HTTP {e.code} {url}", file=sys.stderr)
+                log(f"HTTP {e.code} giving up: {url[-90:]}")
                 return None
-            log(f"retry {e.code} in {min(delay, 120)}s (gap {GAP['now']:.1f}): {url[-90:]}")
+            log(f"retry {e.code} in {delay}s (gap {GAP['now']:.1f}, block#{BLOCK['n']}): {url[-90:]}")
             with _lock:  # global cool-down: every worker waits, not just this one
-                _last[0] = max(_last[0], time.time() + min(delay, 120))
+                _last[0] = max(_last[0], time.time() + delay)
             wait = min(wait * 2, 120)
         except Exception as e:  # network hiccup
-            print(f"retry error {e}: {url}", file=sys.stderr, flush=True)
+            log(f"retry error {e}: {url[-90:]}")
             if attempt == tries - 1:
-                print(f"FAIL {url}: {e}", file=sys.stderr)
                 return None
             time.sleep(wait)
             wait = min(wait * 2, 120)

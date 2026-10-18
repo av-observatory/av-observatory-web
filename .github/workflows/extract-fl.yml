@@ -54,6 +54,7 @@ jobs:
     timeout-minutes: 345
     strategy:
       fail-fast: false
+      max-parallel: 1
       matrix:
         include:
           - {sessions: "2025A,2025B,2025C,2026D,2026E,2026F", shard: ""}
