@@ -28,8 +28,12 @@ KEYWORDS = {"guns": r"firearm|ammunition", "abortion": r"abortion|reproductive",
 
 
 def system_prompt() -> str:
-    lines = [f"- {sid}: {s['topic']} / {s['name']} (axis {s['axis']}: {POLES[s['axis']]})" for sid, s in SUB.items()]
-    return ("You tag California bills for a legislative tracker. Choose up to 4 sub-topics from this list, using the exact ids:\n" + "\n".join(lines) +
+    lines = [f"- {sid}: {s['topic']} / {s['name']} (axis {s['axis']}: {POLES[s['axis']]})" + (f" [{s['note']}]" if s.get("note") else "") for sid, s in SUB.items()]
+    return ("You tag California bills for a legislative tracker. The benchmark for every direction is the STATUS QUO: current California law as the digest describes it (the 'existing law' paragraphs). "
+            "Direction measures how this bill CHANGES that status quo on the sub-topic: expands/loosens = moves toward more permission, access or fewer rules; restricts/tightens = moves toward less permission or more rules; "
+            "neutral = does not change the status quo on that sub-topic (continues it, studies it, clarifies it, or funds it without changing rules). "
+            "Ceremonial, naming, honoring or commemorative measures get only the sub-topic not_a_policy_topic.ceremonial_and_commemorative_measures. "
+            "Choose up to 4 sub-topics from this list, using the exact ids:\n" + "\n".join(lines) +
             "\n\nFor each tag give: direction (the values allowed for that sub-topic's axis, listed above), funding (" + "|".join(FUNDING) +
             "), mechanism (" + "|".join(MECHANISMS) + "), confidence (high|medium|low), and evidence: ONE sentence copied verbatim from the bill text below that supports the direction. "
             "Judge direction from what THIS bill would do (the 'This bill would...' parts), not from existing law it summarizes. "
@@ -121,7 +125,7 @@ def pick_sample(bills: dict, n: int, seed: int) -> list:
     return chosen[:n]
 
 
-PROMPT_REV = "r2"  # bump when the prompt or taxonomy changes, so every bill is retagged
+PROMPT_REV = "r3"  # bump when the prompt or taxonomy changes, so every bill is retagged
 
 
 def bill_hash(bill: dict) -> str:
