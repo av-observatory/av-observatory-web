@@ -25,3 +25,8 @@
 04:40:08   list 2026E type=None page 1 (0 so far)
 04:40:11   list 2026E type=5,18 page 1 (0 so far)
 04:40:14   list 2026E type=6,16 page 1 (0 so far)
+04:40:16   list 2026E type=7,19 page 1 (0 so far)
+04:40:18   list 2026E type=8,17 page 1 (0 so far)
+04:40:20 2026E: 22 listed (0 from resolution/memorial/JR type filters); types {'SB': 10, 'HB': 12}
+04:40:46 retry 429 in 120s (gap 3.3): https://www.flsenate.gov/Session/Bill/2026E/5201E/Vote/HouseVote_h05201E__886.PDF
+04:40:52 retry 429 in 120s (gap 4.9): https://www.flsenate.gov/Session/Bill/2026E/5003E/Vote/SenateVote_h05003E__007.PDF
