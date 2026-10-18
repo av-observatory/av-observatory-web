@@ -30,3 +30,5 @@
 04:40:20 2026E: 22 listed (0 from resolution/memorial/JR type filters); types {'SB': 10, 'HB': 12}
 04:40:46 retry 429 in 120s (gap 3.3): https://www.flsenate.gov/Session/Bill/2026E/5201E/Vote/HouseVote_h05201E__886.PDF
 04:40:52 retry 429 in 120s (gap 4.9): https://www.flsenate.gov/Session/Bill/2026E/5003E/Vote/SenateVote_h05003E__007.PDF
+04:42:55 retry 429 in 120s (gap 7.4): https://www.flsenate.gov/Session/Bill/2026E/5001E/Vote/SenateVote_h05001E__006.PDF
+04:43:00 retry 429 in 120s (gap 10.0): https://www.flsenate.gov/Session/Bill/2026E/5201E/Vote/HouseVote_h05201E__886.PDF
