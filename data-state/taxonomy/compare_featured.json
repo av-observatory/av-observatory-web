@@ -1,0 +1,22 @@
+[
+ "housing.zoning_land_use_and_short_term_rentals",
+ "housing.rent_regulation_and_tenant_protections",
+ "environment_and_energy.clean_energy",
+ "environment_and_energy.utility_regulation_and_rates",
+ "health_care.reproductive_health_and_abortion",
+ "health_care.public_health_vaccines_and_emergency_measures",
+ "health_care.gender_affirming_and_transgender_health_care",
+ "criminal_justice.drug_policy",
+ "criminal_justice.policing_and_accountability",
+ "labor_and_employment.minimum_wage_and_wage_rules",
+ "labor_and_employment.unions_and_collective_bargaining",
+ "ai_and_technology.data_privacy_and_security",
+ "children_and_families.kids_online_safety_and_age_verification",
+ "guns_and_weapons.purchase_licensing_and_dealers",
+ "immigration.state_cooperation_with_federal_enforcement_including_employment_verification",
+ "elections_and_voting.voter_registration_and_access",
+ "consumer_protection_and_business.alcohol_tobacco_and_vaping",
+ "consumer_protection_and_business.gambling_and_sports_betting",
+ "government_and_administration.local_control_and_preemption",
+ "education.curriculum_and_classroom_content"
+]

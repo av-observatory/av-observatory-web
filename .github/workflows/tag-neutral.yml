@@ -1,0 +1,41 @@
+name: "State-neutral scores for the Compare sub-topics"
+
+on:
+  workflow_dispatch:
+    inputs:
+      state:
+        description: "State code (CA, WA, OR, MA, DC, FL)"
+        default: "CA"
+      model:
+        description: "Model id"
+        default: "claude-haiku-5-5"
+      workers:
+        description: "Parallel requests"
+        default: "10"
+      budget_minutes:
+        description: "Stop starting new bills after this many minutes"
+        default: "100"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: tag-neutral-${{ inputs.state }}-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  tag:
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    env:
+      COMMIT_PATH: data-state/states/${{ inputs.state }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Score bills (progress is committed every 90 seconds)
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          TAG_MODEL: ${{ inputs.model }}
+        run: bash scripts/live-commit.sh python3 scripts/tag-neutral.py --state "${{ inputs.state }}" --workers "${{ inputs.workers }}" --budget-minutes "${{ inputs.budget_minutes }}"
+      - name: Commit final scores
+        if: always()
+        run: bash scripts/commit-ledgers.sh "${{ inputs.state }} state-neutral scores"
