@@ -37,3 +37,11 @@
 06:49:39   list 2026E type=8,17 page 1 (0 so far)
 06:49:49 2026E: 22 listed (0 from resolution/memorial/JR type filters); types {'HB': 12, 'SB': 10}
 06:49:49 2026E: 22 of 22 bills still to fetch
+06:53:29 2026E: 22/22 fetched, 59 bills in part (gap 10.0s)
+06:53:29   list 2026F type=None page 1 (0 so far)
+06:53:39   list 2026F type=5,18 page 1 (0 so far)
+06:53:49   list 2026F type=6,16 page 1 (0 so far)
+06:53:59   list 2026F type=7,19 page 1 (0 so far)
+06:54:09   list 2026F type=8,17 page 1 (0 so far)
+06:54:19 2026F: 5 listed (0 from resolution/memorial/JR type filters); types {'HB': 1, 'HJR': 2, 'SB': 1, 'SJR': 1}
+06:54:19 2026F: 5 of 5 bills still to fetch
