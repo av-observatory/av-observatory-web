@@ -60,6 +60,8 @@ jobs:
           - {sessions: "2026", shard: ""}
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Install pdftotext
+        run: command -v pdftotext || (sudo apt-get update -qq && sudo apt-get install -y -qq poppler-utils)
       - name: Extract sessions ${{ matrix.sessions }} ${{ matrix.shard }}
         run: bash scripts/live-commit.sh python3 -u scripts/extract-fl-legislature.py --part --resume --sessions "${{ matrix.sessions }}" --shard "${{ matrix.shard }}" $ARGS
         env:

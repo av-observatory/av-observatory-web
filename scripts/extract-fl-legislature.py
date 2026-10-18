@@ -521,6 +521,9 @@ def main():
     if args.merge:
         return merge()
     sessions = [s for s in args.sessions.split(",") if s]
+    if not args.no_votes and not shutil.which("pdftotext"):
+        print("pdftotext is required for the roll-call PDFs (apt-get install poppler-utils)", file=sys.stderr)
+        return 2
     shard_i, shard_n = (int(x) for x in args.shard.split("/")) if args.shard else (0, 1)
     label = "_".join(sessions) + (f"_s{shard_i}of{shard_n}" if shard_n > 1 else "")
     outdir = OUT / "parts" / label if args.part else OUT
