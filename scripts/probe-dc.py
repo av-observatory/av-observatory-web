@@ -4,47 +4,45 @@ H = {"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/12
 B = "https://lims.dccouncil.gov"
 
 
-def get(path, n=1500, full=False, quiet=False, data=None):
+def get(path, data=None):
+    hdrs = dict(H)
+    body = None
+    if data is not None:
+        body = json.dumps(data).encode()
+        hdrs["Content-Type"] = "application/json"
     try:
-        hdrs = dict(H)
-        body = None
-        if data is not None:
-            body = json.dumps(data).encode()
-            hdrs["Content-Type"] = "application/json"
         r = urllib.request.urlopen(urllib.request.Request(B + path, headers=hdrs, data=body), timeout=90)
-        d = r.read().decode("utf-8", "replace")
-        if not quiet:
-            print(f"### {'POST' if body else 'GET'} {path} -> {r.status} {r.headers.get('content-type')} len={len(d)}\n{d if full else d[:n]}\n", flush=True)
-        return d
+        return r.status, r.read().decode("utf-8", "replace")
     except Exception as e:
-        eb = getattr(e, "read", lambda: b"")()[:300]
-        print(f"### {path} -> ERR {e} {eb}\n", flush=True)
-    return ""
+        return getattr(e, "code", 0), f"ERR {e} " + getattr(e, "read", lambda: b"")()[:200].decode("utf-8", "replace")
 
 
-master = json.loads(get("/api/Search/GetSearchMaster", quiet=True))
-md = master["masterData"]
-for k, v in md.items():
-    print("MASTER", k, json.dumps(v)[:1200])
-get("/api/Search/GetLegislationDetails/B26-0100", 9000)
-get("/api/Search/GetLegislationDetails/PR26-0001", 5000)
-get("/api/Search/GetIntroducersByCouncilPeriod/26", 1500)
-get("/api/Reports/GetCouncilMembersByCouncilPeriod/26", 2500)
-# search by period
-cp = [x for x in md.get("councilPeriod", []) if "26" in json.dumps(x)]
-print("CP26", cp)
-cid = None
-for x in md.get("councilPeriod", []):
-    if "2025" in json.dumps(x) or "26" in json.dumps(x):
-        cid = x
-print("cid", cid)
-# voting search code
-home = urllib.request.urlopen(urllib.request.Request(B + "/static/js/9.d5493dac.chunk.js", headers=H), timeout=60).read().decode()
-for m in re.finditer(r"getCouncilMemberVotingSearch:function", home):
-    print("VOTECODE", home[m.start():m.start() + 900])
-for m in re.finditer(r"getSearchViewModel", home):
-    print("SVM", home[m.start():m.start() + 200])
-    break
-for m in re.finditer(r"SearchResult\"\)", home):
-    print("SRCODE", home[max(0, m.start() - 900):m.start() + 700])
-    break
+def show(path, n=1500, data=None):
+    st, d = get(path, data)
+    print(f"### {'POST' if data is not None else 'GET'} {path} -> {st} len={len(d)}\n{d[:n]}\n", flush=True)
+    return d
+
+
+# missing numbers
+show("/api/Search/GetLegislationDetails/B26-9999", 300)
+show("/api/Search/GetLegislationDetails/PR26-9999", 300)
+# search results
+master = json.loads(get("/api/Search/GetSearchMaster")[1])
+master.pop("masterData", None)
+master["councilPeriodId"]["ids"] = ["26"]
+master["pagination"] = {"pageSize": 5, "pageIndex": 0, "totalCount": 0}
+d = show("/api/Search/SearchResult", 3500, master)
+# top-level keys for a few bills
+for num in ["B26-0001", "B26-0003", "B26-0010", "B26-0050", "B26-0150", "PR26-0002", "PR26-0100"]:
+    st, t = get(f"/api/Search/GetLegislationDetails/{num}")
+    try:
+        j = json.loads(t)
+    except Exception:
+        print(num, st, t[:100])
+        continue
+    print("BILL", num, {k: (v if not isinstance(v, (list, dict)) else f"<{type(v).__name__} {len(v)}>") for k, v in j.items()})
+    print("   HIST types", [(h["type"], h["date"]) for h in j.get("legislationHistory", [])])
+# full dump of two interesting
+for num in ["B26-0100", "B26-0010"]:
+    st, t = get(f"/api/Search/GetLegislationDetails/{num}")
+    print(f"FULL {num}\n{t[3000:9000]}\n")
