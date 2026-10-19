@@ -28,6 +28,12 @@ export type OddPolygon = {
   source_url?: string;
 };
 
+export function driverMode(status: string): "driverless" | "supervised" | "unspecified" {
+  if (/driverless/i.test(status)) return "driverless";
+  if (/supervised/i.test(status)) return "supervised";
+  return "unspecified";
+}
+
 export type OddPoint = {
   company: string;
   market: string;
@@ -249,17 +255,18 @@ export function OddMap({
 
       for (const p of points) {
         const testing = p.phase === "testing";
-        const marker = L.circleMarker([p.lat, p.lon], {
-          radius: 6,
-          color: "#ffffff",
-          weight: 1.5,
-          fillColor: testing ? "#a86f00" : "#184f95",
-          fillOpacity: 1,
+        const mode = driverMode(p.status);
+        const base = testing ? "#a86f00" : "#184f95";
+        const marker = L.circleMarker([p.lat, p.lon], mode === "supervised" ? {
+          radius: 7, color: base, weight: 2.5, fillColor: "#ffffff", fillOpacity: 1,
+        } : {
+          radius: 6, color: "#ffffff", weight: 1.5, fillColor: base, fillOpacity: 1,
         });
         marker.bindPopup(
           `<div style="font:13px/1.4 system-ui,-apple-system,Segoe UI,sans-serif;min-width:170px">
             <div style="font-weight:700">${escapeHtml(p.company)} · ${escapeHtml(p.market)}</div>
             <div>${escapeHtml(p.state)} · ${escapeHtml(p.phase)} · ${escapeHtml(p.status)}</div>
+            ${driverMode(p.status) !== "unspecified" ? `<div>${driverMode(p.status) === "driverless" ? "Driverless (no human driver)" : "Supervised (human safety driver)"}</div>` : ""}
           </div>`
         );
         marker.addTo(pointLayer);
@@ -327,6 +334,8 @@ export function OddMap({
         {s2Features.length > 0 && <span><span className="inline-block w-3 h-3 align-middle mr-1 rounded-sm bg-[#438ad8]" />Waymo VMT by S2 Cell</span>}
         <span><span className="inline-block w-2.5 h-2.5 align-middle mr-1 rounded-full bg-[#184f95]" />Deployment Market Point</span>
         <span><span className="inline-block w-2.5 h-2.5 align-middle mr-1 rounded-full bg-[#a86f00]" />Testing Market Point</span>
+        <span><span className="inline-block w-2.5 h-2.5 align-middle mr-1 rounded-full bg-white border-2 border-[#184f95]" />Hollow Point: Supervised (Human Driver)</span>
+        <span className="text-neutral-500">Solid Point: Driverless Or Not Specified</span>
       </div>}
     </div>
   );
