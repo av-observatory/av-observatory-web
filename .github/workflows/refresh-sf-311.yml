@@ -53,8 +53,7 @@ jobs:
             echo "SF 311 snapshot already current"
           else
             git commit -m "data: refresh SF AV 311 requests"
-            git pull --rebase origin main
-            git push origin HEAD:main
+            bash scripts/push-main.sh main
             echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
       - name: Deploy updated site

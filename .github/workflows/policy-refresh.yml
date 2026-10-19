@@ -109,6 +109,5 @@ jobs:
             exit 0
           fi
           git commit -m "data: refresh policy tracker from official sources"
-          git pull --rebase origin main
-          git push origin HEAD:main
+          bash scripts/push-main.sh main
           gh workflow run pages.yml --ref main

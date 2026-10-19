@@ -52,8 +52,7 @@ jobs:
           git config user.email "bot@av-observatory.org"
           git add public/data
           git commit -m "data: apply maintainer-approved policy change (#$ISSUE)"
-          git pull --rebase origin main
-          git push origin HEAD:main
+          bash scripts/push-main.sh main
           gh workflow run pages.yml --ref main
           gh issue comment "$ISSUE" --body "Applied and deploying to the live site."
           gh issue close "$ISSUE"

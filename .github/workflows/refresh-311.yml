@@ -35,9 +35,7 @@ jobs:
             git config user.name "AV Observatory Data Bot"
             git config user.email "actions@users.noreply.github.com"
             git commit -m "Refresh validated AV 311 requests"
-            git fetch origin main
-            git rebase origin/main
-            git push origin HEAD:main
+            bash scripts/push-main.sh main
           fi
 
       - name: Deploy updated site

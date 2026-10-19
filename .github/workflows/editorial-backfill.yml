@@ -81,7 +81,7 @@ jobs:
           git add public/data/legislation_tracker.json public/data/policy_tracker.json public/data/nhtsa_investigations.json public/data/nhtsa_av_recalls.json data-state/editorial-quality-report.txt public/data/*.csv
           if ! git diff --cached --quiet; then
             git commit -m "data: retroactive official-source editorial corrections"
-            git push origin HEAD:main
+            bash scripts/push-main.sh main
             echo "Verified editorial corrections committed; deployment requires a clean cross-feed audit."
           fi
       - name: Publish only after cross-feed editorial audit passes

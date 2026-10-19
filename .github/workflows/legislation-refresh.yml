@@ -120,9 +120,7 @@ jobs:
             echo "No legislation changes to commit"
           else
             git commit -m "Refresh Open States state legislation database"
-            git fetch origin main
-            git rebase origin/main
-            git push origin HEAD:main
+            bash scripts/push-main.sh main
           fi
       - name: Publish and verify versioned bill index
         if: ${{ env.R2_BUCKET != '' && env.R2_ACCOUNT_ID != '' && env.AWS_ACCESS_KEY_ID != '' && env.AWS_SECRET_ACCESS_KEY != '' && env.OPENSTATES_API_KEY != '' }}
