@@ -141,7 +141,7 @@ def main():
     for name, content in output.items():
         target = DATA / name
         if args.check:
-            if not target.is_file() or target.read_text(encoding="utf-8") != content:
+            if not target.is_file() or target.read_bytes().decode("utf-8") != content:
                 raise ValueError(f"CSV export is missing or stale: {name}")
         else:
             target.write_text(content, encoding="utf-8")
