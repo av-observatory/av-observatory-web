@@ -13,7 +13,8 @@ import urllib.request
 import zipfile
 from datetime import datetime, timezone
 from pathlib import Path
-from nhtsa_editorial import editorial_brief, plain, validate_summary
+from nhtsa_editorial import editorial_brief, plain, validate_summary, verified_summary_ok, VERIFIED_QUALITY
+from odi_links import OdiIndex, resolve as resolve_odi_source
 
 ROOT = Path(__file__).resolve().parents[1]
 DIR = ROOT / "public" / "data"
@@ -67,8 +68,9 @@ def company_of(row):
 
 def accepted_editorial(row):
     summary=str(row.get("summary") or "")
-    if row.get("editorial_status")=="verified" and row.get("summary_quality")=="verified":
-        return 24<=len(summary.split())<=75 and len(summary)<=550
+    if row.get("editorial_status")=="verified" and row.get("summary_quality") in VERIFIED_QUALITY:
+        if verified_summary_ok(summary):
+            return True
     return validate_summary(plain(summary))
 
 def relevant(company, make, component, subject, summary):
@@ -184,6 +186,12 @@ def main():
         raise ValueError(f"Recall feed appears truncated: {recall_rows} rows, {len(recalls)} relevant campaigns")
     for investigation in investigations.values():
         investigation["related_recalls"] = [c for c in investigation["related_recalls"] if c in recalls]
+    # Point every card at its official ODI document (closing resume once closed,
+    # opening resume while open) instead of NHTSA's generic search page.
+    odi_index = OdiIndex()
+    for investigation in investigations.values():
+        investigation["source"] = resolve_odi_source(
+            investigation["id"], investigation["status"] == "Closed", investigation.get("source"), odi_index)
     data_inv = {"schema_version":"1.1.0","dataset":"NHTSA AV / ADAS Defect Investigations and Audit Queries",
         "source_url":URL_INV,"observed_at":today,
         "coverage":"Primary-source ODI investigation flat file; AV/ADAS keyword/manufacturer selection plus retained audited oversight records.",
@@ -205,6 +213,9 @@ def main():
     assert len(recalls)==len({x["id"] for x in data_rcl["recalls"]})
     assert all((x["status"]=="Closed") == bool(x["closed"]) for x in data_inv["investigations"] if x["id"] not in seed)
     assert all(c in recalls for x in data_inv["investigations"] for c in x["related_recalls"])
+    # A generic NHTSA search link is not a source for a specific investigation.
+    assert all(not x["source"].endswith("search-safety-issues") for x in data_inv["investigations"]), \
+        "an investigation still links to the generic NHTSA search page"
 
 if __name__ == "__main__":
     main()

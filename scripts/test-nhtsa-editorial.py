@@ -2,7 +2,7 @@
 """Regression tests for every NHTSA editorial card produced by refresh."""
 import json
 from pathlib import Path
-from nhtsa_editorial import editorial_brief,validate_summary
+from nhtsa_editorial import editorial_brief,validate_summary,verified_summary_ok,VERIFIED_QUALITY
 DATA=Path(__file__).resolve().parents[1]/"public"/"data"
 samples=[
   ("investigation","Automated Driving System (ADS) conflict avoidance, driving behavior competence and assertiveness",
@@ -18,5 +18,6 @@ for kind,subject,source in samples:
 for filename,key in (("nhtsa_investigations.json","investigations"),("nhtsa_av_recalls.json","recalls")):
     rows=json.loads((DATA/filename).read_text(encoding="utf-8"))[key]
     for row in rows:
-        assert validate_summary(row["summary"]),(filename,row["id"])
+        verified = row.get("editorial_status")=="verified" and row.get("summary_quality") in VERIFIED_QUALITY
+        assert (verified_summary_ok(row["summary"]) if verified else validate_summary(row["summary"])),(filename,row["id"])
     print(f"Validated {len(rows)} {key} for editorial summary quality")

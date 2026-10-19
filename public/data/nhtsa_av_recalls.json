@@ -2,9 +2,9 @@
   "schema_version": "1.0.0",
   "dataset": "NHTSA AV / ADAS Safety Recalls",
   "source_url": "https://static.nhtsa.gov/odi/ffdd/rcl/FLAT_RCL_POST_2010.zip",
-  "observed_at": "2026-10-15",
+  "observed_at": "2026-10-19",
   "coverage": "Primary-source NHTSA post-2010 recall campaigns, deduplicated across model rows.",
-  "source_rows": 245885,
+  "source_rows": 246109,
   "recalls": [
     {
       "id": "26E059000",
@@ -76,8 +76,8 @@
       "consequence": "Entering a flooded roadway can cause a loss of vehicle control, increasing the risk of a crash or injury.",
       "remedy": "The remedy is currently under development. As an interim remedy, Waymo modified the scope of vehicle operations to increase weather-related constraints and updated the vehicle maps. All affected vehicles received the interim update by April 20, 2026.",
       "products": [
-        "5TH GENERATION ADS",
-        "6TH GENERATION ADS"
+        "6TH GENERATION ADS",
+        "5TH GENERATION ADS"
       ],
       "status": "Recall announced; remedy information in official record",
       "related_investigations": [],
@@ -95,10 +95,10 @@
       "consequence": "Loss of the rearview camera image and certain driver assistance features, can reduce the driverâs ability to detect hazards, increasing the risk of a crash.",
       "remedy": "The Image Processing Module A software will be updated by a dealer, or through an over-the-air (OTA) update, free of charge. This is a Phased campaign. Phase 1 will include 2025 Aviator, 2025 Explorer, 2025 Nautilus notified owners on 4/13/2026. Phase 2 will include 2025 Navigator will notify owners on or about 4/20/2026. Phase 3 will include 2022-2024 Navigator will notify owners on or about 6/8/2026. Phase 4 will include 2024 Nautilus will notify owners on or about 6/22/2026. Owner notification letters were mailed April 13, 2026. Owners may contact Ford customer service at 1-866-436-7332. Ford's number for this recall is 26S21. Vehicle Identification Numbers (VINs) involved in this recall will be searchable on NHTSA.gov beginning March 25, 2026.",
       "products": [
-        "NAVIGATOR",
-        "NAUTILUS",
+        "AVIATOR",
         "EXPLORER",
-        "AVIATOR"
+        "NAUTILUS",
+        "NAVIGATOR"
       ],
       "status": "Recall announced; remedy information in official record",
       "related_investigations": [],
@@ -215,11 +215,11 @@
       "consequence": "An unexpected loss of power brake assist while driving can extend stopping distance and increase the risk of a crash. Additionally, a loss of power brake assist while ADAS features are engaged can result in the vehicle not braking as expected, increasing the risk of a crash.",
       "remedy": "The EBB module software will be updated over-the-air (OTA) or by a dealer, free of charge. Owner notification letters were mailed on August 22, 2025. Owners may contact Ford customer service at 1-866-436-7332. Ford's number for this recall is 25S77.",
       "products": [
-        "NAVIGATOR",
         "F-150",
         "EXPEDITION",
         "BRONCO",
-        "RANGER"
+        "RANGER",
+        "NAVIGATOR"
       ],
       "status": "Recall announced; remedy information in official record",
       "related_investigations": [],
@@ -664,13 +664,13 @@
       "consequence": "An awning that drops or extends beyond normal operation can increase the risk of injury.",
       "remedy": "Dealers will inspect and repair, or replace the awning, free of charge.  Owner notification letters were mailed September 7, 2022.  Owners may contact Cruiser customer service at 1-574-206-7920.",
       "products": [
-        "EMBRACE",
-        "TWILIGHT",
-        "MPG",
-        "SHADOW CRUISER",
-        "HITCH",
         "RADIANCE ULTRA-LITE",
-        "STRYKER"
+        "SHADOW CRUISER",
+        "TWILIGHT",
+        "STRYKER",
+        "EMBRACE",
+        "MPG",
+        "HITCH"
       ],
       "status": "Recall announced; remedy information in official record",
       "related_investigations": [],
@@ -935,9 +935,9 @@
       "consequence": "If the steering locks, it can increase the risk of a crash.",
       "remedy": "Icon will notify owners, and dealers will install a new shock assembly with a revised foam ring and steel support disc, free of charge.  The recall began December 21, 2020.  Owners may contact Icon customer service at 1-951-689-4266.",
       "products": [
-        "F-250 SD",
         "F-350 SD",
-        "CENTERLINE STABLIZER KIT"
+        "CENTERLINE STABLIZER KIT",
+        "F-250 SD"
       ],
       "status": "Recall announced; remedy information in official record",
       "related_investigations": [],
@@ -1183,9 +1183,9 @@
       "remedy": "Cruiser will notify owners, and dealers will replace the light with one that has built-in voltage protection.  The recall began on September 1, 2016.  Owners may contact Cruiser customer service at 1-260-562-3500.",
       "products": [
         "SHADOW CRUISER",
-        "FUN FINDER",
         "RADIANCE",
         "STRYKER TOY",
+        "FUN FINDER",
         "MPG",
         "SOUTH FORK"
       ],

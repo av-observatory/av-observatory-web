@@ -20,6 +20,18 @@ BOILERPLATE = (
     "this opening resume", "in order to determine", "for the purpose of",
     "this will include an assessment", "if additional evidence",
 )
+# Labels carried by hand-verified records. "manual_primary_source_verified" is
+# what curators actually write; both refresh and tests import this set.
+VERIFIED_QUALITY = {"verified", "manual_primary_source_verified"}
+
+def verified_summary_ok(summary):
+    """Bounds for a summary a human verified against the official ODI resume.
+    Looser length cap than auto-generated text, same content rules."""
+    return (24 <= len(summary.split()) <= 75 and len(summary) <= 550
+            and not any(x in summary.lower() for x in BOILERPLATE)
+            and not re.search(r"\b(ADS|ODI|FMVSS|SGO)\b", summary)
+            and not re.search(r"(?:\d{5}-\d{4,}){2,}", summary))
+
 MAX_WORDS = 58
 MAX_CHARS = 380
 def plain(value):
