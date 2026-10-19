@@ -1,7 +1,7 @@
 {
   "schema_version": "1.1.0",
-  "as_of": "2026-10-18",
-  "state_index_reviewed": "2026-10-18",
+  "as_of": "2026-10-19",
+  "state_index_reviewed": "2026-10-19",
   "methodology": "Current-session AV legislation is independently discovered across all 50 states and D.C. with Open States API v3. One full-text AV query is run for each active legislative session, results are deduplicated, and normalized Open States actions are used to derive progress status. The Observatory condenses the full available source abstract to lead with operative provisions rather than existing-law boilerplate; the uncondensed source abstract is retained in source_summary. Official legislature source URLs supplied by Open States are retained where available; Open States bill URLs are stored separately for source inspection.",
   "source": "Open States API v3 national AV bill discovery",
   "federal": [
@@ -203,7 +203,7 @@
       "hearings": [],
       "source_url": "https://alison.legislature.state.al.us/bill-search",
       "repository_url": "https://openstates.org/al/bills/2026rs/SB222/",
-      "reviewed_at": "2026-10-18",
+      "reviewed_at": "2026-10-19",
       "summary_reviewed_at": "2026-10-14",
       "openstates_id": "ocd-bill/15108415-5983-4ee4-9a30-ddb22a9903c2",
       "openstates_updated_at": "2026-07-09T22:32:17.309868+00:00"
@@ -232,7 +232,7 @@
       "hearings": [],
       "source_url": "https://apps.azleg.gov/BillStatus/BillOverview?SessionId=129&BillNumber=SB1320",
       "repository_url": "https://apps.azleg.gov/BillStatus/BillOverview?SessionId=129&BillNumber=SB1320",
-      "reviewed_at": "2026-10-18",
+      "reviewed_at": "2026-10-19",
       "source_feed": "manual_official"
     },
     {
@@ -263,12 +263,18 @@
       "hearings": [],
       "source_url": "https://apps.azleg.gov/BillStatus/BillOverview/84971?SessionId=130",
       "repository_url": "https://openstates.org/az/bills/57th-2nd-regular/SB1417/",
-      "reviewed_at": "2026-10-18",
+      "reviewed_at": "2026-10-19",
       "summary_reviewed_at": "2026-10-14",
       "openstates_id": "ocd-bill/f4535e95-c26a-4b33-8eb4-c4da2b62e04b",
       "openstates_updated_at": "2026-03-18T01:18:38.574357+00:00"
     },
     {
+      "editorial_source_hash": "82f870dfc719341842ff94a2e1db1ae4633b3524c67352c87a37b99875af678a",
+      "editorial_source_type": "official_html",
+      "editorial_source_url": "https://www.azleg.gov/legtext/57leg/1R/bills/SB1466P.htm",
+      "editorial_status": "verified",
+      "editorial_model": "claude-sonnet-5-5",
+      "summary_method": "ai_verified_primary_source",
       "id": "az-sb-1466-57th-1st-regular",
       "jurisdiction": "AZ",
       "number": "SB 1466",
@@ -276,7 +282,6 @@
       "summary": "This proposal would add a new Arizona section, 28-9705, barring autonomous vehicles from carrying passengers except for personal or non-revenue use. It would also bar their use to transport goods unless a licensed human safety operator is physically present, able to monitor performance at all times and to intervene, including by operating or shutting off the vehicle.",
       "takeaway": "This proposal would add a new Arizona section, 28-9705, barring autonomous vehicles from carrying passengers except for personal or non-revenue use. It would also bar their use to transport goods unless a licensed human safety operator is physically present, able to monitor performance at all times and to intervene, including by operating or shutting off the vehicle.",
       "source_summary": "",
-      "summary_method": "ai_verified_primary_source",
       "summary_quality": "verified",
       "status": "introduced",
       "measure_type": "bill",
@@ -288,15 +293,10 @@
       "hearings": [],
       "source_url": "https://apps.azleg.gov/BillStatus/BillOverview/82890?SessionId=129",
       "repository_url": "https://openstates.org/az/bills/57th-1st-regular/SB1466/",
-      "reviewed_at": "2026-10-18",
+      "reviewed_at": "2026-10-19",
       "summary_reviewed_at": "2026-10-18",
       "openstates_id": "ocd-bill/a39f7145-af0c-456b-8a15-e332c6c16382",
-      "openstates_updated_at": "2025-11-13T08:32:34.028714+00:00",
-      "editorial_source_hash": "82f870dfc719341842ff94a2e1db1ae4633b3524c67352c87a37b99875af678a",
-      "editorial_source_type": "official_html",
-      "editorial_source_url": "https://www.azleg.gov/legtext/57leg/1R/bills/SB1466P.htm",
-      "editorial_status": "verified",
-      "editorial_model": "claude-sonnet-5-5"
+      "openstates_updated_at": "2025-11-13T08:32:34.028714+00:00"
     },
     {
       "id": "ca-ab-2193-20252026",
@@ -320,7 +320,7 @@
       "hearings": [],
       "source_url": "https://openstates.org/ca/bills/20252026/AB2193/",
       "repository_url": "https://openstates.org/ca/bills/20252026/AB2193/",
-      "reviewed_at": "2026-10-18",
+      "reviewed_at": "2026-10-19",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/8bb84568-51be-40f7-a292-2aa23cfe1c26",
       "openstates_updated_at": "2026-07-09T04:51:21.856958+00:00"
@@ -348,7 +348,7 @@
       "hearings": [],
       "source_url": "https://openstates.org/ca/bills/20252026/AB33/",
       "repository_url": "https://openstates.org/ca/bills/20252026/AB33/",
-      "reviewed_at": "2026-10-18",
+      "reviewed_at": "2026-10-19",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/b040b593-f8fd-4869-a6cb-530f780c6559",
       "openstates_updated_at": "2026-07-09T04:58:31.470169+00:00"
@@ -379,7 +379,7 @@
       "hearings": [],
       "source_url": "https://openstates.org/ca/bills/20252026/SB1246/",
       "repository_url": "https://openstates.org/ca/bills/20252026/SB1246/",
-      "reviewed_at": "2026-10-18",
+      "reviewed_at": "2026-10-19",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/84856a8a-5cff-41ee-9237-9f569454b676",
       "openstates_updated_at": "2026-10-02T09:03:22.251281+00:00"
@@ -410,7 +410,7 @@
       "hearings": [],
       "source_url": "https://openstates.org/ca/bills/20252026/SB480/",
       "repository_url": "https://openstates.org/ca/bills/20252026/SB480/",
-      "reviewed_at": "2026-10-18",
+      "reviewed_at": "2026-10-19",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/f9108655-2446-4579-a74e-8edc20fa103e",
       "openstates_updated_at": "2026-10-15T09:19:59.389134+00:00"
@@ -439,7 +439,7 @@
       "hearings": [],
       "source_url": "https://openstates.org/ca/bills/20252026/SB572/",
       "repository_url": "https://openstates.org/ca/bills/20252026/SB572/",
-      "reviewed_at": "2026-10-18",
+      "reviewed_at": "2026-10-19",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/2941438a-0630-45ee-88aa-7c3a286f7bdc",
       "openstates_updated_at": "2026-07-09T05:53:12.621276+00:00"
@@ -469,10 +469,40 @@
       "hearings": [],
       "source_url": "https://leg.colorado.gov/bills/HB26-1286",
       "repository_url": "https://openstates.org/co/bills/2026A/HB1286/",
-      "reviewed_at": "2026-10-18",
+      "reviewed_at": "2026-10-19",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/0c5607ff-a283-4172-b8bc-3a021fa34ac9",
       "openstates_updated_at": "2026-08-03T18:12:45.474864+00:00"
+    },
+    {
+      "id": "co-hb-25-1122-2025a",
+      "jurisdiction": "CO",
+      "number": "HB 25-1122",
+      "title": "Automated Driving System Commercial Motor Vehicle",
+      "summary": "The act prohibits using an automated driving system to drive a commercial motor vehicle unless an individual who holds a commercial driver's license is in the vehicle, is in the driver's seat if the vehicle is transporting hazardous materials, monitors the vehicle's driving, and intervenes, if necessary, to avoid illegal or unsafe driving. The act does not apply to light-duty vehicles.",
+      "takeaway": "The act prohibits using an automated driving system to drive a commercial motor vehicle unless an individual who holds a commercial driver's license is in the vehicle, is in the driver's seat if the vehicle is transporting hazardous materials, monitors the vehicle's driving, and intervenes, if necessary, to avoid illegal or unsafe driving. The act does not apply to light-duty vehicles.",
+      "source_summary": "The act prohibits using an automated driving system to drive a commercial motor vehicle unless an individual who holds a commercial driver's license is in the vehicle, is in the driver's seat if the vehicle is transporting hazardous materials, monitors the vehicle's driving, and intervenes, if necessary, to avoid illegal or unsafe driving. The penalty is $1,000 for a first offense, is $2,000 for a second offense, and doubles for each subsequent offense. The act does not apply to light-duty vehicles.\nVETOED by Governor 5/29/2025(Note: This summary applies to this bill as enacted.)",
+      "summary_method": "Source abstract condensed for substantive legislative effect",
+      "summary_quality": "source_abstract",
+      "status": "vetoed",
+      "measure_type": "bill",
+      "last_action_date": "2025-05-29",
+      "last_action": "Governor Vetoed",
+      "session": "2025A",
+      "progress_stage": "executive",
+      "stage_dates": {
+        "introduced": "2025-04-24",
+        "committee": "2025-04-30",
+        "passed_legislature": "2025-05-06",
+        "executive": "2025-05-29"
+      },
+      "hearings": [],
+      "source_url": "https://leg.colorado.gov/bills/hb25-1122",
+      "repository_url": "https://openstates.org/co/bills/2025A/HB25-1122/",
+      "reviewed_at": "2026-10-19",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/704f23a9-be5b-42de-8bfd-06f28d63c5d4",
+      "openstates_updated_at": "2025-06-12T00:13:35.858547+00:00"
     },
     {
       "editorial_model": "claude-sonnet-5-5",
@@ -502,7 +532,7 @@
       "summary_reviewed_at": "2026-10-17",
       "takeaway": "This bill would prohibit driving a commercial motor vehicle with an automated driving system unless a person holding a commercial driver's license is aboard, monitoring and intervening if needed; that person would have to sit in the driver's seat when hazardous materials are carried. Penalties would start at $1,000, and the prohibition would be repealed September 1, 2031. The state patrol chief would report by November 1, 2030.",
       "title": "Automated Driving System Commercial Vehicles",
-      "reviewed_at": "2026-10-18"
+      "reviewed_at": "2026-10-19"
     },
     {
       "id": "dc-b26-0684-26",
@@ -534,10 +564,16 @@
       ],
       "source_url": "https://lims.dccouncil.gov/Legislation/B26-0684",
       "repository_url": "https://lims.dccouncil.gov/Legislation/B26-0684",
-      "reviewed_at": "2026-10-18",
+      "reviewed_at": "2026-10-19",
       "source_feed": "manual_official"
     },
     {
+      "editorial_source_hash": "c13e09b2377a589af8782b57a197b593ad0c3eb13a43887b9a98dd6467cd32a7",
+      "editorial_source_type": "official_html",
+      "editorial_source_url": "https://legis.delaware.gov/json/BillDetail/GenerateHtmlDocument?legislationId=141417&legislationTypeId=6&docTypeId=2&legislationName=SS1forSB258",
+      "editorial_status": "verified",
+      "editorial_model": "claude-sonnet-5-5",
+      "summary_method": "ai_verified_primary_source",
       "id": "de-sb-258-152",
       "jurisdiction": "DE",
       "number": "SB 258",
@@ -545,7 +581,6 @@
       "summary": "This proposal would bar autonomous vehicles weighing 10,001 pounds or more from Delaware highways for testing, freight, or passenger transport unless a human safety operator holding a valid commercial driver license is physically aboard. Violations would carry fines of $1,000–$3,000, rising to $3,000–$7,500 for repeats within three years, presumed against the registered owner. The Department of Transportation would, upon appropriation, report by January 1, 2029.",
       "takeaway": "This proposal would bar autonomous vehicles weighing 10,001 pounds or more from Delaware highways for testing, freight, or passenger transport unless a human safety operator holding a valid commercial driver license is physically aboard. Violations would carry fines of $1,000–$3,000, rising to $3,000–$7,500 for repeats within three years, presumed against the registered owner. The Department of Transportation would, upon appropriation, report by January 1, 2029.",
       "source_summary": "This Act prohibits any autonomous vehicle with a gross weight of 10,001 pounds or more from being operated on a Delaware highway for testing purposes, transporting goods, or transporting passengers without a human safety operator being physically present within the autonomous vehicle. A two-thirds vote requirement is required under Section 28 of Article IV of the Delaware Constitution. \r\n\r\nThis Act is a substitute for and differs from Senate Bill No. 258 in the following ways:\r\n\r\n1. The substitute requires a human safety operator to hold a commercial driver license that is valid for the vehicle being driven.\r\n2. The substitute clarifies that the person subject to the fines of this Act is presumed to be the vehicle’s registered owner. \r\n3. The substitute directs to the Department of Transportation to submit a report evaluating the performance of autonomous vehicle technology to the General Assembly and the Governor by January 1, 2029.",
-      "summary_method": "ai_verified_primary_source",
       "summary_quality": "verified",
       "status": "introduced",
       "measure_type": "bill",
@@ -561,17 +596,12 @@
       "hearings": [],
       "source_url": "https://legis.delaware.gov/BillDetail?LegislationId=141417",
       "repository_url": "https://openstates.org/de/bills/152/SB258/",
-      "reviewed_at": "2026-10-18",
+      "reviewed_at": "2026-10-19",
       "summary_reviewed_at": "2026-10-18",
       "openstates_id": "ocd-bill/1381e9f4-7ed6-4d76-9670-0887f5942e20",
       "openstates_updated_at": "2024-06-30T01:55:27.327167+00:00",
       "progress_checked": "2026-10-18",
-      "progress_source": "official_site",
-      "editorial_source_hash": "c13e09b2377a589af8782b57a197b593ad0c3eb13a43887b9a98dd6467cd32a7",
-      "editorial_source_type": "official_html",
-      "editorial_source_url": "https://legis.delaware.gov/json/BillDetail/GenerateHtmlDocument?legislationId=141417&legislationTypeId=6&docTypeId=2&legislationName=SS1forSB258",
-      "editorial_status": "verified",
-      "editorial_model": "claude-sonnet-5-5"
+      "progress_source": "official_site"
     },
     {
       "id": "de-sb-46-153",
@@ -597,7 +627,7 @@
       "hearings": [],
       "source_url": "https://legis.delaware.gov/BillDetail?LegislationId=141797",
       "repository_url": "https://openstates.org/de/bills/153/SB46/",
-      "reviewed_at": "2026-10-18",
+      "reviewed_at": "2026-10-19",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/b39e2abb-6c51-43f1-8142-96a8876b99b9",
       "openstates_updated_at": "2026-08-26T07:20:11.829857+00:00",
@@ -605,6 +635,12 @@
       "progress_source": "official_site"
     },
     {
+      "editorial_source_hash": "db5724dbdc63264f76b60b562511a34162c781b746dd5254c844ef3d3e877de8",
+      "editorial_source_type": "official_html",
+      "editorial_source_url": "https://flsenate.gov/Session/Bill/2026/1233/ByCategory",
+      "editorial_status": "verified",
+      "editorial_model": "claude-sonnet-5-5",
+      "summary_method": "ai_verified_primary_source",
       "id": "fl-hb-1233-2026",
       "jurisdiction": "FL",
       "number": "HB 1233",
@@ -612,7 +648,6 @@
       "summary": "This proposed transportation bill would change Florida law on personal delivery devices, drone delivery services, certain speed limits, and vehicle registration, with renewals recorded electronically and validation stickers removed. It would require seaports and commercial service airports to address critical infrastructure resources, and would create penalties for shooting into or damaging autonomous vehicles. It would take effect July 1, 2026, but was not enacted.",
       "takeaway": "This proposed transportation bill would change Florida law on personal delivery devices, drone delivery services, certain speed limits, and vehicle registration, with renewals recorded electronically and validation stickers removed. It would require seaports and commercial service airports to address critical infrastructure resources, and would create penalties for shooting into or damaging autonomous vehicles. It would take effect July 1, 2026, but was not enacted.",
       "source_summary": "Transportation;  Revises membership of Florida Transportation Research Institute; requires Florida Greenways & Trails Council to meet within specified timeframe to update specified recommendations; requires seaports to include critical infrastructure resource strategies in specified plan; revises provisions relating to personal delivery devices & mobile carriers; increases certain speed limits; modifies terms for elections to attend basic driver improvement course; authorizes certain rental trucks to elect permanent registration period; requires motor vehicle registration renewal to be recorded electronically; removes provisions relating to validation stickers; revises provisions relating to drone delivery services & drone ports; revises powers & duties of DOT with respect to state airport systems; provides requirements for commercial service airports relating to critical infrastructure resources; revises provisions relating to certain communications facilities; revises construction materials that may be used for certain multiuse trails or shared-use paths; provides that certain provisions relating to paratransit services apply only to persons with disabilities; revises provisions authorizing certain sign owners to increase sign height under certain circumstances; provides penalties for shooting into or throwing deadly missiles into occupied or unoccupied autonomous vehicle; provides penalties for defacing, injuring, or damaging autonomous vehicle.",
-      "summary_method": "ai_verified_primary_source",
       "summary_quality": "verified",
       "status": "stricken",
       "measure_type": "bill",
@@ -626,17 +661,41 @@
       "hearings": [],
       "source_url": "https://flsenate.gov/Session/Bill/2026/1233/ByCategory",
       "repository_url": "https://openstates.org/fl/bills/2026/HB1233/",
-      "reviewed_at": "2026-10-18",
+      "reviewed_at": "2026-10-19",
       "summary_reviewed_at": "2026-10-18",
       "openstates_id": "ocd-bill/552c798b-54cc-4dba-a1c8-82bd2ee91b3d",
       "openstates_updated_at": "2026-07-31T12:18:57.443411+00:00",
       "progress_checked": "2026-10-18",
-      "progress_source": "official_site",
-      "editorial_source_hash": "db5724dbdc63264f76b60b562511a34162c781b746dd5254c844ef3d3e877de8",
-      "editorial_source_type": "official_html",
-      "editorial_source_url": "https://flsenate.gov/Session/Bill/2026/1233/ByCategory",
-      "editorial_status": "verified",
-      "editorial_model": "claude-sonnet-5-5"
+      "progress_source": "official_site"
+    },
+    {
+      "id": "fl-hb-1469-2026",
+      "jurisdiction": "FL",
+      "number": "HB 1469",
+      "title": "Autonomous Vehicle Safety",
+      "summary": "Autonomous Vehicle Safety; Requires autonomous vehicle registered in this state to comply with certain standards, regulations, & laws; prohibits autonomous vehicle from engaging in certain activities unless licensed human operator is physically present in vehicle; requires such operator to comply with certain standards, regulations, & laws.",
+      "takeaway": "Autonomous Vehicle Safety; Requires autonomous vehicle registered in this state to comply with certain standards, regulations, & laws; prohibits autonomous vehicle from engaging in certain activities unless licensed human operator is physically present in vehicle; requires such operator to comply with certain standards, regulations, & laws.",
+      "source_summary": "Autonomous Vehicle Safety;  Requires autonomous vehicle registered in this state to comply with certain standards, regulations, & laws; prohibits autonomous vehicle from engaging in certain activities unless licensed human operator is physically present in vehicle; requires such operator to comply with certain standards, regulations, & laws.",
+      "summary_method": "Source abstract condensed for substantive legislative effect",
+      "summary_quality": "source_abstract",
+      "status": "stricken",
+      "measure_type": "bill",
+      "last_action_date": "2026-03-13",
+      "last_action": "House - Died in Government Operations Subcommittee",
+      "session": "2026",
+      "progress_stage": "committee",
+      "stage_dates": {
+        "committee": "2026-01-15"
+      },
+      "hearings": [],
+      "source_url": "https://flsenate.gov/Session/Bill/2026/1469/ByCategory",
+      "repository_url": "https://openstates.org/fl/bills/2026/HB1469/",
+      "reviewed_at": "2026-10-19",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/6da1bee9-f9cb-4fde-93c8-d1ebfcc57560",
+      "openstates_updated_at": "2026-03-18T19:28:00.351523+00:00",
+      "progress_checked": "2026-10-18",
+      "progress_source": "official_site"
     },
     {
       "id": "hi-hb-1797-2026",
@@ -661,7 +720,7 @@
       "hearings": [],
       "source_url": "https://capitol.hawaii.gov/session/measure_indiv.aspx?billtype=HB&billnumber=1797&year=2026",
       "repository_url": "https://openstates.org/hi/bills/2026/HB1797/",
-      "reviewed_at": "2026-10-18",
+      "reviewed_at": "2026-10-19",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/0d43893c-264f-4691-b034-28e2756b3cd3",
       "openstates_updated_at": "2026-07-15T06:43:52.768339+00:00",
@@ -699,7 +758,7 @@
       ],
       "source_url": "https://www.legis.iowa.gov/legislation/BillBook?ba=HF2673&ga=91",
       "repository_url": "https://www.legis.iowa.gov/legislation/BillBook?ba=HF2673&ga=91",
-      "reviewed_at": "2026-10-18",
+      "reviewed_at": "2026-10-19",
       "source_feed": "manual_official"
     },
     {
@@ -733,7 +792,7 @@
       "hearings": [],
       "source_url": "https://www.legis.iowa.gov/legislation/billTracking/billHistory?billName=HSB 598&ga=91",
       "repository_url": "https://openstates.org/ia/bills/2025-2026/HSB598/",
-      "reviewed_at": "2026-10-18",
+      "reviewed_at": "2026-10-19",
       "summary_reviewed_at": "2026-10-14",
       "openstates_id": "ocd-bill/5d2a3780-6cf3-4c0b-aef9-f926b1368674",
       "openstates_updated_at": "2026-03-18T09:27:36.154307+00:00",
@@ -770,7 +829,7 @@
       "hearings": [],
       "source_url": "https://www.legis.iowa.gov/legislation/billTracking/billHistory?billName=SF 2384&ga=91",
       "repository_url": "https://openstates.org/ia/bills/2025-2026/SF2384/",
-      "reviewed_at": "2026-10-18",
+      "reviewed_at": "2026-10-19",
       "summary_reviewed_at": "2026-10-14",
       "openstates_id": "ocd-bill/63ca3153-e04c-4e02-b650-0561308c10cd",
       "openstates_updated_at": "2026-03-20T07:17:51.459528+00:00"
@@ -806,7 +865,7 @@
       "hearings": [],
       "source_url": "https://www.legis.iowa.gov/legislation/billTracking/billHistory?billName=SSB 3052&ga=91",
       "repository_url": "https://openstates.org/ia/bills/2025-2026/SSB3052/",
-      "reviewed_at": "2026-10-18",
+      "reviewed_at": "2026-10-19",
       "summary_reviewed_at": "2026-10-14",
       "openstates_id": "ocd-bill/7c26a04e-4eae-495c-97b2-97087386e7db",
       "openstates_updated_at": "2026-03-18T09:38:48.219205+00:00",
@@ -843,11 +902,69 @@
       "hearings": [],
       "source_url": "https://ilga.gov/Legislation/BillStatus?DocNum=1839&GAID=18&DocTypeID=HB&LegId=159329&SessionID=114",
       "repository_url": "https://openstates.org/il/bills/104th/HB1839/",
-      "reviewed_at": "2026-10-18",
+      "reviewed_at": "2026-10-19",
       "summary_reviewed_at": "2026-10-14",
       "openstates_id": "ocd-bill/1889326a-280f-4152-8452-9cba5f522b54",
       "openstates_updated_at": "2026-07-11T08:44:11.137312+00:00",
       "progress_checked": "2026-10-17",
+      "progress_source": "official_site"
+    },
+    {
+      "id": "il-hb-2053-103rd",
+      "jurisdiction": "IL",
+      "number": "HB 2053",
+      "title": "AUTONOMOUS VEH REQUIREMENTS",
+      "summary": "Provides that, before selling or continuing to operate a new or used autonomous vehicle in this State and before updating the software or hardware of any automated driving system on such a vehicle, a manufacturer shall submit to the Department of Transportation documentation regarding the level of driving automation, along with a filing fee in an amount to be determined by the Department.",
+      "takeaway": "Provides that, before selling or continuing to operate a new or used autonomous vehicle in this State and before updating the software or hardware of any automated driving system on such a vehicle, a manufacturer shall submit to the Department of Transportation documentation regarding the level of driving automation, along with a filing fee in an amount to be determined by the Department.",
+      "source_summary": "Amends the Illinois Vehicle Code. Defines \"autonomous vehicle\" as a motor vehicle that possesses the capability (enabled or not) for automated functions to control movement of the vehicle along 2 axes of direction simultaneously. Provides that, before selling or continuing to operate a new or used autonomous vehicle in this State and before updating the software or hardware of any automated driving system on such a vehicle, a manufacturer shall submit to the Department of Transportation documentation regarding the level of driving automation, along with a filing fee in an amount to be determined by the Department. Provides that the Department shall assemble an Automated Driving Systems Review Committee to evaluate submitted documentation and make determinations concerning the level of automated driving capabilities and the suitability of the vehicle for operation on public roads. Provides that an autonomous vehicle classified as having Level 2 Driving Automation may be sold to consumers and registered for use. Provides that the owner of the automated vehicle shall file an annual report with the Department of Transportation stating the number of miles driven per year, the estimated number of miles driven using equipped automated driving systems, and any collisions that occurred involving the vehicle. Prohibits the sale or operation of autonomous vehicles classified as having Level 3, 4, or 5 Driving Automation. Provides that a resident may file a request for the Automated Driving Systems Review Committee to review an existing vehicle sold or registered in this State, and that the Secretary of State shall receive and investigate complaints of a dealer selling a vehicle prohibited for sale under the new provisions. Provides that a person who operates a prohibited vehicle is guilty of a Class A misdemeanor and that such a vehicle is subject to impoundment. Provides penalties for the unauthorized sale or modification of an autonomous vehicle.",
+      "summary_method": "Source abstract condensed for substantive legislative effect",
+      "summary_quality": "source_abstract",
+      "status": "introduced",
+      "measure_type": "bill",
+      "last_action_date": "2026-04-17",
+      "last_action": "House Rule 19(a) / Re-referred to Rules Committee",
+      "session": "103rd",
+      "progress_stage": "committee",
+      "stage_dates": {
+        "committee": "2024-01-31"
+      },
+      "hearings": [],
+      "source_url": "https://beta.ilga.gov/Legislation/BillStatus?DocNum=2053&GAID=17&DocTypeID=HB&LegId=145190&SessionID=112",
+      "repository_url": "https://openstates.org/il/bills/103rd/HB2053/",
+      "reviewed_at": "2026-10-19",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/14ede5fb-6b8f-42e5-a5ff-6ad4f73658b2",
+      "openstates_updated_at": "2024-12-14T16:32:30.431525+00:00",
+      "progress_checked": "2026-10-18",
+      "progress_source": "official_site"
+    },
+    {
+      "id": "il-hb-2913-103rd",
+      "jurisdiction": "IL",
+      "number": "HB 2913",
+      "title": "SAFE AUTONOMOUS VEHICLE ACT",
+      "summary": "Creates the Safe Autonomous Vehicle Act. Provides definitions.",
+      "takeaway": "Creates the Safe Autonomous Vehicle Act. Provides definitions.",
+      "source_summary": "Creates the Safe Autonomous Vehicle Act. Provides definitions. Provides that upon notification to the Secretary of State, a motor vehicle manufacturer may commence a safe autonomous vehicle project with a vehicle installed with an automated driving system after providing notification to the Secretary of State and after self-certification under certain conditions. Provides that the manufacturer shall determine the geographical boundaries of the project and shall maintain incident records and provide periodic summaries to the Secretary of State and the National Highway Traffic Safety Administration. Provides that the participating fleet in the program shall be insured by the manufacturer who shall assume liability for incidents where the automated driving system technology is at fault for that incident. Provides that any person who operates a vehicle with automated driving system technology without first satisfying the eligibility requirements in the Act shall be fined $10,000 for a first violation and a second or subsequent violation is a Class A misdemeanor. Preempts home rule powers. Effective immediately.",
+      "summary_method": "Source abstract condensed for substantive legislative effect",
+      "summary_quality": "source_abstract",
+      "status": "introduced",
+      "measure_type": "bill",
+      "last_action_date": "2025-03-21",
+      "last_action": "House Rule 19(a) / Re-referred to Rules Committee",
+      "session": "103rd",
+      "progress_stage": "committee",
+      "stage_dates": {
+        "committee": "2023-02-23"
+      },
+      "hearings": [],
+      "source_url": "https://beta.ilga.gov/Legislation/BillStatus?DocNum=2913&GAID=17&DocTypeID=HB&LegId=148056&SessionID=112",
+      "repository_url": "https://openstates.org/il/bills/103rd/HB2913/",
+      "reviewed_at": "2026-10-19",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/aaff33a9-6a02-4f6c-940c-95b30763a51f",
+      "openstates_updated_at": "2024-12-14T17:33:41.894994+00:00",
+      "progress_checked": "2026-10-18",
       "progress_source": "official_site"
     },
     {
@@ -878,7 +995,7 @@
       "hearings": [],
       "source_url": "https://ilga.gov/Legislation/BillStatus?DocNum=2974&GAID=18&DocTypeID=HB&LegId=161217&SessionID=114",
       "repository_url": "https://openstates.org/il/bills/104th/HB2974/",
-      "reviewed_at": "2026-10-18",
+      "reviewed_at": "2026-10-19",
       "summary_reviewed_at": "2026-10-14",
       "openstates_id": "ocd-bill/a5430b0b-419d-41ae-951c-e965bcf8e3ef",
       "openstates_updated_at": "2026-07-11T09:08:24.633480+00:00",
@@ -909,7 +1026,7 @@
       "hearings": [],
       "source_url": "https://www.ilga.gov/Legislation/BillStatus?DocNum=3044&DocTypeID=HB&GAID=18&LegId=161321&SessionID=114",
       "repository_url": "https://www.ilga.gov/Legislation/BillStatus?DocNum=3044&DocTypeID=HB&GAID=18&LegId=161321&SessionID=114",
-      "reviewed_at": "2026-10-18",
+      "reviewed_at": "2026-10-19",
       "source_feed": "manual_official",
       "progress_checked": "2026-10-17",
       "progress_source": "official_site"
@@ -944,7 +1061,7 @@
       "hearings": [],
       "source_url": "https://ilga.gov/Legislation/BillStatus?DocNum=4663&GAID=18&DocTypeID=HB&LegId=165621&SessionID=114",
       "repository_url": "https://openstates.org/il/bills/104th/HB4663/",
-      "reviewed_at": "2026-10-18",
+      "reviewed_at": "2026-10-19",
       "summary_reviewed_at": "2026-10-14",
       "openstates_id": "ocd-bill/4941dae8-bef1-47b7-9a1c-5b233cbedc55",
       "openstates_updated_at": "2026-07-11T09:28:19.436103+00:00",
@@ -981,7 +1098,7 @@
       "hearings": [],
       "source_url": "https://ilga.gov/Legislation/BillStatus?DocNum=4789&GAID=18&DocTypeID=HB&LegId=165946&SessionID=114",
       "repository_url": "https://openstates.org/il/bills/104th/HB4789/",
-      "reviewed_at": "2026-10-18",
+      "reviewed_at": "2026-10-19",
       "summary_reviewed_at": "2026-10-14",
       "openstates_id": "ocd-bill/95da6ef1-56de-4ffc-96a1-f24aa0221a8c",
       "openstates_updated_at": "2026-07-11T08:31:07.502437+00:00",
@@ -1018,7 +1135,7 @@
       "hearings": [],
       "source_url": "https://ilga.gov/Legislation/BillStatus?DocNum=5103&GAID=18&DocTypeID=HB&LegId=166661&SessionID=114",
       "repository_url": "https://openstates.org/il/bills/104th/HB5103/",
-      "reviewed_at": "2026-10-18",
+      "reviewed_at": "2026-10-19",
       "summary_reviewed_at": "2026-10-14",
       "openstates_id": "ocd-bill/da40057a-8727-4ec0-a0b1-a6f18c65e667",
       "openstates_updated_at": "2026-07-11T08:38:34.630857+00:00",
@@ -1055,7 +1172,7 @@
       "hearings": [],
       "source_url": "https://ilga.gov/Legislation/BillStatus?DocNum=5220&GAID=18&DocTypeID=HB&LegId=166893&SessionID=114",
       "repository_url": "https://openstates.org/il/bills/104th/HB5220/",
-      "reviewed_at": "2026-10-18",
+      "reviewed_at": "2026-10-19",
       "summary_reviewed_at": "2026-10-14",
       "openstates_id": "ocd-bill/967b1f12-7d37-4718-b44b-3341e8452d77",
       "openstates_updated_at": "2026-07-11T09:09:47.169857+00:00",
@@ -1063,10 +1180,42 @@
       "progress_source": "official_site"
     },
     {
+      "id": "il-sb-1471-103rd",
+      "jurisdiction": "IL",
+      "number": "SB 1471",
+      "title": "AUTONOMOUS VEH REQUIREMENTS",
+      "summary": "Provides that, before selling or continuing to operate a new or used autonomous vehicle in this State and before updating the software or hardware of any automated driving system on such a vehicle, a manufacturer shall submit to the Department of Transportation documentation regarding the level of driving automation, along with a filing fee in an amount to be determined by the Department.",
+      "takeaway": "Provides that, before selling or continuing to operate a new or used autonomous vehicle in this State and before updating the software or hardware of any automated driving system on such a vehicle, a manufacturer shall submit to the Department of Transportation documentation regarding the level of driving automation, along with a filing fee in an amount to be determined by the Department.",
+      "source_summary": "Amends the Illinois Vehicle Code. Defines \"autonomous vehicle\" as a motor vehicle that possesses the capability (enabled or not) for automated functions to control movement of the vehicle along 2 axes of direction simultaneously. Provides that, before selling or continuing to operate a new or used autonomous vehicle in this State and before updating the software or hardware of any automated driving system on such a vehicle, a manufacturer shall submit to the Department of Transportation documentation regarding the level of driving automation, along with a filing fee in an amount to be determined by the Department. Provides that the Department shall assemble an Automated Driving Systems Review Committee to evaluate submitted documentation and make determinations concerning the level of automated driving capabilities and the suitability of the vehicle for operation on public roads. Provides that an autonomous vehicle classified as having Level 2 Driving Automation may be sold to consumers and registered for use. Provides that the owner of the automated vehicle shall file an annual report with the Department of Transportation stating the number of miles driven per year, the estimated number of miles driven using equipped automated driving systems, and any collisions that occurred involving the vehicle. Prohibits the sale or operation of autonomous vehicles classified as having Level 3, 4, or 5 Driving Automation. Provides that a resident may file a request for the Automated Driving Systems Review Committee to review an existing vehicle sold or registered in this State, and that the Secretary of State shall receive and investigate complaints of a dealer selling a vehicle prohibited for sale under the new provisions. Provides that a person who operates a prohibited vehicle is guilty of a Class A misdemeanor and that such a vehicle is subject to impoundment. Provides penalties for the unauthorized sale or modification of an autonomous vehicle.",
+      "summary_method": "Source abstract condensed for substantive legislative effect",
+      "summary_quality": "source_abstract",
+      "status": "introduced",
+      "measure_type": "bill",
+      "last_action_date": "2025-03-21",
+      "last_action": "Senate Rule 3-9(a) / Re-referred to Assignments",
+      "session": "103rd",
+      "progress_stage": "committee",
+      "stage_dates": {},
+      "hearings": [],
+      "source_url": "https://beta.ilga.gov/Legislation/BillStatus?DocNum=1471&GAID=17&DocTypeID=SB&LegId=146194&SessionID=112",
+      "repository_url": "https://openstates.org/il/bills/103rd/SB1471/",
+      "reviewed_at": "2026-10-19",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/c38c2638-46c5-4d3a-a115-ed01cfc73d5b",
+      "openstates_updated_at": "2024-12-14T23:43:47.187389+00:00",
+      "progress_checked": "2026-10-18",
+      "progress_source": "official_site"
+    },
+    {
       "summary_method": "official_bill_text_analysis",
       "editorial_status": "verified",
       "editorial_source_url": "https://www.ilga.gov/Legislation/BillStatus?DocNum=3308&DocTypeID=SB&GAID=18&SessionID=114",
       "editorial_source_type": "official_bill_text",
+      "editorial_recheck": {
+        "result": "missing",
+        "at": "2026-10-18",
+        "reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable"
+      },
       "id": "il-sb-3308-104th",
       "jurisdiction": "IL",
       "number": "SB 3308",
@@ -1087,23 +1236,23 @@
       "hearings": [],
       "source_url": "https://ilga.gov/Legislation/BillStatus?DocNum=3308&GAID=18&DocTypeID=SB&LegId=166113&SessionID=114",
       "repository_url": "https://openstates.org/il/bills/104th/SB3308/",
-      "reviewed_at": "2026-10-18",
+      "reviewed_at": "2026-10-19",
       "summary_reviewed_at": "2026-10-14",
       "openstates_id": "ocd-bill/6a8f79e4-0617-423d-beb3-1dc0ca8de7ce",
       "openstates_updated_at": "2026-07-11T03:37:16.251716+00:00",
       "progress_checked": "2026-10-17",
-      "progress_source": "official_site",
-      "editorial_recheck": {
-        "result": "missing",
-        "at": "2026-10-18",
-        "reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable"
-      }
+      "progress_source": "official_site"
     },
     {
       "summary_method": "official_bill_text_analysis",
       "editorial_status": "verified",
       "editorial_source_url": "https://www.ilga.gov/Legislation/BillStatus/FullText?DocNum=3392&DocTypeID=SB&GAID=18&SessionID=114",
       "editorial_source_type": "official_bill_text",
+      "editorial_recheck": {
+        "result": "missing",
+        "at": "2026-10-18",
+        "reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable"
+      },
       "id": "il-sb-3392-104th",
       "jurisdiction": "IL",
       "number": "SB 3392",
@@ -1124,23 +1273,23 @@
       "hearings": [],
       "source_url": "https://ilga.gov/Legislation/BillStatus?DocNum=3392&GAID=18&DocTypeID=SB&LegId=166310&SessionID=114",
       "repository_url": "https://openstates.org/il/bills/104th/SB3392/",
-      "reviewed_at": "2026-10-18",
+      "reviewed_at": "2026-10-19",
       "summary_reviewed_at": "2026-10-14",
       "openstates_id": "ocd-bill/78ab0b02-7956-4236-a846-cb23660c9a73",
       "openstates_updated_at": "2026-07-11T03:55:39.828458+00:00",
       "progress_checked": "2026-10-17",
-      "progress_source": "official_site",
-      "editorial_recheck": {
-        "result": "missing",
-        "at": "2026-10-18",
-        "reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable"
-      }
+      "progress_source": "official_site"
     },
     {
       "summary_method": "official_legislative_bill_text_review",
       "editorial_source_url": "https://apps.legislature.ky.gov/record/26RS/hb223.html",
       "editorial_source_type": "official_legislative_text",
       "editorial_status": "verified",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-10-18",
+        "reason": "ValueError: substring not found"
+      },
       "id": "ky-hb-223-2026rs",
       "jurisdiction": "KY",
       "number": "HB 223",
@@ -1162,19 +1311,20 @@
       "hearings": [],
       "source_url": "https://apps.legislature.ky.gov/record/26RS/hb223.html",
       "repository_url": "https://openstates.org/ky/bills/2026RS/HB223/",
-      "reviewed_at": "2026-10-18",
+      "reviewed_at": "2026-10-19",
       "summary_reviewed_at": "2026-10-14",
       "openstates_id": "ocd-bill/f55e5aef-1e13-4bfb-b20f-521810d4626d",
       "openstates_updated_at": "2026-08-20T01:19:42.748166+00:00",
       "progress_checked": "2026-10-17",
-      "progress_source": "official_site",
-      "editorial_recheck": {
-        "result": "error",
-        "at": "2026-10-18",
-        "reason": "ValueError: substring not found"
-      }
+      "progress_source": "official_site"
     },
     {
+      "editorial_source_hash": "46d41944985bf067e17cf72d4f7eab6733fa95ff48c6b656d6293bb2e2b4708b",
+      "editorial_source_type": "official_html",
+      "editorial_source_url": "https://apps.legislature.ky.gov/record/25RS/hb252.html",
+      "editorial_status": "verified",
+      "editorial_model": "claude-sonnet-5-5",
+      "summary_method": "ai_verified_primary_source",
       "id": "ky-hb-252-2025rs",
       "jurisdiction": "KY",
       "number": "HB 252",
@@ -1182,7 +1332,6 @@
       "summary": "This introduced House bill (not enacted law) would amend Kentucky Revised Statutes (KRS) 186.763 to bar school districts from operating fully autonomous vehicles to transport students. It would also prohibit operating a fully autonomous vehicle that requires an operator holding a commercial driver's license, and would make a conforming change to KRS 281.764.",
       "takeaway": "This introduced House bill (not enacted law) would amend Kentucky Revised Statutes (KRS) 186.763 to bar school districts from operating fully autonomous vehicles to transport students. It would also prohibit operating a fully autonomous vehicle that requires an operator holding a commercial driver's license, and would make a conforming change to KRS 281.764.",
       "source_summary": "Amend KRS 186.763 to prohibit school districts from operating fully autonomous vehicles for transporting students; prohibit the operation of fully autonomous vehicles if that vehicle requires an operator with a commercial driver's license; amend KRS 281.764 to conform.",
-      "summary_method": "ai_verified_primary_source",
       "summary_quality": "verified",
       "status": "introduced",
       "measure_type": "bill",
@@ -1197,19 +1346,50 @@
       "hearings": [],
       "source_url": "https://apps.legislature.ky.gov/record/25RS/hb252.html",
       "repository_url": "https://openstates.org/ky/bills/2025RS/HB252/",
-      "reviewed_at": "2026-10-18",
+      "reviewed_at": "2026-10-19",
       "summary_reviewed_at": "2026-10-18",
       "openstates_id": "ocd-bill/00bf0fdd-c088-4e4b-b883-4c5bd9a65de8",
       "openstates_updated_at": "2025-07-23T06:08:53.561769+00:00",
       "progress_checked": "2026-10-18",
-      "progress_source": "official_site",
-      "editorial_source_hash": "46d41944985bf067e17cf72d4f7eab6733fa95ff48c6b656d6293bb2e2b4708b",
-      "editorial_source_type": "official_html",
-      "editorial_source_url": "https://apps.legislature.ky.gov/record/25RS/hb252.html",
-      "editorial_status": "verified",
-      "editorial_model": "claude-sonnet-5-5"
+      "progress_source": "official_site"
     },
     {
+      "id": "ky-hb-379-2025rs",
+      "jurisdiction": "KY",
+      "number": "HB 379",
+      "title": "AN ACT relating to school district use of autonomous vehicles.",
+      "summary": "Amend KRS 186.763 to prohibit school districts from operating fully autonomous vehicles for transporting students.",
+      "takeaway": "Amend KRS 186.763 to prohibit school districts from operating fully autonomous vehicles for transporting students.",
+      "source_summary": "Amend KRS 186.763 to prohibit school districts from operating fully autonomous vehicles for transporting students.",
+      "summary_method": "Source abstract condensed for substantive legislative effect",
+      "summary_quality": "source_abstract",
+      "status": "enacted",
+      "measure_type": "bill",
+      "last_action_date": "2026-04-14",
+      "last_action": "Vetoed by the Governor on 04/06/26, veto overridden by the House (80-17) and Senate (32-6) on 04/14/26, and delivered to Secretary of State (Acts Ch. 171)",
+      "session": "2025RS",
+      "progress_stage": "law",
+      "stage_dates": {
+        "introduced": "2025-02-06",
+        "committee": "2025-02-12"
+      },
+      "hearings": [],
+      "source_url": "https://apps.legislature.ky.gov/record/25RS/hb379.html",
+      "repository_url": "https://openstates.org/ky/bills/2025RS/HB379/",
+      "reviewed_at": "2026-10-19",
+      "summary_reviewed_at": null,
+      "openstates_id": "ocd-bill/69906ac2-5b25-4c1e-8990-637e9e01d19c",
+      "openstates_updated_at": "2025-07-23T06:05:32.958960+00:00",
+      "progress_checked": "2026-10-18",
+      "progress_source": "official_site"
+    },
+    {
+      "editorial_source_hash": "ea4aa90e530769b89029d4fa8ae00fe680f36e610425454146b7726b8fb787b0",
+      "editorial_source_type": "official_html",
+      "editorial_source_url": "https://apps.legislature.ky.gov/record/25RS/sb241.html",
+      "editorial_status": "verified",
+      "editorial_model": "claude-sonnet-5-5",
+      "summary_method": "ai_verified_primary_source",
       "id": "ky-sb-241-2025rs",
       "jurisdiction": "KY",
       "number": "SB 241",
@@ -1217,7 +1397,6 @@
       "summary": "This introduced bill (not enacted law) would extend, from July 31, 2026 to July 31, 2031, the period during which a human driver would be required on fully autonomous commercial vehicles over 62,000 pounds. It would bar school districts from using fully autonomous vehicles as school buses or to transport students, let local governments set conditions on autonomous vehicle operation, and raise insurance minimums from $1 million to $5 million.",
       "takeaway": "This introduced bill (not enacted law) would extend, from July 31, 2026 to July 31, 2031, the period during which a human driver would be required on fully autonomous commercial vehicles over 62,000 pounds. It would bar school districts from using fully autonomous vehicles as school buses or to transport students, let local governments set conditions on autonomous vehicle operation, and raise insurance minimums from $1 million to $5 million.",
       "source_summary": "Amend KRS 186.763 to extend the requirement for a human driver on a fully autonomous commercial vehicle in excess of 62,000 pounds from July 31, 2026 to July 31, 2031; prohibit school districts from using fully autonomous vehicles as school buses or to transport students; amend KRS 186.779 to allow units of local government to impose conditions on autonomous vehicle operation within their jurisdictions; amend KRS 186.766 and 281.655 to increase all insurance minimum requirement amounts from $1 million to $5 million for both personal and commercial vehicles.",
-      "summary_method": "ai_verified_primary_source",
       "summary_quality": "verified",
       "status": "introduced",
       "measure_type": "bill",
@@ -1232,17 +1411,12 @@
       "hearings": [],
       "source_url": "https://apps.legislature.ky.gov/record/25RS/sb241.html",
       "repository_url": "https://openstates.org/ky/bills/2025RS/SB241/",
-      "reviewed_at": "2026-10-18",
+      "reviewed_at": "2026-10-19",
       "summary_reviewed_at": "2026-10-18",
       "openstates_id": "ocd-bill/f171f3c5-5e99-461b-ab5e-96cd6ea60ed8",
       "openstates_updated_at": "2025-07-23T06:02:28.272771+00:00",
       "progress_checked": "2026-10-18",
-      "progress_source": "official_site",
-      "editorial_source_hash": "ea4aa90e530769b89029d4fa8ae00fe680f36e610425454146b7726b8fb787b0",
-      "editorial_source_type": "official_html",
-      "editorial_source_url": "https://apps.legislature.ky.gov/record/25RS/sb241.html",
-      "editorial_status": "verified",
-      "editorial_model": "claude-sonnet-5-5"
+      "progress_source": "official_site"
     },
     {
       "id": "la-sb133-2026rs",
@@ -1272,10 +1446,11 @@
       "hearings": [],
       "source_url": "https://www.legis.la.gov/legis/BillInfo.aspx?s=26RS&b=SB133&sbi=y",
       "repository_url": "https://www.legis.la.gov/legis/BillInfo.aspx?s=26RS&b=SB133&sbi=y",
-      "reviewed_at": "2026-10-17",
+      "reviewed_at": "2026-10-19",
       "source_feed": "manual_official"
     },
     {
+      "summary_method": "Substantive-effect summary only; sponsor/petition boilerplate and title restatements are rejected",
       "id": "ma-h-1280-194th",
       "jurisdiction": "MA",
       "number": "H 1280",
@@ -1283,7 +1458,6 @@
       "summary": "Establishes insurance and operational requirements for autonomous-vehicle testing and deployment, including minimum coverage standards, school-zone safety protocols, public incident reporting, periodic insurance review, and coordination between the Division of Insurance and MassDOT.",
       "takeaway": "Establishes insurance and operational requirements for autonomous-vehicle testing and deployment, including minimum coverage standards, school-zone safety protocols, public incident reporting, periodic insurance review, and coordination between the Division of Insurance and MassDOT.",
       "source_summary": "By Representative Paulino of Methuen, a petition (accompanied by bill, House, No. 1280) of Francisco E. Paulino relative to insurance coverage for testing and deployment of and school zone safety protocol for autonomous vehicles.  Financial Services.",
-      "summary_method": "Substantive-effect summary only; sponsor/petition boilerplate and title restatements are rejected",
       "summary_quality": "reviewed_substantive",
       "status": "introduced",
       "measure_type": "bill",
@@ -1297,7 +1471,7 @@
       "hearings": [],
       "source_url": "https://malegislature.gov/Bills/194/H1280",
       "repository_url": "https://openstates.org/ma/bills/194th/H1280/",
-      "reviewed_at": "2026-10-14",
+      "reviewed_at": "2026-10-19",
       "summary_reviewed_at": "2026-09-29",
       "openstates_id": "ocd-bill/7ffec788-6cc4-485e-83f7-610381c530a4",
       "openstates_updated_at": "2026-07-09T06:00:20.099851+00:00",
@@ -1305,6 +1479,7 @@
       "progress_source": "official_site"
     },
     {
+      "summary_method": "Substantive-effect summary only; sponsor/petition boilerplate and title restatements are rejected",
       "id": "ma-h-3634-194th",
       "jurisdiction": "MA",
       "number": "H 3634",
@@ -1312,7 +1487,6 @@
       "summary": "Creates a statewide framework for fully autonomous vehicles, including definitions and operating requirements for automated driving systems and a state-level regulatory structure for autonomous vehicle operation.",
       "takeaway": "Creates a statewide framework for fully autonomous vehicles, including definitions and operating requirements for automated driving systems and a state-level regulatory structure for autonomous vehicle operation.",
       "source_summary": "By Representatives Cahill of Lynn and Blais of Deerfield, a petition (accompanied by bill, House, No. 3634) of Daniel Cahill and Natalie M. Blais relative to autonomous vehicles.  Transportation.",
-      "summary_method": "Substantive-effect summary only; sponsor/petition boilerplate and title restatements are rejected",
       "summary_quality": "reviewed_substantive",
       "status": "introduced",
       "measure_type": "bill",
@@ -1326,7 +1500,7 @@
       "hearings": [],
       "source_url": "https://malegislature.gov/Bills/194/H3634",
       "repository_url": "https://openstates.org/ma/bills/194th/H3634/",
-      "reviewed_at": "2026-10-14",
+      "reviewed_at": "2026-10-19",
       "summary_reviewed_at": "2026-09-29",
       "openstates_id": "ocd-bill/e0c1505f-5e0b-46ab-965c-31d7394f417d",
       "openstates_updated_at": "2026-07-09T07:47:50.897617+00:00",
@@ -1334,6 +1508,7 @@
       "progress_source": "official_site"
     },
     {
+      "summary_method": "Substantive-effect summary only; sponsor/petition boilerplate and title restatements are rejected",
       "id": "ma-h-3649-194th",
       "jurisdiction": "MA",
       "number": "H 3649",
@@ -1341,7 +1516,6 @@
       "summary": "Requires any autonomous vehicle operated on Massachusetts public roads to be a zero-emission vehicle, defined to include battery-electric, plug-in hybrid, and fuel-cell vehicles.",
       "takeaway": "Requires any autonomous vehicle operated on Massachusetts public roads to be a zero-emission vehicle, defined to include battery-electric, plug-in hybrid, and fuel-cell vehicles.",
       "source_summary": "By Representative Day of Stoneham, a petition (accompanied by bill, House, No. 3649) of Michael S. Day relative to limiting autonomous driving capabilities to zero emission and electric vehicles.  Transportation.",
-      "summary_method": "Substantive-effect summary only; sponsor/petition boilerplate and title restatements are rejected",
       "summary_quality": "reviewed_substantive",
       "status": "introduced",
       "measure_type": "bill",
@@ -1355,7 +1529,7 @@
       "hearings": [],
       "source_url": "https://malegislature.gov/Bills/194/H3649",
       "repository_url": "https://openstates.org/ma/bills/194th/H3649/",
-      "reviewed_at": "2026-10-14",
+      "reviewed_at": "2026-10-19",
       "summary_reviewed_at": "2026-09-29",
       "openstates_id": "ocd-bill/f31da09d-d215-40d1-a348-f158a9f7ca41",
       "openstates_updated_at": "2026-07-09T02:52:26.544405+00:00",
@@ -1363,6 +1537,7 @@
       "progress_source": "official_site"
     },
     {
+      "summary_method": "Substantive-effect summary only; sponsor/petition boilerplate and title restatements are rejected",
       "id": "ma-h-3669-194th",
       "jurisdiction": "MA",
       "number": "H 3669",
@@ -1370,7 +1545,6 @@
       "summary": "Requires autonomous vehicles to continue meeting applicable federal motor-vehicle standards and prohibits passenger, goods, and interstate-commerce transport without a qualified human safety operator physically present and able to intervene.",
       "takeaway": "Requires autonomous vehicles to continue meeting applicable federal motor-vehicle standards and prohibits passenger, goods, and interstate-commerce transport without a qualified human safety operator physically present and able to intervene.",
       "source_summary": "By Representative Giannino of Revere, a petition (accompanied by bill, House, No. 3669) of Jessica Ann Giannino for legislation to further regulate the operation of autonomous vehicles.  Transportation.",
-      "summary_method": "Substantive-effect summary only; sponsor/petition boilerplate and title restatements are rejected",
       "summary_quality": "reviewed_substantive",
       "status": "introduced",
       "measure_type": "bill",
@@ -1384,7 +1558,7 @@
       "hearings": [],
       "source_url": "https://malegislature.gov/Bills/194/H3669",
       "repository_url": "https://openstates.org/ma/bills/194th/H3669/",
-      "reviewed_at": "2026-10-14",
+      "reviewed_at": "2026-10-19",
       "summary_reviewed_at": "2026-09-29",
       "openstates_id": "ocd-bill/31d4c363-cbbf-48ca-a954-52c2f6bdfe89",
       "openstates_updated_at": "2026-07-09T02:49:05.141271+00:00",
@@ -1396,6 +1570,11 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://malegislature.gov/Bills/194/H3669.Html",
       "editorial_source_type": "official_legislative_text",
+      "editorial_recheck": {
+        "result": "missing",
+        "at": "2026-10-18",
+        "reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable"
+      },
       "id": "ma-hd-1848-194th",
       "jurisdiction": "MA",
       "number": "HD 1848",
@@ -1414,23 +1593,23 @@
       "hearings": [],
       "source_url": "https://malegislature.gov/Bills/194/HD1848",
       "repository_url": "https://openstates.org/ma/bills/194th/HD1848/",
-      "reviewed_at": "2026-10-18",
+      "reviewed_at": "2026-10-19",
       "summary_reviewed_at": "2026-10-14",
       "openstates_id": "ocd-bill/406d04c6-c714-4373-8354-b612cf398726",
       "openstates_updated_at": "2025-01-15T23:13:05.006180+00:00",
       "progress_checked": "2026-10-17",
-      "progress_source": "official_site",
-      "editorial_recheck": {
-        "result": "missing",
-        "at": "2026-10-18",
-        "reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable"
-      }
+      "progress_source": "official_site"
     },
     {
       "summary_method": "official_bill_docket_and_assigned_bill_crosswalk",
       "editorial_status": "verified",
       "editorial_source_url": "https://malegislature.gov/Bills/194/HD2268.pdf",
       "editorial_source_type": "official_legislative_text",
+      "editorial_recheck": {
+        "result": "missing",
+        "at": "2026-10-18",
+        "reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable"
+      },
       "id": "ma-hd-2268-194th",
       "jurisdiction": "MA",
       "number": "HD 2268",
@@ -1449,23 +1628,23 @@
       "hearings": [],
       "source_url": "https://malegislature.gov/Bills/194/HD2268",
       "repository_url": "https://openstates.org/ma/bills/194th/HD2268/",
-      "reviewed_at": "2026-10-18",
+      "reviewed_at": "2026-10-19",
       "summary_reviewed_at": "2026-10-14",
       "openstates_id": "ocd-bill/c10548d2-cda3-4aa9-9f6c-7009ac106207",
       "openstates_updated_at": "2025-01-16T01:35:46.863306+00:00",
       "progress_checked": "2026-10-17",
-      "progress_source": "official_site",
-      "editorial_recheck": {
-        "result": "missing",
-        "at": "2026-10-18",
-        "reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable"
-      }
+      "progress_source": "official_site"
     },
     {
       "summary_method": "official_bill_docket_and_assigned_bill_crosswalk",
       "editorial_status": "verified",
       "editorial_source_url": "https://malegislature.gov/Bills/194/HD3325/House/Bill/Text",
       "editorial_source_type": "official_legislative_text",
+      "editorial_recheck": {
+        "result": "missing",
+        "at": "2026-10-18",
+        "reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable"
+      },
       "id": "ma-hd-3325-194th",
       "jurisdiction": "MA",
       "number": "HD 3325",
@@ -1484,19 +1663,15 @@
       "hearings": [],
       "source_url": "https://malegislature.gov/Bills/194/HD3325",
       "repository_url": "https://openstates.org/ma/bills/194th/HD3325/",
-      "reviewed_at": "2026-10-18",
+      "reviewed_at": "2026-10-19",
       "summary_reviewed_at": "2026-10-14",
       "openstates_id": "ocd-bill/11e55480-96ad-4b95-a385-dc559c6d08d2",
       "openstates_updated_at": "2025-01-17T17:31:04.313578+00:00",
       "progress_checked": "2026-10-17",
-      "progress_source": "official_site",
-      "editorial_recheck": {
-        "result": "missing",
-        "at": "2026-10-18",
-        "reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable"
-      }
+      "progress_source": "official_site"
     },
     {
+      "summary_method": "Substantive-effect summary only; sponsor/petition boilerplate and title restatements are rejected",
       "id": "ma-s-2379-194th",
       "jurisdiction": "MA",
       "number": "S 2379",
@@ -1504,7 +1679,6 @@
       "summary": "Creates a statewide framework for fully autonomous vehicles, including MassDOT licensing, insurance or self-insurance requirements, treatment of the automated driving system as the driver when engaged, and state preemption of additional local AV-specific restrictions.",
       "takeaway": "Creates a statewide framework for fully autonomous vehicles, including MassDOT licensing, insurance or self-insurance requirements, treatment of the automated driving system as the driver when engaged, and state preemption of additional local AV-specific restrictions.",
       "source_summary": "By Mr. Driscoll, a petition (accompanied by bill, Senate, No. 2379) of William J. Driscoll, Jr. for legislation relative to fully autonomous vehicle and human drivers.  Transportation.",
-      "summary_method": "Substantive-effect summary only; sponsor/petition boilerplate and title restatements are rejected",
       "summary_quality": "reviewed_substantive",
       "status": "introduced",
       "measure_type": "bill",
@@ -1518,7 +1692,7 @@
       "hearings": [],
       "source_url": "https://malegislature.gov/Bills/194/S2379",
       "repository_url": "https://openstates.org/ma/bills/194th/S2379/",
-      "reviewed_at": "2026-10-14",
+      "reviewed_at": "2026-10-19",
       "summary_reviewed_at": "2026-09-29",
       "openstates_id": "ocd-bill/7fd29cd1-f49b-4ff4-a443-d16f62423eba",
       "openstates_updated_at": "2026-08-01T18:57:08.154116+00:00",
@@ -1526,6 +1700,7 @@
       "progress_source": "official_site"
     },
     {
+      "summary_method": "Substantive-effect summary only; sponsor/petition boilerplate and title restatements are rejected",
       "id": "ma-s-2393-194th",
       "jurisdiction": "MA",
       "number": "S 2393",
@@ -1533,7 +1708,6 @@
       "summary": "Requires autonomous vehicles to continue meeting applicable federal motor-vehicle standards and prohibits them from transporting passengers, goods, or interstate commerce unless a qualified human safety operator is physically present and able to intervene.",
       "takeaway": "Requires autonomous vehicles to continue meeting applicable federal motor-vehicle standards and prohibits them from transporting passengers, goods, or interstate commerce unless a qualified human safety operator is physically present and able to intervene.",
       "source_summary": "By Mr. Feeney, a petition (accompanied by bill, Senate, No. 2393) of Paul R. Feeney for legislation relative to the safety and standards of autonomous vehicles.  Transportation.",
-      "summary_method": "Substantive-effect summary only; sponsor/petition boilerplate and title restatements are rejected",
       "summary_quality": "reviewed_substantive",
       "status": "introduced",
       "measure_type": "bill",
@@ -1547,7 +1721,7 @@
       "hearings": [],
       "source_url": "https://malegislature.gov/Bills/194/S2393",
       "repository_url": "https://openstates.org/ma/bills/194th/S2393/",
-      "reviewed_at": "2026-10-14",
+      "reviewed_at": "2026-10-19",
       "summary_reviewed_at": "2026-09-29",
       "openstates_id": "ocd-bill/2ecf2de5-bd85-46e3-8f34-b4022b165220",
       "openstates_updated_at": "2026-08-01T18:56:57.200613+00:00",
@@ -1559,6 +1733,11 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://malegislature.gov/Bills/194/S2393.Html",
       "editorial_source_type": "official_legislative_text",
+      "editorial_recheck": {
+        "result": "missing",
+        "at": "2026-10-18",
+        "reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable"
+      },
       "id": "ma-sd-2531-194th",
       "jurisdiction": "MA",
       "number": "SD 2531",
@@ -1577,23 +1756,23 @@
       "hearings": [],
       "source_url": "https://malegislature.gov/Bills/194/SD2531",
       "repository_url": "https://openstates.org/ma/bills/194th/SD2531/",
-      "reviewed_at": "2026-10-18",
+      "reviewed_at": "2026-10-19",
       "summary_reviewed_at": "2026-10-14",
       "openstates_id": "ocd-bill/f7edbe38-e245-4f25-a8f6-76fcbeabdfd5",
       "openstates_updated_at": "2025-01-20T22:17:26.453299+00:00",
       "progress_checked": "2026-10-17",
-      "progress_source": "official_site",
-      "editorial_recheck": {
-        "result": "missing",
-        "at": "2026-10-18",
-        "reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable"
-      }
+      "progress_source": "official_site"
     },
     {
       "summary_method": "manually_verified_official_full_bill_text",
       "editorial_source_url": "https://mgaleg.maryland.gov/2026RS/bills/hb/hb1295F.pdf",
       "editorial_source_type": "official_bill_text",
       "editorial_status": "verified",
+      "editorial_recheck": {
+        "result": "missing",
+        "at": "2026-10-18",
+        "reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable"
+      },
       "id": "md-hb-1295-2026",
       "jurisdiction": "MD",
       "number": "HB 1295",
@@ -1614,23 +1793,23 @@
       "hearings": [],
       "source_url": "https://openstates.org/md/bills/2026/HB1295/",
       "repository_url": "https://openstates.org/md/bills/2026/HB1295/",
-      "reviewed_at": "2026-10-18",
+      "reviewed_at": "2026-10-19",
       "summary_reviewed_at": "2026-10-14",
       "openstates_id": "ocd-bill/247fdb75-3555-40d3-85f6-ad4c7c13688b",
       "openstates_updated_at": "2026-03-17T21:48:05.800982+00:00",
       "progress_checked": "2026-10-17",
-      "progress_source": "official_site",
-      "editorial_recheck": {
-        "result": "missing",
-        "at": "2026-10-18",
-        "reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable"
-      }
+      "progress_source": "official_site"
     },
     {
       "summary_method": "manually_verified_official_full_bill_text",
       "editorial_source_url": "https://mgaleg.maryland.gov/2026RS/bills/sb/sb0909F.pdf",
       "editorial_source_type": "official_bill_text",
       "editorial_status": "verified",
+      "editorial_recheck": {
+        "result": "missing",
+        "at": "2026-10-18",
+        "reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable"
+      },
       "id": "md-sb-909-2026",
       "jurisdiction": "MD",
       "number": "SB 909",
@@ -1651,23 +1830,20 @@
       "hearings": [],
       "source_url": "https://openstates.org/md/bills/2026/SB909/",
       "repository_url": "https://openstates.org/md/bills/2026/SB909/",
-      "reviewed_at": "2026-10-18",
+      "reviewed_at": "2026-10-19",
       "summary_reviewed_at": "2026-10-14",
       "openstates_id": "ocd-bill/1253dbfd-d648-4291-afa7-3e2e608783fb",
       "openstates_updated_at": "2026-03-17T21:38:04.208094+00:00",
       "progress_checked": "2026-10-17",
-      "progress_source": "official_site",
-      "editorial_recheck": {
-        "result": "missing",
-        "at": "2026-10-18",
-        "reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable"
-      }
+      "progress_source": "official_site"
     },
     {
-      "summary_method": "ai_verified_primary_source",
       "editorial_status": "verified",
       "editorial_source_url": "https://www.revisor.mn.gov/bills/94/2026/0/HF/3513/versions/0/",
       "editorial_source_type": "official_html",
+      "editorial_source_hash": "e9b6af2b18273a09748dc20348bfa05467bbc68a5f4db68c6f970b66fda36d7f",
+      "editorial_model": "claude-sonnet-5-5",
+      "summary_method": "ai_verified_primary_source",
       "id": "mn-hf-3513-2025-2026",
       "jurisdiction": "MN",
       "number": "HF 3513",
@@ -1689,20 +1865,20 @@
       "hearings": [],
       "source_url": "https://www.revisor.mn.gov/bills/94/2026/0/HF/3513?body=House",
       "repository_url": "https://openstates.org/mn/bills/2025-2026/HF3513/",
-      "reviewed_at": "2026-10-18",
+      "reviewed_at": "2026-10-19",
       "summary_reviewed_at": "2026-10-18",
       "openstates_id": "ocd-bill/799ae13e-1cf0-4efe-9ff9-f0d7ab691862",
       "openstates_updated_at": "2026-09-21T17:19:26.277823+00:00",
       "progress_checked": "2026-10-17",
-      "progress_source": "official_site",
-      "editorial_source_hash": "e9b6af2b18273a09748dc20348bfa05467bbc68a5f4db68c6f970b66fda36d7f",
-      "editorial_model": "claude-sonnet-5-5"
+      "progress_source": "official_site"
     },
     {
-      "summary_method": "ai_verified_primary_source",
       "editorial_status": "verified",
       "editorial_source_url": "https://www.revisor.mn.gov/bills/94/2026/0/HF/3810/versions/0/",
       "editorial_source_type": "official_html",
+      "editorial_source_hash": "80895158ff9ec78aa21380277a45bd8e5ec9373e26764ea784ecc01e202457cd",
+      "editorial_model": "claude-sonnet-5-5",
+      "summary_method": "ai_verified_primary_source",
       "id": "mn-hf-3810-2025-2026",
       "jurisdiction": "MN",
       "number": "HF 3810",
@@ -1724,20 +1900,23 @@
       "hearings": [],
       "source_url": "https://www.revisor.mn.gov/bills/94/2026/0/HF/3810?body=House",
       "repository_url": "https://openstates.org/mn/bills/2025-2026/HF3810/",
-      "reviewed_at": "2026-10-18",
+      "reviewed_at": "2026-10-19",
       "summary_reviewed_at": "2026-10-18",
       "openstates_id": "ocd-bill/febddebf-71e7-412d-a025-0d1cc259db55",
       "openstates_updated_at": "2026-09-21T17:17:32.849486+00:00",
       "progress_checked": "2026-10-17",
-      "progress_source": "official_site",
-      "editorial_source_hash": "80895158ff9ec78aa21380277a45bd8e5ec9373e26764ea784ecc01e202457cd",
-      "editorial_model": "claude-sonnet-5-5"
+      "progress_source": "official_site"
     },
     {
       "summary_method": "official_bill_text_review",
       "editorial_status": "verified",
       "editorial_source_url": "https://www.revisor.mn.gov/bills/94/2026/0/HF/4112/versions/latest/",
       "editorial_source_type": "official_legislative_text",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-10-18",
+        "reason": "ValueError: substring not found"
+      },
       "id": "mn-hf-4112-2025-2026",
       "jurisdiction": "MN",
       "number": "HF 4112",
@@ -1759,23 +1938,20 @@
       "hearings": [],
       "source_url": "https://www.revisor.mn.gov/bills/94/2026/0/HF/4112?body=House",
       "repository_url": "https://openstates.org/mn/bills/2025-2026/HF4112/",
-      "reviewed_at": "2026-10-18",
+      "reviewed_at": "2026-10-19",
       "summary_reviewed_at": "2026-10-14",
       "openstates_id": "ocd-bill/a9ad25c8-cc55-48e0-880a-589f5d050f08",
       "openstates_updated_at": "2026-09-21T17:21:21.828527+00:00",
       "progress_checked": "2026-10-17",
-      "progress_source": "official_site",
-      "editorial_recheck": {
-        "result": "error",
-        "at": "2026-10-18",
-        "reason": "ValueError: substring not found"
-      }
+      "progress_source": "official_site"
     },
     {
-      "summary_method": "ai_verified_primary_source",
       "editorial_status": "verified",
       "editorial_source_url": "https://www.revisor.mn.gov/bills/94/2026/0/HF/4216/versions/0/",
       "editorial_source_type": "official_html",
+      "editorial_source_hash": "093acebed217777ff934efd17f9d772e5187db492125950e2debfbb4ab057dbb",
+      "editorial_model": "claude-sonnet-5-5",
+      "summary_method": "ai_verified_primary_source",
       "id": "mn-hf-4216-2025-2026",
       "jurisdiction": "MN",
       "number": "HF 4216",
@@ -1797,20 +1973,20 @@
       "hearings": [],
       "source_url": "https://www.revisor.mn.gov/bills/94/2026/0/HF/4216?body=House",
       "repository_url": "https://openstates.org/mn/bills/2025-2026/HF4216/",
-      "reviewed_at": "2026-10-18",
+      "reviewed_at": "2026-10-19",
       "summary_reviewed_at": "2026-10-18",
       "openstates_id": "ocd-bill/b4be4051-3a74-498f-acb7-718f60a97874",
       "openstates_updated_at": "2026-09-21T17:30:57.660268+00:00",
       "progress_checked": "2026-10-17",
-      "progress_source": "official_site",
-      "editorial_source_hash": "093acebed217777ff934efd17f9d772e5187db492125950e2debfbb4ab057dbb",
-      "editorial_model": "claude-sonnet-5-5"
+      "progress_source": "official_site"
     },
     {
-      "summary_method": "ai_verified_primary_source",
       "editorial_status": "verified",
       "editorial_source_url": "https://www.revisor.mn.gov/bills/94/2026/0/HF/4521/versions/0/",
       "editorial_source_type": "official_html",
+      "editorial_source_hash": "22976ef800364f58650930c06705f22df1232967c15e0996890b419d98b2299c",
+      "editorial_model": "claude-sonnet-5-5",
+      "summary_method": "ai_verified_primary_source",
       "id": "mn-hf-4521-2025-2026",
       "jurisdiction": "MN",
       "number": "HF 4521",
@@ -1832,20 +2008,20 @@
       "hearings": [],
       "source_url": "https://www.revisor.mn.gov/bills/94/2026/0/HF/4521?body=House",
       "repository_url": "https://openstates.org/mn/bills/2025-2026/HF4521/",
-      "reviewed_at": "2026-10-18",
+      "reviewed_at": "2026-10-19",
       "summary_reviewed_at": "2026-10-18",
       "openstates_id": "ocd-bill/963a6a19-3e53-450a-b3e8-f3f44d80a273",
       "openstates_updated_at": "2026-09-21T17:18:01.719571+00:00",
       "progress_checked": "2026-10-17",
-      "progress_source": "official_site",
-      "editorial_source_hash": "22976ef800364f58650930c06705f22df1232967c15e0996890b419d98b2299c",
-      "editorial_model": "claude-sonnet-5-5"
+      "progress_source": "official_site"
     },
     {
-      "summary_method": "ai_verified_primary_source",
       "editorial_status": "verified",
       "editorial_source_url": "https://www.revisor.mn.gov/bills/94/2026/0/SF/4010/versions/0/",
       "editorial_source_type": "official_html",
+      "editorial_source_hash": "a4c671d12e468fe3f1d897a79a28aceaec2e985f2f93fdcf348923c1d5507b5d",
+      "editorial_model": "claude-sonnet-5-5",
+      "summary_method": "ai_verified_primary_source",
       "id": "mn-sf-4010-2025-2026",
       "jurisdiction": "MN",
       "number": "SF 4010",
@@ -1867,20 +2043,20 @@
       "hearings": [],
       "source_url": "https://www.revisor.mn.gov/bills/94/2026/0/SF/4010?body=Senate",
       "repository_url": "https://openstates.org/mn/bills/2025-2026/SF4010/",
-      "reviewed_at": "2026-10-18",
+      "reviewed_at": "2026-10-19",
       "summary_reviewed_at": "2026-10-18",
       "openstates_id": "ocd-bill/daa419f6-69cd-4d7f-91a7-ae6f5f941dce",
       "openstates_updated_at": "2026-09-25T06:14:56.671959+00:00",
       "progress_checked": "2026-10-17",
-      "progress_source": "official_site",
-      "editorial_source_hash": "a4c671d12e468fe3f1d897a79a28aceaec2e985f2f93fdcf348923c1d5507b5d",
-      "editorial_model": "claude-sonnet-5-5"
+      "progress_source": "official_site"
     },
     {
-      "summary_method": "ai_verified_primary_source",
       "editorial_status": "verified",
       "editorial_source_url": "https://www.revisor.mn.gov/bills/94/2026/0/SF/4014/versions/0/",
       "editorial_source_type": "official_html",
+      "editorial_source_hash": "302f19ba707430ddc3e01ac6a0e8fe95482725ba18d1e5c5732bb1efc89ccc39",
+      "editorial_model": "claude-sonnet-5-5",
+      "summary_method": "ai_verified_primary_source",
       "id": "mn-sf-4014-2025-2026",
       "jurisdiction": "MN",
       "number": "SF 4014",
@@ -1902,20 +2078,20 @@
       "hearings": [],
       "source_url": "https://www.revisor.mn.gov/bills/94/2026/0/SF/4014?body=Senate",
       "repository_url": "https://openstates.org/mn/bills/2025-2026/SF4014/",
-      "reviewed_at": "2026-10-18",
+      "reviewed_at": "2026-10-19",
       "summary_reviewed_at": "2026-10-18",
       "openstates_id": "ocd-bill/c1e000a0-4ede-4de7-864c-a5230c05404e",
       "openstates_updated_at": "2026-09-25T06:08:47.130635+00:00",
       "progress_checked": "2026-10-17",
-      "progress_source": "official_site",
-      "editorial_source_hash": "302f19ba707430ddc3e01ac6a0e8fe95482725ba18d1e5c5732bb1efc89ccc39",
-      "editorial_model": "claude-sonnet-5-5"
+      "progress_source": "official_site"
     },
     {
-      "summary_method": "ai_verified_primary_source",
       "editorial_status": "verified",
       "editorial_source_url": "https://www.revisor.mn.gov/bills/94/2026/0/SF/4381/versions/0/",
       "editorial_source_type": "official_html",
+      "editorial_source_hash": "1cd360d4165ee546174a2d9a25a38b440d178e607e7c64dc55f7af0415cd44e3",
+      "editorial_model": "claude-sonnet-5-5",
+      "summary_method": "ai_verified_primary_source",
       "id": "mn-sf-4381-2025-2026",
       "jurisdiction": "MN",
       "number": "SF 4381",
@@ -1937,20 +2113,20 @@
       "hearings": [],
       "source_url": "https://www.revisor.mn.gov/bills/94/2026/0/SF/4381?body=Senate",
       "repository_url": "https://openstates.org/mn/bills/2025-2026/SF4381/",
-      "reviewed_at": "2026-10-18",
+      "reviewed_at": "2026-10-19",
       "summary_reviewed_at": "2026-10-18",
       "openstates_id": "ocd-bill/ad2c4803-afff-411b-95d5-d125bf0f5622",
       "openstates_updated_at": "2026-09-25T06:21:48.556511+00:00",
       "progress_checked": "2026-10-17",
-      "progress_source": "official_site",
-      "editorial_source_hash": "1cd360d4165ee546174a2d9a25a38b440d178e607e7c64dc55f7af0415cd44e3",
-      "editorial_model": "claude-sonnet-5-5"
+      "progress_source": "official_site"
     },
     {
-      "summary_method": "ai_verified_primary_source",
       "editorial_status": "verified",
       "editorial_source_url": "https://www.revisor.mn.gov/bills/94/2026/0/SF/4618/versions/0/",
       "editorial_source_type": "official_html",
+      "editorial_source_hash": "6c154a94acaa457c973990623e457e5f5ae15c24c5b3ace634ec83eb78e79605",
+      "editorial_model": "claude-sonnet-5-5",
+      "summary_method": "ai_verified_primary_source",
       "id": "mn-sf-4618-2025-2026",
       "jurisdiction": "MN",
       "number": "SF 4618",
@@ -1972,20 +2148,20 @@
       "hearings": [],
       "source_url": "https://www.revisor.mn.gov/bills/94/2026/0/SF/4618?body=Senate",
       "repository_url": "https://openstates.org/mn/bills/2025-2026/SF4618/",
-      "reviewed_at": "2026-10-18",
+      "reviewed_at": "2026-10-19",
       "summary_reviewed_at": "2026-10-18",
       "openstates_id": "ocd-bill/2b7c6916-b6b5-474d-b4e8-f78c8b4706c2",
       "openstates_updated_at": "2026-09-25T06:21:15.398816+00:00",
       "progress_checked": "2026-10-17",
-      "progress_source": "official_site",
-      "editorial_source_hash": "6c154a94acaa457c973990623e457e5f5ae15c24c5b3ace634ec83eb78e79605",
-      "editorial_model": "claude-sonnet-5-5"
+      "progress_source": "official_site"
     },
     {
-      "summary_method": "ai_verified_primary_source",
       "editorial_status": "verified",
       "editorial_source_url": "https://www.revisor.mn.gov/bills/94/2026/0/SF/4731/versions/0/",
       "editorial_source_type": "official_html",
+      "editorial_source_hash": "729fa13f8f50c83ed07903ed37b28c2dbdae440597de60a1dea8fb60e67b99a2",
+      "editorial_model": "claude-sonnet-5-5",
+      "summary_method": "ai_verified_primary_source",
       "id": "mn-sf-4731-2025-2026",
       "jurisdiction": "MN",
       "number": "SF 4731",
@@ -2007,13 +2183,43 @@
       "hearings": [],
       "source_url": "https://www.revisor.mn.gov/bills/94/2026/0/SF/4731?body=Senate",
       "repository_url": "https://openstates.org/mn/bills/2025-2026/SF4731/",
-      "reviewed_at": "2026-10-18",
+      "reviewed_at": "2026-10-19",
       "summary_reviewed_at": "2026-10-18",
       "openstates_id": "ocd-bill/f85b570e-c1e1-44ac-96b4-0beed38e21e0",
       "openstates_updated_at": "2026-09-25T05:49:09.358213+00:00",
       "progress_checked": "2026-10-17",
-      "progress_source": "official_site",
-      "editorial_source_hash": "729fa13f8f50c83ed07903ed37b28c2dbdae440597de60a1dea8fb60e67b99a2",
+      "progress_source": "official_site"
+    },
+    {
+      "id": "mo-sb-1050-2026",
+      "jurisdiction": "MO",
+      "number": "SB 1050",
+      "title": "Creates new provisions governing autonomous vehicles",
+      "summary": "This introduced, not enacted, Missouri bill would allow fully autonomous vehicles to operate on public roads without a human driver if the driving system is engaged, can reach a minimal risk condition after a failure, and can follow traffic laws. It would require insurance proof to the Department of Commerce and Insurance, plus registration and titling, and would bar state and local bans or added requirements.",
+      "takeaway": "This introduced, not enacted, Missouri bill would allow fully autonomous vehicles to operate on public roads without a human driver if the driving system is engaged, can reach a minimal risk condition after a failure, and can follow traffic laws. It would require insurance proof to the Department of Commerce and Insurance, plus registration and titling, and would bar state and local bans or added requirements.",
+      "source_summary": "SB 1050 - This act establishes new provisions governing the usage of autonomous vehicles.\r\n\r\nAny person may operate a fully autonomous vehicle on the public roads of this state without a human driver provided that the automated driving system is engaged and the vehicle meets the following conditions:\r\n\t•\tIf a failure of the automated driving system occurs that renders that system unable to perform the entire dynamic driving task relevant to its intended operational design domain, the fully autonomous vehicle will achieve a minimal risk condition, as that term is defined in the act;\r\n\t•\tThe fully autonomous vehicle is capable of operating in compliance with the applicable traffic and motor vehicle safety laws and regulations of this state when reasonable to do so, unless an exemption has been granted by the Department of Transportation; and\r\n\t•\tWhen required by federal law, the vehicle bears the required manufacturer's certification label indicating that at the time of its manufacture it has been certified to be in compliance with all applicable federal motor vehicle safety standards, including reference to any exemption granted by the National Highway Traffic Safety Administration.\r\n\r\nBefore operating a fully autonomous vehicle on public roads in this state without a human driver, a person shall submit proof of financial responsibility satisfactory to the Department of Commerce and Insurance that the fully autonomous vehicle is covered by insurance or proof of self-insurance that satisfies state law. Furthermore, each fully autonomous vehicle shall be properly registered and titled in accordance with state law.\r\n\r\n\tAdditional provisions are included relating to the operation of commercial motor vehicles that are fully autonomous vehicles and on-demand autonomous vehicle networks.\r\n\r\n\tA fully autonomous vehicle that is designed to be operated exclusively by the automated driving system for all trips is not subject to motor vehicle equipment laws or regulations of this state that relate to or support motor vehicle operation by a \r\nhuman driver seated in the vehicle and are not relevant for an automated driving system.\r\n\r\n\tNo state agency, political subdivision, municipality, or local entity may prohibit the operation of fully autonomous vehicles, automated driving systems, or on-demand autonomous vehicle networks, or otherwise enact or keep in force rules or ordinances that would impose taxes, fees, or other requirements, including performance standards, specific to the operation of fully autonomous vehicles, automated driving systems, or on-demand autonomous vehicle networks in addition to the requirements of this act.\r\n\r\n\tThis act is similar to HCS/HBs 2069 & 2208 (2026).\r\nTAYLOR MIDDLETON",
+      "summary_method": "ai_verified_primary_source",
+      "summary_quality": "verified",
+      "status": "introduced",
+      "measure_type": "bill",
+      "last_action_date": "2026-01-27",
+      "last_action": "Hearing Conducted S Transportation, Infrastructure and Public Safety Committee",
+      "session": "2026",
+      "progress_stage": "committee",
+      "stage_dates": {
+        "committee": "2026-01-15"
+      },
+      "hearings": [],
+      "source_url": "https://www.senate.mo.gov/BillTracking/Bills/BillInformation?year=2026&billid=277",
+      "repository_url": "https://openstates.org/mo/bills/2026/SB1050/",
+      "reviewed_at": "2026-10-19",
+      "summary_reviewed_at": "2026-10-19",
+      "openstates_id": "ocd-bill/33709b50-b49d-4057-8f88-c3d9c23cf541",
+      "openstates_updated_at": "2026-08-25T19:05:32.012105+00:00",
+      "editorial_source_hash": "daba63d0fd47546694675464585894e48b95eb04bbc5ed24e6d33dc77b67465f",
+      "editorial_source_type": "official_html",
+      "editorial_source_url": "https://www.senate.mo.gov/BillTracking/Bills/BillInformation?year=2026&billid=277",
+      "editorial_status": "verified",
       "editorial_model": "claude-sonnet-5-5"
     },
     {
@@ -2067,10 +2273,15 @@
       "hearings": [],
       "source_url": "https://bills.legmt.gov/#/lc/bill/2/LC0179",
       "repository_url": "https://openstates.org/mt/bills/2025/LC179/",
-      "reviewed_at": "2026-10-18",
+      "reviewed_at": "2026-10-19",
       "summary_reviewed_at": "2026-10-14",
       "openstates_id": "ocd-bill/f3f6f19e-f5c8-4d9f-bdee-3cd6f13beee3",
-      "openstates_updated_at": "2024-12-15T01:05:35.941193+00:00"
+      "openstates_updated_at": "2024-12-15T01:05:35.941193+00:00",
+      "editorial_recheck": {
+        "result": "missing",
+        "at": "2026-10-19",
+        "reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable"
+      }
     },
     {
       "summary_method": "official_enrolled_law_or_amended_resolution",
@@ -2100,10 +2311,15 @@
       "hearings": [],
       "source_url": "https://bills.legmt.gov/#/laws/bill/2/LC0179?open_tab=sum",
       "repository_url": "https://openstates.org/mt/bills/2025/SB67/",
-      "reviewed_at": "2026-10-18",
+      "reviewed_at": "2026-10-19",
       "summary_reviewed_at": "2026-10-14",
       "openstates_id": "ocd-bill/13567927-580a-4dcf-9957-44448a3e232b",
-      "openstates_updated_at": "2026-08-10T11:50:17.301004+00:00"
+      "openstates_updated_at": "2026-08-10T11:50:17.301004+00:00",
+      "editorial_recheck": {
+        "result": "missing",
+        "at": "2026-10-19",
+        "reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable"
+      }
     },
     {
       "id": "mt-sj-16-2025",
@@ -2137,6 +2353,39 @@
       "editorial_source_type": "official_legislative_text"
     },
     {
+      "id": "nj-a-1589-221",
+      "jurisdiction": "NJ",
+      "number": "A 1589",
+      "title": "Permits testing and use of autonomous vehicles on State roadways under certain circumstances.",
+      "summary": "This proposed bill would allow autonomous (self-driving) vehicle testing on New Jersey public roads only after the Motor Vehicle Commission approves a manufacturer's application. Testing would require a seated operator able to take manual control and $5,000,000 in insurance, bond, or self-insurance. Vehicles would need a sensor-data recorder capturing at least 30 seconds before a collision, with data kept three years.",
+      "takeaway": "This proposed bill would allow autonomous (self-driving) vehicle testing on New Jersey public roads only after the Motor Vehicle Commission approves a manufacturer's application. Testing would require a seated operator able to take manual control and $5,000,000 in insurance, bond, or self-insurance. Vehicles would need a sensor-data recorder capturing at least 30 seconds before a collision, with data kept three years.",
+      "source_summary": "",
+      "summary_method": "ai_verified_primary_source",
+      "summary_quality": "verified",
+      "status": "introduced",
+      "measure_type": "bill",
+      "last_action_date": "2024-01-09",
+      "last_action": "Introduced in the Assembly, Referred to Assembly Transportation and Independent Authorities Committee",
+      "session": "221",
+      "progress_stage": "committee",
+      "stage_dates": {
+        "introduced": "2024-01-09",
+        "committee": "2024-01-09"
+      },
+      "hearings": [],
+      "source_url": "https://www.njleg.state.nj.us/bill-search/2024/A1589",
+      "repository_url": "https://openstates.org/nj/bills/221/A1589/",
+      "reviewed_at": "2026-10-19",
+      "summary_reviewed_at": "2026-10-19",
+      "openstates_id": "ocd-bill/ea3437e9-0523-405b-8895-db7bd574bc2e",
+      "openstates_updated_at": "2025-03-05T21:35:40.535947+00:00",
+      "editorial_source_hash": "ccebff68e01e64255cc530fe3e7093bd3d1534e1460879390b3ac082a9f841d9",
+      "editorial_source_type": "official_html",
+      "editorial_source_url": "https://pub.njleg.state.nj.us/Bills/2024/A2000/1589_I1.HTM",
+      "editorial_status": "verified",
+      "editorial_model": "claude-sonnet-5-5"
+    },
+    {
       "summary_method": "official_latest_bill_text_analysis",
       "editorial_status": "verified",
       "editorial_source_url": "https://pub.njleg.gov/Bills/2026/A4000/3968_U1.HTM",
@@ -2162,24 +2411,29 @@
       "hearings": [],
       "source_url": "https://www.njleg.state.nj.us/bill-search/2026/A3968",
       "repository_url": "https://openstates.org/nj/bills/222/A3968/",
-      "reviewed_at": "2026-10-18",
+      "reviewed_at": "2026-10-19",
       "summary_reviewed_at": "2026-10-14",
       "openstates_id": "ocd-bill/a11c582f-0f3e-41fe-a6ee-643e7c59f29c",
-      "openstates_updated_at": "2026-09-11T09:46:48.993971+00:00"
+      "openstates_updated_at": "2026-09-11T09:46:48.993971+00:00",
+      "editorial_recheck": {
+        "result": "rejected",
+        "at": "2026-10-19",
+        "reason": "The bill text is internally inconsistent about the pilot's length: section 2 says five years, while section 7 and the statement say three years. The summary avoids stating a duration, but a reviewer s"
+      }
     },
     {
-      "summary_method": "official_bill_text_review",
+      "summary_method": "ai_verified_primary_source",
       "editorial_status": "verified",
-      "editorial_source_url": "https://www.njleg.state.nj.us/bill-search/2026/A768/bill-text?f=A1000&n=768_I1",
-      "editorial_source_type": "official_legislative_text",
+      "editorial_source_url": "https://pub.njleg.state.nj.us/Bills/2026/A1000/768_I1.HTM",
+      "editorial_source_type": "official_html",
       "id": "nj-a-768-222",
       "jurisdiction": "NJ",
       "number": "A 768",
       "title": "Permits testing and use of autonomous vehicles on State roadways under certain circumstances.",
-      "summary": "The bill would permit manufacturer-designated personnel to test autonomous vehicles on New Jersey public roads after obtaining Motor Vehicle Commission approval. Testing would require a licensed driver seated behind the wheel and able to take control, at least $5 million in insurance or financial security, and safety certifications. Manufacturers would also disclose collected vehicle data to purchasers.",
-      "takeaway": "The bill would permit manufacturer-designated personnel to test autonomous vehicles on New Jersey public roads after obtaining Motor Vehicle Commission approval. Testing would require a licensed driver seated behind the wheel and able to take control, at least $5 million in insurance or financial security, and safety certifications. Manufacturers would also disclose collected vehicle data to purchasers.",
+      "summary": "This introduced bill would allow autonomous vehicles to be tested on New Jersey public roads only after the Motor Vehicle Commission approves a manufacturer's application. Testing would require a licensed operator in the driver's seat, $5,000,000 in insurance, bond, or self-insurance, and certified safety features, including a collision data recorder keeping 30 seconds of sensor data for three years.",
+      "takeaway": "This introduced bill would allow autonomous vehicles to be tested on New Jersey public roads only after the Motor Vehicle Commission approves a manufacturer's application. Testing would require a licensed operator in the driver's seat, $5,000,000 in insurance, bond, or self-insurance, and certified safety features, including a collision data recorder keeping 30 seconds of sensor data for three years.",
       "source_summary": "",
-      "summary_quality": "manual_primary_source_verified",
+      "summary_quality": "verified",
       "status": "introduced",
       "measure_type": "bill",
       "last_action_date": "2026-01-13",
@@ -2193,10 +2447,12 @@
       "hearings": [],
       "source_url": "https://www.njleg.state.nj.us/bill-search/2026/A768",
       "repository_url": "https://openstates.org/nj/bills/222/A768/",
-      "reviewed_at": "2026-10-18",
-      "summary_reviewed_at": "2026-10-14",
+      "reviewed_at": "2026-10-19",
+      "summary_reviewed_at": "2026-10-19",
       "openstates_id": "ocd-bill/d7804158-cc0c-4831-b5a4-11b2ecc3ecf2",
-      "openstates_updated_at": "2026-03-18T08:30:36.335973+00:00"
+      "openstates_updated_at": "2026-03-18T08:30:36.335973+00:00",
+      "editorial_source_hash": "9bcab0c00ee66b6b4be192771623cfb5fd8ec84ebd961ecc9ed5605a8139838c",
+      "editorial_model": "claude-sonnet-5-5"
     },
     {
       "summary_method": "official_bill_text_review",
@@ -2224,10 +2480,15 @@
       "hearings": [],
       "source_url": "https://www.njleg.state.nj.us/bill-search/2026/A958",
       "repository_url": "https://openstates.org/nj/bills/222/A958/",
-      "reviewed_at": "2026-10-18",
+      "reviewed_at": "2026-10-19",
       "summary_reviewed_at": "2026-10-14",
       "openstates_id": "ocd-bill/85195e7d-c0ad-4dea-81ad-38942383a40e",
-      "openstates_updated_at": "2026-03-18T08:54:26.601224+00:00"
+      "openstates_updated_at": "2026-03-18T08:54:26.601224+00:00",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-10-19",
+        "reason": "HTTPError: HTTP Error 400: Bad Request"
+      }
     },
     {
       "summary_method": "official_latest_bill_text_analysis",
@@ -2255,10 +2516,15 @@
       "hearings": [],
       "source_url": "https://www.njleg.state.nj.us/bill-search/2026/S1677",
       "repository_url": "https://openstates.org/nj/bills/222/S1677/",
-      "reviewed_at": "2026-10-18",
+      "reviewed_at": "2026-10-19",
       "summary_reviewed_at": "2026-10-14",
       "openstates_id": "ocd-bill/446a3177-7fce-496d-a08e-3903eeb8f7da",
-      "openstates_updated_at": "2026-09-29T11:31:53.787459+00:00"
+      "openstates_updated_at": "2026-09-29T11:31:53.787459+00:00",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-10-19",
+        "reason": "HTTPError: HTTP Error 400: Bad Request"
+      }
     },
     {
       "summary_method": "official_enacted_bill_part_e_checked",
@@ -2287,10 +2553,15 @@
       "hearings": [],
       "source_url": "https://legislation.nysenate.gov/api/3/bills/2025-2026/A10008?summary=&detail=",
       "repository_url": "https://openstates.org/ny/bills/2025-2026/A10008/",
-      "reviewed_at": "2026-10-18",
+      "reviewed_at": "2026-10-19",
       "summary_reviewed_at": "2026-10-14",
       "openstates_id": "ocd-bill/d56dce65-2200-40f9-91fb-88b69f290ba7",
-      "openstates_updated_at": "2026-05-28T00:28:31.851624+00:00"
+      "openstates_updated_at": "2026-05-28T00:28:31.851624+00:00",
+      "editorial_recheck": {
+        "result": "missing",
+        "at": "2026-10-19",
+        "reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable"
+      }
     },
     {
       "summary_method": "official_full_bill_text_review",
@@ -2317,12 +2588,17 @@
       "hearings": [],
       "source_url": "https://legislation.nysenate.gov/api/3/bills/2025-2026/A11500?summary=&detail=",
       "repository_url": "https://openstates.org/ny/bills/2025-2026/A11500/",
-      "reviewed_at": "2026-10-18",
+      "reviewed_at": "2026-10-19",
       "summary_reviewed_at": "2026-10-14",
       "openstates_id": "ocd-bill/38e308ec-1f9e-45a8-96a9-5b6195249969",
       "openstates_updated_at": "2026-05-29T14:28:44.677147+00:00",
       "progress_checked": "2026-10-17",
-      "progress_source": "official_site"
+      "progress_source": "official_site",
+      "editorial_recheck": {
+        "result": "missing",
+        "at": "2026-10-19",
+        "reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable"
+      }
     },
     {
       "summary_method": "official_full_bill_text_review",
@@ -2349,12 +2625,17 @@
       "hearings": [],
       "source_url": "https://legislation.nysenate.gov/api/3/bills/2025-2026/A3650?summary=&detail=",
       "repository_url": "https://openstates.org/ny/bills/2025-2026/A3650/",
-      "reviewed_at": "2026-10-18",
+      "reviewed_at": "2026-10-19",
       "summary_reviewed_at": "2026-10-14",
       "openstates_id": "ocd-bill/f3418e5d-4e57-4b37-be2e-c2478804bc57",
       "openstates_updated_at": "2026-03-18T10:58:37.753311+00:00",
       "progress_checked": "2026-10-18",
-      "progress_source": "official_site"
+      "progress_source": "official_site",
+      "editorial_recheck": {
+        "result": "missing",
+        "at": "2026-10-19",
+        "reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable"
+      }
     },
     {
       "summary_method": "official_amended_B_full_text_review",
@@ -2381,12 +2662,17 @@
       "hearings": [],
       "source_url": "https://legislation.nysenate.gov/api/3/bills/2025-2026/A4901?summary=&detail=",
       "repository_url": "https://openstates.org/ny/bills/2025-2026/A4901/",
-      "reviewed_at": "2026-10-18",
+      "reviewed_at": "2026-10-19",
       "summary_reviewed_at": "2026-10-14",
       "openstates_id": "ocd-bill/acb10ba4-826e-46d8-9f29-749bfc985157",
       "openstates_updated_at": "2026-05-07T02:52:08.850632+00:00",
       "progress_checked": "2026-10-17",
-      "progress_source": "official_site"
+      "progress_source": "official_site",
+      "editorial_recheck": {
+        "result": "missing",
+        "at": "2026-10-19",
+        "reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable"
+      }
     },
     {
       "summary_method": "official_legislative_bill_text_review",
@@ -2413,12 +2699,17 @@
       "hearings": [],
       "source_url": "https://legislation.nysenate.gov/api/3/bills/2025-2026/A728?summary=&detail=",
       "repository_url": "https://openstates.org/ny/bills/2025-2026/A728/",
-      "reviewed_at": "2026-10-18",
+      "reviewed_at": "2026-10-19",
       "summary_reviewed_at": "2026-10-14",
       "openstates_id": "ocd-bill/43e44588-6ba7-44b3-9b55-d44636d905b7",
       "openstates_updated_at": "2026-03-18T09:21:56.997484+00:00",
       "progress_checked": "2026-10-17",
-      "progress_source": "official_site"
+      "progress_source": "official_site",
+      "editorial_recheck": {
+        "result": "missing",
+        "at": "2026-10-19",
+        "reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable"
+      }
     },
     {
       "summary_method": "official_full_bill_text_review",
@@ -2445,12 +2736,17 @@
       "hearings": [],
       "source_url": "https://legislation.nysenate.gov/api/3/bills/2025-2026/A793?summary=&detail=",
       "repository_url": "https://openstates.org/ny/bills/2025-2026/A793/",
-      "reviewed_at": "2026-10-18",
+      "reviewed_at": "2026-10-19",
       "summary_reviewed_at": "2026-10-14",
       "openstates_id": "ocd-bill/2f06951b-d649-4c2f-91bb-8d65389cc442",
       "openstates_updated_at": "2026-05-16T05:50:49.029583+00:00",
       "progress_checked": "2026-10-17",
-      "progress_source": "official_site"
+      "progress_source": "official_site",
+      "editorial_recheck": {
+        "result": "missing",
+        "at": "2026-10-19",
+        "reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable"
+      }
     },
     {
       "summary_method": "official_legislative_bill_text_review",
@@ -2477,12 +2773,17 @@
       "hearings": [],
       "source_url": "https://legislation.nysenate.gov/api/3/bills/2025-2026/A8109?summary=&detail=",
       "repository_url": "https://openstates.org/ny/bills/2025-2026/A8109/",
-      "reviewed_at": "2026-10-18",
+      "reviewed_at": "2026-10-19",
       "summary_reviewed_at": "2026-10-14",
       "openstates_id": "ocd-bill/13cfdb6e-b7eb-4d6e-bd42-41307e4be8a3",
       "openstates_updated_at": "2026-03-18T09:51:23.635517+00:00",
       "progress_checked": "2026-10-17",
-      "progress_source": "official_site"
+      "progress_source": "official_site",
+      "editorial_recheck": {
+        "result": "missing",
+        "at": "2026-10-19",
+        "reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable"
+      }
     },
     {
       "summary_method": "official_full_bill_text_review",
@@ -2509,12 +2810,17 @@
       "hearings": [],
       "source_url": "https://legislation.nysenate.gov/api/3/bills/2025-2026/S10413?summary=&detail=",
       "repository_url": "https://openstates.org/ny/bills/2025-2026/S10413/",
-      "reviewed_at": "2026-10-18",
+      "reviewed_at": "2026-10-19",
       "summary_reviewed_at": "2026-10-14",
       "openstates_id": "ocd-bill/d73295c2-887f-4676-b802-2e1d9432e649",
       "openstates_updated_at": "2026-05-16T06:58:13.550388+00:00",
       "progress_checked": "2026-10-17",
-      "progress_source": "official_site"
+      "progress_source": "official_site",
+      "editorial_recheck": {
+        "result": "missing",
+        "at": "2026-10-19",
+        "reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable"
+      }
     },
     {
       "summary_method": "official_legislative_bill_text_review",
@@ -2541,12 +2847,17 @@
       "hearings": [],
       "source_url": "https://legislation.nysenate.gov/api/3/bills/2025-2026/S10473?summary=&detail=",
       "repository_url": "https://openstates.org/ny/bills/2025-2026/S10473/",
-      "reviewed_at": "2026-10-18",
+      "reviewed_at": "2026-10-19",
       "summary_reviewed_at": "2026-10-14",
       "openstates_id": "ocd-bill/b9086856-b880-4e26-beb1-7fdf764dc6ab",
       "openstates_updated_at": "2026-05-29T14:15:56.844512+00:00",
       "progress_checked": "2026-10-17",
-      "progress_source": "official_site"
+      "progress_source": "official_site",
+      "editorial_recheck": {
+        "result": "missing",
+        "at": "2026-10-19",
+        "reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable"
+      }
     },
     {
       "summary_method": "official_legislative_bill_text_review",
@@ -2573,12 +2884,17 @@
       "hearings": [],
       "source_url": "https://legislation.nysenate.gov/api/3/bills/2025-2026/S2688?summary=&detail=",
       "repository_url": "https://openstates.org/ny/bills/2025-2026/S2688/",
-      "reviewed_at": "2026-10-18",
+      "reviewed_at": "2026-10-19",
       "summary_reviewed_at": "2026-10-14",
       "openstates_id": "ocd-bill/ca660689-6862-45c6-b88f-67a95ccb19fe",
       "openstates_updated_at": "2026-03-18T09:35:25.968566+00:00",
       "progress_checked": "2026-10-17",
-      "progress_source": "official_site"
+      "progress_source": "official_site",
+      "editorial_recheck": {
+        "result": "missing",
+        "at": "2026-10-19",
+        "reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable"
+      }
     },
     {
       "summary_method": "official_amended_B_full_text_review",
@@ -2605,12 +2921,17 @@
       "hearings": [],
       "source_url": "https://legislation.nysenate.gov/api/3/bills/2025-2026/S344?summary=&detail=",
       "repository_url": "https://openstates.org/ny/bills/2025-2026/S344/",
-      "reviewed_at": "2026-10-18",
+      "reviewed_at": "2026-10-19",
       "summary_reviewed_at": "2026-10-14",
       "openstates_id": "ocd-bill/5bc6e3eb-604a-4328-a017-1b0bb39a29ef",
       "openstates_updated_at": "2026-05-15T07:13:10.604800+00:00",
       "progress_checked": "2026-10-17",
-      "progress_source": "official_site"
+      "progress_source": "official_site",
+      "editorial_recheck": {
+        "result": "missing",
+        "at": "2026-10-19",
+        "reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable"
+      }
     },
     {
       "summary_method": "official_full_bill_text_review",
@@ -2637,12 +2958,17 @@
       "hearings": [],
       "source_url": "https://legislation.nysenate.gov/api/3/bills/2025-2026/S7956?summary=&detail=",
       "repository_url": "https://openstates.org/ny/bills/2025-2026/S7956/",
-      "reviewed_at": "2026-10-18",
+      "reviewed_at": "2026-10-19",
       "summary_reviewed_at": "2026-10-14",
       "openstates_id": "ocd-bill/9f52f0f7-48f8-47bf-84c2-baf3d6f44d13",
       "openstates_updated_at": "2026-03-18T09:08:44.729630+00:00",
       "progress_checked": "2026-10-17",
-      "progress_source": "official_site"
+      "progress_source": "official_site",
+      "editorial_recheck": {
+        "result": "missing",
+        "at": "2026-10-19",
+        "reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable"
+      }
     },
     {
       "summary_method": "official_enacted_bill_part_e_checked",
@@ -2669,12 +2995,17 @@
       "hearings": [],
       "source_url": "https://legislation.nysenate.gov/api/3/bills/2025-2026/S9008?summary=&detail=",
       "repository_url": "https://openstates.org/ny/bills/2025-2026/S9008/",
-      "reviewed_at": "2026-10-18",
+      "reviewed_at": "2026-10-19",
       "summary_reviewed_at": "2026-10-14",
       "openstates_id": "ocd-bill/d395b3d7-36c8-4fa8-b0e8-031f41dc306b",
       "openstates_updated_at": "2026-05-26T23:52:52.803038+00:00",
       "progress_checked": "2026-10-17",
-      "progress_source": "official_site"
+      "progress_source": "official_site",
+      "editorial_recheck": {
+        "result": "missing",
+        "at": "2026-10-19",
+        "reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable"
+      }
     },
     {
       "id": "or-hb-2671-2025r1",
@@ -2757,10 +3088,15 @@
       "hearings": [],
       "source_url": "https://www.palegis.us/legislation/bills/2025/hb1639",
       "repository_url": "https://openstates.org/pa/bills/2025-2026/HB1639/",
-      "reviewed_at": "2026-10-18",
+      "reviewed_at": "2026-10-19",
       "summary_reviewed_at": "2026-10-14",
       "openstates_id": "ocd-bill/e448f2f6-1c79-4aff-94ed-ab59d4f74617",
-      "openstates_updated_at": "2026-03-18T14:57:16.519681+00:00"
+      "openstates_updated_at": "2026-03-18T14:57:16.519681+00:00",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-10-19",
+        "reason": "HTTPError: HTTP Error 400: Bad Request"
+      }
     },
     {
       "summary_method": "official_enrolled_law_or_amended_resolution",
@@ -2787,10 +3123,15 @@
       "hearings": [],
       "source_url": "https://www.palegis.us/house/committees/roll-call-votes/vote-list/vote-summary?committeecode=68&rollcallid=2900&sessYr=2025&sessInd=0",
       "repository_url": "https://openstates.org/pa/bills/2025-2026/HR563/",
-      "reviewed_at": "2026-10-18",
+      "reviewed_at": "2026-10-19",
       "summary_reviewed_at": "2026-10-14",
       "openstates_id": "ocd-bill/3f084599-49a4-419a-9097-40cffb8f77cb",
-      "openstates_updated_at": "2026-10-01T02:13:18.795947+00:00"
+      "openstates_updated_at": "2026-10-01T02:13:18.795947+00:00",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-10-19",
+        "reason": "HTTPError: HTTP Error 400: Bad Request"
+      }
     },
     {
       "summary_method": "official_second_substitute_comparison",
@@ -2818,7 +3159,7 @@
       "hearings": [],
       "source_url": "https://le.utah.gov/~2026/bills/static/HB0581.html",
       "repository_url": "https://openstates.org/ut/bills/2026/HB581/",
-      "reviewed_at": "2026-10-18",
+      "reviewed_at": "2026-10-19",
       "summary_reviewed_at": "2026-10-14",
       "openstates_id": "ocd-bill/282b7aed-0f65-40c7-a120-9c2a559e67ab",
       "openstates_updated_at": "2026-07-09T15:24:35.575309+00:00"
@@ -2850,7 +3191,7 @@
       "hearings": [],
       "source_url": "https://le.utah.gov/~2026/bills/static/SB0292.html",
       "repository_url": "https://openstates.org/ut/bills/2026/SB292/",
-      "reviewed_at": "2026-10-18",
+      "reviewed_at": "2026-10-19",
       "summary_reviewed_at": "2026-10-14",
       "openstates_id": "ocd-bill/beab47ee-fa53-4916-85e1-e4b25d9d52ec",
       "openstates_updated_at": "2026-07-09T15:13:48.232873+00:00"
@@ -2880,7 +3221,7 @@
       "hearings": [],
       "source_url": "https://lis.virginia.gov/bill-details/20261/HB1124",
       "repository_url": "https://openstates.org/va/bills/2026/HB1124/",
-      "reviewed_at": "2026-10-18",
+      "reviewed_at": "2026-10-19",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/ba6cf3ea-99d0-4e29-a453-2dd201b24204",
       "openstates_updated_at": "2026-04-14T20:29:27.255169+00:00"
@@ -2908,7 +3249,7 @@
       "hearings": [],
       "source_url": "https://lis.virginia.gov/bill-details/20261/HB1125",
       "repository_url": "https://openstates.org/va/bills/2026/HB1125/",
-      "reviewed_at": "2026-10-18",
+      "reviewed_at": "2026-10-19",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/0e880753-08af-48c3-ac7e-e824aa023b42",
       "openstates_updated_at": "2026-03-18T08:35:37.974953+00:00"
@@ -2937,7 +3278,7 @@
       "hearings": [],
       "source_url": "https://lis.virginia.gov/bill-details/20261/SB670",
       "repository_url": "https://openstates.org/va/bills/2026/SB670/",
-      "reviewed_at": "2026-10-18",
+      "reviewed_at": "2026-10-19",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/c1f332fa-a8a1-4bea-9521-80b75f26f867",
       "openstates_updated_at": "2026-03-17T22:15:33.564702+00:00"

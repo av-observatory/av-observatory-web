@@ -4,15 +4,9 @@
   "held_since": "2026-10-18",
   "issues": [
    "missing, placeholder or overlong summary (102 chars)",
-   "placeholder or overlong takeaway",
-   "editorial verification incomplete"
+   "placeholder or overlong takeaway"
   ],
   "row": {
-   "editorial_failure_reason": "The supplied text is only an Alaska Legislature bill-tracking page (status, history, committee actions and document lists). It does not contain the bill's operative text, so no substantive provisions, standards, reporting duties or deadlines can be d",
-   "editorial_source_hash": "517b0f69061f48e5aad96de777b3b8673b2b54c37c1f5a9774eb0d64937d784f",
-   "editorial_source_type": "official_html",
-   "editorial_source_url": "https://www.akleg.gov/basis/Bill/Detail/34?Root=HB%20217",
-   "editorial_status": "needs_review",
    "hearings": [],
    "id": "ak-hb-217-34",
    "jurisdiction": "AK",
@@ -26,7 +20,7 @@
    "progress_source": "official_site",
    "progress_stage": "floor",
    "repository_url": "https://openstates.org/ak/bills/34/HB217/",
-   "reviewed_at": "2026-10-18",
+   "reviewed_at": "2026-10-19",
    "session": "34",
    "source_summary": "",
    "source_url": "https://www.akleg.gov/basis/Bill/Detail/34?Root=HB217#tab5_4",
@@ -48,15 +42,9 @@
   "held_since": "2026-10-18",
   "issues": [
    "missing, placeholder or overlong summary (102 chars)",
-   "placeholder or overlong takeaway",
-   "editorial verification incomplete"
+   "placeholder or overlong takeaway"
   ],
   "row": {
-   "editorial_failure_reason": "The supplied text is only an Alaska Legislature bill-status page for SB 148 (listing sponsors, committee referrals, and related documents). It does not include the bill's actual text or any substantive provisions, so I cannot say what the bill would ",
-   "editorial_source_hash": "2028a29ed7c06934043d45fc61cffdf0e44e20d21836933ce11f3c5d48e22347",
-   "editorial_source_type": "official_html",
-   "editorial_source_url": "https://www.akleg.gov/basis/Bill/Detail/34?Root=SB+148",
-   "editorial_status": "needs_review",
    "hearings": [],
    "id": "ak-sb-148-34",
    "jurisdiction": "AK",
@@ -68,7 +56,7 @@
    "openstates_updated_at": "2026-04-22T01:16:53.130493+00:00",
    "progress_stage": "committee",
    "repository_url": "https://openstates.org/ak/bills/34/SB148/",
-   "reviewed_at": "2026-10-18",
+   "reviewed_at": "2026-10-19",
    "session": "34",
    "source_summary": "",
    "source_url": "https://www.akleg.gov/basis/Bill/Detail/34?Root=SB148#tab5_4",
@@ -89,12 +77,9 @@
   "held_since": "2026-10-18",
   "issues": [
    "missing, placeholder or overlong summary (102 chars)",
-   "placeholder or overlong takeaway",
-   "editorial verification incomplete"
+   "placeholder or overlong takeaway"
   ],
   "row": {
-   "editorial_failure_reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable",
-   "editorial_status": "source_retrieval_failed",
    "hearings": [],
    "id": "al-sb-309-2025rs",
    "jurisdiction": "AL",
@@ -106,7 +91,7 @@
    "openstates_updated_at": "2025-05-07T00:25:43.751428+00:00",
    "progress_stage": "committee",
    "repository_url": "https://openstates.org/al/bills/2025rs/SB309/",
-   "reviewed_at": "2026-10-18",
+   "reviewed_at": "2026-10-19",
    "session": "2025rs",
    "source_summary": "Motor Vehicles & Traffic",
    "source_url": "https://alison.legislature.state.al.us/bill-search",
@@ -122,103 +107,14 @@
    "title": "Motor vehicles; operation of oversized vehicles operated by automated driving systems, prohibited"
   }
  },
- "co-hb-25-1122-2025a": {
-  "group": "state_bills",
-  "held_since": "2026-10-18",
-  "issues": [
-   "editorial verification incomplete"
-  ],
-  "row": {
-   "editorial_failure_reason": "ValueError: substring not found",
-   "editorial_source_hash": "1ab346ac6ad9d30b760b8c58d979cfa5aebbe8175d09680cfaef04154e3aeba6",
-   "editorial_source_type": "official_html",
-   "editorial_source_url": "https://leg.colorado.gov/bills/hb25-1122",
-   "editorial_status": "needs_review",
-   "hearings": [],
-   "id": "co-hb-25-1122-2025a",
-   "jurisdiction": "CO",
-   "last_action": "Governor Vetoed",
-   "last_action_date": "2025-05-29",
-   "measure_type": "bill",
-   "number": "HB 25-1122",
-   "openstates_id": "ocd-bill/704f23a9-be5b-42de-8bfd-06f28d63c5d4",
-   "openstates_updated_at": "2025-06-12T00:13:35.858547+00:00",
-   "progress_stage": "executive",
-   "repository_url": "https://openstates.org/co/bills/2025A/HB25-1122/",
-   "reviewed_at": "2026-10-18",
-   "session": "2025A",
-   "source_summary": "The act prohibits using an automated driving system to drive a commercial motor vehicle unless an individual who holds a commercial driver's license is in the vehicle, is in the driver's seat if the vehicle is transporting hazardous materials, monitors the vehicle's driving, and intervenes, if necessary, to avoid illegal or unsafe driving. The penalty is $1,000 for a first offense, is $2,000 for a second offense, and doubles for each subsequent offense. The act does not apply to light-duty vehicles.\nVETOED by Governor 5/29/2025(Note: This summary applies to this bill as enacted.)",
-   "source_url": "https://leg.colorado.gov/bills/hb25-1122",
-   "stage_dates": {
-    "committee": "2025-04-30",
-    "executive": "2025-05-29",
-    "introduced": "2025-04-24",
-    "passed_legislature": "2025-05-06"
-   },
-   "status": "vetoed",
-   "summary": "The act prohibits using an automated driving system to drive a commercial motor vehicle unless an individual who holds a commercial driver's license is in the vehicle, is in the driver's seat if the vehicle is transporting hazardous materials, monitors the vehicle's driving, and intervenes, if necessary, to avoid illegal or unsafe driving. The act does not apply to light-duty vehicles.",
-   "summary_method": "Source abstract condensed for substantive legislative effect",
-   "summary_quality": "source_abstract",
-   "summary_reviewed_at": null,
-   "takeaway": "The act prohibits using an automated driving system to drive a commercial motor vehicle unless an individual who holds a commercial driver's license is in the vehicle, is in the driver's seat if the vehicle is transporting hazardous materials, monitors the vehicle's driving, and intervenes, if necessary, to avoid illegal or unsafe driving. The act does not apply to light-duty vehicles.",
-   "title": "Automated Driving System Commercial Motor Vehicle"
-  }
- },
- "fl-hb-1469-2026": {
-  "group": "state_bills",
-  "held_since": "2026-10-18",
-  "issues": [
-   "editorial verification incomplete"
-  ],
-  "row": {
-   "editorial_failure_reason": "Only the Senate website's bill summary page was supplied, not the full bill text. The specific standards, the restricted activities, and any reporting duties or penalties are not stated, so a more detailed summary cannot be verified.",
-   "editorial_source_hash": "876c5656d07a01ff7db79bd76b188bb48870aa2ca9becfcc264b89a1042862ff",
-   "editorial_source_type": "official_html",
-   "editorial_source_url": "https://www.flsenate.gov/Session/Bill/2026/1469",
-   "editorial_status": "needs_review",
-   "hearings": [],
-   "id": "fl-hb-1469-2026",
-   "jurisdiction": "FL",
-   "last_action": "House - Died in Government Operations Subcommittee",
-   "last_action_date": "2026-03-13",
-   "measure_type": "bill",
-   "number": "HB 1469",
-   "openstates_id": "ocd-bill/6da1bee9-f9cb-4fde-93c8-d1ebfcc57560",
-   "openstates_updated_at": "2026-03-18T19:28:00.351523+00:00",
-   "progress_checked": "2026-10-18",
-   "progress_source": "official_site",
-   "progress_stage": "committee",
-   "repository_url": "https://openstates.org/fl/bills/2026/HB1469/",
-   "reviewed_at": "2026-10-18",
-   "session": "2026",
-   "source_summary": "Autonomous Vehicle Safety;  Requires autonomous vehicle registered in this state to comply with certain standards, regulations, & laws; prohibits autonomous vehicle from engaging in certain activities unless licensed human operator is physically present in vehicle; requires such operator to comply with certain standards, regulations, & laws.",
-   "source_url": "https://flsenate.gov/Session/Bill/2026/1469/ByCategory",
-   "stage_dates": {
-    "committee": "2026-01-15"
-   },
-   "status": "stricken",
-   "summary": "Autonomous Vehicle Safety; Requires autonomous vehicle registered in this state to comply with certain standards, regulations, & laws; prohibits autonomous vehicle from engaging in certain activities unless licensed human operator is physically present in vehicle; requires such operator to comply with certain standards, regulations, & laws.",
-   "summary_method": "Source abstract condensed for substantive legislative effect",
-   "summary_quality": "source_abstract",
-   "summary_reviewed_at": null,
-   "takeaway": "Autonomous Vehicle Safety; Requires autonomous vehicle registered in this state to comply with certain standards, regulations, & laws; prohibits autonomous vehicle from engaging in certain activities unless licensed human operator is physically present in vehicle; requires such operator to comply with certain standards, regulations, & laws.",
-   "title": "Autonomous Vehicle Safety"
-  }
- },
  "fl-sb-1258-2026": {
   "group": "state_bills",
   "held_since": "2026-10-18",
   "issues": [
    "missing, placeholder or overlong summary (102 chars)",
-   "placeholder or overlong takeaway",
-   "editorial verification incomplete"
+   "placeholder or overlong takeaway"
   ],
   "row": {
-   "editorial_failure_reason": "ValueError: substring not found",
-   "editorial_source_hash": "0eabc1c92a3419c31a37defad35c0c4dd1eb1c45dc177dd1f361eb2ea6353035",
-   "editorial_source_type": "official_html",
-   "editorial_source_url": "https://www.flsenate.gov/Session/Bill/2026/1258",
-   "editorial_status": "needs_review",
    "hearings": [],
    "id": "fl-sb-1258-2026",
    "jurisdiction": "FL",
@@ -232,7 +128,7 @@
    "progress_source": "official_site",
    "progress_stage": "committee",
    "repository_url": "https://openstates.org/fl/bills/2026/SB1258/",
-   "reviewed_at": "2026-10-18",
+   "reviewed_at": "2026-10-19",
    "session": "2026",
    "source_summary": "Delivery of Commercial Goods by Autonomous Vehicles;  Prohibiting the use of an autonomous vehicle to deliver commercial goods directly to a residence or business for use or retail sale unless a licensed human operator is physically present in the autonomous vehicle; requiring the Department of Highway Safety and Motor Vehicles to submit to the Legislature a report evaluating the use of certain autonomous vehicle technology and its impacts on public safety and employment in the transportation sector by a certain date, etc.",
    "source_url": "https://flsenate.gov/Session/Bill/2026/1258/ByCategory",
@@ -254,12 +150,9 @@
   "held_since": "2026-10-18",
   "issues": [
    "missing, placeholder or overlong summary (102 chars)",
-   "placeholder or overlong takeaway",
-   "editorial verification incomplete"
+   "placeholder or overlong takeaway"
   ],
   "row": {
-   "editorial_failure_reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable",
-   "editorial_status": "source_retrieval_failed",
    "hearings": [],
    "id": "ga-hr-1371-2025-26",
    "jurisdiction": "GA",
@@ -271,7 +164,7 @@
    "openstates_updated_at": "2026-03-20T09:37:23.381458+00:00",
    "progress_stage": "floor",
    "repository_url": "https://openstates.org/ga/bills/2025_26/HR1371/",
-   "reviewed_at": "2026-10-18",
+   "reviewed_at": "2026-10-19",
    "session": "2025_26",
    "source_summary": "A RESOLUTION creating the House Study Committee on Code Revisions for Autonomous Vehicles; and for other purposes.",
    "source_url": "https://www.legis.ga.gov/legislation/73291",
@@ -293,12 +186,9 @@
   "held_since": "2026-10-18",
   "issues": [
    "missing, placeholder or overlong summary (102 chars)",
-   "placeholder or overlong takeaway",
-   "editorial verification incomplete"
+   "placeholder or overlong takeaway"
   ],
   "row": {
-   "editorial_failure_reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable",
-   "editorial_status": "source_retrieval_failed",
    "hearings": [],
    "id": "ia-sf-2034-2025-2026",
    "jurisdiction": "IA",
@@ -310,7 +200,7 @@
    "openstates_updated_at": "2026-03-18T09:23:17.931245+00:00",
    "progress_stage": "floor",
    "repository_url": "https://openstates.org/ia/bills/2025-2026/SF2034/",
-   "reviewed_at": "2026-10-18",
+   "reviewed_at": "2026-10-19",
    "session": "2025-2026",
    "source_summary": "",
    "source_url": "https://www.legis.iowa.gov/legislation/billTracking/billHistory?billName=SF 2034&ga=91",
@@ -332,12 +222,9 @@
   "held_since": "2026-10-18",
   "issues": [
    "missing, placeholder or overlong summary (559 chars)",
-   "placeholder or overlong takeaway",
-   "editorial verification incomplete"
+   "placeholder or overlong takeaway"
   ],
   "row": {
-   "editorial_failure_reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable",
-   "editorial_status": "source_retrieval_failed",
    "hearings": [],
    "id": "il-hb-1403-103rd",
    "jurisdiction": "IL",
@@ -351,7 +238,7 @@
    "progress_source": "official_site",
    "progress_stage": "committee",
    "repository_url": "https://openstates.org/il/bills/103rd/HB1403/",
-   "reviewed_at": "2026-10-18",
+   "reviewed_at": "2026-10-19",
    "session": "103rd",
    "source_summary": "Amends the Illinois Vehicle Code. Defines \"autonomous vehicle\" as a motor vehicle that is equipped with hardware and software that are collectively capable of performing the entire dynamic driving task on a sustained basis within the operational design domain, if any, including achieving a minimal risk condition, without any expected intervention or supervision by a conventional human driver, where applicable. Provides that an autonomous vehicle registered in this State shall continue to meet federal standards and regulations for a motor vehicle. Provides that an operator of an autonomous vehicle shall not use the vehicle to engage in the transport of interstate commerce or the transporting of passengers, or the transporting of goods, unless a human safety operator is physically present in the autonomous vehicle such that he or she has the ability to monitor the vehicle's performance and intervene if necessary, including operating or shutting off the vehicle. Provides that a human safety operator must continue to meet all federal and State qualifications for autonomous and nonautonomous vehicles.",
    "source_url": "https://beta.ilga.gov/Legislation/BillStatus?DocNum=1403&GAID=17&DocTypeID=HB&LegId=143617&SessionID=112",
@@ -367,93 +254,14 @@
    "title": "AUTONOMOUS VEH REQUIREMENTS"
   }
  },
- "il-hb-2053-103rd": {
-  "group": "state_bills",
-  "held_since": "2026-10-18",
-  "issues": [
-   "editorial verification incomplete"
-  ],
-  "row": {
-   "editorial_failure_reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable",
-   "editorial_status": "source_retrieval_failed",
-   "hearings": [],
-   "id": "il-hb-2053-103rd",
-   "jurisdiction": "IL",
-   "last_action": "House Rule 19(a) / Re-referred to Rules Committee",
-   "last_action_date": "2026-04-17",
-   "measure_type": "bill",
-   "number": "HB 2053",
-   "openstates_id": "ocd-bill/14ede5fb-6b8f-42e5-a5ff-6ad4f73658b2",
-   "openstates_updated_at": "2024-12-14T16:32:30.431525+00:00",
-   "progress_checked": "2026-10-18",
-   "progress_source": "official_site",
-   "progress_stage": "committee",
-   "repository_url": "https://openstates.org/il/bills/103rd/HB2053/",
-   "reviewed_at": "2026-10-18",
-   "session": "103rd",
-   "source_summary": "Amends the Illinois Vehicle Code. Defines \"autonomous vehicle\" as a motor vehicle that possesses the capability (enabled or not) for automated functions to control movement of the vehicle along 2 axes of direction simultaneously. Provides that, before selling or continuing to operate a new or used autonomous vehicle in this State and before updating the software or hardware of any automated driving system on such a vehicle, a manufacturer shall submit to the Department of Transportation documentation regarding the level of driving automation, along with a filing fee in an amount to be determined by the Department. Provides that the Department shall assemble an Automated Driving Systems Review Committee to evaluate submitted documentation and make determinations concerning the level of automated driving capabilities and the suitability of the vehicle for operation on public roads. Provides that an autonomous vehicle classified as having Level 2 Driving Automation may be sold to consumers and registered for use. Provides that the owner of the automated vehicle shall file an annual report with the Department of Transportation stating the number of miles driven per year, the estimated number of miles driven using equipped automated driving systems, and any collisions that occurred involving the vehicle. Prohibits the sale or operation of autonomous vehicles classified as having Level 3, 4, or 5 Driving Automation. Provides that a resident may file a request for the Automated Driving Systems Review Committee to review an existing vehicle sold or registered in this State, and that the Secretary of State shall receive and investigate complaints of a dealer selling a vehicle prohibited for sale under the new provisions. Provides that a person who operates a prohibited vehicle is guilty of a Class A misdemeanor and that such a vehicle is subject to impoundment. Provides penalties for the unauthorized sale or modification of an autonomous vehicle.",
-   "source_url": "https://beta.ilga.gov/Legislation/BillStatus?DocNum=2053&GAID=17&DocTypeID=HB&LegId=145190&SessionID=112",
-   "stage_dates": {
-    "committee": "2024-01-31"
-   },
-   "status": "introduced",
-   "summary": "Provides that, before selling or continuing to operate a new or used autonomous vehicle in this State and before updating the software or hardware of any automated driving system on such a vehicle, a manufacturer shall submit to the Department of Transportation documentation regarding the level of driving automation, along with a filing fee in an amount to be determined by the Department.",
-   "summary_method": "Source abstract condensed for substantive legislative effect",
-   "summary_quality": "source_abstract",
-   "summary_reviewed_at": null,
-   "takeaway": "Provides that, before selling or continuing to operate a new or used autonomous vehicle in this State and before updating the software or hardware of any automated driving system on such a vehicle, a manufacturer shall submit to the Department of Transportation documentation regarding the level of driving automation, along with a filing fee in an amount to be determined by the Department.",
-   "title": "AUTONOMOUS VEH REQUIREMENTS"
-  }
- },
- "il-hb-2913-103rd": {
-  "group": "state_bills",
-  "held_since": "2026-10-18",
-  "issues": [
-   "editorial verification incomplete"
-  ],
-  "row": {
-   "editorial_failure_reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable",
-   "editorial_status": "source_retrieval_failed",
-   "hearings": [],
-   "id": "il-hb-2913-103rd",
-   "jurisdiction": "IL",
-   "last_action": "House Rule 19(a) / Re-referred to Rules Committee",
-   "last_action_date": "2025-03-21",
-   "measure_type": "bill",
-   "number": "HB 2913",
-   "openstates_id": "ocd-bill/aaff33a9-6a02-4f6c-940c-95b30763a51f",
-   "openstates_updated_at": "2024-12-14T17:33:41.894994+00:00",
-   "progress_checked": "2026-10-18",
-   "progress_source": "official_site",
-   "progress_stage": "committee",
-   "repository_url": "https://openstates.org/il/bills/103rd/HB2913/",
-   "reviewed_at": "2026-10-18",
-   "session": "103rd",
-   "source_summary": "Creates the Safe Autonomous Vehicle Act. Provides definitions. Provides that upon notification to the Secretary of State, a motor vehicle manufacturer may commence a safe autonomous vehicle project with a vehicle installed with an automated driving system after providing notification to the Secretary of State and after self-certification under certain conditions. Provides that the manufacturer shall determine the geographical boundaries of the project and shall maintain incident records and provide periodic summaries to the Secretary of State and the National Highway Traffic Safety Administration. Provides that the participating fleet in the program shall be insured by the manufacturer who shall assume liability for incidents where the automated driving system technology is at fault for that incident. Provides that any person who operates a vehicle with automated driving system technology without first satisfying the eligibility requirements in the Act shall be fined $10,000 for a first violation and a second or subsequent violation is a Class A misdemeanor. Preempts home rule powers. Effective immediately.",
-   "source_url": "https://beta.ilga.gov/Legislation/BillStatus?DocNum=2913&GAID=17&DocTypeID=HB&LegId=148056&SessionID=112",
-   "stage_dates": {
-    "committee": "2023-02-23"
-   },
-   "status": "introduced",
-   "summary": "Creates the Safe Autonomous Vehicle Act. Provides definitions.",
-   "summary_method": "Source abstract condensed for substantive legislative effect",
-   "summary_quality": "source_abstract",
-   "summary_reviewed_at": null,
-   "takeaway": "Creates the Safe Autonomous Vehicle Act. Provides definitions.",
-   "title": "SAFE AUTONOMOUS VEHICLE ACT"
-  }
- },
  "il-hb-5600-103rd": {
   "group": "state_bills",
   "held_since": "2026-10-18",
   "issues": [
    "missing, placeholder or overlong summary (102 chars)",
-   "placeholder or overlong takeaway",
-   "editorial verification incomplete"
+   "placeholder or overlong takeaway"
   ],
   "row": {
-   "editorial_failure_reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable",
-   "editorial_status": "source_retrieval_failed",
    "hearings": [],
    "id": "il-hb-5600-103rd",
    "jurisdiction": "IL",
@@ -467,7 +275,7 @@
    "progress_source": "official_site",
    "progress_stage": "committee",
    "repository_url": "https://openstates.org/il/bills/103rd/HB5600/",
-   "reviewed_at": "2026-10-18",
+   "reviewed_at": "2026-10-19",
    "session": "103rd",
    "source_summary": "Amends the Counties Code. Provides that Will County may adopt an ordinance regulating and imposing a civil penalty on an owner of a vehicle for failure of an operator to comply with gross vehicle weight or axle weight restrictions and that the County may enforce its regulations using an automated vehicle weigh-in-motion enforcement system. Allows a municipality wholly or partially within the County to enter into an intergovernmental agreement with the County to provide automated vehicle weigh-in-motion enforcement systems in the municipal jurisdiction. Includes requirements for automated vehicle weigh-in-motion enforcement systems. Provides requirements for violation notices and for civil penalties for violations.",
    "source_url": "https://beta.ilga.gov/Legislation/BillStatus?DocNum=5600&GAID=17&DocTypeID=HB&LegId=153985&SessionID=112",
@@ -483,53 +291,14 @@
    "title": "CNTY AUTOMATED WEIGHT CONTROL"
   }
  },
- "il-sb-1471-103rd": {
-  "group": "state_bills",
-  "held_since": "2026-10-18",
-  "issues": [
-   "editorial verification incomplete"
-  ],
-  "row": {
-   "editorial_failure_reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable",
-   "editorial_status": "source_retrieval_failed",
-   "hearings": [],
-   "id": "il-sb-1471-103rd",
-   "jurisdiction": "IL",
-   "last_action": "Senate Rule 3-9(a) / Re-referred to Assignments",
-   "last_action_date": "2025-03-21",
-   "measure_type": "bill",
-   "number": "SB 1471",
-   "openstates_id": "ocd-bill/c38c2638-46c5-4d3a-a115-ed01cfc73d5b",
-   "openstates_updated_at": "2024-12-14T23:43:47.187389+00:00",
-   "progress_checked": "2026-10-18",
-   "progress_source": "official_site",
-   "progress_stage": "committee",
-   "repository_url": "https://openstates.org/il/bills/103rd/SB1471/",
-   "reviewed_at": "2026-10-18",
-   "session": "103rd",
-   "source_summary": "Amends the Illinois Vehicle Code. Defines \"autonomous vehicle\" as a motor vehicle that possesses the capability (enabled or not) for automated functions to control movement of the vehicle along 2 axes of direction simultaneously. Provides that, before selling or continuing to operate a new or used autonomous vehicle in this State and before updating the software or hardware of any automated driving system on such a vehicle, a manufacturer shall submit to the Department of Transportation documentation regarding the level of driving automation, along with a filing fee in an amount to be determined by the Department. Provides that the Department shall assemble an Automated Driving Systems Review Committee to evaluate submitted documentation and make determinations concerning the level of automated driving capabilities and the suitability of the vehicle for operation on public roads. Provides that an autonomous vehicle classified as having Level 2 Driving Automation may be sold to consumers and registered for use. Provides that the owner of the automated vehicle shall file an annual report with the Department of Transportation stating the number of miles driven per year, the estimated number of miles driven using equipped automated driving systems, and any collisions that occurred involving the vehicle. Prohibits the sale or operation of autonomous vehicles classified as having Level 3, 4, or 5 Driving Automation. Provides that a resident may file a request for the Automated Driving Systems Review Committee to review an existing vehicle sold or registered in this State, and that the Secretary of State shall receive and investigate complaints of a dealer selling a vehicle prohibited for sale under the new provisions. Provides that a person who operates a prohibited vehicle is guilty of a Class A misdemeanor and that such a vehicle is subject to impoundment. Provides penalties for the unauthorized sale or modification of an autonomous vehicle.",
-   "source_url": "https://beta.ilga.gov/Legislation/BillStatus?DocNum=1471&GAID=17&DocTypeID=SB&LegId=146194&SessionID=112",
-   "stage_dates": {},
-   "status": "introduced",
-   "summary": "Provides that, before selling or continuing to operate a new or used autonomous vehicle in this State and before updating the software or hardware of any automated driving system on such a vehicle, a manufacturer shall submit to the Department of Transportation documentation regarding the level of driving automation, along with a filing fee in an amount to be determined by the Department.",
-   "summary_method": "Source abstract condensed for substantive legislative effect",
-   "summary_quality": "source_abstract",
-   "summary_reviewed_at": null,
-   "takeaway": "Provides that, before selling or continuing to operate a new or used autonomous vehicle in this State and before updating the software or hardware of any automated driving system on such a vehicle, a manufacturer shall submit to the Department of Transportation documentation regarding the level of driving automation, along with a filing fee in an amount to be determined by the Department.",
-   "title": "AUTONOMOUS VEH REQUIREMENTS"
-  }
- },
  "il-sb-306-103rd": {
   "group": "state_bills",
   "held_since": "2026-10-18",
   "issues": [
    "missing, placeholder or overlong summary (553 chars)",
-   "placeholder or overlong takeaway",
-   "editorial verification incomplete"
+   "placeholder or overlong takeaway"
   ],
   "row": {
-   "editorial_failure_reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable",
-   "editorial_status": "source_retrieval_failed",
    "hearings": [],
    "id": "il-sb-306-103rd",
    "jurisdiction": "IL",
@@ -543,7 +312,7 @@
    "progress_source": "official_site",
    "progress_stage": "committee",
    "repository_url": "https://openstates.org/il/bills/103rd/SB306/",
-   "reviewed_at": "2026-10-18",
+   "reviewed_at": "2026-10-19",
    "session": "103rd",
    "source_summary": "Amends the Illinois Vehicle Code. Defines \"autonomous vehicle\" as a motor vehicle that is equipped with hardware and software that are collectively capable of performing the entire dynamic driving task on a sustained basis within the operational design domain, if any, including achieving a minimal risk condition, without any expected intervention or supervision by a conventional human driver, where applicable. Provides that an autonomous vehicle registered in this State shall continue to meet federal standards and regulations for a motor vehicle. Provides that an operator of an autonomous vehicle shall not use the vehicle to engage in the transport of interstate commerce or the transport of passengers, or the transport of goods, unless a human safety operator is physically present in the autonomous vehicle such that he or she has the ability to monitor the vehicle's performance and intervene if necessary, including operating or shutting off the vehicle. Provides that a human safety operator must continue to meet all federal and State qualifications for autonomous and nonautonomous vehicles.",
    "source_url": "https://beta.ilga.gov/Legislation/BillStatus?DocNum=306&GAID=17&DocTypeID=SB&LegId=144012&SessionID=112",
@@ -561,12 +330,9 @@
   "group": "state_bills",
   "held_since": "2026-10-18",
   "issues": [
-   "verbatim source abstract",
-   "editorial verification incomplete"
+   "verbatim source abstract"
   ],
   "row": {
-   "editorial_failure_reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable",
-   "editorial_status": "source_retrieval_failed",
    "hearings": [],
    "id": "in-hb-1377-2025",
    "jurisdiction": "IN",
@@ -578,7 +344,7 @@
    "openstates_updated_at": "2025-02-18T21:18:20.279398+00:00",
    "progress_stage": "committee",
    "repository_url": "https://openstates.org/in/bills/2025/HB1377/",
-   "reviewed_at": "2026-10-18",
+   "reviewed_at": "2026-10-19",
    "session": "2025",
    "source_summary": "Provides that an automated tractor-trailer may not be operated on a highway to transport passengers or goods unless a human operator who meets all state and federal qualifications to operate a tractor-trailer is physically present in the automated tractor-trailer to monitor the performance of the automated tractor-trailer and to take control of all or part of the automated tractor-trailer's operation if necessary. Provides that an automated tractor-trailer operated in Indiana must meet federal motor vehicle standards and regulations.",
    "source_url": "https://api.iga.in.gov/2025/bills/hb1377",
@@ -594,62 +360,14 @@
    "title": "Autonomous vehicles."
   }
  },
- "ky-hb-379-2025rs": {
-  "group": "state_bills",
-  "held_since": "2026-10-18",
-  "issues": [
-   "editorial verification incomplete"
-  ],
-  "row": {
-   "editorial_failure_reason": "The metadata labels the bill 'enacted,' but the official text shows only introduction and referral to a House committee, with no passage or enactment. Only a summary of the original version is supplied, not the bill's full text, so the exact wording ",
-   "editorial_source_hash": "b496f339ec5a263b0530bd3541cf60d2405402490a9d269909c00fb6fc7ffc03",
-   "editorial_source_type": "official_html",
-   "editorial_source_url": "https://apps.legislature.ky.gov/record/25RS/hb379.html",
-   "editorial_status": "needs_review",
-   "hearings": [],
-   "id": "ky-hb-379-2025rs",
-   "jurisdiction": "KY",
-   "last_action": "Vetoed by the Governor on 04/06/26, veto overridden by the House (80-17) and Senate (32-6) on 04/14/26, and delivered to Secretary of State (Acts Ch. 171)",
-   "last_action_date": "2026-04-14",
-   "measure_type": "bill",
-   "number": "HB 379",
-   "openstates_id": "ocd-bill/69906ac2-5b25-4c1e-8990-637e9e01d19c",
-   "openstates_updated_at": "2025-07-23T06:05:32.958960+00:00",
-   "progress_checked": "2026-10-18",
-   "progress_source": "official_site",
-   "progress_stage": "law",
-   "repository_url": "https://openstates.org/ky/bills/2025RS/HB379/",
-   "reviewed_at": "2026-10-18",
-   "session": "2025RS",
-   "source_summary": "Amend KRS 186.763 to prohibit school districts from operating fully autonomous vehicles for transporting students.",
-   "source_url": "https://apps.legislature.ky.gov/record/25RS/hb379.html",
-   "stage_dates": {
-    "committee": "2025-02-12",
-    "introduced": "2025-02-06"
-   },
-   "status": "enacted",
-   "summary": "Amend KRS 186.763 to prohibit school districts from operating fully autonomous vehicles for transporting students.",
-   "summary_method": "Source abstract condensed for substantive legislative effect",
-   "summary_quality": "source_abstract",
-   "summary_reviewed_at": null,
-   "takeaway": "Amend KRS 186.763 to prohibit school districts from operating fully autonomous vehicles for transporting students.",
-   "title": "AN ACT relating to school district use of autonomous vehicles."
-  }
- },
  "ma-h-3324-193rd": {
   "group": "state_bills",
   "held_since": "2026-10-18",
   "issues": [
    "missing, placeholder or overlong summary (102 chars)",
-   "placeholder or overlong takeaway",
-   "editorial verification incomplete"
+   "placeholder or overlong takeaway"
   ],
   "row": {
-   "editorial_failure_reason": "The supplied text is only the Massachusetts Legislature's bill webpage, which has the title, sponsor, a one-line description (legislation to further regulate autonomous vehicle operation), and history. It does not include the bill's actual provisions",
-   "editorial_source_hash": "aa351b41bed8c498c9179bcf9a6d3247b8cc9eefb67b01945cea911b8cbdc0ae",
-   "editorial_source_type": "official_html",
-   "editorial_source_url": "https://malegislature.gov/Bills/193/H3324",
-   "editorial_status": "needs_review",
    "hearings": [],
    "id": "ma-h-3324-193rd",
    "jurisdiction": "MA",
@@ -663,7 +381,7 @@
    "progress_source": "official_site",
    "progress_stage": "committee",
    "repository_url": "https://openstates.org/ma/bills/193rd/H3324/",
-   "reviewed_at": "2026-10-18",
+   "reviewed_at": "2026-10-19",
    "session": "193rd",
    "source_summary": "By Representative Giannino of Revere, a petition (accompanied by bill, House, No. 3324) of Jessica Ann Giannino, Paul W. Mark and Patrick M. O'Connor for legislation to further regulate the operation of autonomous vehicles.  Transportation.",
    "source_url": "https://malegislature.gov/Bills/193/H3324",
@@ -684,15 +402,9 @@
   "held_since": "2026-10-18",
   "issues": [
    "missing, placeholder or overlong summary (102 chars)",
-   "placeholder or overlong takeaway",
-   "editorial verification incomplete"
+   "placeholder or overlong takeaway"
   ],
   "row": {
-   "editorial_failure_reason": "The official source text lacks the actual bill text; it includes only the title, petitioner, committee referral, and procedural history. No numbered standard or substantive provision is available to summarize without inventing content.",
-   "editorial_source_hash": "1039347e906f8e4fc6400b530072edc3c404bde79a518fc596122d0fb18e00a2",
-   "editorial_source_type": "official_html",
-   "editorial_source_url": "https://malegislature.gov/Bills/193/H3430",
-   "editorial_status": "needs_review",
    "hearings": [],
    "id": "ma-h-3430-193rd",
    "jurisdiction": "MA",
@@ -706,7 +418,7 @@
    "progress_source": "official_site",
    "progress_stage": "committee",
    "repository_url": "https://openstates.org/ma/bills/193rd/H3430/",
-   "reviewed_at": "2026-10-18",
+   "reviewed_at": "2026-10-19",
    "session": "193rd",
    "source_summary": "By Representative Straus of Mattapoisett, a petition (accompanied by bill, House, No. 3430) of William M. Straus relative to autonomous vehicles.  Transportation.",
    "source_url": "https://malegislature.gov/Bills/193/H3430",
@@ -727,12 +439,9 @@
   "held_since": "2026-10-18",
   "issues": [
    "missing, placeholder or overlong summary (102 chars)",
-   "placeholder or overlong takeaway",
-   "editorial verification incomplete"
+   "placeholder or overlong takeaway"
   ],
   "row": {
-   "editorial_failure_reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable",
-   "editorial_status": "source_retrieval_failed",
    "hearings": [],
    "id": "ma-hd-423-193rd",
    "jurisdiction": "MA",
@@ -746,7 +455,7 @@
    "progress_source": "official_site",
    "progress_stage": "committee",
    "repository_url": "https://openstates.org/ma/bills/193rd/HD423/",
-   "reviewed_at": "2026-10-18",
+   "reviewed_at": "2026-10-19",
    "session": "193rd",
    "source_summary": "By Representative Straus of Mattapoisett, a petition (accompanied by bill, House, No. 3430) of William M. Straus relative to autonomous vehicles.  Transportation.",
    "source_url": "https://malegislature.gov/Bills/193/HD423",
@@ -767,12 +476,9 @@
   "held_since": "2026-10-18",
   "issues": [
    "missing, placeholder or overlong summary (102 chars)",
-   "placeholder or overlong takeaway",
-   "editorial verification incomplete"
+   "placeholder or overlong takeaway"
   ],
   "row": {
-   "editorial_failure_reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable",
-   "editorial_status": "source_retrieval_failed",
    "hearings": [],
    "id": "ma-hd-828-193rd",
    "jurisdiction": "MA",
@@ -786,7 +492,7 @@
    "progress_source": "official_site",
    "progress_stage": "committee",
    "repository_url": "https://openstates.org/ma/bills/193rd/HD828/",
-   "reviewed_at": "2026-10-18",
+   "reviewed_at": "2026-10-19",
    "session": "193rd",
    "source_summary": "By Representative Giannino of Revere, a petition (accompanied by bill, House, No. 3324) of Jessica Ann Giannino, Paul W. Mark and Patrick M. O'Connor for legislation to further regulate the operation of autonomous vehicles.  Transportation.",
    "source_url": "https://malegislature.gov/Bills/193/HD828",
@@ -807,15 +513,9 @@
   "held_since": "2026-10-18",
   "issues": [
    "missing, placeholder or overlong summary (102 chars)",
-   "placeholder or overlong takeaway",
-   "editorial verification incomplete"
+   "placeholder or overlong takeaway"
   ],
   "row": {
-   "editorial_failure_reason": "The supplied text is only the legislature's webpage for S.2257 (bill history, navigation, and login elements). It does not include the bill's operative text, so no substantive provisions, affected vehicles or actors, reporting duties, deadlines, or a",
-   "editorial_source_hash": "32eeefe7199d09b818c693f6d52f371ee24707dd0c81f2cb8d4b84075b0b58f9",
-   "editorial_source_type": "official_html",
-   "editorial_source_url": "https://malegislature.gov/Bills/193/S2257",
-   "editorial_status": "needs_review",
    "hearings": [],
    "id": "ma-s-2257-193rd",
    "jurisdiction": "MA",
@@ -829,7 +529,7 @@
    "progress_source": "official_site",
    "progress_stage": "committee",
    "repository_url": "https://openstates.org/ma/bills/193rd/S2257/",
-   "reviewed_at": "2026-10-18",
+   "reviewed_at": "2026-10-19",
    "session": "193rd",
    "source_summary": "By Mr. Lewis, a petition (accompanied by bill, Senate, No. 2257) of Jason M. Lewis for legislation to promote the safe integration of autonomous vehicles into the transportation system of the Commonwealth.  Transportation.",
    "source_url": "https://malegislature.gov/Bills/193/S2257",
@@ -850,12 +550,9 @@
   "held_since": "2026-10-18",
   "issues": [
    "missing, placeholder or overlong summary (102 chars)",
-   "placeholder or overlong takeaway",
-   "editorial verification incomplete"
+   "placeholder or overlong takeaway"
   ],
   "row": {
-   "editorial_failure_reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable",
-   "editorial_status": "source_retrieval_failed",
    "hearings": [],
    "id": "ma-sd-1341-193rd",
    "jurisdiction": "MA",
@@ -867,7 +564,7 @@
    "openstates_updated_at": "2023-01-20T15:51:15.047892+00:00",
    "progress_stage": "introduced",
    "repository_url": "https://openstates.org/ma/bills/193rd/SD1341/",
-   "reviewed_at": "2026-10-18",
+   "reviewed_at": "2026-10-19",
    "session": "193rd",
    "source_summary": "",
    "source_url": "https://malegislature.gov/Bills/193/SD1341",
@@ -886,12 +583,9 @@
   "held_since": "2026-10-18",
   "issues": [
    "missing, placeholder or overlong summary (102 chars)",
-   "placeholder or overlong takeaway",
-   "editorial verification incomplete"
+   "placeholder or overlong takeaway"
   ],
   "row": {
-   "editorial_failure_reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable",
-   "editorial_status": "source_retrieval_failed",
    "hearings": [],
    "id": "md-hb-1256-2025",
    "jurisdiction": "MD",
@@ -905,7 +599,7 @@
    "progress_source": "official_site",
    "progress_stage": "committee",
    "repository_url": "https://openstates.org/md/bills/2025/HB1256/",
-   "reviewed_at": "2026-10-18",
+   "reviewed_at": "2026-10-19",
    "session": "2025",
    "source_summary": "",
    "source_url": "https://openstates.org/md/bills/2025/HB1256/",
@@ -926,12 +620,9 @@
   "held_since": "2026-10-18",
   "issues": [
    "missing, placeholder or overlong summary (102 chars)",
-   "placeholder or overlong takeaway",
-   "editorial verification incomplete"
+   "placeholder or overlong takeaway"
   ],
   "row": {
-   "editorial_failure_reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable",
-   "editorial_status": "source_retrieval_failed",
    "hearings": [],
    "id": "md-hb-439-2025",
    "jurisdiction": "MD",
@@ -945,7 +636,7 @@
    "progress_source": "official_site",
    "progress_stage": "law",
    "repository_url": "https://openstates.org/md/bills/2025/HB439/",
-   "reviewed_at": "2026-10-18",
+   "reviewed_at": "2026-10-19",
    "session": "2025",
    "source_summary": "",
    "source_url": "https://openstates.org/md/bills/2025/HB439/",
@@ -966,12 +657,9 @@
   "held_since": "2026-10-18",
   "issues": [
    "missing, placeholder or overlong summary (102 chars)",
-   "placeholder or overlong takeaway",
-   "editorial verification incomplete"
+   "placeholder or overlong takeaway"
   ],
   "row": {
-   "editorial_failure_reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable",
-   "editorial_status": "source_retrieval_failed",
    "hearings": [],
    "id": "md-sb-405-2025",
    "jurisdiction": "MD",
@@ -985,7 +673,7 @@
    "progress_source": "official_site",
    "progress_stage": "committee",
    "repository_url": "https://openstates.org/md/bills/2025/SB405/",
-   "reviewed_at": "2026-10-18",
+   "reviewed_at": "2026-10-19",
    "session": "2025",
    "source_summary": "",
    "source_url": "https://openstates.org/md/bills/2025/SB405/",
@@ -1006,12 +694,9 @@
   "held_since": "2026-10-18",
   "issues": [
    "missing, placeholder or overlong summary (102 chars)",
-   "placeholder or overlong takeaway",
-   "editorial verification incomplete"
+   "placeholder or overlong takeaway"
   ],
   "row": {
-   "editorial_failure_reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable",
-   "editorial_status": "source_retrieval_failed",
    "hearings": [],
    "id": "md-sb-949-2025",
    "jurisdiction": "MD",
@@ -1025,7 +710,7 @@
    "progress_source": "official_site",
    "progress_stage": "law",
    "repository_url": "https://openstates.org/md/bills/2025/SB949/",
-   "reviewed_at": "2026-10-18",
+   "reviewed_at": "2026-10-19",
    "session": "2025",
    "source_summary": "",
    "source_url": "https://openstates.org/md/bills/2025/SB949/",
@@ -1046,12 +731,9 @@
   "held_since": "2026-10-18",
   "issues": [
    "missing, placeholder or overlong summary (102 chars)",
-   "placeholder or overlong takeaway",
-   "editorial verification incomplete"
+   "placeholder or overlong takeaway"
   ],
   "row": {
-   "editorial_failure_reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable",
-   "editorial_status": "source_retrieval_failed",
    "hearings": [],
    "id": "mo-hb-1166-2025",
    "jurisdiction": "MO",
@@ -1063,7 +745,7 @@
    "openstates_updated_at": "2025-05-15T22:23:14.195488+00:00",
    "progress_stage": "committee",
    "repository_url": "https://openstates.org/mo/bills/2025/HB1166/",
-   "reviewed_at": "2026-10-18",
+   "reviewed_at": "2026-10-19",
    "session": "2025",
    "source_summary": "",
    "source_url": "https://house.mo.gov/billactions.aspx?bill=HB1166&year=2025&code=R",
@@ -1085,15 +767,9 @@
   "held_since": "2026-10-18",
   "issues": [
    "missing, placeholder or overlong summary (102 chars)",
-   "placeholder or overlong takeaway",
-   "editorial verification incomplete"
+   "placeholder or overlong takeaway"
   ],
   "row": {
-   "editorial_failure_reason": "The supplied text is for Senate Bill 1050 (a similar bill), not HB 2069. It shows SB 1050 at the committee hearing stage, which conflicts with the 'passed' status given for HB 2069. The summary reflects only SB 1050's proposed provisions, so HB 2069'",
-   "editorial_source_hash": "34370cce1b457539ecbc9d7ad9648832ab329d78a0f1fe1fd3aa6a745cddea9d",
-   "editorial_source_type": "official_html",
-   "editorial_source_url": "https://www.senate.mo.gov/BillTracking/Bills/BillInformation?year=2026&billid=277",
-   "editorial_status": "needs_review",
    "hearings": [],
    "id": "mo-hb-2069-2026",
    "jurisdiction": "MO",
@@ -1105,7 +781,7 @@
    "openstates_updated_at": "2026-08-07T23:36:37.363668+00:00",
    "progress_stage": "passed_legislature",
    "repository_url": "https://openstates.org/mo/bills/2026/HB2069/",
-   "reviewed_at": "2026-10-18",
+   "reviewed_at": "2026-10-19",
    "session": "2026",
    "source_summary": "",
    "source_url": "https://house.mo.gov/billactions.aspx?bill=HB2069&year=2026&code=R",
@@ -1127,15 +803,9 @@
   "held_since": "2026-10-18",
   "issues": [
    "missing, placeholder or overlong summary (102 chars)",
-   "placeholder or overlong takeaway",
-   "editorial verification incomplete"
+   "placeholder or overlong takeaway"
   ],
   "row": {
-   "editorial_failure_reason": "The official text provided is the SB 1050 bill page, not the text of HB 2208. It says only that SB 1050 is similar to HB 2208, so HB 2208's own provisions cannot be confirmed from this source.",
-   "editorial_source_hash": "daba63d0fd47546694675464585894e48b95eb04bbc5ed24e6d33dc77b67465f",
-   "editorial_source_type": "official_html",
-   "editorial_source_url": "https://www.senate.mo.gov/BillTracking/Bills/BillInformation?year=2026&billid=277",
-   "editorial_status": "needs_review",
    "hearings": [],
    "id": "mo-hb-2208-2026",
    "jurisdiction": "MO",
@@ -1147,7 +817,7 @@
    "openstates_updated_at": "2026-08-11T20:49:31.873453+00:00",
    "progress_stage": "committee",
    "repository_url": "https://openstates.org/mo/bills/2026/HB2208/",
-   "reviewed_at": "2026-10-18",
+   "reviewed_at": "2026-10-19",
    "session": "2026",
    "source_summary": "",
    "source_url": "https://house.mo.gov/billactions.aspx?bill=HB2208&year=2026&code=R",
@@ -1168,9 +838,12 @@
   "held_since": "2026-10-18",
   "issues": [
    "missing, placeholder or overlong summary (102 chars)",
-   "placeholder or overlong takeaway"
+   "placeholder or overlong takeaway",
+   "editorial verification incomplete"
   ],
   "row": {
+   "editorial_failure_reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable",
+   "editorial_status": "source_retrieval_failed",
    "hearings": [],
    "id": "mo-hb-2240-2026",
    "jurisdiction": "MO",
@@ -1182,7 +855,7 @@
    "openstates_updated_at": "2026-08-11T20:41:19.383474+00:00",
    "progress_stage": "committee",
    "repository_url": "https://openstates.org/mo/bills/2026/HB2240/",
-   "reviewed_at": "2026-10-18",
+   "reviewed_at": "2026-10-19",
    "session": "2026",
    "source_summary": "",
    "source_url": "https://house.mo.gov/billactions.aspx?bill=HB2240&year=2026&code=R",
@@ -1203,9 +876,12 @@
   "held_since": "2026-10-18",
   "issues": [
    "missing, placeholder or overlong summary (102 chars)",
-   "placeholder or overlong takeaway"
+   "placeholder or overlong takeaway",
+   "editorial verification incomplete"
   ],
   "row": {
+   "editorial_failure_reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable",
+   "editorial_status": "source_retrieval_failed",
    "hearings": [],
    "id": "mo-hb-3034-2026",
    "jurisdiction": "MO",
@@ -1217,7 +893,7 @@
    "openstates_updated_at": "2026-09-15T19:06:50.651081+00:00",
    "progress_stage": "committee",
    "repository_url": "https://openstates.org/mo/bills/2026/HB3034/",
-   "reviewed_at": "2026-10-18",
+   "reviewed_at": "2026-10-19",
    "session": "2026",
    "source_summary": "",
    "source_url": "https://house.mo.gov/billactions.aspx?bill=HB3034&year=2026&code=R",
@@ -1239,9 +915,12 @@
   "held_since": "2026-10-18",
   "issues": [
    "missing, placeholder or overlong summary (102 chars)",
-   "placeholder or overlong takeaway"
+   "placeholder or overlong takeaway",
+   "editorial verification incomplete"
   ],
   "row": {
+   "editorial_failure_reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable",
+   "editorial_status": "source_retrieval_failed",
    "hearings": [],
    "id": "mo-hb-3365-2026",
    "jurisdiction": "MO",
@@ -1253,7 +932,7 @@
    "openstates_updated_at": "2026-05-16T01:58:40.068293+00:00",
    "progress_stage": "committee",
    "repository_url": "https://openstates.org/mo/bills/2026/HB3365/",
-   "reviewed_at": "2026-10-18",
+   "reviewed_at": "2026-10-19",
    "session": "2026",
    "source_summary": "",
    "source_url": "https://house.mo.gov/billactions.aspx?bill=HB3365&year=2026&code=R",
@@ -1270,49 +949,17 @@
    "title": "Creates new provisions governing autonomous vehicles"
   }
  },
- "mo-sb-1050-2026": {
-  "group": "state_bills",
-  "held_since": "2026-10-18",
-  "issues": [
-   "missing, placeholder or overlong summary (102 chars)",
-   "placeholder or overlong takeaway"
-  ],
-  "row": {
-   "hearings": [],
-   "id": "mo-sb-1050-2026",
-   "jurisdiction": "MO",
-   "last_action": "Hearing Conducted S Transportation, Infrastructure and Public Safety Committee",
-   "last_action_date": "2026-01-27",
-   "measure_type": "bill",
-   "number": "SB 1050",
-   "openstates_id": "ocd-bill/33709b50-b49d-4057-8f88-c3d9c23cf541",
-   "openstates_updated_at": "2026-08-25T19:05:32.012105+00:00",
-   "progress_stage": "committee",
-   "repository_url": "https://openstates.org/mo/bills/2026/SB1050/",
-   "reviewed_at": "2026-10-18",
-   "session": "2026",
-   "source_summary": "SB 1050 - This act establishes new provisions governing the usage of autonomous vehicles.\r\n\r\nAny person may operate a fully autonomous vehicle on the public roads of this state without a human driver provided that the automated driving system is engaged and the vehicle meets the following conditions:\r\n\t•\tIf a failure of the automated driving system occurs that renders that system unable to perform the entire dynamic driving task relevant to its intended operational design domain, the fully autonomous vehicle will achieve a minimal risk condition, as that term is defined in the act;\r\n\t•\tThe fully autonomous vehicle is capable of operating in compliance with the applicable traffic and motor vehicle safety laws and regulations of this state when reasonable to do so, unless an exemption has been granted by the Department of Transportation; and\r\n\t•\tWhen required by federal law, the vehicle bears the required manufacturer's certification label indicating that at the time of its manufacture it has been certified to be in compliance with all applicable federal motor vehicle safety standards, including reference to any exemption granted by the National Highway Traffic Safety Administration.\r\n\r\nBefore operating a fully autonomous vehicle on public roads in this state without a human driver, a person shall submit proof of financial responsibility satisfactory to the Department of Commerce and Insurance that the fully autonomous vehicle is covered by insurance or proof of self-insurance that satisfies state law. Furthermore, each fully autonomous vehicle shall be properly registered and titled in accordance with state law.\r\n\r\n\tAdditional provisions are included relating to the operation of commercial motor vehicles that are fully autonomous vehicles and on-demand autonomous vehicle networks.\r\n\r\n\tA fully autonomous vehicle that is designed to be operated exclusively by the automated driving system for all trips is not subject to motor vehicle equipment laws or regulations of this state that relate to or support motor vehicle operation by a \r\nhuman driver seated in the vehicle and are not relevant for an automated driving system.\r\n\r\n\tNo state agency, political subdivision, municipality, or local entity may prohibit the operation of fully autonomous vehicles, automated driving systems, or on-demand autonomous vehicle networks, or otherwise enact or keep in force rules or ordinances that would impose taxes, fees, or other requirements, including performance standards, specific to the operation of fully autonomous vehicles, automated driving systems, or on-demand autonomous vehicle networks in addition to the requirements of this act.\r\n\r\n\tThis act is similar to HCS/HBs 2069 & 2208 (2026).\r\nTAYLOR MIDDLETON",
-   "source_url": "https://www.senate.mo.gov/BillTracking/Bills/BillInformation?year=2026&billid=277",
-   "stage_dates": {
-    "committee": "2026-01-15"
-   },
-   "status": "introduced",
-   "summary": "Substantive summary unavailable in the source feed; review the official bill record for the bill text.",
-   "summary_method": "Source abstract condensed for substantive legislative effect",
-   "summary_quality": "source_summary_insufficient",
-   "summary_reviewed_at": null,
-   "takeaway": "Substantive summary unavailable in the source feed; review the official bill record for the bill text.",
-   "title": "Creates new provisions governing autonomous vehicles"
-  }
- },
  "ms-hb-1770-2026": {
   "group": "state_bills",
   "held_since": "2026-10-18",
   "issues": [
    "missing, placeholder or overlong summary (102 chars)",
-   "placeholder or overlong takeaway"
+   "placeholder or overlong takeaway",
+   "editorial verification incomplete"
   ],
   "row": {
+   "editorial_failure_reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable",
+   "editorial_status": "source_retrieval_failed",
    "hearings": [],
    "id": "ms-hb-1770-2026",
    "jurisdiction": "MS",
@@ -1324,7 +971,7 @@
    "openstates_updated_at": "2026-03-17T22:31:47.034321+00:00",
    "progress_stage": "committee",
    "repository_url": "https://openstates.org/ms/bills/2026/HB1770/",
-   "reviewed_at": "2026-10-18",
+   "reviewed_at": "2026-10-19",
    "session": "2026",
    "source_summary": "",
    "source_url": "https://billstatus.ls.state.ms.us/2026/pdf/history/HB/HB1770.xml",
@@ -1345,9 +992,12 @@
   "held_since": "2026-10-18",
   "issues": [
    "missing, placeholder or overlong summary (102 chars)",
-   "placeholder or overlong takeaway"
+   "placeholder or overlong takeaway",
+   "editorial verification incomplete"
   ],
   "row": {
+   "editorial_failure_reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable",
+   "editorial_status": "source_retrieval_failed",
    "hearings": [],
    "id": "ms-sb-2269-2026",
    "jurisdiction": "MS",
@@ -1359,7 +1009,7 @@
    "openstates_updated_at": "2026-03-17T22:28:27.381416+00:00",
    "progress_stage": "law",
    "repository_url": "https://openstates.org/ms/bills/2026/SB2269/",
-   "reviewed_at": "2026-10-18",
+   "reviewed_at": "2026-10-19",
    "session": "2026",
    "source_summary": "",
    "source_url": "https://billstatus.ls.state.ms.us/2026/pdf/history/SB/SB2269.xml",
@@ -1383,9 +1033,12 @@
   "held_since": "2026-10-18",
   "issues": [
    "missing, placeholder or overlong summary (102 chars)",
-   "placeholder or overlong takeaway"
+   "placeholder or overlong takeaway",
+   "editorial verification incomplete"
   ],
   "row": {
+   "editorial_failure_reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable",
+   "editorial_status": "source_retrieval_failed",
    "hearings": [],
    "id": "mt-hb-339-2023",
    "jurisdiction": "MT",
@@ -1397,7 +1050,7 @@
    "openstates_updated_at": "2024-09-27T23:48:51.490974+00:00",
    "progress_stage": "passed_legislature",
    "repository_url": "https://openstates.org/mt/bills/2023/HB339/",
-   "reviewed_at": "2026-10-18",
+   "reviewed_at": "2026-10-19",
    "session": "2023",
    "source_summary": "",
    "source_url": "https://bills.legmt.gov/#/bill/20231/LC0963",
@@ -1419,9 +1072,12 @@
   "held_since": "2026-10-18",
   "issues": [
    "missing, placeholder or overlong summary (102 chars)",
-   "placeholder or overlong takeaway"
+   "placeholder or overlong takeaway",
+   "editorial verification incomplete"
   ],
   "row": {
+   "editorial_failure_reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable",
+   "editorial_status": "source_retrieval_failed",
    "hearings": [],
    "id": "mt-lc-1679-2025",
    "jurisdiction": "MT",
@@ -1433,7 +1089,7 @@
    "openstates_updated_at": "2026-06-10T11:50:00.920457+00:00",
    "progress_stage": "introduced",
    "repository_url": "https://openstates.org/mt/bills/2025/LC1679/",
-   "reviewed_at": "2026-10-18",
+   "reviewed_at": "2026-10-19",
    "session": "2025",
    "source_summary": "",
    "source_url": "https://bills.legmt.gov/#/lc/bill/2/LC1679",
@@ -1452,9 +1108,12 @@
   "held_since": "2026-10-18",
   "issues": [
    "missing, placeholder or overlong summary (102 chars)",
-   "placeholder or overlong takeaway"
+   "placeholder or overlong takeaway",
+   "editorial verification incomplete"
   ],
   "row": {
+   "editorial_failure_reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable",
+   "editorial_status": "source_retrieval_failed",
    "hearings": [],
    "id": "mt-lc-3523-2023",
    "jurisdiction": "MT",
@@ -1466,7 +1125,7 @@
    "openstates_updated_at": "2024-09-27T22:43:40.109145+00:00",
    "progress_stage": "introduced",
    "repository_url": "https://openstates.org/mt/bills/2023/LC3523/",
-   "reviewed_at": "2026-10-18",
+   "reviewed_at": "2026-10-19",
    "session": "2023",
    "source_summary": "",
    "source_url": "https://bills.legmt.gov/#/bill/20231/LC3523",
@@ -1485,9 +1144,12 @@
   "held_since": "2026-10-18",
   "issues": [
    "missing, placeholder or overlong summary (102 chars)",
-   "placeholder or overlong takeaway"
+   "placeholder or overlong takeaway",
+   "editorial verification incomplete"
   ],
   "row": {
+   "editorial_failure_reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable",
+   "editorial_status": "source_retrieval_failed",
    "hearings": [],
    "id": "mt-lc-963-2023",
    "jurisdiction": "MT",
@@ -1499,7 +1161,7 @@
    "openstates_updated_at": "2023-01-25T23:36:32.840123+00:00",
    "progress_stage": "introduced",
    "repository_url": "https://openstates.org/mt/bills/2023/LC963/",
-   "reviewed_at": "2026-10-18",
+   "reviewed_at": "2026-10-19",
    "session": "2023",
    "source_summary": "",
    "source_url": "https://openstates.org/mt/bills/2023/LC963/",
@@ -1518,9 +1180,12 @@
   "held_since": "2026-10-18",
   "issues": [
    "missing, placeholder or overlong summary (102 chars)",
-   "placeholder or overlong takeaway"
+   "placeholder or overlong takeaway",
+   "editorial verification incomplete"
   ],
   "row": {
+   "editorial_failure_reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable",
+   "editorial_status": "source_retrieval_failed",
    "hearings": [],
    "id": "nd-hb-1037-69",
    "jurisdiction": "ND",
@@ -1534,7 +1199,7 @@
    "progress_source": "official_site",
    "progress_stage": "floor",
    "repository_url": "https://openstates.org/nd/bills/69/HB1037/",
-   "reviewed_at": "2026-10-18",
+   "reviewed_at": "2026-10-19",
    "session": "69",
    "source_summary": "",
    "source_url": "https://ndlegis.gov/api/assembly/69-2025/data/bills.json",
@@ -1555,9 +1220,12 @@
   "held_since": "2026-10-18",
   "issues": [
    "missing, placeholder or overlong summary (102 chars)",
-   "placeholder or overlong takeaway"
+   "placeholder or overlong takeaway",
+   "editorial verification incomplete"
   ],
   "row": {
+   "editorial_failure_reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable",
+   "editorial_status": "source_retrieval_failed",
    "hearings": [],
    "id": "nd-hb-1519-68",
    "jurisdiction": "ND",
@@ -1569,7 +1237,7 @@
    "openstates_updated_at": "2024-04-27T03:39:52.680776+00:00",
    "progress_stage": "law",
    "repository_url": "https://openstates.org/nd/bills/68/HB1519/",
-   "reviewed_at": "2026-10-18",
+   "reviewed_at": "2026-10-19",
    "session": "68",
    "source_summary": "",
    "source_url": "https://ndlegis.gov/api/assembly/68-2023/data/bills.json",
@@ -1593,9 +1261,15 @@
   "held_since": "2026-10-18",
   "issues": [
    "missing, placeholder or overlong summary (102 chars)",
-   "placeholder or overlong takeaway"
+   "placeholder or overlong takeaway",
+   "editorial verification incomplete"
   ],
   "row": {
+   "editorial_failure_reason": "The supplied text is only the Nebraska Legislature's status page for LB 625. It gives the sponsor, dates and history, including indefinite postponement, but not the bill's substantive provisions. Nothing in it describes the autonomous vehicle require",
+   "editorial_source_hash": "7b4f84ac97122a091c30a2eef6e11aa7048073011751f589dbb31ebe940dfcb6",
+   "editorial_source_type": "official_html",
+   "editorial_source_url": "https://nebraskalegislature.gov/bills/view_bill.php?DocumentID=50565",
+   "editorial_status": "needs_review",
    "hearings": [],
    "id": "ne-lb-625-108",
    "jurisdiction": "NE",
@@ -1609,7 +1283,7 @@
    "progress_source": "official_site",
    "progress_stage": "floor",
    "repository_url": "https://openstates.org/ne/bills/108/LB625/",
-   "reviewed_at": "2026-10-18",
+   "reviewed_at": "2026-10-19",
    "session": "108",
    "source_summary": "",
    "source_url": "https://nebraskalegislature.gov/bills/view_bill.php?DocumentID=50565",
@@ -1626,50 +1300,20 @@
    "title": "Provide requirements for operation of autonomous vehicles"
   }
  },
- "nj-a-1589-221": {
-  "group": "state_bills",
-  "held_since": "2026-10-18",
-  "issues": [
-   "missing, placeholder or overlong summary (102 chars)",
-   "placeholder or overlong takeaway"
-  ],
-  "row": {
-   "hearings": [],
-   "id": "nj-a-1589-221",
-   "jurisdiction": "NJ",
-   "last_action": "Introduced in the Assembly, Referred to Assembly Transportation and Independent Authorities Committee",
-   "last_action_date": "2024-01-09",
-   "measure_type": "bill",
-   "number": "A 1589",
-   "openstates_id": "ocd-bill/ea3437e9-0523-405b-8895-db7bd574bc2e",
-   "openstates_updated_at": "2025-03-05T21:35:40.535947+00:00",
-   "progress_stage": "committee",
-   "repository_url": "https://openstates.org/nj/bills/221/A1589/",
-   "reviewed_at": "2026-10-18",
-   "session": "221",
-   "source_summary": "",
-   "source_url": "https://www.njleg.state.nj.us/bill-search/2024/A1589",
-   "stage_dates": {
-    "committee": "2024-01-09",
-    "introduced": "2024-01-09"
-   },
-   "status": "introduced",
-   "summary": "Substantive summary unavailable in the source feed; review the official bill record for the bill text.",
-   "summary_method": "Source abstract condensed for substantive legislative effect",
-   "summary_quality": "source_summary_insufficient",
-   "summary_reviewed_at": null,
-   "takeaway": "Substantive summary unavailable in the source feed; review the official bill record for the bill text.",
-   "title": "Permits testing and use of autonomous vehicles on State roadways under certain circumstances."
-  }
- },
  "nj-a-3757-221": {
   "group": "state_bills",
   "held_since": "2026-10-18",
   "issues": [
    "missing, placeholder or overlong summary (102 chars)",
-   "placeholder or overlong takeaway"
+   "placeholder or overlong takeaway",
+   "editorial verification incomplete"
   ],
   "row": {
+   "editorial_failure_reason": "The bill text sets a December 31, 2020 deadline for in-service training, which is already past relative to the February 2024 introduction date. This looks like a drafting inconsistency that a human should check.",
+   "editorial_source_hash": "637de60a702de99f3ccfffcb0b983cc689c13efc630dba1842a4f15135dce989",
+   "editorial_source_type": "official_html",
+   "editorial_source_url": "https://pub.njleg.state.nj.us/Bills/2024/A4000/3757_I1.HTM",
+   "editorial_status": "needs_review",
    "hearings": [],
    "id": "nj-a-3757-221",
    "jurisdiction": "NJ",
@@ -1681,7 +1325,7 @@
    "openstates_updated_at": "2024-10-08T08:31:25.109086+00:00",
    "progress_stage": "committee",
    "repository_url": "https://openstates.org/nj/bills/221/A3757/",
-   "reviewed_at": "2026-10-18",
+   "reviewed_at": "2026-10-19",
    "session": "221",
    "source_summary": "",
    "source_url": "https://www.njleg.state.nj.us/bill-search/2024/A3757",
@@ -1703,9 +1347,15 @@
   "held_since": "2026-10-18",
   "issues": [
    "missing, placeholder or overlong summary (102 chars)",
-   "placeholder or overlong takeaway"
+   "placeholder or overlong takeaway",
+   "editorial verification incomplete"
   ],
   "row": {
+   "editorial_failure_reason": "The bill text is internally inconsistent about the pilot length: section 2 says five years, while section 7 and the statement say three years. The summary avoids stating a duration, but a human should confirm before publication.",
+   "editorial_source_hash": "48f1fc42bbefa625569236fe0972a8765ce927d0aca940c523499157f0757a7e",
+   "editorial_source_type": "official_html",
+   "editorial_source_url": "https://pub.njleg.state.nj.us/Bills/2024/A6000/5919_I1.HTM",
+   "editorial_status": "needs_review",
    "hearings": [],
    "id": "nj-a-5919-221",
    "jurisdiction": "NJ",
@@ -1717,7 +1367,7 @@
    "openstates_updated_at": "2025-07-25T16:44:59.260481+00:00",
    "progress_stage": "committee",
    "repository_url": "https://openstates.org/nj/bills/221/A5919/",
-   "reviewed_at": "2026-10-18",
+   "reviewed_at": "2026-10-19",
    "session": "221",
    "source_summary": "",
    "source_url": "https://www.njleg.state.nj.us/bill-search/2024/A5919",
@@ -1739,9 +1389,15 @@
   "held_since": "2026-10-18",
   "issues": [
    "missing, placeholder or overlong summary (102 chars)",
-   "placeholder or overlong takeaway"
+   "placeholder or overlong takeaway",
+   "editorial verification incomplete"
   ],
   "row": {
+   "editorial_failure_reason": "HTTPError: HTTP Error 400: Bad Request",
+   "editorial_source_hash": "b639ce70f1318883fa0347beaa7834b6e51975002197efc4ecbe8d428d3cbdca",
+   "editorial_source_type": "official_html",
+   "editorial_source_url": "https://pub.njleg.state.nj.us/Bills/2024/S5000/4702_I1.HTM",
+   "editorial_status": "needs_review",
    "hearings": [],
    "id": "nj-s-4702-221",
    "jurisdiction": "NJ",
@@ -1753,7 +1409,7 @@
    "openstates_updated_at": "2025-12-05T00:58:36.316892+00:00",
    "progress_stage": "committee",
    "repository_url": "https://openstates.org/nj/bills/221/S4702/",
-   "reviewed_at": "2026-10-18",
+   "reviewed_at": "2026-10-19",
    "session": "221",
    "source_summary": "",
    "source_url": "https://www.njleg.state.nj.us/bill-search/2024/S4702",
@@ -1775,9 +1431,12 @@
   "held_since": "2026-10-18",
   "issues": [
    "missing, placeholder or overlong summary (102 chars)",
-   "placeholder or overlong takeaway"
+   "placeholder or overlong takeaway",
+   "editorial verification incomplete"
   ],
   "row": {
+   "editorial_failure_reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable",
+   "editorial_status": "source_retrieval_failed",
    "hearings": [],
    "id": "nm-hb-148-2025",
    "jurisdiction": "NM",
@@ -1789,7 +1448,7 @@
    "openstates_updated_at": "2025-06-27T05:44:27.059832+00:00",
    "progress_stage": "committee",
    "repository_url": "https://openstates.org/nm/bills/2025/HB148/",
-   "reviewed_at": "2026-10-18",
+   "reviewed_at": "2026-10-19",
    "session": "2025",
    "source_summary": "",
    "source_url": "https://openstates.org/nm/bills/2025/HB148/",
@@ -1811,9 +1470,12 @@
   "held_since": "2026-10-18",
   "issues": [
    "missing, placeholder or overlong summary (102 chars)",
-   "placeholder or overlong takeaway"
+   "placeholder or overlong takeaway",
+   "editorial verification incomplete"
   ],
   "row": {
+   "editorial_failure_reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable",
+   "editorial_status": "source_retrieval_failed",
    "hearings": [],
    "id": "nv-sb-395-83",
    "jurisdiction": "NV",
@@ -1825,7 +1487,7 @@
    "openstates_updated_at": "2025-05-24T23:31:41.800186+00:00",
    "progress_stage": "passed_legislature",
    "repository_url": "https://openstates.org/nv/bills/83/SB395/",
-   "reviewed_at": "2026-10-18",
+   "reviewed_at": "2026-10-19",
    "session": "83",
    "source_summary": "",
    "source_url": "https://www.leg.state.nv.us/App/NELIS/REL/83rd2025/Bill/12701/Overview",
@@ -1846,9 +1508,12 @@
   "group": "state_bills",
   "held_since": "2026-10-18",
   "issues": [
-   "verbatim source abstract"
+   "verbatim source abstract",
+   "editorial verification incomplete"
   ],
   "row": {
+   "editorial_failure_reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable",
+   "editorial_status": "source_retrieval_failed",
    "hearings": [],
    "id": "ny-a-233-2023-2024",
    "jurisdiction": "NY",
@@ -1862,7 +1527,7 @@
    "progress_source": "official_site",
    "progress_stage": "committee",
    "repository_url": "https://openstates.org/ny/bills/2023-2024/A233/",
-   "reviewed_at": "2026-10-18",
+   "reviewed_at": "2026-10-19",
    "session": "2023-2024",
    "source_summary": "Requires the department of labor to conduct a study on the potential impact of driverless vehicles on occupations and employment.",
    "source_url": "https://legislation.nysenate.gov/api/3/bills/2023-2024/A233?summary=&detail=",
@@ -1882,9 +1547,12 @@
   "group": "state_bills",
   "held_since": "2026-10-18",
   "issues": [
-   "verbatim source abstract"
+   "verbatim source abstract",
+   "editorial verification incomplete"
   ],
   "row": {
+   "editorial_failure_reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable",
+   "editorial_status": "source_retrieval_failed",
    "hearings": [],
    "id": "ny-a-2598-2023-2024",
    "jurisdiction": "NY",
@@ -1898,7 +1566,7 @@
    "progress_source": "official_site",
    "progress_stage": "committee",
    "repository_url": "https://openstates.org/ny/bills/2023-2024/A2598/",
-   "reviewed_at": "2026-10-18",
+   "reviewed_at": "2026-10-19",
    "session": "2023-2024",
    "source_summary": "Establishes the New York state autonomous vehicle task force to study autonomous vehicle usage on the roads located within the state of New York.",
    "source_url": "https://legislation.nysenate.gov/api/3/bills/2023-2024/A2598?summary=&detail=",
@@ -1920,9 +1588,12 @@
   "issues": [
    "missing, placeholder or overlong summary (5132 chars)",
    "placeholder or overlong takeaway",
-   "verbatim source abstract"
+   "verbatim source abstract",
+   "editorial verification incomplete"
   ],
   "row": {
+   "editorial_failure_reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable",
+   "editorial_status": "source_retrieval_failed",
    "hearings": [],
    "id": "ny-a-3008-2023-2024",
    "jurisdiction": "NY",
@@ -1936,7 +1607,7 @@
    "progress_source": "official_site",
    "progress_stage": "law",
    "repository_url": "https://openstates.org/ny/bills/2023-2024/A3008/",
-   "reviewed_at": "2026-10-18",
+   "reviewed_at": "2026-10-19",
    "session": "2023-2024",
    "source_summary": "Enacts into law major components of legislation necessary to implement the state transportation, economic development and environmental conservation budget for the 2023-2024 state fiscal year; extends provisions of law relating to certain tax increment financing provisions; relates to contracts entered into by the metropolitan commuter transportation district; extends certain metropolitan transportation authority procurement provisions; relates to contracts for procurement for the New York city transit authority (Part C); relates to funding for the Metropolitan Transportation Authority 2020-2024 capital program and paratransit operating expenses (Part D); extends provisions related to the resolution of labor disputes (Part G); extends certain provisions relating to motor vehicles equipped with autonomous vehicle technology (Part J); changes retention percentage of certain motor vehicle related fees collected by county clerks (Part M); increases the metropolitan commuter transportation mobility tax rate for certain employers and individuals (Part Q); provides for the disposition of money from certain gaming activity (Part R); extends provisions of the New York state health insurance continuation assistance demonstration project (Part U); provides for the ability to exempt individuals with disabilities from certain in person meeting participation requirements (Part X); requires the dormitory authority to submit an annual report on the pilot program for the procurement of goods or services from, or for the construction, reconstruction, rehabilitation or improvement of facilities by small businesses and minority-owned and women-owned business enterprises, that shall include a description of such procurement; extends the effectiveness of certain provisions relating thereto (Part BB); establishes a matching grant program for certain small businesses receiving funding under the federal small business innovation research program or the small business technology transfer program (Part DD); provides for a Battery Park city authority bond cap increase (Part EE); increases amounts of the linked loans in the excelsior linked deposit program (Part FF); extends the authority of the New York state urban development corporation act to make loans (Part GG); extends the authority of the New York state urban development corporation to administer the empire state economic development fund (Part JJ); extends the authority of the dormitory authority to enter into certain design and construction management agreements (Part LL); provides for an increase in fees collected from residents and non-residents registering snowmobiles (Part MM); relates to purchase contracts for New York State grown, harvested, or produced food and food products (Part OO); extends provisions of the youth deer hunting program (Part RR); relates to pesticide registration timetables and fees (Part SS); enacts the \"Suffolk county water quality restoration act\" (Part TT); provides a period of probable usefulness of 30 years for lead service line replacement programs as a capital asset (Part UU); authorizes utility and cable television assessments that provide funds to the department of health from cable television assessment revenues and to the department of agriculture and markets, department of environmental conservation, department of state, and the office of parks, recreation and historic preservation from utility assessment revenues (Part VV); provides for expenditures of moneys by the New York state energy research and development authority (Part ZZ); provides that the commissioner of motor vehicles may issue or renew any certificate of registration issued to a franchisor, manufacturer, distributor, distributor branch or factory branch, or to any subsidiary, affiliate or controlled entity thereof, provided that such certificate shall be issued exclusively for the sale of buses where the purchaser is a public transportation provider (Part BBB); relates to requirements of the transportation authority regarding publishing information on its capital program dashboard website for projects related to accessibility or resiliency, and to requirements of the metropolitan transportation authority regarding publishing certain financial reports on its website (Part CCC); establishes the New York youth jobs connector program to connect unemployed and underemployed individuals between the ages of sixteen and twenty-four with targeted educational, occupational, and training services; and requiring reporting from the office of strategic workforce development (Part DDD); relates to the waterfront commission of New York harbor (Part EEE); recommissions a statewide disparity study regarding the participation of minority and women-owned business enterprises in state contracts (Part FFF); establishes a small business and entrepreneurs grant program (Part GGG); expands eligibility to the site preparation credit component of the brownfield redevelopment tax credit (Part HHH); directs the state inspector general to appoint an independent monitor for the Orange county industrial development agency (Part III).",
    "source_url": "https://legislation.nysenate.gov/api/3/bills/2023-2024/A3008?summary=&detail=",
@@ -1956,9 +1627,12 @@
   "group": "state_bills",
   "held_since": "2026-10-18",
   "issues": [
-   "verbatim source abstract"
+   "verbatim source abstract",
+   "editorial verification incomplete"
   ],
   "row": {
+   "editorial_failure_reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable",
+   "editorial_status": "source_retrieval_failed",
    "hearings": [],
    "id": "ny-a-525-2023-2024",
    "jurisdiction": "NY",
@@ -1972,7 +1646,7 @@
    "progress_source": "official_site",
    "progress_stage": "committee",
    "repository_url": "https://openstates.org/ny/bills/2023-2024/A525/",
-   "reviewed_at": "2026-10-18",
+   "reviewed_at": "2026-10-19",
    "session": "2023-2024",
    "source_summary": "Establishes the New York task force on automated vehicle technology to study and assess the future of automated vehicle technology.",
    "source_url": "https://legislation.nysenate.gov/api/3/bills/2023-2024/A525?summary=&detail=",
@@ -1992,9 +1666,12 @@
   "group": "state_bills",
   "held_since": "2026-10-18",
   "issues": [
-   "verbatim source abstract"
+   "verbatim source abstract",
+   "editorial verification incomplete"
   ],
   "row": {
+   "editorial_failure_reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable",
+   "editorial_status": "source_retrieval_failed",
    "hearings": [],
    "id": "ny-a-539-2023-2024",
    "jurisdiction": "NY",
@@ -2008,7 +1685,7 @@
    "progress_source": "official_site",
    "progress_stage": "committee",
    "repository_url": "https://openstates.org/ny/bills/2023-2024/A539/",
-   "reviewed_at": "2026-10-18",
+   "reviewed_at": "2026-10-19",
    "session": "2023-2024",
    "source_summary": "Provides that a person may operate a fully autonomous vehicle on the public roads of this state without a human driver provided that the automated driving system is engaged and the vehicle meets certain conditions; defines terms; requires insurance and that such vehicle is registered as a fully autonomous vehicle; makes related provisions.",
    "source_url": "https://legislation.nysenate.gov/api/3/bills/2023-2024/A539?summary=&detail=",
@@ -2029,9 +1706,12 @@
   "held_since": "2026-10-18",
   "issues": [
    "missing, placeholder or overlong summary (102 chars)",
-   "placeholder or overlong takeaway"
+   "placeholder or overlong takeaway",
+   "editorial verification incomplete"
   ],
   "row": {
+   "editorial_failure_reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable",
+   "editorial_status": "source_retrieval_failed",
    "hearings": [],
    "id": "ny-a-6180-2025-2026",
    "jurisdiction": "NY",
@@ -2045,7 +1725,7 @@
    "progress_source": "official_site",
    "progress_stage": "committee",
    "repository_url": "https://openstates.org/ny/bills/2025-2026/A6180/",
-   "reviewed_at": "2026-10-18",
+   "reviewed_at": "2026-10-19",
    "session": "2025-2026",
    "source_summary": "Excludes a production using artificial intelligence or autonomous vehicles in a manner which results in the displacement of employees whose salaries are qualified expenses from the definition of qualified film for the purposes of the empire state film production credit.",
    "source_url": "https://legislation.nysenate.gov/api/3/bills/2025-2026/A6180?summary=&detail=",
@@ -2066,9 +1746,12 @@
   "held_since": "2026-10-18",
   "issues": [
    "missing, placeholder or overlong summary (102 chars)",
-   "placeholder or overlong takeaway"
+   "placeholder or overlong takeaway",
+   "editorial verification incomplete"
   ],
   "row": {
+   "editorial_failure_reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable",
+   "editorial_status": "source_retrieval_failed",
    "hearings": [],
    "id": "ny-a-7634-2023-2024",
    "jurisdiction": "NY",
@@ -2082,7 +1765,7 @@
    "progress_source": "official_site",
    "progress_stage": "law",
    "repository_url": "https://openstates.org/ny/bills/2023-2024/A7634/",
-   "reviewed_at": "2026-10-18",
+   "reviewed_at": "2026-10-19",
    "session": "2023-2024",
    "source_summary": "Excludes a production using artificial intelligence or autonomous vehicles in a manner which results in the displacement of employees whose salaries are qualified expenses from the definition of qualified film for the purposes of the empire state film production credit.",
    "source_url": "https://legislation.nysenate.gov/api/3/bills/2023-2024/A7634?summary=&detail=",
@@ -2102,9 +1785,12 @@
   "group": "state_bills",
   "held_since": "2026-10-18",
   "issues": [
-   "verbatim source abstract"
+   "verbatim source abstract",
+   "editorial verification incomplete"
   ],
   "row": {
+   "editorial_failure_reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable",
+   "editorial_status": "source_retrieval_failed",
    "hearings": [],
    "id": "ny-a-8621-2023-2024",
    "jurisdiction": "NY",
@@ -2118,7 +1804,7 @@
    "progress_source": "official_site",
    "progress_stage": "committee",
    "repository_url": "https://openstates.org/ny/bills/2023-2024/A8621/",
-   "reviewed_at": "2026-10-18",
+   "reviewed_at": "2026-10-19",
    "session": "2023-2024",
    "source_summary": "Prohibits any motor vehicle with a manufacturers' gross vehicle weight rating of ten thousand one pounds or more which utilizes autonomous vehicle technology from being operated on public highways unless a natural person holding a valid license for the operation of the motor vehicle's class is present within such vehicle.",
    "source_url": "https://legislation.nysenate.gov/api/3/bills/2023-2024/A8621?summary=&detail=",
@@ -2140,9 +1826,12 @@
   "issues": [
    "missing, placeholder or overlong summary (5850 chars)",
    "placeholder or overlong takeaway",
-   "verbatim source abstract"
+   "verbatim source abstract",
+   "editorial verification incomplete"
   ],
   "row": {
+   "editorial_failure_reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable",
+   "editorial_status": "source_retrieval_failed",
    "hearings": [],
    "id": "ny-a-8808-2023-2024",
    "jurisdiction": "NY",
@@ -2154,7 +1843,7 @@
    "openstates_updated_at": "2024-04-29T19:09:06.544036+00:00",
    "progress_stage": "law",
    "repository_url": "https://openstates.org/ny/bills/2023-2024/A8808/",
-   "reviewed_at": "2026-10-18",
+   "reviewed_at": "2026-10-19",
    "session": "2023-2024",
    "source_summary": "Enacts into law major components of legislation necessary to implement the state transportation, economic development and environmental conservation budget for the 2024-2025 state fiscal year; extends the effectiveness of certain provisions relating to the financing of mass transportation by certain municipal corporations (Part A); provides for mass transportation payments to the Capital District Transportation District; adds Warren county to such district (Part E); extends provisions of law relating to the accident prevention course internet technology pilot program from April 1, 2024 until April 1, 2026 (Part F); extends certain provisions of law relating to certain motor vehicle transaction fees and costs of the department of motor vehicles (Part G); extends provisions of law relating to motor vehicles equipped with autonomous vehicle technology (Part J); enacts the stretch limousine passenger safety act (Part K); enacts the waterfront commission act to regulate the occupations of longshore workers, stevedores, pier superintendents, hiring agents and security officers to preserve the rights of such workers and the economic stability of the port of New York district; repeals provisions of law relating to waterfront employment and air freight industry regulation (Part L); extends provisions relating to the clean energy resources and development and incentives program until April 19, 2030; relates to renewable energy generation projects and qualified energy storage systems (Part M); authorizes the New York state energy research and development authority to finance a portion of its research, development and demonstration, policy and planning, and Fuel NY program, as well as climate change related expenses of the department of environmental conservation from an assessment on gas and electric corporations; directs unused funds to be refunded on a pro-rata basis to such gas and electric corporations (Part N); enacts the \"renewable action through project interconnection and deployment (RAPID) act\" to timely achieve certain renewable energy and greenhouse gas reduction targets; transfers the functions of the office of renewable energy siting to the department of public service and accelerating the permitting of electric utility transmission facilities; makes related provisions (Part O); authorizes utility and cable television assessments that provide funds to the department of health from cable television assessment revenues and to the department of agriculture and markets, department of environmental conservation, department of state, and the office of parks, recreation and historic preservation from utility assessment revenues (Part Q); authorizes state assistance payments toward climate smart community projects of up to eighty percent to municipalities that meet criteria relating to financial hardship or disadvantaged communities; provides that financial hardship is determined by whether a municipality has a median household income at or below eighty percent of the state median household income (Part S); relates to air quality control program fees and ozone non-attainment fee programs; establishes the air quality improvement fund (Part T); extends provisions of law relating to the powers and duties of the dormitory authority to establish subsidiaries (Part V); relates to the Battery Park city authority's authorization to issue bonds and notes (Part W); increases the cap on grants to entrepreneurship assistance centers (Part X); extends provisions of law relating to the New York state infrastructure trust fund to July 1, 2025 (Part Y); extends the authority of the New York state urban development corporation to administer the empire state economic development fund (Part Z); extends provisions of law relating to the powers of the New York state urban development corporation act to make loans (Part AA); extends provisions of the New York state health insurance continuation assistance demonstration project (Part BB); provides that covered prescription insulin drugs shall not be subject to deductible, copayment, coinsurance or other cost sharing requirements (Part EE); extends certain provisions relating to permitting videoconferencing and remote participation in public meetings (Part KK); relates to reinsurance, credits for assessments paid; relates to credit relating to life and health insurance guaranty corporation assessments (Part LL); enacts the \"artificial intelligence deceptive practices act\"; provides for privacy rights involving digitization (Subpart A); requires disclosure of the use of digitization in political communications (Subpart B) (Part MM); relates to rates for livery insurance (Part NN); allows regional economic development council awardees to certify that they offer youth internship opportunities (Part OO); establishes a sales tax exemption for residential energy storage systems equipment (Part PP); directs the New York state energy research and development authority to conduct a highway and depot charging needs evaluation (Part QQ); authorizes the state to consent to binding arbitration with respect to certain contracts adopted by the Gateway Development Commission (Part RR); establishes a local authorities searchable subsidy and economic development benefits database (Subpart A); provides for the applicability of open meetings and freedom of information laws to state and local authorities (Subpart B) (Part SS); establishes the New York state empire artificial intelligence research program and the empire AI consortium; sets forth the plan of operation and financial oversight of the empire AI consortium (Subpart A); authorizes the state university of New York at Buffalo to lease a portion of lands to the empire AI consortium to create and launch a state-of-the-art artificial intelligence computing center (Subpart B) (Part TT).",
    "source_url": "https://legislation.nysenate.gov/api/3/bills/2023-2024/A8808?summary=&detail=",
@@ -2176,9 +1865,12 @@
   "group": "state_bills",
   "held_since": "2026-10-18",
   "issues": [
-   "verbatim source abstract"
+   "verbatim source abstract",
+   "editorial verification incomplete"
   ],
   "row": {
+   "editorial_failure_reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable",
+   "editorial_status": "source_retrieval_failed",
    "hearings": [],
    "id": "ny-s-1012-2023-2024",
    "jurisdiction": "NY",
@@ -2192,7 +1884,7 @@
    "progress_source": "official_site",
    "progress_stage": "floor",
    "repository_url": "https://openstates.org/ny/bills/2023-2024/S1012/",
-   "reviewed_at": "2026-10-18",
+   "reviewed_at": "2026-10-19",
    "session": "2023-2024",
    "source_summary": "Provides that a person may operate a fully autonomous vehicle on the public roads of this state without a human driver provided that the automated driving system is engaged and the vehicle meets certain conditions; defines terms; requires insurance and that such vehicle is registered as a fully autonomous vehicle; makes related provisions.",
    "source_url": "https://legislation.nysenate.gov/api/3/bills/2023-2024/S1012?summary=&detail=",
@@ -2214,9 +1906,12 @@
   "issues": [
    "missing, placeholder or overlong summary (5132 chars)",
    "placeholder or overlong takeaway",
-   "verbatim source abstract"
+   "verbatim source abstract",
+   "editorial verification incomplete"
   ],
   "row": {
+   "editorial_failure_reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable",
+   "editorial_status": "source_retrieval_failed",
    "hearings": [],
    "id": "ny-s-4008-2023-2024",
    "jurisdiction": "NY",
@@ -2228,7 +1923,7 @@
    "openstates_updated_at": "2024-04-19T21:41:35.612555+00:00",
    "progress_stage": "law",
    "repository_url": "https://openstates.org/ny/bills/2023-2024/S4008/",
-   "reviewed_at": "2026-10-18",
+   "reviewed_at": "2026-10-19",
    "session": "2023-2024",
    "source_summary": "Enacts into law major components of legislation necessary to implement the state transportation, economic development and environmental conservation budget for the 2023-2024 state fiscal year; extends provisions of law relating to certain tax increment financing provisions; relates to contracts entered into by the metropolitan commuter transportation district; extends certain metropolitan transportation authority procurement provisions; relates to contracts for procurement for the New York city transit authority (Part C); relates to funding for the Metropolitan Transportation Authority 2020-2024 capital program and paratransit operating expenses (Part D); extends provisions related to the resolution of labor disputes (Part G); extends certain provisions relating to motor vehicles equipped with autonomous vehicle technology (Part J); changes retention percentage of certain motor vehicle related fees collected by county clerks (Part M); increases the metropolitan commuter transportation mobility tax rate for certain employers and individuals (Part Q); provides for the disposition of money from certain gaming activity (Part R); extends provisions of the New York state health insurance continuation assistance demonstration project (Part U); provides for the ability to exempt individuals with disabilities from certain in person meeting participation requirements (Part X); requires the dormitory authority to submit an annual report on the pilot program for the procurement of goods or services from, or for the construction, reconstruction, rehabilitation or improvement of facilities by small businesses and minority-owned and women-owned business enterprises, that shall include a description of such procurement; extends the effectiveness of certain provisions relating thereto (Part BB); establishes a matching grant program for certain small businesses receiving funding under the federal small business innovation research program or the small business technology transfer program (Part DD); provides for a Battery Park city authority bond cap increase (Part EE); increases amounts of the linked loans in the excelsior linked deposit program (Part FF); extends the authority of the New York state urban development corporation act to make loans (Part GG); extends the authority of the New York state urban development corporation to administer the empire state economic development fund (Part JJ); extends the authority of the dormitory authority to enter into certain design and construction management agreements (Part LL); provides for an increase in fees collected from residents and non-residents registering snowmobiles (Part MM); relates to purchase contracts for New York State grown, harvested, or produced food and food products (Part OO); extends provisions of the youth deer hunting program (Part RR); relates to pesticide registration timetables and fees (Part SS); enacts the \"Suffolk county water quality restoration act\" (Part TT); provides a period of probable usefulness of 30 years for lead service line replacement programs as a capital asset (Part UU); authorizes utility and cable television assessments that provide funds to the department of health from cable television assessment revenues and to the department of agriculture and markets, department of environmental conservation, department of state, and the office of parks, recreation and historic preservation from utility assessment revenues (Part VV); provides for expenditures of moneys by the New York state energy research and development authority (Part ZZ); provides that the commissioner of motor vehicles may issue or renew any certificate of registration issued to a franchisor, manufacturer, distributor, distributor branch or factory branch, or to any subsidiary, affiliate or controlled entity thereof, provided that such certificate shall be issued exclusively for the sale of buses where the purchaser is a public transportation provider (Part BBB); relates to requirements of the transportation authority regarding publishing information on its capital program dashboard website for projects related to accessibility or resiliency, and to requirements of the metropolitan transportation authority regarding publishing certain financial reports on its website (Part CCC); establishes the New York youth jobs connector program to connect unemployed and underemployed individuals between the ages of sixteen and twenty-four with targeted educational, occupational, and training services; and requiring reporting from the office of strategic workforce development (Part DDD); relates to the waterfront commission of New York harbor (Part EEE); recommissions a statewide disparity study regarding the participation of minority and women-owned business enterprises in state contracts (Part FFF); establishes a small business and entrepreneurs grant program (Part GGG); expands eligibility to the site preparation credit component of the brownfield redevelopment tax credit (Part HHH); directs the state inspector general to appoint an independent monitor for the Orange county industrial development agency (Part III).",
    "source_url": "https://legislation.nysenate.gov/api/3/bills/2023-2024/S4008?summary=&detail=",
@@ -2251,9 +1946,12 @@
   "held_since": "2026-10-18",
   "issues": [
    "missing, placeholder or overlong summary (102 chars)",
-   "placeholder or overlong takeaway"
+   "placeholder or overlong takeaway",
+   "editorial verification incomplete"
   ],
   "row": {
+   "editorial_failure_reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable",
+   "editorial_status": "source_retrieval_failed",
    "hearings": [],
    "id": "ny-s-6751-2025-2026",
    "jurisdiction": "NY",
@@ -2267,7 +1965,7 @@
    "progress_source": "official_site",
    "progress_stage": "committee",
    "repository_url": "https://openstates.org/ny/bills/2025-2026/S6751/",
-   "reviewed_at": "2026-10-18",
+   "reviewed_at": "2026-10-19",
    "session": "2025-2026",
    "source_summary": "Excludes a production using artificial intelligence or autonomous vehicles in a manner which results in the displacement of employees whose salaries are qualified expenses from the definition of qualified film for the purposes of the empire state film production credit.",
    "source_url": "https://legislation.nysenate.gov/api/3/bills/2025-2026/S6751?summary=&detail=",
@@ -2288,9 +1986,12 @@
   "held_since": "2026-10-18",
   "issues": [
    "missing, placeholder or overlong summary (102 chars)",
-   "placeholder or overlong takeaway"
+   "placeholder or overlong takeaway",
+   "editorial verification incomplete"
   ],
   "row": {
+   "editorial_failure_reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable",
+   "editorial_status": "source_retrieval_failed",
    "hearings": [],
    "id": "ny-s-7422-2023-2024",
    "jurisdiction": "NY",
@@ -2304,7 +2005,7 @@
    "progress_source": "official_site",
    "progress_stage": "law",
    "repository_url": "https://openstates.org/ny/bills/2023-2024/S7422/",
-   "reviewed_at": "2026-10-18",
+   "reviewed_at": "2026-10-19",
    "session": "2023-2024",
    "source_summary": "Excludes a production using artificial intelligence or autonomous vehicles in a manner which results in the displacement of employees whose salaries are qualified expenses from the definition of qualified film for the purposes of the empire state film production credit.",
    "source_url": "https://legislation.nysenate.gov/api/3/bills/2023-2024/S7422?summary=&detail=",
@@ -2324,9 +2025,12 @@
   "group": "state_bills",
   "held_since": "2026-10-18",
   "issues": [
-   "verbatim source abstract"
+   "verbatim source abstract",
+   "editorial verification incomplete"
   ],
   "row": {
+   "editorial_failure_reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable",
+   "editorial_status": "source_retrieval_failed",
    "hearings": [],
    "id": "ny-s-7758-2023-2024",
    "jurisdiction": "NY",
@@ -2340,7 +2044,7 @@
    "progress_source": "official_site",
    "progress_stage": "law",
    "repository_url": "https://openstates.org/ny/bills/2023-2024/S7758/",
-   "reviewed_at": "2026-10-18",
+   "reviewed_at": "2026-10-19",
    "session": "2023-2024",
    "source_summary": "Prohibits any motor vehicle with a manufacturers' gross vehicle weight rating of ten thousand one pounds or more which utilizes autonomous vehicle technology from being operated on public highways unless a natural person holding a valid license for the operation of the motor vehicle's class is present within such vehicle.",
    "source_url": "https://legislation.nysenate.gov/api/3/bills/2023-2024/S7758?summary=&detail=",
@@ -2362,9 +2066,12 @@
   "issues": [
    "missing, placeholder or overlong summary (5850 chars)",
    "placeholder or overlong takeaway",
-   "verbatim source abstract"
+   "verbatim source abstract",
+   "editorial verification incomplete"
   ],
   "row": {
+   "editorial_failure_reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable",
+   "editorial_status": "source_retrieval_failed",
    "hearings": [],
    "id": "ny-s-8308-2023-2024",
    "jurisdiction": "NY",
@@ -2378,7 +2085,7 @@
    "progress_source": "official_site",
    "progress_stage": "law",
    "repository_url": "https://openstates.org/ny/bills/2023-2024/S8308/",
-   "reviewed_at": "2026-10-18",
+   "reviewed_at": "2026-10-19",
    "session": "2023-2024",
    "source_summary": "Enacts into law major components of legislation necessary to implement the state transportation, economic development and environmental conservation budget for the 2024-2025 state fiscal year; extends the effectiveness of certain provisions relating to the financing of mass transportation by certain municipal corporations (Part A); provides for mass transportation payments to the Capital District Transportation District; adds Warren county to such district (Part E); extends provisions of law relating to the accident prevention course internet technology pilot program from April 1, 2024 until April 1, 2026 (Part F); extends certain provisions of law relating to certain motor vehicle transaction fees and costs of the department of motor vehicles (Part G); extends provisions of law relating to motor vehicles equipped with autonomous vehicle technology (Part J); enacts the stretch limousine passenger safety act (Part K); enacts the waterfront commission act to regulate the occupations of longshore workers, stevedores, pier superintendents, hiring agents and security officers to preserve the rights of such workers and the economic stability of the port of New York district; repeals provisions of law relating to waterfront employment and air freight industry regulation (Part L); extends provisions relating to the clean energy resources and development and incentives program until April 19, 2030; relates to renewable energy generation projects and qualified energy storage systems (Part M); authorizes the New York state energy research and development authority to finance a portion of its research, development and demonstration, policy and planning, and Fuel NY program, as well as climate change related expenses of the department of environmental conservation from an assessment on gas and electric corporations; directs unused funds to be refunded on a pro-rata basis to such gas and electric corporations (Part N); enacts the \"renewable action through project interconnection and deployment (RAPID) act\" to timely achieve certain renewable energy and greenhouse gas reduction targets; transfers the functions of the office of renewable energy siting to the department of public service and accelerating the permitting of electric utility transmission facilities; makes related provisions (Part O); authorizes utility and cable television assessments that provide funds to the department of health from cable television assessment revenues and to the department of agriculture and markets, department of environmental conservation, department of state, and the office of parks, recreation and historic preservation from utility assessment revenues (Part Q); authorizes state assistance payments toward climate smart community projects of up to eighty percent to municipalities that meet criteria relating to financial hardship or disadvantaged communities; provides that financial hardship is determined by whether a municipality has a median household income at or below eighty percent of the state median household income (Part S); relates to air quality control program fees and ozone non-attainment fee programs; establishes the air quality improvement fund (Part T); extends provisions of law relating to the powers and duties of the dormitory authority to establish subsidiaries (Part V); relates to the Battery Park city authority's authorization to issue bonds and notes (Part W); increases the cap on grants to entrepreneurship assistance centers (Part X); extends provisions of law relating to the New York state infrastructure trust fund to July 1, 2025 (Part Y); extends the authority of the New York state urban development corporation to administer the empire state economic development fund (Part Z); extends provisions of law relating to the powers of the New York state urban development corporation act to make loans (Part AA); extends provisions of the New York state health insurance continuation assistance demonstration project (Part BB); provides that covered prescription insulin drugs shall not be subject to deductible, copayment, coinsurance or other cost sharing requirements (Part EE); extends certain provisions relating to permitting videoconferencing and remote participation in public meetings (Part KK); relates to reinsurance, credits for assessments paid; relates to credit relating to life and health insurance guaranty corporation assessments (Part LL); enacts the \"artificial intelligence deceptive practices act\"; provides for privacy rights involving digitization (Subpart A); requires disclosure of the use of digitization in political communications (Subpart B) (Part MM); relates to rates for livery insurance (Part NN); allows regional economic development council awardees to certify that they offer youth internship opportunities (Part OO); establishes a sales tax exemption for residential energy storage systems equipment (Part PP); directs the New York state energy research and development authority to conduct a highway and depot charging needs evaluation (Part QQ); authorizes the state to consent to binding arbitration with respect to certain contracts adopted by the Gateway Development Commission (Part RR); establishes a local authorities searchable subsidy and economic development benefits database (Subpart A); provides for the applicability of open meetings and freedom of information laws to state and local authorities (Subpart B) (Part SS); establishes the New York state empire artificial intelligence research program and the empire AI consortium; sets forth the plan of operation and financial oversight of the empire AI consortium (Subpart A); authorizes the state university of New York at Buffalo to lease a portion of lands to the empire AI consortium to create and launch a state-of-the-art artificial intelligence computing center (Subpart B) (Part TT).",
    "source_url": "https://legislation.nysenate.gov/api/3/bills/2023-2024/S8308?summary=&detail=",
@@ -2398,9 +2105,12 @@
   "group": "state_bills",
   "held_since": "2026-10-18",
   "issues": [
-   "verbatim source abstract"
+   "verbatim source abstract",
+   "editorial verification incomplete"
   ],
   "row": {
+   "editorial_failure_reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable",
+   "editorial_status": "source_retrieval_failed",
    "hearings": [],
    "id": "ny-s-9959-2023-2024",
    "jurisdiction": "NY",
@@ -2414,7 +2124,7 @@
    "progress_source": "official_site",
    "progress_stage": "committee",
    "repository_url": "https://openstates.org/ny/bills/2023-2024/S9959/",
-   "reviewed_at": "2026-10-18",
+   "reviewed_at": "2026-10-19",
    "session": "2023-2024",
    "source_summary": "Provides that no autonomous vehicle may be used for taxi, livery or transportation network company vehicle services in any city with a population of one million or more without first being licensed by the New York City taxi and limousine commission; requires the New York City taxi and limousine commission to establish a license for use of an autonomous vehicle as a taxicab and to promulgate rules regarding such license and the operation of autonomous taxicabs.",
    "source_url": "https://legislation.nysenate.gov/api/3/bills/2023-2024/S9959?summary=&detail=",
@@ -2451,7 +2161,7 @@
    "progress_source": "official_site",
    "progress_stage": "committee",
    "repository_url": "https://openstates.org/tn/bills/114/HB1168/",
-   "reviewed_at": "2026-10-18",
+   "reviewed_at": "2026-10-19",
    "session": "114",
    "source_summary": "",
    "source_url": "https://wapp.capitol.tn.gov/apps/BillInfo/Default?BillNumber=HB1168&ga=114",
@@ -2489,7 +2199,7 @@
    "progress_source": "official_site",
    "progress_stage": "law",
    "repository_url": "https://openstates.org/tn/bills/114/HB2302/",
-   "reviewed_at": "2026-10-18",
+   "reviewed_at": "2026-10-19",
    "session": "114",
    "source_summary": "",
    "source_url": "https://wapp.capitol.tn.gov/apps/BillInfo/Default?BillNumber=HB2302&ga=114",
@@ -2525,7 +2235,7 @@
    "openstates_updated_at": "2026-05-05T21:01:23.083957+00:00",
    "progress_stage": "law",
    "repository_url": "https://openstates.org/tn/bills/114/SB2253/",
-   "reviewed_at": "2026-10-18",
+   "reviewed_at": "2026-10-19",
    "session": "114",
    "source_summary": "",
    "source_url": "https://wapp.capitol.tn.gov/apps/BillInfo/Default?BillNumber=SB2253&ga=114",
@@ -2565,7 +2275,7 @@
    "progress_source": "official_site",
    "progress_stage": "committee",
    "repository_url": "https://openstates.org/tn/bills/114/SB310/",
-   "reviewed_at": "2026-10-18",
+   "reviewed_at": "2026-10-19",
    "session": "114",
    "source_summary": "",
    "source_url": "https://wapp.capitol.tn.gov/apps/BillInfo/Default?BillNumber=SB0310&ga=114",
@@ -2641,7 +2351,7 @@
    "progress_source": "official_site",
    "progress_stage": "committee",
    "repository_url": "https://openstates.org/tx/bills/89R/HB3837/",
-   "reviewed_at": "2026-10-18",
+   "reviewed_at": "2026-10-19",
    "session": "89R",
    "source_summary": "",
    "source_url": "https://capitol.texas.gov/BillLookup/History.aspx?LegSess=89R&Bill=HB3837",

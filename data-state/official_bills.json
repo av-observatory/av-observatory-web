@@ -204,6 +204,14 @@
    "stage": "rejected",
    "via": "ledger:title"
   },
+  "CT:S1377": {
+   "discovered": "2026-10-19",
+   "jurisdiction": "CT",
+   "number": "SB 1377",
+   "source_url": "https://www.cga.ct.gov/asp/cgabillstatus/cgabillstatus.asp?selBillType=Bill&bill_num=SB1377&which_year=2025",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
   "DC:B25": {
    "discovered": "2026-10-17",
    "jurisdiction": "DC",
@@ -272,6 +280,14 @@
    "status": "stricken",
    "title": "Autonomous Vehicle Safety"
   },
+  "FL:H769": {
+   "discovered": "2026-10-19",
+   "jurisdiction": "FL",
+   "number": "HB 769",
+   "source_url": "https://www.flsenate.gov/Session/Bill/2026/769",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
   "FL:S1256": {
    "discovered": "2026-10-18",
    "jurisdiction": "FL",
@@ -322,19 +338,23 @@
    "via": "ledger:title"
   },
   "IA:S2034": {
+   "checked": "2026-10-19",
    "discovered": "2026-10-17",
    "jurisdiction": "IA",
    "number": "SF 2034",
+   "reason": "not a verifiable AV bill page",
    "source_url": "https://www.legis.iowa.gov/legislation/BillBook?ga=91&ba=SF2034",
-   "stage": "discovered",
+   "stage": "rejected",
    "via": "ledger:title"
   },
   "IA:S2384": {
+   "checked": "2026-10-19",
    "discovered": "2026-10-17",
    "jurisdiction": "IA",
    "number": "SF 2384",
+   "reason": "not a verifiable AV bill page",
    "source_url": "https://www.legis.iowa.gov/legislation/BillBook?ga=91&ba=SF2384",
-   "stage": "discovered",
+   "stage": "rejected",
    "via": "ledger:title"
   },
   "IL:H1839": {
@@ -361,6 +381,22 @@
    "stage": "discovered",
    "via": "ledger:page_scan"
   },
+  "IL:H3044": {
+   "discovered": "2026-10-19",
+   "jurisdiction": "IL",
+   "number": "HB 3044",
+   "source_url": "https://www.ilga.gov/ftp/legislation/104/BillStatus/XML/10400HB3044.xml",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
+  "IL:H3442": {
+   "discovered": "2026-10-19",
+   "jurisdiction": "IL",
+   "number": "HB 3442",
+   "source_url": "https://www.ilga.gov/ftp/legislation/104/BillStatus/XML/10400HB3442.xml",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
   "IN:H1377": {
    "discovered": "2026-10-17",
    "jurisdiction": "IN",
@@ -378,18 +414,39 @@
    "via": "ledger:page_scan"
   },
   "KY:H252": {
-   "discovered": "2026-10-17",
+   "checked": "2026-10-19",
+   "hearings": [],
+   "id": "ky-hb-252-2025-regular-session",
    "jurisdiction": "KY",
+   "last_action": "to Primary and Secondary Education (H)",
+   "last_action_date": "2025-02-07",
+   "measure_type": "bill",
    "number": "HB 252",
+   "progress_stage": "committee",
+   "repository_url": "https://apps.legislature.ky.gov/record/25rs/hb252.html",
+   "session": "2025 Regular Session",
+   "source_feed": "official_sweep",
    "source_url": "https://apps.legislature.ky.gov/record/25rs/hb252.html",
-   "stage": "discovered",
-   "via": "ledger:page_scan"
+   "stage": "in_feed",
+   "stage_dates": {
+    "committee": "2025-02-07"
+   },
+   "status": "introduced",
+   "title": "AN ACT relating to autonomous vehicles."
   },
   "KY:H379": {
    "discovered": "2026-10-17",
    "jurisdiction": "KY",
    "number": "HB 379",
    "source_url": "https://apps.legislature.ky.gov/record/25rs/hb379.html",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
+  "KY:S110": {
+   "discovered": "2026-10-19",
+   "jurisdiction": "KY",
+   "number": "SB 110",
+   "source_url": "https://apps.legislature.ky.gov/record/26rs/sb110.html",
    "stage": "discovered",
    "via": "ledger:page_scan"
   },
@@ -462,6 +519,14 @@
    "jurisdiction": "MD",
    "number": "SB0405",
    "source_url": "https://mgaleg.maryland.gov/mgawebsite/Legislation/Details/sb0405?ys=2025RS&search=True",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
+  "MD:S949": {
+   "discovered": "2026-10-19",
+   "jurisdiction": "MD",
+   "number": "SB0949",
+   "source_url": "https://mgaleg.maryland.gov/mgawebsite/Legislation/Details/sb0949?ys=2025RS&search=True",
    "stage": "discovered",
    "via": "ledger:page_scan"
   },
@@ -542,6 +607,22 @@
    "jurisdiction": "MS",
    "number": "HB529",
    "source_url": "https://billstatus.ls.state.ms.us/documents/2025/pdf/HB/0500-0599/HB0529IN.pdf",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
+  "MS:S2258": {
+   "discovered": "2026-10-19",
+   "jurisdiction": "MS",
+   "number": "SB2258",
+   "source_url": "https://billstatus.ls.state.ms.us/documents/2025/pdf/SB/2200-2299/SB2258PS.pdf",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
+  "MS:S2259": {
+   "discovered": "2026-10-19",
+   "jurisdiction": "MS",
+   "number": "SB2259",
+   "source_url": "https://billstatus.ls.state.ms.us/documents/2025/pdf/SB/2200-2299/SB2259IN.pdf",
    "stage": "discovered",
    "via": "ledger:page_scan"
   },
@@ -6393,6 +6474,22 @@
    "stage": "discovered",
    "via": "ledger:page_scan"
   },
+  "TN:H2302": {
+   "discovered": "2026-10-19",
+   "jurisdiction": "TN",
+   "number": "HB2302",
+   "source_url": "https://wapp.capitol.tn.gov/apps/BillInfo/Default?BillNumber=HB2302&ga=114",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
+  "TN:H2450": {
+   "discovered": "2026-10-19",
+   "jurisdiction": "TN",
+   "number": "HB2450",
+   "source_url": "https://wapp.capitol.tn.gov/apps/BillInfo/Default?BillNumber=HB2450&ga=114",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
   "VA:H1124": {
    "discovered": "2026-10-17",
    "jurisdiction": "VA",
@@ -6558,6 +6655,14 @@
    "jurisdiction": "WI",
    "number": "AB848",
    "source_url": "https://docs.legis.wisconsin.gov/2025/proposals/reg/asm/bill/ab848",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
+  "WI:S831": {
+   "discovered": "2026-10-19",
+   "jurisdiction": "WI",
+   "number": "SB831",
+   "source_url": "https://docs.legis.wisconsin.gov/2025/proposals/reg/sen/bill/sb831",
    "stage": "discovered",
    "via": "ledger:page_scan"
   }
