@@ -1,80 +1,74 @@
-manufacturer_key,display_name,states,state_count,permit_count
-WAYMO,WAYMO LLC,"[""AZ"",""CA"",""CO"",""DC"",""FL"",""GA"",""MI"",""NV"",""PA"",""TN"",""TX"",""US"",""WA""]",13,25
-MAY MOBILITY,MAY MOBILITY,"[""AZ"",""CA"",""FL"",""GA"",""IN"",""MI"",""MN"",""TX"",""US""]",9,11
-ARGO AI,Argo AI,"[""CA"",""DC"",""FL"",""PA"",""TX"",""US""]",6,6
-BEEP,Beep,"[""AZ"",""CA"",""DC"",""FL"",""MS"",""WY""]",6,6
-ZOOX,ZOOX INC.,"[""CA"",""FL"",""NV"",""TX"",""US"",""WA""]",6,11
-AURORA,"AURORA OPERATIONS, INC.","[""AZ"",""CA"",""NM"",""TX"",""US""]",5,5
-FORD MOTOR COMPANY,Ford Motor Company,"[""CA"",""DC"",""FL"",""PA"",""TX""]",5,5
-KODIAK,KODIAK AI,"[""CA"",""OK"",""TX"",""US""]",4,4
-MOTIONAL,Motional,"[""MA"",""NV"",""PA"",""US""]",4,4
-NURO,"NURO, INC.","[""AZ"",""CA"",""TX"",""US""]",4,8
-STACK,Stack,"[""AZ"",""NM"",""PA"",""US""]",4,4
-TORC,Torc,"[""AZ"",""NM"",""TX"",""US""]",4,4
-TOYOTA MOTOR ENGINEERING & MANUFACTURING,Toyota Motor Engineering & Manufacturing,"[""AZ"",""IN"",""MI"",""TX""]",4,4
-TRANSDEV ALTERNATIVE SERVICES,Transdev Alternative Services,"[""AZ"",""CA"",""GA"",""TX""]",4,4
-CRUISE,Cruise,"[""AZ"",""CA"",""TX""]",3,4
-EASYMILE,EasyMile,"[""CO"",""MN"",""US""]",3,3
-GATIK,GATIK AI INC.,"[""AR"",""AZ"",""CA""]",3,4
-GENERAL MOTORS,"General Motors, LLC","[""AZ"",""CA"",""TX""]",3,3
-HYUNDAI MOTOR AMERICA,Hyundai Motor America,"[""CA"",""NV"",""OH""]",3,3
-MOIA AMERICA,MOIA America,"[""CA"",""FL"",""TX""]",3,4
-NVIDIA,NVIDIA CORPORATION,"[""CA"",""US"",""WA""]",3,4
-PLUS,"PLUSAI, INC.","[""CA"",""TX"",""US""]",3,3
-PONYAI,PONY.AI,"[""AZ"",""CA"",""US""]",3,4
-TESLA,Tesla,"[""AZ"",""FL"",""TX""]",3,3
-WAABI,Waabi,"[""AZ"",""TX"",""US""]",3,3
-WERIDE,WeRide AI,"[""CA"",""NV"",""US""]",3,7
-APPLE,Apple,"[""CA"",""US""]",2,2
-DAIMLER TRUCKS NORTH AMERICA,"Daimler Trucks North America, LLC","[""NM"",""TX""]",2,2
-MERCEDES-BENZ,MERCEDES-BENZ RESEARCH & DEVELOPMENT NORTH AMERICA,"[""CA"",""US""]",2,3
-NAVISTAR,"Navistar, Inc.","[""AZ"",""PA""]",2,2
-NAVYA,Navya,"[""FL"",""US""]",2,2
-PACCAR INCORPORATED,PACCAR Incorporated,"[""OK"",""TX""]",2,2
-ROBOTIC RESEARCH,Robotic Research,"[""GA"",""WY""]",2,2
-TUSIMPLE,TuSimple,"[""AZ"",""US""]",2,2
-VINFAST AUTO,"VinFast Auto, LLC","[""CA"",""WA""]",2,2
-AIMOTIVE,AIMOTIVE INC.,"[""CA""]",1,1
-AMBARELLA,Ambarella,"[""NV""]",1,1
-APOLLO AUTONOMOUS DRIVING USA,Apollo Autonomous Driving USA,"[""CA""]",1,1
-AUDI OF AMERICA,AUDI OF AMERICA,"[""CA""]",1,1
-AUTOMO USA,AutoMo USA LLC,"[""CA""]",1,2
-AUTONOMOUS A2Z,Autonomous a2z,"[""US""]",1,1
-AUTOX,AutoX,"[""US""]",1,1
-AUTOX TECHNOLOGIES,AutoX Technologies Inc,"[""CA""]",1,1
-AVRIDE,Avride Inc.,"[""TX""]",1,1
-CHRYSLER (FCA US LLC),"Chrysler (FCA US, LLC)","[""MI""]",1,1
-FIRST TRANSIT,First Transit,"[""MN""]",1,1
-FORD,Ford,"[""US""]",1,1
-GHOST AUTONOMY,Ghost Autonomy Inc.,"[""CA""]",1,1
-GM,GM,"[""US""]",1,1
-HELMAI,HELM.AI INC.,"[""CA""]",1,1
-IKE,Ike,"[""US""]",1,1
-IMAGRY,IMAGRY INC.,"[""CA""]",1,1
-KIA AMERICA,"Kia America, Inc.","[""MI""]",1,1
-LOCAL MOTORS,Local Motors,"[""US""]",1,1
-LOCAL MOTORS INDUSTRIES,Local Motors Industries,"[""WY""]",1,1
-LOCOMATION,Locomation,"[""US""]",1,1
-LUCID USA,"Lucid USA, Inc.","[""RI""]",1,1
-LYFT,Lyft,"[""US""]",1,1
-MARS AUTO,Mars Auto,"[""US""]",1,1
-MERCEDES-BENZ USA,"Mercedes-Benz USA, LLC","[""CA""]",1,1
-MOBILEYE VISION TECHNOLOGIES,Mobileye Vision Technologies,"[""TX""]",1,1
-NIKOLA,Nikola,"[""AZ""]",1,1
-NISSAN,NISSAN,"[""CA""]",1,1
-OHMIO,OHMIO INC.,"[""CA""]",1,2
-OPTIMUS RIDE,Optimus Ride,"[""MA""]",1,1
-OXBOTICA,Oxbotica,"[""FL""]",1,1
-QUALCOMM TECHNOLOGIES,"QUALCOMM TECHNOLOGIES, INC.","[""CA""]",1,1
-ROBERT BOSCH,"Robert Bosch, LLC","[""CA""]",1,1
-ROBOMART,Robomart,"[""US""]",1,1
-STARSKY ROBOTICS,Starsky Robotics,"[""US""]",1,1
-TELENAV,"TELENAV, INC.","[""CA""]",1,1
-TENSOR,TENSOR AUTO INC.,"[""CA""]",1,3
-TESLA ROBOTAXI,TESLA ROBOTAXI LLC,"[""CA""]",1,1
-UBER,Uber,"[""US""]",1,1
-VOLKSWAGEN,Volkswagen,"[""US""]",1,1
-VOLKSWAGEN GROUP OF AMERICA,"Volkswagen Group of America, Inc.","[""TX""]",1,1
-VOLVO CAR USA,"Volvo Car USA, LLC","[""FL""]",1,1
-VUERON TECHNOLOGY USA,"VUERON TECHNOLOGY USA, INC.","[""CA""]",1,1
-WOVEN BY TOYOTA,WOVEN BY TOYOTA,"[""CA""]",1,1
+manufacturer_key,display_name,states,state_count,permit_count,company_status,status_confidence,last_evidence_date,status_basis,status_source_url,status_reviewed_at
+WAYMO,WAYMO LLC,"[""AZ"",""CA"",""CO"",""DC"",""FL"",""GA"",""NV"",""PA"",""TN"",""TX"",""US"",""WA""]",12,24,active,inferred,2026-09,"Newest permit, registry or incident-filing evidence is from 2026-09.",,
+MAY MOBILITY,MAY MOBILITY,"[""AZ"",""CA"",""FL"",""GA"",""IN"",""MI"",""MN"",""TX"",""US""]",9,10,active,inferred,2026-09,"Newest permit, registry or incident-filing evidence is from 2026-09.",,
+ARGO AI,Argo AI,"[""CA"",""DC"",""FL"",""PA"",""TX"",""US""]",6,6,historical,confirmed,2022-10,NHTSA's Voluntary Safety Self-Assessment index marks this company's disclosure as removed (no longer active).,,
+BEEP,Beep,"[""AZ"",""CA"",""DC"",""FL"",""MS"",""WY""]",6,6,active,inferred,2026-09,"Newest permit, registry or incident-filing evidence is from 2026-09.",,
+ZOOX,ZOOX INC.,"[""CA"",""FL"",""NV"",""TX"",""US"",""WA""]",6,11,active,inferred,2026-09,"Newest permit, registry or incident-filing evidence is from 2026-09.",,
+AURORA,"AURORA OPERATIONS, INC.","[""AZ"",""CA"",""NM"",""TX"",""US""]",5,5,active,inferred,2026-09,"Newest permit, registry or incident-filing evidence is from 2026-09.",,
+FORD MOTOR COMPANY,Ford Motor Company,"[""CA"",""DC"",""FL"",""PA"",""TX""]",5,5,historical,inferred,2022-10,"No permit, registry or incident-filing evidence since 2022-10 (24+ months). Inferred from the absence of recent evidence; incident filings only cover crashes, so this is not proof the program ended.",,
+KODIAK,KODIAK AI,"[""CA"",""OK"",""TX"",""US""]",4,4,active,inferred,2026-09,"Newest permit, registry or incident-filing evidence is from 2026-09.",,
+MOTIONAL,Motional,"[""MA"",""NV"",""PA"",""US""]",4,4,active,inferred,2026-08,"Newest permit, registry or incident-filing evidence is from 2026-08.",,
+NURO,"NURO, INC.","[""AZ"",""CA"",""TX"",""US""]",4,8,active,inferred,2026-09,"Newest permit, registry or incident-filing evidence is from 2026-09.",,
+STACK,Stack,"[""AZ"",""NM"",""PA"",""US""]",4,4,active,inferred,2026-09,"Newest permit, registry or incident-filing evidence is from 2026-09.",,
+TORC,Torc,"[""AZ"",""NM"",""TX"",""US""]",4,4,active,inferred,2026-09,"Newest permit, registry or incident-filing evidence is from 2026-09.",,
+TRANSDEV ALTERNATIVE SERVICES,Transdev Alternative Services,"[""AZ"",""CA"",""GA"",""TX""]",4,4,active,inferred,2025-02,"Newest permit, registry or incident-filing evidence is from 2025-02.",,
+CRUISE,Cruise,"[""AZ"",""CA"",""TX""]",3,4,historical,confirmed,2026-09,NHTSA's closing resume for investigation PE23018 states Cruise has since ceased business operations and no versions of its ADS are operating on public roads.,https://static.nhtsa.gov/odi/inv/2023/INCLA-PE23018-11022.pdf,2026-10-19
+EASYMILE,EasyMile,"[""CO"",""MN"",""US""]",3,3,historical,inferred,2022-08,"No permit, registry or incident-filing evidence since 2022-08 (24+ months). Inferred from the absence of recent evidence; incident filings only cover crashes, so this is not proof the program ended.",,
+GATIK,GATIK AI INC.,"[""AR"",""AZ"",""CA""]",3,4,active,inferred,2026-09,"Newest permit, registry or incident-filing evidence is from 2026-09.",,
+GENERAL MOTORS,"General Motors, LLC","[""AZ"",""CA"",""TX""]",3,3,active,inferred,2024-11,"Newest permit, registry or incident-filing evidence is from 2024-11.",,
+MOIA AMERICA,MOIA America,"[""CA"",""FL"",""TX""]",3,4,active,inferred,2026-09,"Newest permit, registry or incident-filing evidence is from 2026-09.",,
+NVIDIA,NVIDIA CORPORATION,"[""CA"",""US"",""WA""]",3,4,active,inferred,2026-09,"Newest permit, registry or incident-filing evidence is from 2026-09.",,
+PLUS,"PLUSAI, INC.","[""CA"",""TX"",""US""]",3,3,active,inferred,2026-09,"Newest permit, registry or incident-filing evidence is from 2026-09.",,
+PONYAI,PONY.AI,"[""AZ"",""CA"",""US""]",3,4,active,inferred,2026-09,"Newest permit, registry or incident-filing evidence is from 2026-09.",,
+TESLA,Tesla,"[""AZ"",""FL"",""TX""]",3,3,active,inferred,2026-09,"Newest permit, registry or incident-filing evidence is from 2026-09.",,
+TOYOTA MOTOR ENGINEERING & MANUFACTURING,Toyota Motor Engineering & Manufacturing,"[""AZ"",""IN"",""TX""]",3,3,historical,inferred,2022-10,"No permit, registry or incident-filing evidence since 2022-10 (24+ months). Inferred from the absence of recent evidence; incident filings only cover crashes, so this is not proof the program ended.",,
+WAABI,Waabi,"[""AZ"",""TX"",""US""]",3,3,active,inferred,2026-09,"Newest permit, registry or incident-filing evidence is from 2026-09.",,
+WERIDE,WeRide AI,"[""CA"",""NV"",""US""]",3,7,active,inferred,2026-09,"Newest permit, registry or incident-filing evidence is from 2026-09.",,
+APPLE,Apple,"[""CA"",""US""]",2,2,historical,inferred,2022-06,"No permit, registry or incident-filing evidence since 2022-06 (24+ months). Inferred from the absence of recent evidence; incident filings only cover crashes, so this is not proof the program ended.",,
+DAIMLER TRUCKS NORTH AMERICA,"Daimler Trucks North America, LLC","[""NM"",""TX""]",2,2,historical,inferred,2023-12,"No permit, registry or incident-filing evidence since 2023-12 (24+ months). Inferred from the absence of recent evidence; incident filings only cover crashes, so this is not proof the program ended.",,
+HYUNDAI MOTOR AMERICA,Hyundai Motor America,"[""CA"",""NV""]",2,2,active,inferred,2025-02,"Newest permit, registry or incident-filing evidence is from 2025-02.",,
+MERCEDES-BENZ,MERCEDES-BENZ RESEARCH & DEVELOPMENT NORTH AMERICA,"[""CA"",""US""]",2,3,active,inferred,2026-09,"Newest permit, registry or incident-filing evidence is from 2026-09.",,
+NAVISTAR,"Navistar, Inc.","[""AZ"",""PA""]",2,2,historical,inferred,2022-06,"No permit, registry or incident-filing evidence since 2022-06 (24+ months). Inferred from the absence of recent evidence; incident filings only cover crashes, so this is not proof the program ended.",,
+PACCAR INCORPORATED,PACCAR Incorporated,"[""OK"",""TX""]",2,2,active,inferred,2025-05,"Newest permit, registry or incident-filing evidence is from 2025-05.",,
+ROBOTIC RESEARCH,Robotic Research,"[""GA"",""WY""]",2,2,historical,inferred,2023-01,"No permit, registry or incident-filing evidence since 2023-01 (24+ months). Inferred from the absence of recent evidence; incident filings only cover crashes, so this is not proof the program ended.",,
+TUSIMPLE,TuSimple,"[""AZ"",""US""]",2,2,historical,confirmed,2022-04,NHTSA's Voluntary Safety Self-Assessment index marks this company's disclosure as removed (no longer active).,,
+VINFAST AUTO,"VinFast Auto, LLC","[""CA"",""WA""]",2,2,active,inferred,2024-10,"Newest permit, registry or incident-filing evidence is from 2024-10.",,
+AIMOTIVE,AIMOTIVE INC.,"[""CA""]",1,1,active,inferred,2026-09,"Newest permit, registry or incident-filing evidence is from 2026-09.",,
+APOLLO AUTONOMOUS DRIVING USA,Apollo Autonomous Driving USA,"[""CA""]",1,1,historical,inferred,2023-10,"No permit, registry or incident-filing evidence since 2023-10 (24+ months). Inferred from the absence of recent evidence; incident filings only cover crashes, so this is not proof the program ended.",,
+AUDI OF AMERICA,AUDI OF AMERICA,"[""CA""]",1,1,active,inferred,2026-09,"Newest permit, registry or incident-filing evidence is from 2026-09.",,
+AUTOMO USA,AutoMo USA LLC,"[""CA""]",1,2,active,inferred,2026-09,"Newest permit, registry or incident-filing evidence is from 2026-09.",,
+AUTONOMOUS A2Z,Autonomous a2z,"[""US""]",1,1,unknown,inferred,,"No dated permit, registry or incident-filing evidence.",,
+AUTOX,AutoX,"[""US""]",1,1,historical,confirmed,,NHTSA's Voluntary Safety Self-Assessment index marks this company's disclosure as removed (no longer active).,,
+AUTOX TECHNOLOGIES,AutoX Technologies Inc,"[""CA""]",1,1,active,inferred,2025-02,"Newest permit, registry or incident-filing evidence is from 2025-02.",,
+AVRIDE,Avride Inc.,"[""TX""]",1,1,active,inferred,2026-08,"Newest permit, registry or incident-filing evidence is from 2026-08.",,
+FIRST TRANSIT,First Transit,"[""MN""]",1,1,historical,inferred,2022-08,"No permit, registry or incident-filing evidence since 2022-08 (24+ months). Inferred from the absence of recent evidence; incident filings only cover crashes, so this is not proof the program ended.",,
+FORD,Ford,"[""US""]",1,1,unknown,inferred,,"No dated permit, registry or incident-filing evidence.",,
+GHOST AUTONOMY,Ghost Autonomy Inc.,"[""CA""]",1,1,historical,inferred,2024-01,"No permit, registry or incident-filing evidence since 2024-01 (24+ months). Inferred from the absence of recent evidence; incident filings only cover crashes, so this is not proof the program ended.",,
+GM,GM,"[""US""]",1,1,unknown,inferred,,"No dated permit, registry or incident-filing evidence.",,
+HELMAI,HELM.AI INC.,"[""CA""]",1,1,active,inferred,2026-09,"Newest permit, registry or incident-filing evidence is from 2026-09.",,
+IKE,Ike,"[""US""]",1,1,unknown,inferred,,"No dated permit, registry or incident-filing evidence.",,
+IMAGRY,IMAGRY INC.,"[""CA""]",1,1,active,inferred,2026-09,"Newest permit, registry or incident-filing evidence is from 2026-09.",,
+LOCAL MOTORS,Local Motors,"[""US""]",1,1,historical,confirmed,,NHTSA's Voluntary Safety Self-Assessment index marks this company's disclosure as removed (no longer active).,,
+LOCAL MOTORS INDUSTRIES,Local Motors Industries,"[""WY""]",1,1,historical,inferred,2021-09,"No permit, registry or incident-filing evidence since 2021-09 (24+ months). Inferred from the absence of recent evidence; incident filings only cover crashes, so this is not proof the program ended.",,
+LOCOMATION,Locomation,"[""US""]",1,1,historical,confirmed,,NHTSA's Voluntary Safety Self-Assessment index marks this company's disclosure as removed (no longer active).,,
+LYFT,Lyft,"[""US""]",1,1,historical,confirmed,,NHTSA's Voluntary Safety Self-Assessment index marks this company's disclosure as removed (no longer active).,,
+MARS AUTO,Mars Auto,"[""US""]",1,1,unknown,inferred,,"No dated permit, registry or incident-filing evidence.",,
+MERCEDES-BENZ USA,"Mercedes-Benz USA, LLC","[""CA""]",1,1,active,inferred,2025-03,"Newest permit, registry or incident-filing evidence is from 2025-03.",,
+MOBILEYE VISION TECHNOLOGIES,Mobileye Vision Technologies,"[""TX""]",1,1,active,inferred,2024-11,"Newest permit, registry or incident-filing evidence is from 2024-11.",,
+NAVYA,Navya,"[""US""]",1,1,unknown,inferred,,"No dated permit, registry or incident-filing evidence.",,
+NIKOLA,Nikola,"[""AZ""]",1,1,active,inferred,2026-09,"Newest permit, registry or incident-filing evidence is from 2026-09.",,
+NISSAN,NISSAN,"[""CA""]",1,1,active,inferred,2026-09,"Newest permit, registry or incident-filing evidence is from 2026-09.",,
+OHMIO,OHMIO INC.,"[""CA""]",1,2,active,inferred,2026-09,"Newest permit, registry or incident-filing evidence is from 2026-09.",,
+OPTIMUS RIDE,Optimus Ride,"[""MA""]",1,1,historical,inferred,2021-09,"No permit, registry or incident-filing evidence since 2021-09 (24+ months). Inferred from the absence of recent evidence; incident filings only cover crashes, so this is not proof the program ended.",,
+OXBOTICA,Oxbotica,"[""FL""]",1,1,active,inferred,2025-06,"Newest permit, registry or incident-filing evidence is from 2025-06.",,
+QUALCOMM TECHNOLOGIES,"QUALCOMM TECHNOLOGIES, INC.","[""CA""]",1,1,active,inferred,2026-09,"Newest permit, registry or incident-filing evidence is from 2026-09.",,
+ROBOMART,Robomart,"[""US""]",1,1,historical,confirmed,,NHTSA's Voluntary Safety Self-Assessment index marks this company's disclosure as removed (no longer active).,,
+STARSKY ROBOTICS,Starsky Robotics,"[""US""]",1,1,historical,confirmed,,NHTSA's Voluntary Safety Self-Assessment index marks this company's disclosure as removed (no longer active).,,
+TELENAV,"TELENAV, INC.","[""CA""]",1,1,active,inferred,2026-09,"Newest permit, registry or incident-filing evidence is from 2026-09.",,
+TENSOR,TENSOR AUTO INC.,"[""CA""]",1,3,active,inferred,2026-09,"Newest permit, registry or incident-filing evidence is from 2026-09.",,
+TESLA ROBOTAXI,TESLA ROBOTAXI LLC,"[""CA""]",1,1,active,inferred,2026-09,"Newest permit, registry or incident-filing evidence is from 2026-09.",,
+UBER,Uber,"[""US""]",1,1,historical,confirmed,,NHTSA's Voluntary Safety Self-Assessment index marks this company's disclosure as removed (no longer active).,,
+VOLKSWAGEN,Volkswagen,"[""US""]",1,1,unknown,inferred,,"No dated permit, registry or incident-filing evidence.",,
+VOLKSWAGEN GROUP OF AMERICA,"Volkswagen Group of America, Inc.","[""TX""]",1,1,historical,inferred,2024-07,"No permit, registry or incident-filing evidence since 2024-07 (24+ months). Inferred from the absence of recent evidence; incident filings only cover crashes, so this is not proof the program ended.",,
+VUERON TECHNOLOGY USA,"VUERON TECHNOLOGY USA, INC.","[""CA""]",1,1,active,inferred,2026-09,"Newest permit, registry or incident-filing evidence is from 2026-09.",,
+WOVEN BY TOYOTA,WOVEN BY TOYOTA,"[""CA""]",1,1,active,inferred,2026-09,"Newest permit, registry or incident-filing evidence is from 2026-09.",,
