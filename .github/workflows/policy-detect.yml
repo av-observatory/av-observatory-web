@@ -25,7 +25,9 @@ jobs:
           python-version: "3.12"
       - run: pip install --quiet pypdf playwright && playwright install --with-deps chromium
       - name: List candidates
-        run: python3 scripts/refresh-policy.py --dry-run | tee candidates.txt
+        run: |
+          set -o pipefail
+          python3 scripts/refresh-policy.py --dry-run | tee candidates.txt
       - name: Keep one tracking issue current
         run: |
           title="Policy tracker: candidates awaiting review"

@@ -97,6 +97,12 @@ def http_bytes(url: str, ua: str, timeout: int = 30):
         return None, f"{exc.__class__.__name__}{':' + str(code) if code else ''}"
 
 
+def get(url: str):
+    """Plain JSON/text GET for API endpoints; None on any failure (never treated as a change)."""
+    raw, _err = http_bytes(url, "AVObservatory/1.0 (public research)")
+    return raw.decode("utf-8", errors="replace") if raw else None
+
+
 def raw_to_text(raw: bytes) -> str | None:
     if raw[:4] == b"%PDF":
         try:
