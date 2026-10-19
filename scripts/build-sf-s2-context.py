@@ -31,5 +31,5 @@ out = {'schema_version':'1.0.0','period_start':'2026-01-01','period_end':'2026-0
     'annual_limit':'A matching San Francisco county S2 baseline for March 2025 is not in the archived county-coded files; the past-year 311 count is shown without a one-year miles rate.'}
 (DATA/'sf_311_waymo_s2_context.json').write_text(json.dumps(out,indent=2)+'\n')
 with (DATA/'sf_311_waymo_s2_context.csv').open('w',newline='') as handle:
-    writer=csv.DictWriter(handle,fieldnames=out.keys());writer.writeheader();writer.writerow(out)
+    writer=csv.DictWriter(handle,fieldnames=out.keys(),lineterminator='\n');writer.writeheader();writer.writerow(out)
 print(out)
