@@ -1,0 +1,43 @@
+name: Detect policy changes (no AI credits)
+
+# Model-free companion to policy-refresh.yml. It lists the policy-tracker
+# candidates (new Federal Register documents, newly enacted state laws, changed
+# source pages) without calling any model, and keeps ONE open issue with that
+# list so a maintainer session can review and apply them. It never edits data.
+on:
+  schedule:
+    - cron: "23 8 */3 * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  detect:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: "3.12"
+      - run: pip install --quiet pypdf playwright && playwright install --with-deps chromium
+      - name: List candidates
+        run: python3 scripts/refresh-policy.py --dry-run | tee candidates.txt
+      - name: Keep one tracking issue current
+        run: |
+          title="Policy tracker: candidates awaiting review"
+          n=$(grep -Eo '^[0-9]+ candidate' candidates.txt | cut -d' ' -f1)
+          num=$(gh issue list --state open --search "\"$title\" in:title" --json number -q '.[0].number')
+          if [ "${n:-0}" = "0" ]; then
+            [ -n "$num" ] && gh issue close "$num" --comment "No candidates as of $(date -u +%F)."
+            exit 0
+          fi
+          body="Detected $(date -u +%F) without AI credits. Review each against its official source, then update the tracker.
+
+          \`\`\`
+          $(cat candidates.txt)
+          \`\`\`"
+          if [ -n "$num" ]; then gh issue edit "$num" --body "$body"; else gh issue create --title "$title" --body "$body"; fi
