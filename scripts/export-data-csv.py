@@ -122,6 +122,8 @@ def main():
                 export(stem + "_countries.csv", data["countries"], output)
             export(stem + "_reporting_options.csv", data["reporting_options"], output)
             export(stem + "_unresolved_leads.csv", data["unresolved_leads"], output)
+            if data.get("media_watch"):
+                export(stem + "_media_watch.csv", data["media_watch"], output)
         elif stem == "av_311_source_registry":
             export(stem + ".csv", data["states"], output)
         elif stem == "ca_waymo_sgo_rates":

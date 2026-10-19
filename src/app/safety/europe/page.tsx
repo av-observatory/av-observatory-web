@@ -16,6 +16,13 @@ type UnresolvedLead = {
   sources:string[];
 };
 
+type MediaWatch = {
+  title:string;
+  publisher:string;
+  published:string;
+  url:string;
+};
+
 type ReportingOption = {
   source:string;
   scope:string;
@@ -34,6 +41,8 @@ type EuropeCrashDataset = {
   incidents:EuropeCrashIncident[];
   countries:EuropeCountry[];
   unresolved_leads:UnresolvedLead[];
+  media_watch?:MediaWatch[];
+  media_watch_checked_at?:string;
   reporting_options:ReportingOption[];
 };
 
@@ -90,6 +99,19 @@ export default async function EuropeSafetyPage(){
           <div className="flex flex-wrap gap-3 mt-3">{row.sources.map((url,i)=><a key={url} href={url} target="_blank" rel="noreferrer" className="text-sm text-[#184f95] underline">Source {i+1} ↗</a>)}</div>
         </article>)}
       </div>
+    </section>
+
+    <section className="mt-8">
+      <h2 className="text-xl font-semibold tracking-tight">Latest Media Reports (Automated, Unverified)</h2>
+      <p className="text-sm text-neutral-600 mt-1 max-w-4xl">Headlines about possible European automated-driving crashes, collected automatically in several languages{data.media_watch_checked_at?` and last checked ${data.media_watch_checked_at}`:""}. They are not counted as crashes or in the totals above until reviewed against primary or multiple sources, and some are not crash reports at all.</p>
+      <ul className="mt-4 space-y-2">
+        {(data.media_watch??[]).length===0&&<li className="text-sm text-neutral-600">No new matching headlines in the review window.</li>}
+        {(data.media_watch??[]).slice(0,25).map(row=><li key={row.url} className="viz-card p-3 text-sm">
+          <span className="text-neutral-500">{row.published} · {row.publisher||"News"}</span>
+          <a href={row.url} target="_blank" rel="noreferrer" className="block text-[#184f95] underline mt-0.5">{row.title} ↗</a>
+        </li>)}
+      </ul>
+      {data.media_watch&&data.media_watch.length>0&&<a href="/data/europe_crash_tracker_media_watch.csv" className="inline-block text-sm text-[#184f95] underline mt-3">Download media watch CSV ↗</a>}
     </section>
 
     <section className="mt-8 mb-10">
