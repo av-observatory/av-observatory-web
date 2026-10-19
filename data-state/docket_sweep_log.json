@@ -14,9 +14,9 @@
   "unreadable": "insufficient_official_html / (searched 1 pages)"
  },
  "AL": {
-  "attempted": "2026-10-18",
+  "attempted": "2026-10-19",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "official site search is a JavaScript app; no AV results retrievable"
  },
  "AR": {
   "attempted": "2026-10-18",
@@ -41,9 +41,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "CA": {
-  "attempted": "2026-10-18",
+  "attempted": "2026-10-19",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "leginfo returned HTTP 403 to WebFetch"
  },
  "CO": {
   "attempted": "2026-10-18",
@@ -59,9 +59,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "DC": {
-  "attempted": "2026-10-18",
+  "attempted": "2026-10-19",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "LIMS search not queryable via fetch; only known B26-0684 already tracked"
  },
  "DE": {
   "attempted": "2026-10-18",
@@ -85,9 +85,9 @@
   "unreadable": "insufficient_official_html / (searched 1 pages)"
  },
  "GA": {
-  "attempted": "2026-10-18",
+  "attempted": "2026-10-19",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "legis.ga.gov search renders only 'Loading...'; web search found no 2025-26 AV bill on official site"
  },
  "HI": {
   "attempted": "2026-10-18",
@@ -111,9 +111,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "ID": {
-  "attempted": "2026-10-18",
+  "attempted": "2026-10-19",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "subject index truncated; no AV title seen but full-text search not usable"
  },
  "IL": {
   "attempted": "2026-10-18",
@@ -129,9 +129,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "KS": {
-  "attempted": "2026-10-18",
+  "attempted": "2026-10-19",
   "searched": 1,
-  "unreadable": "insufficient_official_html / (searched 1 pages)"
+  "unreadable": "kslegislature.gov measure list/search renders only 'Loading...'"
  },
  "KY": {
   "attempted": "2026-10-18",
@@ -152,9 +152,22 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "MA": {
-  "attempted": "2026-10-18",
-  "searched": 1,
-  "unreadable": "insufficient_official_html / (searched 1 pages)"
+  "attempted": "2026-10-19",
+  "bills_found": [
+   "H 1280",
+   "H 3634",
+   "H 3649",
+   "H 3669",
+   "S 2379",
+   "S 2393",
+   "S 3245 (study order, not a bill)"
+  ],
+  "checked": "2026-10-19",
+  "sources_read": [
+   "https://malegislature.gov/Bills/Search?SearchTerms=autonomous+vehicle",
+   "https://malegislature.gov/Bills/194/S3245"
+  ],
+  "unreadable": null
  },
  "MD": {
   "attempted": "2026-10-18",
@@ -172,9 +185,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "MI": {
-  "attempted": "2026-10-18",
+  "attempted": "2026-10-19",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "legislature.mi.gov search not retrievable; web search found no 2025-26 bill"
  },
  "MN": {
   "attempted": "2026-10-18",
@@ -195,9 +208,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "MS": {
-  "attempted": "2026-10-18",
+  "attempted": "2026-10-19",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "billstatus.ls.state.ms.us returned HTTP 503; candidate SB 2269 (2026, reported signed 2026-03-13 by third-party trackers) NOT verified officially"
  },
  "MT": {
   "attempted": "2026-10-18",
@@ -217,9 +230,9 @@
   "unreadable": "insufficient_official_html / (searched 1 pages)"
  },
  "ND": {
-  "attempted": "2026-10-18",
+  "attempted": "2026-10-19",
   "searched": 1,
-  "unreadable": "insufficient_official_html / (searched 1 pages)"
+  "unreadable": "search not usable; only HB 1614 (2025, study, failed in Senate 2026-03-31) read on ndlegis.gov"
  },
  "NE": {
   "attempted": "2026-10-18",
@@ -237,9 +250,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "NJ": {
-  "attempted": "2026-10-18",
+  "attempted": "2026-10-19",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "njleg.state.nj.us search returned 404"
  },
  "NM": {
   "attempted": "2026-10-18",
@@ -261,9 +274,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "NY": {
-  "attempted": "2026-10-18",
+  "attempted": "2026-10-19",
   "searched": 1,
-  "unreadable": "insufficient_official_html / (searched 1 pages)"
+  "unreadable": "nysenate.gov search is an empty JavaScript form"
  },
  "OH": {
   "attempted": "2026-10-18",
@@ -281,9 +294,9 @@
   "unreadable": "insufficient_official_html / (searched 1 pages)"
  },
  "OR": {
-  "attempted": "2026-10-18",
+  "attempted": "2026-10-19",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "OLIS lists only bill-range menus; no full-text search retrievable"
  },
  "PA": {
   "attempted": "2026-10-18",
@@ -301,9 +314,9 @@
   "unreadable": "insufficient_official_html / (searched 1 pages)"
  },
  "SC": {
-  "attempted": "2026-10-18",
+  "attempted": "2026-10-19",
   "searched": 1,
-  "unreadable": "insufficient_official_html / (searched 1 pages)"
+  "unreadable": "scstatehouse.gov search form returned no results; candidate H 3944 unverified"
  },
  "SD": {
   "attempted": "2026-10-18",
@@ -323,9 +336,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "TX": {
-  "attempted": "2026-10-18",
+  "attempted": "2026-10-19",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "capitol.texas.gov host not reachable (ENOTFOUND); candidate SB 2807 (2025) NOT verified officially"
  },
  "UT": {
   "attempted": "2026-10-18",
@@ -345,9 +358,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "VT": {
-  "attempted": "2026-10-18",
+  "attempted": "2026-10-19",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "legislature.vermont.gov search results empty"
  },
  "WA": {
   "attempted": "2026-10-18",
@@ -369,9 +382,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "WV": {
-  "attempted": "2026-10-18",
+  "attempted": "2026-10-19",
   "searched": 1,
-  "unreadable": "insufficient_official_html / (searched 1 pages)"
+  "unreadable": "bill search not usable; HB 4787 read is not an AV bill"
  },
  "WY": {
   "attempted": "2026-10-18",
