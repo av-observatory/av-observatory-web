@@ -3162,6 +3162,24 @@
       "source_tier": "auto",
       "review_status": "auto_collected",
       "date_precision": "day"
+    },
+    {
+      "id": "auto-ny-s9008-2026",
+      "level": "state",
+      "jurisdiction": "New York",
+      "title": "S.9008-C / A.10008-C (2026): budget bill with for-hire autonomous vehicle rules outside NYC",
+      "summary": "New York S.9008-C / A.10008-C (2026), the transportation, economic development and environmental conservation budget bill, includes rules for for-hire autonomous vehicles outside New York City, among many other budget provisions. The official Senate page lists it as signed (chapter 58) after Senate passage on May 26, 2026; the specific AV provisions and effective date were not read in the portion of the page retrieved.",
+      "takeaway": "New York S.9008-C / A.10008-C (2026), the transportation, economic development and environmental conservation budget bill, includes rules for for-hire autonomous vehicles outside New York City, among many other budget provisions. The official Senate page lists it as signed (chapter 58) after Senate passage on May 26, 2026; the specific AV provisions and effective date were not read in the portion of the page retrieved.",
+      "instrument": "legislation",
+      "status": "historical_status_unverified",
+      "date": "2026-05-26",
+      "source_url": "https://www.nysenate.gov/legislation/bills/2025/S9008",
+      "verified_at": "2026-10-19",
+      "state": "NY",
+      "source_label": "New York State Senate, S.9008 (2025-2026)",
+      "source_tier": "auto",
+      "review_status": "auto_collected",
+      "date_precision": "day"
     }
   ],
   "city_events": [
