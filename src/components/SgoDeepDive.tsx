@@ -5,6 +5,7 @@ import {
   BarChart, Bar, LabelList, XAxis, YAxis, CartesianGrid, Tooltip,
   ResponsiveContainer,
 } from "recharts";
+import { isCompleteSgoMonth } from "@/lib/safety";
 import { GRID_PROPS, AXIS_PROPS, TOOLTIP_PROPS, SERIES } from "@/lib/chartTheme";
 
 export type SgoIncidentRow = {
@@ -36,7 +37,7 @@ function complete(r:SgoIncidentRow) {
   const match = /^(JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)-(\d{4})$/i.exec(r.incident_date || "");
   if (!match) return false; // Undated events remain in canonical source, not in dated analyses.
   const month = ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"].indexOf(match[1].toUpperCase())+1;
-  return Number(match[2]) < 2026 || (Number(match[2])===2026 && month<=7);
+  return isCompleteSgoMonth(Number(match[2]), month);
 }
 function countBy(rows:SgoIncidentRow[], key:keyof SgoIncidentRow, limit=12, label=(s:string)=>s) {
   const m=new Map<string,number>();

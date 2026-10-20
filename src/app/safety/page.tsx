@@ -8,6 +8,7 @@ import { SafetyExplorer } from "@/components/SafetyExplorer";
 import { UsStateMap } from "@/components/UsStateMap";
 import { TopEntitiesChart } from "@/components/SafetyCharts";
 import { SgoDeepDive, SgoIncidentRow } from "@/components/SgoDeepDive";
+import { SgoCompanyExplorer } from "@/components/SgoCompanyExplorer";
 import { SgoSeriousCrashList, type MediaLink, type SeriousCrash, type MediaContext, type ReviewedSource } from "@/components/SgoSeriousCrashList";
 
 async function loadJson<T>(filename: string): Promise<T> {
@@ -187,6 +188,8 @@ export default async function SafetyPage() {
         mediaLinks={Object.fromEntries(Object.entries(mediaLinkStore.crashes).map(([k, v]) => [k, v.media]))}
         excludedMonth={excludedLabel}
       />
+
+      <SgoCompanyExplorer rows={canonicalCrashes} serious={seriousCases} mediaLinks={Object.fromEntries(Object.entries(mediaLinkStore.crashes).map(([k, v]) => [k, v.media]))} />
 
       <section className="mt-7">
         <div className="mb-2">
