@@ -8,6 +8,7 @@ import { SafetyExplorer } from "@/components/SafetyExplorer";
 import { UsStateMap } from "@/components/UsStateMap";
 import { TopEntitiesChart } from "@/components/SafetyCharts";
 import type { SgoIncidentRow } from "@/components/SgoDeepDive";
+import { SgoCompanyMix } from "@/components/SgoCompanyMix";
 import { SgoCompanyExplorer } from "@/components/SgoCompanyExplorer";
 import { SgoSeriousCrashList, type MediaLink, type SeriousCrash, type MediaContext, type ReviewedSource } from "@/components/SgoSeriousCrashList";
 
@@ -166,6 +167,7 @@ export default async function SafetyPage() {
       <section id="trends" className="mt-7">
         <h2 className="text-xl font-semibold tracking-tight">Reported Crashes Over Time</h2>
         <div className="viz-card p-4 mt-2"><SafetyExplorer data={sgo} /></div>
+        <SgoCompanyMix rows={canonicalCrashes} />
       </section>
 
       <section id="geography" className="mt-5 grid lg:grid-cols-5 gap-3">

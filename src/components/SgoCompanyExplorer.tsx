@@ -1,8 +1,9 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { Bar, BarChart, CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis, Area, AreaChart } from "recharts";
-import { AXIS_PROPS, GRID_PROPS, LEGEND_PROPS, SERIES, SERIES_ORDER, TOOLTIP_PROPS } from "@/lib/chartTheme";
+import { Bar, BarChart, CartesianGrid, Legend, ReferenceLine, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+import { eventsFor, markerNumbers } from "@/lib/trendEvents";
+import { AXIS_PROPS, GRID_PROPS, LEGEND_PROPS, SERIES, TOOLTIP_PROPS } from "@/lib/chartTheme";
 import { useMonthAxis } from "@/components/MonthAxis";
 import { isCompleteSgoMonth } from "@/lib/safety";
 import { monthLabel } from "@/lib/activity";
@@ -95,19 +96,9 @@ export function SgoCompanyExplorer({ rows, serious }: { rows: SgoIncidentRow[]; 
 
   const monthly = useMemo(() => months.map(ym => ({ label: label(ym), crashes: mine.filter(r => r.ym === ym).length })), [months, mine]);
   const monthlyAxis = useMonthAxis(monthly.length);
+  const companyEvents = useMemo(() => eventsFor(e => e.companies.length === 0 || e.companies.includes(current?.name ?? ""), new Set(monthly.map(m => m.label))), [monthly, current]);
+  const peak = useMemo(() => monthly.reduce((a, m) => (m.crashes > a.crashes ? m : a), { label: "", crashes: 0 }), [monthly]);
 
-  const topNames = companies.slice(0, 6).map(c => c.name);
-  const mix = useMemo(() => months.map(ym => {
-    const row: Record<string, number | string> = { label: label(ym) };
-    let other = 0;
-    for (const c of companies) {
-      const n = c.rows.filter(r => r.ym === ym).length;
-      if (topNames.includes(c.name)) row[c.name] = n; else other += n;
-    }
-    row["All others"] = other;
-    return row;
-  }), [months, companies]);
-  const mixAxis = useMonthAxis(mix.length);
 
   const table = useMemo(() => companies.map(c => {
     const sev = c.rows.filter(r => ["Serious", "Fatal"].includes(severityBucket(r.highest_injury_severity))).length;
@@ -165,9 +156,17 @@ export function SgoCompanyExplorer({ rows, serious }: { rows: SgoIncidentRow[]; 
 
     <div className="viz-card p-4 mt-3"><div className="font-semibold">{current.name}: reported crashes by incident month</div>
       <ResponsiveContainer width="100%" height={260} onResize={monthlyAxis.onResize}>
-        <BarChart data={monthly} margin={{ top: 8, right: 16, bottom: 8, left: 8 }}><CartesianGrid {...GRID_PROPS} /><XAxis dataKey="label" {...monthlyAxis.axis} /><YAxis {...AXIS_PROPS} allowDecimals={false} />
-          <Tooltip {...TOOLTIP_PROPS} /><Bar dataKey="crashes" name="Reported crashes" fill={SERIES.blue} /></BarChart>
-      </ResponsiveContainer></div>
+        <BarChart data={monthly} margin={{ top: 22, right: 16, bottom: 8, left: 8 }}><CartesianGrid {...GRID_PROPS} /><XAxis dataKey="label" {...monthlyAxis.axis} /><YAxis {...AXIS_PROPS} allowDecimals={false} />
+          <Tooltip {...TOOLTIP_PROPS} />{markerNumbers(companyEvents).map(m => <ReferenceLine key={m.label} x={m.label} stroke="#8a97a6" strokeDasharray="3 3" label={{ value: m.text, position: "top", fill: "#123b69", fontSize: 12, fontWeight: 700 }} />)}<Bar dataKey="crashes" name="Reported crashes" fill={SERIES.blue} /></BarChart>
+      </ResponsiveContainer>
+      <div className="mt-3 border-t border-[#dce5ec] pt-3">
+        <div className="text-sm font-semibold text-[#152b45]">What explains the shifts</div>
+        <p className="text-xs text-neutral-500 mt-0.5">From the data: {mine.length.toLocaleString()} reported crashes, busiest month {peak.label} ({peak.crashes}), reports run {label(Math.min(...mine.map(r => r.ym)))} to {label(Math.max(...mine.map(r => r.ym)))}. Numbered markers are context from public sources, not proven causes.</p>
+        {companyEvents.length === 0 ? <p className="text-sm text-neutral-600 mt-2">No sourced operating or rule changes are logged for this company yet.</p> :
+          <ol className="mt-2 space-y-2">{companyEvents.map(e => <li key={e.month + e.title} className="flex gap-2.5 text-sm">
+            <span className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#123b69] text-xs font-bold text-white">{e.n}</span>
+            <span><strong className="text-[#152b45]">{e.label} · {e.title}.</strong> <span className="text-neutral-700">{e.text}</span> <a href={e.source_url} target="_blank" rel="noreferrer" className="text-[#184f95] underline">{e.source_label} ↗</a></span></li>)}</ol>}
+      </div></div>
 
     <div className="grid lg:grid-cols-2 gap-3 mt-3">
       <Compare title="Injury severity" subtitle={`${current.name} vs all ADS crashes`} keys={sevMine.keys} mine={sevMine.pct} all={sevAll.pct} name={current.name} />
@@ -192,12 +191,6 @@ export function SgoCompanyExplorer({ rows, serious }: { rows: SgoIncidentRow[]; 
           <td className="py-1.5 font-medium">{t.name}</td><td className="text-right tabular-nums">{t.crashes.toLocaleString()}</td><td className="text-right tabular-nums">{pct(t.share)}</td><td className="text-right tabular-nums">{pct(t.injury)}</td><td className="text-right tabular-nums">{t.serious}</td><td className="text-right tabular-nums">{t.states}</td><td className="text-right tabular-nums">{pct(t.opaque)}</td><td className="text-right text-neutral-500">{label(t.first)} – {label(t.last)}</td></tr>)}</tbody></table></div>
       <p className="text-xs text-neutral-500 mt-2">*Share of crashes with known severity that reported any injury. Small companies have few crashes, so their percentages swing widely.</p>
     </div>
-
-    <div className="viz-card p-4 mt-3"><div className="font-semibold">Who is reporting crashes over time</div><div className="text-sm text-neutral-500">Monthly ADS crashes by company; the industry total is growing as fleets scale, so shares shift with deployment.</div>
-      <ResponsiveContainer width="100%" height={300} onResize={mixAxis.onResize}>
-        <AreaChart data={mix} margin={{ top: 8, right: 16, bottom: 8, left: 8 }}><CartesianGrid {...GRID_PROPS} /><XAxis dataKey="label" {...mixAxis.axis} /><YAxis {...AXIS_PROPS} allowDecimals={false} /><Tooltip {...TOOLTIP_PROPS} /><Legend {...LEGEND_PROPS} />
-          {[...topNames, "All others"].map((n, i) => <Area key={n} type="monotone" dataKey={n} stackId="1" stroke={SERIES_ORDER[i % SERIES_ORDER.length]} fill={SERIES_ORDER[i % SERIES_ORDER.length]} fillOpacity={0.75} />)}</AreaChart>
-      </ResponsiveContainer></div>
   </section>;
 }
 

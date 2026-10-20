@@ -5,7 +5,7 @@ import { LineChart, Line, ReferenceLine, XAxis, YAxis, CartesianGrid, Tooltip, R
 import { SgoMonthlyDataset, isCompleteSgoMonth, SGO_COMPLETE_THROUGH } from "@/lib/safety";
 import { useMonthAxis } from "@/components/MonthAxis";
 import { monthLabel } from "@/lib/activity";
-import trendEvents from "../../public/data/sgo_trend_events.json";
+import { eventsFor, markerNumbers } from "@/lib/trendEvents";
 import { SERIES, AXIS_PROPS, GRID_PROPS, TOOLTIP_PROPS } from "@/lib/chartTheme";
 
 type Scope = "national" | "state" | "operator";
@@ -29,14 +29,9 @@ export function SafetyExplorer({ data }: { data: SgoMonthlyDataset }) {
   }, [data, scope, state, operator]);
 
   const { axis, onResize } = useMonthAxis(rows.length);
-  const events = useMemo(() => {
-    const labels = new Set(rows.map(r => r.label));
-    return trendEvents.events
-      .filter(e => scope === "operator" ? e.entities.length === 0 || e.entities.some(n => operator.toLowerCase().includes(n)) : true)
-      .map(e => { const [y, m] = e.month.split("-").map(Number); return { ...e, label: monthLabel(y, m) }; })
-      .filter(e => labels.has(e.label))
-      .map((e, i) => ({ ...e, n: i + 1 }));
-  }, [rows, scope, operator]);
+  const events = useMemo(() => eventsFor(
+    e => scope === "operator" ? e.companies.length === 0 || e.companies.some(n => operator.toLowerCase().includes(n.toLowerCase())) : e.national,
+    new Set(rows.map(r => r.label))), [rows, scope, operator]);
   const total = rows.reduce((s,r)=>s+r.count,0);
 
   return (
@@ -71,14 +66,14 @@ export function SafetyExplorer({ data }: { data: SgoMonthlyDataset }) {
           <XAxis dataKey="label" {...axis} />
           <YAxis {...AXIS_PROPS} allowDecimals={false} />
           <Tooltip {...TOOLTIP_PROPS} formatter={(v)=>Number(v).toLocaleString()} />
-          {events.map(e => <ReferenceLine key={e.month} x={e.label} stroke="#8a97a6" strokeDasharray="3 3" label={{ value: String(e.n), position: "top", fill: "#123b69", fontSize: 12, fontWeight: 700 }} />)}
+          {markerNumbers(events).map(m => <ReferenceLine key={m.label} x={m.label} stroke="#8a97a6" strokeDasharray="3 3" label={{ value: m.text, position: "top", fill: "#123b69", fontSize: 12, fontWeight: 700 }} />)}
           <Line type="monotone" dataKey="count" name="Reported crashes" stroke={SERIES.blue} strokeWidth={2.75} dot={false} activeDot={{r:5}} />
         </LineChart>
       </ResponsiveContainer>
       {events.length > 0 && <div className="mt-3 border-t border-[#dce5ec] pt-3">
         <div className="text-sm font-semibold text-[#152b45]">What changed over time</div>
         <p className="text-xs text-neutral-500 mt-0.5">Numbered markers show when rules or operations changed. They are context, not proven causes of a rise or fall in reports.</p>
-        <ol className="mt-2 space-y-2">{events.map(e => <li key={e.month} className="flex gap-2.5 text-sm">
+        <ol className="mt-2 space-y-2">{events.map(e => <li key={e.month + e.title} className="flex gap-2.5 text-sm">
           <span className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#123b69] text-xs font-bold text-white">{e.n}</span>
           <span><strong className="text-[#152b45]">{e.label} · {e.title}.</strong> <span className="text-neutral-700">{e.text}</span> <a href={e.source_url} target="_blank" rel="noreferrer" className="text-[#184f95] underline">{e.source_label} ↗</a></span></li>)}</ol>
       </div>}
