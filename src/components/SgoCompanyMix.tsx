@@ -7,6 +7,7 @@ import { useMonthAxis } from "@/components/MonthAxis";
 import { isCompleteSgoMonth } from "@/lib/safety";
 import { monthLabel } from "@/lib/activity";
 import { companyName } from "@/components/SgoCompanyExplorer";
+import { SgoShiftNotes } from "@/components/SgoShiftNotes";
 import type { SgoIncidentRow } from "@/components/SgoDeepDive";
 
 const MONTHS = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
@@ -67,6 +68,7 @@ export function SgoCompanyMix({ rows }: { rows: SgoIncidentRow[] }) {
         <tbody>{table.map(t => <tr key={t.name} className="border-t border-[#e6edf3]"><td className="py-1.5 font-medium">{t.name}</td>{t.byYear.map((n, i) => <td key={i} className="text-right tabular-nums">{n.toLocaleString()}</td>)}<td className="text-right tabular-nums font-medium">{t.byYear.reduce((a, b) => a + b, 0).toLocaleString()}</td></tr>)}
           <tr className="border-t-2 border-[#cbd9e8] font-semibold"><td className="py-1.5">All ADS crashes</td>{yearTotals.map((n, i) => <td key={i} className="text-right tabular-nums">{n.toLocaleString()}</td>)}<td className="text-right tabular-nums">{yearTotals.reduce((a, b) => a + b, 0).toLocaleString()}</td></tr></tbody>
       </table></div>
+      <SgoShiftNotes name="All companies" />
       <p className="text-xs text-neutral-500 mt-2">The latest year is partial. Counts are SGO reports, not adjusted for miles driven, and do not establish fault.</p>
     </div>
   </div>;

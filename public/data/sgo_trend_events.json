@@ -15,6 +15,18 @@
       "source_url": "https://techcrunch.com/2022/10/26/ford-vw-backed-argo-ai-is-shutting-down/"
     },
     {
+      "month": "2022-12",
+      "title": "Waymo opens Phoenix Sky Harbor airport rides",
+      "national": false,
+      "companies": [
+        "Waymo"
+      ],
+      "kind": "operations",
+      "text": "On Dec. 16, 2022 Waymo opened ride-hailing between Phoenix Sky Harbor airport and downtown Phoenix to the public and doubled its downtown service area.",
+      "source_label": "Waymo blog",
+      "source_url": "https://blog.waymo.com/2022/12/wheels-up-for-waymo-as-we-expand.html"
+    },
+    {
       "month": "2023-05",
       "title": "Second amended SGO takes effect",
       "text": "NHTSA's second amended order took effect May 15, 2023. It added a five-day report for less serious crashes and revised the definition of an engaged automated system, so filing patterns before and after are not strictly comparable.",
@@ -238,6 +250,18 @@
       "text": "Uber began matching riders with Avride robotaxis in Dallas on Dec. 3, 2025, with a specialist behind the wheel. Nearly all of Avride's reports come after this launch, and December 2025 is the first month with ten or more.",
       "source_label": "Uber press release",
       "source_url": "https://investor.uber.com/news-events/news/press-release-details/2025/Uber-and-Avride-Launch-Robotaxi-Rides-in-Dallas/default.aspx"
+    },
+    {
+      "month": "2026-02",
+      "title": "Waymo starts service in Orlando, Dallas, Houston and San Antonio",
+      "national": false,
+      "companies": [
+        "Waymo"
+      ],
+      "kind": "operations",
+      "text": "Waymo began service in Orlando on Feb. 23, 2026 and added Dallas, Houston and San Antonio the same day, with invite-only access at first. San Antonio appears in Waymo's crash reports for the first time in this period.",
+      "source_label": "Attractions Magazine",
+      "source_url": "https://attractionsmagazine.com/waymo-orland-self-driving-rideshare/"
     },
     {
       "month": "2026-03",

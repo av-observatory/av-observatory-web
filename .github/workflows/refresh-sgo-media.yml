@@ -18,14 +18,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
-      - name: Match news coverage to serious SGO crashes (no AI)
+      - run: pip install --quiet numpy
+      - name: Match news coverage to serious SGO crashes and re-run the trend-shift analysis (no AI)
         run: |
           python3 scripts/refresh-sgo-media.py
+          python3 scripts/analyze-sgo-shifts.py
+          python3 scripts/export-data-csv.py
       - name: Commit and deploy
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          git add public/data/sgo_serious_media_links.json
+          git add public/data/sgo_serious_media_links.json public/data/sgo_shift_analysis.json public/data/sgo_shift_analysis_*.csv public/data/sgo_serious_media_links.csv
           if git diff --cached --quiet; then
             echo "No new headlines."
             exit 0
