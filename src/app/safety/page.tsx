@@ -7,7 +7,7 @@ import { StatTile } from "@/components/StatTile";
 import { SafetyExplorer } from "@/components/SafetyExplorer";
 import { UsStateMap } from "@/components/UsStateMap";
 import { TopEntitiesChart } from "@/components/SafetyCharts";
-import { SgoDeepDive, SgoIncidentRow } from "@/components/SgoDeepDive";
+import type { SgoIncidentRow } from "@/components/SgoDeepDive";
 import { SgoCompanyExplorer } from "@/components/SgoCompanyExplorer";
 import { SgoSeriousCrashList, type MediaLink, type SeriousCrash, type MediaContext, type ReviewedSource } from "@/components/SgoSeriousCrashList";
 
@@ -190,17 +190,6 @@ export default async function SafetyPage() {
       />
 
       <SgoCompanyExplorer rows={canonicalCrashes} serious={seriousCases} mediaLinks={Object.fromEntries(Object.entries(mediaLinkStore.crashes).map(([k, v]) => [k, v.media]))} />
-
-      <section className="mt-7">
-        <div className="mb-2">
-          <h2 className="text-xl font-semibold tracking-tight">Inside the SGO Reports</h2>
-          <p className="text-sm text-neutral-600 mt-1">
-            Filter the deduplicated crash database and inspect how incident characteristics differ across manufacturers, states, road environments, crash counterparts, and alleged injury severity.
-          </p>
-        </div>
-        <SgoDeepDive rows={canonicalCrashes} />
-      </section>
-
     </div>
   );
 }

@@ -122,10 +122,14 @@ export function SgoCompanyExplorer({ rows, serious, mediaLinks }: { rows: SgoInc
   const rest = companies.slice(TOP_CHIPS);
   const sevMine = share(mine, r => severityBucket(r.highest_injury_severity), SEVERITY_ORDER);
   const sevAll = share(all, r => severityBucket(r.highest_injury_severity), SEVERITY_ORDER);
-  const withMine = share(mine, r => r.crash_with, undefined, 6);
+  const withMine = share(mine, r => r.crash_with, undefined, 8);
   const withAll = share(all, r => r.crash_with);
-  const roadMine = share(mine, r => r.roadway_type, undefined, 5);
+  const roadMine = share(mine, r => r.roadway_type, undefined, 7);
   const roadAll = share(all, r => r.roadway_type);
+  const bagKeys = ["Deployed", "No Deployment Reported", "Unknown"];
+  const bag = (r: Row) => (/^deployed/i.test(r.air_bag_deployment) ? "Deployed" : /^no deployment/i.test(r.air_bag_deployment) ? "No Deployment Reported" : "Unknown");
+  const bagMine = share(mine, bag, bagKeys);
+  const bagAll = share(all, bag, bagKeys);
   const oddMine = share(mine, r => oddBucket(r.within_odd), ["Within ODD", "Outside ODD", "Unknown", "Redacted"]);
   const oddAll = share(all, r => oddBucket(r.within_odd), ["Within ODD", "Outside ODD", "Unknown", "Redacted"]);
   const cities = Array.from(mine.reduce((m, r) => m.set(`${r.city || "Unknown"}, ${r.state || "—"}`, (m.get(`${r.city || "Unknown"}, ${r.state || "—"}`) ?? 0) + 1), new Map<string, number>())).sort((a, b) => b[1] - a[1]).slice(0, 8);
@@ -168,8 +172,9 @@ export function SgoCompanyExplorer({ rows, serious, mediaLinks }: { rows: SgoInc
 
     <div className="grid lg:grid-cols-2 gap-3 mt-3">
       <Compare title="Injury severity" subtitle={`${current.name} vs all ADS crashes`} keys={sevMine.keys} mine={sevMine.pct} all={sevAll.pct} name={current.name} />
-      <Compare title="What it collided with" subtitle="SGO crash-with field" keys={withMine.keys} mine={withMine.pct} all={withAll.pct} name={current.name} />
+      <Compare title="What it collided with" subtitle="Party collided with, per the SGO crash-with field" keys={withMine.keys} mine={withMine.pct} all={withAll.pct} name={current.name} />
       <Compare title="Roadway type" subtitle="Reported roadway classification" keys={roadMine.keys} mine={roadMine.pct} all={roadAll.pct} name={current.name} />
+      <Compare title="Air bag deployment" subtitle="Subject vehicle or crash partner; Unknown includes incomplete reports" keys={bagMine.keys} mine={bagMine.pct} all={bagAll.pct} name={current.name} />
       <Compare title="Reported ODD status" subtitle="Unknown and redacted answers limit what can be learned" keys={oddMine.keys} mine={oddMine.pct} all={oddAll.pct} name={current.name} />
     </div>
 
