@@ -201,5 +201,55 @@
     ],
     "source_url": "https://www.akleg.gov/basis/Bill/Detail/34?Root=HB%20217",
     "repository_url": "https://www.akleg.gov/basis/Bill/Detail/34?Root=HB%20217"
+  },
+  {
+    "id": "wa-hb1984-2025-26",
+    "jurisdiction": "WA",
+    "number": "HB 1984",
+    "title": "Autonomous vehicles",
+    "summary": "Concerning vehicle and operator requirements for autonomous vehicles. First reading and referral to Transportation on 2025-02-17; reintroduced and retained in present status on 2026-01-12. No further action appears on the official record. The record carries no official summary.",
+    "takeaway": "Washington bill on vehicle and operator requirements for autonomous vehicles, held in the Transportation committee with no further recorded action.",
+    "source_summary": "Official Washington State Legislature Legislative Web Services bill record (2025-26 biennium).",
+    "summary_method": "Auto-collected from the official legislature record; no figures taken from news coverage",
+    "summary_quality": "reviewed_substantive",
+    "summary_reviewed_at": "2026-10-20",
+    "status": "introduced",
+    "measure_type": "bill",
+    "last_action_date": "2026-01-12",
+    "last_action": "By resolution, reintroduced and retained in present status.",
+    "session": "2025-26",
+    "progress_stage": "committee",
+    "stage_dates": {
+      "introduced": "2025-02-17",
+      "committee": "2025-02-17"
+    },
+    "hearings": [],
+    "source_url": "https://app.leg.wa.gov/billsummary?BillNumber=1984&Year=2025",
+    "repository_url": "https://app.leg.wa.gov/billsummary?BillNumber=1984&Year=2025"
+  },
+  {
+    "id": "wa-sb5042-2025-26",
+    "jurisdiction": "WA",
+    "number": "SB 5042",
+    "title": "Autonomous vehicles",
+    "summary": "Concerning vehicle and operator requirements for autonomous vehicles. First reading and referral to Transportation on 2025-01-13; reintroduced and retained in present status on 2026-01-12. No further action appears on the official record. The record carries no official summary.",
+    "takeaway": "Washington bill on vehicle and operator requirements for autonomous vehicles, held in the Transportation committee with no further recorded action.",
+    "source_summary": "Official Washington State Legislature Legislative Web Services bill record (2025-26 biennium).",
+    "summary_method": "Auto-collected from the official legislature record; no figures taken from news coverage",
+    "summary_quality": "reviewed_substantive",
+    "summary_reviewed_at": "2026-10-20",
+    "status": "introduced",
+    "measure_type": "bill",
+    "last_action_date": "2026-01-12",
+    "last_action": "By resolution, reintroduced and retained in present status.",
+    "session": "2025-26",
+    "progress_stage": "committee",
+    "stage_dates": {
+      "introduced": "2025-01-13",
+      "committee": "2025-01-13"
+    },
+    "hearings": [],
+    "source_url": "https://app.leg.wa.gov/billsummary?BillNumber=5042&Year=2025",
+    "repository_url": "https://app.leg.wa.gov/billsummary?BillNumber=5042&Year=2025"
   }
 ]
