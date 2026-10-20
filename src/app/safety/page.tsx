@@ -120,7 +120,7 @@ export default async function SafetyPage() {
     return isCompleteSgoMonth(Number(match[2]), month);
   });
   const filings: Record<string, Filing[]> = {};
-  for (const r of completedCrashRows) {
+  for (const r of canonicalCrashes) {
     if (r.automation_system_engaged !== "ADS") continue;
     const list = (r.report_ids || "").split(";").map(id => filingMap.get(id.trim())).filter(Boolean) as Filing[];
     filings[r.incident_id || r.report_id] = list;

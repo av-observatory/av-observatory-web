@@ -77,6 +77,14 @@ export function SgoCompanyExplorer({ rows, serious, filings }: { rows: SgoIncide
     return [{ ...r, company: companyName(r.reporting_entities || r.reporting_entity || ""), ym }];
   }), [rows]);
 
+  // The newest month is still being filed. It is kept out of the totals and comparisons but shown on the chart.
+  const partial = useMemo<Row[]>(() => rows.flatMap(r => {
+    const ym = parseYm(r.incident_date);
+    if (ym === null || r.automation_system_engaged !== "ADS" || isCompleteSgoMonth(Math.floor(ym / 12), (ym % 12) + 1)) return [];
+    return [{ ...r, company: companyName(r.reporting_entities || r.reporting_entity || ""), ym }];
+  }), [rows]);
+  const partialYm = partial.length ? Math.max(...partial.map(r => r.ym)) : null;
+
   const companies = useMemo(() => {
     const m = new Map<string, Row[]>();
     for (const r of all) m.set(r.company, [...(m.get(r.company) ?? []), r]);
@@ -87,17 +95,19 @@ export function SgoCompanyExplorer({ rows, serious, filings }: { rows: SgoIncide
   const [picked, setPicked] = useState<{ company: string; ym: number } | null>(null);
   const current = companies.find(c => c.name === selected) ?? companies[0];
   const mine = current?.rows ?? [];
+  const mineAll = useMemo(() => [...mine, ...partial.filter(r => r.company === current?.name && r.ym === partialYm)], [mine, partial, current, partialYm]);
 
   const months = useMemo(() => {
     if (!all.length) return [] as number[];
     const lo = Math.min(...all.map(r => r.ym)), hi = Math.max(...all.map(r => r.ym));
-    return Array.from({ length: hi - lo + 1 }, (_, i) => lo + i);
-  }, [all]);
+    return Array.from({ length: hi - lo + 1 + (partialYm !== null && partialYm > hi ? partialYm - hi : 0) }, (_, i) => lo + i);
+  }, [all, partialYm]);
   const label = (ym: number) => monthLabel(Math.floor(ym / 12), (ym % 12) + 1);
 
-  const monthly = useMemo(() => months.map(ym => ({ ym, label: label(ym), crashes: mine.filter(r => r.ym === ym).length })), [months, mine]);
+  const monthly = useMemo(() => months.map(ym => ({ ym, label: label(ym), crashes: mineAll.filter(r => r.ym === ym).length })), [months, mineAll]);
   const monthlyAxis = useMonthAxis(monthly.length);
-  const peak = useMemo(() => monthly.reduce((a, m) => (m.crashes > a.crashes ? m : a), { label: "", crashes: 0 }), [monthly]);
+  const lastComplete = Math.max(...months.filter(m => m !== partialYm));
+  const peak = useMemo(() => monthly.filter(m => m.ym !== partialYm).reduce((a, m) => (m.crashes > a.crashes ? m : a), { label: "", crashes: 0 }), [monthly]);
 
 
   if (!current) return null;
@@ -119,9 +129,9 @@ export function SgoCompanyExplorer({ rows, serious, filings }: { rows: SgoIncide
   const cities = Array.from(mine.reduce((m, r) => m.set(`${r.city || "Unknown"}, ${r.state || "—"}`, (m.get(`${r.city || "Unknown"}, ${r.state || "—"}`) ?? 0) + 1), new Map<string, number>())).sort((a, b) => b[1] - a[1]).slice(0, 8);
   const vehicles = Array.from(mine.reduce((m, r) => { const k = vehicleName(r.make, r.model); return m.set(k, (m.get(k) ?? 0) + 1); }, new Map<string, number>())).sort((a, b) => b[1] - a[1]).slice(0, 6);
   const seriousMine = serious.filter(c => companyName(c.reporting_entities) === current.name).sort((a, b) => (parseYm(b.incident_date) ?? 0) - (parseYm(a.incident_date) ?? 0));
-  const recent = mine.filter(r => r.ym > Math.max(...months) - 12).length;
-  const prior = mine.filter(r => r.ym <= Math.max(...months) - 12 && r.ym > Math.max(...months) - 24).length;
-  const industryRecent = all.filter(r => r.ym > Math.max(...months) - 12).length;
+  const recent = mine.filter(r => r.ym > lastComplete - 12).length;
+  const prior = mine.filter(r => r.ym <= lastComplete - 12 && r.ym > lastComplete - 24).length;
+  const industryRecent = all.filter(r => r.ym > lastComplete - 12).length;
   const myShare = mine.length / all.length * 100;
   const recentShare = industryRecent ? recent / industryRecent * 100 : 0;
   const pct = (v: number) => `${v.toFixed(1)}%`;
@@ -147,15 +157,15 @@ export function SgoCompanyExplorer({ rows, serious, filings }: { rows: SgoIncide
       ].map(([v, l, c]) => <div key={l} className="viz-card p-3 sm:p-4"><strong className="block text-2xl sm:text-3xl text-[#123b69] tabular-nums">{v}</strong><span className="text-sm text-neutral-700">{l}</span><span className="block text-xs text-neutral-500 mt-0.5">{c}</span></div>)}
     </div>
 
-    <div className="viz-card p-4 mt-3"><div className="font-semibold">{current.name}: reported crashes by incident month</div><div className="text-sm text-neutral-500">Select a bar to see that month's crashes below; select it again to close.</div>
+    <div className="viz-card p-4 mt-3"><div className="font-semibold">{current.name}: reported crashes by incident month</div><div className="text-sm text-neutral-500">Select a bar to see that month's crashes below; select it again to close.{partialYm !== null && ` The lighter bar, ${label(partialYm)}, is a partial month: reports are still being filed.`}</div>
       <ResponsiveContainer width="100%" height={260} onResize={monthlyAxis.onResize}>
         <BarChart data={monthly} margin={{ top: 8, right: 16, bottom: 8, left: 8 }}><CartesianGrid {...GRID_PROPS} /><XAxis dataKey="label" {...monthlyAxis.axis} /><YAxis {...AXIS_PROPS} allowDecimals={false} />
           <Tooltip {...TOOLTIP_PROPS} /><Bar dataKey="crashes" name="Reported crashes" cursor="pointer" onClick={(_d, i) => setPicked(activeYm === monthly[i].ym ? null : { company: current.name, ym: monthly[i].ym })}>
-            {monthly.map(m => <Cell key={m.ym} fill={m.ym === activeYm ? "#0b2f5f" : SERIES.blue} fillOpacity={activeYm === null || m.ym === activeYm ? 1 : 0.55} />)}</Bar></BarChart>
+            {monthly.map(m => <Cell key={m.ym} fill={m.ym === activeYm ? "#0b2f5f" : m.ym === partialYm ? "#9db8d9" : SERIES.blue} stroke={m.ym === partialYm ? SERIES.blue : undefined} strokeDasharray={m.ym === partialYm ? "3 2" : undefined} fillOpacity={activeYm === null || m.ym === activeYm ? 1 : 0.55} />)}</Bar></BarChart>
       </ResponsiveContainer>
     </div>
 
-    {activeYm !== null && <MonthDetail company={current.name} ym={activeYm} rows={mine} monthAvg={mine.length / Math.max(1, new Set(mine.map(r => r.ym)).size)} label={label} filings={filings} onClose={() => setPicked(null)} />}
+    {activeYm !== null && <MonthDetail company={current.name} ym={activeYm} rows={mineAll} monthAvg={mine.length / Math.max(1, new Set(mine.map(r => r.ym)).size)} label={label} filings={filings} partial={activeYm === partialYm} onClose={() => setPicked(null)} />}
 
     <div className="grid lg:grid-cols-2 gap-3 mt-3">
       <Compare title="Injury severity" subtitle={`${current.name} vs all ADS crashes`} keys={sevMine.keys} mine={sevMine.pct} all={sevAll.pct} name={current.name} />
@@ -197,7 +207,7 @@ function tally(rows: Row[], pick: (r: Row) => string) {
   return Array.from(m).sort((a, b) => b[1] - a[1]);
 }
 
-function MonthDetail({ company, ym, rows, monthAvg, label, filings, onClose }: { onClose: () => void; company: string; ym: number; rows: Row[]; monthAvg: number; label: (ym: number) => string; filings: Record<string, Filing[]> }) {
+function MonthDetail({ company, ym, rows, monthAvg, label, filings, partial: partialLabel, onClose }: { partial: boolean; onClose: () => void; company: string; ym: number; rows: Row[]; monthAvg: number; label: (ym: number) => string; filings: Record<string, Filing[]> }) {
   const list = rows.filter(r => r.ym === ym);
   const sorted = [...list].sort((a, b) => {
     const order = ["Fatal", "Serious", "Moderate", "Minor", "No injury", "Unknown"];
@@ -213,7 +223,7 @@ function MonthDetail({ company, ym, rows, monthAvg, label, filings, onClose }: {
   return <div className="viz-card p-4 sm:p-5 mt-3" aria-live="polite">
     <div className="flex items-start justify-between gap-3"><p className="eyebrow">Selected month</p><button type="button" onClick={onClose} className="text-sm text-[#184f95] underline">Close</button></div>
     <h3 className="text-lg font-semibold tracking-tight mt-1">{company} · {label(ym)}</h3>
-    <p className="text-sm text-neutral-600 mt-1">{list.length.toLocaleString()} reported {list.length === 1 ? "crash" : "crashes"} ({list.length >= monthAvg ? "above" : "below"} its monthly average of {monthAvg.toFixed(1)}); {hurt} with a reported injury.</p>
+    <p className="text-sm text-neutral-600 mt-1">{partialLabel && <strong className="text-[#98601d]">Partial month: reports are still being filed. </strong>}{list.length.toLocaleString()} reported {list.length === 1 ? "crash" : "crashes"} ({list.length >= monthAvg ? "above" : "below"} its monthly average of {monthAvg.toFixed(1)}); {hurt} with a reported injury.</p>
     {list.length === 0 ? <p className="text-sm text-neutral-600 mt-3">No crashes reported this month.</p> : <>
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-4">{blocks.map(([title, items]) => <div key={title}><div className="text-xs font-semibold uppercase tracking-wide text-[#123b69]">{title}</div>
         <ul className="mt-1 text-sm space-y-0.5">{items.map(([k, n]) => <li key={k} className="flex justify-between gap-2"><span>{k}</span><span className="tabular-nums text-neutral-600">{n}</span></li>)}</ul></div>)}</div>
