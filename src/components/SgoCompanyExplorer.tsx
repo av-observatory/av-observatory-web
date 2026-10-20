@@ -164,7 +164,6 @@ export function SgoCompanyExplorer({ rows, serious }: { rows: SgoIncidentRow[]; 
     </div>
 
     <div className="viz-card p-4 mt-3"><div className="font-semibold">{current.name}: reported crashes by incident month</div>
-      <div className="text-sm text-neutral-500">Months through the last complete reporting month.{current.name === "Waymo" && " Waymo is the only company with public mileage here, so its California crash rates per million miles appear in the California section above."}</div>
       <ResponsiveContainer width="100%" height={260} onResize={monthlyAxis.onResize}>
         <BarChart data={monthly} margin={{ top: 8, right: 16, bottom: 8, left: 8 }}><CartesianGrid {...GRID_PROPS} /><XAxis dataKey="label" {...monthlyAxis.axis} /><YAxis {...AXIS_PROPS} allowDecimals={false} />
           <Tooltip {...TOOLTIP_PROPS} /><Bar dataKey="crashes" name="Reported crashes" fill={SERIES.blue} /></BarChart>
