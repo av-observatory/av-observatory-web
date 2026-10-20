@@ -7,7 +7,7 @@ import { useMonthAxis } from "@/components/MonthAxis";
 import { isCompleteSgoMonth } from "@/lib/safety";
 import { monthLabel } from "@/lib/activity";
 import type { SgoIncidentRow } from "@/components/SgoDeepDive";
-import type { MediaLink, SeriousCrash } from "@/components/SgoSeriousCrashList";
+import type { SeriousCrash } from "@/components/SgoSeriousCrashList";
 
 const MONTHS = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
 // Co-reporting suppliers and fleet partners; the crash is attributed to the ADS developer or operator.
@@ -67,7 +67,7 @@ function injuryRate(rows: Row[]) {
   return known.length ? hurt.length / known.length * 100 : 0;
 }
 
-export function SgoCompanyExplorer({ rows, serious, mediaLinks }: { rows: SgoIncidentRow[]; serious: SeriousCrash[]; mediaLinks: Record<string, MediaLink[]> }) {
+export function SgoCompanyExplorer({ rows, serious }: { rows: SgoIncidentRow[]; serious: SeriousCrash[] }) {
   const all = useMemo<Row[]>(() => rows.flatMap(r => {
     const ym = parseYm(r.incident_date);
     if (ym === null || r.automation_system_engaged !== "ADS") return [];
@@ -164,7 +164,7 @@ export function SgoCompanyExplorer({ rows, serious, mediaLinks }: { rows: SgoInc
     </div>
 
     <div className="viz-card p-4 mt-3"><div className="font-semibold">{current.name}: reported crashes by incident month</div>
-      <div className="text-sm text-neutral-500">Months through the last complete reporting month.</div>
+      <div className="text-sm text-neutral-500">Months through the last complete reporting month.{current.name === "Waymo" && " Waymo is the only company with public mileage here, so its California crash rates per million miles appear in the California section above."}</div>
       <ResponsiveContainer width="100%" height={260} onResize={monthlyAxis.onResize}>
         <BarChart data={monthly} margin={{ top: 8, right: 16, bottom: 8, left: 8 }}><CartesianGrid {...GRID_PROPS} /><XAxis dataKey="label" {...monthlyAxis.axis} /><YAxis {...AXIS_PROPS} allowDecimals={false} />
           <Tooltip {...TOOLTIP_PROPS} /><Bar dataKey="crashes" name="Reported crashes" fill={SERIES.blue} /></BarChart>
@@ -183,13 +183,6 @@ export function SgoCompanyExplorer({ rows, serious, mediaLinks }: { rows: SgoInc
         <table className="w-full text-sm mt-2"><tbody>{cities.map(([k, n]) => <tr key={k} className="border-t border-[#e6edf3]"><td className="py-1.5">{k}</td><td className="py-1.5 text-right tabular-nums">{n.toLocaleString()}</td><td className="py-1.5 pl-3 text-right text-neutral-500 tabular-nums w-16">{pct(n / mine.length * 100)}</td></tr>)}</tbody></table></div>
       <div className="viz-card p-4"><div className="font-semibold">Vehicle platforms</div>
         <table className="w-full text-sm mt-2"><tbody>{vehicles.map(([k, n]) => <tr key={k} className="border-t border-[#e6edf3]"><td className="py-1.5">{k}</td><td className="py-1.5 text-right tabular-nums">{n.toLocaleString()}</td><td className="py-1.5 pl-3 text-right text-neutral-500 tabular-nums w-16">{pct(n / mine.length * 100)}</td></tr>)}</tbody></table></div>
-    </div>
-
-    <div className="viz-card p-4 mt-3"><div className="font-semibold">Serious or fatal crashes · {current.name}</div>
-      {seriousMine.length === 0 ? <p className="text-sm text-neutral-600 mt-1">No serious or fatal ADS crashes in the complete reporting months.</p> :
-        <ul className="mt-2 space-y-2 text-sm">{seriousMine.map(c => <li key={c.incident_key} className="border-t border-[#e6edf3] pt-2"><strong>{c.incident_date}</strong> · {c.city}, {c.state} · {c.severity} · collided with {c.crash_with || "not reported"}
-          {(mediaLinks[c.incident_key] ?? []).slice(0, 2).map(m => <a key={m.url} href={m.url} target="_blank" rel="noreferrer" className="block text-[#184f95] underline">{m.publisher || "News"}: {m.title} ↗</a>)}</li>)}</ul>}
-      {current.name === "Waymo" && <p className="text-xs text-neutral-500 mt-3">Waymo is the only company with public mileage in this dataset, so California crash rates per million miles are shown in the California section of this page.</p>}
     </div>
 
     <div className="viz-card p-4 mt-3">

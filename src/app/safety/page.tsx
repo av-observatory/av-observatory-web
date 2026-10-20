@@ -189,7 +189,7 @@ export default async function SafetyPage() {
         excludedMonth={excludedLabel}
       />
 
-      <SgoCompanyExplorer rows={canonicalCrashes} serious={seriousCases} mediaLinks={Object.fromEntries(Object.entries(mediaLinkStore.crashes).map(([k, v]) => [k, v.media]))} />
+      <SgoCompanyExplorer rows={canonicalCrashes} serious={seriousCases} />
     </div>
   );
 }
