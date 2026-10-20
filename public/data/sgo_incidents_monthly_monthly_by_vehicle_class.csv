@@ -87,8 +87,11 @@ year,month,vehicle_class,incident_count
 2026,4,light_duty,59
 2026,5,light_duty,69
 2026,5,trucking,3
-2026,6,light_duty,60
-2026,7,light_duty,48
+2026,6,light_duty,61
+2026,7,light_duty,53
 2026,7,trucking,1
-2026,8,light_duty,4
+2026,8,light_duty,40
 2026,8,trucking,1
+2026,9,light_duty,11
+2026,9,trucking,4
+2026,9,unknown,1

@@ -195,6 +195,7 @@ fd63b45b89e60d1,NHTSA Same Incident ID,APR-2025,San Francisco,CA,Waymo LLC,30270
 5949ade35ee4e36,NHTSA Same Incident ID,APR-2026,San Francisco,CA,Waymo LLC,30270-14560,8728edfe6c7deed,Property Damage. No Injured Reported,JAGUAR,I-PACE,Heavy Truck,Street,ADS,Yes,1
 5a3b8879bc684e9,NHTSA Same Incident ID,APR-2026,Austin,TX,Waymo LLC,30270-14734,261b0f1389380f4,Property Damage. No Injured Reported,JAGUAR,I-PACE,Pickup Truck,Street,ADS,Yes,1
 63062a109838ba2,NHTSA Same Incident ID,APR-2026,Austin,TX,"Tesla, Inc.",13781-15017,c8828ce2a3a7e59,Property Damage. No Injured Reported,TESLA,Model Y,Pickup Truck,Street,ADS,Yes,1
+6447476cf2f72af,NHTSA Same Incident ID,APR-2026,Orlando,FL,MOIA America LLC,35021-16401,22e916e48058524,Property Damage. No Injured Reported,Volkswagen,ID.Buzz,Other Fixed Object,Parking Lot,ADS,Yes,1
 65fe89814e7cb0e,NHTSA Same Incident ID,APR-2026,Miami,FL,Waymo LLC,30270-14827,5b94b4468f9bfd0,Property Damage. No Injured Reported,JAGUAR,I-PACE,Heavy Truck,Street,ADS,Yes,1
 6aaaedccb67388c,NHTSA Same Incident ID,APR-2026,Austin,TX,Avride Inc.,31101-14899,7f88b10c11d8c3d,Property Damage. No Injured Reported,HYUNDAI,Ioniq 5,Passenger Car,Highway / Freeway,ADS,Yes,1
 6cb0adf6053cd04,NHTSA Same Incident ID,APR-2026,San Mateo,CA,Waymo LLC,30270-14629,9bff71aa694a0dd,Property Damage. No Injured Reported,JAGUAR,I-PACE,"Other, see Narrative",Highway / Freeway,ADS,Yes,1
@@ -232,6 +233,7 @@ a026953be239155,NHTSA Same Incident ID,APR-2026,Los Angeles,CA,Waymo LLC,30270-1
 a3b8990a21e7bfa,NHTSA Same Incident ID,APR-2026,Edgewood,NM,Stack AV,34952-14990,c4e3949275ffa01,No Injured Reported,PETERBILT,579,Heavy Truck,Highway / Freeway,ADS,"[REDACTED, MAY CONTAIN CONFIDENTIAL BUSINESS INFORMATION]",1
 a67935c163b04b7,NHTSA Same Incident ID,APR-2026,Los Angeles,CA,Waymo LLC,30270-14850,141daf9178a667e,Property Damage. No Injured Reported,JAGUAR,I-PACE,Heavy Truck,Intersection,ADS,Yes,1
 a6ede4eb521e9a6,NHTSA Same Incident ID,APR-2026,South San Francisco,CA,Waymo LLC,30270-14849,989fab72a7cf73e,Property Damage. No Injured Reported,JAGUAR,I-PACE,Heavy Truck,Street,ADS,Yes,1
+a6f6c7a6ce5be69,NHTSA Same Incident ID,APR-2026,Austin,TX,MOIA America LLC,35021-16402,aabafe99f5cdb61,Property Damage. No Injured Reported,Volkswagen,ID.Buzz,Other Fixed Object,Intersection,ADS,Yes,1
 a845f2ff7589f36,NHTSA Same Incident ID,APR-2026,San Francisco,CA,Waymo LLC,30270-14620,ed6426a60b1e595,Property Damage. No Injured Reported,JAGUAR,I-PACE,Heavy Truck,Street,ADS,Yes,1
 ae87c732ad0ea3c,NHTSA Same Incident ID,APR-2026,Beverly Hills,CA,Waymo LLC,30270-14711,9052e7ce2ea69f0,Property Damage. No Injured Reported,JAGUAR,I-PACE,SUV,Street,ADS,Yes,1
 afa7cfa2ef60e08,NHTSA Same Incident ID,APR-2026,Atlanta,GA,Waymo LLC,30270-14943,2837f3a57cb20bb,Property Damage. No Injured Reported,JAGUAR,I-PACE,"Other, see Narrative",Street,ADS,Yes,1
@@ -488,16 +490,108 @@ ec7b46b5097bc64,NHTSA Same Incident ID,AUG-2025,Peachtree Corners,GA,May Mobilit
 f6de4eae2f1319d,NHTSA Same Incident ID,AUG-2025,San Francisco,CA,Waymo LLC,30270-11765,d3d11a83f01da9b,Property Damage. No Injured Reported,JAGUAR,I-PACE,Passenger Car,Street,ADS,Yes,1
 f954a67865eecaa,NHTSA Same Incident ID,AUG-2025,San Francisco,CA,Waymo LLC,30270-11490,69f9ac55561d6ff,Property Damage. No Injured Reported,JAGUAR,I-PACE,Passenger Car,Street,ADS,Yes,1
 003a9a4a34d20d8,NHTSA Same Incident ID,AUG-2026,Atlanta,GA,Waymo LLC,30270-16172,25756d3842c30ca,Property Damage. No Injured Reported,JAGUAR,I-PACE,Passenger Car,Street,ADS,Yes,1
+01a80128e37ee4e,NHTSA Same Incident ID,AUG-2026,Atlanta,GA,Waymo LLC,30270-16293,03e6d67fb7d91c0,Property Damage. No Injured Reported,JAGUAR,I-PACE,SUV,Street,ADS,Yes,1
+01ac3c91b755fa5,NHTSA Same Incident ID,AUG-2026,Las Vegas,NV,Waymo LLC,30270-16553,27a0c9162e313a7,Property Damage. No Injured Reported,ZEEKR,RT,Passenger Car,Street,ADS,Yes,1
+03e8da689ced2c4,NHTSA Same Incident ID,AUG-2026,Tempe,AZ,Waymo LLC,30270-16347,4b383048a5459f9,Property Damage. No Injured Reported,JAGUAR,I-PACE,Other Fixed Object,Parking Lot,ADS,Yes,1
+0a971b5c24c83cc,NHTSA Same Incident ID,AUG-2026,Atlanta,GA,May Mobility,30413-16665,df3d5e72b7914b4,Minor W/O Hospitalization,TOYOTA,Sienna,Passenger Car,Intersection,ADS,Yes,1
+0b27a78c63316c4,NHTSA Same Incident ID,AUG-2026,Houston,TX,Waymo LLC,30270-16287,fd370a7ff31ef41,Property Damage. No Injured Reported,JAGUAR,I-PACE,Other Fixed Object,Parking Lot,ADS,Yes,1
+11bd8f24c3d7821,NHTSA Same Incident ID,AUG-2026,Mountain View,CA,Waymo LLC,30270-16458,4a90880096a3f5b,Property Damage. No Injured Reported,ZEEKR,RT,Heavy Truck,Street,ADS,Yes,1
+127342ffb2f400a,NHTSA Same Incident ID,AUG-2026,San Francisco,CA,"Zoox, Inc.",30610-16696,70d895a5f868c75,Minor W/O Hospitalization,TOYOTA,Highlander,Passenger Car,Street,ADS,Yes,1
+15c8fe5bfe0fc65,NHTSA Same Incident ID,AUG-2026,San Francisco,CA,Waymo LLC,30270-16374,2b28a9bcb04302b,Property Damage. No Injured Reported,JAGUAR,I-PACE,Bus,Street,ADS,Yes,1
+19d8fdfc4c6a4dc,NHTSA Same Incident ID,AUG-2026,San Antonio,TX,Waymo LLC,30270-16344,400295965fa177c,Property Damage. No Injured Reported,JAGUAR,I-PACE,SUV,Street,ADS,Yes,1
+1af5ac5e4b10f14,NHTSA Same Incident ID,AUG-2026,San Francisco,CA,"Zoox, Inc.",30610-16700,be04484ab90e5bc,Property Damage. No Injured Reported,ZOOX,Zoox,Heavy Truck,Street,ADS,Yes,1
+1d2e4cfe8538141,NHTSA Same Incident ID,AUG-2026,Nashville,TN,Waymo LLC,30270-16262,7a79f54c29be695,Property Damage. No Injured Reported,JAGUAR,I-PACE,Other Fixed Object,Street,ADS,Yes,1
+1ec8dd73cb0c835,NHTSA Same Incident ID,AUG-2026,Dallas,TX,Waymo LLC,30270-16260,c81cdddfffd6d75,Property Damage. No Injured Reported,JAGUAR,I-PACE,Heavy Truck,Street,ADS,Yes,1
+22352df2af9968a,NHTSA Same Incident ID,AUG-2026,Phoenix,AZ,Waymo LLC,30270-16373,08ed5d38a0399a1,Property Damage. No Injured Reported,JAGUAR,I-PACE,SUV,Street,ADS,Yes,1
+22cdfc6478274b8,NHTSA Same Incident ID,AUG-2026,San Francisco,CA,Waymo LLC,30270-16258,275b7bf2ac9ff9c,Property Damage. No Injured Reported,JAGUAR,I-PACE,SUV,Street,ADS,Yes,1
+22e90ab63ee994d,NHTSA Same Incident ID,AUG-2026,Houston,TX,Waymo LLC,30270-16342,8284e9b664c6715,Property Damage. No Injured Reported,JAGUAR,I-PACE,Other Fixed Object,Parking Lot,ADS,Yes,1
 2ca40dc3f6ff2d2,NHTSA Same Incident ID,AUG-2026,Los Angeles,CA,Waymo LLC,30270-16082,6b0ed357a43e9ed,Property Damage. No Injured Reported,JAGUAR,I-PACE,SUV,Intersection,ADS,Yes,1
 2d4180877e9867b,NHTSA Same Incident ID,AUG-2026,Phoenix,AZ,Waymo LLC,30270-16208,f41c0fec780150a,Property Damage. No Injured Reported,JAGUAR,I-PACE,Heavy Truck,Street,ADS,Yes,1
+2f8cf3e40f971bd,NHTSA Same Incident ID,AUG-2026,Beverly Hills,CA,MOIA America LLC,35021-16694,f4a0b2aa4cc79da,Property Damage. No Injured Reported,Volkswagen,ID.Buzz,Other Fixed Object,Intersection,ADS,Yes,1
+306d290cb85c503,NHTSA Same Incident ID,AUG-2026,Las Vegas,NV,"Zoox, Inc.",30610-16575,2228499236e5ff2,Property Damage. No Injured Reported,TOYOTA,Highlander,Heavy Truck,Street,ADS,Yes,1
 32720b6b155d24d,NHTSA Same Incident ID,AUG-2026,Atlanta,GA,Waymo LLC,30270-16207,45e98b772cf8695,Property Damage. No Injured Reported,JAGUAR,I-PACE,SUV,Street,ADS,Yes,1
+361327250df29db,NHTSA Same Incident ID,AUG-2026,San Francisco,CA,Waymo LLC,30270-16271,0061f3b6c8d05ef,Property Damage. No Injured Reported,JAGUAR,I-PACE,Passenger Car,Street,ADS,Yes,1
+3a84a827731c163,NHTSA Same Incident ID,AUG-2026,Las Vegas,NV,Motional,30410-16407,9b655410a6a32ba,No Injured Reported,HYUNDAI,Ioniq 5,Pole / Tree,Street,ADS,Yes,1
+3cd99e002ccbf77,NHTSA Same Incident ID,AUG-2026,Austin,TX,Waymo LLC,30270-16448,cd13bcd6a55c25f,Property Damage. No Injured Reported,JAGUAR,I-PACE,Passenger Car,Street,ADS,Yes,1
+3d0e34b995cb765,NHTSA Same Incident ID,AUG-2026,Glendale,AZ,Gatik AI Inc.,30451-16657,83a317bee27be1a,Property Damage. No Injured Reported,ISUZU,FTR,Pole / Tree,Street,ADS,Yes,1
+3ed2234e8e4252d,NHTSA Same Incident ID,AUG-2026,Houston,TX,Waymo LLC,30270-16356,c958831b5432dde,Property Damage. No Injured Reported,JAGUAR,I-PACE,SUV,Intersection,ADS,Yes,1
+3f88898f0c7d15e,NHTSA Same Incident ID,AUG-2026,Arlington,TX,May Mobility,30413-16664,de6e94c49a4043d,No Injured Reported,TOYOTA,Sienna,SUV,Intersection,ADS,Yes,1
+4144a8916a19c4e,NHTSA Same Incident ID,AUG-2026,Dallas,TX,"Tesla, Inc.",13781-16678,6fcea0fc270ed63,Property Damage. No Injured Reported,TESLA,Model Y,SUV,Street,ADS,Yes,1
+415a066954bea35,NHTSA Same Incident ID,AUG-2026,Las Vegas,NV,"Zoox, Inc.",30610-16451,70dd9f1ecebb12e,Unknown,ZOOX,Zoox,SUV,Intersection,ADS,Yes,1
 4c6d6b79d0d8974,NHTSA Same Incident ID,AUG-2026,Dallas,TX,Waymo LLC,30270-16196,c48d212e3f9c294,Fatality,JAGUAR,I-PACE,Non-Motorist: Pedestrian,Street,ADS,Yes,1
+4dad0e8652d4873,NHTSA Same Incident ID,AUG-2026,Atlanta,GA,Waymo LLC,30270-16496,ac5c9190a1f20ec,Property Damage. No Injured Reported,JAGUAR,I-PACE,Pickup Truck,Street,ADS,Yes,1
+500dfcb0b968b18,NHTSA Same Incident ID,AUG-2026,Hutchins,TX,Waabi,33504-16695,5539d09990236b8,Property Damage. No Injured Reported,PETERBILT,579,Pickup Truck,Highway / Freeway,ADS,Yes,1
+51139e83fbc986a,NHTSA Same Incident ID,AUG-2026,San Francisco,CA,Waymo LLC,30270-16124,1dddf6d386e6446,Property Damage. No Injured Reported,JAGUAR,I-PACE,Pickup Truck,Street,ADS,Yes,1
+51925868630e6c5,NHTSA Same Incident ID,AUG-2026,Peoria,AZ,Gatik AI Inc.,30451-16656,f68e782feccb4f2,Property Damage. No Injured Reported,ISUZU,FTR,Other Fixed Object,Street,ADS,Yes,1
 571711cd8769c72,NHTSA Same Incident ID,AUG-2026,Los Angeles,CA,Waymo LLC,30270-16093,7108922e6a861c0,Minor W/O Hospitalization,JAGUAR,I-PACE,Passenger Car,Street,ADS,Yes,1
+586f6be37a24642,NHTSA Same Incident ID,AUG-2026,San Francisco,CA,Waymo LLC,30270-16464,6fe8a706c7ef784,Property Damage. No Injured Reported,JAGUAR,I-PACE,Passenger Car,Street,ADS,Yes,1
+5b8ba4f82548c4f,NHTSA Same Incident ID,AUG-2026,Austin,TX,Waymo LLC,30270-16346,aca026d4689964b,Property Damage. No Injured Reported,JAGUAR,I-PACE,Pickup Truck,Intersection,ADS,Yes,1
+5ef96b4948629c7,NHTSA Same Incident ID,AUG-2026,San Francisco,CA,Waymo LLC,30270-16399,34c7fa2c8eb12d6,Minor W/O Hospitalization,JAGUAR,I-PACE,Passenger Car,Street,ADS,Yes,1
+605693fca3ed2c6,NHTSA Same Incident ID,AUG-2026,Austin,TX,Waymo LLC,30270-16647,a4a290ec3edccd1,Property Damage. No Injured Reported,JAGUAR,I-PACE,SUV,Street,ADS,Yes,1
+6af9ec0b1dbe8ce,NHTSA Same Incident ID,AUG-2026,Dallas,TX,Avride Inc.,31101-16263,ad80ff4deb77ab6,Property Damage. No Injured Reported,HYUNDAI,Ioniq 5,SUV,Intersection,ADS,Yes,1
+6d4c2eeadb7f064,NHTSA Same Incident ID,AUG-2026,Los Angeles,CA,Waymo LLC,30270-16291,abc756b53640e95,Property Damage. No Injured Reported,JAGUAR,I-PACE,Passenger Car,Intersection,ADS,Yes,1
+719174f1b94f26d,NHTSA Same Incident ID,AUG-2026,Scottsdale,AZ,Waymo LLC,30270-16366,57565e9bfe3f486,Property Damage. No Injured Reported,JAGUAR,I-PACE,"Other, see Narrative",Parking Lot,ADS,Yes,1
+729db7739792799,NHTSA Same Incident ID,AUG-2026,Austin,TX,"Tesla, Inc.",13781-16672,0aac53f18180aa4,Property Damage. No Injured Reported,TESLA,Cybercab,Other Fixed Object,Parking Lot,ADS,Yes,1
+757618677ef3ec8,NHTSA Same Incident ID,AUG-2026,Austin,TX,Waymo LLC,30270-16345,399460c10cbf4aa,Property Damage. No Injured Reported,JAGUAR,I-PACE,Passenger Car,Street,ADS,Yes,1
+8045a25eedb5404,NHTSA Same Incident ID,AUG-2026,Los Angeles,CA,Waymo LLC,30270-16493,e26085e2e50c321,Property Damage. No Injured Reported,JAGUAR,I-PACE,Passenger Car,Street,ADS,Yes,1
+865485923a26ec3,NHTSA Same Incident ID,AUG-2026,Dallas,TX,"Tesla, Inc.",13781-16675,225b300dbd5bf07,Property Damage. No Injured Reported,TESLA,Model Y,Other Fixed Object,Street,ADS,Yes,1
+888a7d234f6b3f9,NHTSA Same Incident ID,AUG-2026,Tempe,AZ,Waymo LLC,30270-16286,d873964734d4e83,Property Damage. No Injured Reported,JAGUAR,I-PACE,Pole / Tree,Parking Lot,ADS,Yes,1
+8a2aa60ed60e979,NHTSA Same Incident ID,AUG-2026,Dallas,TX,"Tesla, Inc.",13781-16673,ce21b1118dac2cf,Property Damage. No Injured Reported,TESLA,Model Y,Pickup Truck,Intersection,ADS,Yes,1
+8bd8b1afcb412ae,NHTSA Same Incident ID,AUG-2026,Miami,FL,Waymo LLC,30270-16276,de6bd0f069c85be,Property Damage. No Injured Reported,JAGUAR,I-PACE,First Responder Vehicle,Street,ADS,Yes,1
+8c1e4cd053942b8,NHTSA Same Incident ID,AUG-2026,Los Angeles,CA,Waymo LLC,30270-16278,0d9be981befd763,Unknown,JAGUAR,I-PACE,Passenger Car,Street,ADS,Yes,1
+8c4f2f60682485e,NHTSA Same Incident ID,AUG-2026,Dallas,TX,Avride Inc.,31101-16494,62e1122380eb812,Property Damage. No Injured Reported,HYUNDAI,Ioniq 5,SUV,Intersection,ADS,Yes,1
+8e7ea78f8f72b19,NHTSA Same Incident ID,AUG-2026,Fairfield,TX,Waabi,33504-16549,5539d09990236b8,Minor W/O Hospitalization,PETERBILT,579,Heavy Truck,Highway / Freeway,ADS,Yes,1
+906b574995746f0,NHTSA Same Incident ID,AUG-2026,Los Angeles,CA,Waymo LLC,30270-16348,741cc80d1366b9c,Property Damage. No Injured Reported,JAGUAR,I-PACE,"Other, see Narrative",Parking Lot,ADS,Yes,1
+907aa3b3009fe9a,NHTSA Same Incident ID,AUG-2026,Tampa,FL,"Tesla, Inc.",13781-16674,b049384b03e183c,Property Damage. No Injured Reported,TESLA,Model Y,Other Fixed Object,Parking Lot,ADS,Yes,1
+9dc28c3b9de8058,NHTSA Same Incident ID,AUG-2026,Las Vegas,NV,Motional,30410-16264,c583c2ccfbae783,Minor W/O Hospitalization,HYUNDAI,Ioniq 5,SUV,Street,ADS,Yes,1
+9dcd28ad7e5d74f,NHTSA Same Incident ID,AUG-2026,Fort Worth,TX,"TORC Robotics, Inc.",30330-16576,c27f5ecd65b4a1e,Property Damage. No Injured Reported,FREIGHTLINER,RA Cascadia,Passenger Car,Intersection,ADS,"[REDACTED, MAY CONTAIN CONFIDENTIAL BUSINESS INFORMATION]",1
 9e32f97063cd034,NHTSA Same Incident ID,AUG-2026,Atlanta,GA,Waymo LLC,30270-16174,565e8e60efecf5b,Property Damage. No Injured Reported,JAGUAR,I-PACE,Passenger Car,Street,ADS,Yes,1
+a1bd6e40890d3ab,NHTSA Same Incident ID,AUG-2026,San Francisco,CA,Waymo LLC,30270-16117,fbfd16b6b170e0f,Property Damage. No Injured Reported,JAGUAR,I-PACE,Heavy Truck,Intersection,ADS,Yes,1
+a1f66012798119c,NHTSA Same Incident ID,AUG-2026,Los Angeles,CA,Waymo LLC,30270-16556,2fbebadc42ff43e,Minor W/O Hospitalization,ZEEKR,RT,Passenger Car,Street,ADS,Yes,1
+aaf5999b81ce7e9,NHTSA Same Incident ID,AUG-2026,Phoenix,AZ,Waymo LLC,30270-16358,0c0364761177fae,Property Damage. No Injured Reported,JAGUAR,I-PACE,Pickup Truck,Intersection,ADS,Yes,1
+acdefdc31f28d73,NHTSA Same Incident ID,AUG-2026,San Francisco,CA,"Zoox, Inc.",30610-16701,95f28b68f4ea793,Property Damage. No Injured Reported,ZOOX,Zoox,Passenger Car,Intersection,ADS,Yes,1
+b1454dd83a31653,NHTSA Same Incident ID,AUG-2026,Marina del Rey,CA,Waymo LLC,30270-16645,f2ab7071724b6d5,Property Damage. No Injured Reported,JAGUAR,I-PACE,Pickup Truck,Street,ADS,Yes,1
+b14b5b65c6b7b55,NHTSA Same Incident ID,AUG-2026,Los Angeles,CA,Waymo LLC,30270-16202,a89a25389d6b2e3,Property Damage. No Injured Reported,JAGUAR,I-PACE,Passenger Car,Street,ADS,Yes,1
+b26b31246161355,NHTSA Same Incident ID,AUG-2026,Tempe,AZ,Waymo LLC,30270-16395,9913a7d73df570f,Property Damage. No Injured Reported,JAGUAR,I-PACE,Pole / Tree,Parking Lot,ADS,Yes,1
+b36d6531a4514ce,NHTSA Same Incident ID,AUG-2026,Austin,TX,"Zoox, Inc.",30610-16698,6e74c077c54e27c,Minor W/O Hospitalization,TOYOTA,Highlander,Other Fixed Object,Parking Garage,ADS,Yes,1
+b45f2867e8b9806,NHTSA Same Incident ID,AUG-2026,Inglewood,CA,Waymo LLC,30270-16360,67d3d87266f8672,Property Damage. No Injured Reported,JAGUAR,I-PACE,Other Fixed Object,Street,ADS,Yes,1
+b49e9ff7cf4837c,NHTSA Same Incident ID,AUG-2026,Las Cruces,NM,"Aurora Operations, Inc.",30530-16297,6c85830dc88dfc5,Minor W/O Hospitalization,PETERBILT,579,Heavy Truck,Street,ADS,Yes,1
+b942e39637f6890,NHTSA Same Incident ID,AUG-2026,San Francisco,CA,Waymo LLC,30270-16456,52c110861ee5465,Property Damage. No Injured Reported,JAGUAR,I-PACE,SUV,Street,ADS,Yes,1
+bb2acce5fe307c5,NHTSA Same Incident ID,AUG-2026,San Mateo,CA,Waymo LLC,30270-16209,7005f0a192845f6,Property Damage. No Injured Reported,JAGUAR,I-PACE,SUV,Intersection,ADS,Yes,1
 c0adb95d5980d1e,NHTSA Same Incident ID,AUG-2026,San Francisco,CA,Waymo LLC,30270-16123,5e319d706392e3e,Property Damage. No Injured Reported,JAGUAR,I-PACE,SUV,Street,ADS,Yes,1
+c0df4bba9558f42,NHTSA Same Incident ID,AUG-2026,Santa Monica,CA,Waymo LLC,30270-16454,58b0418f620205e,Property Damage. No Injured Reported,JAGUAR,I-PACE,"Other, see Narrative",Street,ADS,Yes,1
+c129b8346be1f17,NHTSA Same Incident ID,AUG-2026,Buda,TX,PlusAI Inc,30634-16662,46fd023b48854c8,No Injured Reported,INTERNATIONAL,LT62F,"Other, see Narrative",Highway / Freeway,ADS,"[REDACTED, MAY CONTAIN CONFIDENTIAL BUSINESS INFORMATION]",1
+c671fc9c9b05d1b,NHTSA Same Incident ID,AUG-2026,Dallas,TX,"Tesla, Inc.",13781-16677,d34a6c774bc584f,Property Damage. No Injured Reported,TESLA,Model Y,Other Fixed Object,Street,ADS,Yes,1
+c6972de507b4325,NHTSA Same Incident ID,AUG-2026,Atlanta,GA,Waymo LLC,30270-16299,4e0601cf09389e8,Property Damage. No Injured Reported,JAGUAR,I-PACE,SUV,Intersection,ADS,Yes,1
+c737c52a4d91b9c,NHTSA Same Incident ID,AUG-2026,Phoenix,AZ,Waymo LLC,30270-16453,335595fddbc5633,Property Damage. No Injured Reported,JAGUAR,I-PACE,Passenger Car,Street,ADS,Yes,1
+c9e5d27d65dc564,NHTSA Same Incident ID,AUG-2026,San Francisco,CA,Waymo LLC,30270-16410,0e27c117ddc79c5,Property Damage. No Injured Reported,JAGUAR,I-PACE,Passenger Car,Intersection,ADS,Yes,1
+ca4d16604b348d6,NHTSA Same Incident ID,AUG-2026,San Francisco,CA,Waymo LLC,30270-16300,5fd35746b956a2e,Property Damage. No Injured Reported,JAGUAR,I-PACE,Passenger Car,Street,ADS,Yes,1
 cee4c694ffc6293,NHTSA Same Incident ID,AUG-2026,San Francisco,CA,Waymo LLC,30270-16210,fe2acf578a864c8,Property Damage. No Injured Reported,JAGUAR,I-PACE,Passenger Car,Street,ADS,Yes,1
+d197fef709e347f,NHTSA Same Incident ID,AUG-2026,Austin,TX,Waymo LLC,30270-16498,9410ad6a5ba1308,Property Damage. No Injured Reported,JAGUAR,I-PACE,Passenger Car,Parking Lot,ADS,Yes,1
+d3c4089ea894cc6,NHTSA Same Incident ID,AUG-2026,Tempe,AZ,Waymo LLC,30270-16298,3e2f367e8f9e186,Minor W/O Hospitalization,JAGUAR,I-PACE,Passenger Car,Street,ADS,Yes,1
+d56376ad34f9834,NHTSA Same Incident ID,AUG-2026,Philadelphia,PA,Waymo LLC,30270-16646,1a450c88bd0a16b,Property Damage. No Injured Reported,ZEEKR,RT,Passenger Car,Street,ADS,Yes,1
+db0bf45ccb8b461,NHTSA Same Incident ID,AUG-2026,Los Angeles,CA,Waymo LLC,30270-16398,a42302afb364ca8,Minor W/O Hospitalization,JAGUAR,I-PACE,SUV,Intersection,ADS,Yes,1
+dc02c204228b8da,NHTSA Same Incident ID,AUG-2026,Mountain View,CA,Waymo LLC,30270-16396,9b28f09d57d26ed,Property Damage. No Injured Reported,JAGUAR,I-PACE,SUV,Street,ADS,Yes,1
+dc20b6b1caf897a,NHTSA Same Incident ID,AUG-2026,Austin,TX,"Tesla, Inc.",13781-16679,c79b992baeb3822,Property Damage. No Injured Reported,TESLA,Model Y,Other Fixed Object,Parking Lot,ADS,Yes,1
 de9600c1f5d999f,NHTSA Same Incident ID,AUG-2026,Tempe,AZ,Waymo LLC,30270-16171,4dced4e69c4d9ba,Property Damage. No Injured Reported,JAGUAR,I-PACE,Other Fixed Object,Parking Lot,ADS,Yes,1
+e0a1110fcb9a159,NHTSA Same Incident ID,AUG-2026,Austin,TX,"Tesla, Inc.",13781-16676,e8a02b1598621a6,Property Damage. No Injured Reported,TESLA,Model Y,SUV,Intersection,ADS,Yes,1
+e0ceb4387af2af6,NHTSA Same Incident ID,AUG-2026,Redwood City,CA,Waymo LLC,30270-16132,4e3337ffd13d65a,Property Damage. No Injured Reported,JAGUAR,I-PACE,Van,Street,ADS,Yes,1
+e44fce9b36b54df,NHTSA Same Incident ID,AUG-2026,Denver,CO,Waymo LLC,30270-16452,421663ae937624b,Minor W/O Hospitalization,ZEEKR,RT,Van,Street,ADS,Yes,1
+e463b24a8c54775,NHTSA Same Incident ID,AUG-2026,Las Vegas,NV,"Zoox, Inc.",30610-16450,fba2e351666c5ef,Property Damage. No Injured Reported,ZOOX,Zoox,SUV,Street,ADS,Yes,1
+e4b146994027a78,NHTSA Same Incident ID,AUG-2026,Dallas,TX,"Tesla, Inc.",13781-16671,886064261c1c008,Property Damage. No Injured Reported,TESLA,Model Y,Other Fixed Object,Parking Lot,ADS,Yes,1
+e6fef588a62c89e,NHTSA Same Incident ID,AUG-2026,Las Vegas,NV,"Zoox, Inc.",30610-16699,72f0f3baab21381,Property Damage. No Injured Reported,ZOOX,Zoox,Pickup Truck,Street,ADS,Yes,1
 e7ae4d502d7a9dc,NHTSA Same Incident ID,AUG-2026,Houston,TX,Waymo LLC,30270-16097,c076b8ec8eaf73f,Property Damage. No Injured Reported,JAGUAR,I-PACE,Other Fixed Object,Street,ADS,Yes,1
+e7f85686105b628,NHTSA Same Incident ID,AUG-2026,San Francisco,CA,Waymo LLC,30270-16199,2a3f1cc7d17579d,Property Damage. No Injured Reported,JAGUAR,I-PACE,Passenger Car,Street,ADS,Yes,1
+e842d55e9b4822e,NHTSA Same Incident ID,AUG-2026,Miami,FL,Waymo LLC,30270-16490,5b6114bb187499b,Property Damage. No Injured Reported,JAGUAR,I-PACE,Passenger Car,Street,ADS,Yes,1
+e9270e6c7d46123,NHTSA Same Incident ID,AUG-2026,Miami,FL,Waymo LLC,30270-16461,266db6faa66db78,Property Damage. No Injured Reported,JAGUAR,I-PACE,"Other, see Narrative",Parking Lot,ADS,Yes,1
+eee5b3b428eab9b,NHTSA Same Incident ID,AUG-2026,San Francisco,CA,Waymo LLC,30270-16203,ebda0b5465bb521,Property Damage. No Injured Reported,JAGUAR,I-PACE,Other Fixed Object,Street,ADS,Yes,1
+ef169e0514eb8cf,NHTSA Same Incident ID,AUG-2026,Dallas,TX,Waymo LLC,30270-16325,3a1ff89cc2d1243,Minor W/ Hospitalization,JAGUAR,I-PACE,SUV,Intersection,ADS,Yes,1
+f11ca3663ae1660,NHTSA Same Incident ID,AUG-2026,San Mateo,CA,Waymo LLC,30270-16489,58d901559d96b10,Property Damage. No Injured Reported,JAGUAR,I-PACE,SUV,Intersection,ADS,Yes,1
+f7c5e6652c57af2,NHTSA Same Incident ID,AUG-2026,Los Angeles,CA,Waymo LLC,30270-16404,0bae79fe401fe07,Property Damage. No Injured Reported,JAGUAR,I-PACE,Passenger Car,Street,ADS,Yes,1
+f98d35e0b3e1650,NHTSA Same Incident ID,AUG-2026,Atlanta,GA,Waymo LLC,30270-16261,cfbb9e2095e45da,Minor W/ Hospitalization,JAGUAR,I-PACE,Passenger Car,Street,ADS,Yes,1
+fcea4f53a914c75,NHTSA Same Incident ID,AUG-2026,Los Angeles,CA,Waymo LLC,30270-16133,1eb9abbb8fdcd36,Property Damage. No Injured Reported,JAGUAR,I-PACE,Pickup Truck,Street,ADS,Yes,1
+fe4ae50f8b7c7ee,NHTSA Same Incident ID,AUG-2026,Philadelphia,PA,Waymo LLC,30270-16277,529841d7112d129,Property Damage. No Injured Reported,ZEEKR,RT,Bus,Intersection,ADS,Yes,1
+fff7046c5f21468,NHTSA Same Incident ID,AUG-2026,Atlanta,GA,Waymo LLC,30270-16409,55d19a47592f177,Property Damage. No Injured Reported,JAGUAR,I-PACE,Heavy Truck,Street,ADS,Yes,1
 01a0825772194e1,NHTSA Same Incident ID,DEC-2021,San Francisco,CA,Transdev Alternative Services;Waymo LLC,30270-2150;30531-2155,afa8e157cfb1282,No Injuries Reported,Jaguar,I-Pace,SUV,Intersection,ADS,Yes,2
 0785569a15960a6,NHTSA Same Incident ID,DEC-2021,San Francisco,CA,"Cruise LLC;General Motors, LLC",30412-2019;540-2101,a41dcc6c4454525,No Injuries Reported,Cruise,AV,Passenger Car,Street,ADS,"[REDACTED, MAY CONTAIN CONFIDENTIAL BUSINESS INFORMATION]",2
 59513ab6ced8ed3,NHTSA Same Incident ID,DEC-2021,San Francisco,CA,Transdev Alternative Services;Waymo LLC,30270-1949;30270-1983;30531-1984,c076b8ec8eaf73f,No Injuries Reported,Jaguar,I-Pace,Passenger Car,Intersection,ADAS,Yes,3
@@ -1374,10 +1468,12 @@ fe1703e2c778a2a,NHTSA Same Incident ID,JUL-2025,,,Waymo LLC,30270-11302,cc45bd07
 2bb222591cc8318,NHTSA Same Incident ID,JUL-2026,Palo Alto,CA,Waymo LLC,30270-16050,da6f30567739773,Property Damage. No Injured Reported,JAGUAR,I-PACE,SUV,Street,ADS,Yes,1
 300ed18a11bbca0,NHTSA Same Incident ID,JUL-2026,Austin,TX,Waymo LLC,30270-15900,2bd16a42a6110a2,Property Damage. No Injured Reported,JAGUAR,I-PACE,Heavy Truck,Street,ADS,Yes,1
 304a39ba3f7d0e4,NHTSA Same Incident ID,JUL-2026,San Francisco,CA,Waymo LLC,30270-15938,6fa34366492a742,Property Damage. No Injured Reported,JAGUAR,I-PACE,SUV,Intersection,ADS,Yes,1
+318b53adc81e7b7,NHTSA Same Incident ID,JUL-2026,San Francisco,CA,"Zoox, Inc.",30610-16273,d5ddd820bf11b32,Property Damage. No Injured Reported,ZOOX,Zoox,SUV,Street,ADS,Yes,1
 3338e23081c8551,NHTSA Same Incident ID,JUL-2026,Austin,TX,Waymo LLC,30270-15898,9244b172b2937e3,Property Damage. No Injured Reported,JAGUAR,I-PACE,SUV,Street,ADS,Yes,1
 339bff8c25c90c8,NHTSA Same Incident ID,JUL-2026,San Francisco,CA,Waymo LLC,30270-15723,6d2f3188827d859,Property Damage. No Injured Reported,JAGUAR,I-PACE,Passenger Car,Street,ADS,Yes,1
 38eca3b94fe533c,NHTSA Same Incident ID,JUL-2026,San Francisco,CA,Waymo LLC,30270-15788,91bc2125465d4ab,Property Damage. No Injured Reported,JAGUAR,I-PACE,SUV,Street,ADS,Yes,1
 38f1727a6756069,NHTSA Same Incident ID,JUL-2026,Las Vegas,NV,Waymo LLC,30270-15896,9fd63fa7dc0605a,Serious W/ Hospitalization,ZEEKR,RT,SUV,Street,ADS,Yes,1
+4039cfffd33dfdb,NHTSA Same Incident ID,JUL-2026,Miami,FL,"Zoox, Inc.",30610-16265,20059de8eb483c7,Property Damage. No Injured Reported,TOYOTA,Highlander,Pickup Truck,Intersection,ADS,Yes,1
 407828e694dfa66,NHTSA Same Incident ID,JUL-2026,Austin,TX,Waymo LLC,30270-15785,8042c9858265b5d,Property Damage. No Injured Reported,JAGUAR,I-PACE,Passenger Car,Intersection,ADS,Yes,1
 4555d0a5062ef12,NHTSA Same Incident ID,JUL-2026,San Francisco,CA,Waymo LLC,30270-15992,768374373b1ad88,Property Damage. No Injured Reported,JAGUAR,I-PACE,Bus,Street,ADS,Yes,1
 45c84ee98d206a8,NHTSA Same Incident ID,JUL-2026,Harbor City,CA,Waymo LLC,30270-16201,03de575436fdd40,Property Damage. No Injured Reported,ZEEKR,RT,"Other, see Narrative",Unpaved Road,ADS,Yes,1
@@ -1412,6 +1508,7 @@ fe1703e2c778a2a,NHTSA Same Incident ID,JUL-2025,,,Waymo LLC,30270-11302,cc45bd07
 7b6cae38fea58d6,NHTSA Same Incident ID,JUL-2026,West Hollywood,CA,Waymo LLC,30270-15893,031ac5f21bb992a,Property Damage. No Injured Reported,JAGUAR,I-PACE,Pickup Truck,Parking Lot,ADS,Yes,1
 7dbf6a4d096c5f6,NHTSA Same Incident ID,JUL-2026,Redwood City,CA,Waymo LLC,30270-15836,4eb2e6f1d8cb241,Property Damage. No Injured Reported,JAGUAR,I-PACE,Passenger Car,Street,ADS,Yes,1
 7dcf9031a798627,NHTSA Same Incident ID,JUL-2026,Atlanta,GA,Waymo LLC,30270-16085,7288eed9585db24,No Injured Reported,JAGUAR,I-PACE,SUV,Street,ADS,Yes,1
+7de09f255494ee3,NHTSA Same Incident ID,JUL-2026,Houston,TX,"Tesla, Inc.",13781-16294,2694bee3f31bdbb,Property Damage. No Injured Reported,TESLA,Model Y,SUV,Intersection,ADS,Yes,1
 7fbd577071e9c78,NHTSA Same Incident ID,JUL-2026,Austin,TX,Waymo LLC,30270-16090,13b765a6e7c86a7,Property Damage. No Injured Reported,JAGUAR,I-PACE,Other Fixed Object,Parking Lot,ADS,Yes,1
 821101a5f0eddfc,NHTSA Same Incident ID,JUL-2026,San Francisco,CA,Waymo LLC,30270-16020,88cd8db6d8498e6,Property Damage. No Injured Reported,JAGUAR,I-PACE,Heavy Truck,Street,ADS,Yes,1
 82c44a2db2d1b57,NHTSA Same Incident ID,JUL-2026,Houston,TX,Nuro,30291-16243,ec2f4bf4750a712,Property Damage. No Injured Reported,TOYOTA,Prius,Passenger Car,Street,ADS,"[REDACTED, MAY CONTAIN CONFIDENTIAL BUSINESS INFORMATION]",1
@@ -1429,8 +1526,10 @@ fe1703e2c778a2a,NHTSA Same Incident ID,JUL-2025,,,Waymo LLC,30270-11302,cc45bd07
 a1d19a87db5c73b,NHTSA Same Incident ID,JUL-2026,Miami,FL,Waymo LLC,30270-15987,b3176c85ec1a347,Property Damage. No Injured Reported,JAGUAR,I-PACE,Heavy Truck,Street,ADS,Yes,1
 a2079c100dfd177,NHTSA Same Incident ID,JUL-2026,Arlington,TX,May Mobility,30413-16238,e28d55682f241e8,No Injured Reported,TOYOTA,Sienna,SUV,Street,ADS,Yes,1
 a618b643e544cd6,NHTSA Same Incident ID,JUL-2026,Austin,TX,Waymo LLC,30270-15725,4a5bc3848bebc6d,Property Damage. No Injured Reported,JAGUAR,I-PACE,Pickup Truck,Street,ADS,Yes,1
+a7c35b88282e335,NHTSA Same Incident ID,JUL-2026,Culver City,CA,"Zoox, Inc.",30610-16274,2011e07aac8b837,Property Damage. No Injured Reported,TOYOTA,Highlander,Pole / Tree,Street,ADS,Yes,1
 aaa95f76209de4d,NHTSA Same Incident ID,JUL-2026,Nashville,TN,Waymo LLC,30270-15991,a1b2fd4f0d3edfe,Property Damage. No Injured Reported,JAGUAR,I-PACE,Bus,Street,ADS,Yes,1
 abe0d6079ae7e0e,NHTSA Same Incident ID,JUL-2026,Tempe,AZ,Waymo LLC,30270-15990,c73e5cd30a0ec0d,Property Damage. No Injured Reported,JAGUAR,I-PACE,SUV,Street,ADS,Yes,1
+af4708207361ebb,NHTSA Same Incident ID,JUL-2026,San Mateo,CA,"Zoox, Inc.",30610-16272,775efd552f7297a,Property Damage. No Injured Reported,TOYOTA,Highlander,"Other, see Narrative",Highway / Freeway,ADS,Yes,1
 b153840e2689853,NHTSA Same Incident ID,JUL-2026,San Francisco,CA,Waymo LLC,30270-16168,e1e10d0f520eae0,No Injured Reported,JAGUAR,I-PACE,Van,Street,ADS,Yes,1
 b3a3eb5a373c59d,NHTSA Same Incident ID,JUL-2026,Dallas,TX,Waymo LLC,30270-16091,eb59e9671c7a03e,Property Damage. No Injured Reported,JAGUAR,I-PACE,Heavy Truck,Street,ADS,Yes,1
 b9666839a689d51,NHTSA Same Incident ID,JUL-2026,San Francisco,CA,Waymo LLC,30270-15927,38ff0b7e962940b,Property Damage. No Injured Reported,JAGUAR,I-PACE,SUV,Street,ADS,Yes,1
@@ -1448,6 +1547,8 @@ c9f32dc908db60f,NHTSA Same Incident ID,JUL-2026,Scottsdale,AZ,Waymo LLC,30270-15
 c9f37eb39f93fbc,NHTSA Same Incident ID,JUL-2026,Austin,TX,Avride Inc.,31101-16037,e54df41a3ead576,Minor W/O Hospitalization,HYUNDAI,Ioniq 5,Non-Motorist: Cyclist,Street,ADS,Yes,1
 cb5b672d0cb1d38,NHTSA Same Incident ID,JUL-2026,Phoenix,AZ,Waymo LLC,30270-15726,a3bbb939dc7b17f,Property Damage. No Injured Reported,JAGUAR,I-PACE,SUV,Street,ADS,Yes,1
 cf206ae97facd1d,NHTSA Same Incident ID,JUL-2026,Dallas,TX,Avride Inc.,31101-16194,e9380653930af17,Property Damage. No Injured Reported,HYUNDAI,Ioniq 5,Pickup Truck,Intersection,ADS,Yes,1
+cfdff850a8f59f3,NHTSA Same Incident ID,JUL-2026,Detroit,MI,Waymo LLC,30270-16259,568b3c70e9938f6,Property Damage. No Injured Reported,ZEEKR,RT,"Other, see Narrative",Street,ADS,Yes,1
+d0fd5440dd37988,NHTSA Same Incident ID,JUL-2026,Miami,FL,"Zoox, Inc.",30610-16275,880b339aa430fcb,Property Damage. No Injured Reported,ZOOX,Zoox,Animal,Street,ADS,Yes,1
 d1e0d1bca3cb28a,NHTSA Same Incident ID,JUL-2026,Los Angeles,CA,Waymo LLC,30270-16033,9b034707a9211a1,Property Damage. No Injured Reported,JAGUAR,I-PACE,SUV,Street,ADS,Yes,1
 d3cd658ba6b6c73,NHTSA Same Incident ID,JUL-2026,Tempe,AZ,Waymo LLC,30270-15829,17d89a3abb4bd64,Property Damage. No Injured Reported,JAGUAR,I-PACE,Pickup Truck,Intersection,ADS,Yes,1
 d48b0b6c524940e,NHTSA Same Incident ID,JUL-2026,Phoenix,AZ,Waymo LLC,30270-15832,836e74ee88fb46a,Minor W/O Hospitalization,JAGUAR,I-PACE,Pickup Truck,Street,ADS,Yes,1
@@ -2022,6 +2123,7 @@ e6bd1c3e117dd7b,NHTSA Same Incident ID,MAR-2026,Houston,TX,Waymo LLC,30270-14457
 e7f8147f4058e80,NHTSA Same Incident ID,MAR-2026,Dallas,TX,Avride Inc.,31101-14652,e53d2f85db6da01,No Injured Reported,HYUNDAI,Ioniq 5,"Other, see Narrative",Intersection,ADS,Yes,1
 eb09283750d5156,NHTSA Same Incident ID,MAR-2026,San Francisco,CA,Waymo LLC,30270-14425,c78603b93164de4,Property Damage. No Injured Reported,JAGUAR,I-PACE,First Responder Vehicle,Street,ADS,Yes,1
 ec45c246b737e08,NHTSA Same Incident ID,MAR-2026,Dallas,TX,Avride Inc.,31101-14653,86a506cfb41afe5,Property Damage. No Injured Reported,HYUNDAI,Ioniq 5,Passenger Car,Street,ADS,Yes,1
+f2f1e410a2eb885,NHTSA Same Incident ID,MAR-2026,Orlando,FL,MOIA America LLC,35021-16400,22e916e48058524,Property Damage. No Injured Reported,Volkswagen,ID.Buzz,Other Fixed Object,Parking Lot,ADS,Yes,1
 f69ed49b28c17bb,NHTSA Same Incident ID,MAR-2026,Inglewood,CA,Waymo LLC,30270-14389,1f794f183cab935,Minor W/ Hospitalization,JAGUAR,I-PACE,SUV,Street,ADS,Yes,1
 fa4569805b2287b,NHTSA Same Incident ID,MAR-2026,San Francisco,CA,"Zoox, Inc.",30610-14665,9c8cf765a91f70e,Property Damage. No Injured Reported,TOYOTA,Highlander,Passenger Car,Street,ADS,Yes,1
 fac34b3e0ebdc34,NHTSA Same Incident ID,MAR-2026,San Francisco,CA,Waymo LLC,30270-14232,f8d43bba80744e6,Minor W/O Hospitalization,JAGUAR,I-PACE,Non-Motorist: Cyclist,Street,ADS,Yes,1
@@ -2949,3 +3051,15 @@ e7773de4d188cd2,NHTSA Same Incident ID,SEP-2025,Austin,TX,Waymo LLC,30270-11850,
 fafbadbfaa69a69,NHTSA Same Incident ID,SEP-2025,San Francisco,CA,Waymo LLC,30270-11695,fe2acf578a864c8,Property Damage. No Injured Reported,JAGUAR,I-PACE,Passenger Car,Street,ADS,Yes,1
 fe0fd9933f671b3,NHTSA Same Incident ID,SEP-2025,Los Angeles,CA,Waymo LLC,30270-11789,de24f92f75b28ea,Minor W/ Hospitalization,JAGUAR,I-PACE,SUV,Street,ADS,Yes,1
 ffa7fe31f8c8d1a,NHTSA Same Incident ID,SEP-2025,San Francisco,CA,"Zoox, Inc.",30610-11902,4e79e773a751fc2,Property Damage. No Injured Reported,ZOOX,Zoox,Heavy Truck,Intersection,ADS,Yes,1
+056481205af3d6b,NHTSA Same Incident ID,SEP-2026,Los Angeles,CA,Waymo LLC,30270-16551,ceb2e0cf054287b,Property Damage. No Injured Reported,JAGUAR,I-PACE,SUV,Intersection,ADS,Yes,1
+0d4b01b61964427,NHTSA Same Incident ID,SEP-2026,Las Vegas,NV,Motional,30410-16557,70d29b672b7a093,Minor W/O Hospitalization,HYUNDAI,Ioniq 5,Non-Motorist: Cyclist,Intersection,ADS,Yes,1
+174128888b47cb3,NHTSA Same Incident ID,SEP-2026,San Francisco,CA,Waymo LLC,30270-16500,507bcf40f8b643f,Property Damage. No Injured Reported,ZEEKR,RT,Passenger Car,Street,ADS,Yes,1
+1a4f5006befd668,NHTSA Same Incident ID,SEP-2026,Los Angeles,CA,Waymo LLC,30270-16663,1863eb4091d22bd,Minor W/O Hospitalization,ZEEKR,RT,Passenger Car,Intersection,ADS,Yes,1
+2f06bba81e69b71,NHTSA Same Incident ID,SEP-2026,Los Angeles,CA,Waymo LLC,30270-16577,13a3b5cbdc83fb8,Property Damage. No Injured Reported,JAGUAR,I-PACE,Pickup Truck,Street,ADS,Yes,1
+62ae13f791de316,NHTSA Same Incident ID,SEP-2026,Houston,TX,Waymo LLC,30270-16552,890a843becef5c9,Minor W/ Hospitalization,JAGUAR,I-PACE,Other Fixed Object,Highway / Freeway,ADS,Yes,1
+8193badb5cdde43,NHTSA Same Incident ID,SEP-2026,San Francisco,CA,Waymo LLC,30270-16497,35fafbe3464b744,Property Damage. No Injured Reported,JAGUAR,I-PACE,SUV,Street,ADS,Yes,1
+adbac4a97d60436,NHTSA Same Incident ID,SEP-2026,Phoenix,AZ,Waymo LLC,30270-16491,a22c1c38eb314a1,Property Damage. No Injured Reported,JAGUAR,I-PACE,SUV,Street,ADS,Yes,1
+b0c360ec4bb0a4c,NHTSA Same Incident ID,SEP-2026,Los Angeles,CA,Waymo LLC,30270-16579,04fc5abe9d75585,Property Damage. No Injured Reported,ZEEKR,RT,Passenger Car,Street,ADS,Yes,1
+b68afca01842d0f,NHTSA Same Incident ID,SEP-2026,Las Vegas,NV,"Zoox, Inc.",30610-16648,c45ac8dc7cdf182,Property Damage. No Injured Reported,TOYOTA,Highlander,Passenger Car,Street,ADS,Yes,1
+cf9622d0e707b0a,NHTSA Same Incident ID,SEP-2026,Miami,FL,Waymo LLC,30270-16548,4a09534910b2a5e,Property Damage. No Injured Reported,JAGUAR,I-PACE,Motorcycle,Highway / Freeway,ADS,Yes,1
+f2e58802781332d,NHTSA Same Incident ID,SEP-2026,Tempe,AZ,Waymo LLC,30270-16554,be28c64f139148f,Property Damage. No Injured Reported,JAGUAR,I-PACE,Passenger Car,Street,ADS,Yes,1

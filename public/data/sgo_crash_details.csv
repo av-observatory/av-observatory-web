@@ -36,7 +36,17 @@ report_id,report_version,same_incident_id,incident_date,air_bag_deployment,subje
 13781-15808,1,4093fefb16c25f5,JUN-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
 13781-15809,1,ebda2c940572e10,JUN-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
 13781-16255,1,6636966804ac538,JUL-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
-13781-16256,1,7420ebc8c51d9ec,JUL-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+13781-16256,2,7420ebc8c51d9ec,JUL-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+13781-16294,1,7de09f255494ee3,JUL-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+13781-16671,1,e4b146994027a78,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+13781-16672,1,729db7739792799,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+13781-16673,1,8a2aa60ed60e979,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+13781-16674,1,907aa3b3009fe9a,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+13781-16675,1,865485923a26ec3,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+13781-16676,1,e0a1110fcb9a159,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+13781-16677,1,c671fc9c9b05d1b,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+13781-16678,1,4144a8916a19c4e,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+13781-16679,1,dc20b6b1caf897a,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
 1420-7081,1,a05277be2462827,JAN-2024,Unknown,No,Unknown,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/Archive-2021-2025/SGO-2021-01_Incident_Reports_ADS.csv,Yes
 1420-7244,1,ab7ab6695e48c80,FEB-2024,Unknown,No,Unknown,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/Archive-2021-2025/SGO-2021-01_Incident_Reports_ADS.csv,Yes
 1420-7671,1,747a10541edff5d,APR-2024,No Deployment Reported,No,No,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/Archive-2021-2025/SGO-2021-01_Incident_Reports_ADS.csv,Yes
@@ -1585,8 +1595,12 @@ report_id,report_version,same_incident_id,incident_date,air_bag_deployment,subje
 30270-16112,1,6c1a08f1e98ac53,JUL-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
 30270-16114,1,2234a28c4e8fb96,JUL-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
 30270-16115,1,5d9d9abf8d58b16,JUL-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30270-16117,1,a1bd6e40890d3ab,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
 30270-16123,1,c0adb95d5980d1e,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30270-16124,1,51139e83fbc986a,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
 30270-1613,1,b4618f349040cbb,NOV-2021,No Deployment Reported,No,No,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/Archive-2021-2025/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30270-16132,1,e0ceb4387af2af6,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30270-16133,1,fcea4f53a914c75,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
 30270-16162,1,9369392adf543ea,JUL-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
 30270-16164,1,ba688015f45ad22,JUL-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
 30270-16165,1,030d1a97f183bf5,JUL-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
@@ -1597,11 +1611,79 @@ report_id,report_version,same_incident_id,incident_date,air_bag_deployment,subje
 30270-16172,1,003a9a4a34d20d8,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
 30270-16174,1,9e32f97063cd034,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
 30270-16196,1,4c6d6b79d0d8974,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30270-16199,1,e7f85686105b628,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
 30270-16201,1,45c84ee98d206a8,JUL-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30270-16202,1,b14b5b65c6b7b55,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30270-16203,1,eee5b3b428eab9b,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
 30270-16205,1,2313e0a5276fa7c,JUL-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
 30270-16207,1,32720b6b155d24d,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
 30270-16208,1,2d4180877e9867b,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30270-16209,1,bb2acce5fe307c5,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
 30270-16210,1,cee4c694ffc6293,AUG-2026,Unknown,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30270-16258,1,22cdfc6478274b8,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30270-16259,1,cfdff850a8f59f3,JUL-2026,Deployed,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30270-16260,1,1ec8dd73cb0c835,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30270-16261,1,f98d35e0b3e1650,AUG-2026,Deployed,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30270-16262,1,1d2e4cfe8538141,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30270-16271,1,361327250df29db,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30270-16276,1,8bd8b1afcb412ae,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30270-16277,1,fe4ae50f8b7c7ee,AUG-2026,Deployed,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30270-16278,1,8c1e4cd053942b8,AUG-2026,Deployed,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30270-16286,2,888a7d234f6b3f9,AUG-2026,Unknown,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30270-16287,1,0b27a78c63316c4,AUG-2026,Unknown,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30270-16291,1,6d4c2eeadb7f064,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30270-16293,1,01a80128e37ee4e,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30270-16298,1,d3c4089ea894cc6,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30270-16299,1,c6972de507b4325,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30270-16300,1,ca4d16604b348d6,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30270-16325,1,ef169e0514eb8cf,AUG-2026,Deployed,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30270-16342,1,22e90ab63ee994d,AUG-2026,Unknown,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30270-16344,1,19d8fdfc4c6a4dc,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30270-16345,1,757618677ef3ec8,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30270-16346,1,5b8ba4f82548c4f,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30270-16347,1,03e8da689ced2c4,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30270-16348,1,906b574995746f0,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30270-16356,1,3ed2234e8e4252d,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30270-16358,1,aaf5999b81ce7e9,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30270-16360,1,b45f2867e8b9806,AUG-2026,Unknown,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30270-16366,1,719174f1b94f26d,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30270-16373,1,22352df2af9968a,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30270-16374,1,15c8fe5bfe0fc65,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30270-16395,1,b26b31246161355,AUG-2026,Unknown,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30270-16396,1,dc02c204228b8da,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30270-16398,1,db0bf45ccb8b461,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30270-16399,1,5ef96b4948629c7,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30270-16404,1,f7c5e6652c57af2,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30270-16409,1,fff7046c5f21468,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30270-16410,1,c9e5d27d65dc564,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30270-16448,1,3cd99e002ccbf77,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30270-16452,1,e44fce9b36b54df,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30270-16453,1,c737c52a4d91b9c,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30270-16454,1,c0df4bba9558f42,AUG-2026,Unknown,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30270-16456,1,b942e39637f6890,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30270-16458,1,11bd8f24c3d7821,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30270-16461,1,e9270e6c7d46123,AUG-2026,Unknown,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30270-16464,1,586f6be37a24642,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30270-16489,1,f11ca3663ae1660,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30270-16490,1,e842d55e9b4822e,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30270-16491,1,adbac4a97d60436,SEP-2026,Deployed,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30270-16493,1,8045a25eedb5404,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30270-16496,1,4dad0e8652d4873,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30270-16497,1,8193badb5cdde43,SEP-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30270-16498,1,d197fef709e347f,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30270-16500,1,174128888b47cb3,SEP-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30270-16548,1,cf9622d0e707b0a,SEP-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30270-16551,1,056481205af3d6b,SEP-2026,Deployed,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30270-16552,1,62ae13f791de316,SEP-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30270-16553,1,01ac3c91b755fa5,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30270-16554,1,f2e58802781332d,SEP-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30270-16556,1,a1f66012798119c,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30270-16577,1,2f06bba81e69b71,SEP-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30270-16579,1,b0c360ec4bb0a4c,SEP-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30270-16645,1,b1454dd83a31653,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30270-16646,1,d56376ad34f9834,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30270-16647,1,605693fca3ed2c6,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30270-16663,1,1a4f5006befd668,SEP-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
 30270-1727,1,488a8ae4eedfb82,OCT-2021,No Deployment Reported,No,No,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/Archive-2021-2025/SGO-2021-01_Incident_Reports_ADS.csv,Yes
 30270-1728,1,31698dec0f30d7d,OCT-2021,No Deployment Reported,No,No,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/Archive-2021-2025/SGO-2021-01_Incident_Reports_ADS.csv,Yes
 30270-1729,1,9988693979353b9,OCT-2021,No Deployment Reported,No,No,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/Archive-2021-2025/SGO-2021-01_Incident_Reports_ADS.csv,Yes
@@ -2409,6 +2491,7 @@ report_id,report_version,same_incident_id,incident_date,air_bag_deployment,subje
 30291-7981,1,64ff58c25e10084,JUN-2024,No Deployment Reported,No,No,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/Archive-2021-2025/SGO-2021-01_Incident_Reports_ADS.csv,Yes
 30291-9651,1,773db7d86245192,DEC-2024,Unknown,No,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/Archive-2021-2025/SGO-2021-01_Incident_Reports_ADS.csv,Yes
 30310-3698,1,1ddae575afe5d5a,AUG-2022,No Deployment Reported,No,No,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/Archive-2021-2025/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30330-16576,1,9dcd28ad7e5d74f,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
 30330-3482,2,3e2bdafd3d96829,JUL-2022,No Deployment Reported,No,Not Applicable,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/Archive-2021-2025/SGO-2021-01_Incident_Reports_ADS.csv,Yes
 30330-3561,1,66ee1d58acd3680,JUL-2022,No Deployment Reported,No,Not Applicable,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/Archive-2021-2025/SGO-2021-01_Incident_Reports_ADS.csv,Yes
 30330-6882,1,df4cd7fa084bc3e,DEC-2023,Unknown,No,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/Archive-2021-2025/SGO-2021-01_Incident_Reports_ADS.csv,Yes
@@ -2435,6 +2518,9 @@ report_id,report_version,same_incident_id,incident_date,air_bag_deployment,subje
 30410-15247,1,a84b653066e3b68,MAY-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
 30410-15591,1,f89bed9069d7689,JUN-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
 30410-15730,1,28b1c784d93a162,JUL-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30410-16264,1,9dc28c3b9de8058,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30410-16407,1,3a84a827731c163,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30410-16557,1,0d4b01b61964427,SEP-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
 30410-3043,1,,MAY-2022,No Deployment Reported,No,Not Applicable,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/Archive-2021-2025/SGO-2021-01_Incident_Reports_ADS.csv,Yes
 30410-4799,1,1016e5c64e50462,JAN-2023,No Deployment Reported,No,No,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/Archive-2021-2025/SGO-2021-01_Incident_Reports_ADS.csv,Yes
 30410-5003,1,37bce9ebe5f477f,FEB-2023,No Deployment Reported,No,No,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/Archive-2021-2025/SGO-2021-01_Incident_Reports_ADS.csv,Yes
@@ -2626,6 +2712,8 @@ report_id,report_version,same_incident_id,incident_date,air_bag_deployment,subje
 30413-15464,1,08ec8b688c6da5f,MAY-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
 30413-16218,1,5129d7a8bb470c8,JUL-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
 30413-16238,1,a2079c100dfd177,JUL-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30413-16664,1,3f88898f0c7d15e,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30413-16665,1,0a971b5c24c83cc,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
 30413-3138,1,3b95fade2333295,MAY-2022,No Deployment Reported,No,No,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/Archive-2021-2025/SGO-2021-01_Incident_Reports_ADS.csv,Yes
 30413-3764,1,7fb8af01e45e543,AUG-2022,No Deployment Reported,No,No,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/Archive-2021-2025/SGO-2021-01_Incident_Reports_ADS.csv,Yes
 30413-3943,1,379fa369488a397,SEP-2022,No Deployment Reported,No,No,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/Archive-2021-2025/SGO-2021-01_Incident_Reports_ADS.csv,Yes
@@ -2658,6 +2746,8 @@ report_id,report_version,same_incident_id,incident_date,air_bag_deployment,subje
 30450-6116,1,aeab14bf24ea3b8,AUG-2023,Unknown,No,Unknown,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/Archive-2021-2025/SGO-2021-01_Incident_Reports_ADS.csv,Yes
 30450-6958,1,4c457674d24ef64,JAN-2024,No Deployment Reported,No,No,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/Archive-2021-2025/SGO-2021-01_Incident_Reports_ADS.csv,Yes
 30451-15790,1,28af066410d3d0a,JUN-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30451-16656,1,51925868630e6c5,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30451-16657,1,3d0e34b995cb765,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
 30490-11294,1,8ddd6577855a5ad,JUN-2025,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
 30490-11693,1,9cfac09fd9d9164,AUG-2025,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
 30490-13120,1,32cbce6fd63f148,NOV-2025,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
@@ -2680,6 +2770,7 @@ report_id,report_version,same_incident_id,incident_date,air_bag_deployment,subje
 30530-15027,1,ce63bac06303466,APR-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
 30530-15781,1,47905da3dadbe58,JUL-2026,Deployed,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
 30530-16220,1,bed04cd78f8ec77,JUL-2026,Unknown,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30530-16297,1,b49e9ff7cf4837c,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
 30530-4264,1,b393cfe0f714730,OCT-2022,No Deployment Reported,No,Not Applicable,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/Archive-2021-2025/SGO-2021-01_Incident_Reports_ADS.csv,Yes
 30530-5289,1,5e8ac7239468e4d,MAR-2023,No Deployment Reported,No,No,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/Archive-2021-2025/SGO-2021-01_Incident_Reports_ADS.csv,Yes
 30530-6125,1,b4a57672f637bda,JUL-2023,No Deployment Reported,No,Not Applicable,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/Archive-2021-2025/SGO-2021-01_Incident_Reports_ADS.csv,Yes
@@ -2930,6 +3021,20 @@ report_id,report_version,same_incident_id,incident_date,air_bag_deployment,subje
 30610-15822,1,6426eefe9a84263,JUN-2026,Unknown,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
 30610-15826,1,755bbd9bfeb9e1a,JUN-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
 30610-15827,1,e71e53e28d8c94e,JUN-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30610-16265,1,4039cfffd33dfdb,JUL-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30610-16272,1,af4708207361ebb,JUL-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30610-16273,1,318b53adc81e7b7,JUL-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30610-16274,1,a7c35b88282e335,JUL-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30610-16275,1,d0fd5440dd37988,JUL-2026,Unknown,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30610-16450,1,e463b24a8c54775,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30610-16451,1,415a066954bea35,AUG-2026,Deployed,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30610-16575,1,306d290cb85c503,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30610-16648,1,b68afca01842d0f,SEP-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30610-16696,1,127342ffb2f400a,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30610-16698,1,b36d6531a4514ce,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30610-16699,1,e6fef588a62c89e,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30610-16700,1,1af5ac5e4b10f14,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30610-16701,1,acdefdc31f28d73,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
 30610-1732,1,3f31d9494b5ff0b,OCT-2021,No Deployment Reported,No,No,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/Archive-2021-2025/SGO-2021-01_Incident_Reports_ADS.csv,Yes
 30610-2151,1,b2e81debd54d53f,DEC-2021,No Deployment Reported,No,No,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/Archive-2021-2025/SGO-2021-01_Incident_Reports_ADS.csv,Yes
 30610-2227,2,60fe7e3c889b2c0,FEB-2022,Unknown,No,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/Archive-2021-2025/SGO-2021-01_Incident_Reports_ADS.csv,Yes
@@ -3002,6 +3107,7 @@ report_id,report_version,same_incident_id,incident_date,air_bag_deployment,subje
 30630-6900,1,50cd58141874683,DEC-2023,No Deployment Reported,No,No,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/Archive-2021-2025/SGO-2021-01_Incident_Reports_ADS.csv,Yes
 30634-10693,1,f0ae0f1d67d9a27,MAY-2025,No Deployment Reported,No,No,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/Archive-2021-2025/SGO-2021-01_Incident_Reports_ADS.csv,Yes
 30634-14991,1,e030f01d2992e85,APR-2026,Unknown,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+30634-16662,1,c129b8346be1f17,AUG-2026,Unknown,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
 30690-1286,1,,AUG-2021,No Deployment Reported,No,No,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/Archive-2021-2025/SGO-2021-01_Incident_Reports_ADS.csv,Yes
 30690-4793,1,b60e02de2f46f8f,JAN-2023,Unknown,No,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/Archive-2021-2025/SGO-2021-01_Incident_Reports_ADS.csv,Yes
 30711-1624,1,aeb0ef282584e35,OCT-2021,Unknown,No,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/Archive-2021-2025/SGO-2021-01_Incident_Reports_ADS.csv,Yes
@@ -3107,6 +3213,8 @@ report_id,report_version,same_incident_id,incident_date,air_bag_deployment,subje
 31101-16194,1,cf206ae97facd1d,JUL-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
 31101-16195,1,63268669c3dc113,JUL-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
 31101-16197,1,e460dd80fb8f063,JUL-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+31101-16263,1,6af9ec0b1dbe8ce,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+31101-16494,1,8c4f2f60682485e,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
 31101-7044,2,a642239e4ca5b63,OCT-2023,No Deployment Reported,No,No,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/Archive-2021-2025/SGO-2021-01_Incident_Reports_ADS.csv,Yes
 31101-9685,1,cc641826176439e,DEC-2024,Unknown,No,Unknown,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/Archive-2021-2025/SGO-2021-01_Incident_Reports_ADS.csv,Yes
 33175-9303,1,,JUN-2024,No Deployment Reported,No,No,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/Archive-2021-2025/SGO-2021-01_Incident_Reports_ADS.csv,Yes
@@ -3122,10 +3230,16 @@ report_id,report_version,same_incident_id,incident_date,air_bag_deployment,subje
 33495-6720,1,a497d4cb2c09cee,JUN-2023,Unknown,No,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/Archive-2021-2025/SGO-2021-01_Incident_Reports_ADS.csv,Yes
 33495-6725,1,2b3039c25836235,SEP-2023,No Deployment Reported,No,No,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/Archive-2021-2025/SGO-2021-01_Incident_Reports_ADS.csv,Yes
 33495-6726,1,6724ba0b1aa4554,OCT-2023,No Deployment Reported,No,Not Applicable,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/Archive-2021-2025/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+33504-16549,1,8e7ea78f8f72b19,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+33504-16695,1,500dfcb0b968b18,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
 34952-11803,1,b1238fa7e70adb3,SEP-2025,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
 34952-14990,1,a3b8990a21e7bfa,APR-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
 34970-11835,1,2c3503d25df6e2d,AUG-2025,Unknown,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
 35021-16268,1,867e7e8f2b81486,JUL-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+35021-16400,1,f2f1e410a2eb885,MAR-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+35021-16401,2,6447476cf2f72af,APR-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+35021-16402,1,a6f6c7a6ce5be69,APR-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
+35021-16694,1,2f8cf3e40f971bd,AUG-2026,No Deployment Reported,,,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv,Yes
 502-1163,3,ac03faca000d50b,SEP-2021,No Deployment Reported,No,No,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/Archive-2021-2025/SGO-2021-01_Incident_Reports_ADS.csv,Yes
 502-1697,2,15e150e3f8f22d0,OCT-2021,No Deployment Reported,No,No,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/Archive-2021-2025/SGO-2021-01_Incident_Reports_ADS.csv,Yes
 502-18,2,f700288ccb3ad35,JUL-2021,No Deployment Reported,No,No,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/Archive-2021-2025/SGO-2021-01_Incident_Reports_ADS.csv,Yes

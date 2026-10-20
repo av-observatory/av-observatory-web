@@ -117,9 +117,12 @@ year,month,program_type,incident_count
 2026,4,testing,14
 2026,5,commercial,62
 2026,5,testing,10
-2026,6,commercial,49
+2026,6,commercial,50
 2026,6,testing,11
 2026,7,commercial,42
-2026,7,testing,7
-2026,8,commercial,4
-2026,8,testing,1
+2026,7,testing,12
+2026,8,commercial,29
+2026,8,testing,12
+2026,9,commercial,12
+2026,9,testing,3
+2026,9,unknown,1

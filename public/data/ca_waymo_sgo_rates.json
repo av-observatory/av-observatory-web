@@ -63,6 +63,30 @@
       "serious_or_fatal_crashes_per_million_miles": 0.0
     },
     {
+      "month": "2024-03",
+      "cpuc_driverless_vmt": 450097.31,
+      "sgo_ads_crashes": 12,
+      "sgo_serious_or_fatal_crashes": 0,
+      "crashes_per_million_miles": 26.661,
+      "serious_or_fatal_crashes_per_million_miles": 0.0
+    },
+    {
+      "month": "2024-04",
+      "cpuc_driverless_vmt": 573172.3,
+      "sgo_ads_crashes": 11,
+      "sgo_serious_or_fatal_crashes": 0,
+      "crashes_per_million_miles": 19.191,
+      "serious_or_fatal_crashes_per_million_miles": 0.0
+    },
+    {
+      "month": "2024-05",
+      "cpuc_driverless_vmt": 903459.24,
+      "sgo_ads_crashes": 19,
+      "sgo_serious_or_fatal_crashes": 1,
+      "crashes_per_million_miles": 21.03,
+      "serious_or_fatal_crashes_per_million_miles": 1.107
+    },
+    {
       "month": "2024-06",
       "cpuc_driverless_vmt": 1117399.53,
       "sgo_ads_crashes": 21,
