@@ -127,7 +127,7 @@ def main():
         elif stem == "sgo_shift_analysis":
             export(stem + "_breaks.csv", [{"series": n, "month": b["month"], "period_end": b["period_end"], "direction": b["direction"],
                                           "growth_per_month_each_year_before": b["growth_before"], "growth_per_month_each_year_after": b["growth_after"],
-                                          "evidence": " | ".join(b["evidence"])} for n, v in data["series"].items() for b in v["breaks"]], output)
+                                          "evidence": " | ".join([b["headline"]] + b["service"] + b["odd"] + b["fleet"])} for n, v in data["series"].items() for b in v["breaks"]], output)
             export(stem + "_monthly.csv", [{"series": n, **c} for n, v in data["series"].items() for c in v["counts"]], output)
         elif stem == "sgo_trend_events":
             export(stem + ".csv", [{k: ("; ".join(v) if isinstance(v, list) else v) for k, v in e.items()} for e in data["events"]], output)

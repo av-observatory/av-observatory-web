@@ -9,9 +9,9 @@ the data on this site: how fast reports were growing before and after, which cit
 states first appear in the reports, which companies or vehicle platforms added the growth,
 highway share, the number of distinct vehicles reporting a crash, and, where public
 mileage exists (Waymo in California from the CPUC, Waymo's S2 releases), how exposure moved
-and what happened to crashes per million miles. Rule changes and sourced public events
-are attached only when they fall within two months of a break and are labelled as
-coincident context, never as a proven cause.
+and what happened to crashes per million miles. Sourced public events about service expansion, operating-domain changes and fleets are
+attached only when they fall within two months of a break and are labelled as coincident
+context, never as a proven cause.
 """
 import csv
 import json
@@ -28,7 +28,6 @@ PARTNERS = {"General Motors", "Ford Motor Company", "PACCAR", "Transdev", "Trans
 MIN_CRASHES = 15          # companies below this have too little data to analyse
 MIN_SEG = 6               # months
 MAX_SEG = 6
-RULE_CHANGES = {2023 * 12 + 4: "NHTSA's second amended SGO took effect in May 2023", 2025 * 12 + 5: "NHTSA's third amended SGO took effect in June 2025"}
 
 
 def company(entities):
@@ -114,65 +113,68 @@ def pct(a, b):
 
 
 def evidence(sel, k, l, last, name, cpuc, s2, prev_slope, slope):
-    """Facts about the period that starts at the break (months k..l-1), from data on this site."""
+    """Facts about the period that starts at the break (months k..l-1), grouped as expanded
+    service, operating domain (ODD) and fleets. Everything is computed from data on this site."""
     n = l - k
     w = 3 if n >= 8 else max(1, n // 2)
     start_w, end_w = range(k, k + w), range(l - w, l)
     cnt = lambda rows_, rng: sum(1 for r in rows_ if r["ym"] in rng)
     in_seg = [r for r in sel if k <= r["ym"] < l]
-    facts = []
-    a_s, a_e = cnt(sel, start_w) / w, cnt(sel, end_w) / w
-    a_p = cnt(sel, range(k - 3, k)) / 3
+    a_s, a_e, a_p = cnt(sel, start_w) / w, cnt(sel, end_w) / w, cnt(sel, range(k - 3, k)) / 3
     if slope < prev_slope:
-        facts.append(f"Growth in monthly reports changed from {prev_slope:+.0f} to {slope:+.0f} a month each year. Reports averaged {a_p:.0f} a month in {label(k - 3)} to {label(k - 1)}, then {a_s:.0f} in {label(k)} to {label(k + w - 1)} and {a_e:.0f} in {label(l - w)} to {label(l - 1)}.")
+        headline = f"Growth in monthly reports changed from {prev_slope:+.0f} to {slope:+.0f} a month each year. Reports averaged {a_p:.0f} a month in {label(k - 3)} to {label(k - 1)}, then {a_s:.0f} in {label(k)} to {label(k + w - 1)} and {a_e:.0f} in {label(l - w)} to {label(l - 1)}."
     else:
-        facts.append(f"Growth in monthly reports changed from {prev_slope:+.0f} to {slope:+.0f} a month each year. Reports averaged {a_s:.0f} a month in {label(k)} to {label(k + w - 1)} and {a_e:.0f} in {label(l - w)} to {label(l - 1)}.")
+        headline = f"Growth in monthly reports changed from {prev_slope:+.0f} to {slope:+.0f} a month each year. Reports averaged {a_s:.0f} a month in {label(k)} to {label(k + w - 1)} and {a_e:.0f} in {label(l - w)} to {label(l - 1)}."
+    service, odd, fleet = [], [], []
     seen = {(r["city"], r["state"]) for r in sel if r["ym"] < k and r["city"]}
     first = Counter((r["city"], r["state"]) for r in in_seg if r["city"] and r["state"] and (r["city"], r["state"]) not in seen)
     if first:
         top = ", ".join(f"{c}, {s}" for (c, s), _ in first.most_common(4))
         end_rows = [r for r in sel if r["ym"] in end_w]
         end_new = sum(1 for r in end_rows if (r["city"], r["state"]) in first)
-        facts.append(f"{len(first)} cities first appear in {'the' if name == 'All companies' else 'its'} reports during this period, led by {top}. By {label(l - 1)} they account for {end_new / max(len(end_rows), 1) * 100:.0f}% of monthly reports.")
+        service.append(f"{len(first)} cities first appear in {'the' if name == 'All companies' else 'its'} reports during this period, led by {top}. By {label(l - 1)} they account for {end_new / max(len(end_rows), 1) * 100:.0f}% of monthly reports.")
     states_seen = {r["state"] for r in sel if r["ym"] < k}
     new_states = sorted({r["state"] for r in in_seg if r["state"] and r["state"] not in states_seen})
     if new_states:
-        facts.append(f"First reports from {', '.join(new_states)}.")
+        service.append(f"First reports from {', '.join(new_states)}.")
+    pre = [r for r in sel if k - 6 <= r["ym"] < k]
+    endr = [r for r in sel if r["ym"] in end_w]
+    if len(pre) >= 15 and len(endr) >= 15:
+        mix = lambda rows_: Counter(r["roadway_type"] or "Unknown" for r in rows_)
+        mp, me = mix(pre), mix(endr)
+        shifts = sorted(((me[t] / len(endr) - mp[t] / len(pre)) * 100, t) for t in set(mp) | set(me))
+        moves = [(d, t) for d, t in (shifts[0], shifts[-1]) if abs(d) >= 3]
+        if moves:
+            odd.append("Where crashes happen shifted: " + "; ".join(f"{t} {d:+.0f} points" for d, t in sorted(moves, reverse=True)) + " of reports, comparing the six months before the period with its last three months (roadway labels depend partly on how each company classifies).")
+    hw = lambda rows_: sum(1 for r in rows_ if r["roadway_type"].startswith("Highway")) / max(len(rows_), 1) * 100
+    if len(pre) >= 20 and len(endr) >= 20 and abs(hw(endr) - hw(pre)) >= 1.0:
+        odd.append(f"Highway or freeway crashes were {hw(pre):.1f}% of reports before the period and {hw(endr):.1f}% at its end.")
+    outside = lambda rows_: sum(1 for r in rows_ if r["within_odd"].lower().startswith("no")) / max(len(rows_), 1) * 100
+    if len(pre) >= 20 and len(endr) >= 20 and abs(outside(endr) - outside(pre)) >= 2:
+        odd.append(f"Crashes reported as outside the system's operating domain were {outside(pre):.1f}% before the period and {outside(endr):.1f}% at its end.")
+    models_seen = {r["model"] for r in sel if r["ym"] < k}
+    newm = [(m, c) for m, c in Counter(r["model"] for r in in_seg if r["model"] not in models_seen).most_common(3) if c >= 3]
+    if newm:
+        fleet.append("New vehicle platforms in the reports: " + ", ".join(f"{m} ({c})" for m, c in newm) + ".")
     if name == "All companies":
         cs, ce = Counter(r["company"] for r in sel if r["ym"] in start_w), Counter(r["company"] for r in sel if r["ym"] in end_w)
         delta = sorted(((ce[c] - cs[c]) / w, c) for c in set(cs) | set(ce))
         gains = [(d, c) for d, c in delta[::-1][:3] if d >= 1]
         losses = [(d, c) for d, c in delta[:2] if d <= -1]
-        if gains:
-            facts.append("Monthly reports rose most at " + ", ".join(f"{c} ({d:+.0f})" for d, c in gains) + (f"; fell at " + ", ".join(f"{c} ({d:+.0f})" for d, c in losses) if losses else "") + f". Waymo is {sum(1 for r in sel if r['ym'] in end_w and r['company'] == 'Waymo') / max(cnt(sel, end_w), 1) * 100:.0f}% of reports at the end of the period.")
-        elif losses:
-            facts.append("Monthly reports fell most at " + ", ".join(f"{c} ({d:+.0f})" for d, c in losses) + ".")
+        if gains or losses:
+            fleet.append("Fleets adding the most monthly reports: " + (", ".join(f"{c} ({d:+.0f})" for d, c in gains) or "none") + ("; fleets reporting fewer: " + ", ".join(f"{c} ({d:+.0f})" for d, c in losses) if losses else "") + f". Waymo is {sum(1 for r in sel if r['ym'] in end_w and r['company'] == 'Waymo') / max(cnt(sel, end_w), 1) * 100:.0f}% of reports at the end of the period.")
     if name == "Waymo" and cpuc:
         cs_ = [m for m in cpuc if m["ym"] in start_w]
         ce_ = [m for m in cpuc if m["ym"] in end_w]
         if len(cs_) == w and len(ce_) == w and sum(m["vmt"] for m in cs_) > 0:
             vs_, ve_ = np.mean([m["vmt"] for m in cs_]), np.mean([m["vmt"] for m in ce_])
             rs, re_ = sum(m["crashes"] for m in cs_) / sum(m["vmt"] for m in cs_) * 1e6, sum(m["crashes"] for m in ce_) / sum(m["vmt"] for m in ce_) * 1e6
-            facts.append(f"California driverless miles (CPUC) went from {vs_ / 1e6:.1f} to {ve_ / 1e6:.1f} million a month ({pct(vs_, ve_)}) while California crashes per million miles went from {rs:.1f} to {re_:.1f}.")
+            fleet.append(f"California driverless miles (CPUC), a measure of how much the fleet drives, went from {vs_ / 1e6:.1f} to {ve_ / 1e6:.1f} million a month ({pct(vs_, ve_)}) while California crashes per million miles went from {rs:.1f} to {re_:.1f}.")
     if name == "Waymo" and s2:
         q = [(v, m) for v, m in s2 if k <= v <= l]
         if len(q) >= 2:
-            facts.append("Waymo's published S2 mileage added " + ", ".join(f"{m / 1e6:.0f} million miles in the quarter to {label(v)}" for v, m in q) + ".")
-    hw = lambda rows_: sum(1 for r in rows_ if r["roadway_type"].startswith("Highway")) / max(len(rows_), 1) * 100
-    pre = [r for r in sel if k - 6 <= r["ym"] < k]
-    endr = [r for r in sel if r["ym"] in end_w]
-    if len(pre) >= 20 and len(endr) >= 20 and abs(hw(endr) - hw(pre)) >= 1.0:
-        facts.append(f"Highway or freeway crashes were {hw(pre):.1f}% of reports before the period and {hw(endr):.1f}% at its end.")
-    models_seen = {r["model"] for r in sel if r["ym"] < k}
-    newm = [(m, c) for m, c in Counter(r["model"] for r in in_seg if r["model"] not in models_seen).most_common(3) if c >= 3]
-    if newm:
-        facts.append("New vehicle platforms in the reports: " + ", ".join(f"{m} ({c})" for m, c in newm) + ".")
-    for ym, text in RULE_CHANGES.items():
-        if k - 1 <= ym < l:
-            facts.append(f"Reporting rules changed during this period: {text}, so counts before and after are not strictly comparable.")
-    if l - 1 >= last - 1:
-        facts.append("The newest months are the least complete: about 8% of crashes are filed a month after the incident.")
-    return facts
+            fleet.append("Waymo's published S2 mileage added " + ", ".join(f"{m / 1e6:.0f} million miles in the quarter to {label(v)}" for v, m in q) + ".")
+    return {"headline": headline, "service": service, "odd": odd, "fleet": fleet}
 
 
 def load_s2():
@@ -210,28 +212,15 @@ def analyse(rows, name, sel, lo, last, cpuc, s2, events):
         if not meaningful:
             continue
         bp = lo + k
-        ev = [e for e in events if (not e["companies"] and False) or (name in e["companies"] or (name == "All companies" and e["national"]))]
-        near = [e for e in ev if abs(int(e["month"][:4]) * 12 + int(e["month"][5:]) - 1 - bp) <= 2]
+        ev = [e for e in events if e["category"] != "rule" and (name in e["companies"] or (name == "All companies" and e["national"]))]
+        near = [e for e in ev if bp - 2 <= int(e["month"][:4]) * 12 + int(e["month"][5:]) - 1 <= lo + l]
         facts = evidence(sel, bp, lo + l, last, name, cpuc, s2, s_before, s_after)
         breaks.append({"month": label(bp), "direction": "faster" if s_after > s_before else "slower", "period_end": label(lo + l - 1),
                        "growth_before": round(s_before, 1), "growth_after": round(s_after, 1),
                        "avg_before": round(float(m_before), 1), "avg_after": round(float(m_after), 1),
-                       "evidence": facts,
-                       "coincident_events": [{"month": e["month"], "title": e["title"], "text": e["text"], "source_label": e["source_label"], "source_url": e["source_url"]} for e in near]})
-    rule_effects = []
-    for ym, text in RULE_CHANGES.items():
-        if ym - 6 >= lo + first and ym + 6 <= last + 1:
-            b, a = counts[ym - 6 - lo:ym - lo].mean(), counts[ym - lo:ym + 6 - lo].mean()
-            line = f"{text}. Monthly reports averaged {b:.0f} in the six months before and {a:.0f} in the six months after ({pct(b, a)})."
-            if name == "Waymo":
-                pre = [m for m in cpuc if ym - 6 <= m["ym"] < ym]
-                post = [m for m in cpuc if ym <= m["ym"] < ym + 6]
-                if len(pre) == 6 and len(post) == 6:
-                    r0 = sum(m["crashes"] for m in pre) / sum(m["vmt"] for m in pre) * 1e6
-                    r1 = sum(m["crashes"] for m in post) / sum(m["vmt"] for m in post) * 1e6
-                    line += f" California crashes per million driverless miles (CPUC) went from {r0:.1f} to {r1:.1f}."
-            rule_effects.append({"month": label(ym), "text": line})
-    return {"counts": [{"month": label(lo + i), "crashes": int(c)} for i, c in enumerate(counts)], "segments": out_segs, "breaks": breaks, "rule_effects": rule_effects}
+                       "headline": facts["headline"], "service": facts["service"], "odd": facts["odd"], "fleet": facts["fleet"],
+                       "coincident_events": [{"category": e["category"], "month": e["month"], "title": e["title"], "text": e["text"], "source_label": e["source_label"], "source_url": e["source_url"]} for e in near]})
+    return {"counts": [{"month": label(lo + i), "crashes": int(c)} for i, c in enumerate(counts)], "segments": out_segs, "breaks": breaks}
 
 
 def main():

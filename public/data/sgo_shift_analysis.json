@@ -295,16 +295,37 @@
      "growth_after": 32.4,
      "avg_before": 15.5,
      "avg_after": 11.8,
-     "evidence": [
-      "Growth in monthly reports changed from +5 to +32 a month each year. Reports averaged 9 a month in Oct 2022 to Dec 2022 and 37 in Aug 2023 to Oct 2023.",
+     "headline": "Growth in monthly reports changed from +5 to +32 a month each year. Reports averaged 9 a month in Oct 2022 to Dec 2022 and 37 in Aug 2023 to Oct 2023.",
+     "service": [
       "17 cities first appear in the reports during this period, led by Santa Monica, CA, Paradise, NV, Houston, TX, Grand Rapids, MN. By Oct 2023 they account for 12% of monthly reports.",
-      "First reports from GA, WA.",
-      "Monthly reports rose most at Cruise (+18), Waymo (+10); fell at Zoox (-1). Waymo is 38% of reports at the end of the period.",
-      "Highway or freeway crashes were 7.5% of reports before the period and 3.6% at its end.",
-      "New vehicle platforms in the reports: Nissan LEAF (3).",
-      "Reporting rules changed during this period: NHTSA's second amended SGO took effect in May 2023, so counts before and after are not strictly comparable."
+      "First reports from GA, WA."
      ],
-     "coincident_events": []
+     "odd": [
+      "Where crashes happen shifted: Street +12 points; Parking Lot -8 points of reports, comparing the six months before the period with its last three months (roadway labels depend partly on how each company classifies).",
+      "Highway or freeway crashes were 7.5% of reports before the period and 3.6% at its end."
+     ],
+     "fleet": [
+      "New vehicle platforms in the reports: Nissan LEAF (3).",
+      "Fleets adding the most monthly reports: Cruise (+18), Waymo (+10); fleets reporting fewer: Zoox (-1). Waymo is 38% of reports at the end of the period."
+     ],
+     "coincident_events": [
+      {
+       "category": "service",
+       "month": "2023-08",
+       "title": "San Francisco approves 24-hour paid robotaxis",
+       "text": "On Aug. 10, 2023 the California Public Utilities Commission voted 3-1 to let Waymo and Cruise run paid driverless service across San Francisco at all hours, increasing miles driven in a dense city.",
+       "source_label": "Engadget report",
+       "source_url": "https://www.engadget.com/waymo-and-cruise-get-approval-to-offer-247-paid-robotaxi-rides-in-san-francisco-050152855.html"
+      },
+      {
+       "category": "service",
+       "month": "2023-10",
+       "title": "California suspends Cruise driverless permits",
+       "text": "On Oct. 24, 2023 the California DMV suspended Cruise's deployment and driverless testing permits after a pedestrian was dragged by a Cruise vehicle. Cruise paused its San Francisco driverless operations, and no Cruise reports appear in this dataset after October 2023.",
+       "source_label": "California DMV",
+       "source_url": "https://www.dmv.ca.gov/portal/news-and-media/dmv-statement-on-cruise-llc/"
+      }
+     ]
     },
     {
      "month": "Nov 2023",
@@ -314,21 +335,43 @@
      "growth_after": 60.1,
      "avg_before": 30.8,
      "avg_after": 20.7,
-     "evidence": [
-      "Growth in monthly reports changed from +32 to +60 a month each year. Reports averaged 18 a month in Nov 2023 to Jan 2024 and 94 in Mar 2025 to May 2025.",
+     "headline": "Growth in monthly reports changed from +32 to +60 a month each year. Reports averaged 18 a month in Nov 2023 to Jan 2024 and 94 in Mar 2025 to May 2025.",
+     "service": [
       "39 cities first appear in the reports during this period, led by Atlanta, GA, Culver City, CA, Venice, CA, Beverly Hills, CA. By May 2025 they account for 11% of monthly reports.",
-      "First reports from MS, OK.",
-      "Monthly reports rose most at Waymo (+74), Zoox (+3), May Mobility (+1); fell at Nuro (-1). Waymo is 92% of reports at the end of the period.",
-      "Highway or freeway crashes were 4.3% of reports before the period and 2.1% at its end.",
-      "New vehicle platforms in the reports: Peterbilt 579 (13), Toyota PRIUS (8), Zoox SEDAN (7)."
+      "First reports from MS, OK."
+     ],
+     "odd": [
+      "Where crashes happen shifted: Street +13 points; Intersection -15 points of reports, comparing the six months before the period with its last three months (roadway labels depend partly on how each company classifies).",
+      "Highway or freeway crashes were 4.3% of reports before the period and 2.1% at its end."
+     ],
+     "fleet": [
+      "New vehicle platforms in the reports: Peterbilt 579 (13), Toyota PRIUS (8), Zoox SEDAN (7).",
+      "Fleets adding the most monthly reports: Waymo (+74), Zoox (+3), May Mobility (+1); fleets reporting fewer: Nuro (-1). Waymo is 92% of reports at the end of the period."
      ],
      "coincident_events": [
       {
+       "category": "service",
        "month": "2023-10",
        "title": "California suspends Cruise driverless permits",
        "text": "On Oct. 24, 2023 the California DMV suspended Cruise's deployment and driverless testing permits after a pedestrian was dragged by a Cruise vehicle. Cruise paused its San Francisco driverless operations, and no Cruise reports appear in this dataset after October 2023.",
        "source_label": "California DMV",
        "source_url": "https://www.dmv.ca.gov/portal/news-and-media/dmv-statement-on-cruise-llc/"
+      },
+      {
+       "category": "service",
+       "month": "2025-03",
+       "title": "Waymo and Uber begin service in Austin",
+       "text": "Waymo rides became available through the Uber app in Austin in March 2025, adding a new large market for Waymo's crash reports.",
+       "source_label": "Reuters via StreetInsider",
+       "source_url": "https://www.streetinsider.com/General+News/Uber%2C+Waymo+launch+autonomous+ride-hailing+service+in+Atlanta/24967673.html"
+      },
+      {
+       "category": "service",
+       "month": "2025-06",
+       "title": "Waymo and Uber begin service in Atlanta",
+       "text": "Waymo and Uber began robotaxi service in Atlanta in June 2025, covering about 65 square miles after Austin earlier in the year.",
+       "source_label": "Reuters via StreetInsider",
+       "source_url": "https://www.streetinsider.com/General+News/Uber%2C+Waymo+launch+autonomous+ride-hailing+service+in+Atlanta/24967673.html"
       }
      ]
     },
@@ -340,24 +383,18 @@
      "growth_after": -89.8,
      "avg_before": 99.2,
      "avg_after": 126.0,
-     "evidence": [
-      "Growth in monthly reports changed from +75 to -90 a month each year. Reports averaged 106 a month in Dec 2025 to Feb 2026, then 135 in Mar 2026 to May 2026 and 117 in Jun 2026 to Aug 2026.",
+     "headline": "Growth in monthly reports changed from +75 to -90 a month each year. Reports averaged 106 a month in Dec 2025 to Feb 2026, then 135 in Mar 2026 to May 2026 and 117 in Jun 2026 to Aug 2026.",
+     "service": [
       "15 cities first appear in the reports during this period, led by San Antonio, TX, Edgewood, NM, Sheffield, TX, Glendale, AZ. By Aug 2026 they account for 4% of monthly reports.",
-      "First reports from AR.",
-      "Monthly reports rose most at Tesla (+3), Gatik AI (+1); fell at Waymo (-18), Avride (-5). Waymo is 78% of reports at the end of the period.",
-      "The newest months are the least complete: about 8% of crashes are filed a month after the incident."
+      "First reports from AR."
+     ],
+     "odd": [
+      "Where crashes happen shifted: Parking Lot +4 points; Intersection -7 points of reports, comparing the six months before the period with its last three months (roadway labels depend partly on how each company classifies)."
+     ],
+     "fleet": [
+      "Fleets adding the most monthly reports: Tesla (+3), Gatik AI (+1); fleets reporting fewer: Waymo (-18), Avride (-5). Waymo is 78% of reports at the end of the period."
      ],
      "coincident_events": []
-    }
-   ],
-   "rule_effects": [
-    {
-     "month": "May 2023",
-     "text": "NHTSA's second amended SGO took effect in May 2023. Monthly reports averaged 14 in the six months before and 31 in the six months after (+123%)."
-    },
-    {
-     "month": "Jun 2025",
-     "text": "NHTSA's third amended SGO took effect in June 2025. Monthly reports averaged 86 in the six months before and 79 in the six months after (-8%)."
     }
    ]
   },
@@ -647,13 +684,35 @@
      "growth_after": 63.0,
      "avg_before": 15.2,
      "avg_after": 42.0,
-     "evidence": [
-      "Growth in monthly reports changed from +4 to +63 a month each year. Reports averaged 33 a month in May 2024 to Jul 2024 and 87 in Mar 2025 to May 2025.",
+     "headline": "Growth in monthly reports changed from +4 to +63 a month each year. Reports averaged 33 a month in May 2024 to Jul 2024 and 87 in Mar 2025 to May 2025.",
+     "service": [
       "15 cities first appear in its reports during this period, led by Atlanta, GA, Culver City, CA, Venice, CA, Beverly Hills, CA. By May 2025 they account for 10% of monthly reports.",
-      "First reports from DC, GA.",
-      "California driverless miles (CPUC) went from 1.2 to 4.8 million a month (+316%) while California crashes per million miles went from 18.2 to 12.7."
+      "First reports from DC, GA."
      ],
-     "coincident_events": []
+     "odd": [
+      "Where crashes happen shifted: Street +27 points; Intersection -25 points of reports, comparing the six months before the period with its last three months (roadway labels depend partly on how each company classifies)."
+     ],
+     "fleet": [
+      "California driverless miles (CPUC), a measure of how much the fleet drives, went from 1.2 to 4.8 million a month (+316%) while California crashes per million miles went from 18.2 to 12.7."
+     ],
+     "coincident_events": [
+      {
+       "category": "service",
+       "month": "2025-03",
+       "title": "Waymo and Uber begin service in Austin",
+       "text": "Waymo rides became available through the Uber app in Austin in March 2025, adding a new large market for Waymo's crash reports.",
+       "source_label": "Reuters via StreetInsider",
+       "source_url": "https://www.streetinsider.com/General+News/Uber%2C+Waymo+launch+autonomous+ride-hailing+service+in+Atlanta/24967673.html"
+      },
+      {
+       "category": "service",
+       "month": "2025-06",
+       "title": "Waymo and Uber begin service in Atlanta",
+       "text": "Waymo and Uber began robotaxi service in Atlanta in June 2025, covering about 65 square miles after Austin earlier in the year.",
+       "source_label": "Reuters via StreetInsider",
+       "source_url": "https://www.streetinsider.com/General+News/Uber%2C+Waymo+launch+autonomous+ride-hailing+service+in+Atlanta/24967673.html"
+      }
+     ]
     },
     {
      "month": "Mar 2026",
@@ -663,15 +722,20 @@
      "growth_after": -88.5,
      "avg_before": 84.8,
      "avg_after": 100.7,
-     "evidence": [
-      "Growth in monthly reports changed from +61 to -88 a month each year. Reports averaged 89 a month in Dec 2025 to Feb 2026, then 110 in Mar 2026 to May 2026 and 92 in Jun 2026 to Aug 2026.",
+     "headline": "Growth in monthly reports changed from +61 to -88 a month each year. Reports averaged 89 a month in Dec 2025 to Feb 2026, then 110 in Mar 2026 to May 2026 and 92 in Jun 2026 to Aug 2026.",
+     "service": [
       "8 cities first appear in its reports during this period, led by San Antonio, TX, Las Vegas, NV, Carson, CA, Harbor City, CA. By Aug 2026 they account for 3% of monthly reports.",
-      "First reports from MI, NV.",
-      "Waymo's published S2 mileage added 48 million miles in the quarter to Mar 2026, 50 million miles in the quarter to Jun 2026.",
-      "The newest months are the least complete: about 8% of crashes are filed a month after the incident."
+      "First reports from MI, NV."
+     ],
+     "odd": [
+      "Where crashes happen shifted: Street +6 points; Intersection -10 points of reports, comparing the six months before the period with its last three months (roadway labels depend partly on how each company classifies)."
+     ],
+     "fleet": [
+      "Waymo's published S2 mileage added 48 million miles in the quarter to Mar 2026, 50 million miles in the quarter to Jun 2026."
      ],
      "coincident_events": [
       {
+       "category": "service",
        "month": "2026-02",
        "title": "Waymo starts service in Orlando, Dallas, Houston and San Antonio",
        "text": "Waymo began service in Orlando on Feb. 23, 2026 and added Dallas, Houston and San Antonio the same day, with invite-only access at first. San Antonio appears in Waymo's crash reports for the first time in this period.",
@@ -679,16 +743,6 @@
        "source_url": "https://attractionsmagazine.com/waymo-orland-self-driving-rideshare/"
       }
      ]
-    }
-   ],
-   "rule_effects": [
-    {
-     "month": "May 2023",
-     "text": "NHTSA's second amended SGO took effect in May 2023. Monthly reports averaged 6 in the six months before and 12 in the six months after (+103%)."
-    },
-    {
-     "month": "Jun 2025",
-     "text": "NHTSA's third amended SGO took effect in June 2025. Monthly reports averaged 78 in the six months before and 69 in the six months after (-12%). California crashes per million driverless miles (CPUC) went from 13.4 to 7.1."
     }
    ]
   },
@@ -957,17 +1011,7 @@
      "growth_per_month_each_year": 2.1
     }
    ],
-   "breaks": [],
-   "rule_effects": [
-    {
-     "month": "May 2023",
-     "text": "NHTSA's second amended SGO took effect in May 2023. Monthly reports averaged 2 in the six months before and 1 in the six months after (-62%)."
-    },
-    {
-     "month": "Jun 2025",
-     "text": "NHTSA's third amended SGO took effect in June 2025. Monthly reports averaged 4 in the six months before and 4 in the six months after (-15%)."
-    }
-   ]
+   "breaks": []
   },
   "Cruise": {
    "counts": [
@@ -1249,13 +1293,49 @@
      "growth_after": 20.5,
      "avg_before": 3.0,
      "avg_after": 2.8,
-     "evidence": [
-      "Growth in monthly reports changed from +1 to +21 a month each year. Reports averaged 1 a month in Oct 2022 to Dec 2022 and 19 in Aug 2023 to Oct 2023.",
+     "headline": "Growth in monthly reports changed from +1 to +21 a month each year. Reports averaged 1 a month in Oct 2022 to Dec 2022 and 19 in Aug 2023 to Oct 2023.",
+     "service": [
       "6 cities first appear in its reports during this period, led by Austin, TX, Houston, TX, Tempe, AZ, Mesa, AZ. By Oct 2023 they account for 33% of monthly reports.",
-      "First reports from AZ, TX.",
-      "Reporting rules changed during this period: NHTSA's second amended SGO took effect in May 2023, so counts before and after are not strictly comparable."
+      "First reports from AZ, TX."
      ],
-     "coincident_events": []
+     "odd": [
+      "Where crashes happen shifted: Intersection +25 points; Street -25 points of reports, comparing the six months before the period with its last three months (roadway labels depend partly on how each company classifies)."
+     ],
+     "fleet": [],
+     "coincident_events": [
+      {
+       "category": "service",
+       "month": "2023-05",
+       "title": "Cruise adds Dallas and Houston",
+       "text": "Cruise added Dallas and Houston in May 2023, with safety drivers at first, after launching in Austin and Phoenix. By July it also operated in Miami and had announced Nashville. Its reports climb sharply from March through August 2023.",
+       "source_label": "CleanTechnica",
+       "source_url": "https://cleantechnica.com/2023/05/17/cruise-robotaxis-entering-more-cities"
+      },
+      {
+       "category": "service",
+       "month": "2023-07",
+       "title": "Cruise announces Nashville",
+       "text": "By July 2023 Cruise had expanded to Austin, Dallas, Houston, Phoenix and Miami and announced Nashville next, putting more vehicles on the road just before its peak in reports.",
+       "source_label": "TechCrunch",
+       "source_url": "https://techcrunch.com/2023/07/27/cruise-is-bringing-its-self-driving-cars-to-nashville"
+      },
+      {
+       "category": "service",
+       "month": "2023-08",
+       "title": "San Francisco approves 24-hour paid robotaxis",
+       "text": "On Aug. 10, 2023 the California Public Utilities Commission voted 3-1 to let Waymo and Cruise run paid driverless service across San Francisco at all hours, increasing miles driven in a dense city.",
+       "source_label": "Engadget report",
+       "source_url": "https://www.engadget.com/waymo-and-cruise-get-approval-to-offer-247-paid-robotaxi-rides-in-san-francisco-050152855.html"
+      },
+      {
+       "category": "service",
+       "month": "2023-10",
+       "title": "California suspends Cruise driverless permits",
+       "text": "On Oct. 24, 2023 the California DMV suspended Cruise's deployment and driverless testing permits after a pedestrian was dragged by a Cruise vehicle. Cruise paused its San Francisco driverless operations, and no Cruise reports appear in this dataset after October 2023.",
+       "source_label": "California DMV",
+       "source_url": "https://www.dmv.ca.gov/portal/news-and-media/dmv-statement-on-cruise-llc/"
+      }
+     ]
     },
     {
      "month": "Nov 2023",
@@ -1265,31 +1345,30 @@
      "growth_after": -0.1,
      "avg_before": 15.2,
      "avg_after": 0.0,
-     "evidence": [
-      "Growth in monthly reports changed from +21 to -0 a month each year. Reports averaged 19 a month in Aug 2023 to Oct 2023, then 0 in Nov 2023 to Jan 2024 and 0 in Jun 2026 to Aug 2026.",
-      "1 cities first appear in its reports during this period, led by Phoenix, AZ. By Aug 2026 they account for 0% of monthly reports.",
-      "Reporting rules changed during this period: NHTSA's third amended SGO took effect in June 2025, so counts before and after are not strictly comparable.",
-      "The newest months are the least complete: about 8% of crashes are filed a month after the incident."
+     "headline": "Growth in monthly reports changed from +21 to -0 a month each year. Reports averaged 19 a month in Aug 2023 to Oct 2023, then 0 in Nov 2023 to Jan 2024 and 0 in Jun 2026 to Aug 2026.",
+     "service": [
+      "1 cities first appear in its reports during this period, led by Phoenix, AZ. By Aug 2026 they account for 0% of monthly reports."
      ],
+     "odd": [],
+     "fleet": [],
      "coincident_events": [
       {
+       "category": "service",
        "month": "2023-10",
        "title": "California suspends Cruise driverless permits",
        "text": "On Oct. 24, 2023 the California DMV suspended Cruise's deployment and driverless testing permits after a pedestrian was dragged by a Cruise vehicle. Cruise paused its San Francisco driverless operations, and no Cruise reports appear in this dataset after October 2023.",
        "source_label": "California DMV",
        "source_url": "https://www.dmv.ca.gov/portal/news-and-media/dmv-statement-on-cruise-llc/"
+      },
+      {
+       "category": "fleet",
+       "month": "2024-12",
+       "title": "GM ends the Cruise robotaxi business",
+       "text": "General Motors announced in December 2024 that it would stop funding Cruise's robotaxi service, ending the program.",
+       "source_label": "Smart Cities Dive",
+       "source_url": "https://www.smartcitiesdive.com/news/general-motors-shuts-cruise-robotaxi-unit-mary-barra/735205/"
       }
      ]
-    }
-   ],
-   "rule_effects": [
-    {
-     "month": "May 2023",
-     "text": "NHTSA's second amended SGO took effect in May 2023. Monthly reports averaged 4 in the six months before and 15 in the six months after (+264%)."
-    },
-    {
-     "month": "Jun 2025",
-     "text": "NHTSA's third amended SGO took effect in June 2025. Monthly reports averaged 0 in the six months before and 0 in the six months after (new)."
     }
    ]
   },
@@ -1573,11 +1652,22 @@
      "growth_after": 20.9,
      "avg_before": 0.2,
      "avg_after": 5.2,
-     "evidence": [
-      "Growth in monthly reports changed from -0 to +21 a month each year. Reports averaged 2 a month in Sep 2025 to Nov 2025 and 8 in Dec 2025 to Feb 2026.",
+     "headline": "Growth in monthly reports changed from -0 to +21 a month each year. Reports averaged 2 a month in Sep 2025 to Nov 2025 and 8 in Dec 2025 to Feb 2026.",
+     "service": [
       "1 cities first appear in its reports during this period, led by Dallas, TX. By Feb 2026 they account for 64% of monthly reports."
      ],
-     "coincident_events": []
+     "odd": [],
+     "fleet": [],
+     "coincident_events": [
+      {
+       "category": "service",
+       "month": "2025-12",
+       "title": "Avride launches on Uber in Dallas",
+       "text": "Uber began matching riders with Avride robotaxis in Dallas on Dec. 3, 2025, with a specialist behind the wheel. Nearly all of Avride's reports come after this launch, and December 2025 is the first month with ten or more.",
+       "source_label": "Uber press release",
+       "source_url": "https://investor.uber.com/news-events/news/press-release-details/2025/Uber-and-Avride-Launch-Robotaxi-Rides-in-Dallas/default.aspx"
+      }
+     ]
     },
     {
      "month": "Mar 2026",
@@ -1587,17 +1677,13 @@
      "growth_after": -24.3,
      "avg_before": 5.2,
      "avg_after": 8.2,
-     "evidence": [
-      "Growth in monthly reports changed from +21 to -24 a month each year. Reports averaged 8 a month in Dec 2025 to Feb 2026, then 11 in Mar 2026 to May 2026 and 6 in Jun 2026 to Aug 2026.",
-      "The newest months are the least complete: about 8% of crashes are filed a month after the incident."
+     "headline": "Growth in monthly reports changed from +21 to -24 a month each year. Reports averaged 8 a month in Dec 2025 to Feb 2026, then 11 in Mar 2026 to May 2026 and 6 in Jun 2026 to Aug 2026.",
+     "service": [],
+     "odd": [
+      "Where crashes happen shifted: Intersection +40 points; Street -49 points of reports, comparing the six months before the period with its last three months (roadway labels depend partly on how each company classifies)."
      ],
+     "fleet": [],
      "coincident_events": []
-    }
-   ],
-   "rule_effects": [
-    {
-     "month": "Jun 2025",
-     "text": "NHTSA's third amended SGO took effect in June 2025. Monthly reports averaged 0 in the six months before and 1 in the six months after (new)."
     }
    ]
   },
@@ -1860,17 +1946,7 @@
      "growth_per_month_each_year": 0.2
     }
    ],
-   "breaks": [],
-   "rule_effects": [
-    {
-     "month": "May 2023",
-     "text": "NHTSA's second amended SGO took effect in May 2023. Monthly reports averaged 0 in the six months before and 0 in the six months after (+0%)."
-    },
-    {
-     "month": "Jun 2025",
-     "text": "NHTSA's third amended SGO took effect in June 2025. Monthly reports averaged 1 in the six months before and 1 in the six months after (+17%)."
-    }
-   ]
+   "breaks": []
   },
   "Tesla": {
    "counts": [
@@ -2131,8 +2207,7 @@
      "growth_per_month_each_year": 3.0
     }
    ],
-   "breaks": [],
-   "rule_effects": []
+   "breaks": []
   },
   "Aurora": {
    "counts": [
@@ -2393,13 +2468,7 @@
      "growth_per_month_each_year": 0.0
     }
    ],
-   "breaks": [],
-   "rule_effects": [
-    {
-     "month": "Jun 2025",
-     "text": "NHTSA's third amended SGO took effect in June 2025. Monthly reports averaged 0 in the six months before and 0 in the six months after (+50%)."
-    }
-   ]
+   "breaks": []
   },
   "Argo AI": {
    "counts": [
@@ -2675,14 +2744,13 @@
      "growth_after": 0.0,
      "avg_before": 1.7,
      "avg_after": 0.0,
-     "evidence": [
-      "Growth in monthly reports changed from +0 to +0 a month each year. Reports averaged 2 a month in Aug 2022 to Oct 2022, then 0 in Nov 2022 to Jan 2023 and 0 in Jun 2026 to Aug 2026.",
-      "Reporting rules changed during this period: NHTSA's second amended SGO took effect in May 2023, so counts before and after are not strictly comparable.",
-      "Reporting rules changed during this period: NHTSA's third amended SGO took effect in June 2025, so counts before and after are not strictly comparable.",
-      "The newest months are the least complete: about 8% of crashes are filed a month after the incident."
-     ],
+     "headline": "Growth in monthly reports changed from +0 to +0 a month each year. Reports averaged 2 a month in Aug 2022 to Oct 2022, then 0 in Nov 2022 to Jan 2023 and 0 in Jun 2026 to Aug 2026.",
+     "service": [],
+     "odd": [],
+     "fleet": [],
      "coincident_events": [
       {
+       "category": "fleet",
        "month": "2022-10",
        "title": "Argo AI shuts down",
        "text": "Ford and Volkswagen wound down Argo AI in October 2022 after it could not attract new investors. Argo's reports in this dataset end that month.",
@@ -2690,16 +2758,6 @@
        "source_url": "https://techcrunch.com/2022/10/26/ford-vw-backed-argo-ai-is-shutting-down/"
       }
      ]
-    }
-   ],
-   "rule_effects": [
-    {
-     "month": "May 2023",
-     "text": "NHTSA's second amended SGO took effect in May 2023. Monthly reports averaged 0 in the six months before and 0 in the six months after (new)."
-    },
-    {
-     "month": "Jun 2025",
-     "text": "NHTSA's third amended SGO took effect in June 2025. Monthly reports averaged 0 in the six months before and 0 in the six months after (new)."
     }
    ]
   },
@@ -2962,13 +3020,7 @@
      "growth_per_month_each_year": -0.2
     }
    ],
-   "breaks": [],
-   "rule_effects": [
-    {
-     "month": "Jun 2025",
-     "text": "NHTSA's third amended SGO took effect in June 2025. Monthly reports averaged 0 in the six months before and 0 in the six months after (+200%)."
-    }
-   ]
+   "breaks": []
   },
   "Motional": {
    "counts": [
@@ -3235,17 +3287,7 @@
      "growth_per_month_each_year": 0.3
     }
    ],
-   "breaks": [],
-   "rule_effects": [
-    {
-     "month": "May 2023",
-     "text": "NHTSA's second amended SGO took effect in May 2023. Monthly reports averaged 0 in the six months before and 0 in the six months after (-100%)."
-    },
-    {
-     "month": "Jun 2025",
-     "text": "NHTSA's third amended SGO took effect in June 2025. Monthly reports averaged 0 in the six months before and 1 in the six months after (new)."
-    }
-   ]
+   "breaks": []
   }
  }
 }
