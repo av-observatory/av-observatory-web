@@ -124,6 +124,9 @@ def main():
             export(stem + "_unresolved_leads.csv", data["unresolved_leads"], output)
             if data.get("media_watch"):
                 export(stem + "_media_watch.csv", data["media_watch"], output)
+        elif stem == "sgo_serious_media_links":
+            export(stem + ".csv", [{"incident_id": k, "report_ids": v["report_ids"], **m}
+                                   for k, v in sorted(data["crashes"].items()) for m in v["media"]], output)
         elif stem == "av_311_source_registry":
             export(stem + ".csv", data["states"], output)
         elif stem == "ca_waymo_sgo_rates":
