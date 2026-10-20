@@ -275,3 +275,5 @@ main:has(#about-observatory-page) + footer { display: none; }
     background: #e1e6eb;
   }
 }
+
+.recharts-wrapper:focus, .recharts-wrapper *:focus, .recharts-surface:focus { outline: none; }

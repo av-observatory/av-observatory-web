@@ -40,27 +40,25 @@ function parseCsv(text: string): string[][] {
   return rows;
 }
 
-async function loadSgoRows(): Promise<SgoIncidentRow[]> {
-  const file = path.join(process.cwd(), "public", "data", "sgo_incidents.csv");
-  const raw = await fs.readFile(file, "utf-8");
-  const rows = parseCsv(raw);
-  const details = parseCsv(await fs.readFile(path.join(process.cwd(), "public", "data", "sgo_crash_details.csv"), "utf-8"));
-  const detailHeader = details.shift() ?? [];
-  const detailIdx = new Map(detailHeader.map((h, i) => [h, i]));
-  const bags = new Map(details.map(r => [r[detailIdx.get("report_id") ?? -1], r[detailIdx.get("air_bag_deployment") ?? -1]]));
+type Filing = { id: string; v: string; type: string; filed: string; vin: string; year: string; eng: string; op: string; time: string; ent: string; bag: string };
+
+async function loadFilings(): Promise<Map<string, Filing>> {
+  const rows = parseCsv(await fs.readFile(path.join(process.cwd(), "public", "data", "sgo_incidents.csv"), "utf-8"));
   const header = rows.shift() ?? [];
-  const idx = new Map(header.map((h,i)=>[h,i]));
-  const fields: (keyof SgoIncidentRow)[] = [
-    "report_id","report_version","reporting_entity","report_type","report_month","report_year",
-    "make","model","automation_system_engaged","engagement_status","operating_entity","incident_date",
-    "city","state","roadway_type","crash_with","highest_injury_severity","within_odd"
-  ];
-  return rows.filter(r=>r.length>1).map(r=>{
-    const out = {} as SgoIncidentRow;
-    for (const key of fields) out[key] = r[idx.get(key) ?? -1] ?? "";
-    out.air_bag_deployment = bags.get(out.report_id) ?? "Unknown";
-    return out;
-  });
+  const idx = new Map(header.map((h, i) => [h, i]));
+  const details = parseCsv(await fs.readFile(path.join(process.cwd(), "public", "data", "sgo_crash_details.csv"), "utf-8"));
+  const dh = details.shift() ?? [];
+  const di = new Map(dh.map((h, i) => [h, i]));
+  const bags = new Map(details.map(r => [r[di.get("report_id") ?? -1], r[di.get("air_bag_deployment") ?? -1]]));
+  const get = (r: string[], k: string) => (r[idx.get(k) ?? -1] ?? "").trim();
+  const out = new Map<string, Filing>();
+  for (const r of rows) {
+    if (r.length < 5) continue;
+    const id = get(r, "report_id");
+    out.set(id, { id, v: get(r, "report_version"), type: get(r, "report_type"), filed: get(r, "report_submission_date"), vin: get(r, "vin_decoded"), year: get(r, "model_year"),
+      eng: get(r, "engagement_status"), op: get(r, "operating_entity"), time: get(r, "incident_time"), ent: get(r, "reporting_entity"), bag: bags.get(id) ?? "" });
+  }
+  return out;
 }
 
 async function loadCanonicalCrashes(): Promise<SgoIncidentRow[]> {
@@ -101,9 +99,9 @@ async function loadCanonicalCrashes(): Promise<SgoIncidentRow[]> {
 }
 
 export default async function SafetyPage() {
-  const [sgo, incidentRows, canonicalCrashes, seriousCrashes, mediaContext, mediaLinkStore] = await Promise.all([
+  const [sgo, filingMap, canonicalCrashes, seriousCrashes, mediaContext, mediaLinkStore] = await Promise.all([
     loadJson<SgoMonthlyDataset>("sgo_crashes_monthly.json"),
-    loadSgoRows(),
+    loadFilings(),
     loadCanonicalCrashes(),
     fs.readFile(path.join(process.cwd(), "public", "data", "sgo_serious_fatal_crashes.csv"), "utf-8").then(raw => {
       const rows = parseCsv(raw); const header = rows.shift() ?? [];
@@ -121,6 +119,12 @@ export default async function SafetyPage() {
     const month = ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"].indexOf(match[1].toUpperCase()) + 1;
     return isCompleteSgoMonth(Number(match[2]), month);
   });
+  const filings: Record<string, Filing[]> = {};
+  for (const r of completedCrashRows) {
+    if (r.automation_system_engaged !== "ADS") continue;
+    const list = (r.report_ids || "").split(";").map(id => filingMap.get(id.trim())).filter(Boolean) as Filing[];
+    filings[r.incident_id || r.report_id] = list;
+  }
   const incidentsByState: Record<string, number> = {};
   for (const r of sgo.monthly_by_state) {
     if (!isCompleteSgoMonth(r.year, r.month)) continue;
@@ -191,7 +195,7 @@ export default async function SafetyPage() {
         excludedMonth={excludedLabel}
       />
 
-      <SgoCompanyExplorer rows={canonicalCrashes} serious={seriousCases} />
+      <SgoCompanyExplorer rows={canonicalCrashes} serious={seriousCases} filings={filings} />
     </div>
   );
 }

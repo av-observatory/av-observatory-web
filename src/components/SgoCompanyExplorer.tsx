@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { Bar, BarChart, CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+import { Bar, BarChart, Cell, CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { AXIS_PROPS, GRID_PROPS, LEGEND_PROPS, SERIES, TOOLTIP_PROPS } from "@/lib/chartTheme";
 import { useMonthAxis } from "@/components/MonthAxis";
 import { isCompleteSgoMonth } from "@/lib/safety";
@@ -67,7 +67,9 @@ function injuryRate(rows: Row[]) {
   return known.length ? hurt.length / known.length * 100 : 0;
 }
 
-export function SgoCompanyExplorer({ rows, serious }: { rows: SgoIncidentRow[]; serious: SeriousCrash[] }) {
+export type Filing = { id: string; v: string; type: string; filed: string; vin: string; year: string; eng: string; op: string; time: string; ent: string; bag: string };
+
+export function SgoCompanyExplorer({ rows, serious, filings }: { rows: SgoIncidentRow[]; serious: SeriousCrash[]; filings: Record<string, Filing[]> }) {
   const all = useMemo<Row[]>(() => rows.flatMap(r => {
     const ym = parseYm(r.incident_date);
     if (ym === null || r.automation_system_engaged !== "ADS") return [];
@@ -82,7 +84,7 @@ export function SgoCompanyExplorer({ rows, serious }: { rows: SgoIncidentRow[]; 
   }, [all]);
 
   const [selected, setSelected] = useState(companies[0]?.name ?? "");
-  const [sort, setSort] = useState<"crashes" | "injury" | "serious">("crashes");
+  const [picked, setPicked] = useState<{ company: string; ym: number } | null>(null);
   const current = companies.find(c => c.name === selected) ?? companies[0];
   const mine = current?.rows ?? [];
 
@@ -93,20 +95,14 @@ export function SgoCompanyExplorer({ rows, serious }: { rows: SgoIncidentRow[]; 
   }, [all]);
   const label = (ym: number) => monthLabel(Math.floor(ym / 12), (ym % 12) + 1);
 
-  const monthly = useMemo(() => months.map(ym => ({ label: label(ym), crashes: mine.filter(r => r.ym === ym).length })), [months, mine]);
+  const monthly = useMemo(() => months.map(ym => ({ ym, label: label(ym), crashes: mine.filter(r => r.ym === ym).length })), [months, mine]);
   const monthlyAxis = useMonthAxis(monthly.length);
   const peak = useMemo(() => monthly.reduce((a, m) => (m.crashes > a.crashes ? m : a), { label: "", crashes: 0 }), [monthly]);
 
 
-  const table = useMemo(() => companies.map(c => {
-    const sev = c.rows.filter(r => ["Serious", "Fatal"].includes(severityBucket(r.highest_injury_severity))).length;
-    const opaque = c.rows.filter(r => ["Redacted", "Unknown"].includes(oddBucket(r.within_odd))).length;
-    return { name: c.name, crashes: c.rows.length, share: c.rows.length / all.length * 100, injury: injuryRate(c.rows), serious: sev,
-      states: new Set(c.rows.map(r => r.state).filter(Boolean)).size, opaque: c.rows.length ? opaque / c.rows.length * 100 : 0,
-      first: Math.min(...c.rows.map(r => r.ym)), last: Math.max(...c.rows.map(r => r.ym)) };
-  }).sort((a, b) => (sort === "injury" ? b.injury - a.injury : sort === "serious" ? b.serious - a.serious : b.crashes - a.crashes)), [companies, all, sort]);
-
   if (!current) return null;
+  const lastYm = Math.max(...mine.map(r => r.ym));
+  const activeYm = picked && picked.company === current.name ? picked.ym : lastYm;
   const chips = companies.slice(0, TOP_CHIPS);
   const rest = companies.slice(TOP_CHIPS);
   const sevMine = share(mine, r => severityBucket(r.highest_injury_severity), SEVERITY_ORDER);
@@ -152,12 +148,15 @@ export function SgoCompanyExplorer({ rows, serious }: { rows: SgoIncidentRow[]; 
       ].map(([v, l, c]) => <div key={l} className="viz-card p-3 sm:p-4"><strong className="block text-2xl sm:text-3xl text-[#123b69] tabular-nums">{v}</strong><span className="text-sm text-neutral-700">{l}</span><span className="block text-xs text-neutral-500 mt-0.5">{c}</span></div>)}
     </div>
 
-    <div className="viz-card p-4 mt-3"><div className="font-semibold">{current.name}: reported crashes by incident month</div>
+    <div className="viz-card p-4 mt-3"><div className="font-semibold">{current.name}: reported crashes by incident month</div><div className="text-sm text-neutral-500">Select a bar to see that month's crashes below.</div>
       <ResponsiveContainer width="100%" height={260} onResize={monthlyAxis.onResize}>
         <BarChart data={monthly} margin={{ top: 8, right: 16, bottom: 8, left: 8 }}><CartesianGrid {...GRID_PROPS} /><XAxis dataKey="label" {...monthlyAxis.axis} /><YAxis {...AXIS_PROPS} allowDecimals={false} />
-          <Tooltip {...TOOLTIP_PROPS} /><Bar dataKey="crashes" name="Reported crashes" fill={SERIES.blue} /></BarChart>
+          <Tooltip {...TOOLTIP_PROPS} /><Bar dataKey="crashes" name="Reported crashes" cursor="pointer" onClick={(_d, i) => setPicked({ company: current.name, ym: monthly[i].ym })}>
+            {monthly.map(m => <Cell key={m.ym} fill={m.ym === activeYm ? "#0b2f5f" : SERIES.blue} fillOpacity={m.ym === activeYm ? 1 : 0.78} />)}</Bar></BarChart>
       </ResponsiveContainer>
     </div>
+
+    <MonthDetail company={current.name} ym={activeYm} rows={mine} monthAvg={mine.length / Math.max(1, new Set(mine.map(r => r.ym)).size)} label={label} filings={filings} />
 
     <div className="grid lg:grid-cols-2 gap-3 mt-3">
       <Compare title="Injury severity" subtitle={`${current.name} vs all ADS crashes`} keys={sevMine.keys} mine={sevMine.pct} all={sevAll.pct} name={current.name} />
@@ -174,14 +173,6 @@ export function SgoCompanyExplorer({ rows, serious }: { rows: SgoIncidentRow[]; 
         <table className="w-full text-sm mt-2"><tbody>{vehicles.map(([k, n]) => <tr key={k} className="border-t border-[#e6edf3]"><td className="py-1.5">{k}</td><td className="py-1.5 text-right tabular-nums">{n.toLocaleString()}</td><td className="py-1.5 pl-3 text-right text-neutral-500 tabular-nums w-16">{pct(n / mine.length * 100)}</td></tr>)}</tbody></table></div>
     </div>
 
-    <div className="viz-card p-4 mt-3">
-      <div className="flex flex-wrap items-end justify-between gap-2"><div><div className="font-semibold">All companies compared</div><div className="text-sm text-neutral-500">Select a row to open that company. Share of crashes is not a safety rate.</div></div>
-        <label className="text-sm text-neutral-600">Sort by <select className="filter-select ml-1" value={sort} onChange={e => setSort(e.target.value as typeof sort)}><option value="crashes">Crashes</option><option value="injury">Injury share</option><option value="serious">Serious or fatal</option></select></label></div>
-      <div className="overflow-x-auto mt-2"><table className="w-full text-sm min-w-[640px]"><thead><tr className="text-left text-xs text-neutral-500"><th className="py-1.5">Company</th><th className="text-right">Crashes</th><th className="text-right">Share</th><th className="text-right">Any injury*</th><th className="text-right">Serious/fatal</th><th className="text-right">States</th><th className="text-right">ODD unknown/redacted</th><th className="text-right">Active</th></tr></thead>
-        <tbody>{table.map(t => <tr key={t.name} onClick={() => setSelected(t.name)} className={`border-t border-[#e6edf3] cursor-pointer hover:bg-[#f2f6fa] ${t.name === current.name ? "bg-[#eaf2fa]" : ""}`}>
-          <td className="py-1.5 font-medium">{t.name}</td><td className="text-right tabular-nums">{t.crashes.toLocaleString()}</td><td className="text-right tabular-nums">{pct(t.share)}</td><td className="text-right tabular-nums">{pct(t.injury)}</td><td className="text-right tabular-nums">{t.serious}</td><td className="text-right tabular-nums">{t.states}</td><td className="text-right tabular-nums">{pct(t.opaque)}</td><td className="text-right text-neutral-500">{label(t.first)} – {label(t.last)}</td></tr>)}</tbody></table></div>
-      <p className="text-xs text-neutral-500 mt-2">*Share of crashes with known severity that reported any injury. Small companies have few crashes, so their percentages swing widely.</p>
-    </div>
   </section>;
 }
 
@@ -192,4 +183,54 @@ function Compare({ title, subtitle, keys, mine, all, name }: { title: string; su
       <BarChart data={data} layout="vertical" margin={{ top: 10, right: 15, bottom: 5, left: 30 }}><CartesianGrid {...GRID_PROPS} /><XAxis type="number" {...AXIS_PROPS} tickFormatter={v => `${v}%`} /><YAxis type="category" dataKey="name" {...AXIS_PROPS} width={120} tick={{ fontSize: 11 }} />
         <Tooltip {...TOOLTIP_PROPS} formatter={v => `${Number(v).toFixed(1)}%`} /><Legend {...LEGEND_PROPS} /><Bar dataKey={name} fill={SERIES.blue} /><Bar dataKey="All ADS crashes" fill="#b9c4d0" /></BarChart>
     </ResponsiveContainer></div>;
+}
+
+function clock(t: string) {
+  const m = /^(\d{1,2}):(\d{2})/.exec(t);
+  if (!m) return t;
+  const h = Number(m[1]);
+  return `${((h + 11) % 12) + 1}:${m[2]} ${h < 12 ? "AM" : "PM"}`;
+}
+
+function tally(rows: Row[], pick: (r: Row) => string) {
+  const m = new Map<string, number>();
+  for (const r of rows) { const k = pick(r) || "Unknown"; m.set(k, (m.get(k) ?? 0) + 1); }
+  return Array.from(m).sort((a, b) => b[1] - a[1]);
+}
+
+function MonthDetail({ company, ym, rows, monthAvg, label, filings }: { company: string; ym: number; rows: Row[]; monthAvg: number; label: (ym: number) => string; filings: Record<string, Filing[]> }) {
+  const list = rows.filter(r => r.ym === ym);
+  const sorted = [...list].sort((a, b) => {
+    const order = ["Fatal", "Serious", "Moderate", "Minor", "No injury", "Unknown"];
+    return order.indexOf(severityBucket(a.highest_injury_severity)) - order.indexOf(severityBucket(b.highest_injury_severity)) || a.city.localeCompare(b.city);
+  });
+  const hurt = list.filter(r => !["No injury", "Unknown"].includes(severityBucket(r.highest_injury_severity))).length;
+  const blocks: [string, [string, number][]][] = [
+    ["Injury severity", tally(list, r => severityBucket(r.highest_injury_severity))],
+    ["Collided with", tally(list, r => r.crash_with).slice(0, 5)],
+    ["Roadway", tally(list, r => r.roadway_type).slice(0, 5)],
+    ["City", tally(list, r => `${r.city || "Unknown"}, ${r.state || "—"}`).slice(0, 5)],
+  ];
+  return <div className="viz-card p-4 sm:p-5 mt-3" aria-live="polite">
+    <p className="eyebrow">Selected month</p>
+    <h3 className="text-lg font-semibold tracking-tight mt-1">{company} · {label(ym)}</h3>
+    <p className="text-sm text-neutral-600 mt-1">{list.length.toLocaleString()} reported {list.length === 1 ? "crash" : "crashes"} ({list.length >= monthAvg ? "above" : "below"} its monthly average of {monthAvg.toFixed(1)}); {hurt} with a reported injury.</p>
+    {list.length === 0 ? <p className="text-sm text-neutral-600 mt-3">No crashes reported this month.</p> : <>
+      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-4">{blocks.map(([title, items]) => <div key={title}><div className="text-xs font-semibold uppercase tracking-wide text-[#123b69]">{title}</div>
+        <ul className="mt-1 text-sm space-y-0.5">{items.map(([k, n]) => <li key={k} className="flex justify-between gap-2"><span>{k}</span><span className="tabular-nums text-neutral-600">{n}</span></li>)}</ul></div>)}</div>
+      <div className="overflow-x-auto mt-4"><table className="w-full text-sm min-w-[820px]"><thead><tr className="text-left text-xs text-neutral-500"><th className="py-1.5 pr-3">When and where</th><th className="pr-3">Outcome</th><th className="pr-3">Vehicle</th><th className="pr-3">Road and ODD</th><th>SGO filing</th></tr></thead>
+        <tbody>{sorted.map(r => {
+          const fl = [...(filings[r.incident_id || r.report_id] ?? [])].sort((a, b) => Number(b.v) - Number(a.v) || a.id.localeCompare(b.id));
+          const f = fl[0];
+          const odd = oddBucket(r.within_odd);
+          const bag = (r.air_bag_deployment || f?.bag || "Unknown");
+          return <tr key={r.incident_id || r.report_ids} className="border-t border-[#e6edf3] align-top">
+            <td className="py-2 pr-3"><div className="font-medium">{r.city || "Unknown"}, {r.state || "—"}</div><div className="text-neutral-600">{f?.time ? clock(f.time) : "Time not reported"}</div></td>
+            <td className="pr-3"><div className="font-medium">{r.highest_injury_severity || "Unknown"}</div><div className="text-neutral-600">Hit {r.crash_with || "not reported"}</div><div className="text-neutral-600">Air bags: {bag}</div></td>
+            <td className="pr-3"><div className="font-medium">{[f?.year, vehicleName(r.make, r.model)].filter(Boolean).join(" ")}</div>{f?.vin && f.vin.length > 3 && <div className="text-neutral-600">{f.vin}</div>}<div className="text-neutral-600">{f?.op ? `Operated by ${f.op}` : r.reporting_entities}</div>{f?.eng && <div className="text-neutral-600">{f.eng}</div>}</td>
+            <td className="pr-3"><div className="font-medium">{r.roadway_type || "Unknown"}</div><div className="text-neutral-600">{odd === "Within ODD" ? "Within ODD" : odd === "Outside ODD" ? "Outside ODD" : `ODD ${odd.toLowerCase()}`}</div></td>
+            <td>{fl.length === 0 ? <span className="font-mono text-xs">{r.report_ids}</span> : fl.map(x => <div key={x.id + x.v} className="text-xs"><span className="font-mono">{x.id}</span> v{x.v} · {x.type || "Report"}{x.filed ? ` · filed ${x.filed}` : ""}{fl.length > 1 && x.ent ? ` · ${x.ent}` : ""}</div>)}</td></tr>;
+        })}</tbody></table></div>
+      <p className="text-xs text-neutral-500 mt-2">Fields come from the latest SGO submissions. Severity is reported or alleged and does not establish fault.</p></>}
+  </div>;
 }
