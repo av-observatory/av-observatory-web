@@ -57,7 +57,7 @@ export function SgoCompanyMix({ rows }: { rows: SgoIncidentRow[] }) {
       <ResponsiveContainer width="100%" height={320} onResize={onResize}>
         <AreaChart data={series} stackOffset={mode === "share" ? "expand" : "none"} margin={{ top: 8, right: 16, bottom: 8, left: 8 }}>
           <CartesianGrid {...GRID_PROPS} /><XAxis dataKey="label" {...axis} />
-          <YAxis {...AXIS_PROPS} allowDecimals={false} tickFormatter={v => mode === "share" ? `${Math.round(Number(v) * 100)}%` : String(v)} />
+          <YAxis {...AXIS_PROPS} allowDecimals={false} domain={mode === "share" ? [0, 1] : [0, "auto"]} ticks={mode === "share" ? [0, 0.25, 0.5, 0.75, 1] : undefined} tickFormatter={v => mode === "share" ? `${Math.round(Number(v) * 100)}%` : String(v)} />
           <Tooltip {...TOOLTIP_PROPS} /><Legend {...LEGEND_PROPS} />
           {keys.map((n, i) => <Area key={n} type="monotone" dataKey={n} stackId="1" stroke={SERIES_ORDER[i % SERIES_ORDER.length]} fill={SERIES_ORDER[i % SERIES_ORDER.length]} fillOpacity={0.75} />)}
         </AreaChart>
