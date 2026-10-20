@@ -19,9 +19,11 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "AR": {
-  "attempted": "2026-10-19",
-  "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "checked": null,
+  "sources_read": [],
+  "bills_found": [],
+  "unreadable": "arkleg.state.ar.us blocked by egress proxy (official site not fully searchable; bills_found from prior tracker data / web search only)",
+  "attempted": "2026-10-20"
  },
  "AZ": {
   "attempted": "2026-10-19",
@@ -46,9 +48,15 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "CO": {
-  "attempted": "2026-10-19",
-  "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "checked": "2026-10-20",
+  "sources_read": [
+   "https://www.leg.colorado.gov/bills/HB26-1286"
+  ],
+  "bills_found": [
+   "HB26-1286"
+  ],
+  "unreadable": null,
+  "attempted": "2026-10-20"
  },
  "CT": {
   "attempted": "2026-10-19",
@@ -64,9 +72,16 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "DE": {
-  "attempted": "2026-10-19",
-  "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "checked": "2026-10-20",
+  "sources_read": [
+   "https://legis.delaware.gov/BillDetail?LegislationId=141797",
+   "https://legis.delaware.gov/json/AllLegislation/GetAllLegislation"
+  ],
+  "bills_found": [
+   "SB 46"
+  ],
+  "unreadable": null,
+  "attempted": "2026-10-20"
  },
  "FL": {
   "attempted": "2026-10-19",
@@ -90,9 +105,11 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "HI": {
-  "attempted": "2026-10-19",
-  "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "checked": null,
+  "sources_read": [],
+  "bills_found": [],
+  "unreadable": "capitol.hawaii.gov returned 403 (official site not fully searchable; bills_found from prior tracker data / web search only)",
+  "attempted": "2026-10-20"
  },
  "IA": {
   "attempted": "2026-10-19",
@@ -116,9 +133,11 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "IL": {
-  "attempted": "2026-10-19",
-  "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "checked": null,
+  "sources_read": [],
+  "bills_found": [],
+  "unreadable": "ilga.gov unreachable (503/proxy) (official site not fully searchable; bills_found from prior tracker data / web search only)",
+  "attempted": "2026-10-20"
  },
  "IN": {
   "attempted": "2026-10-19",
@@ -134,9 +153,11 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "KY": {
-  "attempted": "2026-10-19",
-  "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "checked": null,
+  "sources_read": [],
+  "bills_found": [],
+  "unreadable": "legislature.ky.gov returned 403 (official site not fully searchable; bills_found from prior tracker data / web search only)",
+  "attempted": "2026-10-20"
  },
  "LA": {
   "attempted": "2026-10-19",
@@ -157,9 +178,17 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "MD": {
-  "attempted": "2026-10-19",
-  "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "checked": "2026-10-20",
+  "sources_read": [
+   "https://mgaleg.maryland.gov/mgawebsite/Legislation/Details/sb0909?ys=2026RS",
+   "https://mgaleg.maryland.gov/mgawebsite/Legislation/Details/HB1295?ys=2026rs"
+  ],
+  "bills_found": [
+   "HB 1295",
+   "SB 909"
+  ],
+  "unreadable": null,
+  "attempted": "2026-10-20"
  },
  "ME": {
   "attempted": "2026-10-19",
@@ -177,9 +206,25 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "MN": {
-  "attempted": "2026-10-19",
-  "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "checked": "2026-10-20",
+  "sources_read": [
+   "https://www.revisor.mn.gov/bills/94/2026/0/HF/3513",
+   "https://www.revisor.mn.gov/bills/94/2026/0/SF/4618"
+  ],
+  "bills_found": [
+   "HF 3513",
+   "HF 3810",
+   "HF 4112",
+   "HF 4216",
+   "HF 4521",
+   "SF 4010",
+   "SF 4014",
+   "SF 4381",
+   "SF 4618",
+   "SF 4731"
+  ],
+  "unreadable": null,
+  "attempted": "2026-10-20"
  },
  "MO": {
   "attempted": "2026-10-19",
@@ -200,9 +245,14 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "MT": {
-  "attempted": "2026-10-19",
-  "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "checked": null,
+  "sources_read": [],
+  "bills_found": [
+   "SB 67",
+   "SJ 16"
+  ],
+  "unreadable": "leg.mt.gov bill search not readable; only interim-committee pages seen (official site not fully searchable; bills_found from prior tracker data / web search only)",
+  "attempted": "2026-10-20"
  },
  "NC": {
   "attempted": "2026-10-19",
@@ -222,9 +272,11 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "NE": {
-  "attempted": "2026-10-19",
-  "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "checked": null,
+  "sources_read": [],
+  "bills_found": [],
+  "unreadable": "nebraskalegislature.gov unreachable via proxy (official site not fully searchable; bills_found from prior tracker data / web search only)",
+  "attempted": "2026-10-20"
  },
  "NH": {
   "attempted": "2026-10-19",
@@ -242,9 +294,13 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "NM": {
-  "attempted": "2026-10-19",
-  "searched": 3,
-  "unreadable": "official-site search returned no AV bill pages (searched 3 pages)"
+  "checked": "2026-10-20",
+  "sources_read": [
+   "https://www.nmlegis.gov/"
+  ],
+  "bills_found": [],
+  "unreadable": null,
+  "attempted": "2026-10-20"
  },
  "NV": {
   "attempted": "2026-10-19",
@@ -266,9 +322,11 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "OH": {
-  "attempted": "2026-10-19",
-  "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "checked": null,
+  "sources_read": [],
+  "bills_found": [],
+  "unreadable": "legislature.ohio.gov unreachable via proxy (official site not fully searchable; bills_found from prior tracker data / web search only)",
+  "attempted": "2026-10-20"
  },
  "OK": {
   "attempted": "2026-10-19",
@@ -286,9 +344,14 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "PA": {
-  "attempted": "2026-10-19",
-  "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "checked": null,
+  "sources_read": [],
+  "bills_found": [
+   "HR 563",
+   "HB 1639"
+  ],
+  "unreadable": "legis.state.pa.us returned 403 (official site not fully searchable; bills_found from prior tracker data / web search only)",
+  "attempted": "2026-10-20"
  },
  "RI": {
   "attempted": "2026-10-19",
@@ -306,9 +369,11 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "SD": {
-  "attempted": "2026-10-19",
-  "searched": 5,
-  "unreadable": "HTTPError /; HTTPError /%EF%BF%BD; HTTPError /en/passports/apply/get-fast.html; HTTPError /en/passports/contact-support/us-passports.html; URLError / (searched 5 pages)"
+  "checked": null,
+  "sources_read": [],
+  "bills_found": [],
+  "unreadable": "sdlegislature.gov unreachable via proxy (official site not fully searchable; bills_found from prior tracker data / web search only)",
+  "attempted": "2026-10-20"
  },
  "TN": {
   "attempted": "2026-10-19",
@@ -328,9 +393,16 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "UT": {
-  "attempted": "2026-10-19",
-  "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "checked": "2026-10-20",
+  "sources_read": [
+   "https://le.utah.gov/Session/2026/bills/introduced/HB0581S01.pdf"
+  ],
+  "bills_found": [
+   "HB 581",
+   "SB 292"
+  ],
+  "unreadable": null,
+  "attempted": "2026-10-20"
  },
  "VA": {
   "attempted": "2026-10-19",
@@ -350,9 +422,17 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "WA": {
-  "attempted": "2026-10-19",
-  "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "checked": "2026-10-20",
+  "sources_read": [
+   "https://wslwebservices.leg.wa.gov/LegislationService.asmx/GetLegislation?biennium=2025-26&billNumber=1984",
+   "https://wslwebservices.leg.wa.gov/LegislationService.asmx/GetLegislation?biennium=2025-26&billNumber=5042"
+  ],
+  "bills_found": [
+   "HB 1984",
+   "SB 5042"
+  ],
+  "unreadable": null,
+  "attempted": "2026-10-20"
  },
  "WI": {
   "attempted": "2026-10-19",
@@ -374,8 +454,10 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "WY": {
-  "attempted": "2026-10-19",
-  "searched": 10,
-  "unreadable": "HTTPError /myaccount/; HTTPError /myaccount/creating-an-account.html; HTTPError /ssi/spotlights/spot-loans.htm; insufficient_official_html /RIL/SiView.action (searched 10 pages)"
+  "checked": null,
+  "sources_read": [],
+  "bills_found": [],
+  "unreadable": "wyoleg.gov bill API blocked (403); no 2026 AV bill surfaced in search (official site not fully searchable; bills_found from prior tracker data / web search only)",
+  "attempted": "2026-10-20"
  }
 }
