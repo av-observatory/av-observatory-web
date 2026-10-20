@@ -7,7 +7,6 @@ import { useMonthAxis } from "@/components/MonthAxis";
 import { isCompleteSgoMonth } from "@/lib/safety";
 import { monthLabel } from "@/lib/activity";
 import { companyName } from "@/components/SgoCompanyExplorer";
-import { AnnotationLegend, annotationLines, annotationsFor } from "@/components/SgoAnnotations";
 import type { SgoIncidentRow } from "@/components/SgoDeepDive";
 
 const MONTHS = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
@@ -40,8 +39,7 @@ export function SgoCompanyMix({ rows }: { rows: SgoIncidentRow[] }) {
     return { names, series, years, table };
   }, [data]);
 
-  const { axis, onResize, width } = useMonthAxis(series.length);
-  const notes = useMemo(() => annotationsFor("All companies", new Set(series.map(r => String(r.label)))), [series]);
+  const { axis, onResize } = useMonthAxis(series.length);
   if (!data.length) return null;
   const keys = [...names, "All others"];
   const yearTotals = years.map((_, i) => table.reduce((s, t) => s + t.byYear[i], 0));
@@ -56,12 +54,11 @@ export function SgoCompanyMix({ rows }: { rows: SgoIncidentRow[] }) {
       </div>
     </div>
     <div className="viz-card p-4 mt-2">
-      <ResponsiveContainer width="100%" height={436} onResize={onResize}>
-        <AreaChart data={series} stackOffset={mode === "share" ? "expand" : "none"} margin={{ top: 112, right: 16, bottom: 8, left: 8 }}>
+      <ResponsiveContainer width="100%" height={320} onResize={onResize}>
+        <AreaChart data={series} stackOffset={mode === "share" ? "expand" : "none"} margin={{ top: 8, right: 16, bottom: 8, left: 8 }}>
           <CartesianGrid {...GRID_PROPS} /><XAxis dataKey="label" {...axis} />
           <YAxis {...AXIS_PROPS} allowDecimals={false} domain={mode === "share" ? [0, 1] : [0, "auto"]} ticks={mode === "share" ? [0, 0.25, 0.5, 0.75, 1] : undefined} tickFormatter={v => mode === "share" ? `${Math.round(Number(v) * 100)}%` : String(v)} />
           <Tooltip {...TOOLTIP_PROPS} /><Legend {...LEGEND_PROPS} />
-          {annotationLines(notes, series.map(r => String(r.label)), width)}
           {keys.map((n, i) => <Area key={n} type="monotone" dataKey={n} stackId="1" stroke={SERIES_ORDER[i % SERIES_ORDER.length]} fill={SERIES_ORDER[i % SERIES_ORDER.length]} fillOpacity={0.75} />)}
         </AreaChart>
       </ResponsiveContainer>
@@ -70,7 +67,6 @@ export function SgoCompanyMix({ rows }: { rows: SgoIncidentRow[] }) {
         <tbody>{table.map(t => <tr key={t.name} className="border-t border-[#e6edf3]"><td className="py-1.5 font-medium">{t.name}</td>{t.byYear.map((n, i) => <td key={i} className="text-right tabular-nums">{n.toLocaleString()}</td>)}<td className="text-right tabular-nums font-medium">{t.byYear.reduce((a, b) => a + b, 0).toLocaleString()}</td></tr>)}
           <tr className="border-t-2 border-[#cbd9e8] font-semibold"><td className="py-1.5">All ADS crashes</td>{yearTotals.map((n, i) => <td key={i} className="text-right tabular-nums">{n.toLocaleString()}</td>)}<td className="text-right tabular-nums">{yearTotals.reduce((a, b) => a + b, 0).toLocaleString()}</td></tr></tbody>
       </table></div>
-      <AnnotationLegend list={notes} />
       <p className="text-xs text-neutral-500 mt-2">The latest year is partial. Counts are SGO reports, not adjusted for miles driven, and do not establish fault.</p>
     </div>
   </div>;
