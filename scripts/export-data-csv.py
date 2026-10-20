@@ -124,6 +124,8 @@ def main():
             export(stem + "_unresolved_leads.csv", data["unresolved_leads"], output)
             if data.get("media_watch"):
                 export(stem + "_media_watch.csv", data["media_watch"], output)
+        elif stem == "sgo_trend_events":
+            export(stem + ".csv", [{k: ("; ".join(v) if isinstance(v, list) else v) for k, v in e.items()} for e in data["events"]], output)
         elif stem == "sgo_serious_media_links":
             export(stem + ".csv", [{"incident_id": k, "report_ids": v["report_ids"], **m}
                                    for k, v in sorted(data["crashes"].items()) for m in v["media"]], output)

@@ -1,0 +1,24 @@
+{
+  "dataset": "Context events for the SGO crash-trend chart",
+  "note": "Each event is placed in the month it took effect or was announced. The chart counts reports by filing month. Events are context, not proven causes of a change in counts.",
+  "events": [
+    {"month": "2023-05", "title": "Second amended SGO takes effect", "scope": "all", "entities": [],
+     "text": "NHTSA's second amended order took effect May 15, 2023. It added a five-day report for less serious crashes and revised the definition of an engaged automated system, so filing patterns before and after are not strictly comparable.",
+     "source_label": "NHTSA order", "source_url": "https://nhtsa.gov/node/103801"},
+    {"month": "2023-08", "title": "San Francisco approves 24-hour paid robotaxis", "scope": "ca", "entities": ["waymo", "cruise"],
+     "text": "On Aug. 10, 2023 the California Public Utilities Commission voted 3-1 to let Waymo and Cruise run paid driverless service across San Francisco at all hours, increasing miles driven in a dense city.",
+     "source_label": "Engadget report", "source_url": "https://www.engadget.com/waymo-and-cruise-get-approval-to-offer-247-paid-robotaxi-rides-in-san-francisco-050152855.html"},
+    {"month": "2023-10", "title": "California suspends Cruise driverless permits", "scope": "all", "entities": ["cruise"],
+     "text": "On Oct. 24, 2023 the California DMV suspended Cruise's deployment and driverless testing permits after a pedestrian was dragged by a Cruise vehicle. Cruise paused its San Francisco driverless operations, and no Cruise reports appear in this dataset after October 2023.",
+     "source_label": "California DMV", "source_url": "https://www.dmv.ca.gov/portal/news-and-media/dmv-statement-on-cruise-llc/"},
+    {"month": "2025-03", "title": "Waymo and Uber begin service in Austin", "scope": "all", "entities": ["waymo"],
+     "text": "Waymo rides became available through the Uber app in Austin in March 2025, adding a new large market for Waymo's crash reports.",
+     "source_label": "Reuters via StreetInsider", "source_url": "https://www.streetinsider.com/General+News/Uber%2C+Waymo+launch+autonomous+ride-hailing+service+in+Atlanta/24967673.html"},
+    {"month": "2025-06", "title": "Third amended SGO takes effect; Atlanta launch", "scope": "all", "entities": [],
+     "text": "NHTSA's third amended order, effective June 16, 2025, reduces duplicate filings and sets different thresholds by automation type, so reports after this date are not strictly comparable. Waymo and Uber also began service in Atlanta that month.",
+     "source_label": "NHTSA SGO page", "source_url": "https://www.nhtsa.gov/laws-regulations/standing-general-order-crash-reporting"},
+    {"month": "2025-11", "title": "Waymo goes fully autonomous in five more cities", "scope": "all", "entities": ["waymo"],
+     "text": "In November 2025 Waymo began fully autonomous service in five more US cities, widening the footprint over which Waymo's crashes are reported.",
+     "source_label": "Fast Company", "source_url": "https://fastcompany.co.za/tech/2025-11-19-waymos-robotaxi-service-goes-fully-autonomous-in-5-more-us-cities"}
+  ]
+}
