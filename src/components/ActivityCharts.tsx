@@ -12,6 +12,7 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
+import { useMonthAxis } from "@/components/MonthAxis";
 import { ActivityMonthlyRow, monthLabel, sortRows } from "@/lib/activity";
 import { SERIES, AXIS_PROPS, GRID_PROPS, TOOLTIP_PROPS, LEGEND_PROPS } from "@/lib/chartTheme";
 
@@ -43,12 +44,13 @@ function aggregateByMonth(rows: ActivityMonthlyRow[]) {
 
 export function TripsChart({ rows }: { rows: ActivityMonthlyRow[] }) {
   const data = aggregateByMonth(rows);
+  const { axis, onResize } = useMonthAxis(data.length);
   if (data.length === 0) return <EmptyState />;
   return (
-    <ResponsiveContainer width="100%" height={320}>
+    <ResponsiveContainer onResize={onResize} width="100%" height={320}>
       <LineChart data={data} margin={{ top: 8, right: 16, bottom: 8, left: 8 }}>
         <CartesianGrid {...GRID_PROPS} />
-        <XAxis dataKey="label" {...AXIS_PROPS} />
+        <XAxis dataKey="label" {...axis} />
         <YAxis {...AXIS_PROPS} tickFormatter={(v) => (v / 1_000_000).toFixed(1) + "M"} />
         <Tooltip {...TOOLTIP_PROPS} formatter={(v) => Number(v).toLocaleString()} />
         <Line type="monotone" dataKey="trips" name="Passenger Trips" stroke={SERIES.blue} strokeWidth={2.5} dot={false} activeDot={{ r: 5 }} />
@@ -59,12 +61,13 @@ export function TripsChart({ rows }: { rows: ActivityMonthlyRow[] }) {
 
 export function VmtChart({ rows }: { rows: ActivityMonthlyRow[] }) {
   const data = aggregateByMonth(rows);
+  const { axis, onResize } = useMonthAxis(data.length);
   if (data.length === 0) return <EmptyState />;
   return (
-    <ResponsiveContainer width="100%" height={320}>
+    <ResponsiveContainer onResize={onResize} width="100%" height={320}>
       <LineChart data={data} margin={{ top: 8, right: 16, bottom: 8, left: 8 }}>
         <CartesianGrid {...GRID_PROPS} />
-        <XAxis dataKey="label" {...AXIS_PROPS} />
+        <XAxis dataKey="label" {...axis} />
         <YAxis {...AXIS_PROPS} tickFormatter={(v) => (v / 1_000_000).toFixed(1) + "M"} />
         <Tooltip {...TOOLTIP_PROPS} formatter={(v) => Number(v).toLocaleString()} />
         <Line type="monotone" dataKey="vmt" name="Total VMT" stroke={SERIES.blue} strokeWidth={2.5} dot={false} activeDot={{ r: 5 }} />
@@ -108,12 +111,13 @@ const VMT_PERIOD_COLORS = [SERIES.blue, SERIES.aqua, "#cde2fb"];
 // aboard. Non-passenger VMT = Period 1 + Period 2.
 export function VmtPeriodChart({ rows }: { rows: ActivityMonthlyRow[] }) {
   const data = aggregateVmtPeriods(rows);
+  const { axis, onResize } = useMonthAxis(data.length);
   if (data.length === 0) return <EmptyState />;
   return (
-    <ResponsiveContainer width="100%" height={340}>
+    <ResponsiveContainer onResize={onResize} width="100%" height={340}>
       <AreaChart data={data} margin={{ top: 8, right: 16, bottom: 8, left: 8 }}>
         <CartesianGrid {...GRID_PROPS} />
-        <XAxis dataKey="label" {...AXIS_PROPS} />
+        <XAxis dataKey="label" {...axis} />
         <YAxis {...AXIS_PROPS} tickFormatter={(v) => (v / 1_000_000).toFixed(1) + "M"} />
         <Tooltip {...TOOLTIP_PROPS} formatter={(v) => Number(v).toLocaleString()} />
         <Legend {...LEGEND_PROPS} />
@@ -156,12 +160,13 @@ function aggregateNonPassengerShare(rows: ActivityMonthlyRow[]) {
 // possible by CPUC's own Trip-Level Data Dictionary definitions.
 export function NonPassengerShareChart({ rows }: { rows: ActivityMonthlyRow[] }) {
   const data = aggregateNonPassengerShare(rows);
+  const { axis, onResize } = useMonthAxis(data.length);
   if (data.length === 0) return <EmptyState />;
   return (
-    <ResponsiveContainer width="100%" height={320}>
+    <ResponsiveContainer onResize={onResize} width="100%" height={320}>
       <LineChart data={data} margin={{ top: 8, right: 16, bottom: 8, left: 8 }}>
         <CartesianGrid {...GRID_PROPS} />
-        <XAxis dataKey="label" {...AXIS_PROPS} />
+        <XAxis dataKey="label" {...axis} />
         <YAxis {...AXIS_PROPS} tickFormatter={(v) => `${v}%`} domain={[0, 100]} />
         <Tooltip {...TOOLTIP_PROPS} formatter={(v) => `${v}%`} />
         <Line type="monotone" dataKey="nonPassengerSharePct" name="Non-Passenger VMT Share" stroke={SERIES.orange} strokeWidth={2.5} dot={false} activeDot={{ r: 5 }} />
@@ -194,12 +199,13 @@ function aggregateWaitingHours(rows: ActivityMonthlyRow[]) {
 
 export function WaitingHoursChart({ rows }: { rows: ActivityMonthlyRow[] }) {
   const data = aggregateWaitingHours(rows);
+  const { axis, onResize } = useMonthAxis(data.length);
   if (data.length === 0) return <EmptyState />;
   return (
-    <ResponsiveContainer width="100%" height={320}>
+    <ResponsiveContainer onResize={onResize} width="100%" height={320}>
       <LineChart data={data} margin={{ top: 8, right: 16, bottom: 8, left: 8 }}>
         <CartesianGrid {...GRID_PROPS} />
-        <XAxis dataKey="label" {...AXIS_PROPS} />
+        <XAxis dataKey="label" {...axis} />
         <YAxis {...AXIS_PROPS} tickFormatter={(v) => Number(v).toLocaleString()} />
         <Tooltip {...TOOLTIP_PROPS} formatter={(v) => `${Number(v).toLocaleString()} hours`} />
         <Line type="monotone" dataKey="waitingHours" name="Total Reported Waiting Hours" stroke={SERIES.violet} strokeWidth={2.5} dot={false} activeDot={{ r: 5 }} />
@@ -241,12 +247,13 @@ const PROGRAM_COLORS = [SERIES.blue, SERIES.orange, SERIES.aqua];
 
 export function TripsByProgramChart({ rows }: { rows: ActivityMonthlyRow[] }) {
   const { programs, data } = aggregateTripsByProgram(rows);
+  const { axis, onResize } = useMonthAxis(data.length);
   if (data.length === 0) return <EmptyState />;
   return (
-    <ResponsiveContainer width="100%" height={340}>
+    <ResponsiveContainer onResize={onResize} width="100%" height={340}>
       <AreaChart data={data} margin={{ top: 8, right: 16, bottom: 8, left: 8 }}>
         <CartesianGrid {...GRID_PROPS} />
-        <XAxis dataKey="label" {...AXIS_PROPS} />
+        <XAxis dataKey="label" {...axis} />
         <YAxis {...AXIS_PROPS} tickFormatter={(v) => (v / 1_000).toFixed(0) + "K"} />
         <Tooltip {...TOOLTIP_PROPS} formatter={(v) => Number(v).toLocaleString()} />
         <Legend {...LEGEND_PROPS} />

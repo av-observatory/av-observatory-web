@@ -12,6 +12,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { topEntitiesByIncidentCount, topStatesByIncidentCount, SgoMonthlyDataset, WaymoS2StateSummary, WaymoCaExposureRate, isCompleteSgoMonth } from "@/lib/safety";
+import { useMonthAxis } from "@/components/MonthAxis";
 import { monthLabel } from "@/lib/activity";
 import { SERIES, AXIS_PROPS, GRID_PROPS, TOOLTIP_PROPS } from "@/lib/chartTheme";
 
@@ -52,12 +53,13 @@ export function NationalTrendChart({ data }: { data: SgoMonthlyDataset }) {
     label: monthLabel(r.year, r.month),
     count: r.incident_count,
   }));
+  const { axis, onResize } = useMonthAxis(rows.length);
   if (rows.length === 0) return <EmptyState />;
   return (
-    <ResponsiveContainer width="100%" height={320}>
+    <ResponsiveContainer onResize={onResize} width="100%" height={320}>
       <LineChart data={rows} margin={{ top: 8, right: 16, bottom: 8, left: 8 }}>
         <CartesianGrid {...GRID_PROPS} />
-        <XAxis dataKey="label" {...AXIS_PROPS} interval="preserveStartEnd" />
+        <XAxis dataKey="label" {...axis} />
         <YAxis {...AXIS_PROPS} />
         <Tooltip {...TOOLTIP_PROPS} formatter={(v) => Number(v).toLocaleString()} />
         <Line type="monotone" dataKey="count" name="Reported Crashes" stroke={SERIES.blue} strokeWidth={2.5} dot={false} activeDot={{ r: 5 }} />
@@ -128,13 +130,14 @@ export function VehicleClassChart({ data: sgo }: { data: SgoMonthlyDataset }) {
     (r) => (r as unknown as { vehicle_class: string }).vehicle_class,
     VEHICLE_CLASS_LABELS
   );
+  const { axis, onResize } = useMonthAxis(data.length);
   if (data.length === 0) return <EmptyState />;
   const colors = [SERIES.blue, SERIES.orange];
   return (
-    <ResponsiveContainer width="100%" height={300}>
+    <ResponsiveContainer onResize={onResize} width="100%" height={300}>
       <BarChart data={data} margin={{ top: 8, right: 16, bottom: 8, left: 8 }}>
         <CartesianGrid {...GRID_PROPS} />
-        <XAxis dataKey="label" {...AXIS_PROPS} interval="preserveStartEnd" />
+        <XAxis dataKey="label" {...axis} />
         <YAxis {...AXIS_PROPS} />
         <Tooltip {...TOOLTIP_PROPS} formatter={(v) => Number(v).toLocaleString()} />
         {keys.map((k, i) => (
@@ -151,13 +154,14 @@ export function ProgramTypeChart({ data: sgo }: { data: SgoMonthlyDataset }) {
     (r) => (r as unknown as { program_type: string }).program_type,
     PROGRAM_TYPE_LABELS
   );
+  const { axis, onResize } = useMonthAxis(data.length);
   if (data.length === 0) return <EmptyState />;
   const colors = [SERIES.blue, SERIES.orange, SERIES.aqua];
   return (
-    <ResponsiveContainer width="100%" height={300}>
+    <ResponsiveContainer onResize={onResize} width="100%" height={300}>
       <BarChart data={data} margin={{ top: 8, right: 16, bottom: 8, left: 8 }}>
         <CartesianGrid {...GRID_PROPS} />
-        <XAxis dataKey="label" {...AXIS_PROPS} interval="preserveStartEnd" />
+        <XAxis dataKey="label" {...axis} />
         <YAxis {...AXIS_PROPS} />
         <Tooltip {...TOOLTIP_PROPS} formatter={(v) => Number(v).toLocaleString()} />
         {keys.map((k, i) => (
@@ -173,12 +177,13 @@ export function WaymoCaExposureChart({ data }: { data: WaymoCaExposureRate }) {
     label: monthLabel(r.year, r.month),
     rate: r.incidents_per_million_miles,
   }));
+  const { axis, onResize } = useMonthAxis(rows.length);
   if (rows.length === 0) return <EmptyState />;
   return (
-    <ResponsiveContainer width="100%" height={300}>
+    <ResponsiveContainer onResize={onResize} width="100%" height={300}>
       <LineChart data={rows} margin={{ top: 8, right: 16, bottom: 8, left: 8 }}>
         <CartesianGrid {...GRID_PROPS} />
-        <XAxis dataKey="label" {...AXIS_PROPS} interval="preserveStartEnd" />
+        <XAxis dataKey="label" {...axis} />
         <YAxis {...AXIS_PROPS} />
         <Tooltip {...TOOLTIP_PROPS} formatter={(v) => `${v} / million mi`} />
         <Line type="monotone" dataKey="rate" name="SGO Incidents per Million CA Miles" stroke={SERIES.red} strokeWidth={2.5} dot={false} activeDot={{ r: 5 }} />

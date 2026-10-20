@@ -1,4 +1,13 @@
-export const SGO_COMPLETE_THROUGH = { year: 2026, month: 7 } as const;
+import sgoMonthly from "../../public/data/sgo_incidents_monthly.json";
+
+// The newest filing month in the extract is still being filed, so it is excluded from trend
+// charts; the cutoff therefore moves forward automatically with every data refresh.
+const newestMonth = sgoMonthly.monthly_national_total.reduce(
+  (a, r) => (r.year * 12 + r.month > a ? r.year * 12 + r.month : a), 0);
+export const SGO_COMPLETE_THROUGH = {
+  year: Math.floor((newestMonth - 2) / 12),
+  month: ((newestMonth - 2) % 12) + 1,
+} as const;
 
 export interface SgoMonthlyDataset {
   dataset: string;

@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
 import { SgoMonthlyDataset, isCompleteSgoMonth, SGO_COMPLETE_THROUGH } from "@/lib/safety";
+import { useMonthAxis } from "@/components/MonthAxis";
 import { monthLabel } from "@/lib/activity";
 import { SERIES, AXIS_PROPS, GRID_PROPS, TOOLTIP_PROPS } from "@/lib/chartTheme";
 
@@ -26,6 +27,7 @@ export function SafetyExplorer({ data }: { data: SgoMonthlyDataset }) {
       .map(r => ({ label: monthLabel(r.year, r.month), count: r.count }));
   }, [data, scope, state, operator]);
 
+  const { axis, onResize } = useMonthAxis(rows.length);
   const total = rows.reduce((s,r)=>s+r.count,0);
 
   return (
@@ -53,11 +55,11 @@ export function SafetyExplorer({ data }: { data: SgoMonthlyDataset }) {
           <div className="text-xs text-neutral-500">crashes in selected series</div>
         </div>
       </div>
-      <div className="text-xs text-neutral-500 mb-2">Complete through {monthLabel(SGO_COMPLETE_THROUGH.year, SGO_COMPLETE_THROUGH.month)}; Aug 2026 is excluded because the SGO extract is incomplete.</div>
-      <ResponsiveContainer width="100%" height={350}>
+      <div className="text-xs text-neutral-500 mb-2">Complete through {monthLabel(SGO_COMPLETE_THROUGH.year, SGO_COMPLETE_THROUGH.month)}; the newest filing month is excluded because it is still incomplete.</div>
+      <ResponsiveContainer width="100%" height={350} onResize={onResize}>
         <LineChart data={rows} margin={{top:8,right:18,bottom:8,left:4}}>
           <CartesianGrid {...GRID_PROPS} />
-          <XAxis dataKey="label" {...AXIS_PROPS} interval="preserveStartEnd" />
+          <XAxis dataKey="label" {...axis} />
           <YAxis {...AXIS_PROPS} allowDecimals={false} />
           <Tooltip {...TOOLTIP_PROPS} formatter={(v)=>Number(v).toLocaleString()} />
           <Line type="monotone" dataKey="count" name="Reported crashes" stroke={SERIES.blue} strokeWidth={2.75} dot={false} activeDot={{r:5}} />

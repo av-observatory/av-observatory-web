@@ -1,13 +1,14 @@
 import { promises as fs } from "fs";
 import path from "path";
-import { SgoMonthlyDataset, isCompleteSgoMonth } from "@/lib/safety";
+import { SgoMonthlyDataset, isCompleteSgoMonth, SGO_COMPLETE_THROUGH } from "@/lib/safety";
+import { monthLabel } from "@/lib/activity";
 import { ChartCard } from "@/components/ChartCard";
 import { StatTile } from "@/components/StatTile";
 import { SafetyExplorer } from "@/components/SafetyExplorer";
 import { UsStateMap } from "@/components/UsStateMap";
 import { TopEntitiesChart } from "@/components/SafetyCharts";
 import { SgoDeepDive, SgoIncidentRow } from "@/components/SgoDeepDive";
-import { SgoSeriousCrashList, type SeriousCrash, type MediaContext, type ReviewedSource } from "@/components/SgoSeriousCrashList";
+import { SgoSeriousCrashList, type MediaLink, type SeriousCrash, type MediaContext, type ReviewedSource } from "@/components/SgoSeriousCrashList";
 
 async function loadJson<T>(filename: string): Promise<T> {
   const file = path.join(process.cwd(), "public", "data", filename);
@@ -98,7 +99,7 @@ async function loadCanonicalCrashes(): Promise<SgoIncidentRow[]> {
 }
 
 export default async function SafetyPage() {
-  const [sgo, incidentRows, canonicalCrashes, seriousCrashes, mediaContext] = await Promise.all([
+  const [sgo, incidentRows, canonicalCrashes, seriousCrashes, mediaContext, mediaLinkStore] = await Promise.all([
     loadJson<SgoMonthlyDataset>("sgo_crashes_monthly.json"),
     loadSgoRows(),
     loadCanonicalCrashes(),
@@ -107,8 +108,11 @@ export default async function SafetyPage() {
       return rows.filter(r => r.length > 1).map(r => Object.fromEntries(header.map((key, i) => [key, r[i] ?? ""])) as SeriousCrash);
     }),
     loadJson<{records:MediaContext[];reviewed_sources:ReviewedSource[]}>("sgo_media_context.json"),
+    loadJson<{crashes:Record<string,{media:MediaLink[]}>}>("sgo_serious_media_links.json").catch(()=>({crashes:{}})),
   ]);
 
+  const completeThrough = monthLabel(SGO_COMPLETE_THROUGH.year, SGO_COMPLETE_THROUGH.month);
+  const excludedLabel = monthLabel(SGO_COMPLETE_THROUGH.year + (SGO_COMPLETE_THROUGH.month === 12 ? 1 : 0), SGO_COMPLETE_THROUGH.month % 12 + 1);
   const completedCrashRows = canonicalCrashes.filter(r => {
     const match = /^(JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)-(\d{4})$/i.exec(r.incident_date);
     if (!match) return false;
@@ -150,10 +154,10 @@ export default async function SafetyPage() {
     <div className="max-w-6xl px-8 py-6">
       <p className="eyebrow mb-3">United States · Crash Reporting</p>
       <h1 className="text-4xl font-semibold tracking-tight max-w-3xl">US Crash Tracker</h1>
-      <p className="mt-2 text-sm text-neutral-600 max-w-3xl">NHTSA SGO incident reports by reporting entity, geography, vehicle, roadway, collision counterpart, injury severity, and reported ODD status. August 2026 is currently incomplete and excluded.</p>
+      <p className="mt-2 text-sm text-neutral-600 max-w-3xl">NHTSA SGO incident reports by reporting entity, geography, vehicle, roadway, collision counterpart, injury severity, and reported ODD status. {excludedLabel} is currently incomplete and excluded.</p>
 
       <div className="mt-5 grid sm:grid-cols-3 gap-2.5">
-        <StatTile label="Deduplicated Crashes" value={completedCrashRows.length.toLocaleString()} caption="Unique dated crashes through July 2026; cross-entity filings merged" />
+        <StatTile label="Deduplicated Crashes" value={completedCrashRows.length.toLocaleString()} caption={`Unique dated crashes through ${completeThrough}; cross-entity filings merged`} />
         <StatTile label="States Represented" value={new Set(completedCrashRows.map(r => r.state).filter(Boolean)).size.toString()} caption="States appearing in reported incidents" />
         <StatTile label="Reporting Entities" value={new Set(completedCrashRows.flatMap(r => (r.reporting_entities ?? "").split(";").filter(Boolean))).size.toString()} caption="ADS reporting entities represented" />
       </div>
@@ -180,6 +184,8 @@ export default async function SafetyPage() {
         crashes={seriousCases}
         media={mediaContext.records}
         reviewedSources={mediaContext.reviewed_sources}
+        mediaLinks={Object.fromEntries(Object.entries(mediaLinkStore.crashes).map(([k, v]) => [k, v.media]))}
+        excludedMonth={excludedLabel}
       />
 
       <section className="mt-7">
