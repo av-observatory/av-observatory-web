@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { Bar, BarChart, CartesianGrid, Legend, ReferenceLine, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
-import { SgoShiftNotes, shiftMarkers } from "@/components/SgoShiftNotes";
+import { AnnotationLegend, annotationLines, annotationsFor } from "@/components/SgoAnnotations";
 import { AXIS_PROPS, GRID_PROPS, LEGEND_PROPS, SERIES, TOOLTIP_PROPS } from "@/lib/chartTheme";
 import { useMonthAxis } from "@/components/MonthAxis";
 import { isCompleteSgoMonth } from "@/lib/safety";
@@ -96,6 +96,7 @@ export function SgoCompanyExplorer({ rows, serious }: { rows: SgoIncidentRow[]; 
 
   const monthly = useMemo(() => months.map(ym => ({ label: label(ym), crashes: mine.filter(r => r.ym === ym).length })), [months, mine]);
   const monthlyAxis = useMonthAxis(monthly.length);
+  const notes = useMemo(() => annotationsFor(current?.name ?? "", new Set(monthly.map(m => m.label))), [monthly, current]);
   const peak = useMemo(() => monthly.reduce((a, m) => (m.crashes > a.crashes ? m : a), { label: "", crashes: 0 }), [monthly]);
 
 
@@ -154,11 +155,11 @@ export function SgoCompanyExplorer({ rows, serious }: { rows: SgoIncidentRow[]; 
     </div>
 
     <div className="viz-card p-4 mt-3"><div className="font-semibold">{current.name}: reported crashes by incident month</div>
-      <ResponsiveContainer width="100%" height={260} onResize={monthlyAxis.onResize}>
-        <BarChart data={monthly} margin={{ top: 22, right: 16, bottom: 8, left: 8 }}><CartesianGrid {...GRID_PROPS} /><XAxis dataKey="label" {...monthlyAxis.axis} /><YAxis {...AXIS_PROPS} allowDecimals={false} />
-          <Tooltip {...TOOLTIP_PROPS} />{shiftMarkers(current.name).map(m => <ReferenceLine key={m.label} x={m.label} stroke="#8a97a6" strokeDasharray="3 3" label={{ value: m.text, position: "top", fill: "#123b69", fontSize: 12, fontWeight: 700 }} />)}<Bar dataKey="crashes" name="Reported crashes" fill={SERIES.blue} /></BarChart>
+      <ResponsiveContainer width="100%" height={376} onResize={monthlyAxis.onResize}>
+        <BarChart data={monthly} margin={{ top: 112, right: 16, bottom: 8, left: 8 }}><CartesianGrid {...GRID_PROPS} /><XAxis dataKey="label" {...monthlyAxis.axis} /><YAxis {...AXIS_PROPS} allowDecimals={false} />
+          <Tooltip {...TOOLTIP_PROPS} />{annotationLines(notes, monthly.map(m => m.label), monthlyAxis.width)}<Bar dataKey="crashes" name="Reported crashes" fill={SERIES.blue} /></BarChart>
       </ResponsiveContainer>
-      <SgoShiftNotes name={current.name} />
+      <AnnotationLegend list={notes} />
     </div>
 
     <div className="grid lg:grid-cols-2 gap-3 mt-3">

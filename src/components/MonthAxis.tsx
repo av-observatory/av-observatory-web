@@ -40,5 +40,5 @@ export function useMonthAxis(count: number) {
     height: 44,
     tick: (props: TickProps) => <MonthTick {...props} step={step} count={count} />,
   };
-  return { axis, onResize };
+  return { axis, onResize, width };
 }

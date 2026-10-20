@@ -174,7 +174,22 @@ def evidence(sel, k, l, last, name, cpuc, s2, prev_slope, slope):
         q = [(v, m) for v, m in s2 if k <= v <= l]
         if len(q) >= 2:
             fleet.append("Waymo's published S2 mileage added " + ", ".join(f"{m / 1e6:.0f} million miles in the quarter to {label(v)}" for v, m in q) + ".")
-    return {"headline": headline, "service": service, "odd": odd, "fleet": fleet}
+    parts = []
+    if first:
+        parts.append(f"+{len(first)} new {'city' if len(first) == 1 else 'cities'}")
+    if name == "Waymo" and cpuc:
+        cs_ = [m for m in cpuc if m["ym"] in start_w]
+        ce_ = [m for m in cpuc if m["ym"] in end_w]
+        if len(cs_) == w and len(ce_) == w and sum(m["vmt"] for m in cs_) > 0:
+            parts.append(f"CA miles ×{np.mean([m['vmt'] for m in ce_]) / np.mean([m['vmt'] for m in cs_]):.1f}")
+    if name == "All companies":
+        cs, ce = Counter(r["company"] for r in sel if r["ym"] in start_w), Counter(r["company"] for r in sel if r["ym"] in end_w)
+        top = max(set(cs) | set(ce), key=lambda c: abs(ce[c] - cs[c]))
+        parts.append(f"{top} {(ce[top] - cs[top]) / w:+.0f}/mo")
+    if newm:
+        parts.append(f"new: {newm[0][0]}")
+    note = (" · ".join(parts[:3])) or ("steady growth" if slope >= prev_slope else "growth stalls")
+    return {"headline": headline, "service": service, "odd": odd, "fleet": fleet, "note": note}
 
 
 def load_s2():
@@ -218,7 +233,7 @@ def analyse(rows, name, sel, lo, last, cpuc, s2, events):
         breaks.append({"month": label(bp), "direction": "faster" if s_after > s_before else "slower", "period_end": label(lo + l - 1),
                        "growth_before": round(s_before, 1), "growth_after": round(s_after, 1),
                        "avg_before": round(float(m_before), 1), "avg_after": round(float(m_after), 1),
-                       "headline": facts["headline"], "service": facts["service"], "odd": facts["odd"], "fleet": facts["fleet"],
+                       "headline": facts["headline"], "note": facts["note"], "service": facts["service"], "odd": facts["odd"], "fleet": facts["fleet"],
                        "coincident_events": [{"category": e["category"], "month": e["month"], "title": e["title"], "text": e["text"], "source_label": e["source_label"], "source_url": e["source_url"]} for e in near]})
     return {"counts": [{"month": label(lo + i), "crashes": int(c)} for i, c in enumerate(counts)], "segments": out_segs, "breaks": breaks}
 

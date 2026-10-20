@@ -296,6 +296,7 @@
      "avg_before": 15.5,
      "avg_after": 11.8,
      "headline": "Growth in monthly reports changed from +5 to +32 a month each year. Reports averaged 9 a month in Oct 2022 to Dec 2022 and 37 in Aug 2023 to Oct 2023.",
+     "note": "+17 new cities · Cruise +18/mo · new: Nissan LEAF",
      "service": [
       "17 cities first appear in the reports during this period, led by Santa Monica, CA, Paradise, NV, Houston, TX, Grand Rapids, MN. By Oct 2023 they account for 12% of monthly reports.",
       "First reports from GA, WA."
@@ -336,6 +337,7 @@
      "avg_before": 30.8,
      "avg_after": 20.7,
      "headline": "Growth in monthly reports changed from +32 to +60 a month each year. Reports averaged 18 a month in Nov 2023 to Jan 2024 and 94 in Mar 2025 to May 2025.",
+     "note": "+39 new cities · Waymo +74/mo · new: Peterbilt 579",
      "service": [
       "39 cities first appear in the reports during this period, led by Atlanta, GA, Culver City, CA, Venice, CA, Beverly Hills, CA. By May 2025 they account for 11% of monthly reports.",
       "First reports from MS, OK."
@@ -384,6 +386,7 @@
      "avg_before": 99.2,
      "avg_after": 126.0,
      "headline": "Growth in monthly reports changed from +75 to -90 a month each year. Reports averaged 106 a month in Dec 2025 to Feb 2026, then 135 in Mar 2026 to May 2026 and 117 in Jun 2026 to Aug 2026.",
+     "note": "+15 new cities · Waymo -18/mo",
      "service": [
       "15 cities first appear in the reports during this period, led by San Antonio, TX, Edgewood, NM, Sheffield, TX, Glendale, AZ. By Aug 2026 they account for 4% of monthly reports.",
       "First reports from AR."
@@ -685,6 +688,7 @@
      "avg_before": 15.2,
      "avg_after": 42.0,
      "headline": "Growth in monthly reports changed from +4 to +63 a month each year. Reports averaged 33 a month in May 2024 to Jul 2024 and 87 in Mar 2025 to May 2025.",
+     "note": "+15 new cities · CA miles ×4.2",
      "service": [
       "15 cities first appear in its reports during this period, led by Atlanta, GA, Culver City, CA, Venice, CA, Beverly Hills, CA. By May 2025 they account for 10% of monthly reports.",
       "First reports from DC, GA."
@@ -723,6 +727,7 @@
      "avg_before": 84.8,
      "avg_after": 100.7,
      "headline": "Growth in monthly reports changed from +61 to -88 a month each year. Reports averaged 89 a month in Dec 2025 to Feb 2026, then 110 in Mar 2026 to May 2026 and 92 in Jun 2026 to Aug 2026.",
+     "note": "+8 new cities",
      "service": [
       "8 cities first appear in its reports during this period, led by San Antonio, TX, Las Vegas, NV, Carson, CA, Harbor City, CA. By Aug 2026 they account for 3% of monthly reports.",
       "First reports from MI, NV."
@@ -1294,6 +1299,7 @@
      "avg_before": 3.0,
      "avg_after": 2.8,
      "headline": "Growth in monthly reports changed from +1 to +21 a month each year. Reports averaged 1 a month in Oct 2022 to Dec 2022 and 19 in Aug 2023 to Oct 2023.",
+     "note": "+6 new cities",
      "service": [
       "6 cities first appear in its reports during this period, led by Austin, TX, Houston, TX, Tempe, AZ, Mesa, AZ. By Oct 2023 they account for 33% of monthly reports.",
       "First reports from AZ, TX."
@@ -1346,6 +1352,7 @@
      "avg_before": 15.2,
      "avg_after": 0.0,
      "headline": "Growth in monthly reports changed from +21 to -0 a month each year. Reports averaged 19 a month in Aug 2023 to Oct 2023, then 0 in Nov 2023 to Jan 2024 and 0 in Jun 2026 to Aug 2026.",
+     "note": "+1 new city",
      "service": [
       "1 cities first appear in its reports during this period, led by Phoenix, AZ. By Aug 2026 they account for 0% of monthly reports."
      ],
@@ -1653,6 +1660,7 @@
      "avg_before": 0.2,
      "avg_after": 5.2,
      "headline": "Growth in monthly reports changed from -0 to +21 a month each year. Reports averaged 2 a month in Sep 2025 to Nov 2025 and 8 in Dec 2025 to Feb 2026.",
+     "note": "+1 new city",
      "service": [
       "1 cities first appear in its reports during this period, led by Dallas, TX. By Feb 2026 they account for 64% of monthly reports."
      ],
@@ -1678,6 +1686,7 @@
      "avg_before": 5.2,
      "avg_after": 8.2,
      "headline": "Growth in monthly reports changed from +21 to -24 a month each year. Reports averaged 8 a month in Dec 2025 to Feb 2026, then 11 in Mar 2026 to May 2026 and 6 in Jun 2026 to Aug 2026.",
+     "note": "growth stalls",
      "service": [],
      "odd": [
       "Where crashes happen shifted: Intersection +40 points; Street -49 points of reports, comparing the six months before the period with its last three months (roadway labels depend partly on how each company classifies)."
@@ -2745,6 +2754,7 @@
      "avg_before": 1.7,
      "avg_after": 0.0,
      "headline": "Growth in monthly reports changed from +0 to +0 a month each year. Reports averaged 2 a month in Aug 2022 to Oct 2022, then 0 in Nov 2022 to Jan 2023 and 0 in Jun 2026 to Aug 2026.",
+     "note": "growth stalls",
      "service": [],
      "odd": [],
      "fleet": [],

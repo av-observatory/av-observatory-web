@@ -13,7 +13,8 @@
       "text": "Ford and Volkswagen wound down Argo AI in October 2022 after it could not attract new investors. Argo's reports in this dataset end that month.",
       "source_label": "TechCrunch",
       "source_url": "https://techcrunch.com/2022/10/26/ford-vw-backed-argo-ai-is-shutting-down/",
-      "category": "fleet"
+      "category": "fleet",
+      "short": "Argo AI shuts down"
     },
     {
       "month": "2022-12",
@@ -26,7 +27,8 @@
       "text": "On Dec. 16, 2022 Waymo opened ride-hailing between Phoenix Sky Harbor airport and downtown Phoenix to the public and doubled its downtown service area.",
       "source_label": "Waymo blog",
       "source_url": "https://blog.waymo.com/2022/12/wheels-up-for-waymo-as-we-expand.html",
-      "category": "odd"
+      "category": "odd",
+      "short": "Phoenix airport rides"
     },
     {
       "month": "2023-05",
@@ -37,7 +39,8 @@
       "companies": [],
       "national": true,
       "kind": "rule",
-      "category": "rule"
+      "category": "rule",
+      "short": "Second amended SGO takes eff"
     },
     {
       "month": "2023-05",
@@ -50,7 +53,8 @@
       "text": "Cruise added Dallas and Houston in May 2023, with safety drivers at first, after launching in Austin and Phoenix. By July it also operated in Miami and had announced Nashville. Its reports climb sharply from March through August 2023.",
       "source_label": "CleanTechnica",
       "source_url": "https://cleantechnica.com/2023/05/17/cruise-robotaxis-entering-more-cities",
-      "category": "service"
+      "category": "service",
+      "short": "Cruise adds Dallas, Houston"
     },
     {
       "month": "2023-07",
@@ -63,7 +67,8 @@
       "text": "By July 2023 Cruise had expanded to Austin, Dallas, Houston, Phoenix and Miami and announced Nashville next, putting more vehicles on the road just before its peak in reports.",
       "source_label": "TechCrunch",
       "source_url": "https://techcrunch.com/2023/07/27/cruise-is-bringing-its-self-driving-cars-to-nashville",
-      "category": "service"
+      "category": "service",
+      "short": "Cruise: Miami, Nashville"
     },
     {
       "month": "2023-08",
@@ -77,7 +82,8 @@
       ],
       "national": true,
       "kind": "operations",
-      "category": "service"
+      "category": "service",
+      "short": "SF approves paid 24-hr service"
     },
     {
       "month": "2023-10",
@@ -90,7 +96,8 @@
       ],
       "national": true,
       "kind": "regulatory",
-      "category": "service"
+      "category": "service",
+      "short": "Cruise permits suspended"
     },
     {
       "month": "2024-12",
@@ -103,7 +110,8 @@
       "text": "General Motors announced in December 2024 that it would stop funding Cruise's robotaxi service, ending the program.",
       "source_label": "Smart Cities Dive",
       "source_url": "https://www.smartcitiesdive.com/news/general-motors-shuts-cruise-robotaxi-unit-mary-barra/735205/",
-      "category": "fleet"
+      "category": "fleet",
+      "short": "GM ends Cruise"
     },
     {
       "month": "2025-02",
@@ -116,7 +124,8 @@
       "text": "May Mobility began fully driverless commercial rides in Peachtree Corners, Georgia in February 2025 after running with safety drivers since September 2024.",
       "source_label": "TechCrunch",
       "source_url": "https://techcrunch.com/2025/02/12/may-mobility-launches-its-first-driverless-commercial-ride-hail-service",
-      "category": "odd"
+      "category": "odd",
+      "short": "Driverless in Peachtree Corners"
     },
     {
       "month": "2025-03",
@@ -129,7 +138,8 @@
       ],
       "national": true,
       "kind": "operations",
-      "category": "service"
+      "category": "service",
+      "short": "Austin launch (Uber)"
     },
     {
       "month": "2025-05",
@@ -142,7 +152,8 @@
       "text": "Uber and May Mobility announced a partnership on May 1, 2025, with an initial launch planned in Arlington, Texas, starting with human safety operators.",
       "source_label": "Uber press release",
       "source_url": "https://investor.uber.com/news-events/news/press-release-details/2025/Uber-and-May-Mobility-Announce-Strategic-Partnership-to-Scale-Autonomous-Vehicles/default.aspx",
-      "category": "service"
+      "category": "service",
+      "short": "Uber partnership"
     },
     {
       "month": "2025-05",
@@ -155,7 +166,8 @@
       "text": "Aurora began fully driverless freight runs between Dallas and Houston in late April and May 2025 with Uber Freight and Hirschbach Motor Lines.",
       "source_label": "Dallas Innovates",
       "source_url": "https://dallasinnovates.com/tag/aurora-innovation/",
-      "category": "service"
+      "category": "service",
+      "short": "Driverless trucks, Dallas–Houston"
     },
     {
       "month": "2025-06",
@@ -166,7 +178,8 @@
       "companies": [],
       "national": true,
       "kind": "rule",
-      "category": "rule"
+      "category": "rule",
+      "short": "Third amended SGO takes effe"
     },
     {
       "month": "2025-06",
@@ -179,7 +192,8 @@
       "text": "Tesla launched its Austin robotaxi pilot in mid-2025, with a safety monitor in the vehicle. Tesla's first ADS crash reports in this dataset begin in July 2025.",
       "source_label": "Electrek",
       "source_url": "https://electrek.co/?p=461865",
-      "category": "service"
+      "category": "service",
+      "short": "Austin pilot begins"
     },
     {
       "month": "2025-06",
@@ -192,7 +206,8 @@
       "text": "Waymo and Uber began robotaxi service in Atlanta in June 2025, covering about 65 square miles after Austin earlier in the year.",
       "source_label": "Reuters via StreetInsider",
       "source_url": "https://www.streetinsider.com/General+News/Uber%2C+Waymo+launch+autonomous+ride-hailing+service+in+Atlanta/24967673.html",
-      "category": "service"
+      "category": "service",
+      "short": "Atlanta launch (Uber)"
     },
     {
       "month": "2025-07",
@@ -205,7 +220,8 @@
       "text": "In July 2025 Aurora began driverless operations at night on the Dallas-Houston lane and opened a Phoenix terminal, more than doubling potential truck utilization.",
       "source_label": "Aurora press release",
       "source_url": "https://secure.businesswire.com/news/home/20250730190676/en/Aurora-Begins-Driverless-Operations-at-Night-and-Opens-Phoenix-Terminal",
-      "category": "odd"
+      "category": "odd",
+      "short": "Night driving; Phoenix"
     },
     {
       "month": "2025-07",
@@ -218,7 +234,8 @@
       "text": "In July 2025 Uber invested in Lucid and committed to buy Lucid Gravity SUVs for a robotaxi program built on Nuro's driver, with testing in the San Francisco Bay Area.",
       "source_label": "Electrek",
       "source_url": "https://electrek.co/2026/01/05/lucid-uber-nuro-unveil-production-intent-gravity-robotaxi/",
-      "category": "fleet"
+      "category": "fleet",
+      "short": "Uber–Lucid–Nuro program"
     },
     {
       "month": "2025-09",
@@ -231,7 +248,8 @@
       "text": "Zoox began free public rides on the Las Vegas Strip in September 2025 in its purpose-built robotaxi, adding public service to its San Francisco testing.",
       "source_label": "UPI",
       "source_url": "https://www.upi.com/Top_News/US/2025/09/11/Zoox-robotaxi-Los-Vegas/4781757597059/",
-      "category": "service"
+      "category": "service",
+      "short": "Las Vegas opens to public"
     },
     {
       "month": "2025-10",
@@ -244,7 +262,8 @@
       "text": "In October 2025 Aurora began driverless runs on the roughly 600-mile Fort Worth-El Paso route, about six months after its first driverless launch.",
       "source_label": "GovTech",
       "source_url": "https://www.govtech.com/transportation/aurora-self-driving-trucks-expand-texas-freight-operations",
-      "category": "service"
+      "category": "service",
+      "short": "El Paso route"
     },
     {
       "month": "2025-11",
@@ -257,7 +276,8 @@
       ],
       "national": true,
       "kind": "operations",
-      "category": "odd"
+      "category": "odd",
+      "short": "Freeways; Bay Area to San Jose"
     },
     {
       "month": "2025-12",
@@ -270,7 +290,8 @@
       "text": "Uber began matching riders with Avride robotaxis in Dallas on Dec. 3, 2025, with a specialist behind the wheel. Nearly all of Avride's reports come after this launch, and December 2025 is the first month with ten or more.",
       "source_label": "Uber press release",
       "source_url": "https://investor.uber.com/news-events/news/press-release-details/2025/Uber-and-Avride-Launch-Robotaxi-Rides-in-Dallas/default.aspx",
-      "category": "service"
+      "category": "service",
+      "short": "Dallas launch (Uber)"
     },
     {
       "month": "2026-02",
@@ -283,7 +304,8 @@
       "text": "Waymo began service in Orlando on Feb. 23, 2026 and added Dallas, Houston and San Antonio the same day, with invite-only access at first. San Antonio appears in Waymo's crash reports for the first time in this period.",
       "source_label": "Attractions Magazine",
       "source_url": "https://attractionsmagazine.com/waymo-orland-self-driving-rideshare/",
-      "category": "service"
+      "category": "service",
+      "short": "Orlando, Texas cities launch"
     },
     {
       "month": "2026-03",
@@ -296,7 +318,8 @@
       "text": "In March 2026 Zoox announced it would roughly quadruple its San Francisco area and begin operating purpose-built robotaxis in Austin and Miami, starting with employees. March 2026 is also its busiest month for reports.",
       "source_label": "Electrek",
       "source_url": "https://electrek.co/2026/03/24/zoox-expands-current-service-area-and-is-bringing-its-purpose-built-robotaxi-to-two-new-cities/",
-      "category": "service"
+      "category": "service",
+      "short": "SF area ×4; Austin, Miami"
     },
     {
       "month": "2026-03",
@@ -309,7 +332,8 @@
       "text": "By March 2026 Tesla had widened its unsupervised Austin service area, though only a small number of vehicles ran without a monitor. Remote supervision continues.",
       "source_label": "Electrek",
       "source_url": "https://electrek.co/2026/03/31/tesla-expands-unsupervised-robotaxi-service-area-still-only-handful-vehicles/",
-      "category": "odd"
+      "category": "odd",
+      "short": "Unsupervised area grows"
     },
     {
       "month": "2026-03",
@@ -322,7 +346,8 @@
       "text": "Motional had paused commercial operations in 2024. On March 13, 2026 it returned on the Uber app in Las Vegas with a safety operator aboard, and aims to go driverless by the end of 2026.",
       "source_label": "TechCrunch",
       "source_url": "https://techcrunch.com/2026/03/13/motional-robotaxis-join-the-uber-app-in-vegas-two-years-after-major-reset/",
-      "category": "service"
+      "category": "service",
+      "short": "Relaunch on Uber"
     },
     {
       "month": "2026-04",
@@ -335,7 +360,8 @@
       "text": "In April 2026 Nuro began test rides in the Lucid Gravity for Uber employees in the San Francisco Bay Area, still with a safety driver in front.",
       "source_label": "Electrek",
       "source_url": "https://electrek.co/2026/04/13/uber-begins-early-test-rides-lucid-gravity-robotaxi-nuro-autonomy/",
-      "category": "fleet"
+      "category": "fleet",
+      "short": "Bay Area test rides"
     }
   ]
 }
