@@ -101,8 +101,7 @@ export function SgoCompanyExplorer({ rows, serious, filings }: { rows: SgoIncide
 
 
   if (!current) return null;
-  const lastYm = Math.max(...mine.map(r => r.ym));
-  const activeYm = picked && picked.company === current.name ? picked.ym : lastYm;
+  const activeYm = picked && picked.company === current.name ? picked.ym : null;
   const chips = companies.slice(0, TOP_CHIPS);
   const rest = companies.slice(TOP_CHIPS);
   const sevMine = share(mine, r => severityBucket(r.highest_injury_severity), SEVERITY_ORDER);
@@ -148,15 +147,15 @@ export function SgoCompanyExplorer({ rows, serious, filings }: { rows: SgoIncide
       ].map(([v, l, c]) => <div key={l} className="viz-card p-3 sm:p-4"><strong className="block text-2xl sm:text-3xl text-[#123b69] tabular-nums">{v}</strong><span className="text-sm text-neutral-700">{l}</span><span className="block text-xs text-neutral-500 mt-0.5">{c}</span></div>)}
     </div>
 
-    <div className="viz-card p-4 mt-3"><div className="font-semibold">{current.name}: reported crashes by incident month</div><div className="text-sm text-neutral-500">Select a bar to see that month's crashes below.</div>
+    <div className="viz-card p-4 mt-3"><div className="font-semibold">{current.name}: reported crashes by incident month</div><div className="text-sm text-neutral-500">Select a bar to see that month's crashes below; select it again to close.</div>
       <ResponsiveContainer width="100%" height={260} onResize={monthlyAxis.onResize}>
         <BarChart data={monthly} margin={{ top: 8, right: 16, bottom: 8, left: 8 }}><CartesianGrid {...GRID_PROPS} /><XAxis dataKey="label" {...monthlyAxis.axis} /><YAxis {...AXIS_PROPS} allowDecimals={false} />
-          <Tooltip {...TOOLTIP_PROPS} /><Bar dataKey="crashes" name="Reported crashes" cursor="pointer" onClick={(_d, i) => setPicked({ company: current.name, ym: monthly[i].ym })}>
-            {monthly.map(m => <Cell key={m.ym} fill={m.ym === activeYm ? "#0b2f5f" : SERIES.blue} fillOpacity={m.ym === activeYm ? 1 : 0.78} />)}</Bar></BarChart>
+          <Tooltip {...TOOLTIP_PROPS} /><Bar dataKey="crashes" name="Reported crashes" cursor="pointer" onClick={(_d, i) => setPicked(activeYm === monthly[i].ym ? null : { company: current.name, ym: monthly[i].ym })}>
+            {monthly.map(m => <Cell key={m.ym} fill={m.ym === activeYm ? "#0b2f5f" : SERIES.blue} fillOpacity={activeYm === null || m.ym === activeYm ? 1 : 0.55} />)}</Bar></BarChart>
       </ResponsiveContainer>
     </div>
 
-    <MonthDetail company={current.name} ym={activeYm} rows={mine} monthAvg={mine.length / Math.max(1, new Set(mine.map(r => r.ym)).size)} label={label} filings={filings} />
+    {activeYm !== null && <MonthDetail company={current.name} ym={activeYm} rows={mine} monthAvg={mine.length / Math.max(1, new Set(mine.map(r => r.ym)).size)} label={label} filings={filings} onClose={() => setPicked(null)} />}
 
     <div className="grid lg:grid-cols-2 gap-3 mt-3">
       <Compare title="Injury severity" subtitle={`${current.name} vs all ADS crashes`} keys={sevMine.keys} mine={sevMine.pct} all={sevAll.pct} name={current.name} />
@@ -198,7 +197,7 @@ function tally(rows: Row[], pick: (r: Row) => string) {
   return Array.from(m).sort((a, b) => b[1] - a[1]);
 }
 
-function MonthDetail({ company, ym, rows, monthAvg, label, filings }: { company: string; ym: number; rows: Row[]; monthAvg: number; label: (ym: number) => string; filings: Record<string, Filing[]> }) {
+function MonthDetail({ company, ym, rows, monthAvg, label, filings, onClose }: { onClose: () => void; company: string; ym: number; rows: Row[]; monthAvg: number; label: (ym: number) => string; filings: Record<string, Filing[]> }) {
   const list = rows.filter(r => r.ym === ym);
   const sorted = [...list].sort((a, b) => {
     const order = ["Fatal", "Serious", "Moderate", "Minor", "No injury", "Unknown"];
@@ -212,7 +211,7 @@ function MonthDetail({ company, ym, rows, monthAvg, label, filings }: { company:
     ["City", tally(list, r => `${r.city || "Unknown"}, ${r.state || "—"}`).slice(0, 5)],
   ];
   return <div className="viz-card p-4 sm:p-5 mt-3" aria-live="polite">
-    <p className="eyebrow">Selected month</p>
+    <div className="flex items-start justify-between gap-3"><p className="eyebrow">Selected month</p><button type="button" onClick={onClose} className="text-sm text-[#184f95] underline">Close</button></div>
     <h3 className="text-lg font-semibold tracking-tight mt-1">{company} · {label(ym)}</h3>
     <p className="text-sm text-neutral-600 mt-1">{list.length.toLocaleString()} reported {list.length === 1 ? "crash" : "crashes"} ({list.length >= monthAvg ? "above" : "below"} its monthly average of {monthAvg.toFixed(1)}); {hurt} with a reported injury.</p>
     {list.length === 0 ? <p className="text-sm text-neutral-600 mt-3">No crashes reported this month.</p> : <>
