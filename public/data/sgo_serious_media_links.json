@@ -218,6 +218,6 @@
       ]
     }
   },
-  "checked_at": "2026-10-20",
+  "checked_at": "2026-10-21",
   "note": "Automatic news matches (operator + city + crash terms within the incident window). Unverified; not evidence of fault."
 }
