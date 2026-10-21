@@ -5,13 +5,13 @@
   "source_api": "https://data.sf.gov/resource/vw6y-z8j6.json",
   "selection": "Exact service_name match: Autonomous Vehicle Complaints. Other city request types and unclassified AV mentions are excluded.",
   "limitations": "These are public 311 requests, not verified incidents. The published subtypes describe how SF311 classified a request, not the specific behavior alleged. Operator identity is unavailable; the AV category begins in April 2025.",
-  "source_data_as_of": "2026-10-20T01:01:00.000",
-  "total_records": 1017,
+  "source_data_as_of": "2026-10-21T01:01:00.000",
+  "total_records": 1019,
   "markets": [
     {
       "market": "San Francisco",
       "state": "CA",
-      "complaints": 1017
+      "complaints": 1019
     }
   ],
   "monthly": [
@@ -127,7 +127,7 @@
       "month": "2026-10",
       "market": "San Francisco",
       "state": "CA",
-      "complaints": 34
+      "complaints": 36
     }
   ],
   "records": [
@@ -16402,6 +16402,38 @@
       "long": -122.41614807,
       "neighborhood": "Mission",
       "source_url": "https://data.sf.gov/resource/vw6y-z8j6.json?service_request_id=202000201256"
+    },
+    {
+      "id": "SF-202000203592",
+      "source_id": "202000203592",
+      "state": "CA",
+      "market": "San Francisco",
+      "requested_datetime": "2026-10-20T12:10:16.000",
+      "requested_date": "2026-10-20",
+      "month": "2026-10",
+      "type": "other",
+      "status": "Open",
+      "agency": "MTA - Autonomous Vehicles Complaints",
+      "lat": null,
+      "long": null,
+      "neighborhood": "",
+      "source_url": "https://data.sf.gov/resource/vw6y-z8j6.json?service_request_id=202000203592"
+    },
+    {
+      "id": "SF-202000205257",
+      "source_id": "202000205257",
+      "state": "CA",
+      "market": "San Francisco",
+      "requested_datetime": "2026-10-20T20:05:22.000",
+      "requested_date": "2026-10-20",
+      "month": "2026-10",
+      "type": "incident_report",
+      "status": "Open",
+      "agency": "MTA - Autonomous Vehicles Complaints",
+      "lat": 37.7866190039,
+      "long": -122.4215702196,
+      "neighborhood": "Lower Nob Hill",
+      "source_url": "https://data.sf.gov/resource/vw6y-z8j6.json?service_request_id=202000205257"
     }
   ]
 }
