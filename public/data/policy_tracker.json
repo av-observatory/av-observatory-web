@@ -734,6 +734,23 @@
       "source_tier": "auto",
       "review_status": "auto_collected",
       "date_precision": "day"
+    },
+    {
+      "id": "auto-fr-2026-17741",
+      "level": "federal",
+      "jurisdiction": "US",
+      "title": "NHTSA AV Framework interim guidance: comment period extended",
+      "summary": "NHTSA extended by 30 days, at the request of the Alliance for Automotive Innovation, the comment period on its July 31, 2026 AV Framework notice and interim guidance for commercial deployment exemptions for automated vehicles; comments were due September 30, 2026 (docket NHTSA-2026-1552).",
+      "takeaway": "NHTSA extended by 30 days, at the request of the Alliance for Automotive Innovation, the comment period on its July 31, 2026 AV Framework notice and interim guidance for commercial deployment exemptions for automated vehicles; comments were due September 30, 2026 (docket NHTSA-2026-1552).",
+      "instrument": "proposed program",
+      "status": "historical_status_unverified",
+      "date": "2026-08-31",
+      "source_url": "https://www.federalregister.gov/documents/2026/08/31/2026-17741/av-framework-updates-and-request-for-comments-on-interim-guidance-extension-of-comment-period",
+      "verified_at": "2026-10-21",
+      "source_label": "Federal Register 2026-17741",
+      "source_tier": "auto",
+      "review_status": "auto_collected",
+      "date_precision": "day"
     }
   ],
   "states": [
