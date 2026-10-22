@@ -626,8 +626,17 @@
     }
   ],
   "country_scope_note": "Coverage registry includes sovereign states conventionally treated as wholly or partly European, plus Kosovo. Inclusion in the registry is geographic/editorial and does not imply EU membership or a position on political status.",
-  "media_watch_checked_at": "2026-10-21",
+  "media_watch_checked_at": "2026-10-22",
   "media_watch": [
+    {
+      "title": "Tesla posted a highlight reel of its robotaxi avoiding collisions with rivals Waymo and Avride",
+      "publisher": "AOL.com",
+      "published": "2026-10-21",
+      "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNbndiejNBYmhEcXc4TGZraTB1RmFwOWg4dGV1YXFRdGhjbXF5N0Nrb2sydVRSOEtMTjQ5c2pJVnY0T21GQ0JKalljbTYtbktsWkNLX09IVlNJRG1LMEh4dzl4LWNGZlg1MkloX0VXZWxKNXRKRWVOTS03QWRvcVpCMlpTMVN5T3M?oc=5",
+      "query_language": "en-GB",
+      "first_seen": "2026-10-22",
+      "status": "unverified media headline; not counted as a crash"
+    },
     {
       "title": "Erster Unfall, bevor die Testphase beginnt: Robotaxis starten im Furttal",
       "publisher": "NZZ",
