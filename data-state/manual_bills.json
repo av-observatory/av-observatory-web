@@ -201,5 +201,86 @@
     ],
     "source_url": "https://www.akleg.gov/basis/Bill/Detail/34?Root=HB%20217",
     "repository_url": "https://www.akleg.gov/basis/Bill/Detail/34?Root=HB%20217"
+  },
+  {
+    "id": "wa-sb6243-2025-26",
+    "jurisdiction": "WA",
+    "number": "SB 6243",
+    "title": "Concerning the operation of autonomous motor vehicles.",
+    "summary": "Senate bill sponsored by Boehnke concerning the operation of autonomous motor vehicles. Referred to the Senate Transportation Committee on first reading; the official page lists no digest or later action.",
+    "takeaway": "Senate bill sponsored by Boehnke concerning the operation of autonomous motor vehicles. Referred to the Senate Transportation Committee on first reading; the official page lists no digest or later action.",
+    "source_summary": "Washington State Legislature official bill summary page (title, sponsors and history only; no official digest posted).",
+    "summary_method": "Maintainer-written from the official Washington State Legislature bill page; no figures taken from news coverage",
+    "summary_quality": "reviewed_substantive",
+    "summary_reviewed_at": "2026-10-23",
+    "status": "introduced",
+    "measure_type": "bill",
+    "last_action_date": "2026-01-20",
+    "last_action": "First reading, referred to Transportation.",
+    "session": "2026 Regular",
+    "progress_stage": "committee",
+    "stage_dates": {
+      "introduced": "2026-01-20",
+      "committee": "2026-01-20"
+    },
+    "hearings": [],
+    "source_url": "https://app.leg.wa.gov/billsummary?BillNumber=6243&Year=2026&Initiative=false",
+    "repository_url": "https://app.leg.wa.gov/billsummary?BillNumber=6243&Year=2026&Initiative=false"
+  },
+  {
+    "id": "wa-hb1984-2025-26",
+    "jurisdiction": "WA",
+    "number": "HB 1984",
+    "title": "Concerning vehicle and operator requirements for autonomous vehicles.",
+    "summary": "House bill concerning vehicle and operator requirements for autonomous vehicles. Heard in House Transportation on 2025-02-24 and reintroduced and retained in present status on 2026-01-12; the official page lists no digest.",
+    "takeaway": "House bill concerning vehicle and operator requirements for autonomous vehicles. Heard in House Transportation on 2025-02-24 and reintroduced and retained in present status on 2026-01-12; the official page lists no digest.",
+    "source_summary": "Washington State Legislature official bill summary page (title, sponsors and history only; no official digest posted).",
+    "summary_method": "Maintainer-written from the official Washington State Legislature bill page; no figures taken from news coverage",
+    "summary_quality": "reviewed_substantive",
+    "summary_reviewed_at": "2026-10-23",
+    "status": "introduced",
+    "measure_type": "bill",
+    "last_action_date": "2026-01-12",
+    "last_action": "By resolution, reintroduced and retained in present status.",
+    "session": "2025-26",
+    "progress_stage": "committee",
+    "stage_dates": {
+      "introduced": "2025-02-17",
+      "committee": "2025-02-17"
+    },
+    "hearings": [
+      {
+        "date": "2025-02-24",
+        "description": "Public hearing, House Committee on Transportation",
+        "source_url": "https://app.leg.wa.gov/billsummary?BillNumber=1984&Year=2025&Initiative=false"
+      }
+    ],
+    "source_url": "https://app.leg.wa.gov/billsummary?BillNumber=1984&Year=2025&Initiative=false",
+    "repository_url": "https://app.leg.wa.gov/billsummary?BillNumber=1984&Year=2025&Initiative=false"
+  },
+  {
+    "id": "wa-sb5042-2025-26",
+    "jurisdiction": "WA",
+    "number": "SB 5042",
+    "title": "Concerning vehicle and operator requirements for autonomous vehicles.",
+    "summary": "Senate bill concerning vehicle and operator requirements for autonomous vehicles. Referred to Senate Transportation on 2025-01-13 and reintroduced and retained in present status on 2026-01-12; the official page lists no digest.",
+    "takeaway": "Senate bill concerning vehicle and operator requirements for autonomous vehicles. Referred to Senate Transportation on 2025-01-13 and reintroduced and retained in present status on 2026-01-12; the official page lists no digest.",
+    "source_summary": "Washington State Legislature official bill summary page (title, sponsors and history only; no official digest posted).",
+    "summary_method": "Maintainer-written from the official Washington State Legislature bill page; no figures taken from news coverage",
+    "summary_quality": "reviewed_substantive",
+    "summary_reviewed_at": "2026-10-23",
+    "status": "introduced",
+    "measure_type": "bill",
+    "last_action_date": "2026-01-12",
+    "last_action": "By resolution, reintroduced and retained in present status.",
+    "session": "2025-26",
+    "progress_stage": "committee",
+    "stage_dates": {
+      "introduced": "2025-01-13",
+      "committee": "2025-01-13"
+    },
+    "hearings": [],
+    "source_url": "https://app.leg.wa.gov/billsummary?BillNumber=5042&Year=2025&Initiative=false",
+    "repository_url": "https://app.leg.wa.gov/billsummary?BillNumber=5042&Year=2025&Initiative=false"
   }
 ]
