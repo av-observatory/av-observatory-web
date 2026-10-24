@@ -3327,6 +3327,24 @@
       "source_tier": "auto",
       "review_status": "auto_collected",
       "date_precision": "day"
+    },
+    {
+      "id": "auto-nv-ab523-2025",
+      "level": "state",
+      "jurisdiction": "Nevada",
+      "title": "AB 523 (2025): monitored AV provider insurance minimum",
+      "summary": "Nevada A.B. 523 (2025) lowers from $1,500,000 to $1,000,000 the minimum insurance that a transportation network company, a driver or a monitored autonomous vehicle provider must maintain under certain circumstances, and defines certain terms related to delivery network companies. It was approved May 19, 2025 as Chapter 5 and took effect October 1, 2025.",
+      "takeaway": "Nevada A.B. 523 (2025) lowers from $1,500,000 to $1,000,000 the minimum insurance that a transportation network company, a driver or a monitored autonomous vehicle provider must maintain under certain circumstances, and defines certain terms related to delivery network companies. It was approved May 19, 2025 as Chapter 5 and took effect October 1, 2025.",
+      "instrument": "legislation",
+      "status": "historical_status_unverified",
+      "date": "2025-05-19",
+      "source_url": "https://www.leg.state.nv.us/Session/83rd2025/Bills/AB/AB523_EN.pdf",
+      "verified_at": "2026-10-24",
+      "state": "NV",
+      "source_label": "Nevada Legislature, AB 523 enrolled (2025)",
+      "source_tier": "auto",
+      "review_status": "auto_collected",
+      "date_precision": "day"
     }
   ],
   "city_events": [

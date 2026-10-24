@@ -201,5 +201,34 @@
     ],
     "source_url": "https://www.akleg.gov/basis/Bill/Detail/34?Root=HB%20217",
     "repository_url": "https://www.akleg.gov/basis/Bill/Detail/34?Root=HB%20217"
+  },
+  {
+    "id": "nv-ab523-83",
+    "jurisdiction": "NV",
+    "number": "AB 523",
+    "title": "Revises provisions relating to transportation",
+    "summary": "Revises provisions relating to transportation network companies: lowers from $1,500,000 to $1,000,000 the minimum insurance that a transportation network company, a driver or a monitored autonomous vehicle provider must maintain under certain circumstances, and defines certain terms related to delivery network companies. Approved May 19, 2025 as Chapter 5, effective October 1, 2025.",
+    "takeaway": "Lowers the minimum insurance required of Nevada monitored autonomous vehicle providers (and TNCs and drivers) from $1.5 million to $1 million under certain circumstances.",
+    "source_summary": "Official Nevada Legislature enrolled bill text and NELIS bill record for AB 523 (83rd Session, 2025).",
+    "summary_method": "Maintainer-written from the official Nevada Legislature record; no figures taken from news coverage",
+    "summary_quality": "reviewed_substantive",
+    "summary_reviewed_at": "2026-10-24",
+    "status": "enacted",
+    "measure_type": "bill",
+    "last_action_date": "2025-05-19",
+    "last_action": "Approved by the Governor; Chapter 5, effective October 1, 2025.",
+    "session": "83",
+    "progress_stage": "law",
+    "stage_dates": {
+      "introduced": "2025-03-24",
+      "committee": "2025-03-25",
+      "floor": "2025-04-22",
+      "passed_legislature": "2025-05-12",
+      "executive": "2025-05-16",
+      "law": "2025-05-19"
+    },
+    "hearings": [],
+    "source_url": "https://www.leg.state.nv.us/Session/83rd2025/Bills/AB/AB523_EN.pdf",
+    "repository_url": "https://www.leg.state.nv.us/Session/83rd2025/Bills/AB/AB523_EN.pdf"
   }
 ]
