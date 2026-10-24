@@ -734,6 +734,57 @@
       "source_tier": "auto",
       "review_status": "auto_collected",
       "date_precision": "day"
+    },
+    {
+      "id": "auto-fr-2026-21794",
+      "level": "federal",
+      "jurisdiction": "US",
+      "title": "NHTSA proposes FMVSS 108 changes for ADS vehicles",
+      "summary": "NHTSA proposed amending FMVSS No. 108 (lamps and reflective devices), including limiting manually operated turn signal, hazard and beam-switching control requirements to vehicles with manually operated driving controls, and allowing optional cyan ADS marker lamps. Comments are due by November 25, 2026.",
+      "takeaway": "NHTSA proposed amending FMVSS No. 108 (lamps and reflective devices), including limiting manually operated turn signal, hazard and beam-switching control requirements to vehicles with manually operated driving controls, and allowing optional cyan ADS marker lamps. Comments are due by November 25, 2026.",
+      "instrument": "proposed program",
+      "status": "historical_status_unverified",
+      "date": "2026-10-26",
+      "source_url": "https://www.federalregister.gov/documents/2026/10/26/2026-21794/federal-motor-vehicle-safety-standards-modernization-of-fmvss-no-108-to-accommodate-ads-equipped",
+      "verified_at": "2026-10-24",
+      "source_label": "Federal Register 2026-21794",
+      "source_tier": "auto",
+      "review_status": "auto_collected",
+      "date_precision": "day"
+    },
+    {
+      "id": "auto-fr-2026-15486",
+      "level": "federal",
+      "jurisdiction": "US",
+      "title": "Robomart exemption application received",
+      "summary": "NHTSA received an application from Robomart, Inc. for a temporary exemption from several FMVSS No. 500 requirements for its low-speed vehicle with an automated driving system, and said it will publish a later notice seeking comment on the merits of the application.",
+      "takeaway": "NHTSA received an application from Robomart, Inc. for a temporary exemption from several FMVSS No. 500 requirements for its low-speed vehicle with an automated driving system, and said it will publish a later notice seeking comment on the merits of the application.",
+      "instrument": "proposed program",
+      "status": "historical_status_unverified",
+      "date": "2026-07-31",
+      "source_url": "https://www.federalregister.gov/documents/2026/07/31/2026-15486/robomart-inc-receipt-of-application-for-temporary-exemption-from-various-requirements-of-the-federal",
+      "verified_at": "2026-10-24",
+      "source_label": "Federal Register 2026-15486",
+      "source_tier": "auto",
+      "review_status": "auto_collected",
+      "date_precision": "day"
+    },
+    {
+      "id": "auto-fr-2026-17741",
+      "level": "federal",
+      "jurisdiction": "US",
+      "title": "NHTSA extends AV Framework comment period",
+      "summary": "NHTSA extended by 30 days, to September 30, 2026, the comment period on its July 31, 2026 notice of AV Framework updates and interim guidance for commercial deployment exemptions, at the request of the Alliance for Automotive Innovation.",
+      "takeaway": "NHTSA extended by 30 days, to September 30, 2026, the comment period on its July 31, 2026 notice of AV Framework updates and interim guidance for commercial deployment exemptions, at the request of the Alliance for Automotive Innovation.",
+      "instrument": "proposed program",
+      "status": "historical_status_unverified",
+      "date": "2026-08-31",
+      "source_url": "https://www.federalregister.gov/documents/2026/08/31/2026-17741/av-framework-updates-and-request-for-comments-on-interim-guidance-extension-of-comment-period",
+      "verified_at": "2026-10-24",
+      "source_label": "Federal Register 2026-17741",
+      "source_tier": "auto",
+      "review_status": "auto_collected",
+      "date_precision": "day"
     }
   ],
   "states": [
@@ -3258,6 +3309,24 @@
       "editorial_source_url": "https://lis.virginia.gov/bill-details/20261/HB1124",
       "editorial_source_type": "official_bill_abstract",
       "summary_reviewed_at": "2026-10-19"
+    },
+    {
+      "id": "auto-ny-a10008-2026",
+      "level": "state",
+      "jurisdiction": "New York",
+      "title": "A.10008-C (2026): autonomous vehicle testing authority extended",
+      "summary": "New York A.10008-C / S.9008-C, the 2026-27 transportation budget bill, was signed as Chapter 58 of the Laws of 2026 on May 26, 2026. Part E amends the 2017 law on motor vehicles equipped with autonomous vehicle technology so that its testing authority expires April 1, 2028 instead of April 1, 2026. The enacted Part E does not include the for-hire autonomous vehicle article proposed in an earlier version of the bill.",
+      "takeaway": "New York A.10008-C / S.9008-C, the 2026-27 transportation budget bill, was signed as Chapter 58 of the Laws of 2026 on May 26, 2026. Part E amends the 2017 law on motor vehicles equipped with autonomous vehicle technology so that its testing authority expires April 1, 2028 instead of April 1, 2026. The enacted Part E does not include the for-hire autonomous vehicle article proposed in an earlier version of the bill.",
+      "instrument": "legislation",
+      "status": "historical_status_unverified",
+      "date": "2026-05-26",
+      "source_url": "https://www.nysenate.gov/legislation/bills/2025/A10008/amendment/C",
+      "verified_at": "2026-10-24",
+      "state": "NY",
+      "source_label": "New York Senate, A.10008-C (2025-26)",
+      "source_tier": "auto",
+      "review_status": "auto_collected",
+      "date_precision": "day"
     }
   ],
   "city_events": [
