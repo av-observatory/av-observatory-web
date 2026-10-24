@@ -14,9 +14,16 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "AL": {
-  "attempted": "2026-10-19",
-  "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "attempted": "2026-10-22",
+  "bills_found": [
+   "SB 222",
+   "HB 560 (introduced 3 Mar 2026, referred to Transportation, Utilities and Infrastructure; no later action seen; adds ADS ban for permitted oversize vehicles; treated as not live)"
+  ],
+  "searched": 1,
+  "sources_read": [
+   "https://alison.legislature.state.al.us/files/pdf/SearchableInstruments/2026RS/HB560-int.pdf"
+  ],
+  "unreadable": "ALISON is a JavaScript app with no readable full-text search; only domain-restricted web search plus one bill PDF were read"
  },
  "AR": {
   "attempted": "2026-10-19",
@@ -41,9 +48,17 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "CA": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-10-22",
+  "bills_found": [
+   "SB 1246",
+   "AB 2193",
+   "AB 33",
+   "SB 480",
+   "SB 572",
+   "SB 1315 (Drive My Car Act; insurance, AV relevance unverified)"
+  ],
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "leginfo.legislature.ca.gov returned HTTP 403 to fetch tools; bill status pages could not be opened"
  },
  "CO": {
   "attempted": "2026-10-19",
@@ -59,9 +74,20 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "DC": {
-  "attempted": "2026-10-19",
-  "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "attempted": "2026-10-22",
+  "bills_found": [
+   "B26-0323",
+   "B26-0684"
+  ],
+  "checked": "2026-10-22",
+  "searched": 2,
+  "sources_read": [
+   "https://lims.dccouncil.gov/api/Search/GetLegislationDetails/B26-0323",
+   "https://lims.dccouncil.gov/Legislation/B26-0323",
+   "https://lims.dccouncil.gov/downloads/LIMS/58159/Introduction/B26-0323-Introduction.pdf",
+   "https://lims.dccouncil.gov/downloads/LIMS/61803/Introduction/B26-0684-Introduction.pdf"
+  ],
+  "unreadable": null
  },
  "DE": {
   "attempted": "2026-10-19",
@@ -85,9 +111,10 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "GA": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-10-22",
+  "bills_found": [],
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "legis.ga.gov is a JavaScript-only app and its search API returns HTTP 401; domain-restricted web search found no AV bills but this is not a full-text check"
  },
  "HI": {
   "attempted": "2026-10-19",
@@ -111,9 +138,10 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "ID": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-10-22",
+  "bills_found": [],
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "No readable full-text search on legislature.idaho.gov; domain-restricted web search found no AV bills (not a full-text check)"
  },
  "IL": {
   "attempted": "2026-10-19",
@@ -129,9 +157,10 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "KS": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-10-22",
+  "bills_found": [],
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "No readable full-text search on kslegislature.gov; domain-restricted web search found no 2026 AV bills (not a full-text check)"
  },
  "KY": {
   "attempted": "2026-10-19",
@@ -152,9 +181,25 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "MA": {
-  "attempted": "2026-10-19",
-  "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "attempted": "2026-10-22",
+  "bills_found": [
+   "H 1280",
+   "H 3634",
+   "H 3649",
+   "H 3669",
+   "S 2379",
+   "S 2393",
+   "S 3245 (study order, Jul 31 2026: Transportation committee sent S 2379 and S 2393 to study)"
+  ],
+  "checked": "2026-10-22",
+  "searched": 3,
+  "sources_read": [
+   "https://malegislature.gov/Bills/Search?SearchTerms=autonomous (pages 1-9)",
+   "https://malegislature.gov/Bills/Search?SearchTerms=driverless",
+   "https://malegislature.gov/Bills/Search?SearchTerms=self-driving",
+   "https://malegislature.gov/Bills/194/S3245"
+  ],
+  "unreadable": null
  },
  "MD": {
   "attempted": "2026-10-19",
@@ -172,9 +217,10 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "MI": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-10-22",
+  "bills_found": [],
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "legislature.mi.gov unreachable from this environment (connection failed); web search showed only 2013-2022 items"
  },
  "MN": {
   "attempted": "2026-10-19",
@@ -195,9 +241,12 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "MS": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-10-22",
+  "bills_found": [
+   "SB 2269 (2026 RS; per web search of billstatus.ls.state.ms.us, history not read)"
+  ],
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "billstatus.ls.state.ms.us returned HTTP 503 and the host is blocked or failing from this environment; SB 2269 status could not be read"
  },
  "MT": {
   "attempted": "2026-10-19",
@@ -217,9 +266,10 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "ND": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-10-22",
+  "bills_found": [],
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "ndlegis.gov has no 2026 session (biennial); 69th Assembly (2025) index not fully read; web search found only 2025 failed study bills HB 1614, HB 1037 (not verified)"
  },
  "NE": {
   "attempted": "2026-10-19",
@@ -237,9 +287,16 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "NJ": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-10-22",
+  "bills_found": [
+   "A 768",
+   "A 958",
+   "A 3968",
+   "S 1677",
+   "A 1589"
+  ],
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "njleg.state.nj.us bill search is a JavaScript app; only domain-restricted web search plus some bill PDFs were read (A1545, A1738, S3786, S1584, S1249 checked: not AV)"
  },
  "NM": {
   "attempted": "2026-10-19",
@@ -261,9 +318,17 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "NY": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-10-22",
+  "bills_found": [
+   "S 344",
+   "A 4901",
+   "S 10473",
+   "A 11500",
+   "S 7956",
+   "A 3650"
+  ],
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "nysenate.gov returned HTTP 403 to fetch tools; only web search results were seen"
  },
  "OH": {
   "attempted": "2026-10-19",
@@ -281,9 +346,13 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "OR": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-10-22",
+  "bills_found": [
+   "HB 4085",
+   "HB 2671"
+  ],
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "olis.oregonlegislature.gov measure search is a JavaScript app; only web search results were seen"
  },
  "PA": {
   "attempted": "2026-10-19",
@@ -301,9 +370,10 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "SC": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-10-22",
+  "bills_found": [],
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "scstatehouse.gov full-text search returned 'Search is not valid' for automated queries; web search found no 2025-2026 AV bill"
  },
  "SD": {
   "attempted": "2026-10-19",
@@ -323,9 +393,12 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "TX": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-10-22",
+  "bills_found": [
+   "SB 2807 (89R, enrolled; per web search, signed 2025-06-20; history page not opened)"
+  ],
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "capitol.texas.gov is blocked by the environment network policy (HTTP 403 on CONNECT); SB 2807 and others could not be opened"
  },
  "UT": {
   "attempted": "2026-10-19",
@@ -345,9 +418,10 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "VT": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-10-22",
+  "bills_found": [],
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "legislature.vermont.gov search is a JavaScript app; web search found only H.851 (introduced 2026-02-13, mentions autonomous vehicles for transit study; not read in full)"
  },
  "WA": {
   "attempted": "2026-10-19",
@@ -369,9 +443,10 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "WV": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-10-22",
+  "bills_found": [],
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "wvlegislature.gov unreachable from this environment (connection failed); web search showed only 2022 enacted HB 4787 and HB 4675"
  },
  "WY": {
   "attempted": "2026-10-19",

@@ -734,6 +734,40 @@
       "source_tier": "auto",
       "review_status": "auto_collected",
       "date_precision": "day"
+    },
+    {
+      "id": "auto-fr-2026-17741",
+      "level": "federal",
+      "jurisdiction": "US",
+      "title": "NHTSA extends comment period on AV framework interim guidance",
+      "summary": "NHTSA extended by 30 days, at the request of the Alliance for Automotive Innovation, the comment period on its July 31, 2026 notice on AV Framework updates and interim guidance for commercial deployment exemptions for automated vehicles. Comments are now due September 30, 2026.",
+      "takeaway": "NHTSA extended by 30 days, at the request of the Alliance for Automotive Innovation, the comment period on its July 31, 2026 notice on AV Framework updates and interim guidance for commercial deployment exemptions for automated vehicles. Comments are now due September 30, 2026.",
+      "instrument": "proposed program",
+      "status": "historical_status_unverified",
+      "date": "2026-08-31",
+      "source_url": "https://www.federalregister.gov/documents/2026/08/31/2026-17741/av-framework-updates-and-request-for-comments-on-interim-guidance-extension-of-comment-period",
+      "verified_at": "2026-10-22",
+      "source_label": "Federal Register 2026-17741",
+      "source_tier": "auto",
+      "review_status": "auto_collected",
+      "date_precision": "day"
+    },
+    {
+      "id": "auto-fr-2026-15486",
+      "level": "federal",
+      "jurisdiction": "US",
+      "title": "NHTSA receives Robomart exemption application for ADS low-speed vehicle",
+      "summary": "NHTSA received an application from Robomart, Inc. for a temporary exemption from several requirements of FMVSS No. 500 for its low-speed vehicle with an automated driving system. NHTSA is reviewing the application and will publish a later notice seeking public comment.",
+      "takeaway": "NHTSA received an application from Robomart, Inc. for a temporary exemption from several requirements of FMVSS No. 500 for its low-speed vehicle with an automated driving system. NHTSA is reviewing the application and will publish a later notice seeking public comment.",
+      "instrument": "proposed program",
+      "status": "historical_status_unverified",
+      "date": "2026-07-31",
+      "source_url": "https://www.federalregister.gov/documents/2026/07/31/2026-15486/robomart-inc-receipt-of-application-for-temporary-exemption-from-various-requirements-of-the-federal",
+      "verified_at": "2026-10-22",
+      "source_label": "Federal Register 2026-15486",
+      "source_tier": "auto",
+      "review_status": "auto_collected",
+      "date_precision": "day"
     }
   ],
   "states": [
@@ -1743,7 +1777,7 @@
       "status": "in_effect",
       "date": "2017",
       "source_url": "https://leg.colorado.gov/bills/sb17-213",
-      "verified_at": "2026-09-23",
+      "verified_at": "2026-10-22",
       "state": "CO",
       "source_label": "Colorado SB 17-213",
       "source_tier": "primary",
@@ -3258,6 +3292,24 @@
       "editorial_source_url": "https://lis.virginia.gov/bill-details/20261/HB1124",
       "editorial_source_type": "official_bill_abstract",
       "summary_reviewed_at": "2026-10-19"
+    },
+    {
+      "id": "auto-ny-a10008-2026",
+      "level": "state",
+      "jurisdiction": "New York",
+      "title": "A.10008-C / S.9008-C (2026): autonomous vehicle testing extension",
+      "summary": "New York A.10008-C / S.9008-C (2026), the state transportation, economic development and environmental conservation budget bill, was signed May 26, 2026 as chapter 58 of the laws of 2026. Part E extends the expiration of the state's autonomous vehicle technology testing authority from April 1, 2026 to April 1, 2028. The effective date was not confirmed from the official record.",
+      "takeaway": "New York A.10008-C / S.9008-C (2026), the state transportation, economic development and environmental conservation budget bill, was signed May 26, 2026 as chapter 58 of the laws of 2026. Part E extends the expiration of the state's autonomous vehicle technology testing authority from April 1, 2026 to April 1, 2028. The effective date was not confirmed from the official record.",
+      "instrument": "legislation",
+      "status": "historical_status_unverified",
+      "date": "2026-05-26",
+      "source_url": "https://www.nysenate.gov/legislation/bills/2025/A10008",
+      "verified_at": "2026-10-22",
+      "state": "NY",
+      "source_label": "New York State Senate, A.10008-C (2026)",
+      "source_tier": "auto",
+      "review_status": "auto_collected",
+      "date_precision": "day"
     }
   ],
   "city_events": [

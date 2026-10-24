@@ -201,5 +201,29 @@
     ],
     "source_url": "https://www.akleg.gov/basis/Bill/Detail/34?Root=HB%20217",
     "repository_url": "https://www.akleg.gov/basis/Bill/Detail/34?Root=HB%20217"
+  },
+  {
+    "id": "dc-b26-0323-26",
+    "jurisdiction": "DC",
+    "number": "B26-0323",
+    "title": "Autonomous Vehicles Amendment Act of 2025",
+    "summary": "As introduced, the bill would amend the Autonomous Vehicle Act of 2012 to establish a framework for autonomous vehicle operations, including commercial operations, within the District of Columbia.",
+    "takeaway": "Would amend the Autonomous Vehicle Act of 2012 to establish a framework for autonomous vehicle operations, including commercial operations, in the District.",
+    "source_summary": "Official D.C. Council LIMS bill summary (as introduced).",
+    "summary_method": "Maintainer-written from the official D.C. Council LIMS record; no figures taken from news coverage",
+    "summary_quality": "reviewed_substantive",
+    "summary_reviewed_at": "2026-10-22",
+    "status": "introduced",
+    "measure_type": "bill",
+    "last_action_date": "2025-07-18",
+    "last_action": "Notice of Intent to Act on B26-0323 published in the District of Columbia Register.",
+    "session": "26",
+    "progress_stage": "committee",
+    "stage_dates": {
+      "introduced": "2025-07-11",
+      "committee": "2025-07-14"
+    },
+    "source_url": "https://lims.dccouncil.gov/Legislation/B26-0323",
+    "repository_url": "https://lims.dccouncil.gov/Legislation/B26-0323"
   }
 ]
