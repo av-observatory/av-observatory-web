@@ -3258,6 +3258,24 @@
       "editorial_source_url": "https://lis.virginia.gov/bill-details/20261/HB1124",
       "editorial_source_type": "official_bill_abstract",
       "summary_reviewed_at": "2026-10-19"
+    },
+    {
+      "id": "auto-ny-s9008-2026",
+      "level": "state",
+      "jurisdiction": "New York",
+      "state": "NY",
+      "title": "S9008 / A10008 Part E · AV testing law extension",
+      "summary": "New York S9008C/A10008C, the 2026-2027 transportation, economic development and environmental conservation budget bill, was signed as Chapter 58 on the Senate record's May 26, 2026 action. Part E extends the state's existing autonomous vehicle testing law, moving its expiration from April 1, 2026 to April 1, 2028.",
+      "takeaway": "New York S9008C/A10008C, the 2026-2027 transportation, economic development and environmental conservation budget bill, was signed as Chapter 58 on the Senate record's May 26, 2026 action. Part E extends the state's existing autonomous vehicle testing law, moving its expiration from April 1, 2026 to April 1, 2028.",
+      "instrument": "legislation",
+      "status": "historical_status_unverified",
+      "date": "2026-05-26",
+      "date_precision": "day",
+      "source_url": "https://www.nysenate.gov/legislation/bills/2025/S9008",
+      "source_label": "New York Senate S9008C (Chapter 58)",
+      "verified_at": "2026-10-25",
+      "review_status": "auto_collected",
+      "source_tier": "auto"
     }
   ],
   "city_events": [
