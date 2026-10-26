@@ -5,13 +5,13 @@
   "source_api": "https://data.sf.gov/resource/vw6y-z8j6.json",
   "selection": "Exact service_name match: Autonomous Vehicle Complaints. Other city request types and unclassified AV mentions are excluded.",
   "limitations": "These are public 311 requests, not verified incidents. The published subtypes describe how SF311 classified a request, not the specific behavior alleged. Operator identity is unavailable; the AV category begins in April 2025.",
-  "source_data_as_of": "2026-10-25T01:01:00.000",
-  "total_records": 1032,
+  "source_data_as_of": "2026-10-26T01:00:00.000",
+  "total_records": 1035,
   "markets": [
     {
       "market": "San Francisco",
       "state": "CA",
-      "complaints": 1032
+      "complaints": 1035
     }
   ],
   "monthly": [
@@ -127,7 +127,7 @@
       "month": "2026-10",
       "market": "San Francisco",
       "state": "CA",
-      "complaints": 49
+      "complaints": 52
     }
   ],
   "records": [
@@ -16642,6 +16642,54 @@
       "long": -122.41761438,
       "neighborhood": "Civic Center",
       "source_url": "https://data.sf.gov/resource/vw6y-z8j6.json?service_request_id=202000220174"
+    },
+    {
+      "id": "SF-202000222351",
+      "source_id": "202000222351",
+      "state": "CA",
+      "market": "San Francisco",
+      "requested_datetime": "2026-10-25T12:09:12.000",
+      "requested_date": "2026-10-25",
+      "month": "2026-10",
+      "type": "incident_report",
+      "status": "Open",
+      "agency": "MTA - Autonomous Vehicles Complaints",
+      "lat": 37.73838623,
+      "long": -122.4479095,
+      "neighborhood": "Miraloma Park",
+      "source_url": "https://data.sf.gov/resource/vw6y-z8j6.json?service_request_id=202000222351"
+    },
+    {
+      "id": "SF-202000222772",
+      "source_id": "202000222772",
+      "state": "CA",
+      "market": "San Francisco",
+      "requested_datetime": "2026-10-25T14:10:08.000",
+      "requested_date": "2026-10-25",
+      "month": "2026-10",
+      "type": "incident_report",
+      "status": "Open",
+      "agency": "MTA - Autonomous Vehicles Complaints",
+      "lat": 37.73099833,
+      "long": -122.47192275,
+      "neighborhood": "Stonestown",
+      "source_url": "https://data.sf.gov/resource/vw6y-z8j6.json?service_request_id=202000222772"
+    },
+    {
+      "id": "SF-202000223638",
+      "source_id": "202000223638",
+      "state": "CA",
+      "market": "San Francisco",
+      "requested_datetime": "2026-10-25T18:30:00.000",
+      "requested_date": "2026-10-25",
+      "month": "2026-10",
+      "type": "incident_report",
+      "status": "Open",
+      "agency": "MTA - Autonomous Vehicles Complaints",
+      "lat": 37.77193198,
+      "long": -122.45381147,
+      "neighborhood": "Panhandle",
+      "source_url": "https://data.sf.gov/resource/vw6y-z8j6.json?service_request_id=202000223638"
     }
   ]
 }
