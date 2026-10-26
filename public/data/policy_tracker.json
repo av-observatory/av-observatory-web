@@ -734,6 +734,40 @@
       "source_tier": "auto",
       "review_status": "auto_collected",
       "date_precision": "day"
+    },
+    {
+      "id": "auto-fr-2026-21794",
+      "level": "federal",
+      "jurisdiction": "US",
+      "title": "NHTSA proposes FMVSS No. 108 lighting changes for ADS-equipped vehicles",
+      "summary": "NHTSA published a proposed rule to revise FMVSS No. 108 to remove unneeded requirements and add design flexibility, including headlamp test voltage, vertical headlamp arrangements and controls for vehicles without manual driving controls, narrower telltale requirements and optional cyan ADS marker lamps. Comments close November 25, 2026.",
+      "takeaway": "NHTSA published a proposed rule to revise FMVSS No. 108 to remove unneeded requirements and add design flexibility, including headlamp test voltage, vertical headlamp arrangements and controls for vehicles without manual driving controls, narrower telltale requirements and optional cyan ADS marker lamps. Comments close November 25, 2026.",
+      "instrument": "proposed program",
+      "status": "historical_status_unverified",
+      "date": "2026-10-26",
+      "source_url": "https://www.federalregister.gov/documents/2026/10/26/2026-21794/federal-motor-vehicle-safety-standards-modernization-of-fmvss-no-108-to-accommodate-ads-equipped",
+      "verified_at": "2026-10-26",
+      "source_label": "Federal Register 2026-21794",
+      "source_tier": "auto",
+      "review_status": "auto_collected",
+      "date_precision": "day"
+    },
+    {
+      "id": "auto-fr-2026-15486",
+      "level": "federal",
+      "jurisdiction": "US",
+      "title": "NHTSA receives Robomart temporary-exemption application",
+      "summary": "NHTSA published a notice that it received Robomart, Inc.'s application for a temporary exemption from several FMVSS No. 500 requirements for its low-speed automated-driving-system vehicle. The agency is reviewing the application and said it will seek public comment later.",
+      "takeaway": "NHTSA published a notice that it received Robomart, Inc.'s application for a temporary exemption from several FMVSS No. 500 requirements for its low-speed automated-driving-system vehicle. The agency is reviewing the application and said it will seek public comment later.",
+      "instrument": "proposed program",
+      "status": "historical_status_unverified",
+      "date": "2026-07-31",
+      "source_url": "https://www.federalregister.gov/documents/2026/07/31/2026-15486/robomart-inc-receipt-of-application-for-temporary-exemption-from-various-requirements-of-the-federal",
+      "verified_at": "2026-10-26",
+      "source_label": "Federal Register 2026-15486",
+      "source_tier": "auto",
+      "review_status": "auto_collected",
+      "date_precision": "day"
     }
   ],
   "states": [
@@ -3258,6 +3292,24 @@
       "editorial_source_url": "https://lis.virginia.gov/bill-details/20261/HB1124",
       "editorial_source_type": "official_bill_abstract",
       "summary_reviewed_at": "2026-10-19"
+    },
+    {
+      "id": "auto-ny-s9008-2026",
+      "level": "state",
+      "jurisdiction": "New York",
+      "title": "FY 2026-27 transportation budget (S9008-C): for-hire autonomous vehicles",
+      "summary": "New York's FY 2026-27 transportation budget bill (S9008-C/A10008-C), recorded on the Senate page as signed as chapter 58, includes a Part adding Article 44-D to the Vehicle and Traffic Law on autonomous vehicles in taxi, livery or other for-hire service. Per the bill text, such service may not be deployed in cities of 1 million or more residents, elsewhere requires authorization from the commissioner, and the 2017 AV testing authorization is extended to April 1, 2028. Main provisions take effect one year after enactment.",
+      "takeaway": "New York's FY 2026-27 transportation budget bill (S9008-C/A10008-C), recorded on the Senate page as signed as chapter 58, includes a Part adding Article 44-D to the Vehicle and Traffic Law on autonomous vehicles in taxi, livery or other for-hire service. Per the bill text, such service may not be deployed in cities of 1 million or more residents, elsewhere requires authorization from the commissioner, and the 2017 AV testing authorization is extended to April 1, 2028. Main provisions take effect one year after enactment.",
+      "instrument": "legislation",
+      "status": "historical_status_unverified",
+      "date": null,
+      "source_url": "https://www.nysenate.gov/legislation/bills/2025/S9008",
+      "verified_at": "2026-10-26",
+      "state": "NY",
+      "source_label": "New York Senate S9008-C",
+      "source_tier": "auto",
+      "review_status": "auto_collected",
+      "date_precision": "undetermined"
     }
   ],
   "city_events": [
