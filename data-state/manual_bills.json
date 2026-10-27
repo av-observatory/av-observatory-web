@@ -201,5 +201,30 @@
     ],
     "source_url": "https://www.akleg.gov/basis/Bill/Detail/34?Root=HB%20217",
     "repository_url": "https://www.akleg.gov/basis/Bill/Detail/34?Root=HB%20217"
+  },
+  {
+    "id": "mo-hb2069-2026",
+    "jurisdiction": "MO",
+    "number": "HB 2069",
+    "title": "Autonomous vehicles",
+    "summary": "House Committee Substitute for HBs 2069 & 2208 would let a person operate a fully autonomous vehicle on public roads if certification and safety conditions are met, after submitting a law enforcement plan to the Department of Public Safety. The automated driving system would be treated as the driver, proof of financial responsibility would go to the Department of Revenue, and on-demand autonomous vehicle networks would follow the rules for taxis and other for-hire transport. State and local entities could not prohibit, tax or regulate autonomous vehicles or their use in a transportation service network. The House passed the substitute (message received in the Senate 3/19/2026) and the Senate referred it to the Committee on Transportation, Infrastructure and Public Safety on 3/31/2026.",
+    "takeaway": "Would allow fully autonomous vehicles on Missouri roads under certification, insurance and law-enforcement-plan requirements, and bar state and local bans or added regulation.",
+    "source_summary": "Official Missouri House committee-substitute summary (HCS HBs 2069 & 2208), Missouri House and Senate journals.",
+    "summary_method": "Maintainer-written from the official Missouri House summary and House/Senate journals; no figures taken from news coverage",
+    "summary_quality": "reviewed_substantive",
+    "summary_reviewed_at": "2026-10-27",
+    "status": "engrossed",
+    "measure_type": "bill",
+    "last_action_date": "2026-03-31",
+    "last_action": "Senate: read 2nd time and referred to Committee on Transportation, Infrastructure and Public Safety (HCS for HBs 2069 and 2208).",
+    "session": "2026",
+    "progress_stage": "committee",
+    "stage_dates": {
+      "introduced": "2026-01-07",
+      "committee": "2026-03-31"
+    },
+    "hearings": [],
+    "source_url": "https://documents.house.mo.gov/billtracking/bills261/sumpdf/HB2069C.pdf",
+    "repository_url": "https://documents.house.mo.gov/billtracking/bills261/sumpdf/HB2069C.pdf"
   }
 ]
