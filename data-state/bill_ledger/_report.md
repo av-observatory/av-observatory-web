@@ -1,6 +1,6 @@
 ## Bill enumeration report (2026-10-27)
 
-51/51 jurisdictions have an enumerator; 48 enumerated cleanly; 255517 bills in the ledgers; 5547 AV candidate(s) awaiting analysis.
+51/51 jurisdictions have an enumerator; 48 enumerated cleanly; 255517 bills in the ledgers; 5153 AV candidate(s) awaiting analysis.
 
 | State | Status | Bills | Titled | Scanned | Unreadable | AV candidates | Scan secs | Notes |
 |---|---|---:|---:|---:|---:|---:|---:|---|
@@ -13,7 +13,7 @@
 | CT | ok | 5355 | 4961 | 5355 | 0 | 1 | 0 | 2025 HB 2288/7288,HJ 99/103,HR 18/101,SB 1567/1567,SJ 83/103,SR 17/51; 2026 HB 583/5583,HJ 78/78,HR 14/14,SB 524/524,SJ  |
 | DC | ok | 840 | 840 | 0 | 0 | 3 | 0 | 25 B 389/25,PR 6/25; 26 B 439/26,PR 6/26 |
 | DE | ok | 1302 | 1302 | 1301 | 0 | 1 | 0 | 153 HB 479/500,HCR 156/158,HJR 13/13,HR 27/27,HS 2/2,SB 352/360,SCR 222/250,SJR 22/22,SR 26/26,SS 3/3 |
-| FL | FAILED | 3856 | 3856 | 3791 | 63 | 6 | 0 | 2026: HTTPError: HTTP Error 429: Too Many Requests; 2025: HTTPError: HTTP Error 429: Too Many Requests |
+| FL | FAILED | 3856 | 3856 | 3791 | 63 | 6 | 0 | 2025: HTTPError: HTTP Error 429: Too Many Requests; 2026: HTTPError: HTTP Error 429: Too Many Requests |
 | GA | ok | 2132 | 2132 | 0 | 0 | 1 | 0 |  |
 | HI | ok | 10186 | 0 | 9464 | 0 | 1 | 0 | 2025 HB 1503/1503,HCR 211/211,HR 218/218,SB 1669/1669,SCR 240/240,SR 217/217; 2026 HB 2453/2625,HCR 209/209,HR 216/216,S |
 | IA | ok | 3161 | 3161 | 3157 | 0 | 4 | 0 | 91 HCR 14/106,HF 1856/2801,HJR 23/2011,HR 39/116,SCR 8/104,SF 1168/2508,SJR 23/2012,SR 30/121 |
@@ -38,7 +38,7 @@
 | NJ | ok | 23513 | 23458 | 0 | 0 | 12 | 0 | 2024 A 6119/6319,ACR 168/182,AJR 225/240,AR 199/208,S 4963/5041,SCR 131/141,SJR 162/173,SR 134/144; 2026 A 5627/5739,ACR |
 | NM | ok | 1868 | 0 | 1865 | 3 | 3 | 0 | 25%20Regular HB 623/623,SB 559/559; 26%20Regular HB 378/378,SB 308/313 |
 | NV | ok | 1210 | 0 | 1210 | 0 | 0 | 0 | 83rd2025 AB 623/601,ACR 4/4,AJR 16/14,AR 8/8,IP 1/1,SB 529/508,SCR 8/8,SJR 12/11,SR 9/9 |
-| NY | ok | 25456 | 19448 | 25446 | 2 | 5389 | 0 | 2025 A 11144/11735,E 9/183,J 2315/2379,K 1601/1624,S 10387/11145 |
+| NY | ok | 25456 | 19448 | 25442 | 8 | 4995 | 38052 | 2025 A 11144/11735,E 9/183,J 2315/2379,K 1601/1624,S 10387/11145 |
 | OH | ok | 2602 | 2601 | 2482 | 105 | 0 | 0 |  |
 | OK | ok | 9301 | 0 | 9299 | 2 | 0 | 0 | 2500 HB 1934/9999,HCR 18/1018,HJR 35/1035,HR 30/1030,SB 1195/9999,SCR 13/20,SJR 25/50,SR 23/34; 2600 HB 3515/9999,HCR 30 |
 | OR | ok | 3770 | 3770 | 3768 | 0 | 2 | 0 | 2025R1 HB 2037/5051,HCR 42/42,HJM 14/14,HJR 22/22,HR 3/3,SB 1267/5553,SCR 34/34,SJM 10/10,SJR 34/34,SR 3/3; 2026R1 HB 18 |
