@@ -5,13 +5,13 @@
   "source_api": "https://data.sf.gov/resource/vw6y-z8j6.json",
   "selection": "Exact service_name match: Autonomous Vehicle Complaints. Other city request types and unclassified AV mentions are excluded.",
   "limitations": "These are public 311 requests, not verified incidents. The published subtypes describe how SF311 classified a request, not the specific behavior alleged. Operator identity is unavailable; the AV category begins in April 2025.",
-  "source_data_as_of": "2026-10-27T01:00:00.000",
-  "total_records": 1037,
+  "source_data_as_of": "2026-10-28T01:00:00.000",
+  "total_records": 1039,
   "markets": [
     {
       "market": "San Francisco",
       "state": "CA",
-      "complaints": 1037
+      "complaints": 1039
     }
   ],
   "monthly": [
@@ -127,7 +127,7 @@
       "month": "2026-10",
       "market": "San Francisco",
       "state": "CA",
-      "complaints": 54
+      "complaints": 56
     }
   ],
   "records": [
@@ -16722,6 +16722,38 @@
       "long": -122.42115635,
       "neighborhood": "Mission",
       "source_url": "https://data.sf.gov/resource/vw6y-z8j6.json?service_request_id=202000227507"
+    },
+    {
+      "id": "SF-202000232791",
+      "source_id": "202000232791",
+      "state": "CA",
+      "market": "San Francisco",
+      "requested_datetime": "2026-10-27T11:53:43.000",
+      "requested_date": "2026-10-27",
+      "month": "2026-10",
+      "type": "incident_report",
+      "status": "Open",
+      "agency": "MTA - Autonomous Vehicles Complaints",
+      "lat": 37.7668713218,
+      "long": -122.4165485203,
+      "neighborhood": "Mission",
+      "source_url": "https://data.sf.gov/resource/vw6y-z8j6.json?service_request_id=202000232791"
+    },
+    {
+      "id": "SF-202000234858",
+      "source_id": "202000234858",
+      "state": "CA",
+      "market": "San Francisco",
+      "requested_datetime": "2026-10-27T23:17:10.000",
+      "requested_date": "2026-10-27",
+      "month": "2026-10",
+      "type": "incident_report",
+      "status": "Open",
+      "agency": "MTA - Autonomous Vehicles Complaints",
+      "lat": 37.78391268,
+      "long": -122.43300828,
+      "neighborhood": "Western Addition",
+      "source_url": "https://data.sf.gov/resource/vw6y-z8j6.json?service_request_id=202000234858"
     }
   ]
 }
