@@ -19,9 +19,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "AR": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-10-29",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "official host not reachable from the sweep environment (network allowlist); no official page read"
  },
  "AZ": {
   "attempted": "2026-10-19",
@@ -46,9 +46,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "CO": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-10-29",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "official site reachable but its full-text bill search is not retrievable without a browser (search page returned no filtered results); no AV docket check completed"
  },
  "CT": {
   "attempted": "2026-10-19",
@@ -64,9 +64,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "DE": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-10-29",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "official site reachable but its full-text bill search is not retrievable without a browser (search page returned no filtered results); no AV docket check completed"
  },
  "FL": {
   "attempted": "2026-10-19",
@@ -90,9 +90,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "HI": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-10-29",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "official site returned HTTP 403 / blocked to automated retrieval; no official page read"
  },
  "IA": {
   "attempted": "2026-10-19",
@@ -116,9 +116,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "IL": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-10-29",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "official host not reachable from the sweep environment (network allowlist); no official page read"
  },
  "IN": {
   "attempted": "2026-10-19",
@@ -134,9 +134,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "KY": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-10-29",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "official site returned HTTP 403 / blocked to automated retrieval; no official page read"
  },
  "LA": {
   "attempted": "2026-10-19",
@@ -157,9 +157,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "MD": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-10-29",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "official site reachable but its full-text bill search is not retrievable without a browser (search page returned no filtered results); no AV docket check completed"
  },
  "ME": {
   "attempted": "2026-10-19",
@@ -177,9 +177,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "MN": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-10-29",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "official site reachable but its full-text bill search is not retrievable without a browser (search page returned no filtered results); no AV docket check completed"
  },
  "MO": {
   "attempted": "2026-10-19",
@@ -200,9 +200,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "MT": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-10-29",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "official site returned HTTP 403 / blocked to automated retrieval; no official page read"
  },
  "NC": {
   "attempted": "2026-10-19",
@@ -222,9 +222,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "NE": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-10-29",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "official site reachable but its full-text bill search is not retrievable without a browser (search page returned no filtered results); no AV docket check completed"
  },
  "NH": {
   "attempted": "2026-10-19",
@@ -242,9 +242,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "NM": {
-  "attempted": "2026-10-19",
-  "searched": 3,
-  "unreadable": "official-site search returned no AV bill pages (searched 3 pages)"
+  "attempted": "2026-10-29",
+  "searched": 0,
+  "unreadable": "official site reachable but its full-text bill search is not retrievable without a browser (search page returned no filtered results); no AV docket check completed"
  },
  "NV": {
   "attempted": "2026-10-19",
@@ -266,9 +266,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "OH": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-10-29",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "official host not reachable from the sweep environment (network allowlist); no official page read"
  },
  "OK": {
   "attempted": "2026-10-19",
@@ -286,9 +286,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "PA": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-10-29",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "official site returned HTTP 403 / blocked to automated retrieval; no official page read"
  },
  "RI": {
   "attempted": "2026-10-19",
@@ -306,9 +306,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "SD": {
-  "attempted": "2026-10-19",
-  "searched": 5,
-  "unreadable": "HTTPError /; HTTPError /%EF%BF%BD; HTTPError /en/passports/apply/get-fast.html; HTTPError /en/passports/contact-support/us-passports.html; URLError / (searched 5 pages)"
+  "attempted": "2026-10-29",
+  "searched": 0,
+  "unreadable": "official host not reachable from the sweep environment (network allowlist); no official page read"
  },
  "TN": {
   "attempted": "2026-10-19",
@@ -328,9 +328,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "UT": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-10-29",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "official site reachable but its full-text bill search is not retrievable without a browser (search page returned no filtered results); no AV docket check completed"
  },
  "VA": {
   "attempted": "2026-10-19",
@@ -350,9 +350,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "WA": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-10-29",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "official site returned HTTP 403 / blocked to automated retrieval; no official page read"
  },
  "WI": {
   "attempted": "2026-10-19",
@@ -374,8 +374,8 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "WY": {
-  "attempted": "2026-10-19",
-  "searched": 10,
-  "unreadable": "HTTPError /myaccount/; HTTPError /myaccount/creating-an-account.html; HTTPError /ssi/spotlights/spot-loans.htm; insufficient_official_html /RIL/SiView.action (searched 10 pages)"
+  "attempted": "2026-10-29",
+  "searched": 0,
+  "unreadable": "official site reachable but its full-text bill search is not retrievable without a browser (search page returned no filtered results); no AV docket check completed"
  }
 }
