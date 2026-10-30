@@ -7,10 +7,10 @@
   "source_api": "https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/query",
   "selection": "Austin's public TPW AV incident feature layer. Resident complaints are exactly Type=Resident Feedback (case-insensitive); other Type values are city department or responder reports and are kept separate.",
   "limitations": "Austin compiles unvalidated reports received from residents, City departments, and other sources, including 311. The Resident Feedback label does not prove every record entered via 311. This series differs from San Francisco's dedicated 311 AV category and their raw counts should not be compared as rates. Public narrative and precise location are omitted from Observatory exports.",
-  "total_city_reports": 346,
+  "total_city_reports": 347,
   "blank_source_rows_excluded": 1,
   "resident_feedback_count": 156,
-  "latest_reported_date": "2026-10-28",
+  "latest_reported_date": "2026-10-29",
   "reporter_types": [
     {
       "type": "Resident Feedback",
@@ -22,7 +22,7 @@
     },
     {
       "type": "City Employee",
-      "reports": 41
+      "reports": 42
     },
     {
       "type": "AFD",
@@ -4361,6 +4361,18 @@
       "issue": "Safety Issue - School",
       "operator": "Waymo",
       "source_url": "https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/379"
+    },
+    {
+      "id": "ATX-380",
+      "source_id": "380",
+      "market": "Austin",
+      "state": "TX",
+      "reported_date": "2026-10-29",
+      "month": "2026-10",
+      "reporter_type": "City Employee",
+      "issue": "Safety Concern",
+      "operator": "Waymo",
+      "source_url": "https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/380"
     }
   ]
 }

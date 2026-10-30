@@ -5,13 +5,13 @@
   "source_api": "https://data.sf.gov/resource/vw6y-z8j6.json",
   "selection": "Exact service_name match: Autonomous Vehicle Complaints. Other city request types and unclassified AV mentions are excluded.",
   "limitations": "These are public 311 requests, not verified incidents. The published subtypes describe how SF311 classified a request, not the specific behavior alleged. Operator identity is unavailable; the AV category begins in April 2025.",
-  "source_data_as_of": "2026-10-29T01:00:00.000",
-  "total_records": 1041,
+  "source_data_as_of": "2026-10-30T01:00:00.000",
+  "total_records": 1046,
   "markets": [
     {
       "market": "San Francisco",
       "state": "CA",
-      "complaints": 1041
+      "complaints": 1046
     }
   ],
   "monthly": [
@@ -127,7 +127,7 @@
       "month": "2026-10",
       "market": "San Francisco",
       "state": "CA",
-      "complaints": 58
+      "complaints": 63
     }
   ],
   "records": [
@@ -16786,6 +16786,86 @@
       "long": -122.41024568,
       "neighborhood": "Mission",
       "source_url": "https://data.sf.gov/resource/vw6y-z8j6.json?service_request_id=202000237005"
+    },
+    {
+      "id": "SF-202000238578",
+      "source_id": "202000238578",
+      "state": "CA",
+      "market": "San Francisco",
+      "requested_datetime": "2026-10-29T07:24:24.000",
+      "requested_date": "2026-10-29",
+      "month": "2026-10",
+      "type": "incident_report",
+      "status": "Open",
+      "agency": "MTA - Autonomous Vehicles Complaints",
+      "lat": 37.73380399,
+      "long": -122.43176064,
+      "neighborhood": "Glen Park",
+      "source_url": "https://data.sf.gov/resource/vw6y-z8j6.json?service_request_id=202000238578"
+    },
+    {
+      "id": "SF-202000238987",
+      "source_id": "202000238987",
+      "state": "CA",
+      "market": "San Francisco",
+      "requested_datetime": "2026-10-29T08:47:34.000",
+      "requested_date": "2026-10-29",
+      "month": "2026-10",
+      "type": "incident_report",
+      "status": "Open",
+      "agency": "MTA - Autonomous Vehicles Complaints",
+      "lat": 37.73051913,
+      "long": -122.42601005,
+      "neighborhood": "Mission Terrace",
+      "source_url": "https://data.sf.gov/resource/vw6y-z8j6.json?service_request_id=202000238987"
+    },
+    {
+      "id": "SF-202000239003",
+      "source_id": "202000239003",
+      "state": "CA",
+      "market": "San Francisco",
+      "requested_datetime": "2026-10-29T08:49:53.000",
+      "requested_date": "2026-10-29",
+      "month": "2026-10",
+      "type": "other",
+      "status": "Open",
+      "agency": "MTA - Autonomous Vehicles Complaints",
+      "lat": null,
+      "long": null,
+      "neighborhood": "",
+      "source_url": "https://data.sf.gov/resource/vw6y-z8j6.json?service_request_id=202000239003"
+    },
+    {
+      "id": "SF-202000239675",
+      "source_id": "202000239675",
+      "state": "CA",
+      "market": "San Francisco",
+      "requested_datetime": "2026-10-29T11:12:07.000",
+      "requested_date": "2026-10-29",
+      "month": "2026-10",
+      "type": "incident_report",
+      "status": "Open",
+      "agency": "MTA - Autonomous Vehicles Complaints",
+      "lat": 37.74839039,
+      "long": -122.47999643,
+      "neighborhood": "Parkside",
+      "source_url": "https://data.sf.gov/resource/vw6y-z8j6.json?service_request_id=202000239675"
+    },
+    {
+      "id": "SF-202000241195",
+      "source_id": "202000241195",
+      "state": "CA",
+      "market": "San Francisco",
+      "requested_datetime": "2026-10-29T16:46:53.000",
+      "requested_date": "2026-10-29",
+      "month": "2026-10",
+      "type": "incident_report",
+      "status": "Open",
+      "agency": "MTA - Autonomous Vehicles Complaints",
+      "lat": 37.74840051,
+      "long": -122.47977011,
+      "neighborhood": "Parkside",
+      "source_url": "https://data.sf.gov/resource/vw6y-z8j6.json?service_request_id=202000241195"
     }
   ]
 }
