@@ -14,7 +14,7 @@
       "status": "request_for_comment",
       "date": "2018-01-18",
       "source_url": "https://www.federalregister.gov/documents/2018/01/18/2018-00671/removing-regulatory-barriers-for-vehicles-with-automated-driving-systems",
-      "verified_at": "2026-09-23",
+      "verified_at": "2026-10-30",
       "fmvss": [],
       "summary_quality": "manual_primary_source_verified",
       "summary_method": "federal_register_regulatory_text_review",
@@ -34,7 +34,7 @@
       "status": "advance_notice",
       "date": "2019-05-28",
       "source_url": "https://www.federalregister.gov/documents/2019/05/28/2019-11032/removing-regulatory-barriers-for-vehicles-with-automated-driving-systems",
-      "verified_at": "2026-09-23",
+      "verified_at": "2026-10-30",
       "fmvss": [],
       "summary_quality": "manual_primary_source_verified",
       "summary_method": "federal_register_regulatory_text_review",
@@ -54,7 +54,7 @@
       "status": "superseded_by_final",
       "date": "2020-03-30",
       "source_url": "https://www.federalregister.gov/d/2020-05886",
-      "verified_at": "2026-09-23",
+      "verified_at": "2026-10-30",
       "fmvss": [
         "201",
         "203",
@@ -87,7 +87,7 @@
       "status": "effective",
       "date": "2022-03-30",
       "source_url": "https://www.federalregister.gov/d/2022-05426",
-      "verified_at": "2026-09-23",
+      "verified_at": "2026-10-30",
       "fmvss": [
         "201",
         "203",
@@ -125,7 +125,7 @@
       "status": "effective",
       "date": "2026-06-03",
       "source_url": "https://www.federalregister.gov/d/2026-11080",
-      "verified_at": "2026-09-23",
+      "verified_at": "2026-10-30",
       "fmvss": [
         "204"
       ],
@@ -731,6 +731,23 @@
       "source_url": "https://www.federalregister.gov/documents/2026/10/07/2026-20516/nhtsa-safety-research-portfolio-public-meeting-fall-2026-and-automated-driving-systems-workshop",
       "verified_at": "2026-10-15",
       "source_label": "Federal Register 2026-20516",
+      "source_tier": "auto",
+      "review_status": "auto_collected",
+      "date_precision": "day"
+    },
+    {
+      "id": "auto-fr-2026-21794",
+      "level": "federal",
+      "jurisdiction": "US",
+      "title": "NHTSA proposed rule: FMVSS No. 108 modernization for ADS-equipped vehicles",
+      "summary": "NHTSA proposes amending FMVSS No. 108 to remove unnecessary requirements and add design flexibility for ADS-equipped vehicles, including manual control requirements for vehicles without driving controls, telltale requirements, and optional cyan ADS marker lamps. Comments close November 25, 2026.",
+      "takeaway": "NHTSA proposes amending FMVSS No. 108 to remove unnecessary requirements and add design flexibility for ADS-equipped vehicles, including manual control requirements for vehicles without driving controls, telltale requirements, and optional cyan ADS marker lamps. Comments close November 25, 2026.",
+      "instrument": "proposed program",
+      "status": "historical_status_unverified",
+      "date": "2026-10-26",
+      "source_url": "https://www.federalregister.gov/documents/2026/10/26/2026-21794/federal-motor-vehicle-safety-standards-modernization-of-fmvss-no-108-to-accommodate-ads-equipped",
+      "verified_at": "2026-10-30",
+      "source_label": "Federal Register 2026-21794",
       "source_tier": "auto",
       "review_status": "auto_collected",
       "date_precision": "day"
