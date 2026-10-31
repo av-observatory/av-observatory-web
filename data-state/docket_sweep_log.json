@@ -14,9 +14,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "AL": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-10-31",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "official-site full-text search could not be read from this environment (JS-rendered or not returned); no official AV bill pages searched"
  },
  "AR": {
   "attempted": "2026-10-19",
@@ -41,9 +41,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "CA": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-10-31",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "official-site full-text search could not be read from this environment (JS-rendered or not returned); no official AV bill pages searched"
  },
  "CO": {
   "attempted": "2026-10-19",
@@ -59,9 +59,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "DC": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-10-31",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "LIMS page returned only a JS shell with no bill data (B26-0684 already tracked)"
  },
  "DE": {
   "attempted": "2026-10-19",
@@ -85,9 +85,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "GA": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-10-31",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "legis.ga.gov API returned HTTP 401"
  },
  "HI": {
   "attempted": "2026-10-19",
@@ -111,9 +111,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "ID": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-10-31",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "official-site full-text search could not be read from this environment (JS-rendered or not returned); no official AV bill pages searched"
  },
  "IL": {
   "attempted": "2026-10-19",
@@ -129,9 +129,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "KS": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-10-31",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "official-site full-text search could not be read from this environment (JS-rendered or not returned); no official AV bill pages searched"
  },
  "KY": {
   "attempted": "2026-10-19",
@@ -152,9 +152,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "MA": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-10-31",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "official-site full-text search could not be read from this environment (JS-rendered or not returned); no official AV bill pages searched"
  },
  "MD": {
   "attempted": "2026-10-19",
@@ -172,9 +172,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "MI": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-10-31",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "official-site full-text search could not be read from this environment (JS-rendered or not returned); no official AV bill pages searched"
  },
  "MN": {
   "attempted": "2026-10-19",
@@ -195,9 +195,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "MS": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-10-31",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "billstatus.ls.state.ms.us not returned by search/fetch; only third-party trackers (SB 2269 already known)"
  },
  "MT": {
   "attempted": "2026-10-19",
@@ -217,9 +217,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "ND": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-10-31",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "official-site full-text search could not be read from this environment (JS-rendered or not returned); no official AV bill pages searched"
  },
  "NE": {
   "attempted": "2026-10-19",
@@ -237,9 +237,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "NJ": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-10-31",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "njleg bill page returned only site navigation, no bill data"
  },
  "NM": {
   "attempted": "2026-10-19",
@@ -261,9 +261,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "NY": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-10-31",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "official-site full-text search could not be read from this environment (JS-rendered or not returned); no official AV bill pages searched"
  },
  "OH": {
   "attempted": "2026-10-19",
@@ -281,9 +281,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "OR": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-10-31",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "official-site full-text search could not be read from this environment (JS-rendered or not returned); no official AV bill pages searched"
  },
  "PA": {
   "attempted": "2026-10-19",
@@ -301,9 +301,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "SC": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-10-31",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "official-site full-text search could not be read from this environment (JS-rendered or not returned); no official AV bill pages searched"
  },
  "SD": {
   "attempted": "2026-10-19",
@@ -323,9 +323,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "TX": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-10-31",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "capitol.texas.gov host not in session network allowlist"
  },
  "UT": {
   "attempted": "2026-10-19",
@@ -345,9 +345,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "VT": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-10-31",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "official-site full-text search could not be read from this environment (JS-rendered or not returned); no official AV bill pages searched"
  },
  "WA": {
   "attempted": "2026-10-19",
@@ -369,9 +369,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "WV": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-10-31",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "official-site full-text search could not be read from this environment (JS-rendered or not returned); no official AV bill pages searched"
  },
  "WY": {
   "attempted": "2026-10-19",
