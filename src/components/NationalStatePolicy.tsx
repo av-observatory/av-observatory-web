@@ -4,7 +4,6 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import { UsStateMap } from "@/components/UsStateMap";
 import { usePolicyData, displayDate } from "@/lib/policyTracker";
-import { AutoCollectedNote } from "@/components/AutoCollectedNote";
 
 const CURRENT = new Set(["in_effect","current","in_effect_as_amended"]);
 
@@ -36,7 +35,6 @@ export function NationalStatePolicy({ valueByAbbrev, companiesByState }: {
       <h3 className="text-2xl font-semibold mt-2 text-[#0b1d33]">{selected.name}</h3>
       {lead ? <>
         <p className="font-semibold mt-5">{lead.title}</p>
-        <AutoCollectedNote entry={lead} />
         <p className="text-sm leading-relaxed text-neutral-700 mt-2">{lead.takeaway ?? lead.summary}</p>
         {current.length > 1 && <div className="mt-4 border-t border-neutral-200 pt-3">
           <h4 className="font-semibold text-sm">Other current AV policy records</h4>
