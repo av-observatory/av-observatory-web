@@ -626,8 +626,17 @@
     }
   ],
   "country_scope_note": "Coverage registry includes sovereign states conventionally treated as wholly or partly European, plus Kosovo. Inclusion in the registry is geographic/editorial and does not imply EU membership or a position on political status.",
-  "media_watch_checked_at": "2026-10-30",
+  "media_watch_checked_at": "2026-10-31",
   "media_watch": [
+    {
+      "title": "Tallinn: Selbstfahrender Lieferroboter kollidiert in Estland mit Bus – mehrere Verletzte",
+      "publisher": "WELT",
+      "published": "2026-10-28",
+      "url": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxPVXRTUUo1SHZFekFRYTVlYkpqTVJOa0kzeW9DQ0VzLURsX0FfZm1jcFNucmhrMlNNRjRCOVlhQkRzbkJld0hOajJXcGJlakFmM2N5NGh5T0tkYW5hd1BFREVVdEtoV0VBVnllNzFHQXBfcnNLLXJ1MmUzR0FjLXdiX0o0cjVNb0dnRG1UTnVHenVGUVVtVHlrRWRmQ2JPZzRyMHMwSDFMQTlwRnhEVFZRYVBGZ2x0SVBLZUhGQ255LURvV3A5VkZCRjJXT1lnR0pkM1NpTUVycUh6TDFKVG5uekdxZEV3S1FsOXc?oc=5",
+      "query_language": "de",
+      "first_seen": "2026-10-31",
+      "status": "unverified media headline; not counted as a crash"
+    },
     {
       "title": "Tesla posted a highlight reel of its robotaxi avoiding collisions with rivals Waymo and Avride",
       "publisher": "AOL.com",
