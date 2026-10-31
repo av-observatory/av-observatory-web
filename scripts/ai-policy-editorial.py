@@ -34,7 +34,9 @@ def invoke(messages):
             with urlopen(request,timeout=95) as response:
                 text="".join(c.get("text","") for c in json.load(response)["content"] if c.get("type")=="text")
             return json.loads(text[text.index("{"):text.rindex("}")+1])
-        except Exception:
+        except Exception as exc:
+            detail=exc.read()[:300].decode("utf-8","replace") if hasattr(exc,"read") else ""
+            print(f"Anthropic call attempt {i+1}/4 failed: {type(exc).__name__} {exc} {detail}",file=sys.stderr,flush=True)
             if i==3:raise
             time.sleep(min(60,4**i))
 
