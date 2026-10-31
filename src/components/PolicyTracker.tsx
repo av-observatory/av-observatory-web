@@ -4,7 +4,6 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import { UsStateMap, type MapCategory } from "@/components/UsStateMap";
 import { displayDate, usePolicyData, type PolicyEvent } from "@/lib/policyTracker";
-import { AutoCollectedNote } from "@/components/AutoCollectedNote";
 
 function Intro({ level, description }: { level: string; description: string }) {
   return <><p className="eyebrow mb-3">Policy Trackers / {level}</p><h1 className="text-4xl font-semibold tracking-tight text-[#0b1d33]">{level === "Federal Rules" ? "Federal Regulations and Rules" : level === "State Regulations" ? "State Regulations" : "City Policy"}</h1><p className="mt-3 text-base leading-relaxed text-neutral-600 max-w-3xl">{description}</p></>;
@@ -93,7 +92,7 @@ function FmvssExplorer({ events }: { events: FmvssItem[] }) {
 
 type OversightItem = ReturnType<typeof usePolicyData>["data"]["federal_oversight"][number];
 function OversightHistory({ events }: { events: OversightItem[] }) {
-  return <div className="grid md:grid-cols-2 gap-3 mt-3">{[...events].sort((a, b) => (b.date ?? "").localeCompare(a.date ?? "")).map(item => <article key={item.id} className="viz-card p-4"><div className="text-xs text-[#184f95] uppercase font-semibold">{displayDate(item.date)} · {statusLabel(item.status)}</div><h3 className="font-semibold mt-2">{item.title}</h3><AutoCollectedNote entry={item} /><p className="text-sm text-neutral-700 mt-2">{item.summary}</p><a className="text-sm text-[#184f95] underline inline-block mt-2" href={item.source_url} target="_blank" rel="noreferrer">NHTSA / Federal Register ↗</a></article>)}</div>;
+  return <div className="grid md:grid-cols-2 gap-3 mt-3">{[...events].sort((a, b) => (b.date ?? "").localeCompare(a.date ?? "")).map(item => <article key={item.id} className="viz-card p-4"><div className="text-xs text-[#184f95] uppercase font-semibold">{displayDate(item.date)} · {statusLabel(item.status)}</div><h3 className="font-semibold mt-2">{item.title}</h3><p className="text-sm text-neutral-700 mt-2">{item.summary}</p><a className="text-sm text-[#184f95] underline inline-block mt-2" href={item.source_url} target="_blank" rel="noreferrer">NHTSA / Federal Register ↗</a></article>)}</div>;
 }
 
 function StateHistoryExplorer({ history, stateCode }: { history: PolicyEvent[]; stateCode: string }) {
@@ -112,7 +111,6 @@ function StateHistoryExplorer({ history, stateCode }: { history: PolicyEvent[]; 
             <span className="block font-semibold text-[#0b1d33]">{entry.title}</span>
             <span className="block text-sm text-neutral-700 mt-1">{takeaway}</span>
             <span className="block text-sm text-neutral-500 mt-1">{datedStatus(entry)}</span>
-            <AutoCollectedNote entry={entry} />
           </button>
           {expanded && <div className="px-4 pb-4 text-sm leading-relaxed text-neutral-700">
             {entry.summary.trim() !== takeaway.trim() && <p>{entry.summary}</p>}
