@@ -19,11 +19,20 @@ KEY=os.getenv("OPENAI_API_KEY")
 MODEL=os.getenv("POLICY_EDITORIAL_MODEL","gpt-6-luna")
 EDITORIAL_VERSION="full-text-extract-v2"
 MAX_NEW=int(os.getenv("POLICY_EDITORIAL_MAX_NEW","300"))
+# Default per-process guard: approximate GPT-6 Luna list pricing, USD per million tokens.
+# Operators should also configure an OpenAI project billing limit.
+COST_LIMIT_USD=float(os.getenv("POLICY_EDITORIAL_MAX_USD","1.00"))
+COST_USED_USD=0.0
+INPUT_USD_PER_M=0.05
+OUTPUT_USD_PER_M=0.25
 
 def invoke(messages):
     """OpenAI Responses API. Only source-grounded JSON is accepted."""
     if not KEY:
         raise RuntimeError("OPENAI_API_KEY is not configured")
+    global COST_USED_USD
+    if COST_USED_USD >= COST_LIMIT_USD:
+        raise RuntimeError(f"OpenAI run budget reached: ${COST_USED_USD:.4f} >= ${COST_LIMIT_USD:.2f}")
     instructions="\n\n".join(m["content"] for m in messages if m["role"]=="system")
     turns=[{"role":m["role"],"content":m["content"]} for m in messages if m["role"]!="system"]
     body=json.dumps({"model":MODEL,"max_output_tokens":1800,
@@ -36,6 +45,10 @@ def invoke(messages):
             time.sleep(float(os.getenv("POLICY_EDITORIAL_REQUEST_GAP_SECONDS","1.25")))
             with urlopen(request,timeout=120) as response:
                 data=json.load(response)
+            usage=data.get("usage",{})
+            COST_USED_USD+=(usage.get("input_tokens",0)*INPUT_USD_PER_M+
+                            usage.get("output_tokens",0)*OUTPUT_USD_PER_M)/1_000_000
+            print(f"OpenAI approximate spend this run: ${COST_USED_USD:.4f}",flush=True)
             output="".join(c.get("text","") for o in data.get("output",[])
                 for c in o.get("content",[]) if c.get("type")=="output_text")
             if not output:
