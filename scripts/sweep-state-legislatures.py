@@ -5,7 +5,7 @@ Independent of Open States. For each of the 50 states + DC in ``official_sources
   1. DISCOVER  search the state's own legislative domain, fetch the pages, keep those that are
      about autonomous vehicles and name a bill, and add a stub to the database.
   2. EXTRACT   for stubs not yet processed, read the official page and extract the bill's
-     number, title, session, status, stage and last action (Claude, grounded in the page text;
+     number, title, session, status, stage and last action (OpenAI, grounded in the page text;
      the bill number and AV relevance are verified in code).
   3. SUMMARIZE the bill with the same verified, fact-checked editorial pipeline as the rest of
      the site (ai-policy-editorial.summarize), grounded in the official text.
