@@ -2557,10 +2557,10 @@
       ],
       "state_count": 2,
       "permit_count": 2,
-      "company_status": "active",
+      "company_status": "historical",
       "status_confidence": "inferred",
       "last_evidence_date": "2024-10",
-      "status_basis": "Newest permit, registry or incident-filing evidence is from 2024-10.",
+      "status_basis": "No permit, registry or incident-filing evidence since 2024-10 (24+ months). Inferred from the absence of recent evidence; incident filings only cover crashes, so this is not proof the program ended.",
       "permits": [
         {
           "state": "CA",

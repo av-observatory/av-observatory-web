@@ -32,7 +32,7 @@ NAVISTAR,"Navistar, Inc.","[""AZ"",""PA""]",2,2,historical,inferred,2022-06,"No 
 PACCAR INCORPORATED,PACCAR Incorporated,"[""OK"",""TX""]",2,2,active,inferred,2025-05,"Newest permit, registry or incident-filing evidence is from 2025-05.",,
 ROBOTIC RESEARCH,Robotic Research,"[""GA"",""WY""]",2,2,historical,inferred,2023-01,"No permit, registry or incident-filing evidence since 2023-01 (24+ months). Inferred from the absence of recent evidence; incident filings only cover crashes, so this is not proof the program ended.",,
 TUSIMPLE,TuSimple,"[""AZ"",""US""]",2,2,historical,confirmed,2022-04,NHTSA's Voluntary Safety Self-Assessment index marks this company's disclosure as removed (no longer active).,,
-VINFAST AUTO,"VinFast Auto, LLC","[""CA"",""WA""]",2,2,active,inferred,2024-10,"Newest permit, registry or incident-filing evidence is from 2024-10.",,
+VINFAST AUTO,"VinFast Auto, LLC","[""CA"",""WA""]",2,2,historical,inferred,2024-10,"No permit, registry or incident-filing evidence since 2024-10 (24+ months). Inferred from the absence of recent evidence; incident filings only cover crashes, so this is not proof the program ended.",,
 AIMOTIVE,AIMOTIVE INC.,"[""CA""]",1,1,active,inferred,2026-09,"Newest permit, registry or incident-filing evidence is from 2026-09.",,
 APOLLO AUTONOMOUS DRIVING USA,Apollo Autonomous Driving USA,"[""CA""]",1,1,historical,inferred,2023-10,"No permit, registry or incident-filing evidence since 2023-10 (24+ months). Inferred from the absence of recent evidence; incident filings only cover crashes, so this is not proof the program ended.",,
 AUDI OF AMERICA,AUDI OF AMERICA,"[""CA""]",1,1,active,inferred,2026-09,"Newest permit, registry or incident-filing evidence is from 2026-09.",,
