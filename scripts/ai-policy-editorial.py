@@ -23,8 +23,8 @@ MAX_NEW=int(os.getenv("POLICY_EDITORIAL_MAX_NEW","300"))
 # Operators should also configure an OpenAI project billing limit.
 COST_LIMIT_USD=float(os.getenv("POLICY_EDITORIAL_MAX_USD","1.00"))
 COST_USED_USD=0.0
-INPUT_USD_PER_M=0.05
-OUTPUT_USD_PER_M=0.25
+INPUT_USD_PER_M=0.10
+OUTPUT_USD_PER_M=0.50
 
 def invoke(messages):
     """OpenAI Responses API. Only source-grounded JSON is accepted."""
