@@ -25,7 +25,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 320
     env:
-      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      OPENAI_API_KEY: ${{ secrets.OPEN_AI_KEY }}
       OPENSTATES_API_KEY: ${{ secrets.OPENSTATES_API_KEY }}
       POLICY_EDITORIAL_MODEL: gpt-6-luna
       POLICY_EDITORIAL_MAX_NEW: 25
