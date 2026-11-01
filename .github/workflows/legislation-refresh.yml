@@ -57,7 +57,7 @@ jobs:
         # first, durable queue, never blocks the data refresh.
         continue-on-error: true
         env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPEN_AI_KEY }}
           POLICY_EDITORIAL_MODEL: gpt-6-luna
         run: python3 scripts/sweep-state-legislatures.py --budget-minutes 30
 
@@ -66,7 +66,7 @@ jobs:
         # data-state/av_progress_feed.json and are overlaid onto the index by the supplement step below.
         continue-on-error: true
         env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPEN_AI_KEY }}
           POLICY_EDITORIAL_MODEL: gpt-6-luna
         run: python3 scripts/refresh-av-bill-progress.py --every-days 5 --budget-minutes 10
 
@@ -84,7 +84,7 @@ jobs:
       - name: AI review state and federal legislation plus FMVSS rules
         if: ${{ env.OPENSTATES_API_KEY != '' }}
         env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPEN_AI_KEY }}
           POLICY_EDITORIAL_MODEL: gpt-6-luna
           # Rotating cursor (data-state/editorial_cursor.json): each run resumes with the
           # least-recently-checked records, so ~60/run covers all records in about a week.
