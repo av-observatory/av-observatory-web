@@ -336,6 +336,12 @@ and say so in the summary). If unsure use historical_status_unverified. Never in
 document shows the entry's status, instrument or date is no longer accurate; "not_applicable" if irrelevant."""
 
 
+@functools.lru_cache(maxsize=1)
+def _editorial_invoke():
+    import runpy
+    return runpy.run_path(str(Path(__file__).with_name("ai-policy-editorial.py")))["invoke"]
+
+
 def ask(client, candidate):
     if candidate["kind"] == "new":
         prompt = f"Classify this {candidate['level']} document for the tracker.\nSource: {candidate['source_url']}\n\n<document>\n{candidate['text']}\n</document>"
@@ -345,9 +351,8 @@ def ask(client, candidate):
         prompt = (f"Existing tracker entry (JSON): {json.dumps(existing)}\nThe cited source page changed. "
                   f"Decide whether the entry is still accurate.\nSource: {candidate['source_url']}\n\n"
                   f"<document>\n{candidate['text']}\n</document>")
-    # Deterministic evidence quote and enum checks still run in verified().
-    import runpy
-    invoke=runpy.run_path(str(Path(__file__).with_name("ai-policy-editorial.py")))["invoke"]
+    # Reuse the same caller across candidates so per-process token accounting persists.
+    invoke=_editorial_invoke()
     return invoke([{"role":"system","content":SYSTEM+"\nReturn a JSON object matching this schema: "+json.dumps(SCHEMA)},
                    {"role":"user","content":prompt}])
 
