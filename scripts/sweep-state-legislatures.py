@@ -223,8 +223,8 @@ def main() -> int:
     print(f"Swept {swept}/{len(jurisdictions)} jurisdictions; {readable} produced official AV pages", flush=True)
 
     # 2+3. EXTRACT and SUMMARIZE unprocessed stubs (oldest first; durable across runs).
-    if not os.getenv("ANTHROPIC_API_KEY"):
-        print("ANTHROPIC_API_KEY not set; stubs stay queued")
+    if not os.getenv("OPENAI_API_KEY"):
+        print("OPENAI_API_KEY not set; stubs stay queued")
         return 0
     editorial = runpy.run_path(str(Path(__file__).resolve().parent / "ai-policy-editorial.py"))
     invoke, summarize = editorial["invoke"], editorial["summarize"]
