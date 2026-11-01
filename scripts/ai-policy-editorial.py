@@ -255,11 +255,31 @@ def main():
             for row in data[field]:
                 key=f"{filename}:{field}:{row.get('id') or row.get('code')}"
                 queue.append((cursor.get(key,""),len(queue),key,filename,kind,row))
+    # Restore withheld records into the editorial queue, never directly into publication.
+    quarantine_path=ROOT/"data-state/editorial_quarantine.json"
+    held=json.loads(quarantine_path.read_text()) if quarantine_path.exists() else {}
+    quarantine_refs={}
+    groups_by_name={(filename.split("/")[-1],field):(filename,field,kind)
+                    for filename,groups in SOURCES for field,kind in groups}
+    for hold_key,record in held.items():
+        field=record.get("group")
+        filename=record.get("file")
+        if not filename:
+            filename="legislation_tracker.json" if field in ("federal","state_bills") else "policy_tracker.json"
+        match=groups_by_name.get((filename,field))
+        if not match or not isinstance(record.get("row"),dict):
+            continue
+        filepath,field,kind=match
+        qkey="quarantine:"+hold_key
+        quarantine_refs[qkey]=(hold_key,filepath,field)
+        queue.append(("-",len(queue),qkey,filepath,kind,record["row"]))
     queue.sort(key=lambda item:item[:2])
     def checkpoint():
         for name,data in loaded.items():
             (ROOT/name).write_text(json.dumps(data,ensure_ascii=False,indent=2)+"\n")
         save_cursor(cursor)
+        if held or quarantine_path.exists():
+            quarantine_path.write_text(json.dumps(held,ensure_ascii=False,indent=1,sort_keys=True)+"\\n")
     for _,_,key,filename,kind,row in queue:
         if used>=MAX_NEW or (TIME_BUDGET and time.monotonic()-started>=TIME_BUDGET):
             counts["deferred_due_to_limit"]=counts.get("deferred_due_to_limit",0)+1
@@ -282,6 +302,19 @@ def main():
             reason=row.get("editorial_failure_reason")
             row.clear();row.update(before)
             row["editorial_recheck"]={"result":result,"at":time.strftime("%Y-%m-%d",time.gmtime()),"reason":str(reason or "")[:200]}
+        if key in quarantine_refs:
+            hold_key,filepath,field=quarantine_refs[key]
+            if result in ("updated","cached") and row.get("editorial_status")=="verified":
+                target=loaded[filepath][field]
+                ident=row.get("id") or row.get("code")
+                prior_index=next((i for i,x in enumerate(target)
+                                  if (x.get("id") or x.get("code"))==ident),None)
+                if prior_index is None: target.append(row)
+                else: target[prior_index]=row
+                held.pop(hold_key,None)
+                print(f"Restored verified quarantined record {hold_key}",flush=True)
+            else:
+                held[hold_key]["row"]=row
         counts[result]=counts.get(result,0)+1
         cursor[key]=time.strftime("%Y-%m-%dT%H:%M:%SZ",time.gmtime())
         print(f"Editorial progress: {key} -> {result}",flush=True)
