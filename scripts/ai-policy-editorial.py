@@ -279,7 +279,7 @@ def main():
             (ROOT/name).write_text(json.dumps(data,ensure_ascii=False,indent=2)+"\n")
         save_cursor(cursor)
         if held or quarantine_path.exists():
-            quarantine_path.write_text(json.dumps(held,ensure_ascii=False,indent=1,sort_keys=True)+"\\n")
+            quarantine_path.write_text(json.dumps(held,ensure_ascii=False,indent=1,sort_keys=True)+"\n")
     for _,_,key,filename,kind,row in queue:
         if used>=MAX_NEW or (TIME_BUDGET and time.monotonic()-started>=TIME_BUDGET):
             counts["deferred_due_to_limit"]=counts.get("deferred_due_to_limit",0)+1
