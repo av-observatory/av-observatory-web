@@ -15,27 +15,37 @@ from urllib.request import Request,urlopen
 from legislation_source_text import primary_text
 
 ROOT=Path(__file__).resolve().parents[1]
-KEY=os.getenv("ANTHROPIC_API_KEY")
-MODEL=os.getenv("POLICY_EDITORIAL_MODEL","claude-sonnet-5-5")
+KEY=os.getenv("OPENAI_API_KEY")
+MODEL=os.getenv("POLICY_EDITORIAL_MODEL","gpt-6-luna")
 EDITORIAL_VERSION="full-text-extract-v2"
 MAX_NEW=int(os.getenv("POLICY_EDITORIAL_MAX_NEW","300"))
 
 def invoke(messages):
-    """One Claude call; returns the JSON object the model was asked to produce."""
-    system="\n\n".join(m["content"] for m in messages if m["role"]=="system")
+    """OpenAI Responses API. Only source-grounded JSON is accepted."""
+    if not KEY:
+        raise RuntimeError("OPENAI_API_KEY is not configured")
+    instructions="\n\n".join(m["content"] for m in messages if m["role"]=="system")
     turns=[{"role":m["role"],"content":m["content"]} for m in messages if m["role"]!="system"]
-    body=json.dumps({"model":MODEL,"max_tokens":800,
-      "system":system+"\n\nRespond with a single JSON object and nothing else.","messages":turns}).encode()
-    request=Request("https://api.anthropic.com/v1/messages",body,
-        {"Content-Type":"application/json","x-api-key":KEY,"anthropic-version":"2023-06-01"})
+    body=json.dumps({"model":MODEL,"max_output_tokens":1800,
+        "instructions":instructions+"\n\nRespond with a single JSON object and nothing else.",
+        "input":turns}).encode()
+    request=Request("https://api.openai.com/v1/responses",body,
+        {"Content-Type":"application/json","Authorization":"Bearer "+KEY})
     for i in range(4):
         try:
-            time.sleep(float(os.getenv('POLICY_EDITORIAL_REQUEST_GAP_SECONDS','1.25')))
-            with urlopen(request,timeout=95) as response:
-                text="".join(c.get("text","") for c in json.load(response)["content"] if c.get("type")=="text")
-            return json.loads(text[text.index("{"):text.rindex("}")+1])
-        except Exception:
-            if i==3:raise
+            time.sleep(float(os.getenv("POLICY_EDITORIAL_REQUEST_GAP_SECONDS","1.25")))
+            with urlopen(request,timeout=120) as response:
+                data=json.load(response)
+            output="".join(c.get("text","") for o in data.get("output",[])
+                for c in o.get("content",[]) if c.get("type")=="output_text")
+            if not output:
+                raise ValueError("OpenAI returned no output text")
+            return json.loads(output[output.index("{"):output.rindex("}")+1])
+        except Exception as exc:
+            detail=exc.read()[:300].decode("utf-8","replace") if hasattr(exc,"read") else ""
+            print(f"OpenAI attempt {i+1}/4 failed: {type(exc).__name__} {exc} {detail}",file=sys.stderr,flush=True)
+            if getattr(exc,"code",None) in (400,401,402,403,404) or i==3:
+                raise
             time.sleep(min(60,4**i))
 
 def quality(value):
@@ -226,7 +236,7 @@ def save_cursor(cursor):
 
 def main():
     if not KEY:
-        print("ANTHROPIC_API_KEY not set; refusing to claim AI verification.",file=sys.stderr)
+        print("OPENAI_API_KEY not set; refusing to claim AI verification.",file=sys.stderr)
         return 2
     counts={}
     used=0
