@@ -152,7 +152,7 @@ def summarize(row,kind):
     current_text=row.get("analysis") if kind=="state_framework" else row.get("summary")
     if row.get("editorial_source_hash")==digest and row.get("editorial_status")=="verified" and quality({"summary":current_text}):
         return "cached"
-    if not KEY:raise RuntimeError("ANTHROPIC_API_KEY not configured")
+    if not KEY:raise RuntimeError("OPENAI_API_KEY not configured")
     row["editorial_source_hash"]=digest
     row["editorial_source_type"]=source_type
     row["editorial_source_url"]=source_url
