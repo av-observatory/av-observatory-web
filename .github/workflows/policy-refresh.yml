@@ -65,7 +65,7 @@ jobs:
             exit 1
           fi
 
-      - name: Install fetch tools (headless browser, PDF text, Claude SDK)
+      - name: Install fetch tools (headless browser, PDF text, OpenAI HTTP API)
         run: |
           pip install --quiet pypdf playwright
           playwright install --with-deps chromium
