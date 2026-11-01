@@ -28,7 +28,7 @@ jobs:
     if: ${{ inputs.probe == true }}
     runs-on: ubuntu-latest
     env:
-      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      OPENAI_API_KEY: ${{ secrets.OPEN_AI_KEY }}
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
@@ -38,7 +38,7 @@ jobs:
           pip install --quiet playwright
           playwright install --with-deps chromium
       - run: |
-          pip install --quiet anthropic
+          pip install --quiet requests
           python3 scripts/probe-model.py
       - run: python3 scripts/probe-fetch.py
 
@@ -46,7 +46,7 @@ jobs:
     if: ${{ inputs.probe != true }}
     runs-on: ubuntu-latest
     env:
-      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      OPENAI_API_KEY: ${{ secrets.OPEN_AI_KEY }}
       GH_TOKEN: ${{ github.token }}
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
@@ -60,14 +60,14 @@ jobs:
       - name: Check configuration
         if: ${{ inputs.dry_run != true }}
         run: |
-          if [ -z "$ANTHROPIC_API_KEY" ]; then
-            echo "::error::ANTHROPIC_API_KEY is not configured (gh secret set ANTHROPIC_API_KEY)."
+          if [ -z "$OPENAI_API_KEY" ]; then
+            echo "::error::OPENAI_API_KEY is not configured (gh secret set OPENAI_API_KEY)."
             exit 1
           fi
 
-      - name: Install fetch tools (headless browser, PDF text, Claude SDK)
+      - name: Install fetch tools (headless browser, PDF text, OpenAI HTTP API)
         run: |
-          pip install --quiet anthropic pypdf playwright
+          pip install --quiet pypdf playwright
           playwright install --with-deps chromium
 
       - name: Safety tests
@@ -84,7 +84,7 @@ jobs:
       - name: Restore source-verified summaries and research source gaps
         if: ${{ inputs.dry_run != true }}
         env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPEN_AI_KEY }}
           OPENSTATES_API_KEY: ${{ secrets.OPENSTATES_API_KEY }}
           POLICY_EDITORIAL_MAX_NEW: 25
         run: |

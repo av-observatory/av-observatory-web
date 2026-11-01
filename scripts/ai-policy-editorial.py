@@ -15,27 +15,50 @@ from urllib.request import Request,urlopen
 from legislation_source_text import primary_text
 
 ROOT=Path(__file__).resolve().parents[1]
-KEY=os.getenv("ANTHROPIC_API_KEY")
-MODEL=os.getenv("POLICY_EDITORIAL_MODEL","claude-sonnet-5-5")
+KEY=os.getenv("OPENAI_API_KEY")
+MODEL=os.getenv("POLICY_EDITORIAL_MODEL","gpt-6-luna")
 EDITORIAL_VERSION="full-text-extract-v2"
 MAX_NEW=int(os.getenv("POLICY_EDITORIAL_MAX_NEW","300"))
+# Default per-process guard: approximate GPT-6 Luna list pricing, USD per million tokens.
+# Operators should also configure an OpenAI project billing limit.
+COST_LIMIT_USD=float(os.getenv("POLICY_EDITORIAL_MAX_USD","1.00"))
+COST_USED_USD=0.0
+INPUT_USD_PER_M=0.10
+OUTPUT_USD_PER_M=0.50
 
 def invoke(messages):
-    """One Claude call; returns the JSON object the model was asked to produce."""
-    system="\n\n".join(m["content"] for m in messages if m["role"]=="system")
+    """OpenAI Responses API. Only source-grounded JSON is accepted."""
+    if not KEY:
+        raise RuntimeError("OPENAI_API_KEY is not configured")
+    global COST_USED_USD
+    if COST_USED_USD >= COST_LIMIT_USD:
+        raise RuntimeError(f"OpenAI run budget reached: ${COST_USED_USD:.4f} >= ${COST_LIMIT_USD:.2f}")
+    instructions="\n\n".join(m["content"] for m in messages if m["role"]=="system")
     turns=[{"role":m["role"],"content":m["content"]} for m in messages if m["role"]!="system"]
-    body=json.dumps({"model":MODEL,"max_tokens":800,
-      "system":system+"\n\nRespond with a single JSON object and nothing else.","messages":turns}).encode()
-    request=Request("https://api.anthropic.com/v1/messages",body,
-        {"Content-Type":"application/json","x-api-key":KEY,"anthropic-version":"2023-06-01"})
+    body=json.dumps({"model":MODEL,"max_output_tokens":1800,
+        "instructions":instructions+"\n\nRespond with a single JSON object and nothing else.",
+        "input":turns}).encode()
+    request=Request("https://api.openai.com/v1/responses",body,
+        {"Content-Type":"application/json","Authorization":"Bearer "+KEY})
     for i in range(4):
         try:
-            time.sleep(float(os.getenv('POLICY_EDITORIAL_REQUEST_GAP_SECONDS','1.25')))
-            with urlopen(request,timeout=95) as response:
-                text="".join(c.get("text","") for c in json.load(response)["content"] if c.get("type")=="text")
-            return json.loads(text[text.index("{"):text.rindex("}")+1])
-        except Exception:
-            if i==3:raise
+            time.sleep(float(os.getenv("POLICY_EDITORIAL_REQUEST_GAP_SECONDS","1.25")))
+            with urlopen(request,timeout=120) as response:
+                data=json.load(response)
+            usage=data.get("usage",{})
+            COST_USED_USD+=(usage.get("input_tokens",0)*INPUT_USD_PER_M+
+                            usage.get("output_tokens",0)*OUTPUT_USD_PER_M)/1_000_000
+            print(f"OpenAI approximate spend this run: ${COST_USED_USD:.4f}",flush=True)
+            output="".join(c.get("text","") for o in data.get("output",[])
+                for c in o.get("content",[]) if c.get("type")=="output_text")
+            if not output:
+                raise ValueError("OpenAI returned no output text")
+            return json.loads(output[output.index("{"):output.rindex("}")+1])
+        except Exception as exc:
+            detail=exc.read()[:300].decode("utf-8","replace") if hasattr(exc,"read") else ""
+            print(f"OpenAI attempt {i+1}/4 failed: {type(exc).__name__} {exc} {detail}",file=sys.stderr,flush=True)
+            if getattr(exc,"code",None) in (400,401,402,403,404) or i==3:
+                raise
             time.sleep(min(60,4**i))
 
 def quality(value):
@@ -142,7 +165,7 @@ def summarize(row,kind):
     current_text=row.get("analysis") if kind=="state_framework" else row.get("summary")
     if row.get("editorial_source_hash")==digest and row.get("editorial_status")=="verified" and quality({"summary":current_text}):
         return "cached"
-    if not KEY:raise RuntimeError("ANTHROPIC_API_KEY not configured")
+    if not KEY:raise RuntimeError("OPENAI_API_KEY not configured")
     row["editorial_source_hash"]=digest
     row["editorial_source_type"]=source_type
     row["editorial_source_url"]=source_url
@@ -226,7 +249,7 @@ def save_cursor(cursor):
 
 def main():
     if not KEY:
-        print("ANTHROPIC_API_KEY not set; refusing to claim AI verification.",file=sys.stderr)
+        print("OPENAI_API_KEY not set; refusing to claim AI verification.",file=sys.stderr)
         return 2
     counts={}
     used=0
@@ -245,11 +268,31 @@ def main():
             for row in data[field]:
                 key=f"{filename}:{field}:{row.get('id') or row.get('code')}"
                 queue.append((cursor.get(key,""),len(queue),key,filename,kind,row))
+    # Restore withheld records into the editorial queue, never directly into publication.
+    quarantine_path=ROOT/"data-state/editorial_quarantine.json"
+    held=json.loads(quarantine_path.read_text()) if quarantine_path.exists() else {}
+    quarantine_refs={}
+    groups_by_name={(filename.split("/")[-1],field):(filename,field,kind)
+                    for filename,groups in SOURCES for field,kind in groups}
+    for hold_key,record in held.items():
+        field=record.get("group")
+        filename=record.get("file")
+        if not filename:
+            filename="legislation_tracker.json" if field in ("federal","state_bills") else "policy_tracker.json"
+        match=groups_by_name.get((filename,field))
+        if not match or not isinstance(record.get("row"),dict):
+            continue
+        filepath,field,kind=match
+        qkey="quarantine:"+hold_key
+        quarantine_refs[qkey]=(hold_key,filepath,field)
+        queue.append(("-",len(queue),qkey,filepath,kind,record["row"]))
     queue.sort(key=lambda item:item[:2])
     def checkpoint():
         for name,data in loaded.items():
             (ROOT/name).write_text(json.dumps(data,ensure_ascii=False,indent=2)+"\n")
         save_cursor(cursor)
+        if held or quarantine_path.exists():
+            quarantine_path.write_text(json.dumps(held,ensure_ascii=False,indent=1,sort_keys=True)+"\n")
     for _,_,key,filename,kind,row in queue:
         if used>=MAX_NEW or (TIME_BUDGET and time.monotonic()-started>=TIME_BUDGET):
             counts["deferred_due_to_limit"]=counts.get("deferred_due_to_limit",0)+1
@@ -272,6 +315,19 @@ def main():
             reason=row.get("editorial_failure_reason")
             row.clear();row.update(before)
             row["editorial_recheck"]={"result":result,"at":time.strftime("%Y-%m-%d",time.gmtime()),"reason":str(reason or "")[:200]}
+        if key in quarantine_refs:
+            hold_key,filepath,field=quarantine_refs[key]
+            if result in ("updated","cached") and row.get("editorial_status")=="verified":
+                target=loaded[filepath][field]
+                ident=row.get("id") or row.get("code")
+                prior_index=next((i for i,x in enumerate(target)
+                                  if (x.get("id") or x.get("code"))==ident),None)
+                if prior_index is None: target.append(row)
+                else: target[prior_index]=row
+                held.pop(hold_key,None)
+                print(f"Restored verified quarantined record {hold_key}",flush=True)
+            else:
+                held[hold_key]["row"]=row
         counts[result]=counts.get(result,0)+1
         cursor[key]=time.strftime("%Y-%m-%dT%H:%M:%SZ",time.gmtime())
         print(f"Editorial progress: {key} -> {result}",flush=True)

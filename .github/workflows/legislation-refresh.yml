@@ -57,8 +57,8 @@ jobs:
         # first, durable queue, never blocks the data refresh.
         continue-on-error: true
         env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          POLICY_EDITORIAL_MODEL: claude-sonnet-5-5
+          OPENAI_API_KEY: ${{ secrets.OPEN_AI_KEY }}
+          POLICY_EDITORIAL_MODEL: gpt-6-luna
         run: python3 scripts/sweep-state-legislatures.py --budget-minutes 30
 
       - name: Refresh the status of active AV bills from their official pages (every 5 days each)
@@ -66,8 +66,8 @@ jobs:
         # data-state/av_progress_feed.json and are overlaid onto the index by the supplement step below.
         continue-on-error: true
         env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          POLICY_EDITORIAL_MODEL: claude-sonnet-5-5
+          OPENAI_API_KEY: ${{ secrets.OPEN_AI_KEY }}
+          POLICY_EDITORIAL_MODEL: gpt-6-luna
         run: python3 scripts/refresh-av-bill-progress.py --every-days 5 --budget-minutes 10
 
       - name: Cross-check a second source, apply manual overrides, report coverage gaps
@@ -84,8 +84,8 @@ jobs:
       - name: AI review state and federal legislation plus FMVSS rules
         if: ${{ env.OPENSTATES_API_KEY != '' }}
         env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          POLICY_EDITORIAL_MODEL: claude-sonnet-5-5
+          OPENAI_API_KEY: ${{ secrets.OPEN_AI_KEY }}
+          POLICY_EDITORIAL_MODEL: gpt-6-luna
           # Rotating cursor (data-state/editorial_cursor.json): each run resumes with the
           # least-recently-checked records, so ~60/run covers all records in about a week.
           POLICY_EDITORIAL_MAX_NEW: 60
