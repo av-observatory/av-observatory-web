@@ -19,9 +19,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "AR": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-11-01",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "official legislature site search is script-driven / returned errors to automated fetch; only partial leads from official-domain web search, no full-text docket sweep completed; checked date left unchanged"
  },
  "AZ": {
   "attempted": "2026-10-19",
@@ -46,9 +46,15 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "CO": {
-  "attempted": "2026-10-19",
-  "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "attempted": "2026-11-01",
+  "bills_found": [
+   "HB26-1286 (vetoed per digest; already tracked)"
+  ],
+  "searched": 1,
+  "sources_read": [
+   "https://leg.colorado.gov/bill-search?search_api_fulltext=autonomous%20vehicle"
+  ],
+  "unreadable": "official legislature site search is script-driven / returned errors to automated fetch; only partial leads from official-domain web search, no full-text docket sweep completed; checked date left unchanged"
  },
  "CT": {
   "attempted": "2026-10-19",
@@ -64,9 +70,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "DE": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-11-01",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "official legislature site search is script-driven / returned errors to automated fetch; only partial leads from official-domain web search, no full-text docket sweep completed; checked date left unchanged"
  },
  "FL": {
   "attempted": "2026-10-19",
@@ -90,9 +96,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "HI": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-11-01",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "official legislature site search is script-driven / returned errors to automated fetch; only partial leads from official-domain web search, no full-text docket sweep completed; checked date left unchanged"
  },
  "IA": {
   "attempted": "2026-10-19",
@@ -116,9 +122,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "IL": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-11-01",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "official legislature site search is script-driven / returned errors to automated fetch; only partial leads from official-domain web search, no full-text docket sweep completed; checked date left unchanged"
  },
  "IN": {
   "attempted": "2026-10-19",
@@ -134,9 +140,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "KY": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-11-01",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "official legislature site search is script-driven / returned errors to automated fetch; only partial leads from official-domain web search, no full-text docket sweep completed; checked date left unchanged"
  },
  "LA": {
   "attempted": "2026-10-19",
@@ -157,9 +163,16 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "MD": {
-  "attempted": "2026-10-19",
-  "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "attempted": "2026-11-01",
+  "bills_found": [
+   "HB 1295",
+   "SB 909 (already tracked)"
+  ],
+  "searched": 1,
+  "sources_read": [
+   "https://mgaleg.maryland.gov/mgawebsite/Search/Legislation?target=/mgawebsite/Legislation/Index/house&search=autonomous"
+  ],
+  "unreadable": "official legislature site search is script-driven / returned errors to automated fetch; only partial leads from official-domain web search, no full-text docket sweep completed; checked date left unchanged"
  },
  "ME": {
   "attempted": "2026-10-19",
@@ -177,9 +190,19 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "MN": {
-  "attempted": "2026-10-19",
-  "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "attempted": "2026-11-01",
+  "bills_found": [
+   "HF 3513",
+   "HF 4112",
+   "HF 4216",
+   "SF 4618",
+   "SF 4731 (all already tracked)"
+  ],
+  "searched": 1,
+  "sources_read": [
+   "https://www.revisor.mn.gov/search/?query=autonomous+vehicle&search_type=bills"
+  ],
+  "unreadable": "official legislature site search is script-driven / returned errors to automated fetch; only partial leads from official-domain web search, no full-text docket sweep completed; checked date left unchanged"
  },
  "MO": {
   "attempted": "2026-10-19",
@@ -200,9 +223,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "MT": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-11-01",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "official legislature site search is script-driven / returned errors to automated fetch; only partial leads from official-domain web search, no full-text docket sweep completed; checked date left unchanged"
  },
  "NC": {
   "attempted": "2026-10-19",
@@ -222,9 +245,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "NE": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-11-01",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "official legislature site search is script-driven / returned errors to automated fetch; only partial leads from official-domain web search, no full-text docket sweep completed; checked date left unchanged"
  },
  "NH": {
   "attempted": "2026-10-19",
@@ -242,9 +265,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "NM": {
-  "attempted": "2026-10-19",
-  "searched": 3,
-  "unreadable": "official-site search returned no AV bill pages (searched 3 pages)"
+  "attempted": "2026-11-01",
+  "searched": 0,
+  "unreadable": "official legislature site search is script-driven / returned errors to automated fetch; only partial leads from official-domain web search, no full-text docket sweep completed; checked date left unchanged"
  },
  "NV": {
   "attempted": "2026-10-19",
@@ -266,9 +289,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "OH": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-11-01",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "official legislature site search is script-driven / returned errors to automated fetch; only partial leads from official-domain web search, no full-text docket sweep completed; checked date left unchanged"
  },
  "OK": {
   "attempted": "2026-10-19",
@@ -286,9 +309,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "PA": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-11-01",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "official legislature site search is script-driven / returned errors to automated fetch; only partial leads from official-domain web search, no full-text docket sweep completed; checked date left unchanged"
  },
  "RI": {
   "attempted": "2026-10-19",
@@ -306,9 +329,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "SD": {
-  "attempted": "2026-10-19",
-  "searched": 5,
-  "unreadable": "HTTPError /; HTTPError /%EF%BF%BD; HTTPError /en/passports/apply/get-fast.html; HTTPError /en/passports/contact-support/us-passports.html; URLError / (searched 5 pages)"
+  "attempted": "2026-11-01",
+  "searched": 0,
+  "unreadable": "official legislature site search is script-driven / returned errors to automated fetch; only partial leads from official-domain web search, no full-text docket sweep completed; checked date left unchanged"
  },
  "TN": {
   "attempted": "2026-10-19",
@@ -328,9 +351,16 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "UT": {
-  "attempted": "2026-10-19",
-  "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "attempted": "2026-11-01",
+  "bills_found": [
+   "HB 581",
+   "SB 292 (already tracked)"
+  ],
+  "searched": 1,
+  "sources_read": [
+   "https://le.utah.gov/billlist.jsp?session=2026GS"
+  ],
+  "unreadable": "official legislature site search is script-driven / returned errors to automated fetch; only partial leads from official-domain web search, no full-text docket sweep completed; checked date left unchanged"
  },
  "VA": {
   "attempted": "2026-10-19",
@@ -350,9 +380,15 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "WA": {
-  "attempted": "2026-10-19",
-  "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "attempted": "2026-11-01",
+  "bills_found": [
+   "SB 6243 (stalled in Transportation committee since 2026-01-20; not added)"
+  ],
+  "searched": 1,
+  "sources_read": [
+   "https://app.leg.wa.gov/billsummary?BillNumber=6243&Year=2025"
+  ],
+  "unreadable": "official legislature site search is script-driven / returned errors to automated fetch; only partial leads from official-domain web search, no full-text docket sweep completed; checked date left unchanged"
  },
  "WI": {
   "attempted": "2026-10-19",
@@ -374,8 +410,8 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "WY": {
-  "attempted": "2026-10-19",
-  "searched": 10,
-  "unreadable": "HTTPError /myaccount/; HTTPError /myaccount/creating-an-account.html; HTTPError /ssi/spotlights/spot-loans.htm; insufficient_official_html /RIL/SiView.action (searched 10 pages)"
+  "attempted": "2026-11-01",
+  "searched": 0,
+  "unreadable": "official legislature site search is script-driven / returned errors to automated fetch; only partial leads from official-domain web search, no full-text docket sweep completed; checked date left unchanged"
  }
 }
