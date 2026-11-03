@@ -734,6 +734,23 @@
       "source_tier": "auto",
       "review_status": "auto_collected",
       "date_precision": "day"
+    },
+    {
+      "id": "auto-fr-2026-21794",
+      "level": "federal",
+      "jurisdiction": "US",
+      "title": "NHTSA proposes FMVSS 108 changes for ADS-equipped vehicles",
+      "summary": "NHTSA published a notice of proposed rulemaking (comments due November 25, 2026) to amend FMVSS No. 108 on lamps. For vehicles with Automated Driving Systems and no manually operated driving controls, it would limit manual turn signal, hazard warning and beam switching control requirements, narrow telltale requirements, and allow optional cyan-colored ADS marker lamps.",
+      "instrument": "proposed program",
+      "status": "historical_status_unverified",
+      "date": "2026-10-26",
+      "source_url": "https://www.federalregister.gov/documents/2026/10/26/2026-21794/federal-motor-vehicle-safety-standards-modernization-of-fmvss-no-108-to-accommodate-ads-equipped",
+      "verified_at": "2026-11-03",
+      "source_label": "Federal Register 2026-21794",
+      "source_tier": "auto",
+      "review_status": "auto_collected",
+      "date_precision": "day",
+      "takeaway": "NHTSA published a notice of proposed rulemaking (comments due November 25, 2026) to amend FMVSS No. 108 on lamps. For vehicles with Automated Driving Systems and no manually operated driving controls, it would limit manual turn signal, hazard warning and beam switching control requirements, narrow telltale requirements, and allow optional cyan-colored ADS marker lamps."
     }
   ],
   "states": [
@@ -3258,6 +3275,24 @@
       "editorial_source_url": "https://lis.virginia.gov/bill-details/20261/HB1124",
       "editorial_source_type": "official_bill_abstract",
       "summary_reviewed_at": "2026-10-19"
+    },
+    {
+      "id": "auto-ny-budget-ted-2026",
+      "level": "state",
+      "jurisdiction": "New York",
+      "state": "NY",
+      "title": "FY2027 transportation budget bill (A10008/S9008, Chapter 58): autonomous vehicle provisions",
+      "summary": "New York's transportation, economic development and environmental conservation budget bill (A10008C/S9008C), signed as Chapter 58 of 2026 on May 26, 2026, amends the Vehicle and Traffic Law to allow for-hire autonomous vehicles outside New York City and amends part FF of chapter 55 of the laws of 2017 (the autonomous vehicle technology testing provisions) as to their effectiveness. Effective dates for these parts were not established from the page read.",
+      "instrument": "legislation",
+      "status": "historical_status_unverified",
+      "date": "2026-05-26",
+      "source_url": "https://www.nysenate.gov/legislation/bills/2025/S9008",
+      "verified_at": "2026-11-03",
+      "source_label": "NY Senate, S9008C / A10008C (2026)",
+      "source_tier": "auto",
+      "review_status": "auto_collected",
+      "date_precision": "day",
+      "takeaway": "New York's transportation, economic development and environmental conservation budget bill (A10008C/S9008C), signed as Chapter 58 of 2026 on May 26, 2026, amends the Vehicle and Traffic Law to allow for-hire autonomous vehicles outside New York City and amends part FF of chapter 55 of the laws of 2017 (the autonomous vehicle technology testing provisions) as to their effectiveness. Effective dates for these parts were not established from the page read."
     }
   ],
   "city_events": [
