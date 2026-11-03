@@ -5,13 +5,13 @@
   "source_api": "https://data.sf.gov/resource/vw6y-z8j6.json",
   "selection": "Exact service_name match: Autonomous Vehicle Complaints. Other city request types and unclassified AV mentions are excluded.",
   "limitations": "These are public 311 requests, not verified incidents. The published subtypes describe how SF311 classified a request, not the specific behavior alleged. Operator identity is unavailable; the AV category begins in April 2025.",
-  "source_data_as_of": "2026-11-02T01:00:00.000",
-  "total_records": 1053,
+  "source_data_as_of": "2026-11-03T01:00:00.000",
+  "total_records": 1054,
   "markets": [
     {
       "market": "San Francisco",
       "state": "CA",
-      "complaints": 1053
+      "complaints": 1054
     }
   ],
   "monthly": [
@@ -128,6 +128,12 @@
       "market": "San Francisco",
       "state": "CA",
       "complaints": 70
+    },
+    {
+      "month": "2026-11",
+      "market": "San Francisco",
+      "state": "CA",
+      "complaints": 1
     }
   ],
   "records": [
@@ -16604,7 +16610,7 @@
       "requested_date": "2026-10-24",
       "month": "2026-10",
       "type": "incident_report",
-      "status": "Open",
+      "status": "Closed",
       "agency": "MTA - Autonomous Vehicles Complaints",
       "lat": 37.78530887,
       "long": -122.42429002,
@@ -16620,7 +16626,7 @@
       "requested_date": "2026-10-24",
       "month": "2026-10",
       "type": "incident_report",
-      "status": "Open",
+      "status": "Closed",
       "agency": "MTA - Autonomous Vehicles Complaints",
       "lat": 37.76783205,
       "long": -122.42808126,
@@ -16636,7 +16642,7 @@
       "requested_date": "2026-10-24",
       "month": "2026-10",
       "type": "incident_report",
-      "status": "Open",
+      "status": "Closed",
       "agency": "MTA - Autonomous Vehicles Complaints",
       "lat": 37.77655081,
       "long": -122.41761438,
@@ -16652,7 +16658,7 @@
       "requested_date": "2026-10-25",
       "month": "2026-10",
       "type": "incident_report",
-      "status": "Open",
+      "status": "Closed",
       "agency": "MTA - Autonomous Vehicles Complaints",
       "lat": 37.73838623,
       "long": -122.4479095,
@@ -16668,7 +16674,7 @@
       "requested_date": "2026-10-25",
       "month": "2026-10",
       "type": "incident_report",
-      "status": "Open",
+      "status": "Closed",
       "agency": "MTA - Autonomous Vehicles Complaints",
       "lat": 37.73099833,
       "long": -122.47192275,
@@ -16684,7 +16690,7 @@
       "requested_date": "2026-10-25",
       "month": "2026-10",
       "type": "incident_report",
-      "status": "Open",
+      "status": "Closed",
       "agency": "MTA - Autonomous Vehicles Complaints",
       "lat": 37.77193198,
       "long": -122.45381147,
@@ -16700,7 +16706,7 @@
       "requested_date": "2026-10-26",
       "month": "2026-10",
       "type": "incident_report",
-      "status": "Open",
+      "status": "Closed",
       "agency": "MTA - Autonomous Vehicles Complaints",
       "lat": 37.7526285022,
       "long": -122.4118998119,
@@ -16716,7 +16722,7 @@
       "requested_date": "2026-10-26",
       "month": "2026-10",
       "type": "incident_report",
-      "status": "Open",
+      "status": "Closed",
       "agency": "MTA - Autonomous Vehicles Complaints",
       "lat": 37.76182919,
       "long": -122.42115635,
@@ -16978,6 +16984,22 @@
       "long": -122.44595851,
       "neighborhood": "Panhandle",
       "source_url": "https://data.sf.gov/resource/vw6y-z8j6.json?service_request_id=202000249447"
+    },
+    {
+      "id": "SF-202000257086",
+      "source_id": "202000257086",
+      "state": "CA",
+      "market": "San Francisco",
+      "requested_datetime": "2026-11-02T22:10:30.000",
+      "requested_date": "2026-11-02",
+      "month": "2026-11",
+      "type": "incident_report",
+      "status": "Open",
+      "agency": "MTA - Autonomous Vehicles Complaints",
+      "lat": 37.7760394242,
+      "long": -122.4025241635,
+      "neighborhood": "South of Market",
+      "source_url": "https://data.sf.gov/resource/vw6y-z8j6.json?service_request_id=202000257086"
     }
   ]
 }
