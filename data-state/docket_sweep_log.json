@@ -14,9 +14,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "AL": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-11-03",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "not swept this run (time/tool limits)"
  },
  "AR": {
   "attempted": "2026-10-19",
@@ -41,9 +41,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "CA": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-11-03",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "leginfo.legislature.ca.gov returned HTTP 403"
  },
  "CO": {
   "attempted": "2026-10-19",
@@ -59,9 +59,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "DC": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-11-03",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "lims.dccouncil.gov is a JavaScript app; API returned HTML shell, no bill data"
  },
  "DE": {
   "attempted": "2026-10-19",
@@ -85,9 +85,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "GA": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-11-03",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "legis.ga.gov search not completed; only a web-search lead read"
  },
  "HI": {
   "attempted": "2026-10-19",
@@ -111,9 +111,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "ID": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-11-03",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "not swept this run (time/tool limits)"
  },
  "IL": {
   "attempted": "2026-10-19",
@@ -129,9 +129,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "KS": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-11-03",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "not swept this run (time/tool limits)"
  },
  "KY": {
   "attempted": "2026-10-19",
@@ -152,9 +152,22 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "MA": {
-  "attempted": "2026-10-19",
-  "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "attempted": "2026-11-03",
+  "bills_found": [
+   "H 1280",
+   "H 3634",
+   "H 3649",
+   "H 3669",
+   "S 2379",
+   "S 2393"
+  ],
+  "checked": "2026-11-03",
+  "searched": 1,
+  "sources_read": [
+   "https://malegislature.gov/Bills/Search?SearchTerms=autonomous",
+   "https://malegislature.gov/Bills/Search?SearchTerms=driverless"
+  ],
+  "unreadable": null
  },
  "MD": {
   "attempted": "2026-10-19",
@@ -172,9 +185,15 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "MI": {
-  "attempted": "2026-10-19",
-  "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "attempted": "2026-11-03",
+  "bills_found": [],
+  "checked": "2026-11-03",
+  "searched": 1,
+  "sources_read": [
+   "https://www.legislature.mi.gov/documents/2025-2026/publicact/htm/2026-PA-0066.htm",
+   "https://www.legislature.mi.gov/Bills/Bill?ObjectName=2026-HB-5995"
+  ],
+  "unreadable": null
  },
  "MN": {
   "attempted": "2026-10-19",
@@ -195,9 +214,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "MS": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-11-03",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "billstatus.ls.state.ms.us refused by egress proxy"
  },
  "MT": {
   "attempted": "2026-10-19",
@@ -217,9 +236,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "ND": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-11-03",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "not swept this run (time/tool limits)"
  },
  "NE": {
   "attempted": "2026-10-19",
@@ -237,9 +256,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "NJ": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-11-03",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "not swept this run (time/tool limits)"
  },
  "NM": {
   "attempted": "2026-10-19",
@@ -261,9 +280,16 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "NY": {
-  "attempted": "2026-10-19",
-  "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "attempted": "2026-11-03",
+  "bills_found": [
+   "A 10008",
+   "S 9008"
+  ],
+  "searched": 1,
+  "sources_read": [
+   "https://www.nysenate.gov/legislation/bills/2025/S9008"
+  ],
+  "unreadable": "only budget bill S9008/A10008 read; full-text AV search of nysenate.gov not completed this run, so checked date not advanced"
  },
  "OH": {
   "attempted": "2026-10-19",
@@ -281,9 +307,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "OR": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-11-03",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "olis API redirected to error; not swept"
  },
  "PA": {
   "attempted": "2026-10-19",
@@ -301,9 +327,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "SC": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-11-03",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "scstatehouse.gov searched via web search only; no full-text search completed"
  },
  "SD": {
   "attempted": "2026-10-19",
@@ -323,9 +349,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "TX": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-11-03",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "capitol.texas.gov is not in the session's allowed network domains (DNS failure)"
  },
  "UT": {
   "attempted": "2026-10-19",
@@ -345,9 +371,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "VT": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-11-03",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "not swept this run (time/tool limits)"
  },
  "WA": {
   "attempted": "2026-10-19",
@@ -369,9 +395,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "WV": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-11-03",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "wvlegislature.gov searched via web search only; no full-text search completed"
  },
  "WY": {
   "attempted": "2026-10-19",
