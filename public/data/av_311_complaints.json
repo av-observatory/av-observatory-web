@@ -5,13 +5,13 @@
   "source_api": "https://data.sf.gov/resource/vw6y-z8j6.json",
   "selection": "Exact service_name match: Autonomous Vehicle Complaints. Other city request types and unclassified AV mentions are excluded.",
   "limitations": "These are public 311 requests, not verified incidents. The published subtypes describe how SF311 classified a request, not the specific behavior alleged. Operator identity is unavailable; the AV category begins in April 2025.",
-  "source_data_as_of": "2026-11-03T01:00:00.000",
-  "total_records": 1054,
+  "source_data_as_of": "2026-11-04T01:00:00.000",
+  "total_records": 1059,
   "markets": [
     {
       "market": "San Francisco",
       "state": "CA",
-      "complaints": 1054
+      "complaints": 1059
     }
   ],
   "monthly": [
@@ -133,7 +133,7 @@
       "month": "2026-11",
       "market": "San Francisco",
       "state": "CA",
-      "complaints": 1
+      "complaints": 6
     }
   ],
   "records": [
@@ -17000,6 +17000,86 @@
       "long": -122.4025241635,
       "neighborhood": "South of Market",
       "source_url": "https://data.sf.gov/resource/vw6y-z8j6.json?service_request_id=202000257086"
+    },
+    {
+      "id": "SF-202000257999",
+      "source_id": "202000257999",
+      "state": "CA",
+      "market": "San Francisco",
+      "requested_datetime": "2026-11-03T08:55:58.000",
+      "requested_date": "2026-11-03",
+      "month": "2026-11",
+      "type": "incident_report",
+      "status": "Open",
+      "agency": "MTA - Autonomous Vehicles Complaints",
+      "lat": 37.7273106742,
+      "long": -122.3708198208,
+      "neighborhood": "Hunters Point",
+      "source_url": "https://data.sf.gov/resource/vw6y-z8j6.json?service_request_id=202000257999"
+    },
+    {
+      "id": "SF-202000258059",
+      "source_id": "202000258059",
+      "state": "CA",
+      "market": "San Francisco",
+      "requested_datetime": "2026-11-03T09:11:56.000",
+      "requested_date": "2026-11-03",
+      "month": "2026-11",
+      "type": "incident_report",
+      "status": "Open",
+      "agency": "MTA - Autonomous Vehicles Complaints",
+      "lat": 37.8043548185,
+      "long": -122.4234660109,
+      "neighborhood": "Russian Hill",
+      "source_url": "https://data.sf.gov/resource/vw6y-z8j6.json?service_request_id=202000258059"
+    },
+    {
+      "id": "SF-202000258167",
+      "source_id": "202000258167",
+      "state": "CA",
+      "market": "San Francisco",
+      "requested_datetime": "2026-11-03T09:39:07.000",
+      "requested_date": "2026-11-03",
+      "month": "2026-11",
+      "type": "incident_report",
+      "status": "Open",
+      "agency": "MTA - Autonomous Vehicles Complaints",
+      "lat": 37.78442563,
+      "long": -122.404236,
+      "neighborhood": "South of Market",
+      "source_url": "https://data.sf.gov/resource/vw6y-z8j6.json?service_request_id=202000258167"
+    },
+    {
+      "id": "SF-202000258732",
+      "source_id": "202000258732",
+      "state": "CA",
+      "market": "San Francisco",
+      "requested_datetime": "2026-11-03T12:08:40.000",
+      "requested_date": "2026-11-03",
+      "month": "2026-11",
+      "type": "incident_report",
+      "status": "Open",
+      "agency": "MTA - Autonomous Vehicles Complaints",
+      "lat": 37.7517641,
+      "long": -122.42797501,
+      "neighborhood": "Noe Valley",
+      "source_url": "https://data.sf.gov/resource/vw6y-z8j6.json?service_request_id=202000258732"
+    },
+    {
+      "id": "SF-202000260220",
+      "source_id": "202000260220",
+      "state": "CA",
+      "market": "San Francisco",
+      "requested_datetime": "2026-11-03T21:24:15.000",
+      "requested_date": "2026-11-03",
+      "month": "2026-11",
+      "type": "incident_report",
+      "status": "Open",
+      "agency": "MTA - Autonomous Vehicles Complaints",
+      "lat": 37.74968453,
+      "long": -122.41943615,
+      "neighborhood": "Mission",
+      "source_url": "https://data.sf.gov/resource/vw6y-z8j6.json?service_request_id=202000260220"
     }
   ]
 }
