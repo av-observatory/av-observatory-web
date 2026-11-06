@@ -5,7 +5,9 @@ Replace public/data/sgo_incidents_all_versions.csv with a newly reviewed source
 export, then run this script. Raw versions remain available for audit.
 """
 import csv
+import hashlib
 import json
+from datetime import date
 from collections import Counter
 from pathlib import Path
 
@@ -79,6 +81,22 @@ def main():
     summary["monthly_by_entity"] = packed(entities, "reporting_entity")
     summary["monthly_by_vehicle_class"] = packed(vehicles, "vehicle_class")
     summary["monthly_by_program_type"] = packed(programs, "program_type")
+
+    # Dates shown on the site. NHTSA releases cover reports filed through the 15th of the
+    # newest submission month. last_updated changes only when the latest-version snapshot does.
+    months = "JAN FEB MAR APR MAY JUN JUL AUG SEP OCT NOV DEC".split()
+    filed = []
+    for row in selected:
+        stamp = row.get("report_submission_date", "").strip().upper().split("-")
+        if len(stamp) == 2 and stamp[0] in months and stamp[1].isdigit():
+            filed.append((int(stamp[1]), months.index(stamp[0]) + 1))
+    if filed:
+        y, m = max(filed)
+        summary["data_through"] = f"{y}-{m:02d}-15"
+    digest = hashlib.sha256(json.dumps(sorted((r["report_id"].strip(), r["report_version"].strip()) for r in selected)).encode()).hexdigest()
+    if summary.get("snapshot_sha256") != digest or "last_updated" not in summary:
+        summary["last_updated"] = date.today().isoformat()
+        summary["snapshot_sha256"] = digest
     SUMMARY.write_text(json.dumps(summary, indent=2, ensure_ascii=False) + "\n")
     assert len(selected) == len({row["report_id"] for row in selected})
     assert sum(national.values()) == sum(states.values()) == sum(entities.values()) == sum(vehicles.values()) == sum(programs.values())

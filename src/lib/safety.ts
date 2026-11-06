@@ -9,6 +9,15 @@ export const SGO_COMPLETE_THROUGH = {
   month: ((newestMonth - 2) % 12) + 1,
 } as const;
 
+// Release coverage and refresh date, written by scripts/refresh-sgo-snapshot.py.
+const sgoMeta = sgoMonthly as { data_through?: string; last_updated?: string };
+export const SGO_DATA_THROUGH: string | null = sgoMeta.data_through ?? null;
+export const SGO_LAST_UPDATED: string | null = sgoMeta.last_updated ?? null;
+export function formatIsoDate(iso: string): string {
+  const [y, m, d] = iso.split("-").map(Number);
+  return new Date(Date.UTC(y, m - 1, d)).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" });
+}
+
 export interface SgoMonthlyDataset {
   dataset: string;
   source: string;

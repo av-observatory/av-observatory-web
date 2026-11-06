@@ -1,10 +1,10 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { Area, AreaChart, CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+import { Area, AreaChart, CartesianGrid, Legend, ReferenceArea, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { AXIS_PROPS, GRID_PROPS, LEGEND_PROPS, SERIES_ORDER, TOOLTIP_PROPS } from "@/lib/chartTheme";
 import { useMonthAxis } from "@/components/MonthAxis";
-import { isCompleteSgoMonth } from "@/lib/safety";
+import { isCompleteSgoMonth, SGO_DATA_THROUGH, formatIsoDate } from "@/lib/safety";
 import { monthLabel } from "@/lib/activity";
 import { companyName } from "@/components/SgoCompanyExplorer";
 import type { SgoIncidentRow } from "@/components/SgoDeepDive";
@@ -17,11 +17,11 @@ export function SgoCompanyMix({ rows }: { rows: SgoIncidentRow[] }) {
   const data = useMemo(() => rows.flatMap(r => {
     const m = /^([A-Z]{3})-(\d{4})$/i.exec(r.incident_date || "");
     const i = m ? MONTHS.indexOf(m[1].toUpperCase()) : -1;
-    if (!m || i < 0 || r.automation_system_engaged !== "ADS" || !isCompleteSgoMonth(Number(m[2]), i + 1)) return [];
+    if (!m || i < 0 || r.automation_system_engaged !== "ADS") return [];
     return [{ ym: Number(m[2]) * 12 + i, company: companyName(r.reporting_entities || r.reporting_entity || "") }];
   }), [rows]);
 
-  const { names, series, years, table } = useMemo(() => {
+  const { names, series, years, table, partialLabels, shadeFrom } = useMemo(() => {
     const totals = new Map<string, number>();
     for (const r of data) totals.set(r.company, (totals.get(r.company) ?? 0) + 1);
     const ranked = Array.from(totals).sort((a, b) => b[1] - a[1]).map(([n]) => n);
@@ -36,7 +36,11 @@ export function SgoCompanyMix({ rows }: { rows: SgoIncidentRow[] }) {
     });
     const years = Array.from(new Set(data.map(r => Math.floor(r.ym / 12)))).sort();
     const table = [...names, "All others"].map(n => ({ name: n, byYear: years.map(y => data.filter(r => Math.floor(r.ym / 12) === y && (n === "All others" ? !names.includes(r.company) : r.company === n)).length) }));
-    return { names, series, years, table };
+    // Months after the complete-through cutoff are still being reported; shade them.
+    const firstPartial = series.findIndex((_, k) => !isCompleteSgoMonth(Math.floor((lo + k) / 12), ((lo + k) % 12) + 1));
+    const partialLabels = firstPartial < 0 ? [] : series.slice(firstPartial).map(r => String(r.label));
+    const shadeFrom = firstPartial > 0 ? String(series[firstPartial - 1].label) : partialLabels[0];
+    return { names, series, years, table, partialLabels, shadeFrom };
   }, [data]);
 
   const { axis, onResize } = useMonthAxis(series.length);
@@ -59,6 +63,7 @@ export function SgoCompanyMix({ rows }: { rows: SgoIncidentRow[] }) {
           <CartesianGrid {...GRID_PROPS} /><XAxis dataKey="label" {...axis} />
           <YAxis {...AXIS_PROPS} allowDecimals={false} domain={mode === "share" ? [0, 1] : [0, "auto"]} ticks={mode === "share" ? [0, 0.25, 0.5, 0.75, 1] : undefined} tickFormatter={v => mode === "share" ? `${Math.round(Number(v) * 100)}%` : String(v)} />
           <Tooltip {...TOOLTIP_PROPS} /><Legend {...LEGEND_PROPS} />
+          {partialLabels.length > 0 && <ReferenceArea x1={shadeFrom} x2={partialLabels[partialLabels.length - 1]} fill="#9aa5b1" fillOpacity={0.15} strokeOpacity={0} label={{ value: "Partial", position: "insideTopRight", fill: "#5b6673", fontSize: 11 }} />}
           {keys.map((n, i) => <Area key={n} type="monotone" dataKey={n} stackId="1" stroke={SERIES_ORDER[i % SERIES_ORDER.length]} fill={SERIES_ORDER[i % SERIES_ORDER.length]} fillOpacity={0.75} />)}
         </AreaChart>
       </ResponsiveContainer>
@@ -67,7 +72,7 @@ export function SgoCompanyMix({ rows }: { rows: SgoIncidentRow[] }) {
         <tbody>{table.map(t => <tr key={t.name} className="border-t border-[#e6edf3]"><td className="py-1.5 font-medium">{t.name}</td>{t.byYear.map((n, i) => <td key={i} className="text-right tabular-nums">{n.toLocaleString()}</td>)}<td className="text-right tabular-nums font-medium">{t.byYear.reduce((a, b) => a + b, 0).toLocaleString()}</td></tr>)}
           <tr className="border-t-2 border-[#cbd9e8] font-semibold"><td className="py-1.5">All ADS crashes</td>{yearTotals.map((n, i) => <td key={i} className="text-right tabular-nums">{n.toLocaleString()}</td>)}<td className="text-right tabular-nums">{yearTotals.reduce((a, b) => a + b, 0).toLocaleString()}</td></tr></tbody>
       </table></div>
-      <p className="text-xs text-neutral-500 mt-2">The latest year is partial. Counts are SGO reports, not adjusted for miles driven, and do not establish fault.</p>
+      <p className="text-xs text-neutral-500 mt-2">{partialLabels.length > 0 && <>{partialLabels.join(", ")} {partialLabels.length > 1 ? "are" : "is"} partial{SGO_DATA_THROUGH ? `, with reports filed through ${formatIsoDate(SGO_DATA_THROUGH)}` : ""}, and will rise as late reports arrive. </>}The latest year is partial. Counts are SGO reports, not adjusted for miles driven, and do not establish fault.</p>
     </div>
   </div>;
 }

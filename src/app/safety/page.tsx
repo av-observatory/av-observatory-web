@@ -1,6 +1,6 @@
 import { promises as fs } from "fs";
 import path from "path";
-import { SgoMonthlyDataset, isCompleteSgoMonth, SGO_COMPLETE_THROUGH } from "@/lib/safety";
+import { SgoMonthlyDataset, isCompleteSgoMonth, SGO_COMPLETE_THROUGH, SGO_DATA_THROUGH, SGO_LAST_UPDATED, formatIsoDate } from "@/lib/safety";
 import { monthLabel } from "@/lib/activity";
 import { ChartCard } from "@/components/ChartCard";
 import { StatTile } from "@/components/StatTile";
@@ -160,7 +160,12 @@ export default async function SafetyPage() {
     <div className="max-w-6xl px-8 py-6">
       <p className="eyebrow mb-3">United States · Crash Reporting</p>
       <h1 className="text-4xl font-semibold tracking-tight max-w-3xl">US Crash Tracker</h1>
-      <p className="mt-2 text-sm text-neutral-600 max-w-3xl">NHTSA SGO incident reports by reporting entity, geography, vehicle, roadway, collision counterpart, injury severity, and reported ODD status. {excludedLabel} is currently incomplete and excluded.</p>
+      {(SGO_DATA_THROUGH || SGO_LAST_UPDATED) && <p className="mt-2 text-sm font-medium text-[#123b69]">
+        {SGO_DATA_THROUGH && <>NHTSA reports filed through {formatIsoDate(SGO_DATA_THROUGH)}</>}
+        {SGO_DATA_THROUGH && SGO_LAST_UPDATED && " · "}
+        {SGO_LAST_UPDATED && <>Updated {formatIsoDate(SGO_LAST_UPDATED)}</>}
+      </p>}
+      <p className="mt-2 text-sm text-neutral-600 max-w-3xl">NHTSA SGO incident reports by reporting entity, geography, vehicle, roadway, collision counterpart, injury severity, and reported ODD status. {excludedLabel} is still being reported, so it is excluded from totals and most trends; the company chart below shows it as a partial month.</p>
 
       <div className="mt-5 grid sm:grid-cols-3 gap-2.5">
         <StatTile label="Deduplicated Crashes" value={completedCrashRows.length.toLocaleString()} caption={`Unique dated crashes through ${completeThrough}; cross-entity filings merged`} />
