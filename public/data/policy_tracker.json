@@ -734,6 +734,23 @@
       "source_tier": "auto",
       "review_status": "auto_collected",
       "date_precision": "day"
+    },
+    {
+      "id": "auto-fr-2026-21794",
+      "level": "federal",
+      "jurisdiction": "US",
+      "title": "NHTSA proposed rule: FMVSS No. 108 modernization for ADS-equipped vehicles",
+      "summary": "NHTSA proposed amending FMVSS No. 108 (lamps, reflective devices and associated equipment) to remove unnecessary requirements and add design flexibility, including limiting certain manual turn signal, hazard and beam switch requirements to vehicles with manual driving controls and allowing cyan ADS marker lamps as optional equipment on ADS-equipped vehicles. Comments are due November 25, 2026 (docket NHTSA-2026-1519).",
+      "takeaway": "NHTSA proposed amending FMVSS No. 108 (lamps, reflective devices and associated equipment) to remove unnecessary requirements and add design flexibility, including limiting certain manual turn signal, hazard and beam switch requirements to vehicles with manual driving controls and allowing cyan ADS marker lamps as optional equipment on ADS-equipped vehicles. Comments are due November 25, 2026 (docket NHTSA-2026-1519).",
+      "instrument": "FMVSS rulemaking",
+      "status": "under_review",
+      "date": "2026-10-26",
+      "source_url": "https://www.federalregister.gov/documents/2026/10/26/2026-21794/federal-motor-vehicle-safety-standards-modernization-of-fmvss-no-108-to-accommodate-ads-equipped",
+      "verified_at": "2026-11-06",
+      "source_label": "Federal Register 2026-21794",
+      "source_tier": "auto",
+      "review_status": "auto_collected",
+      "date_precision": "day"
     }
   ],
   "states": [
