@@ -626,8 +626,17 @@
     }
   ],
   "country_scope_note": "Coverage registry includes sovereign states conventionally treated as wholly or partly European, plus Kosovo. Inclusion in the registry is geographic/editorial and does not imply EU membership or a position on political status.",
-  "media_watch_checked_at": "2026-11-05",
+  "media_watch_checked_at": "2026-11-06",
   "media_watch": [
+    {
+      "title": "Madrid ensayará los coches autónomos entre dudas sobre accidentes, seguros y responsabilidad",
+      "publisher": "RTVE.es",
+      "published": "2026-11-06",
+      "url": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxPdEhKTE9rMjFONlI4RzFPV3hIS1Jnd0FualU5YU5STjI1eTlONzdQbXN2TXRWYUJvYmVHaHoxWTJzRm90Y19Tcm9WRVgxNExyQnNVQUI0SzJoUEs2ODk3OTNwZzJKVWY3RloyUDMtVDQ5MWdSLW5CTXJvZ0xISzRiZ09LVXpVYUZkeWxKTVBoblJqVVo2UVpFc3pUcjRHVzkxRjVfRml1VGlWeXJOOFJINnFEbjBxQkl4REx1c2U2ZlVJMFFsZG5YVVhmT2xobUwySVRBNQ?oc=5",
+      "query_language": "es",
+      "first_seen": "2026-11-06",
+      "status": "unverified media headline; not counted as a crash"
+    },
     {
       "title": "Tallinn: Selbstfahrender Lieferroboter kollidiert in Estland mit Bus – mehrere Verletzte",
       "publisher": "WELT",
