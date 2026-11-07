@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Refresh the policy tracker from official public sources, using Claude to read them.
+"""Refresh the policy tracker from official public sources, using OpenAI to read them.
 
 Three candidate sources:
   1. Federal Register documents from NHTSA / FMCSA about automated vehicles.
@@ -15,7 +15,7 @@ Safety rules (the model is only a reader, never the authority):
   * A failed fetch or model error is never treated as a change.
 
 Usage: refresh-policy.py [--dry-run] [--open-issues] [--max-review N]
-Requires ANTHROPIC_API_KEY unless --dry-run (dry run only lists what would be sent).
+Requires OPENAI_API_KEY unless --dry-run (dry run only lists what would be sent).
 """
 from __future__ import annotations
 
@@ -38,7 +38,7 @@ ROOT = Path(__file__).resolve().parents[1]
 POLICY = ROOT / "public/data/policy_tracker.json"
 LEGISLATION = ROOT / "public/data/legislation_tracker.json"
 STATE = ROOT / "data-state/policy_source_state.json"  # not published; tracks page hashes
-MODEL = "claude-sonnet-5-5"  # classification with verbatim-quote checks; cheaper than Opus
+MODEL = os.getenv("POLICY_EDITORIAL_MODEL", "gpt-6-luna")
 UA = "AV-Observatory-PolicyBot/1.0 (+https://av-observatory.com)"
 TODAY = date.today().isoformat()
 MAX_TEXT = 60_000
@@ -154,27 +154,6 @@ def _document_text(node):
     return None
 
 
-def claude_fetch_text(url: str):
-    """Last resort: Anthropic's web-fetch tool fetches from different IP addresses than GitHub's."""
-    global WEBFETCH_BUDGET
-    if CLIENT is None or WEBFETCH_BUDGET <= 0:
-        return None, "model-fetch-unavailable"
-    WEBFETCH_BUDGET -= 1
-    try:
-        resp = CLIENT.messages.create(
-            model=MODEL, max_tokens=1000,
-            tools=[{"type": "web_fetch_20260209", "name": "web_fetch", "max_uses": 1}],
-            messages=[{"role": "user", "content": f"Fetch {url} and reply with the single word: done."}])
-        for block in resp.content:
-            if getattr(block, "type", "") == "web_fetch_tool_result":
-                text = _document_text(block.model_dump())
-                if text:
-                    return re.sub(r"\s+", " ", text).strip()[:MAX_TEXT], None
-        return None, "model-fetch-empty"
-    except Exception as exc:
-        return None, f"model-fetch:{exc.__class__.__name__}"
-
-
 @functools.lru_cache(maxsize=512)
 def fetch_ladder(url: str):
     """Escalate until a page is readable. Returns (text, method, error). Never skips silently."""
@@ -185,7 +164,7 @@ def fetch_ladder(url: str):
         if text and not BLOCK_RE.search(text[:500]):
             return text, method, None
         errors.append(f"{method}:{err or 'blocked-or-empty'}")
-    for method, fn in (("headless-browser", browser_text), ("model-web-fetch", claude_fetch_text)):
+    for method, fn in (("headless-browser", browser_text),):
         text, err = fn(url)
         if text and not BLOCK_RE.search(text[:500]):
             return text, method, None
@@ -357,6 +336,12 @@ and say so in the summary). If unsure use historical_status_unverified. Never in
 document shows the entry's status, instrument or date is no longer accurate; "not_applicable" if irrelevant."""
 
 
+@functools.lru_cache(maxsize=1)
+def _editorial_invoke():
+    import runpy
+    return runpy.run_path(str(Path(__file__).with_name("ai-policy-editorial.py")))["invoke"]
+
+
 def ask(client, candidate):
     if candidate["kind"] == "new":
         prompt = f"Classify this {candidate['level']} document for the tracker.\nSource: {candidate['source_url']}\n\n<document>\n{candidate['text']}\n</document>"
@@ -366,16 +351,10 @@ def ask(client, candidate):
         prompt = (f"Existing tracker entry (JSON): {json.dumps(existing)}\nThe cited source page changed. "
                   f"Decide whether the entry is still accurate.\nSource: {candidate['source_url']}\n\n"
                   f"<document>\n{candidate['text']}\n</document>")
-    response = client.messages.create(
-        model=MODEL, max_tokens=4000, system=SYSTEM,
-        messages=[{"role": "user", "content": prompt}],
-        output_config={"effort": "medium", "format": {"type": "json_schema", "schema": SCHEMA}},
-    )
-    if response.stop_reason == "refusal":
-        print(f"  model declined: {candidate['label']}")
-        return None
-    text = next((b.text for b in response.content if b.type == "text"), None)
-    return json.loads(text) if text else None
+    # Reuse the same caller across candidates so per-process token accounting persists.
+    invoke=_editorial_invoke()
+    return invoke([{"role":"system","content":SYSTEM+"\nReturn a JSON object matching this schema: "+json.dumps(SCHEMA)},
+                   {"role":"user","content":prompt}])
 
 
 def verified(result, candidate) -> bool:
@@ -456,8 +435,9 @@ def main() -> int:
 
     global CLIENT
     if not args.dry_run:
-        import anthropic  # imported late so --dry-run needs no SDK
-        CLIENT = anthropic.Anthropic()
+        if not os.getenv("OPENAI_API_KEY"):
+            raise RuntimeError("OPENAI_API_KEY is not configured")
+        CLIENT = True
     candidates = (federal_register_candidates(policy)[: args.max_new]
                   + new_law_candidates(policy, legislation)[: args.max_new]
                   + changed_source_candidates(policy, state, args.max_review))

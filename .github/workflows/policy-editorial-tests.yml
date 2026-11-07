@@ -32,9 +32,7 @@ jobs:
           python3 scripts/publish-r2-data.py legislation --file public/data/legislation_tracker.json --dry-run > /dev/null
           python3 scripts/publish-r2-data.py policy --file public/data/policy_tracker.json --dry-run > /dev/null
 
-      - name: Bounded live AI and official-text test
-        if: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository && github.actor != 'dependabot[bot]' }}
-        env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          OPENSTATES_API_KEY: ${{ secrets.OPENSTATES_API_KEY }}
-        run: python3 scripts/test-policy-live.py
+      - name: Verify OpenAI migration stays key-free in CI
+        run: |
+          python3 -m py_compile scripts/ai-policy-editorial.py scripts/refresh-policy.py scripts/sweep-state-legislatures.py scripts/refresh-av-bill-progress.py scripts/audit-editorial-quality.py scripts/probe-model.py
+          python3 scripts/test-policy-editorial.py
