@@ -734,6 +734,23 @@
       "source_tier": "auto",
       "review_status": "auto_collected",
       "date_precision": "day"
+    },
+    {
+      "id": "auto-fr-2026-21794",
+      "level": "federal",
+      "jurisdiction": "US",
+      "title": "NHTSA proposes FMVSS No. 108 lighting changes for ADS-equipped vehicles",
+      "summary": "NHTSA published a proposed rule (Docket NHTSA-2026-1519) to modernize FMVSS No. 108 (lamps and reflective devices): limiting certain manual turn signal, hazard and beam switch requirements and telltales to vehicles with manual driving controls, and permitting cyan ADS marker lamps as optional equipment on automated vehicles. Comments close November 25, 2026.",
+      "takeaway": "NHTSA published a proposed rule (Docket NHTSA-2026-1519) to modernize FMVSS No. 108 (lamps and reflective devices): limiting certain manual turn signal, hazard and beam switch requirements and telltales to vehicles with manual driving controls, and permitting cyan ADS marker lamps as optional equipment on automated vehicles. Comments close November 25, 2026.",
+      "instrument": "proposed program",
+      "status": "historical_status_unverified",
+      "date": "2026-10-26",
+      "source_url": "https://www.federalregister.gov/documents/2026/10/26/2026-21794/federal-motor-vehicle-safety-standards-modernization-of-fmvss-no-108-to-accommodate-ads-equipped",
+      "verified_at": "2026-11-07",
+      "source_label": "Federal Register 2026-21794",
+      "source_tier": "auto",
+      "review_status": "auto_collected",
+      "date_precision": "day"
     }
   ],
   "states": [
@@ -3258,6 +3275,24 @@
       "editorial_source_url": "https://lis.virginia.gov/bill-details/20261/HB1124",
       "editorial_source_type": "official_bill_abstract",
       "summary_reviewed_at": "2026-10-19"
+    },
+    {
+      "id": "auto-ny-s9008-2026",
+      "level": "state",
+      "jurisdiction": "New York",
+      "title": "Chapter 58 (S9008C Part E): AV testing authority extended to 2028",
+      "summary": "New York budget legislation (S9008C Part E, signed as Chapter 58 on May 26, 2026) extends the expiration of the state's autonomous vehicle technology testing authority from April 1, 2026 to April 1, 2028.",
+      "takeaway": "New York budget legislation (S9008C Part E, signed as Chapter 58 on May 26, 2026) extends the expiration of the state's autonomous vehicle technology testing authority from April 1, 2026 to April 1, 2028.",
+      "instrument": "legislation",
+      "status": "in_effect",
+      "date": "2026-05-26",
+      "source_url": "https://www.nysenate.gov/legislation/bills/2025/S9008",
+      "verified_at": "2026-11-07",
+      "state": "NY",
+      "source_label": "New York State Senate, S9008C (2026) Chapter 58",
+      "source_tier": "auto",
+      "review_status": "auto_collected",
+      "date_precision": "day"
     }
   ],
   "city_events": [
