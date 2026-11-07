@@ -1,17 +1,17 @@
 {
  "AK": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-11-02",
   "bills_found": [
    "HB 217",
    "SB 148 (stalled in committee)"
   ],
-  "checked": "2026-10-15",
+  "checked": "2026-11-02",
   "searched": 0,
   "sources_read": [
    "https://www.akleg.gov/basis/Bill/Detail/34?Root=HB%20217",
-   "https://www.akleg.gov/basis/Bill/Detail/34?Root=SB+148"
+   "https://www.akleg.gov/basis/Bill/Detail/34?Root=SB%20148"
   ],
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": null
  },
  "AL": {
   "attempted": "2026-10-19",
@@ -24,21 +24,19 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "AZ": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-11-02",
   "bills_found": [
    "SB 1320",
-   "SB 1552 (AV provisions unverified in signed text)",
-   "SB 1417 (held)",
-   "SB 1466 (held)"
+   "SB 1466",
+   "SB 1417"
   ],
-  "checked": "2026-10-15",
+  "checked": "2026-11-02",
   "searched": 0,
   "sources_read": [
-   "https://apps.azleg.gov/api/Bill/?sessionID=130",
-   "https://apps.azleg.gov/api/Bill/?sessionID=129",
-   "https://www.azleg.gov/legtext/57leg/2R/bills/SB1417P.pdf"
+   "https://apps.azleg.gov/BillStatus/BillOverview/82704?SessionId=129",
+   "https://apps.azleg.gov/BillStatus/BillOverview/84971?SessionId=130"
   ],
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "57th 2nd regular session index returned HTTP 500; first-session index and known bills read"
  },
  "CA": {
   "attempted": "2026-10-19",
@@ -51,12 +49,14 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "CT": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-11-02",
   "bills_found": [],
-  "checked": null,
+  "checked": "2026-11-02",
   "searched": 0,
-  "sources_read": [],
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "sources_read": [
+   "https://www.cga.ct.gov/asp/cgabillstatus/cgabillstatus.asp?selBillType=Bill&bill_num=SB1377&which_year=2025"
+  ],
+  "unreadable": "2025 and 2026 bill indexes enumerated (5355 bills, titles+text scanned); only candidate SB 1377 (DOT recommendations) page returned HTTP 503 on re-read"
  },
  "DC": {
   "attempted": "2026-10-19",
@@ -69,20 +69,18 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "FL": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-11-02",
   "bills_found": [
-   "HB 1469 (dead)",
-   "SB 1616 (dead)",
-   "SB 1258 (dead)"
+   "HB 1469",
+   "SB 1258 (died in Transportation 2026-03-13)"
   ],
-  "checked": "2026-10-15",
+  "checked": "2026-11-02",
   "searched": 0,
   "sources_read": [
-   "https://www.flsenate.gov/Session/Bill/2026/1469",
-   "https://www.flsenate.gov/Session/Bill/2026/1616",
-   "https://www.flsenate.gov/Session/Bill/2026/1258"
+   "https://www.flsenate.gov/Session/Bill/2026/1258",
+   "https://www.flsenate.gov/Session/Bill/2026/1469"
   ],
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": null
  },
  "GA": {
   "attempted": "2026-10-19",
@@ -95,20 +93,20 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "IA": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-11-02",
   "bills_found": [
    "HF 2673",
    "SF 2384",
-   "HSB 598",
-   "SSB 3052"
+   "HF 2375",
+   "SF 2034"
   ],
-  "checked": "2026-10-15",
+  "checked": "2026-11-02",
   "searched": 0,
   "sources_read": [
-   "https://www.legis.iowa.gov/legislation/billTracking/billHistory?billName=SF2384&ga=91",
-   "https://www.legis.iowa.gov/legislation/BillBook?ba=HF2673&ga=91"
+   "https://www.legis.iowa.gov/legislation/BillBook?ga=91&ba=HF2375",
+   "https://www.legis.iowa.gov/legislation/BillBook?ga=91&ba=SF2034"
   ],
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "Bill history pages are collapsed in the fetched HTML; HF 2375/SF 2034 status not confirmed (GA 91 2026 session adjourned)"
  },
  "ID": {
   "attempted": "2026-10-19",
@@ -121,12 +119,16 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "IN": {
-  "attempted": "2026-10-19",
-  "bills_found": [],
-  "checked": null,
+  "attempted": "2026-11-02",
+  "bills_found": [
+   "HB 1377 (2025, unconfirmed)"
+  ],
+  "checked": "2026-11-02",
   "searched": 0,
-  "sources_read": [],
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "sources_read": [
+   "https://iga.in.gov/pdf-documents/124/2025/house/bills/HB1377/HB1377.01.INTR.pdf"
+  ],
+  "unreadable": "HB 1377 flagged by text scan; status page not re-read"
  },
  "KS": {
   "attempted": "2026-10-19",
@@ -139,17 +141,16 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "LA": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-11-02",
   "bills_found": [
    "SB 133"
   ],
-  "checked": "2026-10-15",
+  "checked": "2026-11-02",
   "searched": 0,
   "sources_read": [
-   "https://www.legis.la.gov/legis/BillInfo.aspx?s=26RS&b=SB133&sbi=y",
-   "https://www.legis.la.gov/legis/ViewDocument.aspx?d=1480149"
+   "https://legis.la.gov/"
   ],
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "legis.la.gov reachable only intermittently; SB 133 already tracked"
  },
  "MA": {
   "attempted": "2026-10-19",
@@ -162,14 +163,14 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "ME": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-11-02",
   "bills_found": [],
-  "checked": "2026-10-15",
+  "checked": "2026-11-02",
   "searched": 0,
   "sources_read": [
-   "https://legislature.maine.gov/legis/bills/display_ps.asp?LD=1209&snum=132"
+   "https://legislature.maine.gov/"
   ],
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": null
  },
  "MI": {
   "attempted": "2026-10-19",
@@ -182,17 +183,22 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "MO": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-11-02",
   "bills_found": [
-   "SB 1050 (hearing only; session over)",
-   "HB 2069 (not read)"
+   "HB 2069",
+   "HB 2208 (merged into HCS HB 2069)",
+   "SB 1050",
+   "HB 2240, HB 3034, HB 3365, HB 1166 (flagged by text scan, not re-read)"
   ],
-  "checked": "2026-10-15",
+  "checked": "2026-11-02",
   "searched": 0,
   "sources_read": [
+   "https://documents.house.mo.gov/billtracking/bills261/sumpdf/HB2069P.pdf",
+   "https://documents.house.mo.gov/billtracking/bills261/sumpdf/HB2069C.pdf",
+   "https://documents.house.mo.gov/billtracking/bills261/rollcalls/035.006.pdf",
    "https://www.senate.mo.gov/BillTracking/Bills/BillInformation?year=2026&billid=277"
   ],
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "house.mo.gov bill pages blocked by network policy; read documents.house.mo.gov summaries and roll calls instead. Final disposition of HB 2069 not confirmed"
  },
  "MS": {
   "attempted": "2026-10-19",
@@ -205,16 +211,14 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "NC": {
-  "attempted": "2026-10-19",
-  "bills_found": [
-   "H 394 (incidental AV exemption)"
-  ],
-  "checked": "2026-10-15",
+  "attempted": "2026-11-02",
+  "bills_found": [],
+  "checked": "2026-11-02",
   "searched": 0,
   "sources_read": [
-   "https://www.ncleg.gov/BillLookUp/2025/H394"
+   "https://www.ncleg.gov/"
   ],
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": null
  },
  "ND": {
   "attempted": "2026-10-19",
@@ -227,14 +231,14 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "NH": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-11-02",
   "bills_found": [],
   "checked": "2026-10-15",
   "searched": 0,
   "sources_read": [
-   "https://gc.nh.gov/bill_status/billinfo.aspx?id=207"
+   "https://gc.nh.gov/"
   ],
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "2026 session enumeration failed (connection closed); not counted as checked"
  },
  "NJ": {
   "attempted": "2026-10-19",
@@ -247,18 +251,14 @@
   "unreadable": "official-site search returned no AV bill pages (searched 3 pages)"
  },
  "NV": {
-  "attempted": "2026-10-19",
-  "bills_found": [
-   "AB 523",
-   "SB 395 (dead)"
-  ],
-  "checked": "2026-10-15",
+  "attempted": "2026-11-02",
+  "bills_found": [],
+  "checked": "2026-11-02",
   "searched": 0,
   "sources_read": [
-   "https://archive.leg.state.nv.us/Session/83rd2025/Bills/SB/SB395.pdf",
-   "https://archive.leg.state.nv.us/Session/83rd2025/Bills/AB/AB523_EN.pdf"
+   "https://www.leg.state.nv.us/"
   ],
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": null
  },
  "NY": {
   "attempted": "2026-10-19",
@@ -271,14 +271,14 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "OK": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-11-02",
   "bills_found": [],
-  "checked": "2026-10-15",
+  "checked": "2026-11-02",
   "searched": 0,
   "sources_read": [
-   "https://www.oklegislature.gov/BillInfo.aspx?Bill=sb546&Session=2600"
+   "https://www.oklegislature.gov/"
   ],
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": null
  },
  "OR": {
   "attempted": "2026-10-19",
@@ -291,14 +291,17 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "RI": {
-  "attempted": "2026-10-19",
-  "bills_found": [],
-  "checked": "2026-10-15",
+  "attempted": "2026-11-02",
+  "bills_found": [
+   "HB 8012",
+   "SB 2751 (flagged by text scan, not confirmed)"
+  ],
+  "checked": "2026-11-02",
   "searched": 0,
   "sources_read": [
-   "https://status.rilegislature.gov/"
+   "https://status.rilegislature.gov/?bill=HB8012&year=2026"
   ],
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "RI bill status pages are JavaScript-rendered and unreadable by fetch; 2026 session adjourned"
  },
  "SC": {
   "attempted": "2026-10-19",
@@ -311,16 +314,20 @@
   "unreadable": "HTTPError /; HTTPError /%EF%BF%BD; HTTPError /en/passports/apply/get-fast.html; HTTPError /en/passports/contact-support/us-passports.html; URLError / (searched 5 pages)"
  },
  "TN": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-11-02",
   "bills_found": [
-   "SB 2253"
+   "SB 2253 / HB 2302 (Pub. Ch. 726)",
+   "SB 2205 / HB 2450 (Pub. Ch. 854, ADS clause)",
+   "HB 1168 / SB 310 (pending)"
   ],
-  "checked": "2026-10-15",
+  "checked": "2026-11-02",
   "searched": 0,
   "sources_read": [
-   "https://wapp.capitol.tn.gov/apps/BillInfo/Default?BillNumber=SB2253&GA=114"
+   "https://wapp.capitol.tn.gov/apps/BillInfo/Default?BillNumber=HB2302&ga=114",
+   "https://wapp.capitol.tn.gov/apps/BillInfo/Default?BillNumber=HB2450&ga=114",
+   "https://wapp.capitol.tn.gov/apps/BillInfo/Default?BillNumber=HB1168&ga=114"
   ],
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": null
  },
  "TX": {
   "attempted": "2026-10-19",
@@ -333,16 +340,20 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "VA": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-11-02",
   "bills_found": [
    "HB 1124",
-   "HB 1125 (unverified)",
-   "SB 670 (unverified)"
+   "HB 1125",
+   "SB 670",
+   "HB 582",
+   "SB 320"
   ],
   "checked": null,
   "searched": 0,
-  "sources_read": [],
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "sources_read": [
+   "https://lis.virginia.gov/bill-details/20261/HB582"
+  ],
+  "unreadable": "lis.virginia.gov is a JavaScript app and the enumerator got HTTP 403; HB 582/SB 320 (autonomous truck-mounted attenuators) status unconfirmed"
  },
  "VT": {
   "attempted": "2026-10-19",
@@ -355,18 +366,17 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "WI": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-11-02",
   "bills_found": [
-   "SB 831 (dead)",
-   "AB 848 (dead)"
+   "AB 848 (failed to pass 2026-03-23)",
+   "SB 831 (failed, session ended)"
   ],
-  "checked": "2026-10-15",
+  "checked": "2026-11-02",
   "searched": 0,
   "sources_read": [
-   "https://docs.legis.wisconsin.gov/2025/proposals/sb831",
-   "https://docs.legis.wisconsin.gov/2025/proposals/ab848"
+   "https://docs.legis.wisconsin.gov/2025/proposals/reg/asm/bill/ab848"
   ],
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": null
  },
  "WV": {
   "attempted": "2026-10-19",

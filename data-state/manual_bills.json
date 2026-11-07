@@ -201,5 +201,29 @@
     ],
     "source_url": "https://www.akleg.gov/basis/Bill/Detail/34?Root=HB%20217",
     "repository_url": "https://www.akleg.gov/basis/Bill/Detail/34?Root=HB%20217"
+  },
+  {
+    "id": "mo-hb2069-2026r",
+    "jurisdiction": "MO",
+    "number": "HB 2069",
+    "title": "Autonomous Vehicles",
+    "summary": "House committee substitute for HB 2069 and HB 2208 (Rep. Phelps) would let a person operate a fully autonomous vehicle on public roads if certification and safety conditions are met, after filing a law enforcement interaction plan with the Department of Public Safety and proof of financial responsibility with the Department of Revenue. The automated driving system would be treated as the driver, on-demand autonomous vehicle networks would operate under the same restrictions as taxis, and state agencies and local governments could not prohibit, tax or regulate autonomous vehicles or their use in a transportation service network.",
+    "takeaway": "Would create a statewide framework authorizing fully autonomous vehicles and on-demand autonomous vehicle networks in Missouri and preempt local regulation.",
+    "source_summary": "Official Missouri House committee and perfected bill summaries (documents.house.mo.gov) and House perfection roll calls of 3/10/2026.",
+    "summary_method": "Maintainer-written from official Missouri House bill summaries; no figures taken from news coverage",
+    "summary_quality": "reviewed_substantive",
+    "summary_reviewed_at": "2026-11-02",
+    "status": "engrossed",
+    "measure_type": "bill",
+    "last_action_date": "2026-03-10",
+    "last_action": "House perfection roll calls on HCS HBs 2069 & 2208 (House session day 35). Final disposition not confirmed from the official record.",
+    "session": "2026",
+    "progress_stage": "floor",
+    "stage_dates": {
+      "floor": "2026-03-10"
+    },
+    "hearings": [],
+    "source_url": "https://documents.house.mo.gov/billtracking/bills261/sumpdf/HB2069P.pdf",
+    "repository_url": "https://documents.house.mo.gov/billtracking/bills261/sumpdf/HB2069P.pdf"
   }
 ]
