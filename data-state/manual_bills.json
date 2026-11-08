@@ -201,5 +201,86 @@
     ],
     "source_url": "https://www.akleg.gov/basis/Bill/Detail/34?Root=HB%20217",
     "repository_url": "https://www.akleg.gov/basis/Bill/Detail/34?Root=HB%20217"
+  },
+  {
+    "measure_type": "bill",
+    "summary_method": "Auto-collected from the official legislature record; no figures taken from news coverage",
+    "summary_quality": "reviewed_substantive",
+    "summary_reviewed_at": "2026-11-08",
+    "status": "introduced",
+    "progress_stage": "committee",
+    "hearings": [],
+    "id": "tn-hb1168-114",
+    "jurisdiction": "TN",
+    "number": "HB 1168",
+    "title": "Autonomous vehicles (Title 55 and Title 65 amendments)",
+    "summary": "As introduced, the bill excludes automated driving system (ADS)-operated vehicles used to transport property for hire in interstate commerce, or to transport passengers for hire, from the exemption that allows ADS-operated vehicles to operate without a human driver physically present. It amends Tennessee Code Annotated Titles 55 and 65.",
+    "takeaway": "Would require a human driver in ADS-operated vehicles used for commercial freight in interstate commerce or for-hire passenger transport in Tennessee.",
+    "source_summary": "Official Tennessee General Assembly bill page for HB 1168 (companion SB 310): caption, summary and bill history.",
+    "last_action_date": "2026-03-17",
+    "last_action": "Recommended for passage if amended; referred to Finance, Ways, and Means Committee; assigned to Finance, Ways, and Means Subcommittee.",
+    "session": "114",
+    "stage_dates": {
+      "introduced": "2025-02-10",
+      "committee": "2025-02-12"
+    },
+    "source_url": "https://wapp.capitol.tn.gov/apps/BillInfo/Default?BillNumber=HB1168&GA=114",
+    "repository_url": "https://wapp.capitol.tn.gov/apps/BillInfo/Default?BillNumber=HB1168&GA=114"
+  },
+  {
+    "measure_type": "bill",
+    "summary_method": "Auto-collected from the official legislature record; no figures taken from news coverage",
+    "summary_quality": "reviewed_substantive",
+    "summary_reviewed_at": "2026-11-08",
+    "status": "introduced",
+    "progress_stage": "committee",
+    "hearings": [],
+    "id": "tn-sb310-114",
+    "jurisdiction": "TN",
+    "number": "SB 310",
+    "title": "Autonomous vehicles (Title 55 and Title 65 amendments)",
+    "summary": "As introduced, the bill excludes automated driving system (ADS)-operated vehicles used to transport property for hire in interstate commerce, or to transport passengers for hire, from the exemption that allows ADS-operated vehicles to operate without a human driver physically present. It amends Tennessee Code Annotated Titles 55 and 65.",
+    "takeaway": "Would require a human driver in ADS-operated vehicles used for commercial freight in interstate commerce or for-hire passenger transport in Tennessee.",
+    "source_summary": "Official Tennessee General Assembly bill page for SB 310 (companion HB 1168): caption, summary and bill history.",
+    "last_action_date": "2025-02-12",
+    "last_action": "Passed on second consideration, referred to Senate Transportation and Safety Committee.",
+    "session": "114",
+    "stage_dates": {
+      "introduced": "2025-02-10",
+      "committee": "2025-02-12"
+    },
+    "source_url": "https://wapp.capitol.tn.gov/apps/BillInfo/Default?BillNumber=SB0310&GA=114",
+    "repository_url": "https://wapp.capitol.tn.gov/apps/BillInfo/Default?BillNumber=SB0310&GA=114"
+  },
+  {
+    "measure_type": "bill",
+    "summary_method": "Auto-collected from the official legislature record; no figures taken from news coverage",
+    "summary_quality": "reviewed_substantive",
+    "summary_reviewed_at": "2026-11-08",
+    "status": "introduced",
+    "progress_stage": "committee",
+    "hearings": [
+      {
+        "date": "2026-04-21",
+        "description": "Senate Transportation Committee meeting listing SB 148 (official calendar)",
+        "source_url": "https://www.akleg.gov/basis/Bill/Detail/34?Root=SB%20148"
+      }
+    ],
+    "id": "ak-sb148-34",
+    "jurisdiction": "AK",
+    "number": "SB 148",
+    "title": "Autonomous vehicles",
+    "summary": "An Act regulating autonomous vehicles; and providing for an effective date. Sponsored by Senators Myers and Gray-Jackson; the official record lists current status as referred to Senate Transportation, then State Affairs.",
+    "takeaway": "Would establish regulation of autonomous vehicles in Alaska; referred to Senate Transportation and State Affairs.",
+    "source_summary": "Official Alaska State Legislature bill detail page for SB 148 (34th Legislature).",
+    "last_action_date": "2025-03-28",
+    "last_action": "Current status (S) TRA, then STA (status date 03/28/2025).",
+    "session": "34",
+    "stage_dates": {
+      "introduced": "2025-03-28",
+      "committee": "2025-03-28"
+    },
+    "source_url": "https://www.akleg.gov/basis/Bill/Detail/34?Root=SB%20148",
+    "repository_url": "https://www.akleg.gov/basis/Bill/Detail/34?Root=SB%20148"
   }
 ]
