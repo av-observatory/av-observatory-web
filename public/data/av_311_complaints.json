@@ -5,13 +5,13 @@
   "source_api": "https://data.sf.gov/resource/vw6y-z8j6.json",
   "selection": "Exact service_name match: Autonomous Vehicle Complaints. Other city request types and unclassified AV mentions are excluded.",
   "limitations": "These are public 311 requests, not verified incidents. The published subtypes describe how SF311 classified a request, not the specific behavior alleged. Operator identity is unavailable; the AV category begins in April 2025.",
-  "source_data_as_of": "2026-11-08T01:00:00.000",
-  "total_records": 1073,
+  "source_data_as_of": "2026-11-09T01:00:00.000",
+  "total_records": 1074,
   "markets": [
     {
       "market": "San Francisco",
       "state": "CA",
-      "complaints": 1073
+      "complaints": 1074
     }
   ],
   "monthly": [
@@ -133,7 +133,7 @@
       "month": "2026-11",
       "market": "San Francisco",
       "state": "CA",
-      "complaints": 20
+      "complaints": 21
     }
   ],
   "records": [
@@ -17304,6 +17304,22 @@
       "long": -122.4661573777,
       "neighborhood": "St. Francis Wood",
       "source_url": "https://data.sf.gov/resource/vw6y-z8j6.json?service_request_id=202000278014"
+    },
+    {
+      "id": "SF-202000281092",
+      "source_id": "202000281092",
+      "state": "CA",
+      "market": "San Francisco",
+      "requested_datetime": "2026-11-08T13:23:36.000",
+      "requested_date": "2026-11-08",
+      "month": "2026-11",
+      "type": "incident_report",
+      "status": "Open",
+      "agency": "MTA - Autonomous Vehicles Complaints",
+      "lat": 37.7880671611,
+      "long": -122.4404402621,
+      "neighborhood": "Pacific Heights",
+      "source_url": "https://data.sf.gov/resource/vw6y-z8j6.json?service_request_id=202000281092"
     }
   ]
 }
