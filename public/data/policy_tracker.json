@@ -3292,6 +3292,24 @@
       "editorial_source_url": "https://lis.virginia.gov/bill-details/20261/HB1124",
       "editorial_source_type": "official_bill_abstract",
       "summary_reviewed_at": "2026-10-19"
+    },
+    {
+      "id": "auto-ms-sb2269-2026",
+      "level": "state",
+      "jurisdiction": "Mississippi",
+      "state": "MS",
+      "title": "SB 2269 · autonomous vehicle law enforcement interaction plan repealer",
+      "summary": "Mississippi SB 2269 amends Section 63-35-7 of the Mississippi Code to extend the repealer on the requirement that a fully autonomous vehicle operator submit a law enforcement interaction plan to the Department of Public Safety. Approved by the Governor March 13, 2026 as Chapter 330, effective July 1, 2026.",
+      "takeaway": "Mississippi SB 2269 amends Section 63-35-7 of the Mississippi Code to extend the repealer on the requirement that a fully autonomous vehicle operator submit a law enforcement interaction plan to the Department of Public Safety. Approved by the Governor March 13, 2026 as Chapter 330, effective July 1, 2026.",
+      "instrument": "legislation",
+      "status": "in_effect",
+      "date": "2026-03-13",
+      "date_precision": "day",
+      "source_url": "https://billstatus.ls.state.ms.us/2026/pdf/history/SB/SB2269.xml",
+      "source_label": "Mississippi SB 2269 (Chapter 330, 2026)",
+      "verified_at": "2026-11-09",
+      "review_status": "auto_collected",
+      "source_tier": "auto"
     }
   ],
   "city_events": [

@@ -201,5 +201,34 @@
     ],
     "source_url": "https://www.akleg.gov/basis/Bill/Detail/34?Root=HB%20217",
     "repository_url": "https://www.akleg.gov/basis/Bill/Detail/34?Root=HB%20217"
+  },
+  {
+    "id": "ms-sb2269-2026rs",
+    "jurisdiction": "MS",
+    "number": "SB 2269",
+    "title": "Mississippi Fully Autonomous Vehicle Enabling Act; extend repealer on law enforcement interaction plan submission to DPS",
+    "summary": "Mississippi SB 2269 amends Section 63-35-7 of the Mississippi Code to extend the repealer on the requirement that a fully autonomous vehicle operator submit a law enforcement interaction plan to the Department of Public Safety. Approved by the Governor March 13, 2026 as Chapter 330, effective July 1, 2026.",
+    "takeaway": "Mississippi SB 2269 amends Section 63-35-7 of the Mississippi Code to extend the repealer on the requirement that a fully autonomous vehicle operator submit a law enforcement interaction plan to the Department of Public Safety. Approved by the Governor March 13, 2026 as Chapter 330, effective July 1, 2026.",
+    "source_summary": "Official Mississippi Legislature bill status record (SB 2269, 2026 Regular Session).",
+    "summary_method": "Auto-collected from the official legislature record; no figures taken from news coverage",
+    "summary_quality": "reviewed_substantive",
+    "summary_reviewed_at": "2026-11-09",
+    "status": "enacted",
+    "measure_type": "bill",
+    "last_action_date": "2026-03-13",
+    "last_action": "Approved by Governor. Chapter 330, effective 7/1/2026.",
+    "session": "2026",
+    "progress_stage": "law",
+    "stage_dates": {
+      "introduced": "2026-01-14",
+      "committee": "2026-01-14",
+      "floor": "2026-02-09",
+      "passed_legislature": "2026-03-05",
+      "executive": "2026-03-09",
+      "law": "2026-03-13"
+    },
+    "hearings": [],
+    "source_url": "https://billstatus.ls.state.ms.us/2026/pdf/history/SB/SB2269.xml",
+    "repository_url": "https://billstatus.ls.state.ms.us/2026/pdf/history/SB/SB2269.xml"
   }
 ]
