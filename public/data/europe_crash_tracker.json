@@ -626,8 +626,17 @@
     }
   ],
   "country_scope_note": "Coverage registry includes sovereign states conventionally treated as wholly or partly European, plus Kosovo. Inclusion in the registry is geographic/editorial and does not imply EU membership or a position on political status.",
-  "media_watch_checked_at": "2026-11-09",
+  "media_watch_checked_at": "2026-11-10",
   "media_watch": [
+    {
+      "title": "[Exclusive] Avoiding the side with children just before a collision… Hyundai Motor Group unveils autonomous driving technology for passenger protection",
+      "publisher": "머니투데이",
+      "published": "2026-11-09",
+      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTFBQbXJXSnMyRG1lYnFvc2ZjUzlhU1ljd3Q4ZGtyLVFwX3o5cmNJenhneWVfa3hMS18wRkpPV0daM0stTUpTaTBjWXpsYkZ1X0NfU2p3M2xLbmNkRHZmMkpQeFBWMTk3ZE1rYXNSMEFDbkU?oc=5",
+      "query_language": "en-GB",
+      "first_seen": "2026-11-10",
+      "status": "unverified media headline; not counted as a crash"
+    },
     {
       "title": "Madrid ensayará los coches autónomos entre dudas sobre accidentes, seguros y responsabilidad",
       "publisher": "RTVE.es",
