@@ -1,13 +1,13 @@
-## Bill enumeration report (2026-11-10)
+## Bill enumeration report (2026-11-11)
 
-51/51 jurisdictions have an enumerator; 50 enumerated cleanly; 255766 bills in the ledgers; 191 AV candidate(s) awaiting analysis.
+51/51 jurisdictions have an enumerator; 51 enumerated cleanly; 255766 bills in the ledgers; 191 AV candidate(s) awaiting analysis.
 
 | State | Status | Bills | Titled | Scanned | Unreadable | AV candidates | Scan secs | Notes |
 |---|---|---:|---:|---:|---:|---:|---:|---|
 | AK | ok | 836 | 836 | 834 | 0 | 2 | 0 | 34 HB 391/391,HCR 32/32,HJR 46/46,HR 6/6,SB 290/290,SCR 35/36,SJR 31/31,SR 5/5 |
 | AL | ok | 2979 | 2979 | 0 | 0 | 2 | 0 | 2025rs HB 621/621,HJR 111/350,HR 270/381,SB 347/347,SJR 64/92,SR 35/99; 2026rs HB 666/666,HJR 146/358,HR 216/362,SB 380/ |
 | AR | ok | 2198 | 0 | 2142 | 56 | 0 | 0 | 2025R HB 1005/2005,HCR 11/1011,HJR 20/1020,HMR 13/1013,HR 120/1120,SB 647/647,SCR 8/8,SJR 24/24,SMR 5/5,SR 75/75; 2026F  |
-| AZ | partial | 4044 | 4044 | 4042 | 0 | 4 | 0 | 57th-1st-regular: TimeoutError: The read operation timed out |
+| AZ | ok | 4044 | 4044 | 4042 | 0 | 4 | 0 | 57th-1st-regular HB 974/2974,HCM 16/2016,HCR 60/2060,HM 1/2001,HR 8/2008,SB 750/1750,SCM 2/1002,SCR 42/1042,SR 1/1001; 5 |
 | CA | ok | 5041 | 5041 | 4760 | 0 | 8 | 0 | 2025 AB 2796/2796,ACA 24/24,ACR 235/235,AJR 35/35,GRP 1/1,HR 141/141,SB 1447/1447,SCA 5/5,SCR 198/198,SJR 19/19,SR 140/1 |
 | CO | ok | 1448 | 1448 | 1445 | 0 | 6 | 0 | 2025 Regular Session HB 336/25,HCR 3/25,HJM 1/25,HJR 30/25,HR 4/25,SB 322/25,SCR 2/25,SJR 24/25,SR 12/25; 2026 Regular S |
 | CT | ok | 5355 | 4961 | 5302 | 53 | 1 | 0 | 2025 HB 2288/7288,HJ 99/103,HR 18/101,SB 1567/1567,SJ 83/103,SR 17/51; 2026 HB 583/5583,HJ 78/78,HR 14/14,SB 524/524,SJ  |
@@ -38,7 +38,7 @@
 | NJ | ok | 23605 | 23550 | 0 | 0 | 12 | 0 | 2024 A 6119/6319,ACR 168/182,AJR 225/240,AR 199/208,S 4963/5041,SCR 131/141,SJR 162/173,SR 134/144; 2026 A 5713/5825,ACR |
 | NM | ok | 1868 | 0 | 1865 | 3 | 3 | 0 | 25%20Regular HB 623/623,SB 559/559; 26%20Regular HB 378/378,SB 308/313 |
 | NV | ok | 1210 | 0 | 1210 | 0 | 0 | 0 | 83rd2025 AB 623/601,ACR 4/4,AJR 16/14,AR 8/8,IP 1/1,SB 529/508,SCR 8/8,SJR 12/11,SR 9/9 |
-| NY | ok | 25469 | 19452 | 25464 | 0 | 24 | 13017 | 2025 A 11144/11735,E 9/183,J 2321/2385,K 1601/1624,S 10394/11145 |
+| NY | ok | 25469 | 19452 | 25464 | 0 | 24 | 0 | 2025 A 11144/11735,E 9/183,J 2321/2385,K 1601/1624,S 10394/11145 |
 | OH | ok | 2623 | 2622 | 2523 | 99 | 1 | 0 |  |
 | OK | ok | 9301 | 0 | 9298 | 3 | 0 | 0 | 2500 HB 1934/9999,HCR 18/1018,HJR 35/1035,HR 30/1030,SB 1195/9999,SCR 13/20,SJR 25/50,SR 23/34; 2600 HB 3515/9999,HCR 30 |
 | OR | ok | 3770 | 3770 | 3768 | 0 | 2 | 0 | 2025R1 HB 2037/5051,HCR 42/42,HJM 14/14,HJR 22/22,HR 3/3,SB 1267/5553,SCR 34/34,SJM 10/10,SJR 34/34,SR 3/3; 2026R1 HB 18 |
