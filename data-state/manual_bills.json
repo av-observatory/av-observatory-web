@@ -201,5 +201,42 @@
     ],
     "source_url": "https://www.akleg.gov/basis/Bill/Detail/34?Root=HB%20217",
     "repository_url": "https://www.akleg.gov/basis/Bill/Detail/34?Root=HB%20217"
+  },
+  {
+    "id": "mo-hb2069-2026r",
+    "jurisdiction": "MO",
+    "number": "HB 2069",
+    "title": "Autonomous vehicles (HCS HBs 2069 & 2208)",
+    "summary": "The House committee substitute defines automated driving system and fully autonomous vehicle terms using SAE standards and would allow a fully autonomous vehicle to operate on public roads if certification and safety conditions are met and a law enforcement plan is filed with the Department of Public Safety. The automated driving system is treated as the driver, proof of financial responsibility must be filed with the Department of Revenue, crashes must be reported, and on-demand autonomous vehicle networks would be allowed under the rules for taxis and other for-hire transport.",
+    "takeaway": "Would allow fully autonomous vehicles to operate on Missouri public roads under certification, law enforcement plan, insurance and crash reporting requirements.",
+    "source_summary": "Missouri House official summary of HCS HBs 2069 & 2208 and bill action history.",
+    "summary_method": "Maintainer-written from the official Missouri House summary and action history; no figures taken from news coverage",
+    "summary_quality": "reviewed_substantive",
+    "summary_reviewed_at": "2026-11-11",
+    "status": "engrossed",
+    "measure_type": "bill",
+    "last_action_date": "2026-04-20",
+    "last_action": "Voted Do Pass (S) by the Senate Transportation, Infrastructure and Public Safety Committee; passed the House 96-48 on 2026-03-12.",
+    "session": "2026",
+    "progress_stage": "floor",
+    "stage_dates": {
+      "introduced": "2026-01-07",
+      "committee": "2026-01-08",
+      "floor": "2026-03-12"
+    },
+    "hearings": [
+      {
+        "date": "2026-01-12",
+        "description": "Public hearing, House Emerging Issues Committee",
+        "source_url": "https://documents.house.mo.gov/xml/261-HB2069.xml"
+      },
+      {
+        "date": "2026-04-08",
+        "description": "Public hearing, Senate Transportation, Infrastructure and Public Safety Committee",
+        "source_url": "https://documents.house.mo.gov/xml/261-HB2069.xml"
+      }
+    ],
+    "source_url": "https://documents.house.mo.gov/xml/261-HB2069.xml",
+    "repository_url": "https://documents.house.mo.gov/xml/261-HB2069.xml"
   }
 ]
