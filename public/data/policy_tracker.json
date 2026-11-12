@@ -734,6 +734,40 @@
       "source_tier": "auto",
       "review_status": "auto_collected",
       "date_precision": "day"
+    },
+    {
+      "id": "auto-fr-2026-21794",
+      "level": "federal",
+      "jurisdiction": "US",
+      "title": "NHTSA proposes FMVSS 108 changes for ADS-equipped vehicles",
+      "summary": "NHTSA proposes amending FMVSS No. 108 to remove unnecessary requirements and add design flexibility, including manual control requirements for vehicles without manual driving controls and optional cyan ADS marker lamps. Comments close November 25, 2026.",
+      "takeaway": "NHTSA proposes amending FMVSS No. 108 to remove unnecessary requirements and add design flexibility, including manual control requirements for vehicles without manual driving controls and optional cyan ADS marker lamps. Comments close November 25, 2026.",
+      "instrument": "proposed program",
+      "status": "historical_status_unverified",
+      "date": "2026-10-26",
+      "source_url": "https://www.federalregister.gov/documents/2026/10/26/2026-21794/federal-motor-vehicle-safety-standards-modernization-of-fmvss-no-108-to-accommodate-ads-equipped",
+      "verified_at": "2026-11-12",
+      "source_label": "Federal Register 2026-21794",
+      "source_tier": "auto",
+      "review_status": "auto_collected",
+      "date_precision": "day"
+    },
+    {
+      "id": "auto-fr-2026-17741",
+      "level": "federal",
+      "jurisdiction": "US",
+      "title": "NHTSA extends comment period on AV Framework interim guidance",
+      "summary": "At the request of the Alliance for Automotive Innovation, NHTSA extended by 30 days the comment period on its July 31, 2026 notice on AV Framework activity and interim guidance for commercial deployment exemptions; comments were due September 30, 2026 instead of August 31, 2026.",
+      "takeaway": "At the request of the Alliance for Automotive Innovation, NHTSA extended by 30 days the comment period on its July 31, 2026 notice on AV Framework activity and interim guidance for commercial deployment exemptions; comments were due September 30, 2026 instead of August 31, 2026.",
+      "instrument": "proposed program",
+      "status": "historical_status_unverified",
+      "date": "2026-08-31",
+      "source_url": "https://www.federalregister.gov/documents/2026/08/31/2026-17741/av-framework-updates-and-request-for-comments-on-interim-guidance-extension-of-comment-period",
+      "verified_at": "2026-11-12",
+      "source_label": "Federal Register 2026-17741",
+      "source_tier": "auto",
+      "review_status": "auto_collected",
+      "date_precision": "day"
     }
   ],
   "states": [
@@ -3258,6 +3292,42 @@
       "editorial_source_url": "https://lis.virginia.gov/bill-details/20261/HB1124",
       "editorial_source_type": "official_bill_abstract",
       "summary_reviewed_at": "2026-10-19"
+    },
+    {
+      "id": "auto-ms-sb2269-2026",
+      "level": "state",
+      "jurisdiction": "Mississippi",
+      "title": "Chapter 330 (SB 2269): fully autonomous vehicle plan requirement sunset extended",
+      "summary": "Mississippi SB 2269 (2026), Chapter 330, amends Section 63-35-7 to extend from July 1, 2026 to July 1, 2029 the repealer on the requirement that fully autonomous vehicle operators submit a law enforcement interaction plan to the Department of Public Safety. Approved by the Governor March 13, 2026; effective July 1, 2026.",
+      "takeaway": "Mississippi SB 2269 (2026), Chapter 330, amends Section 63-35-7 to extend from July 1, 2026 to July 1, 2029 the repealer on the requirement that fully autonomous vehicle operators submit a law enforcement interaction plan to the Department of Public Safety. Approved by the Governor March 13, 2026; effective July 1, 2026.",
+      "instrument": "legislation",
+      "status": "in_effect",
+      "date": "2026-03-13",
+      "source_url": "https://billstatus.ls.state.ms.us/2026/pdf/history/SB/SB2269.xml",
+      "verified_at": "2026-11-12",
+      "state": "MS",
+      "source_label": "Mississippi Legislature, SB 2269 (2026)",
+      "source_tier": "auto",
+      "review_status": "auto_collected",
+      "date_precision": "day"
+    },
+    {
+      "id": "auto-ny-s9008-2026",
+      "level": "state",
+      "jurisdiction": "New York",
+      "title": "Chapter 58 (S 9008 Part E): AV testing program extended to 2028",
+      "summary": "New York's 2026-27 transportation budget bill (S 9008 / A 10008), signed May 26, 2026 as Chapter 58, amends Section 3 of Part FF of chapter 55 of the laws of 2017 so the autonomous vehicle testing and demonstration provisions expire April 1, 2028 instead of April 1, 2026.",
+      "takeaway": "New York's 2026-27 transportation budget bill (S 9008 / A 10008), signed May 26, 2026 as Chapter 58, amends Section 3 of Part FF of chapter 55 of the laws of 2017 so the autonomous vehicle testing and demonstration provisions expire April 1, 2028 instead of April 1, 2026.",
+      "instrument": "legislation",
+      "status": "historical_status_unverified",
+      "date": "2026-05-26",
+      "source_url": "https://www.nysenate.gov/legislation/bills/2025/S9008",
+      "verified_at": "2026-11-12",
+      "state": "NY",
+      "source_label": "New York State Senate, S 9008 (2025-26), Chapter 58",
+      "source_tier": "auto",
+      "review_status": "auto_collected",
+      "date_precision": "day"
     }
   ],
   "city_events": [
