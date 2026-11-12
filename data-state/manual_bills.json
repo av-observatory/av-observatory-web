@@ -201,5 +201,34 @@
     ],
     "source_url": "https://www.akleg.gov/basis/Bill/Detail/34?Root=HB%20217",
     "repository_url": "https://www.akleg.gov/basis/Bill/Detail/34?Root=HB%20217"
+  },
+  {
+    "id": "ms-sb2269-2026",
+    "jurisdiction": "MS",
+    "number": "SB 2269",
+    "title": "MS Fully Autonomous Vehicle Enabling Act; extend repealer on law enforcement interaction plan submission to DPS",
+    "summary": "Amends Section 63-35-7, Mississippi Code of 1972, to extend the repealer date for the requirement that operators of fully autonomous vehicles submit a law enforcement interaction plan to the Department of Public Safety, from July 1, 2026 to July 1, 2029. Approved by the Governor March 13, 2026 (Chapter 330); effective July 1, 2026.",
+    "takeaway": "Extends the sunset on the law enforcement interaction plan requirement for fully autonomous vehicle operators in Mississippi to July 1, 2029.",
+    "source_summary": "Official Mississippi Legislature bill status history and bill text (as passed the Senate).",
+    "summary_method": "Maintainer-written from the official Mississippi Legislature record; no figures taken from news coverage",
+    "summary_quality": "reviewed_substantive",
+    "summary_reviewed_at": "2026-11-12",
+    "status": "enacted",
+    "measure_type": "bill",
+    "last_action_date": "2026-03-13",
+    "last_action": "Approved by Governor. Chapter 330; effective July 1, 2026.",
+    "session": "2026",
+    "progress_stage": "law",
+    "stage_dates": {
+      "introduced": "2026-01-14",
+      "committee": "2026-01-30",
+      "floor": "2026-02-09",
+      "passed_legislature": "2026-03-05",
+      "executive": "2026-03-09",
+      "law": "2026-03-13"
+    },
+    "hearings": [],
+    "source_url": "https://billstatus.ls.state.ms.us/2026/pdf/history/SB/SB2269.xml",
+    "repository_url": "https://billstatus.ls.state.ms.us/2026/pdf/history/SB/SB2269.xml"
   }
 ]
