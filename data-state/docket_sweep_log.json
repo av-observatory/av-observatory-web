@@ -19,9 +19,10 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "AR": {
-  "attempted": "2026-10-19",
-  "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "official legislature site search not readable from this session (JS search/blocked); only web search used, no official AV bill page found",
+  "checked": "2026-11-13",
+  "sources_read": [],
+  "bills_found": []
  },
  "AZ": {
   "attempted": "2026-10-19",
@@ -46,9 +47,12 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "CO": {
-  "attempted": "2026-10-19",
-  "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "site keyword search did not filter results; not conclusive",
+  "checked": "2026-11-13",
+  "sources_read": [
+   "https://leg.colorado.gov/bill-search?search_api_fulltext=autonomous%20vehicle"
+  ],
+  "bills_found": []
  },
  "CT": {
   "attempted": "2026-10-19",
@@ -64,9 +68,10 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "DE": {
-  "attempted": "2026-10-19",
-  "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "official legislature site search not readable from this session (JS search/blocked); only web search used, no official AV bill page found",
+  "checked": "2026-11-13",
+  "sources_read": [],
+  "bills_found": []
  },
  "FL": {
   "attempted": "2026-10-19",
@@ -90,9 +95,10 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "HI": {
-  "attempted": "2026-10-19",
-  "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "official legislature site search not readable from this session (JS search/blocked); only web search used, no official AV bill page found",
+  "checked": "2026-11-13",
+  "sources_read": [],
+  "bills_found": []
  },
  "IA": {
   "attempted": "2026-10-19",
@@ -116,9 +122,10 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "IL": {
-  "attempted": "2026-10-19",
-  "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "official legislature site search not readable from this session (JS search/blocked); only web search used, no official AV bill page found",
+  "checked": "2026-11-13",
+  "sources_read": [],
+  "bills_found": []
  },
  "IN": {
   "attempted": "2026-10-19",
@@ -134,9 +141,10 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "KY": {
-  "attempted": "2026-10-19",
-  "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "official legislature site search not readable from this session (JS search/blocked); only web search used, no official AV bill page found",
+  "checked": "2026-11-13",
+  "sources_read": [],
+  "bills_found": []
  },
  "LA": {
   "attempted": "2026-10-19",
@@ -157,9 +165,10 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "MD": {
-  "attempted": "2026-10-19",
-  "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "official legislature site search not readable from this session (JS search/blocked); only web search used, no official AV bill page found",
+  "checked": "2026-11-13",
+  "sources_read": [],
+  "bills_found": []
  },
  "ME": {
   "attempted": "2026-10-19",
@@ -177,9 +186,12 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "MN": {
-  "attempted": "2026-10-19",
-  "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "House keyword search returned no 2025-26 documents; Senate search not read",
+  "checked": "2026-11-13",
+  "sources_read": [
+   "https://www.revisor.mn.gov/bills/status_result.php?body=House&session=0942026&keyword=autonomous+vehicle"
+  ],
+  "bills_found": []
  },
  "MO": {
   "attempted": "2026-10-19",
@@ -200,9 +212,10 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "MT": {
-  "attempted": "2026-10-19",
-  "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "official legislature site search not readable from this session (JS search/blocked); only web search used, no official AV bill page found",
+  "checked": "2026-11-13",
+  "sources_read": [],
+  "bills_found": []
  },
  "NC": {
   "attempted": "2026-10-19",
@@ -222,9 +235,10 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "NE": {
-  "attempted": "2026-10-19",
-  "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "official legislature site search not readable from this session (JS search/blocked); only web search used, no official AV bill page found",
+  "checked": "2026-11-13",
+  "sources_read": [],
+  "bills_found": []
  },
  "NH": {
   "attempted": "2026-10-19",
@@ -242,9 +256,10 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "NM": {
-  "attempted": "2026-10-19",
-  "searched": 3,
-  "unreadable": "official-site search returned no AV bill pages (searched 3 pages)"
+  "unreadable": "official legislature site search not readable from this session (JS search/blocked); only web search used, no official AV bill page found",
+  "checked": "2026-11-13",
+  "sources_read": [],
+  "bills_found": []
  },
  "NV": {
   "attempted": "2026-10-19",
@@ -266,9 +281,10 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "OH": {
-  "attempted": "2026-10-19",
-  "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "official bill page for reported HB 1034 returned HTTP 503; bill unverified on official site",
+  "checked": "2026-11-13",
+  "sources_read": [],
+  "bills_found": []
  },
  "OK": {
   "attempted": "2026-10-19",
@@ -286,9 +302,14 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "PA": {
-  "attempted": "2026-10-19",
-  "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "official full-text search not readable; only HB 1639 page opened",
+  "checked": "2026-11-13",
+  "sources_read": [
+   "https://www.palegis.us/legislation/bills/2025/hb1639"
+  ],
+  "bills_found": [
+   "HB 1639"
+  ]
  },
  "RI": {
   "attempted": "2026-10-19",
@@ -306,9 +327,10 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "SD": {
-  "attempted": "2026-10-19",
-  "searched": 5,
-  "unreadable": "HTTPError /; HTTPError /%EF%BF%BD; HTTPError /en/passports/apply/get-fast.html; HTTPError /en/passports/contact-support/us-passports.html; URLError / (searched 5 pages)"
+  "unreadable": "official legislature site search not readable from this session (JS search/blocked); only web search used, no official AV bill page found",
+  "checked": "2026-11-13",
+  "sources_read": [],
+  "bills_found": []
  },
  "TN": {
   "attempted": "2026-10-19",
@@ -328,9 +350,10 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "UT": {
-  "attempted": "2026-10-19",
-  "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "official legislature site search not readable from this session (JS search/blocked); only web search used, no official AV bill page found",
+  "checked": "2026-11-13",
+  "sources_read": [],
+  "bills_found": []
  },
  "VA": {
   "attempted": "2026-10-19",
@@ -350,9 +373,16 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "WA": {
-  "attempted": "2026-10-19",
-  "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": null,
+  "checked": "2026-11-13",
+  "sources_read": [
+   "https://app.leg.wa.gov/billsummary?BillNumber=1984&Year=2025&Initiative=false",
+   "https://app.leg.wa.gov/billsummary?BillNumber=6243&Year=2025&Initiative=false"
+  ],
+  "bills_found": [
+   "HB 1984",
+   "SB 6243"
+  ]
  },
  "WI": {
   "attempted": "2026-10-19",
@@ -374,8 +404,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "WY": {
-  "attempted": "2026-10-19",
-  "searched": 10,
-  "unreadable": "HTTPError /myaccount/; HTTPError /myaccount/creating-an-account.html; HTTPError /ssi/spotlights/spot-loans.htm; insufficient_official_html /RIL/SiView.action (searched 10 pages)"
+  "unreadable": "official legislature site search not readable from this session (JS search/blocked); only web search used, no official AV bill page found",
+  "checked": "2026-11-13",
+  "sources_read": [],
+  "bills_found": []
  }
 }
