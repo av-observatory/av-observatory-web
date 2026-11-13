@@ -201,5 +201,60 @@
     ],
     "source_url": "https://www.akleg.gov/basis/Bill/Detail/34?Root=HB%20217",
     "repository_url": "https://www.akleg.gov/basis/Bill/Detail/34?Root=HB%20217"
+  },
+  {
+    "id": "wa-hb-1984-2026",
+    "jurisdiction": "WA",
+    "number": "HB 1984",
+    "title": "Concerning vehicle and operator requirements for autonomous vehicles.",
+    "summary": "Official title: concerning vehicle and operator requirements for autonomous vehicles. Introduced February 17, 2025 and referred to House Transportation; public hearing held February 24, 2025; reintroduced and retained in present status January 12, 2026. Still in committee.",
+    "takeaway": "Official title: concerning vehicle and operator requirements for autonomous vehicles. Introduced February 17, 2025 and referred to House Transportation; public hearing held February 24, 2025; reintroduced and retained in present status January 12, 2026. Still in committee.",
+    "source_summary": "Official Washington State Legislature bill summary page.",
+    "summary_method": "Maintainer-written from the official Washington State Legislature bill summary; no figures taken from news coverage",
+    "summary_quality": "reviewed_substantive",
+    "summary_reviewed_at": "2026-11-13",
+    "status": "introduced",
+    "measure_type": "bill",
+    "last_action_date": "2026-01-12",
+    "last_action": "Reintroduced and retained in present status.",
+    "session": "2025-26",
+    "progress_stage": "committee",
+    "stage_dates": {
+      "introduced": "2025-02-17",
+      "committee": "2025-02-17"
+    },
+    "source_url": "https://app.leg.wa.gov/billsummary?BillNumber=1984&Year=2025&Initiative=false",
+    "repository_url": "https://app.leg.wa.gov/billsummary?BillNumber=1984&Year=2025&Initiative=false",
+    "hearings": [
+      {
+        "date": "2025-02-24",
+        "description": "Public hearing, House Transportation Committee",
+        "source_url": "https://app.leg.wa.gov/billsummary?BillNumber=1984&Year=2025&Initiative=false"
+      }
+    ]
+  },
+  {
+    "id": "wa-sb-6243-2026",
+    "jurisdiction": "WA",
+    "number": "SB 6243",
+    "title": "Concerning the operation of autonomous motor vehicles.",
+    "summary": "Official title: concerning the operation of autonomous motor vehicles. Sponsored by Sen. Boehnke; first read and referred to Senate Transportation on January 20, 2026, with no further action recorded.",
+    "takeaway": "Official title: concerning the operation of autonomous motor vehicles. Sponsored by Sen. Boehnke; first read and referred to Senate Transportation on January 20, 2026, with no further action recorded.",
+    "source_summary": "Official Washington State Legislature bill summary page.",
+    "summary_method": "Maintainer-written from the official Washington State Legislature bill summary; no figures taken from news coverage",
+    "summary_quality": "reviewed_substantive",
+    "summary_reviewed_at": "2026-11-13",
+    "status": "introduced",
+    "measure_type": "bill",
+    "last_action_date": "2026-01-20",
+    "last_action": "First reading, referred to Transportation.",
+    "session": "2025-26",
+    "progress_stage": "committee",
+    "stage_dates": {
+      "introduced": "2026-01-20",
+      "committee": "2026-01-20"
+    },
+    "source_url": "https://app.leg.wa.gov/billsummary?BillNumber=6243&Year=2025&Initiative=false",
+    "repository_url": "https://app.leg.wa.gov/billsummary?BillNumber=6243&Year=2025&Initiative=false"
   }
 ]
