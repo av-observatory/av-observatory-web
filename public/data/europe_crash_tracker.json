@@ -626,8 +626,17 @@
     }
   ],
   "country_scope_note": "Coverage registry includes sovereign states conventionally treated as wholly or partly European, plus Kosovo. Inclusion in the registry is geographic/editorial and does not imply EU membership or a position on political status.",
-  "media_watch_checked_at": "2026-11-13",
+  "media_watch_checked_at": "2026-11-14",
   "media_watch": [
+    {
+      "title": "La berline électrique de BYD évite une collision à 130 km/h grâce à sa conduite autonome qui effectue une manœuvre d'évitement alors que le conducteur a lâché le volant",
+      "publisher": "Les Numériques",
+      "published": "2026-11-14",
+      "url": "https://news.google.com/rss/articles/CBMi0AJBVV95cUxQamRlaVNubURJdVg3RDhVVHgzclVPRWdOZjhVYlYyMnJjVUJVbkxxT0lPQVAwb05TbVA1XzRyXzBVSWluaXh3U09iN3V4alA4VlI2TXJTc2FxZVpCb3dscXExYkw2SVc2a2FYQi1MaXd6aElzX1JWWGFjWjU0eVdZRUllTzlIY2d2Q0w4OTZBSE5UeDExRXlxWklpNVQyeF9BVHFxNWdCMndpWXVRV2wtX3ZkRUJRNThaSzlLaGRGVXByNktKUDZOMldWUTVtRXVnb2VjeklMcUgtMWdkeHJqWGJCSG5tM0VObFMxU0d0MmZfbEJSSVFsR2hMYXk3UUZXWEJpVTBVblBmTGJZc2RETnFISEpGem85Mm9MaWdObUZBcmtUX1g5RGJGdXhnZzU2dWhCUXpOUVk0TTZrNm1EYVFSTE1kQTNraWVaaXhSMkE?oc=5",
+      "query_language": "fr",
+      "first_seen": "2026-11-14",
+      "status": "unverified media headline; not counted as a crash"
+    },
     {
       "title": "[Exclusive] Avoiding the side with children just before a collision… Hyundai Motor Group unveils autonomous driving technology for passenger protection",
       "publisher": "머니투데이",
