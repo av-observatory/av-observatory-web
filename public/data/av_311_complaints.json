@@ -5,13 +5,13 @@
   "source_api": "https://data.sf.gov/resource/vw6y-z8j6.json",
   "selection": "Exact service_name match: Autonomous Vehicle Complaints. Other city request types and unclassified AV mentions are excluded.",
   "limitations": "These are public 311 requests, not verified incidents. The published subtypes describe how SF311 classified a request, not the specific behavior alleged. Operator identity is unavailable; the AV category begins in April 2025.",
-  "source_data_as_of": "2026-11-14T01:00:00.000",
-  "total_records": 1088,
+  "source_data_as_of": "2026-11-15T01:00:00.000",
+  "total_records": 1091,
   "markets": [
     {
       "market": "San Francisco",
       "state": "CA",
-      "complaints": 1088
+      "complaints": 1091
     }
   ],
   "monthly": [
@@ -133,7 +133,7 @@
       "month": "2026-11",
       "market": "San Francisco",
       "state": "CA",
-      "complaints": 35
+      "complaints": 38
     }
   ],
   "records": [
@@ -17544,6 +17544,54 @@
       "long": -122.45003501,
       "neighborhood": "Cole Valley",
       "source_url": "https://data.sf.gov/resource/vw6y-z8j6.json?service_request_id=202000305392"
+    },
+    {
+      "id": "SF-202000309312",
+      "source_id": "202000309312",
+      "state": "CA",
+      "market": "San Francisco",
+      "requested_datetime": "2026-11-14T12:56:05.000",
+      "requested_date": "2026-11-14",
+      "month": "2026-11",
+      "type": "incident_report",
+      "status": "Open",
+      "agency": "MTA - Autonomous Vehicles Complaints",
+      "lat": 37.7655259359,
+      "long": -122.504116751,
+      "neighborhood": "Golden Gate Park",
+      "source_url": "https://data.sf.gov/resource/vw6y-z8j6.json?service_request_id=202000309312"
+    },
+    {
+      "id": "SF-202000310106",
+      "source_id": "202000310106",
+      "state": "CA",
+      "market": "San Francisco",
+      "requested_datetime": "2026-11-14T16:03:10.000",
+      "requested_date": "2026-11-14",
+      "month": "2026-11",
+      "type": "incident_report",
+      "status": "Open",
+      "agency": "MTA - Autonomous Vehicles Complaints",
+      "lat": 37.7996935557,
+      "long": -122.4225251477,
+      "neighborhood": "Russian Hill",
+      "source_url": "https://data.sf.gov/resource/vw6y-z8j6.json?service_request_id=202000310106"
+    },
+    {
+      "id": "SF-202000310953",
+      "source_id": "202000310953",
+      "state": "CA",
+      "market": "San Francisco",
+      "requested_datetime": "2026-11-14T22:09:59.000",
+      "requested_date": "2026-11-14",
+      "month": "2026-11",
+      "type": "incident_report",
+      "status": "Open",
+      "agency": "MTA - Autonomous Vehicles Complaints",
+      "lat": 37.76790777,
+      "long": -122.42673258,
+      "neighborhood": "Mission Dolores",
+      "source_url": "https://data.sf.gov/resource/vw6y-z8j6.json?service_request_id=202000310953"
     }
   ]
 }
