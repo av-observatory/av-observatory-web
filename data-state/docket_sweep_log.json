@@ -14,9 +14,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "AL": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-11-15",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "official alison site returned no AV search results (JS app); only HB560 introduced PDF was fetched and it was unreadable binary"
  },
  "AR": {
   "attempted": "2026-10-19",
@@ -41,9 +41,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "CA": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-11-15",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "leginfo search not readable by fetch tool this run"
  },
  "CO": {
   "attempted": "2026-10-19",
@@ -59,9 +59,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "DC": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-11-15",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "lims.dccouncil.gov returned an empty application shell, bill data not readable"
  },
  "DE": {
   "attempted": "2026-10-19",
@@ -85,9 +85,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "GA": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-11-15",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "official site search not attempted successfully (JS app)"
  },
  "HI": {
   "attempted": "2026-10-19",
@@ -111,9 +111,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "ID": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-11-15",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "official site search not readable this run"
  },
  "IL": {
   "attempted": "2026-10-19",
@@ -129,9 +129,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "KS": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-11-15",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "official site search not readable this run"
  },
  "KY": {
   "attempted": "2026-10-19",
@@ -152,9 +152,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "MA": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-11-15",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "official site search not readable this run"
  },
  "MD": {
   "attempted": "2026-10-19",
@@ -172,9 +172,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "MI": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-11-15",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "legislature.mi.gov title/keyword search for automated driving, autonomous, driverless returned 0 results; full-text search not run, so not counted as a completed check"
  },
  "MN": {
   "attempted": "2026-10-19",
@@ -195,9 +195,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "MS": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-11-15",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "billstatus site not readable this run"
  },
  "MT": {
   "attempted": "2026-10-19",
@@ -217,9 +217,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "ND": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-11-15",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "official site not readable this run"
  },
  "NE": {
   "attempted": "2026-10-19",
@@ -237,9 +237,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "NJ": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-11-15",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "njleg keyword search URL returned 404"
  },
  "NM": {
   "attempted": "2026-10-19",
@@ -261,9 +261,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "NY": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-11-15",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "nysenate search page is a JS form returning no results"
  },
  "OH": {
   "attempted": "2026-10-19",
@@ -281,9 +281,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "OR": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-11-15",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "olis not readable this run"
  },
  "PA": {
   "attempted": "2026-10-19",
@@ -301,9 +301,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "SC": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-11-15",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "scstatehouse search page returned only a search form"
  },
  "SD": {
   "attempted": "2026-10-19",
@@ -323,9 +323,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "TX": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-11-15",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "capitol.texas.gov host does not resolve from this session (network allowlist)"
  },
  "UT": {
   "attempted": "2026-10-19",
@@ -345,9 +345,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "VT": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-11-15",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "official site not readable this run"
  },
  "WA": {
   "attempted": "2026-10-19",
@@ -369,9 +369,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "WV": {
-  "attempted": "2026-10-19",
+  "attempted": "2026-11-15",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "official site not readable this run"
  },
  "WY": {
   "attempted": "2026-10-19",
