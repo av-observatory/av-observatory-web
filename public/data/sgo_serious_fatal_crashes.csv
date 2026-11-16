@@ -1,4 +1,6 @@
 incident_key,incident_date,city,state,reporting_entities,report_ids,severity,make,model,crash_with,roadway_type,engagement_status,air_bag_deployment,source_url
+91428dbd8d62b74,OCT-2026,Atlanta,GA,Waymo LLC,30270-17066,Serious W/ Hospitalization,JAGUAR,I-PACE,Passenger Car,Street,ADS,Deployed,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv
+396bdea15f531c5,SEP-2026,Los Angeles,CA,Waymo LLC,30270-16670,Serious W/ Hospitalization,JAGUAR,I-PACE,SUV,Street,ADS,Deployed,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv
 4c6d6b79d0d8974,AUG-2026,Dallas,TX,Waymo LLC,30270-16196,Fatality,JAGUAR,I-PACE,Non-Motorist: Pedestrian,Street,ADS,No Deployment Reported,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv
 e1bccc94686b59d,JUL-2026,Los Angeles,CA,Waymo LLC,30270-16028,Serious W/ Hospitalization,JAGUAR,I-PACE,Passenger Car,Street,ADS,Deployed,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv
 beee66377373c78,JUL-2026,Miami Beach,FL,Waymo LLC,30270-15830,Serious W/ Hospitalization,JAGUAR,I-PACE,Non-Motorist: Cyclist,Street,ADS,No Deployment Reported,https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv
