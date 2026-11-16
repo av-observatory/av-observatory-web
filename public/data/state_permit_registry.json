@@ -72,8 +72,8 @@
       "status": "permit_required_not_public"
     }
   ],
-  "manufacturer_count": 73,
-  "total_permit_entries": 202,
+  "manufacturer_count": 74,
+  "total_permit_entries": 204,
   "manufacturers": [
     {
       "manufacturer_key": "WAYMO",
@@ -85,6 +85,7 @@
         "DC",
         "FL",
         "GA",
+        "MI",
         "NV",
         "PA",
         "TN",
@@ -92,8 +93,8 @@
         "US",
         "WA"
       ],
-      "state_count": 12,
-      "permit_count": 24,
+      "state_count": 13,
+      "permit_count": 25,
       "company_status": "active",
       "status_confidence": "inferred",
       "last_evidence_date": "2026-09",
@@ -228,7 +229,7 @@
           "permit_id": null,
           "approved_locations": null,
           "source_url": "https://www.nhtsa.gov/standing-general-order-crash-reporting",
-          "captured_at": "2026-08-01",
+          "captured_at": "2026-09-01",
           "source_category": "operational_evidence"
         },
         {
@@ -240,7 +241,7 @@
           "permit_id": null,
           "approved_locations": null,
           "source_url": "https://www.nhtsa.gov/standing-general-order-crash-reporting",
-          "captured_at": "2026-08-01",
+          "captured_at": "2026-09-01",
           "source_category": "operational_evidence"
         },
         {
@@ -252,7 +253,7 @@
           "permit_id": null,
           "approved_locations": null,
           "source_url": "https://www.nhtsa.gov/standing-general-order-crash-reporting",
-          "captured_at": "2026-08-01",
+          "captured_at": "2026-09-01",
           "source_category": "operational_evidence"
         },
         {
@@ -264,7 +265,7 @@
           "permit_id": null,
           "approved_locations": null,
           "source_url": "https://www.nhtsa.gov/standing-general-order-crash-reporting",
-          "captured_at": "2026-08-01",
+          "captured_at": "2026-09-01",
           "source_category": "operational_evidence"
         },
         {
@@ -288,7 +289,7 @@
           "permit_id": null,
           "approved_locations": null,
           "source_url": "https://www.nhtsa.gov/standing-general-order-crash-reporting",
-          "captured_at": "2026-06-01",
+          "captured_at": "2026-09-01",
           "source_category": "operational_evidence"
         },
         {
@@ -300,7 +301,7 @@
           "permit_id": null,
           "approved_locations": null,
           "source_url": "https://www.nhtsa.gov/standing-general-order-crash-reporting",
-          "captured_at": "2026-07-01",
+          "captured_at": "2026-09-01",
           "source_category": "operational_evidence"
         },
         {
@@ -312,7 +313,7 @@
           "permit_id": null,
           "approved_locations": null,
           "source_url": "https://www.nhtsa.gov/standing-general-order-crash-reporting",
-          "captured_at": "2026-07-01",
+          "captured_at": "2026-09-01",
           "source_category": "operational_evidence"
         },
         {
@@ -324,11 +325,23 @@
           "permit_id": null,
           "approved_locations": null,
           "source_url": "https://www.nhtsa.gov/standing-general-order-crash-reporting",
-          "captured_at": "2026-08-01",
+          "captured_at": "2026-09-01",
           "source_category": "operational_evidence"
         },
         {
           "state": "NV",
+          "agency": "NHTSA SGO (incident filing evidence)",
+          "company": "Waymo LLC",
+          "permit_type_raw": "Incident report filed for this state",
+          "permit_type_normalized": "federal_disclosure",
+          "permit_id": null,
+          "approved_locations": null,
+          "source_url": "https://www.nhtsa.gov/standing-general-order-crash-reporting",
+          "captured_at": "2026-08-01",
+          "source_category": "operational_evidence"
+        },
+        {
+          "state": "MI",
           "agency": "NHTSA SGO (incident filing evidence)",
           "company": "Waymo LLC",
           "permit_type_raw": "Incident report filed for this state",
@@ -407,8 +420,8 @@
       "permit_count": 10,
       "company_status": "active",
       "status_confidence": "inferred",
-      "last_evidence_date": "2026-09",
-      "status_basis": "Newest permit, registry or incident-filing evidence is from 2026-09.",
+      "last_evidence_date": "2026-10",
+      "status_basis": "Newest permit, registry or incident-filing evidence is from 2026-10.",
       "permits": [
         {
           "agency": "California DMV",
@@ -467,7 +480,7 @@
           "permit_id": null,
           "approved_locations": null,
           "source_url": "https://www.nhtsa.gov/standing-general-order-crash-reporting",
-          "captured_at": "2026-09-01",
+          "captured_at": "2026-10-01",
           "source_category": "operational_evidence"
         },
         {
@@ -815,7 +828,7 @@
           "permit_id": null,
           "approved_locations": null,
           "source_url": "https://www.nhtsa.gov/standing-general-order-crash-reporting",
-          "captured_at": "2026-08-01",
+          "captured_at": "2026-09-01",
           "source_category": "operational_evidence"
         },
         {
@@ -827,7 +840,7 @@
           "permit_id": null,
           "approved_locations": null,
           "source_url": "https://www.nhtsa.gov/standing-general-order-crash-reporting",
-          "captured_at": "2026-08-01",
+          "captured_at": "2026-09-01",
           "source_category": "operational_evidence"
         },
         {
@@ -1105,8 +1118,8 @@
       "permit_count": 4,
       "company_status": "active",
       "status_confidence": "inferred",
-      "last_evidence_date": "2026-08",
-      "status_basis": "Newest permit, registry or incident-filing evidence is from 2026-08.",
+      "last_evidence_date": "2026-09",
+      "status_basis": "Newest permit, registry or incident-filing evidence is from 2026-09.",
       "permits": [
         {
           "agency": "MassDOT",
@@ -1141,7 +1154,7 @@
           "permit_id": null,
           "approved_locations": null,
           "source_url": "https://www.nhtsa.gov/standing-general-order-crash-reporting",
-          "captured_at": "2026-08-01",
+          "captured_at": "2026-09-01",
           "source_category": "operational_evidence"
         },
         {
@@ -1255,7 +1268,7 @@
           "permit_id": null,
           "approved_locations": null,
           "source_url": "https://www.nhtsa.gov/standing-general-order-crash-reporting",
-          "captured_at": "2025-07-01",
+          "captured_at": "2026-09-01",
           "source_category": "operational_evidence"
         },
         {
@@ -1602,8 +1615,8 @@
       "permit_count": 4,
       "company_status": "active",
       "status_confidence": "inferred",
-      "last_evidence_date": "2026-09",
-      "status_basis": "Newest permit, registry or incident-filing evidence is from 2026-09.",
+      "last_evidence_date": "2026-10",
+      "status_basis": "Newest permit, registry or incident-filing evidence is from 2026-10.",
       "permits": [
         {
           "agency": "California DMV",
@@ -1650,7 +1663,7 @@
           "permit_id": null,
           "approved_locations": null,
           "source_url": "https://www.nhtsa.gov/standing-general-order-crash-reporting",
-          "captured_at": "2026-09-01",
+          "captured_at": "2026-10-01",
           "source_category": "operational_evidence"
         }
       ]
@@ -1968,8 +1981,8 @@
       "permit_count": 3,
       "company_status": "active",
       "status_confidence": "inferred",
-      "last_evidence_date": "2026-09",
-      "status_basis": "Newest permit, registry or incident-filing evidence is from 2026-09.",
+      "last_evidence_date": "2026-10",
+      "status_basis": "Newest permit, registry or incident-filing evidence is from 2026-10.",
       "permits": [
         {
           "agency": "Arizona DOT",
@@ -1992,7 +2005,7 @@
           "permit_id": null,
           "approved_locations": null,
           "source_url": "https://www.nhtsa.gov/standing-general-order-crash-reporting",
-          "captured_at": "2026-09-01",
+          "captured_at": "2026-10-01",
           "source_category": "operational_evidence"
         },
         {
@@ -2799,8 +2812,8 @@
       "permit_count": 1,
       "company_status": "active",
       "status_confidence": "inferred",
-      "last_evidence_date": "2026-08",
-      "status_basis": "Newest permit, registry or incident-filing evidence is from 2026-08.",
+      "last_evidence_date": "2026-09",
+      "status_basis": "Newest permit, registry or incident-filing evidence is from 2026-09.",
       "permits": [
         {
           "state": "TX",
@@ -2811,7 +2824,34 @@
           "permit_id": null,
           "approved_locations": null,
           "source_url": "https://www.nhtsa.gov/standing-general-order-crash-reporting",
-          "captured_at": "2026-08-01",
+          "captured_at": "2026-09-01",
+          "source_category": "operational_evidence"
+        }
+      ]
+    },
+    {
+      "manufacturer_key": "BOT AUTO",
+      "display_name": "Bot Auto",
+      "states": [
+        "TX"
+      ],
+      "state_count": 1,
+      "permit_count": 1,
+      "company_status": "active",
+      "status_confidence": "inferred",
+      "last_evidence_date": "2026-10",
+      "status_basis": "Newest permit, registry or incident-filing evidence is from 2026-10.",
+      "permits": [
+        {
+          "state": "TX",
+          "agency": "NHTSA SGO (incident filing evidence)",
+          "company": "Bot Auto",
+          "permit_type_raw": "Incident report filed for this state",
+          "permit_type_normalized": "federal_disclosure",
+          "permit_id": null,
+          "approved_locations": null,
+          "source_url": "https://www.nhtsa.gov/standing-general-order-crash-reporting",
+          "captured_at": "2026-10-01",
           "source_category": "operational_evidence"
         }
       ]
@@ -4936,7 +4976,7 @@
       "permit_id": null,
       "approved_locations": null,
       "source_url": "https://www.nhtsa.gov/standing-general-order-crash-reporting",
-      "captured_at": "2026-09-01",
+      "captured_at": "2026-10-01",
       "source_category": "operational_evidence"
     },
     {
@@ -4972,7 +5012,7 @@
       "permit_id": null,
       "approved_locations": null,
       "source_url": "https://www.nhtsa.gov/standing-general-order-crash-reporting",
-      "captured_at": "2026-08-01",
+      "captured_at": "2026-09-01",
       "source_category": "operational_evidence"
     },
     {
@@ -4984,7 +5024,7 @@
       "permit_id": null,
       "approved_locations": null,
       "source_url": "https://www.nhtsa.gov/standing-general-order-crash-reporting",
-      "captured_at": "2026-08-01",
+      "captured_at": "2026-09-01",
       "source_category": "operational_evidence"
     },
     {
@@ -4996,7 +5036,7 @@
       "permit_id": null,
       "approved_locations": null,
       "source_url": "https://www.nhtsa.gov/standing-general-order-crash-reporting",
-      "captured_at": "2026-08-01",
+      "captured_at": "2026-09-01",
       "source_category": "operational_evidence"
     },
     {
@@ -5008,7 +5048,7 @@
       "permit_id": null,
       "approved_locations": null,
       "source_url": "https://www.nhtsa.gov/standing-general-order-crash-reporting",
-      "captured_at": "2026-08-01",
+      "captured_at": "2026-09-01",
       "source_category": "operational_evidence"
     },
     {
@@ -5032,7 +5072,7 @@
       "permit_id": null,
       "approved_locations": null,
       "source_url": "https://www.nhtsa.gov/standing-general-order-crash-reporting",
-      "captured_at": "2026-06-01",
+      "captured_at": "2026-09-01",
       "source_category": "operational_evidence"
     },
     {
@@ -5044,7 +5084,7 @@
       "permit_id": null,
       "approved_locations": null,
       "source_url": "https://www.nhtsa.gov/standing-general-order-crash-reporting",
-      "captured_at": "2026-07-01",
+      "captured_at": "2026-09-01",
       "source_category": "operational_evidence"
     },
     {
@@ -5056,7 +5096,7 @@
       "permit_id": null,
       "approved_locations": null,
       "source_url": "https://www.nhtsa.gov/standing-general-order-crash-reporting",
-      "captured_at": "2026-07-01",
+      "captured_at": "2026-09-01",
       "source_category": "operational_evidence"
     },
     {
@@ -5068,11 +5108,23 @@
       "permit_id": null,
       "approved_locations": null,
       "source_url": "https://www.nhtsa.gov/standing-general-order-crash-reporting",
-      "captured_at": "2026-08-01",
+      "captured_at": "2026-09-01",
       "source_category": "operational_evidence"
     },
     {
       "state": "NV",
+      "agency": "NHTSA SGO (incident filing evidence)",
+      "company": "Waymo LLC",
+      "permit_type_raw": "Incident report filed for this state",
+      "permit_type_normalized": "federal_disclosure",
+      "permit_id": null,
+      "approved_locations": null,
+      "source_url": "https://www.nhtsa.gov/standing-general-order-crash-reporting",
+      "captured_at": "2026-08-01",
+      "source_category": "operational_evidence"
+    },
+    {
+      "state": "MI",
       "agency": "NHTSA SGO (incident filing evidence)",
       "company": "Waymo LLC",
       "permit_type_raw": "Incident report filed for this state",
@@ -5152,7 +5204,7 @@
       "permit_id": null,
       "approved_locations": null,
       "source_url": "https://www.nhtsa.gov/standing-general-order-crash-reporting",
-      "captured_at": "2025-07-01",
+      "captured_at": "2026-09-01",
       "source_category": "operational_evidence"
     },
     {
@@ -5248,7 +5300,7 @@
       "permit_id": null,
       "approved_locations": null,
       "source_url": "https://www.nhtsa.gov/standing-general-order-crash-reporting",
-      "captured_at": "2026-08-01",
+      "captured_at": "2026-09-01",
       "source_category": "operational_evidence"
     },
     {
@@ -5320,7 +5372,7 @@
       "permit_id": null,
       "approved_locations": null,
       "source_url": "https://www.nhtsa.gov/standing-general-order-crash-reporting",
-      "captured_at": "2026-09-01",
+      "captured_at": "2026-10-01",
       "source_category": "operational_evidence"
     },
     {
@@ -5440,7 +5492,7 @@
       "permit_id": null,
       "approved_locations": null,
       "source_url": "https://www.nhtsa.gov/standing-general-order-crash-reporting",
-      "captured_at": "2026-09-01",
+      "captured_at": "2026-10-01",
       "source_category": "operational_evidence"
     },
     {
@@ -5608,7 +5660,7 @@
       "permit_id": null,
       "approved_locations": null,
       "source_url": "https://www.nhtsa.gov/standing-general-order-crash-reporting",
-      "captured_at": "2026-08-01",
+      "captured_at": "2026-09-01",
       "source_category": "operational_evidence"
     },
     {
@@ -5620,7 +5672,7 @@
       "permit_id": null,
       "approved_locations": null,
       "source_url": "https://www.nhtsa.gov/standing-general-order-crash-reporting",
-      "captured_at": "2026-08-01",
+      "captured_at": "2026-09-01",
       "source_category": "operational_evidence"
     },
     {
@@ -5764,7 +5816,7 @@
       "permit_id": null,
       "approved_locations": null,
       "source_url": "https://www.nhtsa.gov/standing-general-order-crash-reporting",
-      "captured_at": "2026-08-01",
+      "captured_at": "2026-09-01",
       "source_category": "operational_evidence"
     },
     {
@@ -5861,6 +5913,18 @@
       "approved_locations": null,
       "source_url": "https://www.nhtsa.gov/standing-general-order-crash-reporting",
       "captured_at": "2026-05-01",
+      "source_category": "operational_evidence"
+    },
+    {
+      "state": "TX",
+      "agency": "NHTSA SGO (incident filing evidence)",
+      "company": "Bot Auto",
+      "permit_type_raw": "Incident report filed for this state",
+      "permit_type_normalized": "federal_disclosure",
+      "permit_id": null,
+      "approved_locations": null,
+      "source_url": "https://www.nhtsa.gov/standing-general-order-crash-reporting",
+      "captured_at": "2026-10-01",
       "source_category": "operational_evidence"
     },
     {
