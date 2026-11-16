@@ -317,6 +317,22 @@
    "status": "stricken",
    "title": "Delivery of Commercial Goods by Autonomous Vehicles"
   },
+  "FL:S522": {
+   "discovered": "2026-11-16",
+   "jurisdiction": "FL",
+   "number": "SB 522",
+   "source_url": "https://www.flsenate.gov/Session/Bill/2026/522",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
+  "HI:H1797": {
+   "discovered": "2026-11-16",
+   "jurisdiction": "HI",
+   "number": "HB 1797",
+   "source_url": "https://data.capitol.hawaii.gov/session/measure_indiv.aspx?billtype=HB&billnumber=1797&year=2026",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
   "IA:H2375": {
    "checked": "2026-10-18",
    "discovered": "2026-10-17",
@@ -397,6 +413,70 @@
    "stage": "discovered",
    "via": "ledger:page_scan"
   },
+  "IL:H4663": {
+   "discovered": "2026-11-16",
+   "jurisdiction": "IL",
+   "number": "HB 4663",
+   "source_url": "https://www.ilga.gov/ftp/legislation/104/BillStatus/XML/10400HB4663.xml",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
+  "IL:H4789": {
+   "discovered": "2026-11-16",
+   "jurisdiction": "IL",
+   "number": "HB 4789",
+   "source_url": "https://www.ilga.gov/ftp/legislation/104/BillStatus/XML/10400HB4789.xml",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
+  "IL:H5103": {
+   "discovered": "2026-11-16",
+   "jurisdiction": "IL",
+   "number": "HB 5103",
+   "source_url": "https://www.ilga.gov/ftp/legislation/104/BillStatus/XML/10400HB5103.xml",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
+  "IL:H5220": {
+   "discovered": "2026-11-16",
+   "jurisdiction": "IL",
+   "number": "HB 5220",
+   "source_url": "https://www.ilga.gov/ftp/legislation/104/BillStatus/XML/10400HB5220.xml",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
+  "IL:S1591": {
+   "discovered": "2026-11-16",
+   "jurisdiction": "IL",
+   "number": "SB 1591",
+   "source_url": "https://www.ilga.gov/ftp/legislation/104/BillStatus/XML/10400SB1591.xml",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
+  "IL:S2009": {
+   "discovered": "2026-11-16",
+   "jurisdiction": "IL",
+   "number": "SB 2009",
+   "source_url": "https://www.ilga.gov/ftp/legislation/104/BillStatus/XML/10400SB2009.xml",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
+  "IL:S3308": {
+   "discovered": "2026-11-16",
+   "jurisdiction": "IL",
+   "number": "SB 3308",
+   "source_url": "https://www.ilga.gov/ftp/legislation/104/BillStatus/XML/10400SB3308.xml",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
+  "IL:S3392": {
+   "discovered": "2026-11-16",
+   "jurisdiction": "IL",
+   "number": "SB 3392",
+   "source_url": "https://www.ilga.gov/ftp/legislation/104/BillStatus/XML/10400SB3392.xml",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
   "IN:H1377": {
    "discovered": "2026-10-17",
    "jurisdiction": "IN",
@@ -474,6 +554,14 @@
    "stage": "discovered",
    "via": "ledger:title"
   },
+  "MA:H3634": {
+   "discovered": "2026-11-16",
+   "jurisdiction": "MA",
+   "number": "H3634",
+   "source_url": "https://malegislature.gov/Bills/194/H3634",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
   "MA:H3649": {
    "discovered": "2026-10-17",
    "jurisdiction": "MA",
@@ -490,6 +578,22 @@
    "stage": "discovered",
    "via": "ledger:title"
   },
+  "MA:H3754": {
+   "discovered": "2026-11-16",
+   "jurisdiction": "MA",
+   "number": "H3754",
+   "source_url": "https://malegislature.gov/Bills/194/H3754",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
+  "MA:S2379": {
+   "discovered": "2026-11-16",
+   "jurisdiction": "MA",
+   "number": "S2379",
+   "source_url": "https://malegislature.gov/Bills/194/S2379",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
   "MA:S2393": {
    "discovered": "2026-10-17",
    "jurisdiction": "MA",
@@ -498,11 +602,27 @@
    "stage": "discovered",
    "via": "ledger:title"
   },
+  "MA:S3245": {
+   "discovered": "2026-11-16",
+   "jurisdiction": "MA",
+   "number": "S3245",
+   "source_url": "https://malegislature.gov/Bills/194/S3245",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
   "MD:H1256": {
    "discovered": "2026-10-18",
    "jurisdiction": "MD",
    "number": "HB1256",
    "source_url": "https://mgaleg.maryland.gov/mgawebsite/Legislation/Details/hb1256?ys=2025RS&search=True",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
+  "MD:H1295": {
+   "discovered": "2026-11-16",
+   "jurisdiction": "MD",
+   "number": "HB1295",
+   "source_url": "https://mgaleg.maryland.gov/mgawebsite/Legislation/Details/hb1295?ys=2026RS&search=True",
    "stage": "discovered",
    "via": "ledger:page_scan"
   },
@@ -522,11 +642,107 @@
    "stage": "discovered",
    "via": "ledger:page_scan"
   },
+  "MD:S909": {
+   "discovered": "2026-11-16",
+   "jurisdiction": "MD",
+   "number": "SB0909",
+   "source_url": "https://mgaleg.maryland.gov/mgawebsite/Legislation/Details/sb0909?ys=2026RS&search=True",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
   "MD:S949": {
    "discovered": "2026-10-19",
    "jurisdiction": "MD",
    "number": "SB0949",
    "source_url": "https://mgaleg.maryland.gov/mgawebsite/Legislation/Details/sb0949?ys=2025RS&search=True",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
+  "MN:H3513": {
+   "discovered": "2026-11-16",
+   "jurisdiction": "MN",
+   "number": "HF3513",
+   "source_url": "https://www.revisor.mn.gov/bills/94/2026/0/HF/3513?body=House",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
+  "MN:H3810": {
+   "discovered": "2026-11-16",
+   "jurisdiction": "MN",
+   "number": "HF3810",
+   "source_url": "https://www.revisor.mn.gov/bills/94/2026/0/HF/3810?body=House",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
+  "MN:H4112": {
+   "discovered": "2026-11-16",
+   "jurisdiction": "MN",
+   "number": "HF4112",
+   "source_url": "https://www.revisor.mn.gov/bills/94/2026/0/HF/4112?body=House",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
+  "MN:H4216": {
+   "discovered": "2026-11-16",
+   "jurisdiction": "MN",
+   "number": "HF4216",
+   "source_url": "https://www.revisor.mn.gov/bills/94/2026/0/HF/4216?body=House",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
+  "MN:H4521": {
+   "discovered": "2026-11-16",
+   "jurisdiction": "MN",
+   "number": "HF4521",
+   "source_url": "https://www.revisor.mn.gov/bills/94/2026/0/HF/4521?body=House",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
+  "MN:S4010": {
+   "discovered": "2026-11-16",
+   "jurisdiction": "MN",
+   "number": "SF4010",
+   "source_url": "https://www.revisor.mn.gov/bills/94/2026/0/SF/4010?body=Senate",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
+  "MN:S4014": {
+   "discovered": "2026-11-16",
+   "jurisdiction": "MN",
+   "number": "SF4014",
+   "source_url": "https://www.revisor.mn.gov/bills/94/2026/0/SF/4014?body=Senate",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
+  "MN:S4381": {
+   "discovered": "2026-11-16",
+   "jurisdiction": "MN",
+   "number": "SF4381",
+   "source_url": "https://www.revisor.mn.gov/bills/94/2026/0/SF/4381?body=Senate",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
+  "MN:S4618": {
+   "discovered": "2026-11-16",
+   "jurisdiction": "MN",
+   "number": "SF4618",
+   "source_url": "https://www.revisor.mn.gov/bills/94/2026/0/SF/4618?body=Senate",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
+  "MN:S4731": {
+   "discovered": "2026-11-16",
+   "jurisdiction": "MN",
+   "number": "SF4731",
+   "source_url": "https://www.revisor.mn.gov/bills/94/2026/0/SF/4731?body=Senate",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
+  "MO:H1166": {
+   "discovered": "2026-11-16",
+   "jurisdiction": "MO",
+   "number": "HB 1166",
+   "source_url": "https://house.mo.gov/Bill.aspx?bill=HB1166&year=2025&code=R",
    "stage": "discovered",
    "via": "ledger:page_scan"
   },
@@ -602,6 +818,14 @@
    "stage": "discovered",
    "via": "ledger:title"
   },
+  "MS:H484": {
+   "discovered": "2026-11-16",
+   "jurisdiction": "MS",
+   "number": "HB484",
+   "source_url": "https://billstatus.ls.state.ms.us/documents/2026/pdf/HB/0400-0499/HB0484IN.pdf",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
   "MS:H529": {
    "discovered": "2026-10-18",
    "jurisdiction": "MS",
@@ -626,6 +850,14 @@
    "stage": "discovered",
    "via": "ledger:page_scan"
   },
+  "MS:S2265": {
+   "discovered": "2026-11-16",
+   "jurisdiction": "MS",
+   "number": "SB2265",
+   "source_url": "https://billstatus.ls.state.ms.us/documents/2026/pdf/SB/2200-2299/SB2265IN.pdf",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
   "MS:S2269": {
    "discovered": "2026-10-17",
    "jurisdiction": "MS",
@@ -633,6 +865,22 @@
    "source_url": "https://billstatus.ls.state.ms.us/documents/2026/pdf/SB/2200-2299/SB2269SG.pdf",
    "stage": "discovered",
    "via": "ledger:title"
+  },
+  "MS:S2628": {
+   "discovered": "2026-11-16",
+   "jurisdiction": "MS",
+   "number": "SB2628",
+   "source_url": "https://billstatus.ls.state.ms.us/documents/2026/pdf/SB/2600-2699/SB2628IN.pdf",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
+  "MS:S2803": {
+   "discovered": "2026-11-16",
+   "jurisdiction": "MS",
+   "number": "SB2803",
+   "source_url": "https://billstatus.ls.state.ms.us/documents/2025/pdf/SB/2800-2899/SB2803SG.pdf",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
   },
   "MT:L1679": {
    "discovered": "2026-10-17",
@@ -4562,6 +4810,14 @@
    "stage": "discovered",
    "via": "ledger:state_fulltext"
   },
+  "NY:S4947": {
+   "discovered": "2026-11-16",
+   "jurisdiction": "NY",
+   "number": "S4947",
+   "source_url": "https://nyassembly.gov/leg/?default_fld=&leg_video=&bn=S04947&term=2025&Summary=Y&Actions=Y",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
   "NY:S4964": {
    "discovered": "2026-10-17",
    "jurisdiction": "NY",
@@ -4633,6 +4889,14 @@
    "source_url": "https://nyassembly.gov/leg/?default_fld=&leg_video=&bn=S05400&term=2025&Summary=Y&Actions=Y",
    "stage": "discovered",
    "via": "ledger:state_fulltext"
+  },
+  "NY:S5456": {
+   "discovered": "2026-11-16",
+   "jurisdiction": "NY",
+   "number": "S5456",
+   "source_url": "https://nyassembly.gov/leg/?default_fld=&leg_video=&bn=S05456&term=2025&Summary=Y&Actions=Y",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
   },
   "NY:S5587": {
    "discovered": "2026-10-17",
@@ -5162,6 +5426,14 @@
    "stage": "discovered",
    "via": "ledger:state_fulltext"
   },
+  "NY:S8203": {
+   "discovered": "2026-11-16",
+   "jurisdiction": "NY",
+   "number": "S8203",
+   "source_url": "https://nyassembly.gov/leg/?default_fld=&leg_video=&bn=S08203&term=2025&Summary=Y&Actions=Y",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
   "NY:S8211": {
    "discovered": "2026-10-17",
    "jurisdiction": "NY",
@@ -5385,6 +5657,14 @@
    "source_url": "https://nyassembly.gov/leg/?default_fld=&leg_video=&bn=S08948&term=2025&Summary=Y&Actions=Y",
    "stage": "discovered",
    "via": "ledger:state_fulltext"
+  },
+  "NY:S8964": {
+   "discovered": "2026-11-16",
+   "jurisdiction": "NY",
+   "number": "S8964",
+   "source_url": "https://nyassembly.gov/leg/?default_fld=&leg_video=&bn=S08964&term=2025&Summary=Y&Actions=Y",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
   },
   "NY:S9000": {
    "discovered": "2026-10-17",
@@ -6487,6 +6767,78 @@
    "jurisdiction": "TN",
    "number": "HB2450",
    "source_url": "https://wapp.capitol.tn.gov/apps/BillInfo/Default?BillNumber=HB2450&ga=114",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
+  "TN:S2205": {
+   "discovered": "2026-11-16",
+   "jurisdiction": "TN",
+   "number": "SB2205",
+   "source_url": "https://wapp.capitol.tn.gov/apps/BillInfo/Default?BillNumber=SB2205&ga=114",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
+  "TN:S2253": {
+   "discovered": "2026-11-16",
+   "jurisdiction": "TN",
+   "number": "SB2253",
+   "source_url": "https://wapp.capitol.tn.gov/apps/BillInfo/Default?BillNumber=SB2253&ga=114",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
+  "TN:S310": {
+   "discovered": "2026-11-16",
+   "jurisdiction": "TN",
+   "number": "SB0310",
+   "source_url": "https://wapp.capitol.tn.gov/apps/BillInfo/Default?BillNumber=SB0310&ga=114",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
+  "TX:H3837": {
+   "discovered": "2026-11-16",
+   "jurisdiction": "TX",
+   "number": "HB 3837",
+   "source_url": "https://capitol.texas.gov/BillLookup/History.aspx?LegSess=89R&Bill=HB3837",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
+  "TX:H4402": {
+   "discovered": "2026-11-16",
+   "jurisdiction": "TX",
+   "number": "HB 4402",
+   "source_url": "https://capitol.texas.gov/BillLookup/History.aspx?LegSess=89R&Bill=HB4402",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
+  "TX:H5117": {
+   "discovered": "2026-11-16",
+   "jurisdiction": "TX",
+   "number": "HB 5117",
+   "source_url": "https://capitol.texas.gov/BillLookup/History.aspx?LegSess=89R&Bill=HB5117",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
+  "TX:H5426": {
+   "discovered": "2026-11-16",
+   "jurisdiction": "TX",
+   "number": "HB 5426",
+   "source_url": "https://capitol.texas.gov/BillLookup/History.aspx?LegSess=89R&Bill=HB5426",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
+  "TX:S2425": {
+   "discovered": "2026-11-16",
+   "jurisdiction": "TX",
+   "number": "SB 2425",
+   "source_url": "https://capitol.texas.gov/BillLookup/History.aspx?LegSess=89R&Bill=SB2425",
+   "stage": "discovered",
+   "via": "ledger:page_scan"
+  },
+  "TX:S2807": {
+   "discovered": "2026-11-16",
+   "jurisdiction": "TX",
+   "number": "SB 2807",
+   "source_url": "https://capitol.texas.gov/BillLookup/History.aspx?LegSess=89R&Bill=SB2807",
    "stage": "discovered",
    "via": "ledger:page_scan"
   },

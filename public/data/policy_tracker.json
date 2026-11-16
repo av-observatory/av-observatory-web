@@ -21,7 +21,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://www.federalregister.gov/documents/2018/01/18/2018-00671/removing-regulatory-barriers-for-vehicles-with-automated-driving-systems",
       "editorial_source_type": "official_federal_register",
-      "summary_reviewed_at": "2026-10-14"
+      "summary_reviewed_at": "2026-10-14",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-11-16",
+        "reason": "HTTPError: HTTP Error 400: Bad Request"
+      }
     },
     {
       "id": "fmvss-2019-anprm",
@@ -41,7 +46,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://www.federalregister.gov/documents/2019/05/28/2019-11032/removing-regulatory-barriers-for-vehicles-with-automated-driving-systems",
       "editorial_source_type": "official_federal_register",
-      "summary_reviewed_at": "2026-10-14"
+      "summary_reviewed_at": "2026-10-14",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-11-16",
+        "reason": "HTTPError: HTTP Error 400: Bad Request"
+      }
     },
     {
       "id": "fmvss-2020-nprm",
@@ -74,7 +84,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://www.federalregister.gov/d/2020-05886",
       "editorial_source_type": "official_federal_register",
-      "summary_reviewed_at": "2026-10-14"
+      "summary_reviewed_at": "2026-10-14",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-11-16",
+        "reason": "HTTPError: HTTP Error 400: Bad Request"
+      }
     },
     {
       "id": "fmvss-2022-final",
@@ -112,7 +127,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://www.federalregister.gov/d/2022-05426",
       "editorial_source_type": "official_federal_register",
-      "summary_reviewed_at": "2026-10-14"
+      "summary_reviewed_at": "2026-10-14",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-11-16",
+        "reason": "HTTPError: HTTP Error 400: Bad Request"
+      }
     },
     {
       "id": "fmvss-204-2026",
@@ -138,7 +158,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://www.federalregister.gov/d/2026-11080",
       "editorial_source_type": "official_federal_register",
-      "summary_reviewed_at": "2026-10-14"
+      "summary_reviewed_at": "2026-10-14",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-11-16",
+        "reason": "HTTPError: HTTP Error 400: Bad Request"
+      }
     },
     {
       "id": "fmvss-102-2026",
@@ -161,7 +186,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://www.federalregister.gov/d/2026-05024",
       "editorial_source_type": "official_federal_register_proposed_rule",
-      "summary_reviewed_at": "2026-10-14"
+      "summary_reviewed_at": "2026-10-14",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-11-16",
+        "reason": "HTTPError: HTTP Error 400: Bad Request"
+      }
     },
     {
       "id": "fmvss-103-104-2026",
@@ -185,7 +215,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://www.federalregister.gov/d/2026-05023",
       "editorial_source_type": "official_federal_register_proposed_rule",
-      "summary_reviewed_at": "2026-10-14"
+      "summary_reviewed_at": "2026-10-14",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-11-16",
+        "reason": "HTTPError: HTTP Error 400: Bad Request"
+      }
     },
     {
       "id": "fmvss-110-2026",
@@ -208,7 +243,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://www.federalregister.gov/d/2026-06254",
       "editorial_source_type": "official_federal_register_proposed_rule",
-      "summary_reviewed_at": "2026-10-14"
+      "summary_reviewed_at": "2026-10-14",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-11-16",
+        "reason": "HTTPError: HTTP Error 400: Bad Request"
+      }
     },
     {
       "id": "fmvss-135-2026",
@@ -232,7 +272,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://www.federalregister.gov/d/2026-12981",
       "editorial_source_type": "official_federal_register_proposed_rule",
-      "summary_reviewed_at": "2026-10-14"
+      "summary_reviewed_at": "2026-10-14",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-11-16",
+        "reason": "HTTPError: HTTP Error 400: Bad Request"
+      }
     },
     {
       "id": "fmvss-201-2022",
@@ -258,7 +303,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://www.federalregister.gov/d/2022-05426",
       "editorial_source_type": "official_federal_register_final_rule",
-      "summary_reviewed_at": "2026-10-14"
+      "summary_reviewed_at": "2026-10-14",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-11-16",
+        "reason": "HTTPError: HTTP Error 400: Bad Request"
+      }
     },
     {
       "id": "fmvss-203-2022",
@@ -284,7 +334,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://www.federalregister.gov/d/2022-05426",
       "editorial_source_type": "official_federal_register_final_rule",
-      "summary_reviewed_at": "2026-10-14"
+      "summary_reviewed_at": "2026-10-14",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-11-16",
+        "reason": "HTTPError: HTTP Error 400: Bad Request"
+      }
     },
     {
       "id": "fmvss-204-2022",
@@ -310,7 +365,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://www.federalregister.gov/d/2022-05426",
       "editorial_source_type": "official_federal_register_final_rule",
-      "summary_reviewed_at": "2026-10-14"
+      "summary_reviewed_at": "2026-10-14",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-11-16",
+        "reason": "HTTPError: HTTP Error 400: Bad Request"
+      }
     },
     {
       "id": "fmvss-205-2022",
@@ -336,7 +396,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://www.federalregister.gov/d/2022-05426",
       "editorial_source_type": "official_federal_register_final_rule",
-      "summary_reviewed_at": "2026-10-14"
+      "summary_reviewed_at": "2026-10-14",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-11-16",
+        "reason": "HTTPError: HTTP Error 400: Bad Request"
+      }
     },
     {
       "id": "fmvss-206-2022",
@@ -362,7 +427,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://www.federalregister.gov/d/2022-05426",
       "editorial_source_type": "official_federal_register_final_rule",
-      "summary_reviewed_at": "2026-10-14"
+      "summary_reviewed_at": "2026-10-14",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-11-16",
+        "reason": "HTTPError: HTTP Error 400: Bad Request"
+      }
     },
     {
       "id": "fmvss-207-2022",
@@ -388,7 +458,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://www.federalregister.gov/d/2022-05426",
       "editorial_source_type": "official_federal_register_final_rule",
-      "summary_reviewed_at": "2026-10-14"
+      "summary_reviewed_at": "2026-10-14",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-11-16",
+        "reason": "HTTPError: HTTP Error 400: Bad Request"
+      }
     },
     {
       "id": "fmvss-208-2022",
@@ -414,7 +489,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://www.federalregister.gov/d/2022-05426",
       "editorial_source_type": "official_federal_register_final_rule",
-      "summary_reviewed_at": "2026-10-14"
+      "summary_reviewed_at": "2026-10-14",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-11-16",
+        "reason": "HTTPError: HTTP Error 400: Bad Request"
+      }
     },
     {
       "id": "fmvss-212-2022",
@@ -440,7 +520,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://www.federalregister.gov/d/2022-05426",
       "editorial_source_type": "official_federal_register_final_rule",
-      "summary_reviewed_at": "2026-10-14"
+      "summary_reviewed_at": "2026-10-14",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-11-16",
+        "reason": "HTTPError: HTTP Error 400: Bad Request"
+      }
     },
     {
       "id": "fmvss-214-2022",
@@ -466,7 +551,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://www.federalregister.gov/d/2022-05426",
       "editorial_source_type": "official_federal_register_final_rule",
-      "summary_reviewed_at": "2026-10-14"
+      "summary_reviewed_at": "2026-10-14",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-11-16",
+        "reason": "HTTPError: HTTP Error 400: Bad Request"
+      }
     },
     {
       "id": "fmvss-216a-2022",
@@ -492,7 +582,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://www.federalregister.gov/d/2022-05426",
       "editorial_source_type": "official_federal_register_final_rule",
-      "summary_reviewed_at": "2026-10-14"
+      "summary_reviewed_at": "2026-10-14",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-11-16",
+        "reason": "HTTPError: HTTP Error 400: Bad Request"
+      }
     },
     {
       "id": "fmvss-219-2022",
@@ -518,7 +613,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://www.federalregister.gov/d/2022-05426",
       "editorial_source_type": "official_federal_register_final_rule",
-      "summary_reviewed_at": "2026-10-14"
+      "summary_reviewed_at": "2026-10-14",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-11-16",
+        "reason": "HTTPError: HTTP Error 400: Bad Request"
+      }
     },
     {
       "id": "fmvss-225-2022",
@@ -544,7 +644,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://www.federalregister.gov/d/2022-05426",
       "editorial_source_type": "official_federal_register_final_rule",
-      "summary_reviewed_at": "2026-10-14"
+      "summary_reviewed_at": "2026-10-14",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-11-16",
+        "reason": "HTTPError: HTTP Error 400: Bad Request"
+      }
     },
     {
       "id": "fmvss-226-2022",
@@ -570,7 +675,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://www.federalregister.gov/d/2022-05426",
       "editorial_source_type": "official_federal_register_final_rule",
-      "summary_reviewed_at": "2026-10-14"
+      "summary_reviewed_at": "2026-10-14",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-11-16",
+        "reason": "HTTPError: HTTP Error 400: Bad Request"
+      }
     }
   ],
   "federal_oversight": [
@@ -591,7 +701,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://www.nhtsa.gov/sites/nhtsa.gov/files/2021-06/Standing_General_Order_2021_01-digital-06292021.pdf",
       "editorial_source_type": "official_NHTSA_general_order",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "editorial_recheck": {
+        "result": "missing",
+        "at": "2026-11-16",
+        "reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable"
+      }
     },
     {
       "id": "nhtsa-sgo-2025",
@@ -610,7 +725,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://www.nhtsa.gov/sites/nhtsa.gov/files/2025-04/third-amended-SGO-2021-01_2025.pdf",
       "editorial_source_type": "official_nhtsa_order",
-      "summary_reviewed_at": "2026-10-14"
+      "summary_reviewed_at": "2026-10-14",
+      "editorial_recheck": {
+        "result": "missing",
+        "at": "2026-11-16",
+        "reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable"
+      }
     },
     {
       "id": "nhtsa-av-step-2025",
@@ -629,7 +749,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://www.federalregister.gov/documents/2025/01/15/2024-30854/ads-equipped-vehicle-safety-transparency-and-evaluation-program",
       "editorial_source_type": "official_Federal_Register_notice",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-11-16",
+        "reason": "HTTPError: HTTP Error 400: Bad Request"
+      }
     },
     {
       "id": "nhtsa-av-step-2026",
@@ -648,7 +773,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://www.federalregister.gov/documents/2026/06/26/2026-12980/ads-equipped-vehicle-safety-transparency-and-evaluation-program-withdrawal",
       "editorial_source_type": "official_Federal_Register_notice",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-11-16",
+        "reason": "HTTPError: HTTP Error 400: Bad Request"
+      }
     },
     {
       "id": "auto-fr-2026-20734",
@@ -1639,7 +1769,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://alison.legislature.state.al.us/files/pdf/SearchableInstruments/2019RS/PrintFiles/SB47-Enr.pdf",
       "editorial_source_type": "official_enrolled_bill_text",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "editorial_recheck": {
+        "result": "missing",
+        "at": "2026-11-16",
+        "reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable"
+      }
     },
     {
       "id": "az-statute-baseline",
@@ -1662,7 +1797,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://www.azleg.gov/ars/28/09702.htm",
       "editorial_source_type": "official_state_statute",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "editorial_recheck": {
+        "result": "missing",
+        "at": "2026-11-16",
+        "reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable"
+      }
     },
     {
       "id": "az-eo-2018",
@@ -1684,7 +1824,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://www.azleg.gov/ars/28/09702.htm",
       "editorial_source_type": "official_state_statute_and_agency_page",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "editorial_recheck": {
+        "result": "missing",
+        "at": "2026-11-16",
+        "reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable"
+      }
     },
     {
       "id": "ar-statute-baseline",
@@ -1707,7 +1852,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://www.arkleg.state.ar.us/Acts/FTPDocument?path=%2FACTS%2F2019R%2FPublic%2F&file=468.pdf&ddBienniumSession=2019%2F2019R",
       "editorial_source_type": "official_enrolled_bill_text",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-11-16",
+        "reason": "HTTPError: HTTP Error 400: Bad Request"
+      }
     },
     {
       "id": "ca-statute-baseline",
@@ -1730,7 +1880,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://www.dmv.ca.gov/portal/vehicle-industry-services/autonomous-vehicles/",
       "editorial_source_type": "official_agency_page",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-11-16",
+        "reason": "HTTPError: HTTP Error 400: Bad Request"
+      }
     },
     {
       "id": "co-statute-baseline",
@@ -1753,7 +1908,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://leg.colorado.gov/bills/sb17-213",
       "editorial_source_type": "official_legislature_bill_page",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-11-16",
+        "reason": "HTTPError: HTTP Error 400: Bad Request"
+      }
     },
     {
       "id": "ct-statute-baseline",
@@ -1776,7 +1936,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://www.cga.ct.gov/2017/act/pa/2017PA-00069-R00SB-00260-PA.htm",
       "editorial_source_type": "official_public_act_text",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "editorial_recheck": {
+        "result": "missing",
+        "at": "2026-11-16",
+        "reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable"
+      }
     },
     {
       "id": "de-eo-2017",
@@ -1798,7 +1963,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://news.delaware.gov/2017/09/05/autonomous-vehicles/",
       "editorial_source_type": "official_state_press_release",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-11-16",
+        "reason": "HTTPError: HTTP Error 400: Bad Request"
+      }
     },
     {
       "id": "fl-statute-baseline",
@@ -1821,7 +1991,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://www.flsenate.gov/Laws/Statutes/2025/316.85",
       "editorial_source_type": "official_state_statute",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-11-16",
+        "reason": "HTTPError: HTTP Error 400: Bad Request"
+      }
     },
     {
       "id": "ga-statute-baseline",
@@ -1844,7 +2019,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://www.legis.ga.gov/Legislation/20172018/170801.pdf",
       "editorial_source_type": "official_bill_text_as_passed",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "editorial_recheck": {
+        "result": "missing",
+        "at": "2026-11-16",
+        "reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable"
+      }
     },
     {
       "id": "hi-statute-baseline",
@@ -1867,7 +2047,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://data.capitol.hawaii.gov/sessions/sessionlaws/Years/SLH2020/SLH2020_Act21.pdf",
       "editorial_source_type": "official_session_law_text",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "editorial_recheck": {
+        "result": "missing",
+        "at": "2026-11-16",
+        "reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable"
+      }
     },
     {
       "id": "id-eo-2018",
@@ -1889,7 +2074,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://proddfmmainsa.blob.core.windows.net/dfm-admin-website/rules/2018%20Archive/ExOs/2018-01_ExOr_18-2.pdf",
       "editorial_source_type": "official_executive_order_text",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "editorial_recheck": {
+        "result": "missing",
+        "at": "2026-11-16",
+        "reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable"
+      }
     },
     {
       "id": "il-statute-baseline",
@@ -1912,7 +2102,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://www.ilga.gov/legislation/ilcs/fulltext?DocName=062500050K11-208",
       "editorial_source_type": "official_state_statute",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "editorial_recheck": {
+        "result": "missing",
+        "at": "2026-11-16",
+        "reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable"
+      }
     },
     {
       "id": "il-eo-2018",
@@ -1934,7 +2129,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://www.illinois.gov/government/executive-orders/executive-order.executive-order-number-13.2018.html",
       "editorial_source_type": "official_executive_order_text",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-11-16",
+        "reason": "HTTPError: HTTP Error 400: Bad Request"
+      }
     },
     {
       "id": "ia-statute-baseline",
@@ -1957,7 +2157,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://rules.iowa.gov/Notice/Details/5893C",
       "editorial_source_type": "official_agency_rule_notice",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "editorial_recheck": {
+        "result": "missing",
+        "at": "2026-11-16",
+        "reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable"
+      }
     },
     {
       "id": "ks-statute-baseline",
@@ -1980,7 +2185,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://www.kslegislature.gov/b2025_26/laws/008_000_0000_chapter/008_029_0000_article/008_029_0002_section/008_029_0002_k/",
       "editorial_source_type": "official_state_statute",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-11-16",
+        "reason": "HTTPError: HTTP Error 400: Bad Request"
+      }
     },
     {
       "id": "ky-statute-baseline",
@@ -2003,7 +2213,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://apps.legislature.ky.gov/record/24rs/hb7.html",
       "editorial_source_type": "official_legislature_bill_page",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-11-16",
+        "reason": "HTTPError: HTTP Error 400: Bad Request"
+      }
     },
     {
       "id": "la-statute-baseline",
@@ -2026,7 +2241,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://www.legis.la.gov/legis/LawPrint.aspx?d=1148308",
       "editorial_source_type": "official_state_statute",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-11-16",
+        "reason": "HTTPError: HTTP Error 400: Bad Request"
+      }
     },
     {
       "id": "me-statute-baseline",
