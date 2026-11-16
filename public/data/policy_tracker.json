@@ -2269,7 +2269,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://www.legislature.maine.gov/legis/bills/bills_128th/chapters/RESOLVE46.asp",
       "editorial_source_type": "official_state_statute",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-11-16",
+        "reason": "HTTPError: HTTP Error 400: Bad Request"
+      }
     },
     {
       "id": "me-eo-2018",
@@ -2291,7 +2296,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://www.maine.gov/tools/whatsnew/index.php?topic=Gov_Executive_Orders&id=776188&v=article2018",
       "editorial_source_type": "official_executive_order_text",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-11-16",
+        "reason": "HTTPError: HTTP Error 400: Bad Request"
+      }
     },
     {
       "id": "md-statute-baseline",
@@ -2314,7 +2324,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://www.mgaleg.maryland.gov/mgawebsite/Laws/StatuteText?article=gtr&section=15-903&enactments=false",
       "editorial_source_type": "official_state_statute",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-11-16",
+        "reason": "HTTPError: HTTP Error 400: Bad Request"
+      }
     },
     {
       "id": "ma-eo-2016",
@@ -2336,7 +2351,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://www.mass.gov/executive-orders/no-572-to-promote-the-testing-and-deployment-of-highly-automated-driving-technologies",
       "editorial_source_type": "official_executive_order_text",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "editorial_recheck": {
+        "result": "missing",
+        "at": "2026-11-16",
+        "reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable"
+      }
     },
     {
       "id": "ma-eo-2022",
@@ -2358,7 +2378,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://www.mass.gov/executive-orders/no-603-rescinding-certain-executive-orders",
       "editorial_source_type": "official_executive_order_text",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "editorial_recheck": {
+        "result": "missing",
+        "at": "2026-11-16",
+        "reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable"
+      }
     },
     {
       "id": "mi-statute-baseline",
@@ -2381,7 +2406,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://www.legislature.mi.gov/Laws/MCL?objectName=mcl-257-665",
       "editorial_source_type": "official_state_statute",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-11-16",
+        "reason": "HTTPError: HTTP Error 400: Bad Request"
+      }
     },
     {
       "id": "mn-eo-2018",
@@ -2403,7 +2433,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://www.lrl.mn.gov/archive/execorders/18-04.pdf",
       "editorial_source_type": "official_executive_order_text",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "editorial_recheck": {
+        "result": "missing",
+        "at": "2026-11-16",
+        "reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable"
+      }
     },
     {
       "id": "mn-eo-2019",
@@ -2425,7 +2460,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://www.leg.mn.gov/archive/execorders/19-18.pdf",
       "editorial_source_type": "official_executive_order_text",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "editorial_recheck": {
+        "result": "missing",
+        "at": "2026-11-16",
+        "reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable"
+      }
     },
     {
       "id": "ms-statute-baseline",
@@ -2448,7 +2488,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://billstatus.ls.state.ms.us/documents/2023/pdf/HB/1000-1099/HB1003SG.pdf",
       "editorial_source_type": "official_enrolled_bill_text",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "editorial_recheck": {
+        "result": "missing",
+        "at": "2026-11-16",
+        "reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable"
+      }
     },
     {
       "id": "mt-statute-baseline",
@@ -2471,7 +2516,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://mca.legmt.gov/bills/mca/title_0610/chapter_0060/part_0040/section_0090/0610-0060-0040-0090.html",
       "editorial_source_type": "official_state_statute",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-11-16",
+        "reason": "HTTPError: HTTP Error 400: Bad Request"
+      }
     },
     {
       "id": "ne-statute-baseline",
@@ -2494,7 +2544,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://nebraskalegislature.gov/laws/statutes.php?statute=60-3302",
       "editorial_source_type": "official_state_statute",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-11-16",
+        "reason": "HTTPError: HTTP Error 400: Bad Request"
+      }
     },
     {
       "id": "nv-statute-baseline",
@@ -2517,7 +2572,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://dmv.nv.gov/autonomous.htm",
       "editorial_source_type": "official_agency_page",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-11-16",
+        "reason": "HTTPError: HTTP Error 400: Bad Request"
+      }
     },
     {
       "id": "nh-statute-baseline",
@@ -2540,7 +2600,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://gc.nh.gov/rsa/html/XX/242/242-1.htm",
       "editorial_source_type": "official_state_statute",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-11-16",
+        "reason": "HTTPError: HTTP Error 400: Bad Request"
+      }
     },
     {
       "id": "nm-statute-baseline",
@@ -2563,7 +2628,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://www.law.cornell.edu/regulations/new-mexico/18-24-1-9-NMAC",
       "editorial_source_type": "secondary_legal_database",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "editorial_recheck": {
+        "result": "missing",
+        "at": "2026-11-16",
+        "reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable"
+      }
     },
     {
       "id": "ny-statute-baseline",
@@ -2586,7 +2656,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://dmv.ny.gov/business/autonomous-vehicle-technology-demonstration-testing-permit",
       "editorial_source_type": "official_agency_page",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "editorial_recheck": {
+        "result": "missing",
+        "at": "2026-11-16",
+        "reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable"
+      }
     },
     {
       "id": "nc-statute-baseline",
@@ -2609,7 +2684,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://www.ncleg.gov/EnactedLegislation/Statutes/HTML/ByArticle/Chapter_20/Article_18.html",
       "editorial_source_type": "official_state_statute",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-11-16",
+        "reason": "HTTPError: HTTP Error 400: Bad Request"
+      }
     },
     {
       "id": "nd-statute-baseline",
@@ -2632,7 +2712,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://ndlegis.gov/cencode/t39c01.html",
       "editorial_source_type": "official_state_statute",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-11-16",
+        "reason": "HTTPError: HTTP Error 400: Bad Request"
+      }
     },
     {
       "id": "oh-eo-2019",
@@ -2654,7 +2739,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://governor.ohio.gov/media/executive-orders/executive-order-2019-26d",
       "editorial_source_type": "official_executive_order_text",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "editorial_recheck": {
+        "result": "missing",
+        "at": "2026-11-16",
+        "reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable"
+      }
     },
     {
       "id": "ok-statute-baseline",
@@ -2677,7 +2767,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://www.oklegislature.gov/cf_pdf/2021-22%20ENR/SB/SB1541%20ENR.PDF",
       "editorial_source_type": "official_enrolled_bill_text",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-11-16",
+        "reason": "HTTPError: HTTP Error 400: Bad Request"
+      }
     },
     {
       "id": "pa-statute-baseline",
@@ -2700,7 +2795,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://www.legis.state.pa.us/WU01/LI/LI/CT/HTM/75/75.HTM",
       "editorial_source_type": "official_state_statute",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-11-16",
+        "reason": "HTTPError: HTTP Error 400: Bad Request"
+      }
     },
     {
       "id": "sd-statute-baseline",
@@ -2723,7 +2823,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://mylrc.sdlegislature.gov/api/Documents/Bill/264493.pdf?Year=2024",
       "editorial_source_type": "official_enrolled_bill_text",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "editorial_recheck": {
+        "result": "missing",
+        "at": "2026-11-16",
+        "reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable"
+      }
     },
     {
       "id": "tn-statute-baseline",
@@ -2746,7 +2851,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://wapp.capitol.tn.gov/apps/BillInfo/Default?BillNumber=HB0381&ga=110",
       "editorial_source_type": "official_state_statute",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-11-16",
+        "reason": "HTTPError: HTTP Error 400: Bad Request"
+      }
     },
     {
       "id": "tx-statute-baseline",
@@ -2769,7 +2879,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://capitol.texas.gov/tlodocs/85R/billtext/pdf/SB02205F.pdf",
       "editorial_source_type": "official_enrolled_bill_text",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-11-16",
+        "reason": "HTTPError: HTTP Error 400: Bad Request"
+      }
     },
     {
       "id": "tx-sb2807-2025",
@@ -2792,7 +2907,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://www.txdmv.gov/AVprogram",
       "editorial_source_type": "official_agency_page",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-11-16",
+        "reason": "HTTPError: HTTP Error 400: Bad Request"
+      }
     },
     {
       "id": "ut-statute-baseline",
@@ -2815,7 +2935,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://le.utah.gov/xcode/Title41/Chapter26/41-26.html",
       "editorial_source_type": "official_state_statute",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "editorial_recheck": {
+        "result": "missing",
+        "at": "2026-11-16",
+        "reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable"
+      }
     },
     {
       "id": "vt-statute-baseline",
@@ -2838,7 +2963,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://legislature.vermont.gov/statutes/fullchapter/23/041",
       "editorial_source_type": "official_state_statute",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-11-16",
+        "reason": "HTTPError: HTTP Error 400: Bad Request"
+      }
     },
     {
       "id": "wa-statute-baseline",
@@ -2861,7 +2991,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://dol.wa.gov/vehicles-and-boats/vehicles/vehicle-registration/register-other-vehicles/registering-autonomous-vehicles",
       "editorial_source_type": "official_agency_page",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-11-16",
+        "reason": "HTTPError: HTTP Error 400: Bad Request"
+      }
     },
     {
       "id": "wa-eo-2017",
@@ -2883,7 +3018,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://governor.wa.gov/sites/default/files/exe_order/17-02AutonomouVehicles.pdf",
       "editorial_source_type": "official_executive_order_text",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "editorial_recheck": {
+        "result": "missing",
+        "at": "2026-11-16",
+        "reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable"
+      }
     },
     {
       "id": "wv-statute-baseline",
@@ -2906,7 +3046,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://code.wvlegislature.gov/17H-1/",
       "editorial_source_type": "official_state_statute",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-11-16",
+        "reason": "HTTPError: HTTP Error 400: Bad Request"
+      }
     },
     {
       "id": "wi-eo-2017",
@@ -2928,7 +3073,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://wisconsindot.gov/Documents/about-wisdot/who-we-are/comm-couns/executive-order245.pdf",
       "editorial_source_type": "official_executive_order_text",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "editorial_recheck": {
+        "result": "missing",
+        "at": "2026-11-16",
+        "reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable"
+      }
     },
     {
       "id": "dc-statute-baseline",
@@ -2951,7 +3101,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://ddot.dc.gov/page/autonomous-vehicles",
       "editorial_source_type": "official_agency_page",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-11-16",
+        "reason": "HTTPError: HTTP Error 400: Bad Request"
+      }
     },
     {
       "id": "ca-sb1298-2012",
@@ -2974,7 +3129,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://www.leginfo.ca.gov/pub/11-12/bill/sen/sb_1251-1300/sb_1298_bill_20120925_chaptered.html",
       "editorial_source_type": "official_enrolled_bill_text",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-11-16",
+        "reason": "HTTPError: HTTP Error 400: Bad Request"
+      }
     },
     {
       "id": "ca-ab1592-2016",
@@ -2997,7 +3157,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://leginfo.legislature.ca.gov/faces/billTextClient.xhtml?bill_id=201520160AB1592",
       "editorial_source_type": "official_chaptered_bill_text",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "editorial_recheck": {
+        "result": "missing",
+        "at": "2026-11-16",
+        "reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable"
+      }
     },
     {
       "id": "nv-ab511-2011",
@@ -3020,7 +3185,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://www.leg.state.nv.us/Session/76th2011/Bills/AB/AB511_EN.pdf",
       "editorial_source_type": "official_enrolled_bill_text",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "editorial_recheck": {
+        "result": "missing",
+        "at": "2026-11-16",
+        "reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable"
+      }
     },
     {
       "id": "nv-ab69-2017",
@@ -3043,7 +3213,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://www.leg.state.nv.us/Statutes/79th2017/Stats201724.html",
       "editorial_source_type": "official_session_law_text",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-11-16",
+        "reason": "HTTPError: HTTP Error 400: Bad Request"
+      }
     },
     {
       "id": "fl-hb7027-2016",
@@ -3066,7 +3241,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://www.flsenate.gov/Session/Bill/2016/7027",
       "editorial_source_type": "official_bill_page",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-11-16",
+        "reason": "HTTPError: HTTP Error 400: Bad Request"
+      }
     },
     {
       "id": "fl-hb311-2019",
@@ -3089,7 +3269,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://www.flsenate.gov/Session/Bill/2019/311",
       "editorial_source_type": "official_bill_page",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-11-16",
+        "reason": "HTTPError: HTTP Error 400: Bad Request"
+      }
     },
     {
       "id": "ca-dmv-2017-proposal",
@@ -3111,7 +3296,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://www.dmv.ca.gov/portal/file/autonomous-vehicles-notice-of-proposed-action-march-2017-pdf/",
       "editorial_source_type": "official_agency_rulemaking_notice",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-11-16",
+        "reason": "HTTPError: HTTP Error 400: Bad Request"
+      }
     },
     {
       "id": "ca-dmv-2020-delivery",
@@ -3133,7 +3323,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://www.dmv.ca.gov/portal/vehicle-industry-services/autonomous-vehicles/california-autonomous-vehicle-regulations/",
       "editorial_source_type": "official_agency_page",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-11-16",
+        "reason": "HTTPError: HTTP Error 400: Bad Request"
+      }
     },
     {
       "id": "ca-dmv-2024-draft",
@@ -3155,7 +3350,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://www.dmv.ca.gov/portal/file/request-for-comments-on-av-draft-regulations-pdf/",
       "editorial_source_type": "official_agency_rulemaking_notice",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-11-16",
+        "reason": "HTTPError: HTTP Error 400: Bad Request"
+      }
     },
     {
       "id": "ca-dmv-2025-proposal",
@@ -3177,7 +3377,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://www.dmv.ca.gov/portal/file/notice-of-proposed-regulatory-action-april-2025-pdf/",
       "editorial_source_type": "official_agency_rulemaking_notice",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-11-16",
+        "reason": "HTTPError: HTTP Error 400: Bad Request"
+      }
     },
     {
       "id": "ca-dmv-2025-modified",
@@ -3199,7 +3404,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://www.dmv.ca.gov/portal/file/statement-of-reasons-for-the-modified-regulatory-text-december-2025-pdf/",
       "editorial_source_type": "official_agency_rulemaking_notice",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-11-16",
+        "reason": "HTTPError: HTTP Error 400: Bad Request"
+      }
     },
     {
       "id": "ca-dmv-2026-modified",
@@ -3221,7 +3431,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://www.dmv.ca.gov/portal/file/statement-of-reasons-for-the-second-modified-regulatory-text-january-2026-pdf/",
       "editorial_source_type": "official_agency_rulemaking_notice",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-11-16",
+        "reason": "HTTPError: HTTP Error 400: Bad Request"
+      }
     },
     {
       "id": "ca-dmv-2026-effective",
@@ -3243,7 +3458,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://www.dmv.ca.gov/portal/file/order-to-adopt-article-3-7-regulations-pdf/",
       "editorial_source_type": "official_agency_adopted_regulation",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-11-16",
+        "reason": "HTTPError: HTTP Error 400: Bad Request"
+      }
     },
     {
       "id": "ca-cpuc-2018-pilots",
@@ -3265,7 +3485,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://www.cpuc.ca.gov/regulatory-services/licensing/transportation-licensing-and-analysis-branch/autonomous-vehicle-programs",
       "editorial_source_type": "official_agency_page",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-11-16",
+        "reason": "HTTPError: HTTP Error 400: Bad Request"
+      }
     },
     {
       "id": "ca-cpuc-2020-deployment",
@@ -3287,7 +3512,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://www.cpuc.ca.gov/regulatory-services/licensing/transportation-licensing-and-analysis-branch/autonomous-vehicle-programs",
       "editorial_source_type": "official_agency_page",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-11-16",
+        "reason": "HTTPError: HTTP Error 400: Bad Request"
+      }
     },
     {
       "id": "ca-cpuc-2024-reporting",
@@ -3309,7 +3539,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://docs.cpuc.ca.gov/PublishedDocs/Published/G000/M546/K031/546031802.PDF",
       "editorial_source_type": "official_agency_decision",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-11-16",
+        "reason": "HTTPError: HTTP Error 400: Bad Request"
+      }
     },
     {
       "id": "auto-la-sb133-2026",
@@ -3405,7 +3640,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id=202520260SB1246",
       "editorial_source_type": "official_bill_abstract",
-      "summary_reviewed_at": "2026-10-19"
+      "summary_reviewed_at": "2026-10-19",
+      "editorial_recheck": {
+        "result": "missing",
+        "at": "2026-11-16",
+        "reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable"
+      }
     },
     {
       "id": "ca-sb480-2025",
@@ -3429,7 +3669,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id=202520260SB480",
       "editorial_source_type": "official_bill_abstract",
-      "summary_reviewed_at": "2026-10-19"
+      "summary_reviewed_at": "2026-10-19",
+      "editorial_recheck": {
+        "result": "missing",
+        "at": "2026-11-16",
+        "reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable"
+      }
     },
     {
       "id": "ky-hb379-2026",
@@ -3453,7 +3698,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://apps.legislature.ky.gov/record/25RS/hb379.html",
       "editorial_source_type": "official_bill_abstract",
-      "summary_reviewed_at": "2026-10-19"
+      "summary_reviewed_at": "2026-10-19",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-11-16",
+        "reason": "HTTPError: HTTP Error 400: Bad Request"
+      }
     },
     {
       "id": "va-hb1124-2026",
@@ -3477,7 +3727,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://lis.virginia.gov/bill-details/20261/HB1124",
       "editorial_source_type": "official_bill_abstract",
-      "summary_reviewed_at": "2026-10-19"
+      "summary_reviewed_at": "2026-10-19",
+      "editorial_recheck": {
+        "result": "missing",
+        "at": "2026-11-16",
+        "reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable"
+      }
     }
   ],
   "city_events": [
@@ -3499,7 +3754,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://www.nyc.gov/html/dot/html/motorist/autonomous-vehicles.shtml",
       "editorial_source_type": "official_city_page",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-11-16",
+        "reason": "HTTPError: HTTP Error 400: Bad Request"
+      }
     },
     {
       "id": "seattle-testing-2022",
@@ -3519,7 +3779,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://www.seattle.gov/transportation/projects-and-programs/programs/autonomous-vehicle-testing-permit",
       "editorial_source_type": "official_city_page",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-11-16",
+        "reason": "HTTPError: HTTP Error 400: Bad Request"
+      }
     },
     {
       "id": "sf-state-authority",
@@ -3539,7 +3804,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://www.sfmta.com/projects/autonomous-vehicles-avs-san-francisco",
       "editorial_source_type": "official_city_page",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "editorial_recheck": {
+        "result": "missing",
+        "at": "2026-11-16",
+        "reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable"
+      }
     },
     {
       "id": "sf-market-street-2025",
@@ -3559,7 +3829,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://www.sfmta.com/notices/waymo-market-street-message-director-kirschbaum",
       "editorial_source_type": "official_city_page",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "editorial_recheck": {
+        "result": "missing",
+        "at": "2026-11-16",
+        "reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable"
+      }
     },
     {
       "id": "austin-coordination",
@@ -3579,7 +3854,12 @@
       "editorial_status": "verified",
       "editorial_source_url": "https://www.austintexas.gov/transportation-public-works/autonomous-vehicles",
       "editorial_source_type": "official_city_page",
-      "summary_reviewed_at": "2026-10-15"
+      "summary_reviewed_at": "2026-10-15",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-11-16",
+        "reason": "HTTPError: HTTP Error 400: Bad Request"
+      }
     },
     {
       "id": "boston-testing-history",

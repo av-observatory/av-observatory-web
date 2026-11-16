@@ -600,7 +600,7 @@
       "summary_reviewed_at": "2026-10-18",
       "openstates_id": "ocd-bill/1381e9f4-7ed6-4d76-9670-0887f5942e20",
       "openstates_updated_at": "2024-06-30T01:55:27.327167+00:00",
-      "progress_checked": "2026-10-18",
+      "progress_checked": "2026-11-16",
       "progress_source": "official_site"
     },
     {
@@ -647,10 +647,10 @@
       "takeaway": "This proposed transportation bill would change Florida law on personal delivery devices, drone delivery services, certain speed limits, and vehicle registration, with renewals recorded electronically and validation stickers removed. It would require seaports and commercial service airports to address critical infrastructure resources, and would create penalties for shooting into or damaging autonomous vehicles. It would take effect July 1, 2026, but was not enacted.",
       "source_summary": "Transportation;  Revises membership of Florida Transportation Research Institute; requires Florida Greenways & Trails Council to meet within specified timeframe to update specified recommendations; requires seaports to include critical infrastructure resource strategies in specified plan; revises provisions relating to personal delivery devices & mobile carriers; increases certain speed limits; modifies terms for elections to attend basic driver improvement course; authorizes certain rental trucks to elect permanent registration period; requires motor vehicle registration renewal to be recorded electronically; removes provisions relating to validation stickers; revises provisions relating to drone delivery services & drone ports; revises powers & duties of DOT with respect to state airport systems; provides requirements for commercial service airports relating to critical infrastructure resources; revises provisions relating to certain communications facilities; revises construction materials that may be used for certain multiuse trails or shared-use paths; provides that certain provisions relating to paratransit services apply only to persons with disabilities; revises provisions authorizing certain sign owners to increase sign height under certain circumstances; provides penalties for shooting into or throwing deadly missiles into occupied or unoccupied autonomous vehicle; provides penalties for defacing, injuring, or damaging autonomous vehicle.",
       "summary_quality": "verified",
-      "status": "stricken",
+      "status": "engrossed",
       "measure_type": "bill",
       "last_action_date": "2026-03-11",
-      "last_action": "House - Laid on Table",
+      "last_action": "Laid on Table",
       "session": "2026",
       "progress_stage": "floor",
       "stage_dates": {
@@ -662,9 +662,7 @@
       "reviewed_at": "2026-11-16",
       "summary_reviewed_at": "2026-10-18",
       "openstates_id": "ocd-bill/552c798b-54cc-4dba-a1c8-82bd2ee91b3d",
-      "openstates_updated_at": "2026-07-31T12:18:57.443411+00:00",
-      "progress_checked": "2026-10-18",
-      "progress_source": "official_site"
+      "openstates_updated_at": "2026-07-31T12:18:57.443411+00:00"
     },
     {
       "id": "fl-hb-1469-2026",
@@ -676,10 +674,10 @@
       "source_summary": "Autonomous Vehicle Safety;  Requires autonomous vehicle registered in this state to comply with certain standards, regulations, & laws; prohibits autonomous vehicle from engaging in certain activities unless licensed human operator is physically present in vehicle; requires such operator to comply with certain standards, regulations, & laws.",
       "summary_method": "Source abstract condensed for substantive legislative effect",
       "summary_quality": "source_abstract",
-      "status": "stricken",
+      "status": "introduced",
       "measure_type": "bill",
       "last_action_date": "2026-03-13",
-      "last_action": "House - Died in Government Operations Subcommittee",
+      "last_action": "Died in Government Operations Subcommittee",
       "session": "2026",
       "progress_stage": "committee",
       "stage_dates": {
@@ -691,9 +689,7 @@
       "reviewed_at": "2026-11-16",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/6da1bee9-f9cb-4fde-93c8-d1ebfcc57560",
-      "openstates_updated_at": "2026-03-18T19:28:00.351523+00:00",
-      "progress_checked": "2026-10-18",
-      "progress_source": "official_site"
+      "openstates_updated_at": "2026-03-18T19:28:00.351523+00:00"
     },
     {
       "id": "hi-hb-1797-2026",
@@ -927,7 +923,7 @@
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/14ede5fb-6b8f-42e5-a5ff-6ad4f73658b2",
       "openstates_updated_at": "2024-12-14T16:32:30.431525+00:00",
-      "progress_checked": "2026-10-18",
+      "progress_checked": "2026-11-16",
       "progress_source": "official_site"
     },
     {
@@ -956,7 +952,7 @@
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/aaff33a9-6a02-4f6c-940c-95b30763a51f",
       "openstates_updated_at": "2024-12-14T17:33:41.894994+00:00",
-      "progress_checked": "2026-10-18",
+      "progress_checked": "2026-11-16",
       "progress_source": "official_site"
     },
     {
@@ -1195,7 +1191,7 @@
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/c38c2638-46c5-4d3a-a115-ed01cfc73d5b",
       "openstates_updated_at": "2024-12-14T23:43:47.187389+00:00",
-      "progress_checked": "2026-10-18",
+      "progress_checked": "2026-11-16",
       "progress_source": "official_site"
     },
     {
@@ -1325,8 +1321,8 @@
       "summary_quality": "verified",
       "status": "introduced",
       "measure_type": "bill",
-      "last_action_date": "2026-01-15",
-      "last_action": "to State Government (H)",
+      "last_action_date": "2025-02-07",
+      "last_action": "to Primary and Secondary Education (H)",
       "session": "2025RS",
       "progress_stage": "committee",
       "stage_dates": {
@@ -1339,9 +1335,7 @@
       "reviewed_at": "2026-11-16",
       "summary_reviewed_at": "2026-10-18",
       "openstates_id": "ocd-bill/00bf0fdd-c088-4e4b-b883-4c5bd9a65de8",
-      "openstates_updated_at": "2025-07-23T06:08:53.561769+00:00",
-      "progress_checked": "2026-10-18",
-      "progress_source": "official_site"
+      "openstates_updated_at": "2025-07-23T06:08:53.561769+00:00"
     },
     {
       "id": "ky-hb-379-2025rs",
@@ -1353,12 +1347,12 @@
       "source_summary": "Amend KRS 186.763 to prohibit school districts from operating fully autonomous vehicles for transporting students.",
       "summary_method": "Source abstract condensed for substantive legislative effect",
       "summary_quality": "source_abstract",
-      "status": "enacted",
+      "status": "introduced",
       "measure_type": "bill",
-      "last_action_date": "2026-04-14",
-      "last_action": "Vetoed by the Governor on 04/06/26, veto overridden by the House (80-17) and Senate (32-6) on 04/14/26, and delivered to Secretary of State (Acts Ch. 171)",
+      "last_action_date": "2025-02-12",
+      "last_action": "to Primary and Secondary Education (H)",
       "session": "2025RS",
-      "progress_stage": "law",
+      "progress_stage": "committee",
       "stage_dates": {
         "introduced": "2025-02-06",
         "committee": "2025-02-12"
@@ -1369,9 +1363,7 @@
       "reviewed_at": "2026-11-16",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/69906ac2-5b25-4c1e-8990-637e9e01d19c",
-      "openstates_updated_at": "2025-07-23T06:05:32.958960+00:00",
-      "progress_checked": "2026-10-18",
-      "progress_source": "official_site"
+      "openstates_updated_at": "2025-07-23T06:05:32.958960+00:00"
     },
     {
       "editorial_source_hash": "ea4aa90e530769b89029d4fa8ae00fe680f36e610425454146b7726b8fb787b0",
@@ -1390,10 +1382,10 @@
       "summary_quality": "verified",
       "status": "introduced",
       "measure_type": "bill",
-      "last_action_date": "2026-02-24",
+      "last_action_date": "2025-02-18",
       "last_action": "to Committee on Committees (S)",
       "session": "2025RS",
-      "progress_stage": "introduced",
+      "progress_stage": "committee",
       "stage_dates": {
         "introduced": "2025-02-18",
         "committee": "2025-02-18"
@@ -1404,9 +1396,7 @@
       "reviewed_at": "2026-11-16",
       "summary_reviewed_at": "2026-10-18",
       "openstates_id": "ocd-bill/f171f3c5-5e99-461b-ab5e-96cd6ea60ed8",
-      "openstates_updated_at": "2025-07-23T06:02:28.272771+00:00",
-      "progress_checked": "2026-10-18",
-      "progress_source": "official_site"
+      "openstates_updated_at": "2025-07-23T06:02:28.272771+00:00"
     },
     {
       "id": "la-sb133-2026rs",
@@ -2670,7 +2660,7 @@
       "summary_reviewed_at": "2026-10-14",
       "openstates_id": "ocd-bill/43e44588-6ba7-44b3-9b55-d44636d905b7",
       "openstates_updated_at": "2026-03-18T09:21:56.997484+00:00",
-      "progress_checked": "2026-10-17",
+      "progress_checked": "2026-11-16",
       "progress_source": "official_site"
     },
     {
@@ -2694,7 +2684,7 @@
       "status": "introduced",
       "measure_type": "bill",
       "last_action_date": "2026-01-07",
-      "last_action": "referred to transportation",
+      "last_action": "REFERRED TO TRANSPORTATION",
       "session": "2025-2026",
       "progress_stage": "committee",
       "stage_dates": {
@@ -2706,9 +2696,7 @@
       "reviewed_at": "2026-11-16",
       "summary_reviewed_at": "2026-10-14",
       "openstates_id": "ocd-bill/2f06951b-d649-4c2f-91bb-8d65389cc442",
-      "openstates_updated_at": "2026-05-16T05:50:49.029583+00:00",
-      "progress_checked": "2026-10-17",
-      "progress_source": "official_site"
+      "openstates_updated_at": "2026-05-16T05:50:49.029583+00:00"
     },
     {
       "summary_method": "official_legislative_bill_text_review",
@@ -2744,7 +2732,7 @@
       "summary_reviewed_at": "2026-10-14",
       "openstates_id": "ocd-bill/13cfdb6e-b7eb-4d6e-bd42-41307e4be8a3",
       "openstates_updated_at": "2026-03-18T09:51:23.635517+00:00",
-      "progress_checked": "2026-10-17",
+      "progress_checked": "2026-11-16",
       "progress_source": "official_site"
     },
     {
@@ -2768,7 +2756,7 @@
       "status": "introduced",
       "measure_type": "bill",
       "last_action_date": "2026-05-15",
-      "last_action": "Referred to Transportation",
+      "last_action": "REFERRED TO TRANSPORTATION",
       "session": "2025-2026",
       "progress_stage": "committee",
       "stage_dates": {
@@ -2780,9 +2768,7 @@
       "reviewed_at": "2026-11-16",
       "summary_reviewed_at": "2026-10-14",
       "openstates_id": "ocd-bill/d73295c2-887f-4676-b802-2e1d9432e649",
-      "openstates_updated_at": "2026-05-16T06:58:13.550388+00:00",
-      "progress_checked": "2026-10-17",
-      "progress_source": "official_site"
+      "openstates_updated_at": "2026-05-16T06:58:13.550388+00:00"
     },
     {
       "summary_method": "official_legislative_bill_text_review",
@@ -2805,7 +2791,7 @@
       "status": "introduced",
       "measure_type": "bill",
       "last_action_date": "2026-05-15",
-      "last_action": "Referred to Transportation",
+      "last_action": "REFERRED TO TRANSPORTATION",
       "session": "2025-2026",
       "progress_stage": "committee",
       "stage_dates": {
@@ -2817,9 +2803,7 @@
       "reviewed_at": "2026-11-16",
       "summary_reviewed_at": "2026-10-14",
       "openstates_id": "ocd-bill/b9086856-b880-4e26-beb1-7fdf764dc6ab",
-      "openstates_updated_at": "2026-05-29T14:15:56.844512+00:00",
-      "progress_checked": "2026-10-17",
-      "progress_source": "official_site"
+      "openstates_updated_at": "2026-05-29T14:15:56.844512+00:00"
     },
     {
       "summary_method": "official_legislative_bill_text_review",
@@ -2854,9 +2838,7 @@
       "reviewed_at": "2026-11-16",
       "summary_reviewed_at": "2026-10-14",
       "openstates_id": "ocd-bill/ca660689-6862-45c6-b88f-67a95ccb19fe",
-      "openstates_updated_at": "2026-03-18T09:35:25.968566+00:00",
-      "progress_checked": "2026-10-17",
-      "progress_source": "official_site"
+      "openstates_updated_at": "2026-03-18T09:35:25.968566+00:00"
     },
     {
       "summary_method": "official_amended_B_full_text_review",
@@ -2891,9 +2873,7 @@
       "reviewed_at": "2026-11-16",
       "summary_reviewed_at": "2026-10-14",
       "openstates_id": "ocd-bill/5bc6e3eb-604a-4328-a017-1b0bb39a29ef",
-      "openstates_updated_at": "2026-05-15T07:13:10.604800+00:00",
-      "progress_checked": "2026-10-17",
-      "progress_source": "official_site"
+      "openstates_updated_at": "2026-05-15T07:13:10.604800+00:00"
     },
     {
       "summary_method": "official_full_bill_text_review",
@@ -2928,9 +2908,7 @@
       "reviewed_at": "2026-11-16",
       "summary_reviewed_at": "2026-10-14",
       "openstates_id": "ocd-bill/9f52f0f7-48f8-47bf-84c2-baf3d6f44d13",
-      "openstates_updated_at": "2026-03-18T09:08:44.729630+00:00",
-      "progress_checked": "2026-10-17",
-      "progress_source": "official_site"
+      "openstates_updated_at": "2026-03-18T09:08:44.729630+00:00"
     },
     {
       "summary_method": "official_enacted_bill_part_e_checked",
@@ -2966,7 +2944,7 @@
       "summary_reviewed_at": "2026-10-14",
       "openstates_id": "ocd-bill/d395b3d7-36c8-4fa8-b0e8-031f41dc306b",
       "openstates_updated_at": "2026-05-26T23:52:52.803038+00:00",
-      "progress_checked": "2026-10-17",
+      "progress_checked": "2026-11-16",
       "progress_source": "official_site"
     },
     {
@@ -3101,6 +3079,11 @@
       "editorial_status": "verified",
       "editorial_source_type": "official_version_comparison",
       "editorial_source_url": "https://le.utah.gov/Session/2026/bills/introduced/CP%20HB0581%20To%20HB0581S02.pdf",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-11-16",
+        "reason": "HTTPError: HTTP Error 400: Bad Request"
+      },
       "id": "ut-hb-581-2026",
       "jurisdiction": "UT",
       "number": "HB 581",
@@ -3126,18 +3109,18 @@
       "reviewed_at": "2026-11-16",
       "summary_reviewed_at": "2026-10-14",
       "openstates_id": "ocd-bill/282b7aed-0f65-40c7-a120-9c2a559e67ab",
-      "openstates_updated_at": "2026-10-27T13:38:54.906341+00:00",
-      "editorial_recheck": {
-        "result": "error",
-        "at": "2026-11-16",
-        "reason": "HTTPError: HTTP Error 400: Bad Request"
-      }
+      "openstates_updated_at": "2026-10-27T13:38:54.906341+00:00"
     },
     {
       "summary_method": "official_enrolled_act_review",
       "editorial_status": "verified",
       "editorial_source_type": "official_enrolled_act",
       "editorial_source_url": "https://le.utah.gov/Session/2026/bills/enrolled/SB0292.pdf",
+      "editorial_recheck": {
+        "result": "error",
+        "at": "2026-11-16",
+        "reason": "HTTPError: HTTP Error 400: Bad Request"
+      },
       "id": "ut-sb-292-2026",
       "jurisdiction": "UT",
       "number": "SB 292",
@@ -3164,12 +3147,7 @@
       "reviewed_at": "2026-11-16",
       "summary_reviewed_at": "2026-10-14",
       "openstates_id": "ocd-bill/beab47ee-fa53-4916-85e1-e4b25d9d52ec",
-      "openstates_updated_at": "2026-10-27T13:46:28.132144+00:00",
-      "editorial_recheck": {
-        "result": "error",
-        "at": "2026-11-16",
-        "reason": "HTTPError: HTTP Error 400: Bad Request"
-      }
+      "openstates_updated_at": "2026-10-27T13:46:28.132144+00:00"
     },
     {
       "id": "va-hb-1124-2026",
@@ -3196,7 +3174,7 @@
       "hearings": [],
       "source_url": "https://lis.virginia.gov/bill-details/20261/HB1124",
       "repository_url": "https://openstates.org/va/bills/2026/HB1124/",
-      "reviewed_at": "2026-10-19",
+      "reviewed_at": "2026-11-16",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/ba6cf3ea-99d0-4e29-a453-2dd201b24204",
       "openstates_updated_at": "2026-04-14T20:29:27.255169+00:00"
@@ -3224,7 +3202,7 @@
       "hearings": [],
       "source_url": "https://lis.virginia.gov/bill-details/20261/HB1125",
       "repository_url": "https://openstates.org/va/bills/2026/HB1125/",
-      "reviewed_at": "2026-10-19",
+      "reviewed_at": "2026-11-16",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/0e880753-08af-48c3-ac7e-e824aa023b42",
       "openstates_updated_at": "2026-03-18T08:35:37.974953+00:00"
@@ -3253,7 +3231,7 @@
       "hearings": [],
       "source_url": "https://lis.virginia.gov/bill-details/20261/SB670",
       "repository_url": "https://openstates.org/va/bills/2026/SB670/",
-      "reviewed_at": "2026-10-19",
+      "reviewed_at": "2026-11-16",
       "summary_reviewed_at": null,
       "openstates_id": "ocd-bill/c1f332fa-a8a1-4bea-9521-80b75f26f867",
       "openstates_updated_at": "2026-03-17T22:15:33.564702+00:00"

@@ -1,7 +1,8 @@
 {
  "ak-hb-217-34": {
-  "checked": "2026-10-18",
-  "hash": "f76202e456a401e32ebd25873222c785a26240f2774fe3ad4ff5ee48722125b7",
+  "checked": "2026-11-16",
+  "error": "extract:HTTPError",
+  "hash": "53204d459c3f8b1a2104cabec126f87955e7fec33ef30f884140b51cf8184ea3",
   "last_action": "Referred to Rules in the Senate after the State Affairs committee report (SCS(TRA), 2 DNP, 1 DP); the bill previously passed the House 39-1 on 4/30/2026.",
   "last_action_date": "2026-05-17",
   "progress_stage": "floor",
@@ -9,7 +10,7 @@
   "url": "https://www.akleg.gov/basis/Bill/Detail/34?Root=HB 217"
  },
  "ak-sb-148-34": {
-  "checked": "2026-10-18",
+  "checked": "2026-11-16",
   "hash": "b94bd4110aeb9407f11de744762f343b41c1e78db74ff1ff4cdaa65c20b57882",
   "url": "https://www.akleg.gov/basis/Bill/Detail/34?Root=SB 148"
  },
@@ -20,8 +21,9 @@
   "url": "https://alison.legislature.state.al.us/bill/2026rs/sb222"
  },
  "al-sb-309-2025rs": {
-  "checked": "2026-10-18",
-  "hash": "a088368faadac8910d00f8a2931b7c2e412ac9bc56ef9c2fce9e17858dcf8728",
+  "checked": "2026-11-16",
+  "error": "extract:HTTPError",
+  "hash": "4fd656c682989f0a862de591ee65722f5c1668c9b9330c1f7563d8b39edc2c5a",
   "url": "https://alison.legislature.state.al.us/bill/2025rs/sb309"
  },
  "az-sb-1417-57th-2nd-regular": {
@@ -30,7 +32,7 @@
   "url": "https://apps.azleg.gov/BillStatus/BillOverview/84971?SessionId=130"
  },
  "az-sb-1466-57th-1st-regular": {
-  "checked": "2026-10-18",
+  "checked": "2026-11-16",
   "error": "HTTPError/HTTPError302/HTTPError302",
   "url": "https://apps.azleg.gov/BillStatus/BillOverview/82890?SessionId=129"
  },
@@ -55,7 +57,7 @@
   "url": "https://lims.dccouncil.gov/Legislation/B26-0008"
  },
  "de-sb-258-152": {
-  "checked": "2026-10-18",
+  "checked": "2026-11-16",
   "hash": "a126f936e16afb73f195b08324fa8ab2ab61b0af0d9f91dfe7c24a52bcda4020",
   "last_action": "Out of Committee",
   "last_action_date": "2024-06-26",
@@ -74,8 +76,9 @@
   "url": "https://legis.delaware.gov/BillDetail?LegislationId=141797"
  },
  "fl-hb-1233-2026": {
-  "checked": "2026-10-18",
-  "hash": "a70571bcea7f07bf2660a9566a3b787a2b18cd0d3475da42d2e5262737435050",
+  "checked": "2026-11-16",
+  "error": "extract:HTTPError",
+  "hash": "4443bd883750c9275498701f8bc5cecff45df1b067114f21ebe288ce754d026e",
   "last_action": "House - Laid on Table",
   "last_action_date": "2026-03-11",
   "progress_stage": "floor",
@@ -83,8 +86,9 @@
   "url": "https://www.flsenate.gov/Session/Bill/2026/1233"
  },
  "fl-hb-1469-2026": {
-  "checked": "2026-10-18",
-  "hash": "0d595afe457743f9d7a1e1e88108bb4601edbf34dff8013791cd22b3450eff34",
+  "checked": "2026-11-16",
+  "error": "extract:HTTPError",
+  "hash": "12c3135bceb5dd44945e6675a34a1d01bd5cf7c6388c1f7523fd9183f7ded77e",
   "last_action": "House - Died in Government Operations Subcommittee",
   "last_action_date": "2026-03-13",
   "progress_stage": "committee",
@@ -92,8 +96,9 @@
   "url": "https://www.flsenate.gov/Session/Bill/2026/1469"
  },
  "fl-sb-1258-2026": {
-  "checked": "2026-10-18",
-  "hash": "94ec90980910c0d851681ab9cf9812c3eda024088336d752506c7c890d680ede",
+  "checked": "2026-11-16",
+  "error": "extract:HTTPError",
+  "hash": "98a151d9f468325691fae517985504cb17bf37201a05a495cddfcb7c38752cab",
   "last_action": "Died in Transportation",
   "last_action_date": "2026-03-13",
   "progress_stage": "committee",
@@ -101,7 +106,7 @@
   "url": "https://www.flsenate.gov/Session/Bill/2026/1258"
  },
  "ga-hr-1371-2025-26": {
-  "checked": "2026-10-18",
+  "checked": "2026-11-16",
   "error": "insufficient_official_html/short_page",
   "url": "https://www.legis.ga.gov/legislation/73291"
  },
@@ -131,7 +136,7 @@
   "url": "https://www.legis.iowa.gov/legislation/billTracking/billHistory?billName=HSB 598&ga=91"
  },
  "ia-sf-2034-2025-2026": {
-  "checked": "2026-10-18",
+  "checked": "2026-11-16",
   "hash": "73b145a96f79e9c3a7b0cf2b1920df6cb48e647b90fc1a8cbf33d72cfb3d624f",
   "url": "https://www.legis.iowa.gov/legislation/BillBook?ga=91&ba=SF2034"
  },
@@ -151,7 +156,7 @@
   "url": "https://www.legis.iowa.gov/legislation/billTracking/billHistory?billName=SSB 3052&ga=91"
  },
  "il-hb-1403-103rd": {
-  "checked": "2026-10-18",
+  "checked": "2026-11-16",
   "hash": "ce95f67bb0976a6215cc582eb8ac3cda8272ec187e00be6e410d9ee15a3bbb76",
   "last_action": "House Rule 19(b) / Re-referred to Rules Committee",
   "last_action_date": "2026-07-01",
@@ -169,7 +174,7 @@
   "url": "https://www.ilga.gov/ftp/legislation/104/BillStatus/XML/10400HB1839.xml"
  },
  "il-hb-2053-103rd": {
-  "checked": "2026-10-18",
+  "checked": "2026-11-16",
   "hash": "d49d05e7221d18703d1649336db8504dd3f8e8da328d00bb0ab8b4738d77f612",
   "last_action": "House Rule 19(a) / Re-referred to Rules Committee",
   "last_action_date": "2026-04-17",
@@ -178,7 +183,7 @@
   "url": "https://www.ilga.gov/ftp/legislation/104/BillStatus/XML/10400HB2053.xml"
  },
  "il-hb-2913-103rd": {
-  "checked": "2026-10-18",
+  "checked": "2026-11-16",
   "hash": "0abcf4914ceecac1120603820ba52fed386e8e1e78acc13c5bed08d2439632f7",
   "last_action": "House Rule 19(a) / Re-referred to Rules Committee",
   "last_action_date": "2025-03-21",
@@ -232,7 +237,7 @@
   "url": "https://www.ilga.gov/ftp/legislation/104/BillStatus/XML/10400HB5220.xml"
  },
  "il-hb-5600-103rd": {
-  "checked": "2026-10-18",
+  "checked": "2026-11-16",
   "hash": "6b000f334a45392ba8e8509ce8e375407518e001d5935ebf72d527df2356be67",
   "last_action": "Added Co-Sponsor Rep. Diane Blair-Sherlock",
   "last_action_date": "2026-05-12",
@@ -250,7 +255,7 @@
   "url": "https://www.ilga.gov/ftp/legislation/104/BillStatus/XML/10400HB3044.xml"
  },
  "il-sb-1471-103rd": {
-  "checked": "2026-10-18",
+  "checked": "2026-11-16",
   "hash": "9c221cd05bdcbdb730e54d4ac40cde0858a5eb50d818c53cde5c0f13c1708185",
   "last_action": "Senate Rule 3-9(a) / Re-referred to Assignments",
   "last_action_date": "2025-03-21",
@@ -259,7 +264,7 @@
   "url": "https://www.ilga.gov/ftp/legislation/104/BillStatus/XML/10400SB1471.xml"
  },
  "il-sb-306-103rd": {
-  "checked": "2026-10-18",
+  "checked": "2026-11-16",
   "hash": "fbb1691962206baf3a3d779bdc9d7a4275f31c13ec5f66390b6c98e6585acb9c",
   "last_action": "Senate Rule 3-9(a) / Re-referred to Assignments",
   "last_action_date": "2025-04-11",
@@ -286,7 +291,7 @@
   "url": "https://www.ilga.gov/ftp/legislation/104/BillStatus/XML/10400SB3392.xml"
  },
  "in-hb-1377-2025": {
-  "checked": "2026-10-18",
+  "checked": "2026-11-16",
   "error": "insufficient_official_html/pdf_FileNotFoundError",
   "url": "https://iga.in.gov/pdf-documents/124/2026/house/bills/HB1377/HB1377.01.INTR.pdf"
  },
@@ -301,8 +306,9 @@
   "url": "https://apps.legislature.ky.gov/record/26rs/hb223.html"
  },
  "ky-hb-252-2025rs": {
-  "checked": "2026-10-18",
-  "hash": "fbad088983d92d27877a73333b72b4932887bb1cc16209ceb18b00d353c760e2",
+  "checked": "2026-11-16",
+  "error": "extract:HTTPError",
+  "hash": "254e9f09f4656b1b130b2fe959abc7dbf76537e692c30bcd022cb1e1d5bda5e8",
   "last_action": "to State Government (H)",
   "last_action_date": "2026-01-15",
   "progress_stage": "committee",
@@ -310,8 +316,9 @@
   "url": "https://apps.legislature.ky.gov/record/26rs/hb252.html"
  },
  "ky-hb-379-2025rs": {
-  "checked": "2026-10-18",
-  "hash": "3bc68f0abf1376a2a6f0b11e65edb5df6e9d34ae0f49f9dbbd25c2d22968a5aa",
+  "checked": "2026-11-16",
+  "error": "extract:HTTPError",
+  "hash": "fbf3f721e19b757cd073cfa9785d491daf964fc1b54a2240c6c668daade84a1e",
   "last_action": "Vetoed by the Governor on 04/06/26, veto overridden by the House (80-17) and Senate (32-6) on 04/14/26, and delivered to Secretary of State (Acts Ch. 171)",
   "last_action_date": "2026-04-14",
   "progress_stage": "law",
@@ -319,8 +326,9 @@
   "url": "https://apps.legislature.ky.gov/record/26rs/hb379.html"
  },
  "ky-sb-241-2025rs": {
-  "checked": "2026-10-18",
-  "hash": "7ce510790ac03ea743f0f1d5b74daa35d037f51da58e33a07836f29e4bcd3b05",
+  "checked": "2026-11-16",
+  "error": "extract:HTTPError",
+  "hash": "6cd16a4f9523d7fdad36c9004c31f8b11689ad7924ef86ec2b43402ac81607fc",
   "last_action": "to Committee on Committees (S)",
   "last_action_date": "2026-02-24",
   "progress_stage": "introduced",
@@ -338,8 +346,9 @@
   "url": "https://malegislature.gov/Bills/194/H1280"
  },
  "ma-h-3324-193rd": {
-  "checked": "2026-10-18",
-  "hash": "3c817e4ebd352583ba22bf3bfd1b4c0daefc127815a07daeb25dda998aaa4af5",
+  "checked": "2026-11-16",
+  "error": "extract:HTTPError",
+  "hash": "ce06d26956317fb048fd513f19bed3d7b298dd984188ea04219749d46f3c1166",
   "last_action": "House: Accompanied a new draft, see H4296",
   "last_action_date": "2025-07-24",
   "progress_stage": "committee",
@@ -347,8 +356,9 @@
   "url": "https://malegislature.gov/Bills/194/H3324"
  },
  "ma-h-3430-193rd": {
-  "checked": "2026-10-18",
-  "hash": "b809ebb888f0e211673039dd6929dc0cea9a89043b9b4b0dfd295e1c6b1c96e5",
+  "checked": "2026-11-16",
+  "error": "extract:HTTPError",
+  "hash": "67a6eadac6e89baaacb713199834dfd66e2b4f20a0257f3c57b34a348be362b9",
   "last_action": "Bill reported favorably by committee as changed and referred to the committee on House Ways and Means",
   "last_action_date": "2025-12-18",
   "progress_stage": "committee",
@@ -416,8 +426,9 @@
   "url": "https://malegislature.gov/Bills/194/HD3325"
  },
  "ma-hd-423-193rd": {
-  "checked": "2026-10-18",
-  "hash": "72d074fd6dd96a9be648484ade52cde1fdd318d518c3fa6ea7f95a8dec7fb913",
+  "checked": "2026-11-16",
+  "error": "extract:HTTPError",
+  "hash": "f344d47a98845a0a9dfd5a86abc90a6a41a1c71dc438940136a896a2aeaffb3a",
   "last_action": "Accompanied a study order, see H4899",
   "last_action_date": "2024-07-24",
   "progress_stage": "committee",
@@ -425,8 +436,9 @@
   "url": "https://malegislature.gov/Bills/193/HD423"
  },
  "ma-hd-828-193rd": {
-  "checked": "2026-10-18",
-  "hash": "44b830a619097ac69699162413cbae9fbff8bb7d2f25bc5162e56cf107c8edac",
+  "checked": "2026-11-16",
+  "error": "extract:HTTPError",
+  "hash": "6002fdf4472ef512e8e36021fd1a4472fd63e1b44c2d80ec7b19aff2c9df3390",
   "last_action": "Accompanied a study order, see H4530",
   "last_action_date": "2024-04-29",
   "progress_stage": "committee",
@@ -854,7 +866,7 @@
   "url": "https://nyassembly.gov/leg/?default_fld=&leg_video=&bn=A06180&term=2025&Summary=Y&Actions=Y"
  },
  "ny-a-728-2025-2026": {
-  "checked": "2026-10-17",
+  "checked": "2026-11-16",
   "hash": "82e3d7fe970a242ad00644d5aeaf6fb09ecc6ab0bb9945e773378f81bcc4e6dd",
   "last_action": "referred to labor",
   "last_action_date": "2026-01-07",
@@ -872,8 +884,9 @@
   "url": "https://nyassembly.gov/leg/?default_fld=&leg_video=&bn=A07634&term=2025&Summary=Y&Actions=Y"
  },
  "ny-a-793-2025-2026": {
-  "checked": "2026-10-17",
-  "hash": "9acfb101c130a8b944be9337f2b8610dca36011113c7ff09e9fbf387e7d4dad5",
+  "checked": "2026-11-16",
+  "error": "extract:HTTPError",
+  "hash": "b33ead4b3606b61d99bf65c3a5317569103919a1506ec00db17dd59b13ca40d6",
   "last_action": "referred to transportation",
   "last_action_date": "2026-01-07",
   "progress_stage": "committee",
@@ -881,7 +894,7 @@
   "url": "https://nyassembly.gov/leg/?default_fld=&leg_video=&bn=A00793&term=2025&Summary=Y&Actions=Y"
  },
  "ny-a-8109-2025-2026": {
-  "checked": "2026-10-17",
+  "checked": "2026-11-16",
   "hash": "3d3e24fdeffc3804edc855f121073399d1baf447ed4234a02a83fc6e3864779c",
   "last_action": "referred to transportation",
   "last_action_date": "2026-01-07",
@@ -908,8 +921,9 @@
   "url": "https://nyassembly.gov/leg/?default_fld=&leg_video=&bn=S01012&term=2025&Summary=Y&Actions=Y"
  },
  "ny-s-10413-2025-2026": {
-  "checked": "2026-10-17",
-  "hash": "9db5842ef22d40b5494ff8fd6ba7bd495da00404690ab3dd3ac5cbd4d1ebf98f",
+  "checked": "2026-11-16",
+  "error": "extract:HTTPError",
+  "hash": "02e4fe46267de07b74e0ed2504f1b1ce06b97e36b9b8e188e1b695f55a53675b",
   "last_action": "Referred to Transportation",
   "last_action_date": "2026-05-15",
   "progress_stage": "committee",
@@ -917,8 +931,9 @@
   "url": "https://nyassembly.gov/leg/?default_fld=&leg_video=&bn=S10413&term=2025&Summary=Y&Actions=Y"
  },
  "ny-s-10473-2025-2026": {
-  "checked": "2026-10-17",
-  "hash": "99ae61b24d770589c6cd6d39bb518125824708b384e05eb476603fb1ad4f21aa",
+  "checked": "2026-11-16",
+  "error": "extract:HTTPError",
+  "hash": "ca3e01f62ebb2e51edbf21ca171c301a955090d0161f05b1fc90a821f157f318",
   "last_action": "Referred to Transportation",
   "last_action_date": "2026-05-15",
   "progress_stage": "committee",
@@ -926,8 +941,9 @@
   "url": "https://nyassembly.gov/leg/?default_fld=&leg_video=&bn=S10473&term=2025&Summary=Y&Actions=Y"
  },
  "ny-s-2688-2025-2026": {
-  "checked": "2026-10-17",
-  "hash": "4e50ad287c12b593d28779b9f26d0b5e714b5137099dde98e925e6fd9ea8439e",
+  "checked": "2026-11-16",
+  "error": "extract:HTTPError",
+  "hash": "89414f32bd16b5435b3543d8d87f432fea6e23f3dace40f205e2cd8ba27960ce",
   "last_action": "REFERRED TO TRANSPORTATION",
   "last_action_date": "2025-01-22",
   "progress_stage": "committee",
@@ -935,8 +951,9 @@
   "url": "https://nyassembly.gov/leg/?default_fld=&leg_video=&bn=S02688&term=2025&Summary=Y&Actions=Y"
  },
  "ny-s-344-2025-2026": {
-  "checked": "2026-10-17",
-  "hash": "1b3d862ddcae0a078b2dd0d2f02e91c8172f9c5f2b236933072683dec1c0d166",
+  "checked": "2026-11-16",
+  "error": "extract:HTTPError",
+  "hash": "27242948b0a8cd85a3478c09302e1fd4b959fa236abcb0f0410030f0732adeb7",
   "last_action": "PRINT NUMBER 344B",
   "last_action_date": "2026-05-06",
   "progress_stage": "committee",
@@ -971,8 +988,9 @@
   "url": "https://nyassembly.gov/leg/?default_fld=&leg_video=&bn=S07758&term=2025&Summary=Y&Actions=Y"
  },
  "ny-s-7956-2025-2026": {
-  "checked": "2026-10-17",
-  "hash": "ece79bc8b824c605863032b15e4f03dc60370aee8eca1b20a60caed9844e61e5",
+  "checked": "2026-11-16",
+  "error": "extract:HTTPError",
+  "hash": "dddc489e0474c019651be7a3ec1fef3fc0081d47dd85c4b33bebf60cba6e9723",
   "last_action": "REFERRED TO TRANSPORTATION",
   "last_action_date": "2026-01-07",
   "progress_stage": "committee",
@@ -989,7 +1007,7 @@
   "url": "https://nyassembly.gov/leg/?default_fld=&leg_video=&bn=S08308&term=2025&Summary=Y&Actions=Y"
  },
  "ny-s-9008-2025-2026": {
-  "checked": "2026-10-17",
+  "checked": "2026-11-16",
   "hash": "1c7988738c9888936bf65f0cc29f14029b3ed93bdd8e638600627aee8ed3d2fd",
   "last_action": "signed chap.58",
   "last_action_date": "2026-05-26",
@@ -1022,18 +1040,21 @@
   "url": "https://olis.oregonlegislature.gov/liz/2025R1/Measures/Overview/HB2671"
  },
  "or-hb-4085-2026r1": {
-  "checked": "2026-10-17",
-  "hash": "0c0b0fa64e05a8cd14eb9f4878ed547dcb07f6d9a5f159dd9f859aaa379434dc",
+  "checked": "2026-11-16",
+  "error": "extract:HTTPError",
+  "hash": "47ee4f53fca9ead5752017ecf92c98bfbd017c9ed2c5bd6c04378777a9fe3fde",
   "url": "https://olis.oregonlegislature.gov/liz/2026R1/Measures/Overview/HB4085"
  },
  "pa-hb-1639-2025-2026": {
-  "checked": "2026-10-17",
-  "error": "URLError/URLError/URLError",
+  "checked": "2026-11-16",
+  "error": "extract:HTTPError",
+  "hash": "1a011de3581b20fd5be0df9ce0ed600c5ba563f8fb2e93f9e9c8c9907e6d9bab",
   "url": "https://www.palegis.us/legislation/bills/2025/hb1639"
  },
  "pa-hr-563-2025-2026": {
-  "checked": "2026-10-17",
-  "error": "URLError/URLError/URLError",
+  "checked": "2026-11-16",
+  "error": "extract:HTTPError",
+  "hash": "cb98bd836eaf54a734cd9f1a3e8577dcda7ca2150ae8970d06615dae689e26f5",
   "url": "https://www.palegis.us/legislation/bills/2025/hr563"
  },
  "tn-hb-1168-114": {
@@ -1073,7 +1094,7 @@
   "url": "https://capitol.texas.gov/BillLookup/History.aspx?LegSess=89R&Bill=HB3837"
  },
  "ut-hb-581-2026": {
-  "checked": "2026-10-17",
+  "checked": "2026-11-16",
   "hash": "6cd7d12c09670284fb37a46b542f3aa3841389b7425f8f1525ba0fbe24e6c45b",
   "last_action": "House/ filed (House file for bills not passed), following failure on 3rd reading in the House (28-44-3)",
   "last_action_date": "2024-01-25",
