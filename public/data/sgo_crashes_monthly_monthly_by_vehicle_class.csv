@@ -91,6 +91,8 @@ year,month,incident_count,vehicle_class
 2026,6,1,trucking
 2026,7,118,light_duty
 2026,7,2,trucking
-2026,8,98,light_duty
+2026,8,124,light_duty
 2026,8,5,trucking
-2026,9,12,light_duty
+2026,9,160,light_duty
+2026,9,2,trucking
+2026,10,18,light_duty

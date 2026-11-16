@@ -351,7 +351,7 @@ year,month,reporting_entity,incident_count
 2026,2,"Zoox, Inc.",3
 2026,3,Avride Inc.,7
 2026,3,May Mobility,1
-2026,3,Waymo LLC,44
+2026,3,Waymo LLC,43
 2026,3,"Zoox, Inc.",4
 2026,4,Avride Inc.,9
 2026,4,May Mobility,1
@@ -387,12 +387,21 @@ year,month,reporting_entity,incident_count
 2026,8,May Mobility,2
 2026,8,Motional,2
 2026,8,"Tesla, Inc.",2
-2026,8,Waymo LLC,24
+2026,8,Waymo LLC,46
 2026,8,"Zoox, Inc.",5
+2026,9,Avride Inc.,7
 2026,9,Gatik AI Inc.,2
 2026,9,MOIA America LLC,1
 2026,9,May Mobility,2
+2026,9,Motional,1
+2026,9,Nuro,1
 2026,9,PlusAI Inc,1
 2026,9,"TORC Robotics, Inc.",1
 2026,9,"Tesla, Inc.",8
 2026,9,Waabi,1
+2026,9,Waymo LLC,67
+2026,9,"Zoox, Inc.",10
+2026,10,Bot Auto,1
+2026,10,Gatik AI Inc.,1
+2026,10,May Mobility,1
+2026,10,"Tesla, Inc.",3
