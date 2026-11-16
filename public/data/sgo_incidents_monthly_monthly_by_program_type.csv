@@ -111,7 +111,7 @@ year,month,program_type,incident_count
 2026,1,testing,6
 2026,2,commercial,37
 2026,2,testing,12
-2026,3,commercial,45
+2026,3,commercial,44
 2026,3,testing,11
 2026,4,commercial,45
 2026,4,testing,14
@@ -121,8 +121,10 @@ year,month,program_type,incident_count
 2026,6,testing,11
 2026,7,commercial,42
 2026,7,testing,12
-2026,8,commercial,29
+2026,8,commercial,51
 2026,8,testing,12
-2026,9,commercial,12
-2026,9,testing,3
+2026,9,commercial,79
+2026,9,testing,22
 2026,9,unknown,1
+2026,10,commercial,5
+2026,10,unknown,1

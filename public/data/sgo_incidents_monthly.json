@@ -4,7 +4,7 @@
   "coverage": "National -- all ADS operators reporting under SGO 2021-01",
   "notes": "One latest version per NHTSA report ID; earlier versions remain in sgo_incidents_all_versions.csv. Counts are reports, not verified at-fault crashes. Monthly charts use the latest report version's filing month/year when present, not the incident month; reports without a valid filing month remain in all-time counts.",
   "vehicle_class_and_program_type_note": "vehicle_class (trucking/light_duty) and program_type (commercial/testing) are the Observatory's OWN editorial classification of each reporting entity's primary business focus, NOT a field NHTSA provides. See pipelines/sgo/operator_classification.py for the mapping and its documented limitations.",
-  "row_count": 3450,
+  "row_count": 3644,
   "states_represented": [
     "AR",
     "AZ",
@@ -14,6 +14,7 @@
     "FL",
     "GA",
     "IN",
+    "LA",
     "MI",
     "MN",
     "MS",
@@ -38,6 +39,7 @@
     "AutoX Technologies Inc",
     "Avride Inc.",
     "Beep, Inc.",
+    "Bot Auto",
     "Chrysler (FCA US, LLC)",
     "Cruise LLC",
     "Daimler Trucks North America, LLC",
@@ -545,7 +547,7 @@
     {
       "year": 2026,
       "month": 3,
-      "incident_count": 56
+      "incident_count": 55
     },
     {
       "year": 2026,
@@ -570,12 +572,17 @@
     {
       "year": 2026,
       "month": 8,
-      "incident_count": 41
+      "incident_count": 63
     },
     {
       "year": 2026,
       "month": 9,
-      "incident_count": 16
+      "incident_count": 102
+    },
+    {
+      "year": 2026,
+      "month": 10,
+      "incident_count": 6
     }
   ],
   "monthly_by_state": [
@@ -2041,7 +2048,7 @@
       "year": 2026,
       "month": 3,
       "state": "CA",
-      "incident_count": 36
+      "incident_count": 35
     },
     {
       "year": 2026,
@@ -2263,25 +2270,31 @@
       "year": 2026,
       "month": 8,
       "state": "AZ",
-      "incident_count": 2
+      "incident_count": 5
     },
     {
       "year": 2026,
       "month": 8,
       "state": "CA",
-      "incident_count": 17
+      "incident_count": 30
     },
     {
       "year": 2026,
       "month": 8,
       "state": "FL",
-      "incident_count": 1
+      "incident_count": 4
     },
     {
       "year": 2026,
       "month": 8,
       "state": "GA",
       "incident_count": 3
+    },
+    {
+      "year": 2026,
+      "month": 8,
+      "state": "MI",
+      "incident_count": 1
     },
     {
       "year": 2026,
@@ -2305,37 +2318,79 @@
       "year": 2026,
       "month": 8,
       "state": "TX",
-      "incident_count": 12
+      "incident_count": 14
     },
     {
       "year": 2026,
       "month": 9,
       "state": "AZ",
-      "incident_count": 2
+      "incident_count": 9
     },
     {
       "year": 2026,
       "month": 9,
       "state": "CA",
+      "incident_count": 37
+    },
+    {
+      "year": 2026,
+      "month": 9,
+      "state": "CO",
       "incident_count": 1
     },
     {
       "year": 2026,
       "month": 9,
       "state": "FL",
-      "incident_count": 1
+      "incident_count": 10
     },
     {
       "year": 2026,
       "month": 9,
       "state": "GA",
+      "incident_count": 7
+    },
+    {
+      "year": 2026,
+      "month": 9,
+      "state": "NV",
+      "incident_count": 6
+    },
+    {
+      "year": 2026,
+      "month": 9,
+      "state": "PA",
       "incident_count": 1
     },
     {
       "year": 2026,
       "month": 9,
+      "state": "TN",
+      "incident_count": 3
+    },
+    {
+      "year": 2026,
+      "month": 9,
       "state": "TX",
-      "incident_count": 11
+      "incident_count": 28
+    },
+    {
+      "year": 2026,
+      "month": 10,
+      "state": "AZ",
+      "incident_count": 1
+    },
+    {
+      "year": 2026,
+      "month": 10,
+      "state": "GA",
+      "incident_count": 1
+    },
+    {
+      "year": 2026,
+      "month": 10,
+      "state": "TX",
+      "incident_count": 4
     }
   ],
   "monthly_by_entity": [
@@ -4455,7 +4510,7 @@
       "year": 2026,
       "month": 3,
       "reporting_entity": "Waymo LLC",
-      "incident_count": 44
+      "incident_count": 43
     },
     {
       "year": 2026,
@@ -4671,13 +4726,19 @@
       "year": 2026,
       "month": 8,
       "reporting_entity": "Waymo LLC",
-      "incident_count": 24
+      "incident_count": 46
     },
     {
       "year": 2026,
       "month": 8,
       "reporting_entity": "Zoox, Inc.",
       "incident_count": 5
+    },
+    {
+      "year": 2026,
+      "month": 9,
+      "reporting_entity": "Avride Inc.",
+      "incident_count": 7
     },
     {
       "year": 2026,
@@ -4696,6 +4757,18 @@
       "month": 9,
       "reporting_entity": "May Mobility",
       "incident_count": 2
+    },
+    {
+      "year": 2026,
+      "month": 9,
+      "reporting_entity": "Motional",
+      "incident_count": 1
+    },
+    {
+      "year": 2026,
+      "month": 9,
+      "reporting_entity": "Nuro",
+      "incident_count": 1
     },
     {
       "year": 2026,
@@ -4720,6 +4793,42 @@
       "month": 9,
       "reporting_entity": "Waabi",
       "incident_count": 1
+    },
+    {
+      "year": 2026,
+      "month": 9,
+      "reporting_entity": "Waymo LLC",
+      "incident_count": 67
+    },
+    {
+      "year": 2026,
+      "month": 9,
+      "reporting_entity": "Zoox, Inc.",
+      "incident_count": 10
+    },
+    {
+      "year": 2026,
+      "month": 10,
+      "reporting_entity": "Bot Auto",
+      "incident_count": 1
+    },
+    {
+      "year": 2026,
+      "month": 10,
+      "reporting_entity": "Gatik AI Inc.",
+      "incident_count": 1
+    },
+    {
+      "year": 2026,
+      "month": 10,
+      "reporting_entity": "May Mobility",
+      "incident_count": 1
+    },
+    {
+      "year": 2026,
+      "month": 10,
+      "reporting_entity": "Tesla, Inc.",
+      "incident_count": 3
     }
   ],
   "monthly_by_vehicle_class": [
@@ -5231,7 +5340,7 @@
       "year": 2026,
       "month": 3,
       "vehicle_class": "light_duty",
-      "incident_count": 56
+      "incident_count": 55
     },
     {
       "year": 2026,
@@ -5273,7 +5382,7 @@
       "year": 2026,
       "month": 8,
       "vehicle_class": "light_duty",
-      "incident_count": 40
+      "incident_count": 62
     },
     {
       "year": 2026,
@@ -5285,7 +5394,7 @@
       "year": 2026,
       "month": 9,
       "vehicle_class": "light_duty",
-      "incident_count": 11
+      "incident_count": 97
     },
     {
       "year": 2026,
@@ -5296,6 +5405,24 @@
     {
       "year": 2026,
       "month": 9,
+      "vehicle_class": "unknown",
+      "incident_count": 1
+    },
+    {
+      "year": 2026,
+      "month": 10,
+      "vehicle_class": "light_duty",
+      "incident_count": 4
+    },
+    {
+      "year": 2026,
+      "month": 10,
+      "vehicle_class": "trucking",
+      "incident_count": 1
+    },
+    {
+      "year": 2026,
+      "month": 10,
       "vehicle_class": "unknown",
       "incident_count": 1
     }
@@ -5977,7 +6104,7 @@
       "year": 2026,
       "month": 3,
       "program_type": "commercial",
-      "incident_count": 45
+      "incident_count": 44
     },
     {
       "year": 2026,
@@ -6037,7 +6164,7 @@
       "year": 2026,
       "month": 8,
       "program_type": "commercial",
-      "incident_count": 29
+      "incident_count": 51
     },
     {
       "year": 2026,
@@ -6049,22 +6176,34 @@
       "year": 2026,
       "month": 9,
       "program_type": "commercial",
-      "incident_count": 12
+      "incident_count": 79
     },
     {
       "year": 2026,
       "month": 9,
       "program_type": "testing",
-      "incident_count": 3
+      "incident_count": 22
     },
     {
       "year": 2026,
       "month": 9,
       "program_type": "unknown",
       "incident_count": 1
+    },
+    {
+      "year": 2026,
+      "month": 10,
+      "program_type": "commercial",
+      "incident_count": 5
+    },
+    {
+      "year": 2026,
+      "month": 10,
+      "program_type": "unknown",
+      "incident_count": 1
     }
   ],
-  "data_through": "2026-09-15",
-  "last_updated": "2026-11-06",
-  "snapshot_sha256": "0886393c75240840af39279400f85ab890ba24750112427826b06f73ebff66c2"
+  "data_through": "2026-10-15",
+  "last_updated": "2026-11-16",
+  "snapshot_sha256": "b8c8cb1e530a0ded37965873e53b260f5d98ca8ce697557e7f208bf9632730a0"
 }
