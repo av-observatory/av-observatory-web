@@ -5,13 +5,13 @@
   "source_api": "https://data.sf.gov/resource/vw6y-z8j6.json",
   "selection": "Exact service_name match: Autonomous Vehicle Complaints. Other city request types and unclassified AV mentions are excluded.",
   "limitations": "These are public 311 requests, not verified incidents. The published subtypes describe how SF311 classified a request, not the specific behavior alleged. Operator identity is unavailable; the AV category begins in April 2025.",
-  "source_data_as_of": "2026-11-15T01:00:00.000",
-  "total_records": 1091,
+  "source_data_as_of": "2026-11-16T01:00:00.000",
+  "total_records": 1093,
   "markets": [
     {
       "market": "San Francisco",
       "state": "CA",
-      "complaints": 1091
+      "complaints": 1093
     }
   ],
   "monthly": [
@@ -133,7 +133,7 @@
       "month": "2026-11",
       "market": "San Francisco",
       "state": "CA",
-      "complaints": 38
+      "complaints": 40
     }
   ],
   "records": [
@@ -17592,6 +17592,38 @@
       "long": -122.42673258,
       "neighborhood": "Mission Dolores",
       "source_url": "https://data.sf.gov/resource/vw6y-z8j6.json?service_request_id=202000310953"
+    },
+    {
+      "id": "SF-202000312678",
+      "source_id": "202000312678",
+      "state": "CA",
+      "market": "San Francisco",
+      "requested_datetime": "2026-11-15T11:08:30.000",
+      "requested_date": "2026-11-15",
+      "month": "2026-11",
+      "type": "incident_report",
+      "status": "Open",
+      "agency": "MTA - Autonomous Vehicles Complaints",
+      "lat": 37.77111459,
+      "long": -122.45350725,
+      "neighborhood": "Haight Ashbury",
+      "source_url": "https://data.sf.gov/resource/vw6y-z8j6.json?service_request_id=202000312678"
+    },
+    {
+      "id": "SF-202000312944",
+      "source_id": "202000312944",
+      "state": "CA",
+      "market": "San Francisco",
+      "requested_datetime": "2026-11-15T12:03:32.000",
+      "requested_date": "2026-11-15",
+      "month": "2026-11",
+      "type": "incident_report",
+      "status": "Open",
+      "agency": "MTA - Autonomous Vehicles Complaints",
+      "lat": 37.77661253,
+      "long": -122.39573157,
+      "neighborhood": "South of Market",
+      "source_url": "https://data.sf.gov/resource/vw6y-z8j6.json?service_request_id=202000312944"
     }
   ]
 }
