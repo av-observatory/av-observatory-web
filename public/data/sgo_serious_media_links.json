@@ -216,8 +216,31 @@
           "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxOYTUteGlYcVQtbGtVSTNsbWxMdDlWc0NzUFZKYTBydlNkNDl1RE9jUEQwc3JzMmdZTnJjcUl3Q3BqN1BjTGZJMzNxdnlqZ3c5aHgyUno2UlFWYjEtOUZzNm8ycjlGRjdPZWkteWVTTmdqZVFBak5rZGZfcm9mNTU2T29OTV9hUjNyZFHSAY8BQVVfeXFMTll6Tm83UFVWU2tSZVBCd3lfNmJLSTRnaDVuaG85dFNIUG9kdHVBOGNfbHFNVThlMmlWS0RIUWhlTTRLTkRDVnFjeHh1eS1VNlRES1V5bGFHWTNMenAwdUlWdWNHaHB2M0pTSm9UeThoYjIyQURweW8ycHh1TDFkSHk0czJaTU8zVGhMUUc3NEk?oc=5"
         }
       ]
+    },
+    "396bdea15f531c5": {
+      "report_ids": "30270-16670",
+      "checked": "2026-11-16",
+      "media": [
+        {
+          "title": "Waymo damaged in apparent hit-and-run in Los Angeles",
+          "publisher": "KTLA",
+          "published": "2026-09-21",
+          "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxPTUhhdHUtcWRSbGZJdHRFcUFMQU9HdTFRVkh0YTl3Zm45WTFJTGVwbmJVLUJvVFo4RFhhbXlYLTNLeGFEd3Z6bk1QVEl4VnVBQ2RSWDMxcDdtZkM4VTBCenl1c3pmeWdJWGRFSWlnWEhTZFdQcmk3djZzNVptLWhKNU16eGFzRlZjX3NzLTZ4NNIBlAFBVV95cUxPWUV0ZVJjbzVEMnNQTU5lUkNPdGNaLXdWVzRleDZxQmtZTzZfcS1sanFSMzlrMEgxS28wZXZ3QUNaRndoY0U3ZmJLZHo5OTExZjNQRTZMdG5xQlQwNUl2Zkxzc1JDMXNIRzRqWktmbENReURHM1ZpeFNTWlJXNWhoYThhMTVjalJwcHpxaFdPQUYxV1Nl?oc=5"
+        },
+        {
+          "title": "Waymo Crashes in Los Angeles County Tripled in 2025 as Robotaxi Fleet Grew",
+          "publisher": "Autobody News",
+          "published": "2026-10-08",
+          "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQQjZyWEg0YS1pMG8waTcwNkx1R2E4TFdCenJIS1hmaW5RNVA4UWxLOUF3NmVXcFdSS2FHRmlpWUVnV1k3X1hsaHlLaWNrNDBVZFFPMXBqaExZR05uaEIwbTJ1djNPSmJaWHk5WlJWVmdJdkx0cW9VckJQT1FJeVp3OUpld1FEMEcyNndvQVh0YjNtU3h6aURFSXlpWndfRFhxcjAyOW9RbVA5eFRW?oc=5"
+        }
+      ]
+    },
+    "91428dbd8d62b74": {
+      "report_ids": "30270-17066",
+      "checked": "2026-11-16",
+      "media": []
     }
   },
-  "checked_at": "2026-11-15",
+  "checked_at": "2026-11-16",
   "note": "Automatic news matches (operator + city + crash terms within the incident window). Unverified; not evidence of fault."
 }
