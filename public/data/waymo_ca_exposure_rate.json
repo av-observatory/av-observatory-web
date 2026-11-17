@@ -2,10 +2,10 @@
   "title": "Waymo California exposure-normalized incident rate",
   "purpose": "Same-operator, same-state rate: Waymo's SGO incident reports filed for California, per million miles of Waymo's own CPUC-reported California VMT, by month.",
   "methodology_note": "Both numerator and denominator are Waymo-specific and California-specific -- a materially better-grounded exposure rate than cross-operator or cross-geography comparisons elsewhere on this site. Still approximate: SGO report month is the FILING month, not necessarily the incident month; CPUC's ingested months have real gaps (only months with data are included here, which understates true VMT for any period spanning a gap); 'incident' is a broad SGO reporting category, not strictly at-fault crashes.",
-  "months_included": 50,
-  "total_waymo_ca_vmt": 144547156.0,
-  "total_waymo_ca_sgo_incidents": 740,
-  "overall_incidents_per_million_miles": 5.119,
+  "months_included": 53,
+  "total_waymo_ca_vmt": 179137189.1,
+  "total_waymo_ca_sgo_incidents": 817,
+  "overall_incidents_per_million_miles": 4.561,
   "monthly": [
     {
       "year": 2022,
@@ -356,6 +356,27 @@
       "waymo_ca_vmt": 9684668.0,
       "waymo_ca_sgo_incidents": 24,
       "incidents_per_million_miles": 2.478
+    },
+    {
+      "year": 2026,
+      "month": 7,
+      "waymo_ca_vmt": 10031730.4,
+      "waymo_ca_sgo_incidents": 21,
+      "incidents_per_million_miles": 2.093
+    },
+    {
+      "year": 2026,
+      "month": 8,
+      "waymo_ca_vmt": 11368370.8,
+      "waymo_ca_sgo_incidents": 26,
+      "incidents_per_million_miles": 2.287
+    },
+    {
+      "year": 2026,
+      "month": 9,
+      "waymo_ca_vmt": 13189931.9,
+      "waymo_ca_sgo_incidents": 30,
+      "incidents_per_million_miles": 2.274
     }
   ]
 }
