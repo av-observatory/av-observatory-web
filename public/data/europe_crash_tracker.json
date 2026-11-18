@@ -626,8 +626,17 @@
     }
   ],
   "country_scope_note": "Coverage registry includes sovereign states conventionally treated as wholly or partly European, plus Kosovo. Inclusion in the registry is geographic/editorial and does not imply EU membership or a position on political status.",
-  "media_watch_checked_at": "2026-11-17",
+  "media_watch_checked_at": "2026-11-18",
   "media_watch": [
+    {
+      "title": "Tesla Driver Credits Self-Driving Technology for Avoiding High-Speed Collision: \"No Safer Car\"",
+      "publisher": "Yahoo",
+      "published": "2026-11-17",
+      "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxOZ2w4akhNV09HWVc3cTA5akVZOUt1N0dVRTRYb09xMWJ4Mm1QNHBYXzF4dHlJMU5HcmppSHkxeTFTOGZETFhZZFBEb0NXUHN0X1AzcUpSOHJYYnBXZ1lya1J2MGZua055dTBFaXlDc2prVFVybmFwMGJQVWVLZmI1TlM4dUIxNWYxdVhfVzhqcDA?oc=5",
+      "query_language": "en-GB",
+      "first_seen": "2026-11-18",
+      "status": "unverified media headline; not counted as a crash"
+    },
     {
       "title": "2 self-driving Waymos involved in 4-car collision in Phoenix",
       "publisher": "Yahoo",
