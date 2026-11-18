@@ -3733,6 +3733,24 @@
         "at": "2026-11-16",
         "reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable"
       }
+    },
+    {
+      "id": "auto-ny-s9008-2026",
+      "level": "state",
+      "jurisdiction": "New York",
+      "title": "Chapter 58 (S9008-C Part E): for-hire autonomous vehicles outside New York City",
+      "summary": "New York's FY2027 budget bill (S9008-C, signed as chapter 58 on May 26, 2026) adds Article 44-D to the Vehicle and Traffic Law: no network may deploy autonomous vehicles for taxicab, livery or for-hire service in a city of one million or more people, and elsewhere only with authorization from the DMV commissioner, with application fees, financial security and a demonstration of local support. It also exempts permitted vehicles from the one-hand-on-the-wheel rule. The relevant sections take effect one year after enactment.",
+      "takeaway": "New York's FY2027 budget bill (S9008-C, signed as chapter 58 on May 26, 2026) adds Article 44-D to the Vehicle and Traffic Law: no network may deploy autonomous vehicles for taxicab, livery or for-hire service in a city of one million or more people, and elsewhere only with authorization from the DMV commissioner, with application fees, financial security and a demonstration of local support. It also exempts permitted vehicles from the one-hand-on-the-wheel rule. The relevant sections take effect one year after enactment.",
+      "instrument": "legislation",
+      "status": "historical_status_unverified",
+      "date": "2026-05-26",
+      "source_url": "https://www.nysenate.gov/legislation/bills/2025/S9008/amendment/C",
+      "verified_at": "2026-11-18",
+      "state": "NY",
+      "source_label": "New York Senate, S9008-C (2025-2026)",
+      "source_tier": "auto",
+      "review_status": "auto_collected",
+      "date_precision": "day"
     }
   ],
   "city_events": [
