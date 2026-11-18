@@ -14,9 +14,14 @@
   "unreadable": "official-site search returned no AV bill pages (searched 1 pages)"
  },
  "AL": {
-  "attempted": "2026-11-16",
-  "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "bills_found": [
+   "SB 222"
+  ],
+  "checked": "2026-11-18",
+  "sources_read": [
+   "https://alison.legislature.state.al.us/files/pdf/SearchableInstruments/2026RS/SB222-int.pdf"
+  ],
+  "unreadable": null
  },
  "AR": {
   "attempted": "2026-11-16",
@@ -41,9 +46,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 1 pages)"
  },
  "CA": {
-  "attempted": "2026-11-16",
+  "attempted": "2026-11-18",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "leginfo.legislature.ca.gov returned HTTP 403 to automated fetch"
  },
  "CO": {
   "attempted": "2026-11-16",
@@ -59,9 +64,16 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "DC": {
-  "attempted": "2026-11-16",
-  "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "bills_found": [
+   "B26-0684",
+   "B26-0323 (not added: introduction date, referral and status not readable from LIMS)"
+  ],
+  "checked": "2026-11-18",
+  "sources_read": [
+   "https://lims.dccouncil.gov/downloads/LIMS/61803/Introduction/B26-0684-Introduction.pdf",
+   "https://lims.dccouncil.gov/downloads/LIMS/58159/Introduction/B26-0323-Introduction.pdf"
+  ],
+  "unreadable": null
  },
  "DE": {
   "attempted": "2026-11-16",
@@ -85,9 +97,14 @@
   "unreadable": "official-site search returned no AV bill pages (searched 1 pages)"
  },
  "GA": {
-  "attempted": "2026-11-16",
-  "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "bills_found": [
+   "HR 1371 (study-committee resolution; status unconfirmed)"
+  ],
+  "checked": "2026-11-18",
+  "sources_read": [
+   "https://www.legis.ga.gov/"
+  ],
+  "unreadable": null
  },
  "HI": {
   "attempted": "2026-11-16",
@@ -111,9 +128,12 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "ID": {
-  "attempted": "2026-11-16",
-  "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "bills_found": [],
+  "checked": "2026-11-18",
+  "sources_read": [
+   "https://legislature.idaho.gov/sessioninfo/2026/legislation/"
+  ],
+  "unreadable": null
  },
  "IL": {
   "attempted": "2026-11-16",
@@ -129,9 +149,12 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "KS": {
-  "attempted": "2026-11-16",
-  "searched": 2,
-  "unreadable": "official-site search returned no AV bill pages (searched 2 pages)"
+  "bills_found": [],
+  "checked": "2026-11-18",
+  "sources_read": [
+   "https://www.kslegislature.gov/b2025_26/"
+  ],
+  "unreadable": null
  },
  "KY": {
   "attempted": "2026-11-16",
@@ -152,9 +175,21 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "MA": {
-  "attempted": "2026-11-16",
-  "searched": 1,
-  "unreadable": "official-site search returned no AV bill pages (searched 1 pages)"
+  "bills_found": [
+   "H 3634",
+   "S 2379",
+   "S 2393",
+   "H 3669",
+   "H 3649",
+   "H 1280"
+  ],
+  "checked": "2026-11-18",
+  "sources_read": [
+   "https://malegislature.gov/Bills/194/H3634",
+   "https://malegislature.gov/Bills/194/S2379",
+   "https://malegislature.gov/Bills/194/S2393"
+  ],
+  "unreadable": null
  },
  "MD": {
   "attempted": "2026-11-16",
@@ -172,9 +207,12 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "MI": {
-  "attempted": "2026-11-16",
-  "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "bills_found": [],
+  "checked": "2026-11-18",
+  "sources_read": [
+   "https://www.legislature.mi.gov/"
+  ],
+  "unreadable": null
  },
  "MN": {
   "attempted": "2026-11-16",
@@ -195,9 +233,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "MS": {
-  "attempted": "2026-11-16",
+  "attempted": "2026-11-18",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "www.legislature.ms.gov not in the session's allowed network domains"
  },
  "MT": {
   "attempted": "2026-11-16",
@@ -217,9 +255,16 @@
   "unreadable": "official-site search returned no AV bill pages (searched 1 pages)"
  },
  "ND": {
-  "attempted": "2026-11-16",
-  "searched": 1,
-  "unreadable": "official-site search returned no AV bill pages (searched 1 pages)"
+  "bills_found": [
+   "HB 1037 (failed)",
+   "HB 1614 (failed)"
+  ],
+  "checked": "2026-11-18",
+  "sources_read": [
+   "https://ndlegis.gov/assembly/69-2025/regular/bill-overview/bo1037.html",
+   "https://ndlegis.gov/assembly/69-2025/regular/bill-overview/bo1614.html"
+  ],
+  "unreadable": null
  },
  "NE": {
   "attempted": "2026-11-16",
@@ -237,9 +282,20 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "NJ": {
-  "attempted": "2026-11-16",
-  "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "bills_found": [
+   "S 1677",
+   "A 3968",
+   "A 768",
+   "S 2324 (not added: introduced date and committee referral not readable)"
+  ],
+  "checked": "2026-11-18",
+  "sources_read": [
+   "https://pub.njleg.gov/Bills/2026/S2000/1677_I1.HTM",
+   "https://pub.njleg.gov/Bills/2026/A4000/3968_I1.HTM",
+   "https://pub.njleg.gov/Bills/2026/A1000/768_I1.HTM",
+   "https://pub.njleg.gov/Bills/2026/S2500/2324_I1.HTM"
+  ],
+  "unreadable": null
  },
  "NM": {
   "attempted": "2026-11-16",
@@ -261,9 +317,22 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "NY": {
-  "attempted": "2026-11-16",
-  "searched": 1,
-  "unreadable": "official-site search returned no AV bill pages (searched 1 pages)"
+  "bills_found": [
+   "S 9008",
+   "S 344",
+   "S 10473",
+   "A 11500",
+   "S 7956",
+   "S 2688",
+   "S 10413"
+  ],
+  "checked": "2026-11-18",
+  "sources_read": [
+   "https://www.nysenate.gov/legislation/bills/2025/S9008/amendment/C",
+   "https://www.nysenate.gov/legislation/bills/2025/S344",
+   "https://www.nysenate.gov/legislation/bills/2025/S10473"
+  ],
+  "unreadable": null
  },
  "OH": {
   "attempted": "2026-11-16",
@@ -281,9 +350,14 @@
   "unreadable": "official-site search returned no AV bill pages (searched 1 pages)"
  },
  "OR": {
-  "attempted": "2026-11-16",
-  "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "bills_found": [
+   "HB 4085"
+  ],
+  "checked": "2026-11-18",
+  "sources_read": [
+   "https://olis.oregonlegislature.gov/liz/2026R1/Measures/Overview/HB4085"
+  ],
+  "unreadable": null
  },
  "PA": {
   "attempted": "2026-11-16",
@@ -301,9 +375,12 @@
   "unreadable": "official-site search returned no AV bill pages (searched 1 pages)"
  },
  "SC": {
-  "attempted": "2026-11-16",
-  "searched": 1,
-  "unreadable": "official-site search returned no AV bill pages (searched 1 pages)"
+  "bills_found": [],
+  "checked": "2026-11-18",
+  "sources_read": [
+   "https://www.scstatehouse.gov/billsearch.php"
+  ],
+  "unreadable": null
  },
  "SD": {
   "attempted": "2026-11-16",
@@ -323,9 +400,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "TX": {
-  "attempted": "2026-11-16",
+  "attempted": "2026-11-18",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "capitol.texas.gov not in the session's allowed network domains"
  },
  "UT": {
   "attempted": "2026-11-16",
@@ -345,9 +422,14 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "VT": {
-  "attempted": "2026-11-16",
-  "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "bills_found": [
+   "H.851"
+  ],
+  "checked": "2026-11-18",
+  "sources_read": [
+   "https://legislature.vermont.gov/bill/status/2026/H.851"
+  ],
+  "unreadable": null
  },
  "WA": {
   "attempted": "2026-11-16",
@@ -369,9 +451,12 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "WV": {
-  "attempted": "2026-11-16",
-  "searched": 1,
-  "unreadable": "official-site search returned no AV bill pages (searched 1 pages)"
+  "bills_found": [],
+  "checked": "2026-11-18",
+  "sources_read": [
+   "https://www.wvlegislature.gov/Bill_Status/Bills_history.cfm"
+  ],
+  "unreadable": null
  },
  "WY": {
   "attempted": "2026-11-16",

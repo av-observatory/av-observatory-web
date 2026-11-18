@@ -201,5 +201,30 @@
     ],
     "source_url": "https://www.akleg.gov/basis/Bill/Detail/34?Root=HB%20217",
     "repository_url": "https://www.akleg.gov/basis/Bill/Detail/34?Root=HB%20217"
+  },
+  {
+    "id": "vt-h851-2025-2026",
+    "jurisdiction": "VT",
+    "number": "H.851",
+    "title": "An act relating to pilot programs for highway services for electric vehicles, public transit stabilization, and a State rideshare service",
+    "summary": "As introduced, the bill would create Agency of Transportation pilot programs including one to stabilize and expand public transit that would support transit agencies' examination of autonomous vehicles to supplement or expand existing services, such as more frequent service, extended hours or connections between routes. It also covers electric-vehicle charging incentives at gas stations and a State-operated rideshare pilot.",
+    "takeaway": "Would support public transit agencies' examination of autonomous vehicles to supplement or expand service as part of a broader Agency of Transportation pilot package.",
+    "source_summary": "Vermont General Assembly bill status page and as-introduced bill text (statement of purpose).",
+    "summary_method": "Maintainer-written from the official Vermont General Assembly bill text; no figures taken from news coverage",
+    "summary_quality": "reviewed_substantive",
+    "summary_reviewed_at": "2026-11-18",
+    "status": "introduced",
+    "measure_type": "bill",
+    "last_action_date": "2026-02-03",
+    "last_action": "Read first time and referred to the Committee on Transportation.",
+    "session": "2025-2026",
+    "progress_stage": "committee",
+    "stage_dates": {
+      "introduced": "2026-02-03",
+      "committee": "2026-02-03"
+    },
+    "hearings": [],
+    "source_url": "https://legislature.vermont.gov/bill/status/2026/H.851",
+    "repository_url": "https://legislature.vermont.gov/bill/status/2026/H.851"
   }
 ]
