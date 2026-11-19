@@ -5,13 +5,13 @@
   "source_api": "https://data.sf.gov/resource/vw6y-z8j6.json",
   "selection": "Exact service_name match: Autonomous Vehicle Complaints. Other city request types and unclassified AV mentions are excluded.",
   "limitations": "These are public 311 requests, not verified incidents. The published subtypes describe how SF311 classified a request, not the specific behavior alleged. Operator identity is unavailable; the AV category begins in April 2025.",
-  "source_data_as_of": "2026-11-18T01:00:00.000",
-  "total_records": 1102,
+  "source_data_as_of": "2026-11-19T01:00:00.000",
+  "total_records": 1105,
   "markets": [
     {
       "market": "San Francisco",
       "state": "CA",
-      "complaints": 1102
+      "complaints": 1105
     }
   ],
   "monthly": [
@@ -133,7 +133,7 @@
       "month": "2026-11",
       "market": "San Francisco",
       "state": "CA",
-      "complaints": 49
+      "complaints": 52
     }
   ],
   "records": [
@@ -17346,7 +17346,7 @@
       "requested_date": "2026-11-10",
       "month": "2026-11",
       "type": "incident_report",
-      "status": "Open",
+      "status": "Closed",
       "agency": "MTA - Autonomous Vehicles Complaints",
       "lat": 37.79857574,
       "long": -122.43551357,
@@ -17362,7 +17362,7 @@
       "requested_date": "2026-11-10",
       "month": "2026-11",
       "type": "incident_report",
-      "status": "Open",
+      "status": "Closed",
       "agency": "MTA - Autonomous Vehicles Complaints",
       "lat": 37.7617007549,
       "long": -122.4215785686,
@@ -17378,7 +17378,7 @@
       "requested_date": "2026-11-11",
       "month": "2026-11",
       "type": "other",
-      "status": "Open",
+      "status": "Closed",
       "agency": "MTA - Autonomous Vehicles Complaints",
       "lat": null,
       "long": null,
@@ -17394,7 +17394,7 @@
       "requested_date": "2026-11-11",
       "month": "2026-11",
       "type": "other",
-      "status": "Open",
+      "status": "Closed",
       "agency": "MTA - Autonomous Vehicles Complaints",
       "lat": null,
       "long": null,
@@ -17410,7 +17410,7 @@
       "requested_date": "2026-11-11",
       "month": "2026-11",
       "type": "incident_report",
-      "status": "Open",
+      "status": "Closed",
       "agency": "MTA - Autonomous Vehicles Complaints",
       "lat": 37.7946663959,
       "long": -122.4031391972,
@@ -17768,6 +17768,54 @@
       "long": -122.46362489,
       "neighborhood": "Forest Knolls",
       "source_url": "https://data.sf.gov/resource/vw6y-z8j6.json?service_request_id=202000323380"
+    },
+    {
+      "id": "SF-202000324659",
+      "source_id": "202000324659",
+      "state": "CA",
+      "market": "San Francisco",
+      "requested_datetime": "2026-11-18T08:12:28.000",
+      "requested_date": "2026-11-18",
+      "month": "2026-11",
+      "type": "incident_report",
+      "status": "Open",
+      "agency": "MTA - Autonomous Vehicles Complaints",
+      "lat": 37.79073542,
+      "long": -122.41221066,
+      "neighborhood": "Nob Hill",
+      "source_url": "https://data.sf.gov/resource/vw6y-z8j6.json?service_request_id=202000324659"
+    },
+    {
+      "id": "SF-202000325320",
+      "source_id": "202000325320",
+      "state": "CA",
+      "market": "San Francisco",
+      "requested_datetime": "2026-11-18T10:07:13.000",
+      "requested_date": "2026-11-18",
+      "month": "2026-11",
+      "type": "incident_report",
+      "status": "Open",
+      "agency": "MTA - Autonomous Vehicles Complaints",
+      "lat": 37.7831577059,
+      "long": -122.4070155255,
+      "neighborhood": "South of Market",
+      "source_url": "https://data.sf.gov/resource/vw6y-z8j6.json?service_request_id=202000325320"
+    },
+    {
+      "id": "SF-202000327150",
+      "source_id": "202000327150",
+      "state": "CA",
+      "market": "San Francisco",
+      "requested_datetime": "2026-11-18T15:01:28.000",
+      "requested_date": "2026-11-18",
+      "month": "2026-11",
+      "type": "incident_report",
+      "status": "Open",
+      "agency": "MTA - Autonomous Vehicles Complaints",
+      "lat": 37.79126781,
+      "long": -122.39959622,
+      "neighborhood": "Financial District",
+      "source_url": "https://data.sf.gov/resource/vw6y-z8j6.json?service_request_id=202000327150"
     }
   ]
 }
