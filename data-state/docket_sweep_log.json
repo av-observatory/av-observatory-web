@@ -187,8 +187,16 @@
  },
  "MD": {
   "attempted": "2026-11-19",
-  "searched": 0,
-  "unreadable": "not completed"
+  "bills_found": [
+   "HB 1295",
+   "SB 909"
+  ],
+  "checked": "2026-11-19",
+  "sources_read": [
+   "https://mgaleg.maryland.gov/mgawebsite/Search/Legislation?target=/mgawebsite/Legislation/Index/house",
+   "https://mgaleg.maryland.gov/2026RS/misc/billsmasterlist/legislation.json"
+  ],
+  "unreadable": null
  },
  "ME": {
   "attempted": "2026-11-16",
@@ -207,8 +215,14 @@
  },
  "MN": {
   "attempted": "2026-11-19",
-  "searched": 0,
-  "unreadable": "not completed"
+  "bills_found": [
+   "HF 3513"
+  ],
+  "checked": "2026-11-19",
+  "sources_read": [
+   "https://www.revisor.mn.gov/bills/94/2026/0/HF/3513/"
+  ],
+  "unreadable": "Revisor keyword search returned no results even for known bill; relied on tracked list"
  },
  "MO": {
   "attempted": "2026-11-16",
@@ -231,7 +245,7 @@
  "MT": {
   "attempted": "2026-11-19",
   "searched": 0,
-  "unreadable": "not completed"
+  "unreadable": "bills.legmt.gov / archive.legmt.gov / laws.leg.mt.gov blocked; SJ 19 (interim study resolution) seen in search only"
  },
  "NC": {
   "attempted": "2026-11-16",
@@ -276,8 +290,15 @@
  },
  "NM": {
   "attempted": "2026-11-19",
-  "searched": 1,
-  "unreadable": "not completed"
+  "bills_found": [
+   "HB 148 (2025, died, excluded)"
+  ],
+  "checked": "2026-11-19",
+  "sources_read": [
+   "https://www.nmlegis.gov/Legislation/Legislation_List?Session=2026Regular",
+   "https://www.nmlegis.gov/Legislation/Legislation?Chamber=H&LegType=B&LegNo=148&year=25"
+  ],
+  "unreadable": null
  },
  "NV": {
   "attempted": "2026-11-16",
@@ -369,8 +390,16 @@
  },
  "UT": {
   "attempted": "2026-11-19",
-  "searched": 0,
-  "unreadable": "not completed"
+  "bills_found": [
+   "HB 581",
+   "SB 292"
+  ],
+  "checked": "2026-11-19",
+  "sources_read": [
+   "https://le.utah.gov/billlist.jsp?session=2026GS",
+   "https://le.utah.gov/Session/2026/bills/introduced/ (all 1016 introduced bills full-text searched)"
+  ],
+  "unreadable": null
  },
  "VA": {
   "attempted": "2026-11-16",
