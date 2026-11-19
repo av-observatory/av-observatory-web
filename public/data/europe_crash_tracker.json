@@ -626,8 +626,26 @@
     }
   ],
   "country_scope_note": "Coverage registry includes sovereign states conventionally treated as wholly or partly European, plus Kosovo. Inclusion in the registry is geographic/editorial and does not imply EU membership or a position on political status.",
-  "media_watch_checked_at": "2026-11-18",
+  "media_watch_checked_at": "2026-11-19",
   "media_watch": [
+    {
+      "title": "Los taxis autónomos llegan a Madrid en 40 días con una promesa y una condición: tienen un 95% menos de accidentes graves pero no pueden usar las autopistas",
+      "publisher": "Motorpasión",
+      "published": "2026-11-19",
+      "url": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxOUHh1eHdhT2Q1OXhVN3lLSFNfMURVMFlqdlhEM3dCNmNLREN4cjRjMkFKOXVvYjlJNG9mNnlsazB1NllUNzhQaV95eTJMdzR6enlvcEs1VjNYM0NIOHFXcjVKU0dmMkRJcl9WZ09GMVkzbFJnS0tZa2VjbFRZZm5tcVNKdXBMcTExX0YyWmhuVWtzWDd2aW1mZWxTLVF0Q1JvWGVSdW1IZUFvOEh6Sk5CQTdlTmFRZWJjLXhVU0k4eWJhMmJvTnBJS3Npd2JhTFFHbm1Cd0kteXZjQUtJRlJQWDJvONIB6AFBVV95cUxOWVBqMHhBa2ZKaUt0bWt3T2FjMUFqZFNNRDAxOVV6NV9JcWoyTDN5ZTJScDZUdFJjekkzdW9YT3NjYkZqbWt5azNlN28zbl9CYzZ4aS1wQVhzR3JFcEV3RGNDdXFzaVN2d1VhRVVtMFJZS2poQzAyWDBQeG40YTJYYnplOWxxb0M0QWc0TkNRTFJfNlZVa0VjREc5VV9haUpEVkFEb202eHZialFNaFQzMUt6eG0zMnN2TlE4VXZsMlB2U0ZQQVdTb2hEZEEtcHBFUkZlNU8zV05ZU3BfRWFKemoxNXJZSi1W?oc=5",
+      "query_language": "es",
+      "first_seen": "2026-11-19",
+      "status": "unverified media headline; not counted as a crash"
+    },
+    {
+      "title": "Le Cybercab de Tesla a déjà été impliqué dans huit accidents, mais les plus graves ne concernent pas la conduite autonome",
+      "publisher": "Auto Plus",
+      "published": "2026-11-18",
+      "url": "https://news.google.com/rss/articles/CBMimgJBVV95cUxPamV6TDl6TDVQVVBDU1E1cThpSVUwRVZ5WVppSHliQlNRNUVwWnpZQ3hKX2VaUGtSdk1YOUVKYllZTTloeFp6SWt3eVppZkJIS2JmeWt3VGtpMGpGSk1YNWtsX2dhMmIzbjZ3UGhLTGdRd2VmVFJzY0VheVM3NkVLbzhWUEloU1dPaGpmeWtFYnNCS2VOZUcwbDZXekpsLTRBOWtXTTZHX1c2S3lRM2xmblg0SUVQZ2xkS0Y0Vl9jX0NtWXBPNmx4S3VSLXRzNVE2eVhMVkVxMnVMYmp3Y1dRVEV6M0VwU244bDktZ0ZuOUE1MTFTei01ekpKdFNkbnQxRDRwZ0Zfb3JCUlRrcGdkSmdGZmJRSjk1Unc?oc=5",
+      "query_language": "fr",
+      "first_seen": "2026-11-19",
+      "status": "unverified media headline; not counted as a crash"
+    },
     {
       "title": "Tesla Driver Credits Self-Driving Technology for Avoiding High-Speed Collision: \"No Safer Car\"",
       "publisher": "Yahoo",
