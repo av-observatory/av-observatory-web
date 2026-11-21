@@ -201,5 +201,82 @@
     ],
     "source_url": "https://www.akleg.gov/basis/Bill/Detail/34?Root=HB%20217",
     "repository_url": "https://www.akleg.gov/basis/Bill/Detail/34?Root=HB%20217"
+  },
+  {
+    "id": "ms-sb2269-2026",
+    "jurisdiction": "MS",
+    "number": "SB 2269",
+    "title": "MS Fully Autonomous Vehicle Enabling Act; extend repealer on law enforcement interaction plan submission to DPS.",
+    "summary": "Official long title: an act to amend Section 63-35-7, Mississippi Code of 1972, to extend the date of the repealer on the provision of law requiring the operator of a fully autonomous vehicle to submit a law enforcement interaction plan to the Department of Public Safety. Approved by the Governor March 13, 2026 as Chapter 330, effective July 1, 2026.",
+    "takeaway": "Extends the repealer date on the requirement that fully autonomous vehicle operators submit a law enforcement interaction plan to the Department of Public Safety.",
+    "source_summary": "Official Mississippi Legislature bill status record (SB 2269, 2026 Regular Session).",
+    "summary_method": "Maintainer-written from the official legislature record; no figures taken from news coverage",
+    "summary_quality": "reviewed_substantive",
+    "summary_reviewed_at": "2026-11-21",
+    "status": "enacted",
+    "measure_type": "bill",
+    "last_action_date": "2026-03-13",
+    "last_action": "Approved by Governor.",
+    "session": "2026",
+    "progress_stage": "law",
+    "stage_dates": {
+      "committee": "2026-01-14",
+      "passed_legislature": "2026-03-05",
+      "executive": "2026-03-09",
+      "law": "2026-03-13"
+    },
+    "hearings": [],
+    "source_url": "https://billstatus.ls.state.ms.us/2026/pdf/history/SB/SB2269.xml",
+    "repository_url": "https://billstatus.ls.state.ms.us/2026/pdf/history/SB/SB2269.xml"
+  },
+  {
+    "id": "nj-a1639-2026",
+    "jurisdiction": "NJ",
+    "number": "A 1639",
+    "title": "Clarifies that owners of self-driving motor vehicles must comply with existing insurance requirements.",
+    "summary": "Official synopsis: clarifies that owners of self-driving motor vehicles must comply with existing insurance requirements. Introduced January 13, 2026 and referred to the Assembly Financial Institutions and Insurance Committee; identical to S 2324.",
+    "takeaway": "Would clarify that owners of self-driving motor vehicles must meet existing insurance requirements.",
+    "source_summary": "Official New Jersey Legislature bill detail (synopsis and history).",
+    "summary_method": "Maintainer-written from the official legislature record; no figures taken from news coverage",
+    "summary_quality": "reviewed_substantive",
+    "summary_reviewed_at": "2026-11-21",
+    "status": "introduced",
+    "measure_type": "bill",
+    "last_action_date": "2026-01-13",
+    "last_action": "Introduced, Referred to Assembly Financial Institutions and Insurance Committee",
+    "session": "2026-2027",
+    "progress_stage": "committee",
+    "stage_dates": {
+      "introduced": "2026-01-13",
+      "committee": "2026-01-13"
+    },
+    "hearings": [],
+    "source_url": "https://www.njleg.state.nj.us/bill-search/2026/A1639",
+    "repository_url": "https://www.njleg.state.nj.us/bill-search/2026/A1639"
+  },
+  {
+    "id": "nj-s2324-2026",
+    "jurisdiction": "NJ",
+    "number": "S 2324",
+    "title": "Clarifies that owners of self-driving motor vehicles must comply with existing insurance requirements.",
+    "summary": "Official synopsis: clarifies that owners of self-driving motor vehicles must comply with existing insurance requirements. Introduced January 13, 2026 and referred to the Senate Commerce Committee; identical to A 1639.",
+    "takeaway": "Would clarify that owners of self-driving motor vehicles must meet existing insurance requirements.",
+    "source_summary": "Official New Jersey Legislature bill detail (synopsis and history).",
+    "summary_method": "Maintainer-written from the official legislature record; no figures taken from news coverage",
+    "summary_quality": "reviewed_substantive",
+    "summary_reviewed_at": "2026-11-21",
+    "status": "introduced",
+    "measure_type": "bill",
+    "last_action_date": "2026-01-13",
+    "last_action": "Introduced, Referred to Senate Commerce Committee",
+    "session": "2026-2027",
+    "progress_stage": "committee",
+    "stage_dates": {
+      "introduced": "2026-01-13",
+      "committee": "2026-01-13"
+    },
+    "hearings": [],
+    "source_url": "https://www.njleg.state.nj.us/bill-search/2026/S2324",
+    "repository_url": "https://www.njleg.state.nj.us/bill-search/2026/S2324"
   }
 ]

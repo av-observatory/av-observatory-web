@@ -3750,6 +3750,24 @@
         "at": "2026-11-16",
         "reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable"
       }
+    },
+    {
+      "id": "auto-ms-sb2269-2026",
+      "level": "state",
+      "jurisdiction": "Mississippi",
+      "title": "SB 2269 (2026): extends law enforcement interaction plan requirement",
+      "summary": "Mississippi S.B. 2269 (2026), the 'MS Fully Autonomous Vehicle Enabling Act' amendment, extends the repealer date on Section 63-35-7, which requires the operator of a fully autonomous vehicle to submit a law enforcement interaction plan to the Department of Public Safety. The Governor approved it March 13, 2026 (Chapter 330), effective July 1, 2026.",
+      "takeaway": "Mississippi S.B. 2269 (2026), the 'MS Fully Autonomous Vehicle Enabling Act' amendment, extends the repealer date on Section 63-35-7, which requires the operator of a fully autonomous vehicle to submit a law enforcement interaction plan to the Department of Public Safety. The Governor approved it March 13, 2026 (Chapter 330), effective July 1, 2026.",
+      "instrument": "legislation",
+      "status": "in_effect",
+      "date": "2026-03-13",
+      "source_url": "https://billstatus.ls.state.ms.us/2026/pdf/history/SB/SB2269.xml",
+      "verified_at": "2026-11-21",
+      "state": "MS",
+      "source_label": "Mississippi Legislature, SB 2269 (2026)",
+      "source_tier": "auto",
+      "review_status": "auto_collected",
+      "date_precision": "day"
     }
   ],
   "city_events": [
