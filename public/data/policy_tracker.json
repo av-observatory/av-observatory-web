@@ -864,6 +864,23 @@
       "source_tier": "auto",
       "review_status": "auto_collected",
       "date_precision": "day"
+    },
+    {
+      "id": "auto-fr-2026-21794",
+      "level": "federal",
+      "jurisdiction": "US",
+      "title": "NHTSA proposes FMVSS 108 changes for ADS-equipped vehicles",
+      "summary": "NHTSA proposed amending FMVSS No. 108 (lamps) to address vehicles with Automated Driving Systems that have no manually operated driving controls: manual turn-signal, hazard and beam-switch requirements would apply only to vehicles with manual controls, and cyan ADS marker lamps would be allowed as optional equipment. A November 16, 2026 notice extended the comment period to December 10, 2026.",
+      "takeaway": "NHTSA proposed amending FMVSS No. 108 (lamps) to address vehicles with Automated Driving Systems that have no manually operated driving controls: manual turn-signal, hazard and beam-switch requirements would apply only to vehicles with manual controls, and cyan ADS marker lamps would be allowed as optional equipment. A November 16, 2026 notice extended the comment period to December 10, 2026.",
+      "instrument": "proposed program",
+      "status": "historical_status_unverified",
+      "date": "2026-10-26",
+      "source_url": "https://www.federalregister.gov/documents/2026/10/26/2026-21794/federal-motor-vehicle-safety-standards-modernization-of-fmvss-no-108-to-accommodate-ads-equipped",
+      "verified_at": "2026-11-21",
+      "source_label": "Federal Register 2026-21794",
+      "source_tier": "auto",
+      "review_status": "auto_collected",
+      "date_precision": "day"
     }
   ],
   "states": [
@@ -3733,6 +3750,24 @@
         "at": "2026-11-16",
         "reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable"
       }
+    },
+    {
+      "id": "auto-ms-sb2269-2026",
+      "level": "state",
+      "jurisdiction": "Mississippi",
+      "title": "SB 2269 (2026): extends law enforcement interaction plan requirement",
+      "summary": "Mississippi S.B. 2269 (2026), the 'MS Fully Autonomous Vehicle Enabling Act' amendment, extends the repealer date on Section 63-35-7, which requires the operator of a fully autonomous vehicle to submit a law enforcement interaction plan to the Department of Public Safety. The Governor approved it March 13, 2026 (Chapter 330), effective July 1, 2026.",
+      "takeaway": "Mississippi S.B. 2269 (2026), the 'MS Fully Autonomous Vehicle Enabling Act' amendment, extends the repealer date on Section 63-35-7, which requires the operator of a fully autonomous vehicle to submit a law enforcement interaction plan to the Department of Public Safety. The Governor approved it March 13, 2026 (Chapter 330), effective July 1, 2026.",
+      "instrument": "legislation",
+      "status": "in_effect",
+      "date": "2026-03-13",
+      "source_url": "https://billstatus.ls.state.ms.us/2026/pdf/history/SB/SB2269.xml",
+      "verified_at": "2026-11-21",
+      "state": "MS",
+      "source_label": "Mississippi Legislature, SB 2269 (2026)",
+      "source_tier": "auto",
+      "review_status": "auto_collected",
+      "date_precision": "day"
     }
   ],
   "city_events": [
