@@ -278,5 +278,30 @@
     "hearings": [],
     "source_url": "https://www.njleg.state.nj.us/bill-search/2026/S2324",
     "repository_url": "https://www.njleg.state.nj.us/bill-search/2026/S2324"
+  },
+  {
+    "id": "dc-b26-0323-26",
+    "jurisdiction": "DC",
+    "number": "B26-0323",
+    "title": "Autonomous Vehicles Amendment Act of 2025",
+    "summary": "Introduced July 11, 2025 by Councilmember McDuffie and referred to the Committee on Transportation and the Environment, with comments from the Committees on Judiciary and Public Safety and on Business and Economic Development. The official LIMS record shows a Notice of Intent to Act published July 18, 2025 and no later action.",
+    "takeaway": "D.C. bill titled the Autonomous Vehicles Amendment Act of 2025; the official record shows no action after referral and a notice of intent to act.",
+    "source_summary": "Official D.C. Council LIMS bill record (introduction, referral and history).",
+    "summary_method": "Maintainer-written from the official D.C. Council LIMS record; no figures taken from news coverage",
+    "summary_quality": "reviewed_substantive",
+    "summary_reviewed_at": "2026-11-21",
+    "status": "introduced",
+    "measure_type": "bill",
+    "last_action_date": "2025-07-18",
+    "last_action": "Notice of Intent to Act on B26-0323 Published in the District of Columbia Register",
+    "session": "26",
+    "progress_stage": "committee",
+    "stage_dates": {
+      "introduced": "2025-07-11",
+      "committee": "2025-07-14"
+    },
+    "hearings": [],
+    "source_url": "https://lims.dccouncil.gov/Legislation/B26-0323",
+    "repository_url": "https://lims.dccouncil.gov/Legislation/B26-0323"
   }
 ]
