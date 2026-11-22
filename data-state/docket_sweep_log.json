@@ -19,9 +19,15 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "AR": {
-  "attempted": "2026-11-16",
+  "attempted": "2026-11-22",
+  "bills_found": [],
+  "checked": "2026-11-22",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "sources_read": [
+   "https://www.arkleg.state.ar.us/Bills/Search",
+   "https://www.arkleg.state.ar.us/Bills/Detail?id=HB1683&ddBienniumSession=2025/2025R"
+  ],
+  "unreadable": null
  },
  "AZ": {
   "attempted": "2026-11-16",
@@ -46,9 +52,17 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "CO": {
-  "attempted": "2026-11-16",
+  "attempted": "2026-11-22",
+  "bills_found": [
+   "HB26-1286",
+   "HB25-1122"
+  ],
+  "checked": "2026-11-22",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "sources_read": [
+   "https://leg.colorado.gov/bill-search"
+  ],
+  "unreadable": "search covers titles/summaries only"
  },
  "CT": {
   "attempted": "2026-11-16",
@@ -64,9 +78,17 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "DE": {
-  "attempted": "2026-11-16",
+  "attempted": "2026-11-22",
+  "bills_found": [
+   "SB 46",
+   "SB 258"
+  ],
+  "checked": "2026-11-22",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "sources_read": [
+   "https://legis.delaware.gov/AllLegislation"
+  ],
+  "unreadable": null
  },
  "FL": {
   "attempted": "2026-11-16",
@@ -90,9 +112,16 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "HI": {
-  "attempted": "2026-11-16",
+  "attempted": "2026-11-22",
+  "bills_found": [
+   "HB 1797"
+  ],
+  "checked": "2026-11-22",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "sources_read": [
+   "https://data.capitol.hawaii.gov/session/measure_indiv.aspx?billtype=HB&billnumber=1797&year=2026"
+  ],
+  "unreadable": "www.capitol.hawaii.gov blocked (403); read via data.capitol.hawaii.gov, titles/descriptions only"
  },
  "IA": {
   "attempted": "2026-11-16",
@@ -116,9 +145,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "IL": {
-  "attempted": "2026-11-16",
+  "attempted": "2026-11-22",
   "searched": 1,
-  "unreadable": "official-site search returned no AV bill pages (searched 1 pages)"
+  "unreadable": "www.ilga.gov TLS verification fails and ilga.gov is blocked by the egress proxy; no official page read"
  },
  "IN": {
   "attempted": "2026-11-16",
@@ -134,9 +163,12 @@
   "unreadable": "official-site search returned no AV bill pages (searched 2 pages)"
  },
  "KY": {
-  "attempted": "2026-11-16",
+  "attempted": "2026-11-22",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "sources_read": [
+   "https://legislature.ky.gov/"
+  ],
+  "unreadable": "apps.legislature.ky.gov (all bill data) is blocked by the egress proxy; legislature.ky.gov has no bill pages"
  },
  "LA": {
   "attempted": "2026-11-16",
@@ -157,9 +189,23 @@
   "unreadable": "official-site search returned no AV bill pages (searched 1 pages)"
  },
  "MD": {
-  "attempted": "2026-11-16",
+  "attempted": "2026-11-22",
+  "bills_found": [
+   "HB 1295",
+   "SB 909",
+   "HB 439 (dead)",
+   "SB 405 (withdrawn)",
+   "HB 1256 (dead)",
+   "SB 949 (dead)"
+  ],
+  "checked": "2026-11-22",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "sources_read": [
+   "https://mgaleg.maryland.gov/mgawebsite/Legislation/Index/house?ys=2026RS",
+   "https://mgaleg.maryland.gov/mgawebsite/Legislation/Index/senate?ys=2026RS",
+   "https://mgaleg.maryland.gov/mgawebsite/Legislation/Details/hb1295?ys=2026RS"
+  ],
+  "unreadable": "title-index search only; full-text search not available"
  },
  "ME": {
   "attempted": "2026-11-16",
@@ -177,9 +223,25 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "MN": {
-  "attempted": "2026-11-16",
+  "attempted": "2026-11-22",
+  "bills_found": [
+   "HF 3513",
+   "HF 3810",
+   "HF 4112",
+   "HF 4216",
+   "HF 4521",
+   "SF 4010",
+   "SF 4014",
+   "SF 4381",
+   "SF 4618",
+   "SF 4731"
+  ],
+  "checked": "2026-11-22",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "sources_read": [
+   "https://www.revisor.mn.gov/bills/status_result.php?body=Both|Senate&search=basic&session=0942025/0&keyword=autonomous"
+  ],
+  "unreadable": null
  },
  "MO": {
   "attempted": "2026-11-16",
@@ -200,9 +262,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "MT": {
-  "attempted": "2026-11-16",
+  "attempted": "2026-11-22",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "www.legmt.gov, bills.legmt.gov, laws.leg.mt.gov blocked by the egress proxy (403/ENOTFOUND); no bill page read"
  },
  "NC": {
   "attempted": "2026-11-16",
@@ -222,9 +284,14 @@
   "unreadable": "official-site search returned no AV bill pages (searched 1 pages)"
  },
  "NE": {
-  "attempted": "2026-11-16",
+  "attempted": "2026-11-22",
+  "bills_found": [],
+  "checked": "2026-11-22",
   "searched": 1,
-  "unreadable": "official-site search returned no AV bill pages (searched 1 pages)"
+  "sources_read": [
+   "https://nebraskalegislature.gov/bills/search_by_keyword.php"
+  ],
+  "unreadable": null
  },
  "NH": {
   "attempted": "2026-11-16",
@@ -242,9 +309,17 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "NM": {
-  "attempted": "2026-11-16",
+  "attempted": "2026-11-22",
+  "bills_found": [
+   "HB 148 (2025, died)"
+  ],
+  "checked": "2026-11-22",
   "searched": 1,
-  "unreadable": "official-site search returned no AV bill pages (searched 1 pages)"
+  "sources_read": [
+   "https://www.nmlegis.gov/Legislation/Legislation_List",
+   "https://www.nmlegis.gov/Legislation/Legislation?chamber=H&legtype=B&legno=148&year=25"
+  ],
+  "unreadable": "title-only scan; no full-text field"
  },
  "NV": {
   "attempted": "2026-11-16",
@@ -266,9 +341,9 @@
   "unreadable": "official-site search returned no AV bill pages (searched 1 pages)"
  },
  "OH": {
-  "attempted": "2026-11-16",
+  "attempted": "2026-11-22",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "www.legislature.ohio.gov TLS failure and HTTP 503; no bill page read"
  },
  "OK": {
   "attempted": "2026-11-16",
@@ -286,9 +361,17 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "PA": {
-  "attempted": "2026-11-16",
+  "attempted": "2026-11-22",
+  "bills_found": [
+   "HB 1639",
+   "HR 563"
+  ],
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "sources_read": [
+   "https://www.palegis.us/legislation/bills/2025/hb2556",
+   "https://www.palegis.us/legislation/bills/bill-info?SessYr=2025&SessInd=0&BillBody=H&BillType=R&BillNum=563"
+  ],
+  "unreadable": "partial only: palegis.us pages read for HR 563, HB 2556, SB 1008 and memos, but HB 1639 page returned 503 and no bill enumeration was possible"
  },
  "RI": {
   "attempted": "2026-11-16",
@@ -306,9 +389,15 @@
   "unreadable": "official-site search returned no AV bill pages (searched 1 pages)"
  },
  "SD": {
-  "attempted": "2026-11-16",
+  "attempted": "2026-11-22",
+  "bills_found": [],
+  "checked": "2026-11-22",
   "searched": 1,
-  "unreadable": "official-site search returned no AV bill pages (searched 1 pages)"
+  "sources_read": [
+   "https://www.sdlegislature.gov/api/Bills/Session/71",
+   "https://www.sdlegislature.gov/api/Bills/Session/70"
+  ],
+  "unreadable": null
  },
  "TN": {
   "attempted": "2026-11-16",
@@ -328,9 +417,18 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "UT": {
-  "attempted": "2026-11-16",
+  "attempted": "2026-11-22",
+  "bills_found": [
+   "HB 581",
+   "SB 292"
+  ],
+  "checked": "2026-11-22",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "sources_read": [
+   "https://le.utah.gov/billlist.jsp?session=2026GS",
+   "https://le.utah.gov/asp/passedbills/passedbills.asp?session=2026GS"
+  ],
+  "unreadable": "transport/vehicle/AI/technology-titled bills text-searched, not all bills"
  },
  "VA": {
   "attempted": "2026-11-16",
@@ -350,9 +448,18 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "WA": {
-  "attempted": "2026-11-16",
+  "attempted": "2026-11-22",
+  "bills_found": [
+   "SB 5042 (dead)",
+   "HB 1984 (dead)",
+   "SB 6243 (dead)"
+  ],
+  "checked": "2026-11-22",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "sources_read": [
+   "https://wslwebservices.leg.wa.gov/LegislationService.asmx/GetLegislationIntroducedSince?sinceDate=2025-01-01"
+  ],
+  "unreadable": "app.leg.wa.gov blocked (403); read via official web service"
  },
  "WI": {
   "attempted": "2026-11-16",
@@ -374,8 +481,14 @@
   "unreadable": "official-site search returned no AV bill pages (searched 1 pages)"
  },
  "WY": {
-  "attempted": "2026-11-16",
+  "attempted": "2026-11-22",
+  "bills_found": [],
+  "checked": "2026-11-22",
   "searched": 1,
-  "unreadable": "official-site search returned no AV bill pages (searched 1 pages)"
+  "sources_read": [
+   "https://wyoleg.gov/LsoService/api/BillInformation/2026",
+   "https://wyoleg.gov/LsoService/api/BillInformation/2025"
+  ],
+  "unreadable": null
  }
 }
