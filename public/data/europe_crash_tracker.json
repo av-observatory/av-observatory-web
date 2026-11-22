@@ -626,7 +626,7 @@
     }
   ],
   "country_scope_note": "Coverage registry includes sovereign states conventionally treated as wholly or partly European, plus Kosovo. Inclusion in the registry is geographic/editorial and does not imply EU membership or a position on political status.",
-  "media_watch_checked_at": "2026-11-21",
+  "media_watch_checked_at": "2026-11-22",
   "media_watch": [
     {
       "title": "Los taxis autónomos llegan a Madrid en 40 días con una promesa y una condición: tienen un 95% menos de accidentes graves pero no pueden usar las autopistas",
@@ -671,6 +671,15 @@
       "url": "https://news.google.com/rss/articles/CBMi0AJBVV95cUxQamRlaVNubURJdVg3RDhVVHgzclVPRWdOZjhVYlYyMnJjVUJVbkxxT0lPQVAwb05TbVA1XzRyXzBVSWluaXh3U09iN3V4alA4VlI2TXJTc2FxZVpCb3dscXExYkw2SVc2a2FYQi1MaXd6aElzX1JWWGFjWjU0eVdZRUllTzlIY2d2Q0w4OTZBSE5UeDExRXlxWklpNVQyeF9BVHFxNWdCMndpWXVRV2wtX3ZkRUJRNThaSzlLaGRGVXByNktKUDZOMldWUTVtRXVnb2VjeklMcUgtMWdkeHJqWGJCSG5tM0VObFMxU0d0MmZfbEJSSVFsR2hMYXk3UUZXWEJpVTBVblBmTGJZc2RETnFISEpGem85Mm9MaWdObUZBcmtUX1g5RGJGdXhnZzU2dWhCUXpOUVk0TTZrNm1EYVFSTE1kQTNraWVaaXhSMkE?oc=5",
       "query_language": "fr",
       "first_seen": "2026-11-14",
+      "status": "unverified media headline; not counted as a crash"
+    },
+    {
+      "title": "BYD Seal 07 performs autonomous emergency steering at 130 km/h to avoid collision [VIDEO]",
+      "publisher": "CarNewsChina.com",
+      "published": "2026-11-13",
+      "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPaDdHaHNXRmVkd2lONEJTSWViaUFJMk50a3RmVms4aTNUVUp3QXdQRmprT0JWUnlPY2RZN3FkWTNVVGdhMVlUMlJIcE1uaXlXRGNwYWI1SkVUWWliRWdtZy1KZ0NBdDAzcEtkVnlLTGh4WjhmLUdLMVFzWjlkNkJ1RGtQbm03NXBMdFVQOVFTWDluNkNKMl9RejNjY3RXcEVjQUM5YkE0dm5qWTNQVjBiNDRjU0JsZFF3T3c?oc=5",
+      "query_language": "en-GB",
+      "first_seen": "2026-11-22",
       "status": "unverified media headline; not counted as a crash"
     },
     {
