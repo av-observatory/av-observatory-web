@@ -5,13 +5,13 @@
   "source_api": "https://data.sf.gov/resource/vw6y-z8j6.json",
   "selection": "Exact service_name match: Autonomous Vehicle Complaints. Other city request types and unclassified AV mentions are excluded.",
   "limitations": "These are public 311 requests, not verified incidents. The published subtypes describe how SF311 classified a request, not the specific behavior alleged. Operator identity is unavailable; the AV category begins in April 2025.",
-  "source_data_as_of": "2026-11-21T01:00:00.000",
-  "total_records": 1107,
+  "source_data_as_of": "2026-11-22T01:00:00.000",
+  "total_records": 1112,
   "markets": [
     {
       "market": "San Francisco",
       "state": "CA",
-      "complaints": 1107
+      "complaints": 1112
     }
   ],
   "monthly": [
@@ -133,7 +133,7 @@
       "month": "2026-11",
       "market": "San Francisco",
       "state": "CA",
-      "complaints": 54
+      "complaints": 59
     }
   ],
   "records": [
@@ -17848,6 +17848,86 @@
       "long": -122.4795041144,
       "neighborhood": "Golden Gate Park",
       "source_url": "https://data.sf.gov/resource/vw6y-z8j6.json?service_request_id=202000334093"
+    },
+    {
+      "id": "SF-202000336598",
+      "source_id": "202000336598",
+      "state": "CA",
+      "market": "San Francisco",
+      "requested_datetime": "2026-11-21T00:10:19.000",
+      "requested_date": "2026-11-21",
+      "month": "2026-11",
+      "type": "incident_report",
+      "status": "Open",
+      "agency": "MTA - Autonomous Vehicles Complaints",
+      "lat": 37.76021272,
+      "long": -122.44686642,
+      "neighborhood": "Clarendon Heights",
+      "source_url": "https://data.sf.gov/resource/vw6y-z8j6.json?service_request_id=202000336598"
+    },
+    {
+      "id": "SF-202000337713",
+      "source_id": "202000337713",
+      "state": "CA",
+      "market": "San Francisco",
+      "requested_datetime": "2026-11-21T07:54:39.000",
+      "requested_date": "2026-11-21",
+      "month": "2026-11",
+      "type": "incident_report",
+      "status": "Open",
+      "agency": "MTA - Autonomous Vehicles Complaints",
+      "lat": 37.7703506304,
+      "long": -122.4292246989,
+      "neighborhood": "Duboce Triangle",
+      "source_url": "https://data.sf.gov/resource/vw6y-z8j6.json?service_request_id=202000337713"
+    },
+    {
+      "id": "SF-202000338837",
+      "source_id": "202000338837",
+      "state": "CA",
+      "market": "San Francisco",
+      "requested_datetime": "2026-11-21T11:38:51.000",
+      "requested_date": "2026-11-21",
+      "month": "2026-11",
+      "type": "incident_report",
+      "status": "Open",
+      "agency": "MTA - Autonomous Vehicles Complaints",
+      "lat": 37.7910814074,
+      "long": -122.4241613108,
+      "neighborhood": "Pacific Heights",
+      "source_url": "https://data.sf.gov/resource/vw6y-z8j6.json?service_request_id=202000338837"
+    },
+    {
+      "id": "SF-202000339317",
+      "source_id": "202000339317",
+      "state": "CA",
+      "market": "San Francisco",
+      "requested_datetime": "2026-11-21T13:41:56.000",
+      "requested_date": "2026-11-21",
+      "month": "2026-11",
+      "type": "incident_report",
+      "status": "Open",
+      "agency": "MTA - Autonomous Vehicles Complaints",
+      "lat": 37.7216285782,
+      "long": -122.4458549056,
+      "neighborhood": "Cayuga",
+      "source_url": "https://data.sf.gov/resource/vw6y-z8j6.json?service_request_id=202000339317"
+    },
+    {
+      "id": "SF-202000340331",
+      "source_id": "202000340331",
+      "state": "CA",
+      "market": "San Francisco",
+      "requested_datetime": "2026-11-21T19:05:38.000",
+      "requested_date": "2026-11-21",
+      "month": "2026-11",
+      "type": "other",
+      "status": "Open",
+      "agency": "MTA - Autonomous Vehicles Complaints",
+      "lat": null,
+      "long": null,
+      "neighborhood": "",
+      "source_url": "https://data.sf.gov/resource/vw6y-z8j6.json?service_request_id=202000340331"
     }
   ]
 }
