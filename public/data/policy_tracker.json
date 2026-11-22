@@ -864,6 +864,40 @@
       "source_tier": "auto",
       "review_status": "auto_collected",
       "date_precision": "day"
+    },
+    {
+      "id": "auto-fr-2026-21794",
+      "level": "federal",
+      "jurisdiction": "US",
+      "title": "NHTSA proposes FMVSS 108 changes for ADS vehicles without manual controls",
+      "summary": "NHTSA published a notice of proposed rulemaking to amend FMVSS No. 108 (lamps and reflective devices). Among the proposals, requirements for manually operated turn signal, hazard warning and beam switching controls would apply only to vehicles with manually operated driving controls, and cyan-colored ADS marker lamps would be allowed as optional equipment on ADS-equipped vehicles. Comments were originally due November 25, 2026 (Docket NHTSA-2026-1519).",
+      "takeaway": "NHTSA published a notice of proposed rulemaking to amend FMVSS No. 108 (lamps and reflective devices). Among the proposals, requirements for manually operated turn signal, hazard warning and beam switching controls would apply only to vehicles with manually operated driving controls, and cyan-colored ADS marker lamps would be allowed as optional equipment on ADS-equipped vehicles. Comments were originally due November 25, 2026 (Docket NHTSA-2026-1519).",
+      "instrument": "FMVSS rulemaking",
+      "status": "request_for_comment",
+      "date": "2026-10-26",
+      "source_url": "https://www.federalregister.gov/documents/2026/10/26/2026-21794/federal-motor-vehicle-safety-standards-modernization-of-fmvss-no-108-to-accommodate-ads-equipped",
+      "verified_at": "2026-11-22",
+      "source_label": "Federal Register 2026-21794",
+      "source_tier": "auto",
+      "review_status": "auto_collected",
+      "date_precision": "day"
+    },
+    {
+      "id": "auto-fr-2026-23239",
+      "level": "federal",
+      "jurisdiction": "US",
+      "title": "NHTSA extends FMVSS 108 ADS proposal comment period to December 10",
+      "summary": "NHTSA announced a 15-day extension, at the request of the Alliance for Automotive Innovation, SAE International and Gatik AI, of the comment period on its October 26, 2026 proposal to amend FMVSS No. 108 for ADS-equipped vehicles. Comments now close December 10, 2026 (Docket NHTSA-2026-1519).",
+      "takeaway": "NHTSA announced a 15-day extension, at the request of the Alliance for Automotive Innovation, SAE International and Gatik AI, of the comment period on its October 26, 2026 proposal to amend FMVSS No. 108 for ADS-equipped vehicles. Comments now close December 10, 2026 (Docket NHTSA-2026-1519).",
+      "instrument": "FMVSS rulemaking",
+      "status": "request_for_comment",
+      "date": "2026-11-16",
+      "source_url": "https://www.federalregister.gov/documents/2026/11/16/2026-23239/federal-motor-vehicle-safety-standards-modernization-of-fmvss-no-108-to-accommodate-ads-equipped",
+      "verified_at": "2026-11-22",
+      "source_label": "Federal Register 2026-23239",
+      "source_tier": "auto",
+      "review_status": "auto_collected",
+      "date_precision": "day"
     }
   ],
   "states": [
@@ -3733,6 +3767,24 @@
         "at": "2026-11-16",
         "reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable"
       }
+    },
+    {
+      "id": "auto-ny-a10008-2026",
+      "level": "state",
+      "jurisdiction": "New York",
+      "title": "Chapter 58 (A10008): AV technology authority extension",
+      "summary": "New York Chapter 58 of the Laws of 2026 (budget bill A10008, signed May 26, 2026) includes Part E, which amends Section 3 of Part FF of Chapter 55 of the Laws of 2017 on motor vehicles equipped with autonomous vehicle technology, moving its expiration from April 1, 2026 to April 1, 2028. The official page text read also shows a Vehicle and Traffic Law Article 44-D on for-hire autonomous vehicle networks; the page did not make clear whether that text is in the signed version.",
+      "takeaway": "New York Chapter 58 of the Laws of 2026 (budget bill A10008, signed May 26, 2026) includes Part E, which amends Section 3 of Part FF of Chapter 55 of the Laws of 2017 on motor vehicles equipped with autonomous vehicle technology, moving its expiration from April 1, 2026 to April 1, 2028. The official page text read also shows a Vehicle and Traffic Law Article 44-D on for-hire autonomous vehicle networks; the page did not make clear whether that text is in the signed version.",
+      "instrument": "legislation",
+      "status": "historical_status_unverified",
+      "date": "2026-05-26",
+      "source_url": "https://www.nysenate.gov/legislation/bills/2025/A10008",
+      "verified_at": "2026-11-22",
+      "state": "NY",
+      "source_label": "New York State Senate, A10008 (2025-2026)",
+      "source_tier": "auto",
+      "review_status": "auto_collected",
+      "date_precision": "day"
     }
   ],
   "city_events": [
