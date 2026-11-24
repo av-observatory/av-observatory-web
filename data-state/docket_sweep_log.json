@@ -14,9 +14,11 @@
   "unreadable": "official-site search returned no AV bill pages (searched 1 pages)"
  },
  "AL": {
-  "attempted": "2026-11-16",
+  "attempted": "2026-11-24",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "No full-text search of the official site could be run in this automated session (domain-restricted web search only); checked date left unchanged. ",
+  "sources_read": [],
+  "bills_found": []
  },
  "AR": {
   "attempted": "2026-11-16",
@@ -41,9 +43,11 @@
   "unreadable": "official-site search returned no AV bill pages (searched 1 pages)"
  },
  "CA": {
-  "attempted": "2026-11-16",
+  "attempted": "2026-11-24",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "No full-text search of the official site could be run in this automated session (domain-restricted web search only); checked date left unchanged. ",
+  "sources_read": [],
+  "bills_found": []
  },
  "CO": {
   "attempted": "2026-11-16",
@@ -59,9 +63,11 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "DC": {
-  "attempted": "2026-11-16",
+  "attempted": "2026-11-24",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "No full-text search of the official site could be run in this automated session (domain-restricted web search only); checked date left unchanged. ",
+  "sources_read": [],
+  "bills_found": []
  },
  "DE": {
   "attempted": "2026-11-16",
@@ -85,9 +91,11 @@
   "unreadable": "official-site search returned no AV bill pages (searched 1 pages)"
  },
  "GA": {
-  "attempted": "2026-11-16",
+  "attempted": "2026-11-24",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "No full-text search of the official site could be run in this automated session (domain-restricted web search only); checked date left unchanged. ",
+  "sources_read": [],
+  "bills_found": []
  },
  "HI": {
   "attempted": "2026-11-16",
@@ -111,9 +119,11 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "ID": {
-  "attempted": "2026-11-16",
+  "attempted": "2026-11-24",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "No full-text search of the official site could be run in this automated session (domain-restricted web search only); checked date left unchanged. ",
+  "sources_read": [],
+  "bills_found": []
  },
  "IL": {
   "attempted": "2026-11-16",
@@ -129,9 +139,11 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "KS": {
-  "attempted": "2026-11-16",
+  "attempted": "2026-11-24",
   "searched": 2,
-  "unreadable": "official-site search returned no AV bill pages (searched 2 pages)"
+  "unreadable": "No full-text search of the official site could be run in this automated session (domain-restricted web search only); checked date left unchanged. ",
+  "sources_read": [],
+  "bills_found": []
  },
  "KY": {
   "attempted": "2026-11-16",
@@ -152,9 +164,11 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "MA": {
-  "attempted": "2026-11-16",
+  "attempted": "2026-11-24",
   "searched": 1,
-  "unreadable": "official-site search returned no AV bill pages (searched 1 pages)"
+  "unreadable": "No full-text search of the official site could be run in this automated session (domain-restricted web search only); checked date left unchanged. ",
+  "sources_read": [],
+  "bills_found": []
  },
  "MD": {
   "attempted": "2026-11-16",
@@ -172,9 +186,11 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "MI": {
-  "attempted": "2026-11-16",
+  "attempted": "2026-11-24",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "No full-text search of the official site could be run in this automated session (domain-restricted web search only); checked date left unchanged. ",
+  "sources_read": [],
+  "bills_found": []
  },
  "MN": {
   "attempted": "2026-11-16",
@@ -195,9 +211,18 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "MS": {
-  "attempted": "2026-11-16",
+  "attempted": "2026-11-24",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "partial: full-text search of the MS site not available; bills located via domain-restricted web search",
+  "checked": "2026-11-24",
+  "sources_read": [
+   "https://billstatus.ls.state.ms.us/2026/pdf/history/SB/SB2269.xml",
+   "https://billstatus.ls.state.ms.us/2026/pdf/history/HB/HB1770.xml"
+  ],
+  "bills_found": [
+   "SB 2269 (law, Ch. 330)",
+   "HB 1770 (died in committee)"
+  ]
  },
  "MT": {
   "attempted": "2026-11-16",
@@ -217,9 +242,11 @@
   "unreadable": "official-site search returned no AV bill pages (searched 1 pages)"
  },
  "ND": {
-  "attempted": "2026-11-16",
+  "attempted": "2026-11-24",
   "searched": 1,
-  "unreadable": "official-site search returned no AV bill pages (searched 1 pages)"
+  "unreadable": "No full-text search of the official site could be run in this automated session (domain-restricted web search only); checked date left unchanged. ",
+  "sources_read": [],
+  "bills_found": []
  },
  "NE": {
   "attempted": "2026-11-16",
@@ -237,9 +264,11 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "NJ": {
-  "attempted": "2026-11-16",
+  "attempted": "2026-11-24",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "No full-text search of the official site could be run in this automated session (domain-restricted web search only); checked date left unchanged. ",
+  "sources_read": [],
+  "bills_found": []
  },
  "NM": {
   "attempted": "2026-11-16",
@@ -261,9 +290,11 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "NY": {
-  "attempted": "2026-11-16",
+  "attempted": "2026-11-24",
   "searched": 1,
-  "unreadable": "official-site search returned no AV bill pages (searched 1 pages)"
+  "unreadable": "No full-text search of the official site could be run in this automated session (domain-restricted web search only); checked date left unchanged. ",
+  "sources_read": [],
+  "bills_found": []
  },
  "OH": {
   "attempted": "2026-11-16",
@@ -281,9 +312,11 @@
   "unreadable": "official-site search returned no AV bill pages (searched 1 pages)"
  },
  "OR": {
-  "attempted": "2026-11-16",
+  "attempted": "2026-11-24",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "No full-text search of the official site could be run in this automated session (domain-restricted web search only); checked date left unchanged. ",
+  "sources_read": [],
+  "bills_found": []
  },
  "PA": {
   "attempted": "2026-11-16",
@@ -301,9 +334,11 @@
   "unreadable": "official-site search returned no AV bill pages (searched 1 pages)"
  },
  "SC": {
-  "attempted": "2026-11-16",
+  "attempted": "2026-11-24",
   "searched": 1,
-  "unreadable": "official-site search returned no AV bill pages (searched 1 pages)"
+  "unreadable": "No full-text search of the official site could be run in this automated session (domain-restricted web search only); checked date left unchanged. ",
+  "sources_read": [],
+  "bills_found": []
  },
  "SD": {
   "attempted": "2026-11-16",
@@ -323,9 +358,11 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "TX": {
-  "attempted": "2026-11-16",
+  "attempted": "2026-11-24",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "No full-text search of the official site could be run in this automated session (domain-restricted web search only); checked date left unchanged. ",
+  "sources_read": [],
+  "bills_found": []
  },
  "UT": {
   "attempted": "2026-11-16",
@@ -345,9 +382,11 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "VT": {
-  "attempted": "2026-11-16",
+  "attempted": "2026-11-24",
   "searched": 0,
-  "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
+  "unreadable": "No full-text search of the official site could be run in this automated session (domain-restricted web search only); checked date left unchanged. ",
+  "sources_read": [],
+  "bills_found": []
  },
  "WA": {
   "attempted": "2026-11-16",
@@ -369,9 +408,11 @@
   "unreadable": "official-site search returned no AV bill pages (searched 0 pages)"
  },
  "WV": {
-  "attempted": "2026-11-16",
+  "attempted": "2026-11-24",
   "searched": 1,
-  "unreadable": "official-site search returned no AV bill pages (searched 1 pages)"
+  "unreadable": "No full-text search of the official site could be run in this automated session (domain-restricted web search only); checked date left unchanged. ",
+  "sources_read": [],
+  "bills_found": []
  },
  "WY": {
   "attempted": "2026-11-16",
