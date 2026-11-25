@@ -342,6 +342,7 @@ ATX-371,371,Austin,TX,2026-10-10,2026-10,Resident Feedback,Blocking Traffic,Tesl
 ATX-373,373,Austin,TX,2026-10-10,2026-10,AFD,Safety Concern,Tesla,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/373
 ATX-374,374,Austin,TX,2026-10-12,2026-10,Resident Feedback,Nuisance,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/374
 ATX-376,376,Austin,TX,2026-10-13,2026-10,Resident Feedback,Nuisance,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/376
+ATX-387,387,Austin,TX,2026-10-16,2026-10,Resident Feedback,Nuisance,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/387
 ATX-382,382,Austin,TX,2026-10-23,2026-10,City Employee,Collision,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/382
 ATX-377,377,Austin,TX,2026-10-26,2026-10,Resident Feedback,Nuisance,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/377
 ATX-378,378,Austin,TX,2026-10-27,2026-10,City Employee,Safety Concern,Tesla,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/378
@@ -350,3 +351,5 @@ ATX-380,380,Austin,TX,2026-10-29,2026-10,City Employee,Safety Concern,Waymo,http
 ATX-381,381,Austin,TX,2026-10-29,2026-10,Resident Feedback,Nuisance,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/381
 ATX-384,384,Austin,TX,2026-11-19,2026-11,Resident Feedback,Nuisance,Tesla,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/384
 ATX-383,383,Austin,TX,2026-11-20,2026-11,Resident Feedback,Near Miss,Tesla,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/383
+ATX-385,385,Austin,TX,2026-11-20,2026-11,Resident Feedback,Nuisance,Waymo,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/385
+ATX-386,386,Austin,TX,2026-11-23,2026-11,Resident Feedback,Nuisance,Tesla,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/386

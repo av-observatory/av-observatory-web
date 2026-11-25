@@ -7,14 +7,14 @@
   "source_api": "https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/query",
   "selection": "Austin's public TPW AV incident feature layer. Resident complaints are exactly Type=Resident Feedback (case-insensitive); other Type values are city department or responder reports and are kept separate.",
   "limitations": "Austin compiles unvalidated reports received from residents, City departments, and other sources, including 311. The Resident Feedback label does not prove every record entered via 311. This series differs from San Francisco's dedicated 311 AV category and their raw counts should not be compared as rates. Public narrative and precise location are omitted from Observatory exports.",
-  "total_city_reports": 351,
+  "total_city_reports": 354,
   "blank_source_rows_excluded": 1,
-  "resident_feedback_count": 159,
-  "latest_reported_date": "2026-11-20",
+  "resident_feedback_count": 162,
+  "latest_reported_date": "2026-11-23",
   "reporter_types": [
     {
       "type": "Resident Feedback",
-      "reports": 158
+      "reports": 161
     },
     {
       "type": "APD",
@@ -176,11 +176,11 @@
     },
     {
       "month": "2026-10",
-      "resident_feedback": 7
+      "resident_feedback": 8
     },
     {
       "month": "2026-11",
-      "resident_feedback": 2
+      "resident_feedback": 4
     }
   ],
   "resident_issues": [
@@ -190,7 +190,7 @@
     },
     {
       "issue": "Nuisance",
-      "resident_feedback": 53
+      "resident_feedback": 56
     },
     {
       "issue": "Near Miss",
@@ -4331,6 +4331,18 @@
       "source_url": "https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/376"
     },
     {
+      "id": "ATX-387",
+      "source_id": "387",
+      "market": "Austin",
+      "state": "TX",
+      "reported_date": "2026-10-16",
+      "month": "2026-10",
+      "reporter_type": "Resident Feedback",
+      "issue": "Nuisance",
+      "operator": "Waymo",
+      "source_url": "https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/387"
+    },
+    {
       "id": "ATX-382",
       "source_id": "382",
       "market": "Austin",
@@ -4425,6 +4437,30 @@
       "issue": "Near Miss",
       "operator": "Tesla",
       "source_url": "https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/383"
+    },
+    {
+      "id": "ATX-385",
+      "source_id": "385",
+      "market": "Austin",
+      "state": "TX",
+      "reported_date": "2026-11-20",
+      "month": "2026-11",
+      "reporter_type": "Resident Feedback",
+      "issue": "Nuisance",
+      "operator": "Waymo",
+      "source_url": "https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/385"
+    },
+    {
+      "id": "ATX-386",
+      "source_id": "386",
+      "market": "Austin",
+      "state": "TX",
+      "reported_date": "2026-11-23",
+      "month": "2026-11",
+      "reporter_type": "Resident Feedback",
+      "issue": "Nuisance",
+      "operator": "Tesla",
+      "source_url": "https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/TPW_AV_Incidents_Reports_view/FeatureServer/0/386"
     }
   ]
 }
