@@ -864,6 +864,40 @@
       "source_tier": "auto",
       "review_status": "auto_collected",
       "date_precision": "day"
+    },
+    {
+      "id": "auto-fr-2026-21794",
+      "level": "federal",
+      "jurisdiction": "US",
+      "title": "NHTSA proposed FMVSS 108 changes for ADS-equipped vehicles",
+      "summary": "NHTSA proposed amending FMVSS No. 108 (lamps, reflective devices and associated equipment) so that manual turn signal, hazard, beam-switch and telltale requirements apply only to vehicles with manually operated driving controls, and to allow cyan ADS marker lamps as optional equipment on automated driving system vehicles. The notice of proposed rulemaking set a November 25, 2026 comment deadline (a later notice, 2026-23239, extended it).",
+      "takeaway": "NHTSA proposed amending FMVSS No. 108 (lamps, reflective devices and associated equipment) so that manual turn signal, hazard, beam-switch and telltale requirements apply only to vehicles with manually operated driving controls, and to allow cyan ADS marker lamps as optional equipment on automated driving system vehicles. The notice of proposed rulemaking set a November 25, 2026 comment deadline (a later notice, 2026-23239, extended it).",
+      "instrument": "FMVSS rulemaking",
+      "status": "request_for_comment",
+      "date": "2026-10-26",
+      "source_url": "https://www.federalregister.gov/documents/2026/10/26/2026-21794/federal-motor-vehicle-safety-standards-modernization-of-fmvss-no-108-to-accommodate-ads-equipped",
+      "verified_at": "2026-11-26",
+      "source_label": "Federal Register 2026-21794",
+      "source_tier": "auto",
+      "review_status": "auto_collected",
+      "date_precision": "day"
+    },
+    {
+      "id": "auto-fr-2026-23239",
+      "level": "federal",
+      "jurisdiction": "US",
+      "title": "NHTSA extends FMVSS 108 ADS proposal comment period",
+      "summary": "NHTSA extended by 15 days, to December 10, 2026, the comment period on its proposed rule amending FMVSS No. 108 to distinguish vehicles with and without manually operated driving controls. The extension was requested by the Alliance for Automotive Innovation, SAE International and Gatik AI Inc.",
+      "takeaway": "NHTSA extended by 15 days, to December 10, 2026, the comment period on its proposed rule amending FMVSS No. 108 to distinguish vehicles with and without manually operated driving controls. The extension was requested by the Alliance for Automotive Innovation, SAE International and Gatik AI Inc.",
+      "instrument": "FMVSS rulemaking",
+      "status": "request_for_comment",
+      "date": "2026-11-16",
+      "source_url": "https://www.federalregister.gov/documents/2026/11/16/2026-23239/federal-motor-vehicle-safety-standards-modernization-of-fmvss-no-108-to-accommodate-ads-equipped",
+      "verified_at": "2026-11-26",
+      "source_label": "Federal Register 2026-23239",
+      "source_tier": "auto",
+      "review_status": "auto_collected",
+      "date_precision": "day"
     }
   ],
   "states": [
@@ -3733,6 +3767,24 @@
         "at": "2026-11-16",
         "reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable"
       }
+    },
+    {
+      "id": "auto-ny-a10008-2026",
+      "level": "state",
+      "jurisdiction": "New York",
+      "title": "A.10008 (2026): autonomous vehicle testing authority extended to 2028",
+      "summary": "New York A.10008-C (chapter 58 of the laws of 2026, signed May 26, 2026), the 2026-27 transportation budget bill, extends the state's autonomous vehicle technology testing and demonstration authority (Part FF of chapter 55 of the laws of 2017) by changing its expiration from April 1, 2026 to April 1, 2028.",
+      "takeaway": "New York A.10008-C (chapter 58 of the laws of 2026, signed May 26, 2026), the 2026-27 transportation budget bill, extends the state's autonomous vehicle technology testing and demonstration authority (Part FF of chapter 55 of the laws of 2017) by changing its expiration from April 1, 2026 to April 1, 2028.",
+      "instrument": "legislation",
+      "status": "historical_status_unverified",
+      "date": "2026-05-26",
+      "source_url": "https://www.nysenate.gov/legislation/bills/2025/A10008/amendment/C",
+      "verified_at": "2026-11-26",
+      "state": "NY",
+      "source_label": "New York Senate, A.10008-C (2025-2026)",
+      "source_tier": "auto",
+      "review_status": "auto_collected",
+      "date_precision": "day"
     }
   ],
   "city_events": [
