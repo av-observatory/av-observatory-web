@@ -626,8 +626,17 @@
     }
   ],
   "country_scope_note": "Coverage registry includes sovereign states conventionally treated as wholly or partly European, plus Kosovo. Inclusion in the registry is geographic/editorial and does not imply EU membership or a position on political status.",
-  "media_watch_checked_at": "2026-11-25",
+  "media_watch_checked_at": "2026-11-26",
   "media_watch": [
+    {
+      "title": "Bus autonome à Mercamadrid : quatre mille cinq cents kilomètres sans accident",
+      "publisher": "Foro3D",
+      "published": "2026-11-21",
+      "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxQVkpnSDN2SWlpd0RBVzhMNU1kbFJFSjFLeVhFVVVfOVBsallaLVVjSmYtajExTXJ5aHRubWZiWVpEcnpJTnVaNE5hOWFhZ0c2alhSVHRlMWZPRWdfdDZzdFRkSWhBQWFZekJnamdBbFJpV2R3VXBGT1UtY1VpZW5vUEVGSVh5V2N1OVhJalk4SmZEZGsxX0hENVVFdklIUXowUldSSEVwaw?oc=5",
+      "query_language": "fr",
+      "first_seen": "2026-11-26",
+      "status": "unverified media headline; not counted as a crash"
+    },
     {
       "title": "Los taxis autónomos llegan a Madrid en 40 días con una promesa y una condición: tienen un 95% menos de accidentes graves pero no pueden usar las autopistas",
       "publisher": "Motorpasión",
@@ -662,6 +671,15 @@
       "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxQUjRnX1YtYTllZGxEckF4RkQ2YlBieU9QVkNGQWhHcXIxSXdvNWNRSWptN3h0SjhhZFJsUnZjek5HWHlVdVE4SlR4bHhncFJaOTNqVmUtZ0FGVDVzTDNpM0FzTGt1SWFqV1IwMkc3VWZYempHZHl2aTZ6bWZVY3V0RDhrMnB0QQ?oc=5",
       "query_language": "en-GB",
       "first_seen": "2026-11-17",
+      "status": "unverified media headline; not counted as a crash"
+    },
+    {
+      "title": "Watch: Cruise ship overturns after collision with tanker in New Orleans",
+      "publisher": "BBC",
+      "published": "2026-11-14",
+      "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE1WQXdzWmgxcmdMUE5QT3lOX0tKdTVtYUFxT1JMX0FlbFMyMTFiX1QyUnUyOTJyMHQyQ1cwMDRYS2lXMkFIMTZ4MVF4b2V0R1pXbHNzcU1JNjA?oc=5",
+      "query_language": "en-GB",
+      "first_seen": "2026-11-26",
       "status": "unverified media headline; not counted as a crash"
     },
     {
