@@ -864,6 +864,40 @@
       "source_tier": "auto",
       "review_status": "auto_collected",
       "date_precision": "day"
+    },
+    {
+      "id": "auto-fr-2026-21794",
+      "level": "federal",
+      "jurisdiction": "US",
+      "title": "NHTSA proposes FMVSS 108 changes for ADS vehicles without manual controls",
+      "summary": "NHTSA proposed to amend FMVSS No. 108 (lamps, reflective devices and associated equipment) to remove unnecessary requirements and add design flexibility, including changes for vehicles with Automated Driving Systems that have no manually operated driving controls. Comments were originally due November 25, 2026.",
+      "takeaway": "NHTSA proposed to amend FMVSS No. 108 (lamps, reflective devices and associated equipment) to remove unnecessary requirements and add design flexibility, including changes for vehicles with Automated Driving Systems that have no manually operated driving controls. Comments were originally due November 25, 2026.",
+      "instrument": "proposed program",
+      "status": "historical_status_unverified",
+      "date": "2026-10-26",
+      "source_url": "https://www.federalregister.gov/documents/2026/10/26/2026-21794/federal-motor-vehicle-safety-standards-modernization-of-fmvss-no-108-to-accommodate-ads-equipped",
+      "verified_at": "2026-11-27",
+      "source_label": "Federal Register 2026-21794",
+      "source_tier": "auto",
+      "review_status": "auto_collected",
+      "date_precision": "day"
+    },
+    {
+      "id": "auto-fr-2026-23239",
+      "level": "federal",
+      "jurisdiction": "US",
+      "title": "NHTSA extends comment period on FMVSS 108 ADS proposal",
+      "summary": "NHTSA extended the comment period on its October 26, 2026 proposal to modernize FMVSS No. 108 for ADS-equipped vehicles by 15 days, at the request of the Alliance for Automotive Innovation, SAE International and Gatik AI. Comments are now due December 10, 2026.",
+      "takeaway": "NHTSA extended the comment period on its October 26, 2026 proposal to modernize FMVSS No. 108 for ADS-equipped vehicles by 15 days, at the request of the Alliance for Automotive Innovation, SAE International and Gatik AI. Comments are now due December 10, 2026.",
+      "instrument": "proposed program",
+      "status": "historical_status_unverified",
+      "date": "2026-11-16",
+      "source_url": "https://www.federalregister.gov/documents/2026/11/16/2026-23239/federal-motor-vehicle-safety-standards-modernization-of-fmvss-no-108-to-accommodate-ads-equipped",
+      "verified_at": "2026-11-27",
+      "source_label": "Federal Register 2026-23239",
+      "source_tier": "auto",
+      "review_status": "auto_collected",
+      "date_precision": "day"
     }
   ],
   "states": [
@@ -3733,6 +3767,24 @@
         "at": "2026-11-16",
         "reason": "Automated retrieval did not produce usable verified source text; this does not establish that the document is unavailable"
       }
+    },
+    {
+      "id": "auto-ms-sb2269-2026",
+      "level": "state",
+      "jurisdiction": "Mississippi",
+      "title": "SB 2269: fully autonomous vehicle law enforcement interaction plan extended",
+      "summary": "Mississippi SB 2269 (2026 Regular Session), approved by the Governor March 13, 2026 as Chapter 330 and effective July 1, 2026, amends Section 63-35-7. The law requires a person to submit a law enforcement interaction plan to the Department of Public Safety before operating a fully autonomous vehicle without a human driver; the act extends the repealer on that requirement from July 1, 2026 to July 1, 2029.",
+      "takeaway": "Mississippi SB 2269 (2026 Regular Session), approved by the Governor March 13, 2026 as Chapter 330 and effective July 1, 2026, amends Section 63-35-7. The law requires a person to submit a law enforcement interaction plan to the Department of Public Safety before operating a fully autonomous vehicle without a human driver; the act extends the repealer on that requirement from July 1, 2026 to July 1, 2029.",
+      "instrument": "legislation",
+      "status": "in_effect",
+      "date": "2026-03-13",
+      "source_url": "https://billstatus.ls.state.ms.us/2026/pdf/history/SB/SB2269.xml",
+      "verified_at": "2026-11-27",
+      "state": "MS",
+      "source_label": "Mississippi Legislature, SB 2269 (2026)",
+      "source_tier": "auto",
+      "review_status": "auto_collected",
+      "date_precision": "day"
     }
   ],
   "city_events": [
