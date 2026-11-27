@@ -5,13 +5,13 @@
   "source_api": "https://data.sf.gov/resource/vw6y-z8j6.json",
   "selection": "Exact service_name match: Autonomous Vehicle Complaints. Other city request types and unclassified AV mentions are excluded.",
   "limitations": "These are public 311 requests, not verified incidents. The published subtypes describe how SF311 classified a request, not the specific behavior alleged. Operator identity is unavailable; the AV category begins in April 2025.",
-  "source_data_as_of": "2026-11-26T01:00:00.000",
-  "total_records": 1117,
+  "source_data_as_of": "2026-11-27T01:00:00.000",
+  "total_records": 1118,
   "markets": [
     {
       "market": "San Francisco",
       "state": "CA",
-      "complaints": 1117
+      "complaints": 1118
     }
   ],
   "monthly": [
@@ -133,7 +133,7 @@
       "month": "2026-11",
       "market": "San Francisco",
       "state": "CA",
-      "complaints": 64
+      "complaints": 65
     }
   ],
   "records": [
@@ -18008,6 +18008,22 @@
       "long": -122.4334082995,
       "neighborhood": "Duboce Triangle",
       "source_url": "https://data.sf.gov/resource/vw6y-z8j6.json?service_request_id=202000348491"
+    },
+    {
+      "id": "SF-202000358832",
+      "source_id": "202000358832",
+      "state": "CA",
+      "market": "San Francisco",
+      "requested_datetime": "2026-11-26T15:42:10.000",
+      "requested_date": "2026-11-26",
+      "month": "2026-11",
+      "type": "incident_report",
+      "status": "Open",
+      "agency": "MTA - Autonomous Vehicles Complaints",
+      "lat": 37.7659245218,
+      "long": -122.4664423383,
+      "neighborhood": "Inner Sunset",
+      "source_url": "https://data.sf.gov/resource/vw6y-z8j6.json?service_request_id=202000358832"
     }
   ]
 }
