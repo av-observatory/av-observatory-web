@@ -626,8 +626,17 @@
     }
   ],
   "country_scope_note": "Coverage registry includes sovereign states conventionally treated as wholly or partly European, plus Kosovo. Inclusion in the registry is geographic/editorial and does not imply EU membership or a position on political status.",
-  "media_watch_checked_at": "2026-11-26",
+  "media_watch_checked_at": "2026-11-27",
   "media_watch": [
+    {
+      "title": "Police cruiser slams into Waymo after crash in Miami. A passenger was taken to the hospital after a crash involving a Waymo autonomous vehicle, a police cruiser and another car in Miami. Waymo says its vehicle was stopped at a traffic light when the collision",
+      "publisher": "Facebook",
+      "published": "2026-11-23",
+      "url": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxNT1poV3ZDU09RRzZpSThtbDYyM0dKdWRnUTcyOVQ3X0R6TzR5cjM4T0hFbHpSY0xVeEtDcU5PRy1kcXJCVHVRbFViNUtSQnpTWXdLcFBRd0NTTTMzMjFLR25ENU1HNy1OX2xsUmlmVnRBR0ZSVFdHbDlSdDFlTTFMN0xyZ3FtN3E1SkVUbmFJbXBhS1lYeVZfSnJCeURrQk1qZEVOX1QwVDl6MmNCeURlUWoxdlNkSU8zeVc4dmZFS2QwWW51TUk5QUd2U1NMdHVQYnJoVGN1UHN6WWFkLWhrZA?oc=5",
+      "query_language": "en-IE",
+      "first_seen": "2026-11-27",
+      "status": "unverified media headline; not counted as a crash"
+    },
     {
       "title": "Bus autonome à Mercamadrid : quatre mille cinq cents kilomètres sans accident",
       "publisher": "Foro3D",
